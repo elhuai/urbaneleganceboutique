@@ -8,7 +8,8 @@ const Header = () => {
   return (
     <div>
       <div className="header_main d-flex justify-content-between mt-2">
-        <Link to="/" className=" d-block   ">
+        <Link to="/" className="  d-block   ">
+          <div className="header_mobile_menu">選單</div>
           <img className=" header_dog-logo " src={logobody} alt="dog" />
         </Link>
         <div className="header_tittle d-flex justify-content-center align-items-center">

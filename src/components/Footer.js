@@ -15,16 +15,16 @@ const Footer = () => {
         </div>
         <div className="footer_aside">
           <div className=" footer_Icon justify-content-end d-flex">
-            <Link to="/" className=" px-4 py-2 ">
+            <Link to="/" className="footer_Icon_fb  py-2 ">
               <AiOutlineFacebook />
             </Link>
-            <Link to="/" className=" px-4 py-2 ">
+            <Link to="/" className="footer_Icon_ig  py-2 ">
               <AiOutlineInstagram />
             </Link>
-            <Link to="/" className=" px-4 py-2 ">
+            <Link to="/" className="footer_Icon_yt  py-2 ">
               <AiFillYoutube />
             </Link>
-            <Link to="/" className=" px-4 py-2 ">
+            <Link to="/" className="footer_Icon_yt  py-2 ">
               <AiFillYoutube />
             </Link>
           </div>
@@ -51,7 +51,7 @@ const Footer = () => {
             </ul>
           </div>
           <div className="footer_Copright justify-content-end d-flex align-items-center mt-5">
-            Copyright©2022 OhDogCat
+            Copyright©OhDogCat All rights reserved
           </div>
         </div>
       </div>
