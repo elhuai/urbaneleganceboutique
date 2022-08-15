@@ -3,6 +3,7 @@ import logobody from '../images/logo_dog-body.svg';
 import { Link } from 'react-router-dom';
 import { AiOutlineUser } from 'react-icons/ai';
 import { AiOutlineShoppingCart } from 'react-icons/ai';
+// import {Button} from 'react-bootstrap';
 
 const Header = () => {
   return (

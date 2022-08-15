@@ -4,7 +4,6 @@ import { AiOutlineFacebook } from 'react-icons/ai';
 import { AiOutlineInstagram } from 'react-icons/ai';
 import { AiFillYoutube } from 'react-icons/ai';
 import { Link } from 'react-router-dom';
-// import { Footer } from 'react-bootstrap';
 
 const Footer = () => {
   return (
@@ -28,7 +27,7 @@ const Footer = () => {
               <AiFillYoutube />
             </Link>
           </div>
-          <div className="Footer_allproduct d-flex  ">
+          <div className="Footer_allproduct justify-content-end d-flex  ">
             <ul className=" list-unstyled d-flex flex-nowrap nowrap ">
               <Link to="/" className="footer_product mx-2">
                 住宿
@@ -50,8 +49,10 @@ const Footer = () => {
               </Link>
             </ul>
           </div>
-          <div className="footer_Copright justify-content-end d-flex align-items-center mt-5">
-            Copyright©OhDogCat All rights reserved
+          <div className="footer_Copright justify-content-end d-flex align-items-center mt-md-5 mt-4">
+            Copyright©
+            <br className="d-md-none d-block" />
+            OhDogCat All rights reserved
           </div>
         </div>
       </div>
