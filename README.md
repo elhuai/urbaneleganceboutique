@@ -12,7 +12,7 @@
 - react-router-dom router部分是React 核心切換頁面功能 未來會教到
 ```
 
-想要編寫自己的組件頁面可以在，📁Pages 檔案內 HomePage.js，更改自己的切版
+想要編寫自己的組件頁面可以在，📁Pages 檔案內 HomePage.js，更改自己的版面。  
 在自己元件內引入 css 檔案  
 方法如下 import "檔案路徑名稱"
 
@@ -24,11 +24,11 @@ import './styles/style.css'
 
 ---
 
-### 如果想引用圖片和以前導入方式不同，需要在組件最上層引入圖片， 前面是檔名 from 後面是路徑
+#### 如果想引用圖片和以前導入方式不同，需要在組件最上層引入圖片， 前面是檔名 from 後面是路徑
 
 ```javascript=
 import logobody from '../images/logo_dog_body1.svg';
-- 下面是在div內引入方式
+- 下面是在div內引入方式 不能再div後面用src會失效!
 <img  src={logobody} alt="dog" />
 ```
 
