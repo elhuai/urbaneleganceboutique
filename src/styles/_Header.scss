@@ -1,12 +1,16 @@
 $fmain_color: #ffc200; // 主色
 $font-size: 1.2rem;
-$font-weight: 400;
+$font-weight: 700;
 @media screen and (max-width: 1960px) {
   .header_mobile_menu {
     display: none;
   }
 }
 .header_main {
+  padding: 0 80px;
+  .header_menu {
+    width: 120px;
+  }
   a {
     position: relative;
     // padding: 0px 60px;
@@ -14,9 +18,9 @@ $font-weight: 400;
   }
 
   .header_dog-logo {
-    margin-left: 80px;
-    width: 25%;
-    height: 85%;
+    // margin-left: 80px;
+    width: auto;
+    height: 120px;
   }
   .header_container {
     width: auto;
@@ -27,24 +31,38 @@ $font-weight: 400;
     align-items: center;
     font-size: $font-size;
     font-weight: $font-weight;
-    margin-right: 50px;
+    // margin-right: 50px;
   }
 }
 .header_product {
   color: #000;
-  padding: 0 48px;
-  border-right: 1px solid #000;
+  // padding-right: 20px;
+  // padding-left: 20px;
+  padding: 8px 28px;
+  &:last-child::after {
+    width: 0;
+  }
+  &::after {
+    content: '';
+    position: absolute;
+    width: 1px;
+    height: 70%;
+    top: 50%;
+    transform: translateY(-50%);
+    right: -1rem;
+    background: #000;
+  }
   position: relative;
   &:hover {
     color: #ef7a70;
-    &::after {
+    &::before {
       content: '';
       position: absolute;
       bottom: 0;
       left: 50%;
       transform: translateX(-50%);
       border-bottom: $fmain_color 2px solid;
-      width: 50%;
+      width: calc(100% - 16px);
       transition: 0.5s all;
     }
   }
@@ -69,7 +87,8 @@ $font-weight: 400;
 }
 
 .header_Icon {
-  margin: 41px 60px 41px 14px;
+  width: 120px;
+  // margin: 41px 60px 41px 14px;
   svg {
     color: #ffc715;
     width: 35px;
@@ -95,12 +114,16 @@ $font-weight: 400;
     display: none;
   }
   .header_main {
+    padding: 0 1rem;
     .header_dog-logo {
       margin-left: 30px;
-      height: 95%;
+      // height: 95%;
     }
   }
   .header_mobile_menu {
+    position: absolute;
+    right: 80%;
+    top: 20%;
     display: inline-block;
     background-color: rgb(156, 126, 126);
     margin-left: 22px;
