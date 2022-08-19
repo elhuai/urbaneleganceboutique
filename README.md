@@ -3,10 +3,11 @@
 ## 第一步 npm install 把 node_modules 都載回來
 
 ```javascript=
-很抱歉 yarn不能QQ 我是用npm寫的~
 - npm install
-- or npm i 都可以
+- npm i 都可以
 ```
+
+---
 
 ```javascript=
 已經把相關套件有載進去了
@@ -37,15 +38,17 @@ import './styles/style.css'
 #### 如果想引用圖片和以前導入方式不同，需要在組件最上層引入圖片， 前面是檔名 from 後面是路徑
 
 ```javascript=
-import logobody from '../images/logo_dog_body1.svg';
-- 下面是在div內引入方式 不能再div後面用src會失效!
+import logobody from '../images/logo_dog_body1.svg'
+
+下面是在img內引入方式 不能再div後面用src會失效!
+
 <img  src={logobody} alt="dog" />
 ```
 
 ---
 
-### <Link>是 React router 寫法 他意思也是 a 連結
-
 ```jsx=
+<Link> 是 React router 寫法 他意思也等同於是 <a> 連結
+
 <Link to="/"></Link>
 ```
