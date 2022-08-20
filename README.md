@@ -31,7 +31,7 @@
 import './styles/style.css'
 ```
 
-#### 小提醒~React class 命名要更改為 className 駝峰式命名
+#### 小提醒~React DOM 裡 class 屬性要寫成 className="<class 命名>"
 
 ---
 
