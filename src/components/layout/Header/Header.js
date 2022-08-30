@@ -27,7 +27,7 @@ const Header = () => {
             <Link to="/" className="header_product mx-3">
               寵物商品
             </Link>
-            <Link to="/" className="header_product mx-3">
+            <Link to="/travel" className="header_product mx-3">
               我的行程
             </Link>
             <Link to="/" className="header_product mx-3">
