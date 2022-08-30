@@ -1,10 +1,15 @@
 $fmain_color: #ffc200; // 主色
+$second_maincolor: #feefc3;
+$graycolor: #747474;
 $font-size: 1.2rem;
 $font-weight: 700;
 @media screen and (max-width: 1960px) {
   .header_mobile_menu {
     display: none;
   }
+}
+.header_main_Body {
+  background-color: #feefc3;
 }
 .header_main {
   padding: 0 80px;
@@ -90,7 +95,7 @@ $font-weight: 700;
   width: 120px;
   // margin: 41px 60px 41px 14px;
   svg {
-    color: #ffc715;
+    color: $graycolor;
     width: 35px;
     height: 35px;
     margin: 0 3px;
@@ -100,7 +105,7 @@ $font-weight: 700;
   margin-right: 60px;
   margin-left: 17px;
   svg {
-    color: #ffc715;
+    color: $graycolor;
     width: 35px;
     height: 35px;
     margin: 0 3px;

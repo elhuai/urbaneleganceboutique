@@ -6,26 +6,6 @@
 body {
   font-family: 'Roboto', sans-serif;
 }
-a {
-  text-decoration: none;
-  color: black;
-}
-ul {
-  list-style-type: none;
-}
 
-.morePicture {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  padding: 4rem;
-
-  button {
-    padding: 0.25rem 0.5rem;
-    font-size: 2rem;
-    border: none;
-    background-color: rgb(155, 195, 231);
-    color: white;
-    cursor: pointer;
-  }
-}
+@import './custom_variables';
+@import '../../node_modules/bootstrap/scss/bootstrap.scss';
