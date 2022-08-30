@@ -13,7 +13,7 @@ src/
 |       |   |-- Footer.js -- 元件主程式
 |       |   |-- _Footer.scss -- 元件樣式
 |       |   |-- index.js -- 用於導出元件主程式
-|       |-- Header
+|       |-- Header -- 元件
 |           |-- Header.js -- 元件主程式
 |           |-- _Header.scss -- 元件樣式
 |           |-- index.js -- 用於導出元件主程式
