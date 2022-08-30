@@ -1,5 +1,30 @@
 # MFEE27 Team3 Project OhDogCat
 
+## 目錄結構
+
+```bash=
+src/
+|-- index.js -- 最上層導入主程式
+|-- App.js -- 主程式
+|-- images -- 圖檔
+|-- components
+|   |-- layout -- 元件分類
+|       |-- Footer -- 元件
+|       |   |-- Footer.js -- 元件主程式
+|       |   |-- _Footer.scss -- 元件樣式
+|       |   |-- index.js -- 用於導出元件主程式
+|       |-- Header
+|           |-- Header.js -- 元件主程式
+|           |-- _Header.scss -- 元件樣式
+|           |-- index.js -- 用於導出元件主程式
+|-- pages
+|   |-- HomePage -- 頁面名稱
+|       |-- Homepage.js -- 頁面主程式
+|       |-- index.js -- 用於導出頁面主程式
+|-- styles
+    |-- style.scss -- 全域樣式檔案，包含客製 SCSS
+```
+
 ## 第一步 npm install 把 node_modules 都載回來
 
 ```javascript=
