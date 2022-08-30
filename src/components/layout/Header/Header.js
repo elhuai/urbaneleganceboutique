@@ -7,7 +7,7 @@ import './_Header.scss';
 
 const Header = () => {
   return (
-    <div className="header_main_Body">
+    <div className="header_main_Body fixed-top">
       <div className="header_main d-flex justify-content-between ">
         <Link to="/" className="  d-block header_menu">
           <div className="header_mobile_menu">選單一</div>
@@ -15,7 +15,7 @@ const Header = () => {
         </Link>
         <div className="header_tittle d-flex justify-content-center align-items-center w-100 flex-shrink-1">
           <ul className="header_container list-unstyled d-flex  mt-3">
-            <Link to="123" className="header_product mx-3">
+            <Link to="/" className="header_product mx-3">
               住宿
             </Link>
             <Link to="/" className="header_product mx-3">
