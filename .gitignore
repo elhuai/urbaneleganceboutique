@@ -26,5 +26,7 @@ yarn-error.log*
 .vscode
 .vscode/settings.json
 
-.eslintrc.json
+.eslintrc
 .prettierrc
+.eslintignore
+.prettierignore
