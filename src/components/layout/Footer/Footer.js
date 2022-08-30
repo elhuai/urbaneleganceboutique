@@ -1,9 +1,10 @@
 import React from 'react';
-import logobody from '../images/logo_dog_body1.svg';
+import logobody from '../../../images/logo_dog_body1.svg';
 import { AiOutlineFacebook } from 'react-icons/ai';
 import { AiOutlineInstagram } from 'react-icons/ai';
 import { AiFillYoutube } from 'react-icons/ai';
 import { Link } from 'react-router-dom';
+import './_Footer.scss';
 
 const Footer = () => {
   return (

@@ -1,9 +1,9 @@
 import React from 'react';
-import logobody from '../images/logo_dog_body1.svg';
+import logobody from '../../../images/logo_dog_body1.svg';
 import { Link } from 'react-router-dom';
 import { AiOutlineUser } from 'react-icons/ai';
 import { AiOutlineShoppingCart } from 'react-icons/ai';
-// import {Button} from 'react-bootstrap';
+import './_Header.scss';
 
 const Header = () => {
   return (
@@ -15,7 +15,7 @@ const Header = () => {
         </Link>
         <div className="header_tittle d-flex justify-content-center align-items-center w-100 flex-shrink-1">
           <ul className="header_container list-unstyled d-flex  mt-3">
-            <Link to="/" className="header_product mx-3">
+            <Link to="123" className="header_product mx-3">
               住宿
             </Link>
             <Link to="/" className="header_product mx-3">
