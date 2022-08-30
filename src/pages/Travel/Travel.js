@@ -1,6 +1,7 @@
 import React from 'react';
 import caricon from '../../images/Travel_input_car.svg';
 import mapicon from '../../images/Travel_input_location.svg';
+import dogIcon from '../../images/travel_dog_paws.svg';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import 'swiper/scss';
 
@@ -211,16 +212,21 @@ const Travel = () => {
         <Tabs
           defaultActiveKey="home"
           id="uncontrolled-tab-example"
-          className="travel_Nav mb-4  "
+          className="travel_Nav mb-4 "
         >
           <Tab
             eventKey="home"
-            title={<div className="Travel_nav_mytrip ">我的行程</div>}
+            title={
+              <div>
+                <img className="travel_nav_mytrip me-2" src={dogIcon} alt="" />
+                我的行程
+              </div>
+            }
             className="travel_Mytrip"
           >
             <div className="d-flex ">
               <Swiper
-                className="Travel_Tab_Swiper-wrapper"
+                className="travel_Tab_Swiper-wrapper"
                 spaceBetween={20}
                 height={500}
                 // autoHeight={false}
@@ -230,20 +236,20 @@ const Travel = () => {
               >
                 {tripData.map((vaule) => {
                   return (
-                    <SwiperSlide className="Travel_Tab_Swiper me-5 Travel_Tab_Link text-dark  mt-3 text-decoration-none">
+                    <SwiperSlide className="travel_Tab_Swiper me-md-5 travel_Tab_Link text-dark  mt-3 text-decoration-none">
                       <Link to="/" className="" key={vaule.id}>
                         <div>
                           <img
-                            className="Travel_Tab_Img "
+                            className="travel_Tab_Img "
                             src={vaule.img}
                             alt="123"
                           />
-                          <div className="Travel_Tab_tittleDiv">
-                            <p className="Travel_Tab_tittleName px-3">
+                          <div className="travel_Tab_tittleDiv">
+                            <p className="travel_Tab_tittleName px-3">
                               {vaule.name}
                             </p>
                           </div>
-                          <div className="Travel_Tab_tittleDate mb-4 px-3">
+                          <div className="travel_Tab_tittleDate mb-4 px-3">
                             {vaule.start_time}~{vaule.end_time}
                           </div>
                         </div>
@@ -257,7 +263,7 @@ const Travel = () => {
           <Tab eventKey="與我分享的行程" title="收藏的行程" className="">
             <div className="d-flex ">
               <Swiper
-                className="Travel_Tab_Swiper-wrapper"
+                className="travel_Tab_Swiper-wrapper "
                 spaceBetween={20}
                 height={500}
                 // autoHeight={false}
@@ -267,18 +273,18 @@ const Travel = () => {
               >
                 {collectTrip.map((vaule) => {
                   return (
-                    <SwiperSlide className="Travel_Tab_Swiper me-5 Travel_Tab_Link text-dark  mt-3 text-decoration-none">
+                    <SwiperSlide className="travel_Tab_Swiper me-5 travel_Tab_Link text-dark  mt-3 text-decoration-none">
                       <Link to="/" className="" key={vaule.id}>
                         <div>
                           <img
-                            className="Travel_Tab_Img "
+                            className="travel_Tab_Img "
                             src={vaule.img}
                             alt="123"
                           />
-                          <p className="Travel_Tab_tittleName px-3">
+                          <p className="travel_Tab_tittleName px-3">
                             {vaule.name}
                           </p>
-                          <div className="Travel_Tab_tittleDate mb-4  px-3">
+                          <div className="travel_Tab_tittleDate mb-4  px-3">
                             {vaule.start_time}~{vaule.end_time}
                           </div>
                         </div>
@@ -290,36 +296,36 @@ const Travel = () => {
             </div>
           </Tab>
         </Tabs>
-        <Form className="Travel_form_Container">
+        <Form className="travel_form_Container">
           <div>
-            <h2 className="Travel_form_creat_tittle  user-select-none">
+            <h2 className="travel_form_creat_tittle  user-select-none">
               新增行程 :
             </h2>
           </div>
-          <div className="Travel_input_searchBar">
-            <InputGroup className="Travel_input_Allinput mb-3">
+          <div className="travel_input_searchBar ">
+            <InputGroup className="travel_input_Allinput justify-content-center mb-3">
               {/* as="form" */}
-              <div className="Travel_input_searchBar_sum d-flex ">
-                <div className="Travel_input_icondiv">
+              <div className="travel_input_searchBar_sum  d-flex ">
+                <div className="travel_input_icondiv">
                   <img
                     src={mapicon}
                     alt="#/"
-                    className="Travel_input_mapicon "
+                    className="travel_input_mapicon "
                   />
                 </div>
                 <Form.Control
-                  className="Travel_input_Area "
+                  className="travel_input_Area "
                   placeholder="請輸入城市、地區"
                   aria-label="Recipient's username"
                   aria-describedby="basic-addon2"
                 />
               </div>
-              <div className="Travel_input_searchBar_sum d-flex">
-                <div className="Travel_input_icondiv">
+              <div className="travel_input_searchBar_sum d-flex">
+                <div className="travel_input_icondiv">
                   <img
                     src={caricon}
                     alt="#/"
-                    className="Travel_input_mapicon "
+                    className="travel_input_mapicon "
                   />
                 </div>
                 <Form.Control
@@ -331,7 +337,7 @@ const Travel = () => {
               </div>
 
               <Button
-                className="Travel_input_button "
+                className="travel_input_button "
                 variant="outline-secondary"
                 id="button-addon2"
               >
@@ -342,38 +348,35 @@ const Travel = () => {
         </Form>
         <div>
           <div>
-            <h2 className="Travel_goPlay_tittle user-select-none">
+            <h2 className="travel_goPlay_tittle mb-md-5 user-select-none ">
               看看大家都去哪玩 :
             </h2>
           </div>
           <Swiper
-            className="swiper-slide"
+            className=""
             spaceBetween={20}
-            height={300}
-            autoHeight={true}
-            slidesPerView={'auto'} //顯示幾個
+            height={500}
+            // autoHeight={true}
+            slidesPerView={'auto'}
             onSlideChange={() => console.log('slide change')}
             onSwiper={(swiper) => console.log(swiper)}
           >
-            <ul className="Travel_goPlay_ul d-flex text-dark">
+            <ul className="travel_goPlay_ul d-flex text-dark">
               {gotoTrip.map((data) => {
                 return (
-                  <SwiperSlide
-                    className="Travel_Swiper_goPlay_Swiper me-5 "
-                    // style={{ width: '410px', marginRight: '10px' }}
-                  >
+                  <SwiperSlide className="travel_Swiper_goPlay_Swiper me-md-5 ">
                     <li key={data.id}>
                       <Link to="/">
-                        <div className="Travel_goPlay_collection_AllDiv me-5 ">
+                        <div className="travel_goPlay_collection_AllDiv me-5 ">
                           <div>
                             <img
-                              className="Travel_goPlay_collection_img "
+                              className="travel_goPlay_collection_img "
                               src={data.img}
                               alt="#/"
                             />
                           </div>
-                          <div className="Travel_goPlay_collection_tittleDiv">
-                            <h3 className="Travel_goPlay_collection_title px-3 ">
+                          <div className="travel_goPlay_collection_tittleDiv">
+                            <h3 className="travel_goPlay_collection_title px-3 ">
                               {data.name}
                             </h3>
                           </div>
@@ -387,45 +390,39 @@ const Travel = () => {
           </Swiper>
         </div>
         <div>
-          <h2 className="Travel_Swiper_EveryOnetrip_lookH2 mb-3 mt-3 user-select-none">
+          <h2 className="travel_Swiper_EveryOnetrip_lookH2  user-select-none">
             路克路克大家的行程 :
           </h2>
 
           <Swiper
+            className="travel_Swiper_EveryOnetrip_AllSwiper"
             spaceBetween={20}
-            height={300}
-            autoHeight={true}
+            height={500}
+            // autoHeight={false}
             slidesPerView={'auto'} //顯示幾個
             onSlideChange={() => console.log('slide change')}
             onSwiper={(swiper) => console.log(swiper)}
           >
             {swiperImage.map((vaule) => {
               return (
-                <SwiperSlide
-                  className="Travel_Swiper_EveryOnetrip me-5"
-                  // style={{ width: '410px', marginRight: '10px' }}
-                >
-                  <Link
-                    to="/#"
-                    className="Travel_Tab_Link text-dark me-5 mt-3 text-decoration-none "
-                    key={vaule.id}
-                  >
+                <SwiperSlide className="travel_Swiper_EveryOnetrip me-md-5">
+                  <Link to="/#" className="mt-3" key={vaule.id}>
                     <div className="">
                       <img
-                        className="Travel_Swiper_EveryOnetrip_Img "
+                        className="travel_Swiper_EveryOnetrip_Img "
                         src={vaule.img}
                         alt="123"
                       />
                     </div>
                   </Link>
                   <div className="d-flex  justify-content-between ">
-                    <div className="Travel_Swiper_EveryOnetrip_tittle_div">
-                      <p className="Travel_Swiper_EveryOnetrip_tittle user-select-none">
+                    <div className="travel_Swiper_EveryOnetrip_tittle_div">
+                      <p className="travel_Swiper_EveryOnetrip_tittle user-select-none mt-3">
                         {vaule.tittle}
                       </p>
                     </div>
                     <div className="">
-                      <p className="Travel_Swiper_EveryOnetrip_day pe-3 user-select-none">
+                      <p className="travel_Swiper_EveryOnetrip_day pe-md-3 user-select-none mt-3">
                         {vaule.days}天
                       </p>
                     </div>
@@ -434,23 +431,23 @@ const Travel = () => {
                   <div className="d-flex">
                     <div>
                       <img
-                        className="Travel_Swiper_EveryOnetrip_userImage"
+                        className="travel_Swiper_EveryOnetrip_userImage"
                         src={vaule.userphoto}
                         alt="#/"
                       />
                     </div>
                     <div className="d-flex align-items-center">
-                      <h4 className="Travel_Swiper_EveryOnetrip_username mx-3 user-select-none">
+                      <h4 className="travel_Swiper_EveryOnetrip_username mx-md-3 user-select-none">
                         {vaule.userid}
                       </h4>
                       <div>
-                        <h4 className="Travel_Swiper_EveryOnetrip_follow  ps-2">
+                        <h4 className="travel_Swiper_EveryOnetrip_follow  ps-2">
                           追蹤
                         </h4>
                       </div>
                     </div>
                   </div>
-                  <div className="Travel_Swiper_EveryOnetrip_date mt-4 user-select-none">
+                  <div className="travel_Swiper_EveryOnetrip_date mt-3  user-select-none">
                     {vaule.start_time}
                   </div>
                 </SwiperSlide>

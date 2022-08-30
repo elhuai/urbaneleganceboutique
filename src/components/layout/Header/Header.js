@@ -7,7 +7,7 @@ import './_Header.scss';
 
 const Header = () => {
   return (
-    <div className="header_main_Body">
+    <div className="header_main_Body  fixed-top">
       <div className="header_main d-flex justify-content-between ">
         <Link to="/" className="  d-block header_menu">
           <div className="header_mobile_menu">選單一</div>
