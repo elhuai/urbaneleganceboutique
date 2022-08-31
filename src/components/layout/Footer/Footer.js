@@ -1,10 +1,11 @@
-import React from 'react';
-import logobody from '../../../images/logo_dog_body1.svg';
+import './_Footer.scss';
+
+import { AiFillYoutube } from 'react-icons/ai';
 import { AiOutlineFacebook } from 'react-icons/ai';
 import { AiOutlineInstagram } from 'react-icons/ai';
-import { AiFillYoutube } from 'react-icons/ai';
 import { Link } from 'react-router-dom';
-import './_Footer.scss';
+import React from 'react';
+import logobody from '../../../images/logo_dog_body1.svg';
 
 const Footer = () => {
   return (

@@ -1,13 +1,14 @@
+import './_Header.scss';
+
+import { AiOutlineShoppingCart } from 'react-icons/ai';
+import { AiOutlineUser } from 'react-icons/ai';
+import { Link } from 'react-router-dom';
 import React from 'react';
 import logobody from '../../../images/logo_dog_body1.svg';
-import { Link } from 'react-router-dom';
-import { AiOutlineUser } from 'react-icons/ai';
-import { AiOutlineShoppingCart } from 'react-icons/ai';
-import './_Header.scss';
 
 const Header = () => {
   return (
-    <div className="header_main_Body">
+    <div className="header_main_Body fixed-top">
       <div className="header_main d-flex justify-content-between ">
         <Link to="/" className="  d-block header_menu">
           <div className="header_mobile_menu">選單一</div>
@@ -39,7 +40,7 @@ const Header = () => {
           <Link to="/" className="">
             <AiOutlineShoppingCart />
           </Link>
-          <Link to="/" className="header_Icon_cart">
+          <Link to="/adminCenter" className="header_Icon_cart">
             <AiOutlineUser />
           </Link>
         </div>
