@@ -1,4 +1,3 @@
-import main_search_bg from '../../images/main_search_bg.jpg'
 import main_search_left_dog from '../../images/main_search_left_dog.png'
 import main_search_right_dog from '../../images/main_search_right_dog.png'
 import test_photo from '../../images/test.jpg'
