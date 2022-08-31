@@ -1,9 +1,10 @@
+import './_Header.scss';
+
+import { AiOutlineShoppingCart } from 'react-icons/ai';
+import { AiOutlineUser } from 'react-icons/ai';
+import { Link } from 'react-router-dom';
 import React from 'react';
 import logobody from '../../../images/logo_dog_body1.svg';
-import { Link } from 'react-router-dom';
-import { AiOutlineUser } from 'react-icons/ai';
-import { AiOutlineShoppingCart } from 'react-icons/ai';
-import './_Header.scss';
 
 const Header = () => {
   return (
@@ -39,7 +40,7 @@ const Header = () => {
           <Link to="/" className="">
             <AiOutlineShoppingCart />
           </Link>
-          <Link to="/" className="header_Icon_cart">
+          <Link to="/adminCenter" className="header_Icon_cart">
             <AiOutlineUser />
           </Link>
         </div>

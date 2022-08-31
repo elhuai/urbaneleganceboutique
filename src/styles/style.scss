@@ -7,5 +7,9 @@ body {
   font-family: 'Roboto', sans-serif;
 }
 
-@import './custom_variables';
-@import '../../node_modules/bootstrap/scss/bootstrap.scss';
+.app {
+  margin-top: 120px;
+}
+
+  @import './custom_variables';
+  @import '../../node_modules/bootstrap/scss/bootstrap.scss';

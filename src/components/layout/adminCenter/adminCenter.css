@@ -1,0 +1,78 @@
+:root {
+  --line-color--light:#E7E7E9;
+  --line-color--dark:#747474;
+  --button-color-hover: #FEEFC3;
+}
+ 
+ 
+ .admin_sidebar{
+  /* background-color: antiquewhite; */
+  width: 360px;
+  height: 800px;
+  margin-left: 150px;
+  font-size: 20px;
+  margin-top: 180px;
+  border-right: 2px solid var(--line-color--light);
+  
+ 
+ }
+
+ .admin_sidemenu {
+  padding-top: 30px;
+  display: flex;
+  flex-direction: column;
+  margin-left: 20px;
+ }
+ .admin_sidemenu li {
+  margin: 3px 0px;
+ 
+ }
+ .admin_select {
+  padding-left: 15px;
+  padding-top: 15px;
+  width: 260px;
+  border-radius: 5px 80px 15px 5px;
+ }
+ .admin_select:hover {
+  background-color: var(--button-color-hover);
+  
+  
+ }
+
+.icons {
+  width: 24px;
+  margin-right: 10px;
+  margin-bottom: 15px;
+}
+.user_photobox{
+  width: 130px;
+  height: 130px;
+  border-radius: 50%;
+  overflow: hidden;
+  border: 1px solid var(--line-color--dark);
+}
+
+.profile_bar{
+  padding:15px ;
+  width: 330px;
+  margin-right: 10px;
+  border-bottom: 2px solid var(--line-color--light);
+}
+.admin_user_name_bar{
+  margin-left: 15px;
+  display: flex;
+  flex-direction: column;
+}
+
+.admin_user_name{
+  margin-top: 30px;
+  display: block;
+  font-size: 26px;
+  font-weight: 500;
+}
+.admin_myfile{
+  display: block;
+  font-size: 15px;
+  color: var(--line-color--dark);
+}
+
