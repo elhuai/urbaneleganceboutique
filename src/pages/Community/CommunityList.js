@@ -122,7 +122,7 @@ const CommunityList = () => {
             </div>
           </div>
         </section>
-      </div>;
+      </div>
     </>
   );
 }; 

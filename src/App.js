@@ -1,5 +1,3 @@
-import './styles/style.scss';
-
 import { Route, Routes } from 'react-router-dom';
 
 import AdminCenterFollower from './pages/AdminCenter/AdminCenterFollower';
@@ -9,6 +7,8 @@ import CommunityList from './pages/Community/';
 import Header from './components/layout/Header';
 import Homepage from './pages/HomePage';
 import React from 'react';
+
+import './styles/style.scss';
 
 // import Travel from './pages/Travel';
 
@@ -23,7 +23,7 @@ function App() {
       </Routes>
       <Footer />
     </div>
-  );
+  )
 }
 
 export default App;
