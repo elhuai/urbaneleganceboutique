@@ -1,14 +1,12 @@
-import './styles/style.scss';
 
-import { Route, Routes } from 'react-router-dom';
-
-import AdminCenterFollower from './pages/AdminCenter/AdminCenterFollower';
-// import ExamplePage from './pages/ExamplePage';
-import Footer from './components/layout/Footer';
-import CommunityList from './pages/Community/';
-import Header from './components/layout/Header';
-import Homepage from './pages/HomePage';
 import React from 'react';
+import { Route, Routes } from 'react-router-dom';
+import Header from './components/layout/Header';
+import Footer from './components/layout/Footer';
+import Homepage from './pages/HomePage';
+import CommunityList from './pages/Community/';
+import AdminCenterPage from "./pages/AdminCenter/AdminCenterPage";
+import './styles/style.scss';
 
 // import Travel from './pages/Travel';
 
@@ -19,7 +17,7 @@ function App() {
       <Routes>
         <Route path="/" element={<Homepage />} />
         <Route path="/communitylist" element={<CommunityList />} />
-        <Route path="/adminCenter" element={<AdminCenterFollower />} />
+        <Route path="/adminCenter" element={<AdminCenterPage />} />
       </Routes>
       <Footer />
     </div>

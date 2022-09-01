@@ -1,1 +1,1 @@
-export {default} from './AdminCenterFollower'
+export {default} from './AdminCenterPage'

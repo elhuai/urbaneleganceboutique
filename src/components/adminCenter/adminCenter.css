@@ -2,19 +2,36 @@
   --line-color--light:#E7E7E9;
   --line-color--dark:#747474;
   --button-color-hover: #FEEFC3;
+  --button-color-remove: #ef7a70;
+  --main-color:#FFC715;
+  --list-color: #F0EDE0;
+  --list-color-hover: #F0EDE0;
 }
- 
- 
- .admin_sidebar{
+@media screen and (max-width: 768px) {
+  .admin_side {
+    display:none
+  }
+}
+@media screen and (max-width: 375px) {
+  .admin_side {
+    display:none
+  }
+}
+
+ .admin_side{
   /* background-color: antiquewhite; */
-  width: 360px;
-  height: 800px;
-  margin-left: 150px;
+  /* max-width: 200px; */
+  /* min-width: 250px; */
+  max-width: 330px;
+  height: 100vh;
   font-size: 20px;
-  margin-top: 180px;
   border-right: 2px solid var(--line-color--light);
   
  
+ }
+ .settingicon {
+  margin-bottom:3px;
+  margin-left: 2px;
  }
 
  .admin_sidemenu {
@@ -30,13 +47,12 @@
  .admin_select {
   padding-left: 15px;
   padding-top: 15px;
-  width: 260px;
+  width: 95%;
   border-radius: 5px 80px 15px 5px;
  }
  .admin_select:hover {
   background-color: var(--button-color-hover);
-  
-  
+
  }
 
 .icons {
@@ -45,16 +61,16 @@
   margin-bottom: 15px;
 }
 .user_photobox{
-  width: 130px;
-  height: 130px;
+  width: 120px;
+  height: 120px;
   border-radius: 50%;
-  overflow: hidden;
+  background-color: white;
   border: 1px solid var(--line-color--dark);
 }
 
 .profile_bar{
   padding:15px ;
-  width: 330px;
+  min-width: 70%;
   margin-right: 10px;
   border-bottom: 2px solid var(--line-color--light);
 }
@@ -67,7 +83,7 @@
 .admin_user_name{
   margin-top: 30px;
   display: block;
-  font-size: 26px;
+  font-size: 20px;
   font-weight: 500;
 }
 .admin_myfile{
