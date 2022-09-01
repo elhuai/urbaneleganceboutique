@@ -2,7 +2,9 @@ $fmain_color: #ffc200; // 主色
 $sup_color: #eeb569; //副色
 $font-size: 1.2rem;
 $second_font-size: 26px;
+$rwd_font-size: 22px;
 $font-weight: 700;
+$rwdfont-weight: 500;
 $border-radius: 15px;
 $box-shadow: 2px 4px 8px grey;
 $look_line-height: 53px;
@@ -15,6 +17,9 @@ $look_line-height: 53px;
   width: calc(100% - 10px);
   font-size: $font-size;
   font-weight: $font-weight;
+  // button.nav-link{
+  //   border: none;
+  // }
 }
 .travel_Mytrip {
   position: relative;
@@ -30,7 +35,11 @@ $look_line-height: 53px;
   height: calc(30px - 1px);
 }
 .travel_Tab_Swiper-wrapper {
-  height: 450px;
+  padding-bottom: 10px;
+  // height: 450px;
+}
+.swiper {
+  margin-left: 0 !important;
 }
 
 .travel_Tab_Img {
@@ -149,7 +158,7 @@ $look_line-height: 53px;
   font-weight: $font-weight;
   font-size: 32px;
   margin-top: 3rem;
-  margin-bottom: 1.5rem;
+  margin-bottom: 2rem;
 }
 .travel_Tab_Swiper {
   width: 410px !important;
@@ -215,15 +224,32 @@ $look_line-height: 53px;
 .travel_Swiper_EveryOnetrip_AllSwiper {
   height: 600px;
 }
-//////////////////////////////////RWD
+.travel_noidea {
+  padding-left: 500px;
+  padding-top: 30px;
+}
+////////////////////////////////RWD
 
 @media screen and (max-width: 768px) {
   .travel_Tab_Swiper-wrapper {
+    // height: 450px;
     .travel_Tab_Swiper {
-      width: 350px !important;
-      height: 420px;
+      margin-left: 20px;
+      width: 380px !important;
+      height: 390px;
+    }
+    .travel_Tab_Img {
+      width: 320px;
+      height: 235px;
+    }
+    .travel_Tab_tittleName {
+      font-weight: $rwdfont-weight;
+      font-style: normal;
+      font-size: 28px;
+      line-height: 83px;
     }
   }
+
   .travel_form_Container {
     margin-top: 2rem;
     .travel_input_searchBar {
@@ -241,28 +267,66 @@ $look_line-height: 53px;
     }
   }
   .travel_Swiper_EveryOnetrip_lookH2 {
-    margin-top: 1.5rem;
+    font-weight: $font-weight;
+    font-size: 26px;
+    margin-top: 0.5rem;
     margin-bottom: 1.5rem;
   }
   .travel_goPlay_tittle {
     margin-top: 2rem;
+    font-weight: $font-weight;
   }
+  .travel_goPlay_collection_img {
+    width: 300px;
+    height: 190px;
+  }
+
   .travel_goPlay_collection_AllDiv {
     margin-top: 1.5rem;
+    margin-left: 20px;
   }
   .travel_Swiper_EveryOnetrip_AllSwiper {
-    height: 520px;
+    height: 450px;
 
     .travel_Swiper_EveryOnetrip_Img {
-      width: 340px;
-      height: 265px;
+      width: 300px;
+      height: 225px;
     }
+    .travel_Swiper_EveryOnetrip_day {
+      padding-right: 30px;
+      font-weight: 400;
+      font-style: normal;
+      font-size: 24px;
+      line-height: $look_line-height;
+    }
+    .travel_Swiper_goPlay_Swiper {
+      width: 360px !important;
+      // margin-left: 150px;
+    }
+
     .travel_Swiper_EveryOnetrip {
+      margin-left: 35px;
       width: 340px !important;
       height: 300px;
       .travel_Swiper_EveryOnetrip_username {
         padding: 0 0.5rem;
+        font-weight: $rwdfont-weight;
+        font-size: $rwd_font-size;
+      }
+      .travel_Swiper_EveryOnetrip_follow {
+        font-size: $rwd_font-size;
+        font-weight: 700;
+      }
+      .travel_Swiper_EveryOnetrip_tittle {
+        font-weight: $font-weight;
+        font-style: normal;
+        font-size: $rwd_font-size;
+        line-height: $look_line-height;
       }
     }
+  }
+  .travel_noidea {
+    padding-left: 80px;
+    padding-top: 30px;
   }
 }

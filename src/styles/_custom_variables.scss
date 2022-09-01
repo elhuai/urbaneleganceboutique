@@ -1,12 +1,12 @@
-$primary: #ffc200;
-$secondary: #779cb2;
+$primary: #ffc200; // 主色
+$secondary: #feefc3; // 副色
 $secondary-dark: #517990;
 $white: #ffffff;
-$dark: #3f3f3f;
+$dark: #747474;
 $skin-brighter: #ffffff; //背景
 $skin-bright: #e2dad2;
 $gray-dark: #bfbfbf;
-$gray-light: #d9d9d9;
+$gray-light: #e7e7e9;
 $gray-darker: #5f5c51;
 
 $theme-colors: (
@@ -89,10 +89,10 @@ $link-color: rgb(0, 0, 0);
 // $btn-active-bg-tint-amount: 20% !default;
 // $btn-active-border-shade-amount: 25% !default;
 // $btn-active-border-tint-amount: 10% !default;
-$btn-border-radius: 0;
+$btn-border-radius: 8px;
 
 // form control
-$input-border-radius: 5;
+$input-border-radius: 8px;
 $input-focus-box-shadow: none;
 $input-focus-border-color: $gray-dark;
 // $input-focus-bg:$primary;
