@@ -5,6 +5,7 @@ import Header from './components/layout/Header';
 import Homepage from './pages/HomePage';
 import ExamplePage from './pages/ExamplePage';
 import Travel from './pages/Travel';
+import 'swiper/scss';
 
 import './styles/style.scss';
 
