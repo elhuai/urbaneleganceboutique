@@ -111,7 +111,7 @@ const Travel_Tab = () => {
               // autoHeight={false}
               slidesPerView={'auto'} //顯示幾個
               onSlideChange={() => console.log('slide change')}
-              onSwiper={(swiper) => console.log(swiper)}
+              onSwiper={(swiper) => console.log()}
             >
               {tripData.length === 0 ? (
                 <SwiperSlide>
@@ -122,8 +122,11 @@ const Travel_Tab = () => {
               ) : (
                 tripData.map((vaule) => {
                   return (
-                    <SwiperSlide className="travel_Tab_Swiper me-md-5 travel_Tab_Link text-dark  mt-3 text-decoration-none">
-                      <Link to="/" className="" key={vaule.id}>
+                    <SwiperSlide
+                      key={vaule.id}
+                      className="travel_Tab_Swiper me-md-5 travel_Tab_Link text-dark  mt-3 text-decoration-none"
+                    >
+                      <Link to="/" className="">
                         <div>
                           <img
                             className="travel_Tab_Img "
@@ -156,7 +159,7 @@ const Travel_Tab = () => {
               // autoHeight={false}
               slidesPerView={'auto'} //顯示幾個
               onSlideChange={() => console.log('slide change')}
-              onSwiper={(swiper) => console.log(swiper)}
+              onSwiper={(swiper) => console.log()}
             >
               {collectTrip.length === 0 ? (
                 <SwiperSlide>
@@ -167,8 +170,11 @@ const Travel_Tab = () => {
               ) : (
                 collectTrip.map((vaule) => {
                   return (
-                    <SwiperSlide className="travel_Tab_Swiper me-5 travel_Tab_Link text-dark  mt-3 text-decoration-none">
-                      <Link to="/" className="" key={vaule.id}>
+                    <SwiperSlide
+                      key={vaule.id}
+                      className="travel_Tab_Swiper me-5 travel_Tab_Link text-dark  mt-3 text-decoration-none"
+                    >
+                      <Link to="/" className="">
                         <div>
                           <img
                             className="travel_Tab_Img "
