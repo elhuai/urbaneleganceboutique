@@ -1,18 +1,22 @@
 $fmain_color: #ffc200; // 主色
+$header_bg_color:#fffef4;//特別調的header色
 $second_maincolor: #feefc3;
 $graycolor: #747474;
-$font-size: 1.2rem;
-$font-weight: 700;
+$font-size: 1.05rem;
+$font-weight: 1000;
 
 .header_mobile_menu {
   display: none;
 }
 
 .header_main_Body {
-  background-color: #feefc3;
+  background-color: $header_bg_color;
+  // #feefc3;
 }
 .header_main {
   padding: 0 80px;
+  box-shadow:rgba(232, 232, 232, 0.662) 1px 1px 5px ;
+
   .header_menu {
     width: 120px;
   }
@@ -22,14 +26,15 @@ $font-weight: 700;
   }
 
   .header_dog-logo {
-    width: auto;
-    height: 120px;
+    width: auto;    
+    height: 85px;
   }
   .header_container {
     width: auto;
   }
 
   .header_tittle {
+
     justify-content: center;
     align-items: center;
     font-size: $font-size;
@@ -38,13 +43,14 @@ $font-weight: 700;
   }
 }
 .header_product {
+  letter-spacing:.2rem;
   color: #000;
   // padding-right: 20px;
   // padding-left: 20px;
   padding: 8px 28px;
   position: relative;
   &:last-child::after {
-    width: 0;
+    width:0;
   }
   &::after {
     content: '';
@@ -62,12 +68,20 @@ $font-weight: 700;
     bottom: 0;
     left: 50%;
     transform: translateX(-50%);
-    border-bottom: $fmain_color 2px solid;
+    // background-color: #ffc200;
+    // color: #ffc200;
+    border-bottom: 2.5px $fmain_color solid;
     width: 0;
     transition: 0.3s all;
   }
   &:hover {
-    color: #ef7a70;
+    color: $fmain_color;
+    font-weight:bolder;
+    // text-shadow:#ffbf00 1px 0px 1px ;
+    transition: 0.5s all step-start;
+
+    // background-color: #ffc200;
+    // background-image: url(../../../images/header_menu_paw.png) no-repeat;
     &::before {
       width: calc(100% - 16px);
     }
@@ -84,7 +98,7 @@ $font-weight: 700;
   padding: 0 48px;
   position: relative;
   &:hover {
-    color: #ef7a70;
+    color: $fmain_color;
     &::after {
       content: '';
       position: absolute;
@@ -100,25 +114,34 @@ $font-weight: 700;
 
 .header_Icon {
   width: 120px;
+}
+.header_Icon_cart{
+  // border: #ffc200 2px solid;
+  border-radius: 8px;
+
   svg {
-    color: $graycolor;
-    width: 35px;
-    height: 35px;
-    margin: 0 3px;
+    color:$fmain_color;
+    width: 25px;
+    height: 25px;
+    margin: 3px;
   }
 }
-.header_Icon_cart {
-  margin-right: 60px;
+.header_Icon_user {
+  // background-color: #ffc200;
+  // border: #ffc200 2px solid;
+  border-radius: 8px;
+  // margin-right: 60px;
   margin-left: 17px;
   svg {
-    color: $graycolor;
-    width: 35px;
-    height: 35px;
-    margin: 0 3px;
+    color:$fmain_color;
+    width: 25px;
+    height: 25px;
+    padding: 2px;
+    margin: 3px;
   }
 }
 
-/*RWD*/
+/*RRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRrRWD*/
 @media screen and (max-width: 768px) {
   .header_product,
   .header_main,
@@ -142,27 +165,27 @@ $font-weight: 700;
     right: 80%;
     top: 20%;
     display: inline-block;
-    background-color: rgb(156, 126, 126);
+    background-color: $header_bg_color;
     margin-left: 22px;
   }
 
   .header_Icon {
     position: relative;
     z-index: 10000;
-    align-items: center;
     margin-left: 275px;
     margin-top: 10px;
     bottom: 10px;
     svg {
-      color: #747474;
-      width: 30px;
-      height: 30px;
-      margin: 0 1px;
+      color: $graycolor;
+      width: 20px;
+      height: 20px;
+      // margin: 0 1px;
     }
   }
   .header_Icon_cart {
-    margin-left: 10px;
-    margin-right: 15px;
+    // border: $graycolor 2px solid;
+      // margin-left: 10px;
+    // margin-right: 15px;
   }
   #offcanvasNavbar {
     border-color: white;
