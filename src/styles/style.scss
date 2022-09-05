@@ -8,8 +8,13 @@ body {
 }
 
 .app {
-  margin-top: 120px;
+  margin-top: 100px;
+}
+@media screen and (max-width: 768px) {
+  .app {
+    margin-top: 80px;
+  }
 }
 
-  @import './custom_variables';
-  @import '../../node_modules/bootstrap/scss/bootstrap.scss';
+@import './custom_variables';
+@import '../../node_modules/bootstrap/scss/bootstrap.scss';
