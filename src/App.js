@@ -5,11 +5,12 @@ import Header from './components/layout/Header';
 import Homepage from './pages/HomePage';
 import ExamplePage from './pages/ExamplePage';
 import Travel from './pages/Travel';
+import ECproductFilter from './pages/EC_productFilter';
 import 'swiper/scss';
 
 import './styles/style.scss';
 
-function App() {
+function App() { 
   return (
     <div className="app">
       <Header />
@@ -17,6 +18,7 @@ function App() {
         <Route path="/" element={<Homepage />} />
         <Route path="example" element={<ExamplePage />} />
         <Route path="/travel" element={<Travel />} />
+        <Route path="/ec" element={<ECproductFilter />} />
       </Routes>
       <Footer />
     </div>
