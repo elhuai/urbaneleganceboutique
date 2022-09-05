@@ -36,7 +36,9 @@ function CommunityManagement() {
                       <p className="follower_user_name">阿尼基愛旅遊</p>
                     </div>
                     <div className="follower_description_text">
-                      <p>愛罐罐 愛睡覺 愛旅遊</p>
+                      <p>愛罐罐 愛睡覺 愛旅遊愛罐罐 愛睡覺 愛
+                      愛睡覺 愛旅遊愛罐罐 愛睡覺 愛
+                      愛睡覺 愛旅遊愛罐罐 愛睡覺 愛旅遊愛罐罐 愛睡覺 愛旅遊愛罐罐 愛睡覺 愛旅遊愛罐罐 愛睡覺 愛旅遊愛罐罐 愛睡覺 愛旅遊</p>
                     </div>
                   </div>
                 </div>
@@ -54,7 +56,7 @@ function CommunityManagement() {
                   </div>
                   <div className="ps-3 m-1">
                     <div>
-                      <p className="follower_user_name">阿尼基愛旅遊</p>
+                      <p className="follower_user_name">阿尼基愛旅遊111!!!!</p>
                     </div>
                     <div className="follower_description_text">
                       <p>愛罐罐 愛睡覺 愛旅遊</p>
@@ -185,7 +187,7 @@ function CommunityManagement() {
               <li className="d-flex justify-content-between align-items-center px-5">
                 <div className="post_description d-flex flex-column">
                   <div className="post_title">
-                    <p className="">花蓮五日遊</p>
+                    <p className="">花蓮五日遊YOYOYOYOYOYOYOY</p>
                   </div>
                   <div className="post_date">
                     <p>發布日期：2022/09/02</p>

@@ -10,7 +10,7 @@
 @media screen and (max-width: 768px) {
   .follower_list {
     /* display:none; */
-    width: 600px;
+    width:90%;
   }
 }
 @media screen and (max-width: 375px) {
@@ -28,11 +28,12 @@ ul.communityManagementTab {
   border: none;
   margin-top: 50px;
   margin-left: 30px;
+  //NOTE: 
   button.nav-link, button.nav-link:hover { 
     border: none;
   }
 }
-//TODO: Hover 還會有黃色的bottom border 待修改
+
 .tab_text_size{
   font-size: 20px;
 }
@@ -46,7 +47,7 @@ ul.communityManagementTab {
 .follower_list{
   width: 900px;
   .follower_detail {
-    height: 700px;
+    height: 700px; 
     overflow-y: scroll;
     & li {
     background-color: $list-color;
@@ -76,10 +77,20 @@ ul.communityManagementTab {
   .follower_user_name {
     font-size: 22px;
     font-weight: 400;
+    width: 200px;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 1;
+    overflow: hidden;
   }
   .follower_description_text{
     font-size: 14px;
     color: $line-color--dark;
+    width: 300px;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 2;
+    overflow: hidden;
     
   }
   .remove_follow{
@@ -120,10 +131,10 @@ ul.communityManagementTab {
     border-bottom: 1px solid $line-color--light;
     border-radius: 8px;
     width: 95%;
-    height: 120px;
+    height: 140px;
     list-style: none;
     &:hover{
-      background-color:$list-color-hover;
+      background-color:$button-color-hover;
     }
     // background-color: #FEEFC3;
     .post_description {
@@ -133,9 +144,14 @@ ul.communityManagementTab {
         font-size: 18px;
         font-weight: 500; 
         margin-top: 15px;
+        width: 300px;
+        display: -webkit-box;
+        -webkit-box-orient: vertical;
+        -webkit-line-clamp: 1;
+        overflow: hidden;
       }
       .post_date p{
-        font-size: 14px;
+        font-size: 16px;
         color: $line-color--dark;
 
       }

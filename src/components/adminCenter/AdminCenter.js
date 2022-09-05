@@ -6,7 +6,7 @@ import MessageIcon from "../../images/message-svgrepo-com.svg";
 import OrderIcon from "../../images/choices-order-svgrepo-com.svg";
 import React from "react";
 import TicketIcon from "../../images/coupon-svgrepo-com (2).svg";
-import HoverBottom from "../../images/車頭.svg";
+import HoverBottom from "../../images/admin-hover-background.svg";
 import "./adminCenter.scss";
 // import { ReactComponent as OrderIcon } from '../';
 
@@ -16,7 +16,7 @@ const AdminCenter = () => {
   return (
     <div>
       <div className="admin_side">
-        <div className="profile_bar d-flex">
+        <div className="profile_bar d-flex justify-content-center">
           <div className="user_photobox">
             <img
               className="admin_user_photo w-100 h-100"
@@ -25,8 +25,8 @@ const AdminCenter = () => {
             ></img>
           </div>
           <div className="admin_user_name_bar">
-            <Link to="/" className="admin_user_name">
-              User NAME{" "}
+            <Link to="/" className="admin_user_name ">
+              <p>User Name</p>
             </Link>
             <Link to="/" className="text-decoration-none admin_myfile">
               <AiOutlineSetting className="settingicon admin_my_profile_text "></AiOutlineSetting>
@@ -34,7 +34,7 @@ const AdminCenter = () => {
             </Link>
           </div>
         </div>
-        <ul className="admin_sidemenu list-unstyled ">
+        <ul className="admin_sidemenu list-unstyled d-flex flex-column">
           <li>
             <Link
               to="/"
