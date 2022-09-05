@@ -2,10 +2,10 @@ import React from 'react';
 import logobody from '../../../images/logo_dog_body1.svg';
 import { FiFacebook } from 'react-icons/fi';
 import { AiOutlineInstagram } from 'react-icons/ai';
-import {RiYoutubeLine } from 'react-icons/ri';
+import { RiYoutubeLine } from 'react-icons/ri';
 import { MdOutlineEmail } from 'react-icons/md';
-import { Link } from 'react-router-dom';
 import './_Footer.scss';
+import { Link } from 'react-router-dom';
 
 const Footer = () => {
   return (

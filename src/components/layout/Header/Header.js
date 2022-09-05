@@ -6,6 +6,9 @@ import React from 'react';
 import RwdMenu from '../Menu/RwdMenu';
 import './_Header.scss';
 import MenuLink from '../Menu/MenuLink';
+// import { AiOutlineShoppingCart } from 'react-icons/ai';
+// import { AiOutlineUser } from 'react-icons/ai';
+
 const Header = () => {
   return (
     <div className="header_main_Body fixed-top">
@@ -23,7 +26,8 @@ const Header = () => {
           <Link to="/pathcut" className="header_Icon_cart">
             <IoCart />
           </Link>
-          <Link to="/pathuser" className="header_Icon_user">
+          {/* TODO: ICON更改 */}
+          <Link to="/adminCenter" className="header_Icon_user">
             {/* <HiUser /> */}
             <FaUser />
           </Link>
