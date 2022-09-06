@@ -8,6 +8,12 @@ $font-weight: 700;
     display: none;
   }
 }
+
+// .is_active{
+//   color: #ef7a70;
+//   font-weight: bold;
+// }
+
 .header_main_Body {
   background-color: #feefc3;
 }
@@ -78,6 +84,7 @@ $font-weight: 700;
   position: relative;
   &:hover {
     color: #ef7a70;
+    border-right:2px solid #000;
     &::after {
       content: '';
       position: absolute;
@@ -87,6 +94,7 @@ $font-weight: 700;
       border-bottom: $fmain_color 2px solid;
       width: 50%;
       transition: 0.5s all;
+
     }
   }
 }
