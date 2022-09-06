@@ -34,7 +34,11 @@ $royal-blue:#22C3FF;
   .product-category-title{
     @extend  %product-filter-title
   }
-
+  .product-label-active{
+    color: #22C3FF;
+    font-size: 18px;
+    font-weight: 700;
+  }
 
   .pf-checkbox{
     vertical-align: top;
@@ -204,5 +208,24 @@ $royal-blue:#22C3FF;
   svg{
     width: 1.25rem;
     height: 1.25rem;
+  }
+}
+
+// ========== RWD ======== //
+@media (max-width: 768px) {
+  .comList_main_search{
+    height: 50%;
+  }
+  .product-searchList{
+    margin: auto 12px;
+  }
+  .product-filter-left{
+    display: none;
+  }
+  .product-filter-right-top{
+    display: none;
+  }
+  .product-filter-right{
+    margin-left: 0;
   }
 }

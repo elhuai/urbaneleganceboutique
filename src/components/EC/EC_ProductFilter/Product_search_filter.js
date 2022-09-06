@@ -73,6 +73,8 @@ const SearchFilter = () => {
       {/* ---------------------------------------- */}
       
       <section className="product-filter-right d-flex flex-column w-100 ">
+      
+      <section className="product-filter-right-top">
       <div className="d-flex flex-column">
             {/* END篩選結果 */}
             <div className="board product-filter-result mb-0 d-flex flex-row">
@@ -135,6 +137,8 @@ const SearchFilter = () => {
               </a>
             </span>
           </div>
+
+          </section>
           {/* END排序 */}
           {/* ==================搜尋結果====================== */}
           <div className="comList_main_card card border-primary ">
