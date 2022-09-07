@@ -161,8 +161,9 @@ $look_line-height: 53px;
   margin-bottom: 2rem;
 }
 .travel_Tab_Swiper {
+  // TODO: height 怪怪的記得調整 盡量別important
   width: 410px !important;
-  height: 420px;
+  height: 410px !important;
 }
 .travel_Swiper_goPlay_Swiper {
   width: 360px !important;
