@@ -12,6 +12,14 @@ const Homepage = () => {
   const [heroAnimete, setHeroAnimete] = useState(false);
   const [heroActive, setHeroActive] = useState(false);
   const [newsActive, setNewsActive] = useState(1);
+
+  const handleHeroActive = (num) => {
+    setHeroActive(num);
+  };
+  const handleHeroAnimete = () => {
+    setHeroAnimete(true);
+  };
+
   useEffect(() => {
     if (!heroAnimete) return;
     setTimeout(() => {
@@ -27,8 +35,8 @@ const Homepage = () => {
           ></div>
           <div className="hero_search_wrap">
             <HeroSearch
-              setHeroAnimete={setHeroAnimete}
-              setHeroActive={setHeroActive}
+              handleHeroAnimete={handleHeroAnimete}
+              handleHeroActive={handleHeroActive}
             />
           </div>
           <div

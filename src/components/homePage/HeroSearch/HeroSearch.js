@@ -2,12 +2,12 @@ import React from 'react';
 import { useEffect, useState } from 'react';
 import './_heroSearch.scss';
 
-export default function HeroSearch({ setHeroAnimete, setHeroActive }) {
+export default function HeroSearch({ handleHeroActive, handleHeroAnimete }) {
   const [active, setActive] = useState(0);
   useEffect(() => {
     if (active === 0) return;
-    setHeroAnimete(true);
-    setHeroActive(active);
+    handleHeroAnimete(true);
+    handleHeroActive(active);
   }, [active]);
   return (
     <div className="hero_search bg-white overflow-hidden">
