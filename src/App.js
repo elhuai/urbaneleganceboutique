@@ -1,10 +1,13 @@
 import React from 'react';
-import Footer from './components/layout/Footer';
-import Homepage from './pages/HomePage';
-import Header from './components/layout/Header';
-import Travel from './pages/Travel';
-
 import { Routes, Route } from 'react-router-dom';
+import Footer from './components/layout/Footer';
+import Header from './components/layout/Header';
+import Homepage from './pages/HomePage';
+import ExamplePage from './pages/ExamplePage';
+import Travel from './pages/Travel';
+import CommunityList from './pages/Community/';
+import AdminCenterPage from './pages/AdminCenter/AdminCenterPage';
+import Travelmap from './pages/Travel_map';
 import 'swiper/css/bundle';
 import './styles/style.scss';
 
@@ -14,7 +17,11 @@ function App() {
       <Header />
       <Routes>
         <Route path="/" element={<Homepage />} />
-        <Route path="/travel/:tavelId" element={<Travel />} />
+        <Route path="example" element={<ExamplePage />} />
+        <Route path="/travel" element={<Travel />} />
+        <Route path="/Travel_map" element={<Travelmap />} />
+        <Route path="/communitylist" element={<CommunityList />} />
+        <Route path="/adminCenter" element={<AdminCenterPage />} />
       </Routes>
       <Footer />
     </div>

@@ -1,92 +1,61 @@
-// @import '../../styles/_custom_variables.scss';
-// @import '../../../node_modules/bootstrap/scss/bootstrap.scss';
-
 $fmain_color: #ffc200; // 主色
 $sup_color: #eeb569;
 $font-size: 1.2rem;
 $second_font-size: 26px;
+$rwd_font-size: 22px;
 $font-weight: 700;
+$rwdfont-weight: 500;
 $border-radius: 15px;
 $box-shadow: 2px 4px 8px grey;
 $look_line-height: 53px;
-
-///////////////////
+/////////////////// 自訂顏色 大小
 .travel_container {
+  padding-top: 20px;
   min-height: 100vh;
 }
 .travel_Nav {
   width: calc(100% - 10px);
-  // padding: auto 1.5rem;
-  // margin: 1.8rem auto;
-  // margin-right: 0;
-  // border-bottom: 1.5px solid $fmain_color !important;
   font-size: $font-size;
   font-weight: $font-weight;
-
-  // .active {
-  //   position: relative;
-  //   &::before {
-  //     content: '';
-  //     width: 25px;
-  //     height: 25px;
-  //     background-image: url('../images/TraveldogLogo.png');
-  //     background-size: contain;
-  //     position: relative;
-  //   }
+  // button.nav-link{
+  //   border: none;
   // }
 }
 .travel_Mytrip {
   position: relative;
-
-  // width: 277px;
-  // height: 84px;
-  // &:active {
-  //   // color: red;
-  //   // border-bottom: 3px $fmain_color solid;
-  // }
-  // &::before {
-  //   content: '';
-  //   position: absolute;
-  //   bottom: 0;
-  //   left: 35%;
-  //   transform: translateX(-50%);
-  //   // border-bottom: $fmain_color 10px solid;
-  //   width: calc(100% - 16px);
-  //   transition: 0.5s all;
-  // }
 }
 
 .travel_doglogo {
   display: inline-block;
-  // padding: 10px auto;
   width: auto;
   height: 30px;
 }
-.Travel_nav_mytrip {
-  background: url(../../images/TraveldogLogo.png);
-  background-repeat: no-repeat;
-  background-size: contain;
-  position: relative;
-  right: 0;
+.travel_nav_mytrip {
+  width: auto;
+  height: calc(30px - 1px);
 }
-.Travel_Tab_Swiper-wrapper {
-  height: 450px;
+.travel_Tab_Swiper-wrapper {
+  padding-bottom: 10px;
+  // height: 450px;
+}
+.swiper {
+  margin-left: 0 !important;
 }
 
-.Travel_Tab_Img {
+.travel_Tab_Img {
   width: 408px;
   height: 265px;
 }
-.Travel_Tab_Link {
+.travel_Tab_Link {
   overflow: hidden;
   border: 1px solid #f5f5f5;
   border-bottom: 5px solid #f5f5f5;
   box-shadow: 4px 5px 6px rgb(0 0 0 / 10%);
 }
-.Travel_Tab_tittleDiv {
+.travel_Tab_tittleDiv {
   width: 300px;
 }
-.Travel_Tab_tittleName {
+.travel_Tab_tittleName {
   font-weight: $font-weight;
   font-style: normal;
   font-size: 32px;
@@ -95,7 +64,7 @@ $look_line-height: 53px;
   white-space: nowrap;
   text-overflow: ellipsis;
 }
-.Travel_Tab_tittleDate {
+.travel_Tab_tittleDate {
   font-family: 'Inknut Antiqua';
   font-style: normal;
   font-weight: $font-weight;
@@ -103,31 +72,55 @@ $look_line-height: 53px;
   line-height: 12px;
   color: #747474;
 }
-.Travel_form_creat_tittle {
+.travel_form_creat_tittle {
   font-weight: $font-weight;
   font-style: normal;
 }
-.Travel_form_Container {
+.travel_form_Container {
   margin-top: 4rem;
   width: 100%;
-}
-.Travel_input_searchBar_sum {
-  width: 550px;
-}
-.Travel_input_Allinput {
-  margin-top: 38px;
-  width: 100%;
-}
-.Travel_input_Allinput .Travel_input_button {
-  font-weight: $font-weight;
-  font-size: $font-size;
-  background-color: $fmain_color;
-  color: white;
-  width: 100px;
-  &:hover {
-    background-color: $sup_color;
+  .form-control {
+    padding: 0 4rem;
+  }
+
+  .travel_input_searchBar_sum {
+    width: 550px;
+  }
+  .travel_input_Allinput {
+    justify-content: center;
+    margin-top: 38px;
+    width: 100%;
+  }
+  .travel_input_Allinput .travel_input_button {
+    border-radius: 5px;
+    border: none;
     font-weight: $font-weight;
     font-size: $font-size;
+    background-color: $fmain_color;
+    color: white;
+    width: 100px;
+    &:hover {
+      background-color: $sup_color;
+      font-weight: $font-weight;
+      font-size: $font-size;
+    }
+  }
+  .travel_input_icondiv {
+    width: 0px;
+    height: 10px;
+  }
+  .travel_input_mapicon {
+    position: relative;
+    width: 25px;
+    height: 22px;
+    margin-top: 13px;
+    margin-left: 15px;
+  }
+  .travel_input_Area {
+    height: 3rem;
+  }
+  .travel_input_searchBar {
+    margin-top: 3.8rem;
   }
 }
 .Travel_input_icondiv {
@@ -155,60 +148,60 @@ $look_line-height: 53px;
   font-weight: $font-weight;
   font-style: normal;
 }
-.Travel_goPlay_ul {
+.travel_goPlay_ul {
   padding-left: 0px;
 }
-.Travel_goPlay_collection_AllDiv {
+.travel_goPlay_collection_AllDiv {
   margin-top: 3rem;
 }
-.Travel_goPlay_collection_img {
+.travel_goPlay_collection_img {
   width: 350px;
   height: 205px;
   border-radius: $border-radius;
   box-shadow: $box-shadow;
 }
-.Travel_goPlay_collection_title {
+.travel_goPlay_collection_title {
   color: white;
   font-size: $second_font-size;
   font-weight: $font-weight;
 }
-.Travel_goPlay_collection_tittleDiv {
+.travel_goPlay_collection_tittleDiv {
   position: relative;
   top: -50px;
   left: 5px;
   z-index: 10;
 }
 
-.Travel_Swiper_EveryOnetrip_lookH2 {
+.travel_Swiper_EveryOnetrip_lookH2 {
   font-family: 'Inknut Antiqua';
   font-style: normal;
   font-weight: $font-weight;
   font-size: 32px;
+  margin-top: 3rem;
+  margin-bottom: 2rem;
 }
-.Travel_Tab_Swiper {
+.travel_Tab_Swiper {
+  // TODO: height 怪怪的記得調整 盡量別important
+  width: 410px !important;
+  height: 410px !important;
+}
+.travel_Swiper_goPlay_Swiper {
+  width: 360px !important;
+}
+.travel_Swiper_EveryOnetrip {
   width: 410px !important;
   height: 420px;
 }
-.Travel_Swiper_goPlay_Swiper {
-  width: 360px !important;
-  // height: 570px;
-  margin-right: 5rem;
-}
-.Travel_Swiper_EveryOnetrip {
-  width: 410px !important;
-  height: 570px;
-  margin-right: 2rem;
-}
-.Travel_Swiper_EveryOnetrip_Img {
+.travel_Swiper_EveryOnetrip_Img {
   width: 395.5px;
   height: 265px;
   border-radius: $border-radius;
   box-shadow: $box-shadow;
 }
-.Travel_Swiper_EveryOnetrip_tittle_div {
+.travel_Swiper_EveryOnetrip_tittle_div {
   width: 220px;
 }
-.Travel_Swiper_EveryOnetrip_tittle {
+.travel_Swiper_EveryOnetrip_tittle {
   font-weight: $font-weight;
   font-style: normal;
   font-size: $second_font-size;
@@ -218,24 +211,24 @@ $look_line-height: 53px;
   text-overflow: ellipsis;
 }
 
-.Travel_Swiper_EveryOnetrip_day {
+.travel_Swiper_EveryOnetrip_day {
   font-weight: 400;
   font-style: normal;
   font-size: 28px;
   line-height: $look_line-height;
 }
-.Travel_Swiper_EveryOnetrip_userImage {
+.travel_Swiper_EveryOnetrip_userImage {
   width: 80px;
   height: 80px;
   border-radius: 80px;
 }
-.Travel_Swiper_EveryOnetrip_username {
+.travel_Swiper_EveryOnetrip_username {
   font-weight: $font-weight;
   font-size: $second_font-size;
   line-height: 23px;
 }
 
-.Travel_Swiper_EveryOnetrip_follow {
+.travel_Swiper_EveryOnetrip_follow {
   color: #2da9d7;
   cursor: pointer;
   line-height: 42px;
@@ -244,13 +237,117 @@ $look_line-height: 53px;
   font-size: $second_font-size;
   font-weight: 400;
 }
-.Travel_Swiper_EveryOnetrip_date {
+.travel_Swiper_EveryOnetrip_date {
   font-weight: $font-weight;
   font-size: $font-size;
 }
 
-.Travel_Swiper_EveryOnetrip_AllSwiper {
-  width: 100%;
+.travel_Swiper_EveryOnetrip_AllSwiper {
+  height: 600px;
 }
-// @import '../../styles/_custom_variables.scss';
-// @import '../../../node_modules/bootstrap/scss/bootstrap.scss';
+.travel_noidea {
+  padding-left: 500px;
+  padding-top: 30px;
+}
+////////////////////////////////RWD
+
+@media screen and (max-width: 768px) {
+  .travel_Tab_Swiper-wrapper {
+    // height: 450px;
+    .travel_Tab_Swiper {
+      margin-left: 20px;
+      width: 380px !important;
+      height: 390px;
+    }
+    .travel_Tab_Img {
+      width: 320px;
+      height: 235px;
+    }
+    .travel_Tab_tittleName {
+      font-weight: $rwdfont-weight;
+      font-style: normal;
+      font-size: 28px;
+      line-height: 83px;
+    }
+  }
+
+  .travel_form_Container {
+    margin-top: 2rem;
+    .travel_input_searchBar {
+      margin-top: 0.5rem;
+    }
+    .travel_input_Allinput {
+      margin-top: 1px;
+    }
+    .travel_input_searchBar_sum {
+      margin: 1rem 0;
+      height: 50px;
+    }
+    .travel_input_Allinput .travel_input_button {
+      margin-top: 10px;
+    }
+  }
+  .travel_Swiper_EveryOnetrip_lookH2 {
+    font-weight: $font-weight;
+    font-size: 26px;
+    margin-top: 0.5rem;
+    margin-bottom: 1.5rem;
+  }
+  .travel_goPlay_tittle {
+    margin-top: 2rem;
+    font-weight: $font-weight;
+  }
+  .travel_goPlay_collection_img {
+    width: 300px;
+    height: 190px;
+  }
+
+  .travel_goPlay_collection_AllDiv {
+    margin-top: 1.5rem;
+    margin-left: 20px;
+  }
+  .travel_Swiper_EveryOnetrip_AllSwiper {
+    height: 450px;
+
+    .travel_Swiper_EveryOnetrip_Img {
+      width: 300px;
+      height: 225px;
+    }
+    .travel_Swiper_EveryOnetrip_day {
+      padding-right: 30px;
+      font-weight: 400;
+      font-style: normal;
+      font-size: 24px;
+      line-height: $look_line-height;
+    }
+    .travel_Swiper_goPlay_Swiper {
+      width: 360px !important;
+      // margin-left: 150px;
+    }
+
+    .travel_Swiper_EveryOnetrip {
+      margin-left: 35px;
+      width: 340px !important;
+      height: 300px;
+      .travel_Swiper_EveryOnetrip_username {
+        padding: 0 0.5rem;
+        font-weight: $rwdfont-weight;
+        font-size: $rwd_font-size;
+      }
+      .travel_Swiper_EveryOnetrip_follow {
+        font-size: $rwd_font-size;
+        font-weight: 700;
+      }
+      .travel_Swiper_EveryOnetrip_tittle {
+        font-weight: $font-weight;
+        font-style: normal;
+        font-size: $rwd_font-size;
+        line-height: $look_line-height;
+      }
+    }
+  }
+  .travel_noidea {
+    padding-left: 80px;
+    padding-top: 30px;
+  }
+}

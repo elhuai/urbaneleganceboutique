@@ -1,7 +1,7 @@
 @mixin media-1280 {
   @media screen and (max-width: 1280px) {
     @content;
-  } 
+  }
 }
 
 @mixin media-pad {
@@ -9,17 +9,18 @@
     @content;
   }
 }
+
 @mixin media-phone {
   @media screen and (max-width: 485px) {
     @content;
   }
 }
+
 @mixin hero_text_animate {
   @for $num from 1 through 4 {
     &.hero_text_animation#{$num} {
       animation: hero-bg-text#{$num} 1s ease-in-out 0s 1 forwards;
     }
-    
   }
 }
 
@@ -42,6 +43,8 @@
     color: #747474;
   }
 }
+
+
 
 
 
@@ -73,7 +76,6 @@
 // ======= Section Hero =======
 .home_section_hero {
   overflow: hidden;
-  padding-top: 120px;
   background: url(../../images/home_hero_bg.jpg) no-repeat;
   .section_container{
     position: relative;
@@ -86,9 +88,9 @@
       left: 0;
       width: 430px;
       height: 135px;
-      @include hero_text_animate;  
-      // background: url('../../images/home_hero_1.png')  no-repeat center/contain;
+      @include hero_text_animate;
       transform: translateX(0);
+      background: url('../../images/home_hero_1.png') no-repeat center / contain;
     }
 
     .hero_search_wrap {
@@ -320,7 +322,8 @@
     }
     100% {
       transform: translateX(0%);
-      background: url('../../images/home_hero_#{$num}.png')  no-repeat center/contain;    }
+      background: url('../../images/home_hero_#{$num}.png')  no-repeat center/contain;
+    }
   }
 }
 
