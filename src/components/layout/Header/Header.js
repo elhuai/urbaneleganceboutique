@@ -21,7 +21,7 @@ const Header = () => {
         </div>
         <div className="header_tittle d-flex justify-content-center align-items-center w-100 flex-shrink-1">
           <MenuLink />
-        </div>
+        
         <div className="  d-flex header_Icon align-items-center justify-content-end ">
           <Link to="/pathcut" className="header_Icon_cart">
             <IoCart />
@@ -31,6 +31,7 @@ const Header = () => {
             {/* <HiUser /> */}
             <FaUser />
           </Link>
+        </div>
         </div>
       </div>
     </div>

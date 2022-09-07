@@ -5,12 +5,14 @@ import Header from './components/layout/Header';
 import Homepage from './pages/HomePage';
 import ExamplePage from './pages/ExamplePage';
 import Travel from './pages/Travel';
+import ECproductFilter from './pages/EC_productFilter';
 import CommunityList from './pages/Community/';
 import AdminCenterPage from './pages/AdminCenter/AdminCenterPage';
 import 'swiper/scss';
+
 import './styles/style.scss';
 
-function App() {
+function App() { 
   return (
     <div className="app">
       <Header />
@@ -20,6 +22,7 @@ function App() {
         <Route path="/travel" element={<Travel />} />
         <Route path="/communitylist" element={<CommunityList />} />
         <Route path="/adminCenter" element={<AdminCenterPage />} />
+        <Route path="/ec" element={<ECproductFilter />} />
       </Routes>
       <Footer />
     </div>

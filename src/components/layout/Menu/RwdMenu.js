@@ -90,7 +90,7 @@ function RwdMenu() {
                 <NavLink
                   className="header_rwd_menu_NavLink d-flex justify-content-between align-items-center"
                   reloadDocument
-                  to="/path3"
+                  to="/ec"
                   onClick={() => setOpen(false)}
                 >
                   <div className="header_rwd_menu_name px-4">寵物商品</div>

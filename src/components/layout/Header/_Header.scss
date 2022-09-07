@@ -34,7 +34,6 @@ $font-weight: 1000;
   }
 
   .header_tittle {
-
     justify-content: center;
     align-items: center;
     font-size: $font-size;
@@ -153,7 +152,7 @@ $font-weight: 1000;
     height: 0px;
   }
   .header_main {
-    height: 80px;
+    height: 60px; //陰影在這裡!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
     padding: 0 1rem;
     .header_dog-logo {
       margin-left: 30px;
@@ -174,7 +173,6 @@ $font-weight: 1000;
     z-index: 10000;
     margin-left: 275px;
     margin-top: 10px;
-    bottom: 10px;
     svg {
       color: $graycolor;
       width: 20px;
@@ -190,6 +188,7 @@ $font-weight: 1000;
     .header_rwd_tittle {
       position: absolute;
       z-index: 1;
+      height: 100px;
     }
     .header_rwd_menu_NavLink {
       border-bottom: 1px solid #e7e7e9;
