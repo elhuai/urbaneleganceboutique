@@ -129,7 +129,7 @@ function RwdMenu() {
                 <NavLink
                   className="header_rwd_menu_NavLink d-flex justify-content-between align-items-center "
                   reloadDocument
-                  to="/path6"
+                  to="communitylist"
                   onClick={() => setOpen(false)}
                 >
                   <div className="header_rwd_menu_name px-4">社群分享</div>

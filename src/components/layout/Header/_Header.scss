@@ -1,5 +1,5 @@
 $fmain_color: #ffc200; // 主色
-$header_bg_color:#fffef4;//特別調的header色
+$header_bg_color: #fffef4; //特別調的header色
 $second_maincolor: #feefc3;
 $graycolor: #747474;
 $font-size: 1.05rem;
@@ -15,7 +15,7 @@ $font-weight: 1000;
 }
 .header_main {
   padding: 0 80px;
-  box-shadow:rgba(232, 232, 232, 0.662) 1px 1px 5px ;
+  box-shadow: rgba(232, 232, 232, 0.662) 1px 1px 5px;
 
   .header_menu {
     width: 120px;
@@ -26,7 +26,7 @@ $font-weight: 1000;
   }
 
   .header_dog-logo {
-    width: auto;    
+    width: auto;
     height: 85px;
   }
   .header_container {
@@ -34,7 +34,6 @@ $font-weight: 1000;
   }
 
   .header_tittle {
-
     justify-content: center;
     align-items: center;
     font-size: $font-size;
@@ -43,14 +42,14 @@ $font-weight: 1000;
   }
 }
 .header_product {
-  letter-spacing:.2rem;
+  letter-spacing: 0.2rem;
   color: #000;
   // padding-right: 20px;
   // padding-left: 20px;
   padding: 8px 28px;
   position: relative;
   &:last-child::after {
-    width:0;
+    width: 0;
   }
   &::after {
     content: '';
@@ -76,7 +75,7 @@ $font-weight: 1000;
   }
   &:hover {
     color: $fmain_color;
-    font-weight:bolder;
+    font-weight: bolder;
     // text-shadow:#ffbf00 1px 0px 1px ;
     transition: 0.5s all step-start;
 
@@ -115,12 +114,12 @@ $font-weight: 1000;
 .header_Icon {
   width: 120px;
 }
-.header_Icon_cart{
+.header_Icon_cart {
   // border: #ffc200 2px solid;
   border-radius: 8px;
 
   svg {
-    color:$fmain_color;
+    color: $fmain_color;
     width: 25px;
     height: 25px;
     margin: 3px;
@@ -133,7 +132,7 @@ $font-weight: 1000;
   // margin-right: 60px;
   margin-left: 17px;
   svg {
-    color:$fmain_color;
+    color: $fmain_color;
     width: 25px;
     height: 25px;
     padding: 2px;

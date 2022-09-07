@@ -31,6 +31,7 @@ $look_line-height: 53px;
   height: 30px;
 }
 .travel_nav_mytrip {
+  color: $fmain_color;
   width: auto;
   height: calc(30px - 1px);
 }
@@ -92,13 +93,15 @@ $look_line-height: 53px;
     width: 100%;
   }
   .travel_input_Allinput .travel_input_button {
-    border-radius: 5px;
+    position: relative;
+    right: 10px;
+    border-radius: 8px;
     border: none;
     font-weight: $font-weight;
     font-size: $font-size;
     background-color: $fmain_color;
     color: white;
-    width: 100px;
+    width: 90px;
     &:hover {
       background-color: $sup_color;
       font-weight: $font-weight;
@@ -284,6 +287,7 @@ $look_line-height: 53px;
       height: 50px;
     }
     .travel_input_Allinput .travel_input_button {
+      border-radius: 8px !important;
       margin-top: 10px;
     }
   }

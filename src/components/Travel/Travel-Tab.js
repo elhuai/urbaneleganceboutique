@@ -1,7 +1,7 @@
 import React from 'react';
 import { Tabs, Tab } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
-import dogIcon from '../../images/travel_dog_paws.svg';
+import { FaPaw } from 'react-icons/fa';
 import { Swiper, SwiperSlide } from 'swiper/react';
 const tripData = [
   // {
@@ -97,7 +97,7 @@ const Travel_Tab = () => {
           eventKey="home"
           title={
             <div>
-              <img className="travel_nav_mytrip me-2" src={dogIcon} alt="" />
+              <FaPaw className="travel_nav_mytrip me-2" />
               我的行程
             </div>
           }
