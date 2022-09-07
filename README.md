@@ -8,7 +8,7 @@ src/
 |-- App.js -- 主程式
 |-- images -- 圖檔
 |-- components
-|   |-- layout -- 元件分類
+|   |-- layout --  元件分類
 |       |-- Footer -- 元件
 |       |   |-- Footer.js -- 元件主程式
 |       |   |-- _Footer.scss -- 元件樣式
