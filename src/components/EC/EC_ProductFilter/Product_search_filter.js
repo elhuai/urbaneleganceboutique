@@ -1,4 +1,4 @@
-import "./_Product_search_filter.scss";
+  import "./_Product_search_filter.scss";
 import { IoIosArrowDown } from "react-icons/io";
 import { IoLocationSharp, IoHeartOutline } from "react-icons/io5";
 import { BiLike } from "react-icons/bi";
@@ -140,6 +140,64 @@ const SearchFilter = () => {
 
           </section>
           {/* END排序 */}
+
+
+          {/* RRRRRWD Filter */}
+<div className="product_filter_rwd_filter ">
+		<form  className="d-flex flex-row ">
+			<div className="form-group col-md-3 col-xs-6 ">
+				<select data-filter="make" className="product_filter_rwd_filter-make filter form-control">
+					<option value="">Select Make</option>
+					<option value="">Show All</option>
+				</select>
+			</div>
+			<div className="form-group col-md-3 col-xs-6">
+				<select data-filter="model" className="product_filter_rwd_filter-model filter form-control">
+					<option value="">Select Model</option>
+					<option value="">Show All</option>
+				</select>
+			</div>
+			<div className="form-group col-md-3 col-xs-6">
+				<select data-filter="type" className="product_filter_rwd_filter-type filter form-control">
+					<option value="">Select Type</option>
+					<option value="">Show All</option>
+				</select>
+			</div>
+			<div className="form-group col-md-3 col-xs-6">
+				<select data-filter="price" className="product_filter_rwd_filter-price filter form-control">
+					<option value="">Select Price Range</option>
+					<option value="">Show All</option>
+				</select>
+			</div>
+		</form>
+      </div>
+
+<div class="modal-dialog modal-fullscreen-md-down">
+      {/* <!-- Button trigger modal --> */}
+    <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
+      123123
+    </button>
+
+    {/* <!-- Modal --> */}
+    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+            ...
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+            <button type="button" class="btn btn-primary">Save changes</button>
+          </div>
+        </div>
+      </div>
+    </div>
+</div>
+  {/* END_RWD Filter  */}
           {/* ==================搜尋結果====================== */}
           <div className="comList_main_card card border-primary ">
               <div className="row g-0">
@@ -200,7 +258,21 @@ const SearchFilter = () => {
             </div>
           {/* ==================搜尋結果====================== */}
           
+          <div class="pages">
+      <div class="page-pad-pc">
+      {/* <button> */}
+        {/* <i class="fas fa-angle-double-left"></i></button> */}
+      <button>1</button>
+      <button>2</button>
+      <button>3</button>
+      <button>4</button>
+      {/* <button> */}
+        {/* <i class="fas fa-angle-double-right"></i></button> */}
+      </div>
+    </div>
         </section>
+
+        
 
       </div>
     </>

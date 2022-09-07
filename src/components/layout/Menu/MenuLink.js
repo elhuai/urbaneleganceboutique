@@ -10,7 +10,7 @@ const MenuLink = () => {
         <NavLink to="path2" className="header_product mx-3">
           景點&玩樂
         </NavLink>
-        <NavLink to="path3" className="header_product mx-3">
+        <NavLink to="/" className="header_product mx-3">
           餐廳
         </NavLink>
         <NavLink to="/ec" className="header_product mx-3">

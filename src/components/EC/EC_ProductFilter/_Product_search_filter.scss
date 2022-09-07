@@ -210,7 +210,42 @@ $royal-blue:#22C3FF;
     height: 1.25rem;
   }
 }
+.product_filter_rwd_filter{
+  display: none;
+}
 
+.pages{
+  width: 100%;
+  margin:0 auto;
+  font-size:0;
+  // background-color: #f2f2f2;
+  text-align:center;
+  padding-bottom: 20px;
+}
+
+.pages button{
+  width: 40px;
+  height: 40px;
+  background-color: #fff;
+  border: 1px solid #ECEEEF;
+  color:#9013FE;
+  outline:none;
+}
+
+.pages button:hover{
+  background-color: #9013FE;
+  color:#fff;
+  cursor: pointer;
+}
+
+.fas{
+  display:inline-block;
+  font-size:17px;
+  position: absolute;
+  top: 60%;
+  left: 0;
+  transform: translateY(-50%);
+}
 // ========== RWD ======== //
 @media (max-width: 768px) {
   .comList_main_search{
@@ -227,5 +262,19 @@ $royal-blue:#22C3FF;
   }
   .product-filter-right{
     margin-left: 0;
+  }
+
+  .fas{
+    display:inline-block;
+    position:absolute;
+    top:50%;
+    left:0;
+    transform:translateY(-50%); 
+    color:#fff;
+    font-size:23px;
+  }
+  // 篩選
+  .product_filter_rwd_filter{
+    display:block;
   }
 }
