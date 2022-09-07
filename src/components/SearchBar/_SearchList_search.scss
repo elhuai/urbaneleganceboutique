@@ -5,6 +5,7 @@ $border-radius: 15px;
 $box-shadow: 2px 4px 8px grey;
 $look_line-height: 53px;
 
+
 body{
   font-family: 'Open Sans', sans-serif;
 }
@@ -16,8 +17,6 @@ body{
 
 .comList_main_bg{
   max-width: 40%;
-  
-  // padding-top: 120px;
 }
 
 .comList_main_search{
@@ -27,8 +26,6 @@ body{
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  // background: url(../../../images/main_search_bg.jpg) bottom/100%  no-repeat;
-
 }
 
 
@@ -72,6 +69,7 @@ comList_section_main_bg{
   font-size: 1.2rem ;
   font-weight: 700;
 }
+
 .searchList_search {
   width: 40%;
   display: flex;
@@ -107,7 +105,19 @@ comList_section_main_bg{
 
 .searchList_wrap{
   margin: 3% 35%;
-  
   left: 50%;
-  /* transform: translate(-50%, 50%); */
 }
+
+// ======== RWD ============
+@media (max-width: 768px) {
+
+
+  .searchList_search {
+    width: 90%;
+    padding: 0 12px;
+  }
+
+  .searchList_searchTitle{
+    font-size: 1rem;
+  }
+  }

@@ -9,6 +9,7 @@ $font-weight: 700;
 $border-radius: 15px;
 $box-shadow: 2px 4px 8px grey;
 $look_line-height: 53px;
+$pink:#EF7A70;
 
 ///////////////////
 ///
@@ -29,13 +30,10 @@ $look_line-height: 53px;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  // background: url(../../images/main_search_bg.jpg) bottom/100% no-repeat;
 }
 
 .comList_main_search_group {
-  // max-width: 460px;
   max-width: 45%;
-  // padding-bottom: 250px;
   margin-bottom: 35px;
 }
 
@@ -53,23 +51,22 @@ $look_line-height: 53px;
 .comList_main_search_left_dog {
   width: 80px;
   position: absolute;
-  top: 22px;
+  top: 38px;
   left: calc(100% - 64%);
 }
 
 .comList_main_search_right_dog {
   position: absolute;
   width: 80px;
-  top: 27px;
+  top: 43px;
   right: calc(100% - 64%);
 }
 
 // === RWD === //
 @media (max-width: 768px) {
-  comList_section_main_bg {
-    padding-top: 40px;
+  .comList_search_result{
+    font-size: .8rem;
   }
-
   .comList_main_search {
     height: 120px;
     position: none;
@@ -77,11 +74,9 @@ $look_line-height: 53px;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    background: url(../../images/main_search_bg.jpg) bottom/100% no-repeat;
   }
 
   .comList_main_search_group {
-    // max-width: 360px;
     max-width: 90%;
     margin-bottom: -20px;
   }
@@ -102,19 +97,20 @@ $look_line-height: 53px;
 ////////////////////////////////////
 
 .comList_main_card {
-  max-width: 720px;
+  max-width: 960px;
   overflow: hidden;
+  border: 2px solid;
 }
 
+
 .comList_main_card_img {
-  // border-radius: 8px 0 0 8px;
   width: 100%;
   height: 100%;
 }
 
 .comList_main_card_title {
   svg {
-    color: #ff002a;
+    color: $pink;
     width: 1.5rem;
     height: 1.5rem;
   }
@@ -126,9 +122,11 @@ $look_line-height: 53px;
   background-color: #d5eeee;
   border-radius: 8px;
   padding: 2px 10px;
+  transform: scale();
 }
 
 .comList_main_card_locate_text {
+  margin: 0;
   svg {
     color: #2da9d7;
     width: 1.25rem;
@@ -146,10 +144,8 @@ $look_line-height: 53px;
 @media (max-width: 768px) {
   .comList_main_card {
     max-width: 90%;
-    // border-radius: 8px;
   }
   .comList_main_card_img {
-    // border-radius: 8px 8px 0 0;
     width: 100%;
     height: 100%;
   }

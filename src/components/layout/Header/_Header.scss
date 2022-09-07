@@ -153,7 +153,7 @@ $font-weight: 1000;
     height: 0px;
   }
   .header_main {
-    height: 80px;
+    height: 67px;
     padding: 0 1rem;
     .header_dog-logo {
       margin-left: 30px;
@@ -175,6 +175,8 @@ $font-weight: 1000;
     margin-left: 275px;
     margin-top: 10px;
     bottom: 10px;
+    right:-275px;
+    top: 12px;
     svg {
       color: $graycolor;
       width: 20px;
