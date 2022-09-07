@@ -2,8 +2,6 @@ import React from 'react';
 import caricon from '../../images/Travel_input_car.svg';
 import mapicon from '../../images/Travel_input_location.svg';
 import { Swiper, SwiperSlide } from 'swiper/react';
-import 'swiper/scss';
-
 import './_Travelhome.scss';
 
 import {

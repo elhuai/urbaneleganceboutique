@@ -5,15 +5,16 @@ import Header from './components/layout/Header';
 import Travel from './pages/Travel';
 
 import { Routes, Route } from 'react-router-dom';
-// import './styles/style.scss';
+import 'swiper/css/bundle';
+import './styles/style.scss';
 
 function App() {
   return (
-    <div className="App">
+    <div className="app">
       <Header />
       <Routes>
         <Route path="/" element={<Homepage />} />
-        <Route path="/travel" element={<Travel />} />
+        <Route path="/travel/:tavelId" element={<Travel />} />
       </Routes>
       <Footer />
     </div>

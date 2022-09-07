@@ -9,8 +9,9 @@ $gray-dark: #bfbfbf;
 $gray-light: #d9d9d9;
 $gray-darker: #5f5c51;
 
+
+
 $theme-colors: (
-  // 'prefix': $prefix,
   'primary': $primary,
   'secondary': $secondary,
   'secondary-dark': $secondary-dark,
@@ -92,7 +93,7 @@ $link-color: rgb(0, 0, 0);
 $btn-border-radius: 0;
 
 // form control
-$input-border-radius: 5;
+$input-border-radius: 8px;
 $input-focus-box-shadow: none;
 $input-focus-border-color: $gray-dark;
 // $input-focus-bg:$primary;
@@ -104,7 +105,7 @@ $form-select-focus-box-shadow: none;
 $nav-tabs-border-color: $primary; //tab標籤 底下顏色
 //  input 欄位
 // $input-border-color: $primary;
-$input-padding-x: 3rem; //input padding 左右距離
+// $input-padding-x: 4rem; //input padding 左右距離
 $Travel_inputfocus: #e7e7e9; //input focus顏色
 $input-focus-border-color: $Travel_inputfocus;
 

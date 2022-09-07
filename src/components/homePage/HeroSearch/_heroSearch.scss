@@ -1,0 +1,27 @@
+%input-text {
+  color: rgb(194, 194, 194);
+  font-size: 14px;
+} 
+
+.home_main {
+  .hero_search {
+    width: 640px;
+    border-radius: 8px;
+    .input_wrap {
+      padding: 20px 24px;
+      input {
+        height: 50px;
+        font-size: 14px;
+        &::placeholder {
+          @extend %input-text;
+        }
+      }
+    }
+    .tab_wrap {
+      button {
+        background-color: #fff;
+        border-radius: 0;
+      }
+    }
+  }
+}

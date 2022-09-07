@@ -7,7 +7,7 @@ import './_Header.scss';
 
 const Header = () => {
   return (
-    <div className="header_main_Body">
+    <div className="header_main_Body fixed-top">
       <div className="header_main d-flex justify-content-between ">
         <Link to="/" className="  d-block header_menu">
           <div className="header_mobile_menu">選單一</div>
@@ -19,7 +19,7 @@ const Header = () => {
               住宿
             </Link>
             <Link to="/" className="header_product mx-3">
-              景點&玩樂
+              景點 & 玩樂
             </Link>
             <Link to="/" className="header_product mx-3">
               餐廳
