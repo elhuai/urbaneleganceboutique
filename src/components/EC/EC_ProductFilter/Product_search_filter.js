@@ -1,7 +1,8 @@
   import "./_Product_search_filter.scss";
 import { IoIosArrowDown } from "react-icons/io";
 import { IoLocationSharp, IoHeartOutline } from "react-icons/io5";
-import { BiLike } from "react-icons/bi";
+
+import { TiLocation } from "react-icons/ti";
 import { FaPaw } from "react-icons/fa";
 import { AiFillFire } from "react-icons/ai";
 
@@ -147,56 +148,30 @@ const SearchFilter = () => {
 		<form  className="d-flex flex-row ">
 			<div className="form-group col-md-3 col-xs-6 ">
 				<select data-filter="make" className="product_filter_rwd_filter-make filter form-control">
-					<option value="">Select Make</option>
+					<option value="">地區</option>
 					<option value="">Show All</option>
 				</select>
 			</div>
 			<div className="form-group col-md-3 col-xs-6">
 				<select data-filter="model" className="product_filter_rwd_filter-model filter form-control">
-					<option value="">Select Model</option>
+					<option value="">類別</option>
 					<option value="">Show All</option>
 				</select>
 			</div>
 			<div className="form-group col-md-3 col-xs-6">
 				<select data-filter="type" className="product_filter_rwd_filter-type filter form-control">
-					<option value="">Select Type</option>
+					<option value="">篩選</option>
 					<option value="">Show All</option>
 				</select>
 			</div>
 			<div className="form-group col-md-3 col-xs-6">
 				<select data-filter="price" className="product_filter_rwd_filter-price filter form-control">
-					<option value="">Select Price Range</option>
+					<option value="">排序</option>
 					<option value="">Show All</option>
 				</select>
 			</div>
 		</form>
       </div>
-
-<div class="modal-dialog modal-fullscreen-md-down">
-      {/* <!-- Button trigger modal --> */}
-    <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
-      123123
-    </button>
-
-    {/* <!-- Modal --> */}
-    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-      <div class="modal-dialog">
-        <div class="modal-content">
-          <div class="modal-header">
-            <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
-            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-          </div>
-          <div class="modal-body">
-            ...
-          </div>
-          <div class="modal-footer">
-            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-            <button type="button" class="btn btn-primary">Save changes</button>
-          </div>
-        </div>
-      </div>
-    </div>
-</div>
   {/* END_RWD Filter  */}
           {/* ==================搜尋結果====================== */}
           <div className="comList_main_card card border-primary ">
@@ -223,8 +198,8 @@ const SearchFilter = () => {
                     </div>
                     <p className="comList_main_card_placeName_text my-2">北回歸線</p>
                     <p className="card-text my-2">透過OH DOG CAT 購買吉貝島澎湖自由行，超級優惠價格一次搞定。水上活動玩到飽! 另可加值星空BBQ了!</p>
-                    <div className="comList_main_card_bottom_text d-flex justify-content-between">
-                        <p className="comList_main_card_locate_text"><IoLocationSharp />花蓮</p>
+                    <div className="comList_main_card_bottom_text d-flex justify-content-between align-items-center">
+                        <p className="comList_main_card_locate_text align-items-center d-flex"><TiLocation />花蓮</p>
                       </div>
                   {/* 評分／價格 */}
                 <div className="d-flex justify-content-between align-items-center mt-3">
