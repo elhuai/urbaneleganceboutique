@@ -5,7 +5,7 @@ import Header from './components/layout/Header';
 import Homepage from './pages/HomePage';
 import ExamplePage from './pages/ExamplePage';
 import Travel from './pages/Travel';
-import CommunityList from './pages/Community/';
+import CommunityList from './pages/Community';
 import AdminCenterPage from './pages/AdminCenter/AdminCenterPage';
 import Travelmap from './pages/Travel_map';
 import 'swiper/css/bundle';
