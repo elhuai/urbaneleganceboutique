@@ -1,6 +1,6 @@
   import "./_Product_search_filter.scss";
 import { IoIosArrowDown } from "react-icons/io";
-import { IoLocationSharp, IoHeartOutline } from "react-icons/io5";
+import { IoHeartOutline } from "react-icons/io5";
 
 import { TiLocation } from "react-icons/ti";
 import { FaPaw } from "react-icons/fa";
