@@ -64,7 +64,7 @@ function RwdMenu() {
                 <NavLink
                   className="header_rwd_menu_NavLink d-flex justify-content-between align-items-center "
                   reloadDocument
-                  to="/path1"
+                  to="/ec-livinghomepage"
                   onClick={() => setOpen(false)}
                 >
                   <div className="header_rwd_menu_name px-4 ">住宿</div>

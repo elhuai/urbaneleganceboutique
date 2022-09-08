@@ -1,10 +1,10 @@
-import Product_Detail1 from '../../images/Product_Detail1.png';
-import Product_Detail2 from '../../images/Product_Detail2.png';
-import Product_Detail3 from '../../images/Product_Detail3.png';
-import Product_Detail4 from '../../images/Product_Detail4.png';
-import Product_Detail5 from '../../images/Product_Detail5.png';
-import Product_Detail7 from '../../images/Product_Detail7.png';
-import Product_Detail8 from '../../images/Product_Detail8.png';
+import Product_Detail1 from '../../../images/Product_Detail1.png';
+import Product_Detail2 from '../../../images/Product_Detail2.png';
+import Product_Detail3 from '../../../images/Product_Detail3.png';
+import Product_Detail4 from '../../../images/Product_Detail4.png';
+import Product_Detail5 from '../../../images/Product_Detail5.png';
+import Product_Detail7 from '../../../images/Product_Detail7.png';
+import Product_Detail8 from '../../../images/Product_Detail8.png';
 // import Guess_U_Like1 from '../../images/Product_Detail1.png';
 // import Guess_U_Like2 from '../../images/Product_Detail1.png';
 

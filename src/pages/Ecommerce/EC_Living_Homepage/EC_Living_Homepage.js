@@ -1,11 +1,13 @@
 import React from 'react';
+import SearchBar from '../../../components/SearchBar/SearchList_search';
 
-function SearchList() {
+function EcLivingHomepage() {
   return (
     <>
-      <h1>Living</h1>    
+    <SearchBar/>
+      
     </>
   );
 }
 
-export default SearchList;
+export default EcLivingHomepage;

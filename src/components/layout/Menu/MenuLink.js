@@ -4,7 +4,7 @@ const MenuLink = () => {
   return (
     <>
       <ul className="header_container list-unstyled d-flex  mt-3">
-        <NavLink to="path1" className="header_product mx-3">
+        <NavLink to="/ec-livinghomepage" className="header_product mx-3">
           住宿
         </NavLink>
         <NavLink to="path2" className="header_product mx-3">
