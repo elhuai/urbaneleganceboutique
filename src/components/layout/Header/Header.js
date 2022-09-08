@@ -10,34 +10,13 @@ import MenuLink from '../Menu/MenuLink';
 const Header = () => {
   return (
     <div className="header_main_body fixed-top">
-      <div className="header_main d-flex justify-content-between ">
+      <div className="header_main d-flex justify-content-between position-relative">
         <Link to="/" className="  d-block header_menu">
           <img className=" header_dog-logo " src={logobody} alt="dog" />
         </Link>
-        <div className="header_mobile_menu">
-          <RwdMenu />
-        </div>
         <div className="header_tittle d-flex justify-content-center align-items-center w-100 flex-shrink-1">
           <ul className="header_container list-unstyled d-flex m-0">
             <MenuLink />
-            {/* <Link to="123" className="header_product mx-3">
-              住宿
-            </Link>
-            <Link to="/" className="header_product mx-3">
-              景點 & 玩樂
-            </Link>
-            <Link to="/" className="header_product mx-3">
-              餐廳
-            </Link>
-            <Link to="/" className="header_product mx-3">
-              寵物商品
-            </Link>
-            <Link to="/travel" className="header_product mx-3">
-              我的行程
-            </Link>
-            <Link to="/" className="header_product mx-3">
-              社群分享
-            </Link> */}
           </ul>
         </div>
         <div className="  d-flex header_Icon align-items-center justify-content-end ">
@@ -50,6 +29,9 @@ const Header = () => {
             <FaUser />
           </Link>
         </div>
+      </div>
+      <div className="header_mobile_menu">
+        <RwdMenu />
       </div>
     </div>
   );
