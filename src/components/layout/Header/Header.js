@@ -22,26 +22,7 @@ const Header = () => {
         </div>
         <div className="header_tittle d-flex justify-content-center align-items-center w-100 flex-shrink-1">
           <MenuLink />
-      
-            {/* <Link to="123" className="header_product mx-3">
-              住宿
-            </Link>
-            <Link to="/" className="header_product mx-3">
-              景點 & 玩樂
-            </Link>
-            <Link to="/" className="header_product mx-3">
-              餐廳
-            </Link>
-            <Link to="/" className="header_product mx-3">
-              寵物商品
-            </Link>
-            <Link to="/travel" className="header_product mx-3">
-              我的行程
-            </Link>
-            <Link to="/" className="header_product mx-3">
-              社群分享
-            </Link> */}
-        </div>
+        
         <div className="  d-flex header_Icon align-items-center justify-content-end ">
           <Link to="/pathcut" className="header_Icon_cart">
             <IoCart />
