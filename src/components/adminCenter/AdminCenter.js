@@ -1,16 +1,15 @@
-import { AiOutlineSetting } from "react-icons/ai";
-import CommunityIcon from "../../images/users-svgrepo-com.svg";
-import LikeIcon from "../../images/star-svgrepo-com.svg";
-import { Link } from "react-router-dom";
-import MessageIcon from "../../images/message-svgrepo-com.svg";
-import OrderIcon from "../../images/choices-order-svgrepo-com.svg";
-import React from "react";
-import TicketIcon from "../../images/coupon-svgrepo-com (2).svg";
-import HoverBottom from "../../images/admin-hover-background.svg";
-import "./adminCenter.scss";
-// import { ReactComponent as OrderIcon } from '../';
+import { AiOutlineSetting } from 'react-icons/ai';
+import { FiFile } from 'react-icons/fi';
+import { TbTicket } from 'react-icons/tb';
+import { IoHeartOutline } from 'react-icons/io5';
+import { RiMessage3Line } from 'react-icons/ri';
+import { BsPeople } from 'react-icons/bs';
+import { Link } from 'react-router-dom';
+import React from 'react';
+import './adminCenter.scss';
+// import { ReactComponent as OrderIcon } from "../";
 
-// import {Button} from 'react-bootstrap';
+// import {Button} from "react-bootstrap";
 
 const AdminCenter = () => {
   return (
@@ -25,7 +24,7 @@ const AdminCenter = () => {
             ></img>
           </div>
           <div className="admin_user_name_bar">
-            <Link to="/" className="admin_user_name ">
+            <Link to="/personalHomePage" className="admin_user_name ">
               <p>User Name</p>
             </Link>
             <Link to="/" className="text-decoration-none admin_myfile">
@@ -34,19 +33,13 @@ const AdminCenter = () => {
             </Link>
           </div>
         </div>
-        <ul className="admin_sidemenu list-unstyled d-flex flex-column">
-          <li>
-            <Link
-              to="/"
-              src={HoverBottom}
-              className="text-decoration-none icons admin_select d-flex "
-            >
-              <img
-                className="icon_size d-block "
-                src={OrderIcon}
-                alt="orderIcon"
-              ></img>
-              <p className="d-block">我的訂單</p>
+        <ul className="admin_sidemenu list-unstyled d-flex flex-column ">
+          <li className="">
+            <Link to="/" className="text-decoration-none admin_select d-flex">
+              <div className="d-flex align-items-center">
+                <FiFile className="icon_size d-block mt-3 ms-1 " alt="orderIcon"></FiFile>
+                <p className="d-block mt-3">我的訂單</p>
+              </div>
             </Link>
           </li>
           <li>
@@ -54,12 +47,11 @@ const AdminCenter = () => {
               to="/"
               className="text-decoration-none admin_select icons d-flex"
             >
-              <img
-                className="icon_size d-block"
-                src={LikeIcon}
+              <IoHeartOutline
+                className="icon_size d-block mt-3 ms-1"
                 alt="likeIcon"
-              ></img>
-              <p className="d-block">我的收藏</p>
+              ></IoHeartOutline>
+              <p className="d-block mt-3">我的收藏</p>
             </Link>
           </li>
           <li>
@@ -67,12 +59,11 @@ const AdminCenter = () => {
               to="/"
               className="admin_select text-decoration-none icons d-flex"
             >
-              <img
-                className="icon_size d-block"
-                src={TicketIcon}
+              <TbTicket
+                className="icon_size d-block mt-3 ms-1"
                 alt="ticketIcon"
-              ></img>
-              <p className="d-block">我的票券</p>
+              ></TbTicket>
+              <p className="d-block mt-3">我的票券</p>
             </Link>
           </li>
           <li>
@@ -80,12 +71,11 @@ const AdminCenter = () => {
               to="/"
               className="admin_select text-decoration-none icons d-flex"
             >
-              <img
-                className="icon_size d-block"
-                src={MessageIcon}
+              <RiMessage3Line
+                className="icon_size d-block mt-3 ms-1"
                 alt="messageIcon"
-              ></img>
-              <p className="d-block">訊息管理</p>
+              ></RiMessage3Line>
+              <p className="d-block mt-3">訊息管理</p>
             </Link>
           </li>
           <li>
@@ -94,12 +84,11 @@ const AdminCenter = () => {
               className="text-decoration-none admin_select icons d-flex
               community"
             >
-              <img
-                className="icon_size d-block"
-                src={CommunityIcon}
+              <BsPeople
+                className="icon_size d-block mt-3 ms-1"
                 alt="communityIcon"
-              ></img>
-              <p className="d-block">社群設定</p>
+              ></BsPeople>
+              <p className="d-block mt-3">社群設定</p>
             </Link>
 
             {/* <Link to="/" className=""><img alt="" src={HoverBottom}></img><p>tesing</p></Link> */}

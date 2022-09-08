@@ -9,6 +9,7 @@ import CommunityList from './pages/Community/';
 import AdminCenterPage from './pages/AdminCenter/AdminCenterPage';
 import 'swiper/scss';
 import './styles/style.scss';
+import PersonalHomePage from './pages/AdminCenter/PersonalHomePage';
 
 function App() {
   return (
@@ -19,7 +20,8 @@ function App() {
         <Route path="example" element={<ExamplePage />} />
         <Route path="/travel" element={<Travel />} />
         <Route path="/communitylist" element={<CommunityList />} />
-        <Route path="/adminCenter" element={<AdminCenterPage />} />
+        <Route path="/personalHomePage" element={<PersonalHomePage />} />
+        <Route path="/AdminCenterPage" element={<AdminCenterPage />} />
       </Routes>
       <Footer />
     </div>

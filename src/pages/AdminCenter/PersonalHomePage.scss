@@ -1,0 +1,62 @@
+$line-color--light:#E7E7E9;
+$line-color--dark:#747474;
+$button-color-hover: #FEEFC3;
+$button-color-remove: #ef7a70;
+$main-color:#FFC715;
+$list-color: #F0EDE0;
+$list-color-hover: #F0EDE0;
+
+.admin_user_name_bar p {
+  font-size: 24px;
+}
+.personal_home_page{
+  // height: 80vh;
+  margin: auto;
+  max-width: 1440px;
+}
+// temperary setup
+.personal_bar {
+  width: 1000px;
+  height: 250px;
+  justify-content: space-evenly;
+  align-items: center;
+  // margin-top: 150px;
+  background-color: #FEEFC3;
+}
+.pet_card{
+  width: 250px;
+ 
+  
+}
+.user_photobox {
+    width: 180px;
+    height: 180px;
+    border-radius: 50%;
+    background-color: white;
+    overflow: hidden;
+}
+.pet_card_description{
+  width: 250px;
+  background-color: #ef7a70;
+  border-radius: 15px;
+  height: 100px;
+}
+.pet_card_list{
+  // margin-top: 50px;
+  align-items: center;
+}
+.pet_photobox{
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  background-color: white;
+  overflow: hidden;
+
+  
+}
+.description_text{
+  width: 300px;
+}
+.pet_info p {
+  color: white;
+}
