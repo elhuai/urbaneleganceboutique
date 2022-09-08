@@ -1,5 +1,5 @@
 import React from 'react';
-import SearchBar from '../../../components/SearchBar/SearchList_search';
+import SearchBar from './_EC_Living_Homepage.scss';
 
 function EcLivingHomepage() {
   return (
