@@ -9,7 +9,7 @@ import MenuLink from '../Menu/MenuLink';
 
 const Header = () => {
   return (
-    <div className="header_main_Body fixed-top">
+    <div className="header_main_body fixed-top">
       <div className="header_main d-flex justify-content-between ">
         <Link to="/" className="  d-block header_menu">
           <img className=" header_dog-logo " src={logobody} alt="dog" />
@@ -18,7 +18,7 @@ const Header = () => {
           <RwdMenu />
         </div>
         <div className="header_tittle d-flex justify-content-center align-items-center w-100 flex-shrink-1">
-          <ul className="header_container list-unstyled d-flex  mt-3">
+          <ul className="header_container list-unstyled d-flex m-0">
             <MenuLink />
             {/* <Link to="123" className="header_product mx-3">
               住宿
