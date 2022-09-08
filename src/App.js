@@ -23,8 +23,8 @@ function App() {
         <Route path="/travel" element={<Travel />} />
         <Route path="/communitylist" element={<CommunityList />} />
         <Route path="/adminCenter" element={<AdminCenterPage />} />
-        <Route path="/ec" element={<ECproductFilter />} />
-        <Route path="/ProductDetail" element={<ProductDetail />} />
+        <Route path="/ec-productfilter" element={<ECproductFilter />} />
+        <Route path="/ec-productdetail" element={<ProductDetail />} />
       </Routes>
       <Footer />
     </div>
