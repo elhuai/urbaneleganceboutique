@@ -1,11 +1,25 @@
+
+
+@import './custom_variables';
+@import '../../node_modules/bootstrap/scss/bootstrap.scss';
+
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+  -webkit-user-drag: none;
 }
 body {
-  font-family: 'Roboto', sans-serif;
+  font-family: 'Roboto', sans-serif !important;
 }
 
-@import './custom_variables';
-@import '../../node_modules/bootstrap/scss/bootstrap.scss';
+.app {
+  margin-top: 80px;
+}
+@media screen and (max-width: 768px) {
+  .app {
+    margin-top: 80px;
+  }
+}
+
+

@@ -1,3 +1,8 @@
+<<<<<<< HEAD
+<svg width="206" height="46" viewBox="0 0 206 46" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path d="M0.0872808 0.5H185.5C188.217 0.5 190.689 2.07284 191.841 4.53446L205.008 32.6872C207.798 38.6546 203.443 45.5 196.855 45.5H0L0.0872808 0.5Z" fill="#FEEFC3"/>
+=======
 <svg width="157" height="45" viewBox="0 0 157 45" fill="none" xmlns="http://www.w3.org/2000/svg">
 <path d="M0.0661845 0H139.096C142.06 0 144.703 1.86674 145.694 4.66025L155.741 32.9917C157.819 38.8496 153.474 45 147.259 45H0L0.0661845 0Z" fill="#FEEFC3"/>
+>>>>>>> origin/ec-product-detail
 </svg>

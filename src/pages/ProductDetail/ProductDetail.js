@@ -80,7 +80,7 @@ const ProductDetail = () => {
                                     <button>加入購物車</button>
                                     </div>
                                 </div>
-                            </div>
+``                            </div>
                             <div className="costSection">
                                 <p className="mainCost">NT$2300</p>
                                 <p className="cost">NT$2530</p>

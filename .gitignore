@@ -1,5 +1,5 @@
 # See https://help.github.com/articles/ignoring-files/ for more about ignoring files.
-
+/utils/googleApi.js
 # dependencies
 /node_modules
 /.pnp
@@ -26,5 +26,7 @@ yarn-error.log*
 .vscode
 .vscode/settings.json
 
-.eslintrc.json
+.eslintrc
 .prettierrc
+.eslintignore
+.prettierignore

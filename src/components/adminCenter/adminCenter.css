@@ -1,0 +1,94 @@
+:root {
+  --line-color--light:#E7E7E9;
+  --line-color--dark:#747474;
+  --button-color-hover: #FEEFC3;
+  --button-color-remove: #ef7a70;
+  --main-color:#FFC715;
+  --list-color: #F0EDE0;
+  --list-color-hover: #F0EDE0;
+}
+@media screen and (max-width: 768px) {
+  .admin_side {
+    display:none
+  }
+}
+@media screen and (max-width: 375px) {
+  .admin_side {
+    display:none
+  }
+}
+
+ .admin_side{
+  /* background-color: antiquewhite; */
+  /* max-width: 200px; */
+  /* min-width: 250px; */
+  max-width: 330px;
+  height: 100vh;
+  font-size: 20px;
+  border-right: 2px solid var(--line-color--light);
+  
+ 
+ }
+ .settingicon {
+  margin-bottom:3px;
+  margin-left: 2px;
+ }
+
+ .admin_sidemenu {
+  padding-top: 30px;
+  display: flex;
+  flex-direction: column;
+  margin-left: 20px;
+ }
+ .admin_sidemenu li {
+  margin: 3px 0px;
+ 
+ }
+ .admin_select {
+  padding-left: 15px;
+  padding-top: 15px;
+  width: 95%;
+  border-radius: 5px 80px 15px 5px;
+ }
+ .admin_select:hover {
+  background-color: var(--button-color-hover);
+
+ }
+
+.icons {
+  width: 24px;
+  margin-right: 10px;
+  margin-bottom: 15px;
+}
+.user_photobox{
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  background-color: white;
+  border: 1px solid var(--line-color--dark);
+}
+
+.profile_bar{
+  padding:15px ;
+  min-width: 70%;
+  margin-right: 10px;
+  border-bottom: 2px solid var(--line-color--light);
+}
+.admin_user_name_bar{
+  margin-left: 15px;
+  display: flex;
+  flex-direction: column;
+}
+
+.admin_user_name{
+  margin-top: 30px;
+  display: block;
+  font-size: 20px;
+  font-weight: 500;
+}
+.admin_myfile{
+  display: block;
+  font-size: 15px;
+  color: var(--line-color--dark);
+}
+
