@@ -8,7 +8,7 @@ import Travel from './pages/Travel';
 import CommunityList from './pages/Community';
 import AdminCenterPage from './pages/AdminCenter/AdminCenterPage';
 import EcLivingHomepage from './pages/Ecommerce/EC_Living_Homepage';
-import EcProductDetail from './pages/Ecommerce/ProductDetail';
+import EcProductDetail from './pages/Ecommerce/ProductDetail'
 import EcproductFilter from './pages/Ecommerce/EC_productFilter';
 import Travelmap from './pages/Travel_map';
 import 'swiper/scss';
