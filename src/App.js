@@ -1,14 +1,15 @@
 import React from 'react';
 import { Routes, Route } from 'react-router-dom';
 import Footer from './components/layout/Footer';
-import ProductDetail from './pages/ProductDetail';
 import Header from './components/layout/Header';
 import Homepage from './pages/HomePage';
 import ExamplePage from './pages/ExamplePage';
 import Travel from './pages/Travel';
-import ECproductFilter from './pages/EC_productFilter';
 import CommunityList from './pages/Community/';
 import AdminCenterPage from './pages/AdminCenter/AdminCenterPage';
+import EcLivingHomepage from './pages/Ecommerce/EC_Living_Homepage';
+import EcProductDetail from './pages/Ecommerce/ProductDetail';
+import EcproductFilter from './pages/Ecommerce/EC_productFilter';
 import 'swiper/scss';
 
 import './styles/style.scss';
@@ -23,8 +24,9 @@ function App() {
         <Route path="/travel" element={<Travel />} />
         <Route path="/communitylist" element={<CommunityList />} />
         <Route path="/adminCenter" element={<AdminCenterPage />} />
-        <Route path="/ec-productfilter" element={<ECproductFilter />} />
-        <Route path="/ec-productdetail" element={<ProductDetail />} />
+        <Route path="/ec-productfilter" element={<EcproductFilter />} />
+        <Route path="/ec-productdetail" element={<EcProductDetail />} />
+        <Route path="/ec-livingpage" element={<EcLivingHomepage />} />
       </Routes>
       <Footer />
     </div>
