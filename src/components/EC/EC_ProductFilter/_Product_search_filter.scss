@@ -161,17 +161,17 @@ $royal-blue:#22C3FF;
     margin-bottom: 0;
   }
 }
-.comList_main_card{
+.product_main_card{
   overflow: hidden;
 }
 
-.comList_main_card_img{
+.product_main_card_img{
   // border-radius: 8px 0 0 8px;
   width: 100%;
   height: 100%;
 }
 
-.comList_main_card_title{
+.product_main_card_title{
   p{
     margin-bottom: 0;
   }
@@ -182,7 +182,7 @@ $royal-blue:#22C3FF;
   }
 }
 
-.comList_main_card_placeName_text{
+.product_main_card_placeName_text{
   display: inline-block;
   color: #2DA9D7;
   background-color: #D5EEEE;
@@ -192,10 +192,11 @@ $royal-blue:#22C3FF;
 }
 
 
-.comList_main_card_locate_text{
+.product_main_card_locate_text{
   p{
     color: black;
     font-weight: 600;
+    margin: 0;
   }
   svg{
     color: #2DA9D7;
@@ -203,7 +204,7 @@ $royal-blue:#22C3FF;
     height: 1.25rem;
   }
 }
-.comList_main_card_like_text{
+.product_main_card_like_text{
 
   svg{
     width: 1.25rem;
@@ -214,34 +215,39 @@ $royal-blue:#22C3FF;
   display: none;
 }
 
+// 
 .pages{
   width: 100%;
   margin:0 auto;
   font-size:0;
-  // background-color: #f2f2f2;
   text-align:center;
   padding-bottom: 20px;
+  svg{
+    width: 1.5rem;
+    height: 1.5rem;
+  }
 }
 
 .pages button{
-  width: 40px;
-  height: 40px;
+  font-size: 1rem;
+  width: 35px;
+  height: 35px;
   background-color: #fff;
-  border: 1px solid #ECEEEF;
-  color:#9013FE;
+  border:none;
+  color:$fmain_color;
   outline:none;
+  &:hover{
+    background-color: $fmain_color;
+    color:#fff;
+    cursor: pointer;
+    border-radius: 5px;
+  }
 }
 
-.pages button:hover{
-  background-color: #9013FE;
-  color:#fff;
-  cursor: pointer;
-}
 
 .fas{
   display:inline-block;
   font-size:17px;
-  position: absolute;
   top: 60%;
   left: 0;
   transform: translateY(-50%);
