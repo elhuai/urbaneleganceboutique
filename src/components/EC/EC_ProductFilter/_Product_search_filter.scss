@@ -216,7 +216,7 @@ $royal-blue:#22C3FF;
 }
 
 // 
-.pages{
+.product_filter_pages{
   width: 100%;
   margin:0 auto;
   font-size:0;
@@ -226,32 +226,22 @@ $royal-blue:#22C3FF;
     width: 1.5rem;
     height: 1.5rem;
   }
+  button{
+    font-size: 1rem;
+    width: 35px;
+    height: 35px;
+    background-color: #fff;
+    border:none;
+    color:$fmain_color;
+    outline:none;
+    &:hover{
+      background-color: $fmain_color;
+      color:#fff;
+      cursor: pointer;
+      border-radius: 5px;
+    }
 }
 
-.pages button{
-  font-size: 1rem;
-  width: 35px;
-  height: 35px;
-  background-color: #fff;
-  border:none;
-  color:$fmain_color;
-  outline:none;
-  &:hover{
-    background-color: $fmain_color;
-    color:#fff;
-    cursor: pointer;
-    border-radius: 5px;
-  }
-}
-
-
-.fas{
-  display:inline-block;
-  font-size:17px;
-  top: 60%;
-  left: 0;
-  transform: translateY(-50%);
-}
 // ========== RWD ======== //
 @media (max-width: 768px) {
   .comList_main_search{

@@ -234,7 +234,7 @@ const SearchFilter = () => {
             </div>
           {/* ==================搜尋結果====================== */}
           {/* 頁碼 */}
-          <div className="pages d-flex justify-content-center">
+          <div className="product_filter_pages d-flex justify-content-center">
       <button><HiChevronLeft/></button>
       <button>1</button>
       <button>2</button>
