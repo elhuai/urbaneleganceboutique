@@ -1,6 +1,7 @@
 import React from 'react';
 import { Routes, Route } from 'react-router-dom';
 import Footer from './components/layout/Footer';
+import ProductDetail from './pages/ProductDetail';
 import Header from './components/layout/Header';
 import Homepage from './pages/HomePage';
 import ExamplePage from './pages/ExamplePage';
@@ -23,6 +24,7 @@ function App() {
         <Route path="/communitylist" element={<CommunityList />} />
         <Route path="/adminCenter" element={<AdminCenterPage />} />
         <Route path="/ec" element={<ECproductFilter />} />
+        <Route path="/ProductDetail" element={<ProductDetail />} />
       </Routes>
       <Footer />
     </div>
