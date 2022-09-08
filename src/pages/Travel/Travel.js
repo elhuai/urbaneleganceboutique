@@ -1,4 +1,6 @@
 import React from 'react';
+
+import { Swiper, SwiperSlide } from 'swiper/react';
 import TravelTab from '../../components/Travel/Travel-Tab';
 import TravelgoPlaySwiper from '../../components/Travel/Travel-goPlay-Swiper';
 import TravelEveryOneSwiper from '../../components/Travel/Travel-EveryOne-Swiper';

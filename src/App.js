@@ -5,13 +5,14 @@ import Header from './components/layout/Header';
 import Homepage from './pages/HomePage';
 import ExamplePage from './pages/ExamplePage';
 import Travel from './pages/Travel';
-import CommunityList from './pages/Community/';
+import CommunityList from './pages/Community';
 import AdminCenterPage from './pages/AdminCenter/AdminCenterPage';
 import EcLivingHomepage from './pages/Ecommerce/EC_Living_Homepage';
 import EcProductDetail from './pages/Ecommerce/ProductDetail';
 import EcproductFilter from './pages/Ecommerce/EC_productFilter';
+import Travelmap from './pages/Travel_map';
 import 'swiper/scss';
-
+import 'swiper/css/bundle';
 import './styles/style.scss';
 
 function App() { 
@@ -22,6 +23,7 @@ function App() {
         <Route path="/" element={<Homepage />} />
         <Route path="example" element={<ExamplePage />} />
         <Route path="/travel" element={<Travel />} />
+        <Route path="/Travel_map" element={<Travelmap />} />
         <Route path="/communitylist" element={<CommunityList />} />
         <Route path="/adminCenter" element={<AdminCenterPage />} />
         <Route path="/ec-productfilter" element={<EcproductFilter />} />

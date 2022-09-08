@@ -1,13 +1,13 @@
-import { AiOutlineSetting } from "react-icons/ai";
-import CommunityIcon from "../../images/users-svgrepo-com.svg";
-import LikeIcon from "../../images/star-svgrepo-com.svg";
-import { Link } from "react-router-dom";
-import MessageIcon from "../../images/message-svgrepo-com.svg";
-import OrderIcon from "../../images/choices-order-svgrepo-com.svg";
-import React from "react";
-import TicketIcon from "../../images/coupon-svgrepo-com (2).svg";
-import HoverBottom from "../../images/車頭.svg";
-import "./adminCenter.scss";
+import { AiOutlineSetting } from 'react-icons/ai';
+import CommunityIcon from '../../images/users-svgrepo-com.svg';
+import LikeIcon from '../../images/star-svgrepo-com.svg';
+import { Link } from 'react-router-dom';
+import MessageIcon from '../../images/message-svgrepo-com.svg';
+import OrderIcon from '../../images/choices-order-svgrepo-com.svg';
+import React from 'react';
+import TicketIcon from '../../images/coupon-svgrepo-com (2).svg';
+import HoverBottom from '../../images/車頭.svg';
+import './adminCenter.scss';
 // import { ReactComponent as OrderIcon } from '../';
 
 // import {Button} from 'react-bootstrap';
@@ -26,7 +26,7 @@ const AdminCenter = () => {
           </div>
           <div className="admin_user_name_bar">
             <Link to="/" className="admin_user_name">
-              User NAME{" "}
+              User NAME{' '}
             </Link>
             <Link to="/" className="text-decoration-none admin_myfile">
               <AiOutlineSetting className="settingicon admin_my_profile_text "></AiOutlineSetting>

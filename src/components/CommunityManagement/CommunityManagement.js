@@ -1,8 +1,8 @@
-import FollowerPhoto from "../../images/logo_dog_body1.svg";
-import React from "react";
-import "./CommunityManagement.scss";
-import { Tabs, Tab } from "react-bootstrap";
-import dogIcon from "../../images/travel_dog_paws.svg";
+import FollowerPhoto from '../../images/logo_dog_body1.svg';
+import React from 'react';
+import './CommunityManagement.scss';
+import { Tabs, Tab } from 'react-bootstrap';
+import dogIcon from '../../images/travel_dog_paws.svg';
 
 function CommunityManagement() {
   return (
@@ -130,7 +130,7 @@ function CommunityManagement() {
                     查看內容
                   </button>
                 </div>
-              </li>{" "}
+              </li>{' '}
               <li className="d-flex justify-content-between align-items-center px-5">
                 <div className="follower_description d-flex">
                   <div className="follower_photo ">
