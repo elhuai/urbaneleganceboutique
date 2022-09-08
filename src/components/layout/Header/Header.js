@@ -6,8 +6,6 @@ import React from 'react';
 import RwdMenu from '../Menu/RwdMenu';
 import './_Header.scss';
 import MenuLink from '../Menu/MenuLink';
-// import { AiOutlineShoppingCart } from 'react-icons/ai';
-// import { AiOutlineUser } from 'react-icons/ai';
 
 const Header = () => {
   return (
