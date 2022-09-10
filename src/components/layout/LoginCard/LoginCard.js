@@ -13,7 +13,7 @@ const LoginCard = ({ isLogin, confirm, setAuth }) => {
         className="login_card_form"
         onSubmit={(e) => {
           e.preventDefault();
-          setAuth(true);
+          setAuth((oldStatus) => ({ ...oldStatus, status: true }));
           confirm();
         }}
       >
@@ -57,7 +57,7 @@ const LoginCard = ({ isLogin, confirm, setAuth }) => {
         className="login_card_button"
         type="button"
         onClick={() => {
-          setAuth(false);
+          setAuth((oldStatus) => ({ ...oldStatus, status: false }));
           confirm();
         }}
       >

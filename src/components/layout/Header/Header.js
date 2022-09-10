@@ -12,9 +12,8 @@ import './_Header.scss';
 
 const Header = () => {
   const { auth, setAuth } = useAuth();
-  // const [state, setstate] = useState('1');
   const AuthBtn = () => {
-    if (auth) {
+    if (auth.status) {
       return (
         <>
           <Link to="/adminCenter" className="header_Icon_user">
