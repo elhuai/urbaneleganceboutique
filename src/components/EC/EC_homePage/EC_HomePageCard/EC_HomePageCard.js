@@ -20,7 +20,7 @@ const foodComment = [
     price: '870',
   },
   {
-    title: 'CatGlory 驕傲貓 無穀頂級主食罐 黑罐 85g ',
+    title: 'CatGlory 驕傲貓 無穀頂級主食罐 黑罐 85g 超大罐 大型犬 中型犬',
     img: 'https://picsum.photos/id/219/600/300',
     comment: '4',
     price: '1880',
