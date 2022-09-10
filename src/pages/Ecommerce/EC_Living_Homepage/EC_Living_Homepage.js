@@ -11,7 +11,7 @@ function EcLivingHomepage() {
         <SearchBar />
         <EcHomePageSlider />
         <EcHomePageCategory />
-        {/* <EcHomePageCard /> */}
+        <EcHomePageCard />
       </div>
     </>
   );

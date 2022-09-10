@@ -47,7 +47,7 @@ export default function EC_HomePageCard() {
       slidesPerView={4}
       spaceBetween={5}
       className="ecHomePageSwiper"
-      // modules={[Autoplay]}
+      modules={[Autoplay]}
       autoplay={{
         // delay: 1500,
         disableOnInteraction: false,

@@ -8,36 +8,19 @@ import './_EC_homePages_slider.scss';
 
 const fakeData = [
   {
-    title:
-      '花東二日遊part2｜激似紐西蘭牧場、太魯閣國家公園、大坡池、伯朗大道～一次玩好玩滿',
-    img: 'https://picsum.photos/id/129/1440/400',
-    author: '姓阿名尼基',
-    like: '5487',
+    img: 'https://cms.cdn.91app.com/images/original/2443/239777ee-2454-463f-979f-58e76f373d76-1660289570-5wokisx7j8_m_1200x469_800x313_400x156.jpg',
   },
   {
-    title: '新北｜瑞芳 大地寶藏在這裡-探索黃金山城',
-    img: 'https://picsum.photos/id/229/1440/400',
-    author: 'RainOuO',
-    like: '5487',
+    img: 'https://cms.cdn.91app.com/images/original/2443/239777ee-2454-463f-979f-58e76f373d76-1657002131-nva3vtbazh_m_1200x469_800x313_400x156.jpg',
   },
   {
-    title: '苗栗露營兩天一夜行程分享',
-    img: 'https://picsum.photos/id/219/1440/400',
-    author: '老鐵給個雙基',
-    like: '5487',
+    img: 'https://cms.cdn.91app.com/images/original/2443/239777ee-2454-463f-979f-58e76f373d76-1642062123-1irk257tgf_m_1200x469_800x313_400x156.jpg',
   },
   {
-    title:
-      '花東二日遊part2｜激似紐西蘭牧場、太魯閣國家公園、大坡池、伯朗大道～一次玩好玩滿',
-    img: 'https://picsum.photos/id/20/1440/400',
-    author: 'RainOuO',
-    like: '5487',
+    img: 'https://cms.cdn.91app.com/images/original/2443/239777ee-2454-463f-979f-58e76f373d76-1641279304-d7s6vn0a10_m_1200x469_800x313_400x156.jpg',
   },
   {
-    title: '新北｜瑞芳 大地寶藏在這裡-探索黃金山城',
-    img: 'https://picsum.photos/id/29/1440/400',
-    author: '老鐵給個雙基',
-    like: '5487',
+    img: 'https://cms.cdn.91app.com/images/original/2443/239777ee-2454-463f-979f-58e76f373d76-1659690158-9fwcnhwozs_m_1200x469_800x313_400x156.jpg',
   },
 ];
 
