@@ -18,19 +18,19 @@ const Header = () => {
         </Link>
         <div className="header_mobile_menu">
           <RwdMenu />
-          <div className="  d-flex header_Icon align-items-center justify-content-end ">
+        </div>
+        <div className="header_tittle d-flex justify-content-center align-items-center w-100 flex-shrink-1">
+          <MenuLink />
+        </div>
+        <div className="  d-flex header_Icon align-items-center justify-content-end ">
           <Link to="/pathcut" className="header_Icon_cart">
             <IoCart />
           </Link>
           {/* TODO: ICON更改 */}
-          <Link to="/adminCenter" className="header_Icon_user">
+          <Link to="/personalHomePage" className="header_Icon_user">
             {/* <HiUser /> */}
             <FaUser />
           </Link>
-        </div>
-        </div>
-        <div className="header_tittle d-flex justify-content-center align-items-center w-100 flex-shrink-1">
-          <MenuLink />
         </div>
       </div>
     </div>

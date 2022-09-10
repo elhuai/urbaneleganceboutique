@@ -23,7 +23,7 @@
 
 .admin_side {
 	margin-top: 40px;
-	width: 330px;
+	width: 400px;
 	min-width: 150px;
 	height: 90%;
 	font-size: 20px;
@@ -31,12 +31,11 @@
 	//會員基本資料
 	.profile_bar {
 		padding: 15px;
-		min-width: 80%;
-		margin-right: 10px;
+		width: 100%;
 		border-bottom: 2px solid $line-color--light;
 		.user_photobox {
-			width: 120px;
-			height: 120px;
+			width: 80px;
+			height: 80px;
 			border-radius: 50%;
 			background-color: white;
 			overflow: hidden;
@@ -47,19 +46,29 @@
 			}
 		}
 		.admin_user_name_bar {
-			margin-left: 15px;
+			margin-left: 20px;
 			display: flex;
 			flex-direction: column;
+			justify-content: center;
 			.admin_user_name {
-				margin-top: 30px;
-				display: block;
-				font-size: 20px;
+				// margin-top: 30px;
+				font-size: 18px;
 				font-weight: 500;
+				width: 180px;
+				display: -webkit-box;
+				-webkit-box-orient: vertical;
+				-webkit-line-clamp: 1;
+				overflow: hidden;
+				line-height: 15px;
+				p{
+					height: 14px;
+				}
 			}
 			.admin_myfile {
 				display: block;
 				font-size: 15px;
 				color: #747474;
+			
 			}
 			.settingicon {
 				margin-bottom: 3px;
@@ -70,26 +79,25 @@
 	}
 	// 會員中心子項目
 	.admin_sidemenu {
-		padding-top: 30px;
-		display: flex;
-		flex-direction: column;
-		margin-left: 30px;
+		padding-top: 20px;
+		padding-left: 60px;
+		// margin-left: 30px;
+		width: 100%;
 		li {
-			margin: 3px 0px;
+			// width: 400px;
+			width: 100%;
 			.admin_select {
-				padding-left: 60px;
-				padding-top: 15px;
-				width: 95%;
-				border-radius: 5px 80px 15px 5px;
 				&:hover{
-					// width: 250px;
-					background: url(../../images/車頭.svg) center no-repeat;
-				}
-				.icon_size {
-					width: 24px;
-					margin-right: 10px;
-					margin-bottom: 15px;
-				}
+				background: url(../../images/admin-hover-background.svg) no-repeat;
+				background-position: left;
+			}
+			.icon_size {
+			font-size: 30px;
+			width: 24px;
+			margin-right: 10px;
+			margin-bottom: 15px;
+			// transform: rotate(90deg);
+			}
 			}
 		}
 	}

@@ -5,12 +5,12 @@
   $button-color-remove: #ef7a70;
   $main-color:#FFC715;
   $list-color: #F0EDE0;
-  $list-color-hover: #F0EDE0;
+  $list-color-hover: #FEEFC3;
 
 @media screen and (max-width: 768px) {
   .follower_list {
     /* display:none; */
-    width: 600px;
+    width:90%;
   }
 }
 @media screen and (max-width: 375px) {
@@ -25,38 +25,42 @@
 
 // 便簽樣式切換
 ul.communityManagementTab {
-  border: none;
+  // border: none;
   margin-top: 50px;
   margin-left: 30px;
-  button.nav-link, button.nav-link:hover { 
-    border: none;
-  }
+  //NOTE: 
+  // button.nav-link:hover { 
+  //   // border: none;
+  // }
+  // button.nav-link{ 
+  //   // border: none;
+  // }
 }
-//TODO: Hover 還會有黃色的bottom border 待修改
+
 .tab_text_size{
   font-size: 20px;
 }
 .tab_claw{
-  width: 30px;
+  width: 25px;
 }
 
 // 追蹤者管理
 
  
 .follower_list{
-  width: 900px;
+  width: 1040px;
   .follower_detail {
-    height: 700px;
+    height: 700px; 
     overflow-y: scroll;
     & li {
-    background-color: $list-color;
+    background-color: $list-color-hover;
     margin-top: 10px;
     border-radius: 10px;
     width: 95%;
     height: 150px;
     list-style: none;
     &:hover{
-      background-color: darken($list-color,5%);
+      background-color: darken($list-color-hover,5%);
       transition: .5;
     }
   }
@@ -76,15 +80,25 @@ ul.communityManagementTab {
   .follower_user_name {
     font-size: 22px;
     font-weight: 400;
+    width: 200px;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 1;
+    overflow: hidden;
   }
   .follower_description_text{
     font-size: 14px;
     color: $line-color--dark;
+    width: 300px;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 2;
+    overflow: hidden;
     
   }
   .remove_follow{
     background-color: $button-color-remove;
-    &:hover:active{
+    &:hover{
     background-color: $button-color-remove;
     color: white;
     border: none;
@@ -92,7 +106,6 @@ ul.communityManagementTab {
     color: white;
     border: none;
     border-radius: 8px;
-    
   }
   .follower_checked_detail{
     background-color: $main-color;
@@ -106,12 +119,13 @@ ul.communityManagementTab {
     border-radius: 8px;
   }
 }
-// 貼文管理
+// 我的貼文管理
 
 .post_list{
-  width: 900px;
+  width: 1040px;
   // margin-top: 150px;
   border-radius: 10px;
+
   .post_detail {
     height: 700px;
     overflow-y: scroll;
@@ -120,10 +134,10 @@ ul.communityManagementTab {
     border-bottom: 1px solid $line-color--light;
     border-radius: 8px;
     width: 95%;
-    height: 120px;
+    height: 140px;
     list-style: none;
     &:hover{
-      background-color:$list-color-hover;
+      background-color:$button-color-hover;
     }
     // background-color: #FEEFC3;
     .post_description {
@@ -133,25 +147,16 @@ ul.communityManagementTab {
         font-size: 18px;
         font-weight: 500; 
         margin-top: 15px;
+        width: 300px;
+        display: -webkit-box;
+        -webkit-box-orient: vertical;
+        -webkit-line-clamp: 1;
+        overflow: hidden;
       }
       .post_date p{
-        font-size: 14px;
+        font-size: 16px;
         color: $line-color--dark;
 
-      }
-      .post_edit_button button{
-        width: 80px;
-        height: 30px;
-        border-radius: 8px;
-        background-color: $main-color;
-        color: white;
-        font-size: 12px;
-        margin-right: 8px;
-        text-align: center;
-        border:none;
-        &:hover{
-          border:none;
-        }
       }
       .post_status{
         color: $line-color--dark;
@@ -162,3 +167,77 @@ ul.communityManagementTab {
   }
 }
 }
+.post_edit_button button{
+  width: 80px;
+  height: 35px;
+  border-radius: 8px;
+  background-color: $main-color;
+  color: white;
+  font-size: 14px;
+  margin-right: 8px;
+  text-align: center;
+  border:none;
+  &:focus {
+    border:none;
+    color:white;
+    background-color: $main-color;  
+  }
+ &:hover {
+    border:none;
+    color:white;
+    background-color: darken($main-color,5%);
+  }
+}
+
+  .post_new_button button{
+    width: 80px;
+    height: 35px;
+    border-radius: 8px;
+    background-color: $button-color-remove;
+    color: white;
+    font-size: 14px;
+    margin-right: 8px;
+    text-align: center;
+    border:none;
+    &:focus {
+      border:none;
+      color:white;
+      background-color: $button-color-remove;  
+    }
+   &:hover {
+      border:none;
+      color:white;
+      background-color: darken($button-color-remove,5%);
+    }
+  
+}
+
+// 追蹤貼文列表
+
+.follow_post_list{
+  width: 1040px;
+  // margin-top: 150px;
+  border-radius: 10px;
+  .follow_post_detail {
+    height: 700px;
+    overflow-y: scroll;
+    & li {
+    margin-top: 15px;
+    // padding: 20px;
+    border-bottom: 1px solid $line-color--light;
+    border-radius: 8px;
+    width: 95%;
+    height: 60px;
+    list-style: none;
+    &:hover{
+      background-color:$button-color-hover;
+    }
+  }}}
+
+  .d-flex .post_new {
+    color:white;
+    margin-right: 50px;
+    margin-top: 10px;
+    border: none;
+
+  }
