@@ -1,0 +1,19 @@
+.login_card--global {
+  .login_card {
+    &_form {
+
+    }
+    &_button {
+      padding: 8px 16px;
+      border-radius: 8px;
+      border: 0;
+      background-color: #ffc200;
+      color: #FFF;
+      font-weight: bold;
+    }
+    &_register {
+      font-size: 14px;
+      text-decoration: underline;
+    }
+  }
+}
