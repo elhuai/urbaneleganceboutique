@@ -2,6 +2,7 @@ import SearchBar from '../../components/SearchBar/SearchList_search';
 import test_photo from '../../images/test.jpg';
 import test_photo2 from '../../images/test2.jpg';
 import { IoLocationSharp, IoHeartOutline } from 'react-icons/io5';
+import { TiLocation } from 'react-icons/ti';
 import { BiLike } from 'react-icons/bi';
 
 import './_CommunityList.scss';
@@ -46,7 +47,7 @@ const CommunityList = () => {
                     </p>
                     <div className="comList_main_card_bottom_text card-text d-flex justify-content-between">
                       <p className="comList_main_card_locate_text card-text d-flex align-items-center">
-                        <IoLocationSharp />
+                        <TiLocation />
                         花蓮
                       </p>
                       <p className="comList_main_card_like_text card-text d-flex align-items-center">
@@ -58,8 +59,8 @@ const CommunityList = () => {
               </div>
             </div>
             {/* 2 */}
-            <div className="comList_main_card row card border-primary mb-4 border border-2">
-              <div className="row g-0">
+            <div className="comList_main_card row card border-primary mb-4 border border-2 ">
+              <div className="row g-0 ">
                 <div className="col-md-4">
                   <img
                     src={test_photo2}
@@ -67,16 +68,17 @@ const CommunityList = () => {
                     alt="..."
                   />
                 </div>
-
-                <div className="col-md-8">
-                  <div className="card-body">
+                <div className="col-md-8 d-flex flex-column justify-content-between">
+                  <div className="card-body d-flex flex-column justify-content-between">
                     <div className="comList_main_card_title d-flex justify-content-between">
                       <h5 className="card-title mb-1">帶毛小孩遊花蓮 二日遊</h5>
                       <IoHeartOutline />
                     </div>
-                    <p className="comList_main_card_placeName_text card-text">
-                      北回歸線
-                    </p>
+                    <div>
+                      <p className="comList_main_card_placeName_text card-text mb-2">
+                        忘憂亭
+                      </p>
+                    </div>
                     <p className="card-text">
                       透過OH DOG CAT
                       購買吉貝島澎湖自由行，超級優惠價格一次搞定。水上活動玩到飽!
@@ -84,7 +86,7 @@ const CommunityList = () => {
                     </p>
                     <div className="comList_main_card_bottom_text card-text d-flex justify-content-between">
                       <p className="comList_main_card_locate_text card-text d-flex align-items-center">
-                        <IoLocationSharp />
+                        <TiLocation />
                         花蓮
                       </p>
                       <p className="comList_main_card_like_text card-text d-flex align-items-center">
@@ -96,8 +98,8 @@ const CommunityList = () => {
               </div>
             </div>
             {/* 3 */}
-            <div className="comList_main_card row card border-primary mb-4 border border-2">
-              <div className="row g-0">
+            <div className="comList_main_card row card border-primary mb-4 border border-2 ">
+              <div className="row g-0 ">
                 <div className="col-md-4">
                   <img
                     src={test_photo}
@@ -105,16 +107,17 @@ const CommunityList = () => {
                     alt="..."
                   />
                 </div>
-
-                <div className="col-md-8">
-                  <div className="card-body">
+                <div className="col-md-8 d-flex flex-column justify-content-between">
+                  <div className="card-body d-flex flex-column justify-content-between">
                     <div className="comList_main_card_title d-flex justify-content-between">
                       <h5 className="card-title mb-1">帶毛小孩遊花蓮 二日遊</h5>
                       <IoHeartOutline />
                     </div>
-                    <p className="comList_main_card_placeName_text card-text">
-                      七星潭風景區
-                    </p>
+                    <div>
+                      <p className="comList_main_card_placeName_text card-text mb-2">
+                        忘憂亭
+                      </p>
+                    </div>
                     <p className="card-text">
                       透過OH DOG CAT
                       購買吉貝島澎湖自由行，超級優惠價格一次搞定。水上活動玩到飽!
@@ -122,7 +125,7 @@ const CommunityList = () => {
                     </p>
                     <div className="comList_main_card_bottom_text card-text d-flex justify-content-between">
                       <p className="comList_main_card_locate_text card-text d-flex align-items-center">
-                        <IoLocationSharp />
+                        <TiLocation />
                         花蓮
                       </p>
                       <p className="comList_main_card_like_text card-text d-flex align-items-center">
@@ -134,8 +137,8 @@ const CommunityList = () => {
               </div>
             </div>
             {/* 4 */}
-            <div className="comList_main_card row card border-primary mb-4 border border-2">
-              <div className="row g-0">
+            <div className="comList_main_card row card border-primary mb-4 border border-2 ">
+              <div className="row g-0 ">
                 <div className="col-md-4">
                   <img
                     src={test_photo2}
@@ -143,16 +146,17 @@ const CommunityList = () => {
                     alt="..."
                   />
                 </div>
-
-                <div className="col-md-8">
-                  <div className="card-body">
+                <div className="col-md-8 d-flex flex-column justify-content-between">
+                  <div className="card-body d-flex flex-column justify-content-between">
                     <div className="comList_main_card_title d-flex justify-content-between">
                       <h5 className="card-title mb-1">帶毛小孩遊花蓮 二日遊</h5>
                       <IoHeartOutline />
                     </div>
-                    <p className="comList_main_card_placeName_text card-text">
-                      瑞穗牧場
-                    </p>
+                    <div>
+                      <p className="comList_main_card_placeName_text card-text mb-2">
+                        忘憂亭
+                      </p>
+                    </div>
                     <p className="card-text">
                       透過OH DOG CAT
                       購買吉貝島澎湖自由行，超級優惠價格一次搞定。水上活動玩到飽!
@@ -160,7 +164,7 @@ const CommunityList = () => {
                     </p>
                     <div className="comList_main_card_bottom_text card-text d-flex justify-content-between">
                       <p className="comList_main_card_locate_text card-text d-flex align-items-center">
-                        <IoLocationSharp />
+                        <TiLocation />
                         花蓮
                       </p>
                       <p className="comList_main_card_like_text card-text d-flex align-items-center">
