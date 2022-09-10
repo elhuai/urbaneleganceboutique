@@ -3,6 +3,7 @@ import React from 'react';
 import './CommunityManagement.scss';
 import { Tabs, Tab } from 'react-bootstrap';
 import dogIcon from '../../images/travel_dog_paws.svg';
+import {Link} from 'react-router-dom';
 
 function CommunityManagement() {
   return (
@@ -53,7 +54,7 @@ function CommunityManagement() {
                   <div className="post_edit_button d-flex">
                     <button className="btn post_edit my-1 ">編輯</button>
                     <button className="btn post_delete my-1">刪除</button>
-                    <button className="btn check_post my-1">查看貼文</button>
+                    <Link to="/PostManagement" ><button className="btn check_post my-1" >查看貼文</button></Link>
                   </div>
                 </div>
                 <div className="post_status">發布中</div>
