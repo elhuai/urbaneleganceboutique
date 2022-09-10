@@ -6,6 +6,7 @@ import Homepage from './pages/HomePage';
 import ExamplePage from './pages/ExamplePage';
 import Travel from './pages/Travel';
 import CommunityList from './pages/Community/';
+import CommunityHome from './pages/CommunityHome';
 import AdminCenterPage from './pages/AdminCenter/AdminCenterPage';
 import 'swiper/scss';
 import './styles/style.scss';
@@ -19,6 +20,7 @@ function App() {
         <Route path="example" element={<ExamplePage />} />
         <Route path="/travel" element={<Travel />} />
         <Route path="/communitylist" element={<CommunityList />} />
+        <Route path="/communityhome" element={<CommunityHome />} />
         <Route path="/adminCenter" element={<AdminCenterPage />} />
       </Routes>
       <Footer />
