@@ -131,23 +131,27 @@ $font-weight: 1000;
   }
 }
 
-/*RRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRrRWD*/
-@media screen and (max-width: 768px) {
-  .header_product,
-  .header_main,
-  .header_dog-logo,
-  .header_community {
-    display: none;
-  }
-  .header_main_Body {
-    height: 0px;
-  }
-  .header_main {
-    height: 67px;
-    padding: 0 1rem;
-    .header_dog-logo {
-      margin-left: 30px;
-      height: 80px;
+
+.header_rwd_menu_Offcanvas {
+  .header_rwd_tittle {
+    position: relative;
+    background-color: #FEEFC3;
+    justify-content: center;
+    button {
+      position: absolute;
+      top: 12px;
+      left: 12px;
+      padding: 8px;
+      margin: 0;
+      &:active, &:focus {
+        border: 0;
+        box-shadow: none;
+      }
+    }
+    .header_rwd_menu_imgWrap {
+      img {
+        height: 180px;
+      }
     }
   }
   .offcanvas-body {
@@ -175,19 +179,11 @@ $font-weight: 1000;
   }
 }
 
-  .header_Icon {
-    position: relative;
-    z-index: 10000;
-    margin-left: 275px;
-    margin-top: 10px;
-    bottom: 10px;
-    right:-275px;
-    top: 12px;
-    svg {
-      color: $graycolor;
-      width: 20px;
-      height: 20px;
-      // margin: 0 1px;
+// === RWD ===
+@media screen and (max-width: 1400px) {
+  .header_main_body  {
+    .header_main {
+      padding: 0 40px;
     }
     .header_product {
       &::after {
@@ -199,7 +195,7 @@ $font-weight: 1000;
       }
     } 
   }
-
+}
 
 @media screen and (max-width: 1080px) {
   .header_main_body {
@@ -306,5 +302,3 @@ $font-weight: 1000;
     }
   }
 }
-
-

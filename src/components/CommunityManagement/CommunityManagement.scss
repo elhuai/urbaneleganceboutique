@@ -53,14 +53,14 @@ ul.communityManagementTab {
     height: 700px; 
     overflow-y: scroll;
     & li {
-    background-color: $list-color-hover;
+    border-bottom: 1px solid #E7E7E9;
     margin-top: 10px;
     border-radius: 10px;
     width: 95%;
     height: 150px;
     list-style: none;
     &:hover{
-      background-color: darken($list-color-hover,5%);
+      background-color: #feefc3;
       transition: .5;
     }
   }
@@ -131,13 +131,13 @@ ul.communityManagementTab {
     overflow-y: scroll;
     & li {
     margin-top: 10px;
-    border-bottom: 1px solid $line-color--light;
+    border-bottom: 1px solid #E7E7E9;
     border-radius: 8px;
     width: 95%;
     height: 140px;
     list-style: none;
     &:hover{
-      background-color:$button-color-hover;
+      background-color:#feefc3;
     }
     // background-color: #FEEFC3;
     .post_description {
@@ -190,26 +190,27 @@ ul.communityManagementTab {
 }
 
   .post_new_button button{
-    width: 80px;
-    height: 35px;
+    width: 120px;
+    height: 50px;
     border-radius: 8px;
-    background-color: $button-color-remove;
-    color: white;
-    font-size: 14px;
-    margin-right: 8px;
-    text-align: center;
-    border:none;
-    &:focus {
-      border:none;
-      color:white;
-      background-color: $button-color-remove;  
-    }
-   &:hover {
-      border:none;
-      color:white;
-      background-color: darken($button-color-remove,5%);
+    border: none;
+    background-color: white;
+    color: black;
+    font-size: 20px;
+    margin-top:30px;
+    position: relative;
+    left: -170px;
+    bottom: 5px;
+    align-items: center;
+    &:hover{
+      background-color: #feefc3;
     }
   
+}
+.edit_icon{
+  margin-right: 5px;
+  color: $main-color;
+  font-size: 12px;
 }
 
 // 追蹤貼文列表
@@ -234,10 +235,10 @@ ul.communityManagementTab {
     }
   }}}
 
-  .d-flex .post_new {
-    color:white;
-    margin-right: 50px;
-    margin-top: 10px;
-    border: none;
+  // .d-flex .post_new {
+  //   color:white;
+  //   margin-right: 50px;
+  //   margin-top: 10px;
+  //   border: none;
 
-  }
+  // }

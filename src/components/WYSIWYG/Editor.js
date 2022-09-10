@@ -9,7 +9,7 @@ import Italic from '@ckeditor/ckeditor5-basic-styles/src/italic';
 import Essentials from '@ckeditor/ckeditor5-essentials/src/essentials';
 import Paragraph from '@ckeditor/ckeditor5-paragraph/src/paragraph';
 
-function WYSIWYG() {
+function Editor() {
   return (
     <div className="App">
       <CKEditorContext context={Context}>
@@ -44,4 +44,4 @@ function WYSIWYG() {
   );
 }
 
-export default WYSIWYG;
+export default Editor;
