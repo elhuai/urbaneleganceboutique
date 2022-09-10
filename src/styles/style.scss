@@ -1,7 +1,6 @@
-
-
 @import './custom_variables';
 @import '../../node_modules/bootstrap/scss/bootstrap.scss';
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans&display=swap');
 
 * {
   margin: 0;
@@ -9,17 +8,17 @@
   box-sizing: border-box;
   -webkit-user-drag: none;
 }
+
 body {
-  font-family: 'Roboto', sans-serif !important;
+  font-family: 'Open Sans', sans-serif !important;
 }
 
 .app {
   margin-top: 80px;
 }
+
 @media screen and (max-width: 768px) {
   .app {
     margin-top: 80px;
   }
 }
-
-
