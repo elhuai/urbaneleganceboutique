@@ -1,7 +1,7 @@
-import React from "react";
-import { Link } from "react-router-dom";
+import React from 'react';
+import { Link } from 'react-router-dom';
 // import AdminCenter from "../../components/AdminCenter/AdminCenter";
-import "./PersonalHomePage.scss";
+import './PersonalHomePage.scss';
 function PersonalHomePage() {
   return (
     <>
@@ -37,8 +37,12 @@ function PersonalHomePage() {
                   ></img>
                 </div>
                 <div className="pet_info ms-4 d-flex flex-column">
-                  <div className=""><p>Doggy</p></div>
-                  <div className=""><p>拉布拉多</p></div>
+                  <div className="">
+                    <p>Doggy</p>
+                  </div>
+                  <div className="">
+                    <p>拉布拉多</p>
+                  </div>
                 </div>
               </div>
             </div>
@@ -47,7 +51,10 @@ function PersonalHomePage() {
       </div>
       <div className="my_trip_list"></div>
       <div className="my_post_list"></div>
-      <Link to="/AdminCenterPage"> testing button navigate to admin center --> community manangment</Link>
+      <Link to="/AdminCenterPage">
+        {' '}
+        testing button navigate to admin center -- community manangment
+      </Link>
     </>
   );
 }
