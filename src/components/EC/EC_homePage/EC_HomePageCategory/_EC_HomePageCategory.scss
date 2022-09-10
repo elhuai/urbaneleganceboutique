@@ -1,0 +1,17 @@
+.ec_category{
+  margin: 0 200px;
+  &_main_title{
+    font-weight: 700;
+  }
+  // &_card{
+
+  // }
+  &_img{
+    width:100px;
+    height: 100px;
+  }
+  &_name{
+    font-size: 1rem;
+    font-weight: 900;
+  }
+}

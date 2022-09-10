@@ -5,9 +5,8 @@ import SearchListSearchFilter from '../../../components/EC/EC_ProductFilter/Prod
 function SearchList() {
   return (
     <>
-    <SearchBar/>
-    <SearchListSearchFilter/>
-    
+      <SearchBar />
+      <SearchListSearchFilter />
     </>
   );
 }

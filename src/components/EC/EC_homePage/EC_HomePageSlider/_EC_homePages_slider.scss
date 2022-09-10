@@ -1,0 +1,23 @@
+$fmain_color: #ffc200; // 主色
+
+.ecHomePageSwiper {
+  height: 100%;
+  margin: .8rem 0;
+
+  .swiper-pagination-bullet {
+    background:$fmain_color
+  }
+}
+
+
+.ecHomePage_img {
+  height: 500px;
+  width: 1440px;
+  border-radius: 15px;
+  overflow: hidden;
+
+  img {
+    width: 100%;
+    height: 100%;
+  }
+}
