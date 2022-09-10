@@ -1,1 +1,1 @@
-export {default} from './EC_productFilter'
+export { default } from './EC_productFilter';

@@ -15,7 +15,7 @@ import 'swiper/scss';
 import 'swiper/css/bundle';
 import './styles/style.scss';
 
-function App() { 
+function App() {
   return (
     <div className="app">
       <Header />

@@ -4,7 +4,7 @@ import { FaUser } from 'react-icons/fa';
 import { IoCart } from 'react-icons/io5';
 import React from 'react';
 import RwdMenu from '../Menu/RwdMenu';
-import { NavLink } from 'react-router-dom'
+import { NavLink } from 'react-router-dom';
 import { AiOutlineUser } from 'react-icons/ai';
 import { AiOutlineShoppingCart } from 'react-icons/ai';
 import './_Header.scss';
@@ -22,17 +22,17 @@ const Header = () => {
         </div>
         <div className="header_tittle d-flex justify-content-center align-items-center w-100 flex-shrink-1">
           <MenuLink />
-        
-        <div className="  d-flex header_Icon align-items-center justify-content-end ">
-          <Link to="/pathcut" className="header_Icon_cart">
-            <IoCart />
-          </Link>
-          {/* TODO: ICON更改 */}
-          <Link to="/adminCenter" className="header_Icon_user">
-            {/* <HiUser /> */}
-            <FaUser />
-          </Link>
-        </div>
+
+          <div className="  d-flex header_Icon align-items-center justify-content-end ">
+            <Link to="/pathcut" className="header_Icon_cart">
+              <IoCart />
+            </Link>
+            {/* TODO: ICON更改 */}
+            <Link to="/adminCenter" className="header_Icon_user">
+              {/* <HiUser /> */}
+              <FaUser />
+            </Link>
+          </div>
         </div>
       </div>
     </div>
