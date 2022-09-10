@@ -1,4 +1,4 @@
-import AdminCenter from '../../components/AdminCenter/AdminCenter';
+import AdminCenter from '../../components/adminCenter/AdminCenter';
 import CommunityManagement from '../../components/CommunityManagement/CommunityManagement';
 // import { Link } from 'react-router-dom';
 import React from 'react';
