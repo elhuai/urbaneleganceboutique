@@ -37,7 +37,10 @@ const AdminCenter = () => {
           <li className="">
             <Link to="/" className="text-decoration-none admin_select d-flex">
               <div className="d-flex align-items-center">
-                <FiFile className="icon_size d-block mt-3 ms-1 " alt="orderIcon"></FiFile>
+                <FiFile
+                  className="icon_size d-block mt-3 ms-1 "
+                  alt="orderIcon"
+                ></FiFile>
                 <p className="d-block mt-3">我的訂單</p>
               </div>
             </Link>

@@ -1,0 +1,160 @@
+
+$bubble-color: (
+  1: #FEEFC3,
+  2: #E7E7E9,
+  3: #ef7b70a8,
+  4: #D5EEEE,
+  5: #FEEFC3
+);
+
+$top: (
+  color-1: 320px,
+  color-2: 480px,
+  color-3: 60px,
+  color-4: 420px,
+  color-5: 120px,
+  photo-1: 330px,
+  photo-2: 150px,
+  photo-3: 290px,
+  photo-4: 60px,
+  photo-5: 300px
+);
+
+$left: (
+  color-1: 0px,
+  color-2: 380px,
+  photo-1: 150px,
+  photo-2: 400px,
+  photo-3: 570px,
+  
+);
+
+$right: (
+  color-3: 550px,
+  color-4: 300px,
+  color-5: 0px,
+  photo-4: 200px,
+  photo-5: 0
+);
+
+$size: (
+  color-1: 50px,
+  color-2: 50px,
+  color-3: 40px,
+  color-4: 70px,
+  color-5: 80px,
+  photo-1: 180px,
+  photo-2: 150px,
+  photo-3: 250px,
+  photo-4: 220px,
+  photo-5: 180px
+);
+
+@mixin bubbleItem {
+  @for $num from 1 through 5 {
+    &_color#{$num} {
+      @if ($num>2) {
+        right: map-get($right, color-#{$num});;
+      } @else {
+        left: map-get($left, color-#{$num});
+      }
+      top: map-get($top, color-#{$num});
+      width: map-get($size, color-#{$num});
+      height: map-get($size, color-#{$num});
+      background-color: map-get($bubble-color, $num);
+      animation: bubble-#{$num * (-1) +6} #{$num%3 +10}s linear 0s infinite;
+    }
+    &_photo#{$num} {
+      
+      @if ($num>3) {
+        right: map-get($right, photo-#{$num});
+      } @else {
+        left: map-get($left, photo-#{$num});
+      }
+      top: map-get($top, photo-#{$num});
+      width: map-get($size, photo-#{$num});
+      height: map-get($size, photo-#{$num});
+      animation: bubble-#{$num} #{$num%3 +10}s linear 0s infinite;
+      > div {
+        position: relative;
+        background: url('../../../images/home_community_photo#{$num}.jpg') no-repeat center / contain;
+        width: 100%;
+        height: 100%;
+        border-radius: 50%;
+        z-index: 99;
+        transition: .3s linear;
+      }
+    }
+  }
+}
+
+@mixin bubbleKeyframe($num, $range ,$turn){
+  @keyframes bubble-#{$num} {
+    0% {
+      transform: translate(#{$range}px, #{$range}px) translate(-10px, -10px) rotate(0)
+      translate(-#{$range}px, -#{$range}px) translate(10px, 10px) rotate(#{$turn}turn);
+    }
+    100% {
+      transform: translate(#{$range}px, #{$range}px) translate(-10px, -10px) rotate(#{$turn}turn)
+      translate(-#{$range}px, -#{$range}px) translate(10px, 10px) rotate(0);
+    }
+  }
+}
+
+
+
+.home_main{
+  .community_bubble {
+    height: 480px;
+    > div {
+      position: absolute;
+      border-radius: 50%;
+    }
+    @include bubbleItem;
+    &_photo{
+      box-shadow: 2px 4px 8px rgba(0, 0, 0, .2);
+      &::after {
+        content: '';
+        position: absolute;
+        background-color: #FCD571;
+        width: 100%;
+        height: 100%;
+        border-radius: 50%;
+        z-index: 9;
+        transform: translate(0%, -100%);
+        transition: .3s linear;
+      }
+      &:hover {
+        &::after {
+          opacity: 1;
+          transform: translate(calc(0% + 6px), calc(-100% + 6px));
+        }
+        > div {
+          transform: translate(-6px, -6px);
+        }
+      }
+    }
+    // &_photo1 {
+    //   animation: bubble-2  linear 0s infinite
+    // }
+  }
+}
+
+@include bubbleKeyframe(1, 20, 2);
+@include bubbleKeyframe(2, 25, -1);
+@include bubbleKeyframe(3, 20, 1);
+@include bubbleKeyframe(4, 20, -2);
+@include bubbleKeyframe(5, 30, 1);
+
+
+
+
+
+// @keyframes zoom {
+//   0%, 100% {
+//     transform: ;
+//   }
+//   50% {
+//     transform: ;
+//   }
+// }

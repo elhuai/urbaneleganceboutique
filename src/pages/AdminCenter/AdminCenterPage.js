@@ -7,7 +7,7 @@ import './_AdminCenterPage.scss';
 const AdminCenterPage = () => {
   return (
     <div
-      style={{ minHeight: '' }}
+      style={{ minHeight: '680px' }}
       className="admin_follower_position d-flex justify-content-center"
     >
       <AdminCenter />

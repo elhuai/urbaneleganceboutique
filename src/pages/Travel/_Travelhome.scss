@@ -123,7 +123,27 @@ $look_line-height: 53px;
     margin-top: 3.8rem;
   }
 }
-.travel_goPlay_tittle {
+.Travel_input_icondiv {
+  width: 0px;
+  height: 10px;
+}
+.Travel_input_mapicon {
+  position: relative;
+  width: 25px;
+  height: 22px;
+  margin-top: 13px;
+  margin-left: 15px;
+}
+.Travel_input_Area {
+  padding: 0 4rem;
+  height: 3rem;
+}
+.Travel_input_searchBar {
+  margin-top: 4rem;
+  margin-left: 4.5rem;
+}
+
+.Travel_goPlay_tittle {
   margin-top: 4rem;
   font-weight: $font-weight;
   font-style: normal;
@@ -161,8 +181,9 @@ $look_line-height: 53px;
   margin-bottom: 2rem;
 }
 .travel_Tab_Swiper {
+  // TODO: height 怪怪的記得調整 盡量別important
   width: 410px !important;
-  height: 420px;
+  height: 410px !important;
 }
 .travel_Swiper_goPlay_Swiper {
   width: 360px !important;

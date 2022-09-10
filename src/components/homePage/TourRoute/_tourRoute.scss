@@ -1,0 +1,90 @@
+@mixin media-1280 {
+  @media screen and (max-width: 1280px) {
+    @content;
+  } 
+}
+
+@mixin media-pad {
+  @media screen and (max-width: 980px) {
+    @content;
+  }
+}
+@mixin media-phone {
+  @media screen and (max-width: 485px) {
+    @content;
+  }
+}
+
+$left: (
+  1: 15%,
+  2: 41%,
+  3: 65%,
+  4: 0,
+  5: 70%,
+  6: 48%,
+  7: 25%,
+  8: 4%,
+);
+
+$top: (
+  1: calc(30% + 40px),
+  2: calc(30% + 40px),
+  3: calc(30% + 40px),
+  4: 65%,
+  5: calc(75% + 40px),
+  6: calc(75% + 40px),
+  7: calc(75% + 40px),
+  8: calc(75% + 40px),
+);
+
+
+@mixin route-item {
+  &_item {
+    width: 200px;
+    height: 230px;
+    text-align: center;
+    button {
+      padding: 8px 16px;
+      transform: translateY(-100%);
+      z-index: 99;
+    }
+  }
+  
+  @for $i from 1 through 8 {
+    &_item#{$i} {
+      @if ($i == 4) {
+        right: 0%;
+        transform: translate(0%, -100%);
+        div {
+          background: url('../../../images/home_tour_cute#{$i}.png') no-repeat center 18% / 170px;
+        }
+      } @else {
+        left: map-get($left, $i);
+        transform: translate(-00%, -100%);
+        div {
+          background: url('../../../images/home_tour_cute#{$i}.png') no-repeat center -10% / 170px;
+        }
+      };
+      top: map-get($top, $i );
+      z-index: calc(20 - $i);
+    }
+  }
+}
+
+.home_main{
+  .tour_route {
+    background: url(../../../images/home_tour_route.png) no-repeat 20px center / contain;
+    height: calc((1280px - 120px) * 0.40852130325);
+    @include route-item;
+  }
+}
+
+
+@include media-1280 {
+  .home_main {
+    .tour_route {
+      background: url(../../../images/home_tour_route.png) no-repeat 20px center / contain;
+      height: calc((100vw - 120px) * 0.40852130325);
+    }
+  }
+} 

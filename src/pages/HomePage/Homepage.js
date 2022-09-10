@@ -1,154 +1,177 @@
+import React, { useState, useEffect } from 'react';
+import HeroSearch from '../../components/homePage/HeroSearch';
+import NewsList from '../../components/homePage/NewsList';
+import TourRoute from '../../components/homePage/TourRoute';
+import LeaderBoardSlide from '../../components/homePage/LeaderBoardSlide';
+import SocialBubble from '../../components/homePage/SocialBubble';
+import TravelCard from '../../components/homePage/TravelCard/';
+import FakeMap from '../../images/home_travel_map.png';
+import './homepage.scss';
+
 const Homepage = () => {
+  const [heroAnimete, setHeroAnimete] = useState(false);
+  const [heroActive, setHeroActive] = useState(false);
+  const [newsActive, setNewsActive] = useState(1);
+
+  const handleHeroActive = (num) => {
+    setHeroActive(num);
+  };
+  const handleHeroAnimete = () => {
+    setHeroAnimete(true);
+  };
+
+  useEffect(() => {
+    if (!heroAnimete) return;
+    setTimeout(() => {
+      setHeroAnimete(false);
+    }, 1500);
+  }, [heroAnimete]);
   return (
-    <>
-      <h1>首頁</h1>
-      <h1>首頁</h1>
-      <h1>首頁</h1>
-      <h1>首頁</h1>
-      <h1>首頁</h1>
-      <h1>首頁</h1>
-      <h1>首頁</h1>
-      <h1>首頁</h1>
-    </>
+    <div className="home_main">
+      <div className="home_section_hero">
+        <div className="section_container">
+          <div
+            className={`hero_text_wrap hero_text_animation${heroActive}`}
+          ></div>
+          <div className="hero_search_wrap">
+            <HeroSearch
+              handleHeroAnimete={handleHeroAnimete}
+              handleHeroActive={handleHeroActive}
+            />
+          </div>
+          <div
+            className={`hero_animation ${heroAnimete ? 'active' : ''}`}
+          ></div>
+        </div>
+      </div>
+      <div className="home_section_news">
+        <div className="section_container justify-content-between d-flex">
+          <div className="news_sidebar">
+            <div className="news_sidebar_title">
+              <p>走在時尚最尖端</p>
+              <h2>最新情報</h2>
+            </div>
+            <div className="news_sidebar_nav">
+              <ul className="list-unstyled m-0">
+                <li className={newsActive === 1 ? 'active' : ''}>
+                  <button
+                    onClick={() => {
+                      setNewsActive(1);
+                    }}
+                  >
+                    旅遊必備商品
+                  </button>
+                </li>
+                <li className={newsActive === 2 ? 'active' : ''}>
+                  <button
+                    onClick={() => {
+                      setNewsActive(2);
+                    }}
+                  >
+                    頭好壯壯買罐罐
+                  </button>
+                </li>
+                <li className={newsActive === 3 ? 'active' : ''}>
+                  <button
+                    onClick={() => {
+                      setNewsActive(3);
+                    }}
+                  >
+                    點了狗狗會換動作
+                  </button>
+                </li>
+                <li className={newsActive === 4 ? 'active' : ''}>
+                  <button
+                    onClick={() => {
+                      setNewsActive(4);
+                    }}
+                  >
+                    圖片還沒畫嗚嗚
+                  </button>
+                </li>
+              </ul>
+            </div>
+          </div>
+          <div className="news_dog_img align-self-center">
+            <div className="dog"></div>
+          </div>
+          <div className="news_list">
+            <NewsList active={newsActive} />
+          </div>
+        </div>
+      </div>
+      <div className="home_section_tour">
+        <div className="section_container">
+          <div className="tour_title">
+            <p>跟著小編一起玩</p>
+            <h2>小道消息報你知</h2>
+          </div>
+          <TourRoute />
+        </div>
+      </div>
+      <div className="home_section_leaderboard">
+        <div className="section_container">
+          <div className="leaderboard_title">
+            <p>銷售排行榜癡心推薦</p>
+            <h2>排行榜</h2>
+          </div>
+        </div>
+        <div className="leaderboard_slide">
+          <LeaderBoardSlide />
+        </div>
+      </div>
+      <div className="home_section_community">
+        <div className="section_container position-relative d-flex">
+          <div className="community_title flex-shrink-0">
+            <p>社群分享最新消息</p>
+            <h2>最夯寵物網美</h2>
+            <span>
+              揭曉近一個月的 TOP 50 寵物 KOL
+              <br />
+              現在最流行的「寵物網紅」你追蹤了嗎？
+            </span>
+            <br />
+            <div>
+              <button className="w-100">來去看看</button>
+            </div>
+          </div>
+          <SocialBubble />
+        </div>
+      </div>
+      <div className="home_section_travel">
+        <div className="home_section_travel_bg">
+          <div className="section_container">
+            <div className="travel_header_wrap d-flex gap-5">
+              <div className="travel_title">
+                <p>哪裡好玩報給你</p>
+                <h2>行程規劃</h2>
+              </div>
+              <div className="travel_search flex-fill align-self-end">
+                <input
+                  className="form-control"
+                  type="text"
+                  placeholder="請輸入地點"
+                />
+              </div>
+            </div>
+            <div className="travel_body_wrap d-flex gap-4 w-100">
+              <div className="travel_map">
+                <div className="obj-fit">
+                  <img src={FakeMap} alt="" />
+                </div>
+              </div>
+              <div className="travel_content d-flex flex-column">
+                <div className="travel_content_card flex-fill">
+                  <TravelCard />
+                </div>
+                <button className="w-100">開始規劃你的行程</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
   );
-}; 
+};
 
 export default Homepage;
-
-// import { useState } from 'react';
-// import axios from 'axios';
-// import { API_URL } from '../../utils/config';
-// console.log(API_URL);
-
-// const Homepage = () => {
-//   const [member, setMember] = useState({
-//     email: '21313231@admdasdklSd.com',
-//     name: 'Ya',
-//     password: '123456789',
-//     confirmPassword: '123456789',
-//     photo: '',
-//   });
-//   function handleChange(e) {
-//     let newMember = { ...member };
-//     newMember[e.target.name] = e.target.value;
-//     setMember(newMember);
-//   }
-
-//   async function handleSubmit(e) {
-//     // 把預設行為關掉
-//     e.preventDefault();
-//     try {
-//       // 方法1: 沒有圖片上傳、單純 post 一個 json 物件
-//       // let response = await axios.post(`${API_URL}/auth/register`, member);
-//       // console.log(response.data);
-
-//       // 方法2: 要上傳圖片 FormData
-//       let formData = new FormData();
-//       formData.append('email', member.email);
-//       formData.append('name', member.name);
-//       formData.append('password', member.password);
-//       formData.append('confirmPassword', member.confirmPassword);
-//       formData.append('photo', member.photo);
-//       let response = await axios.post(`${API_URL}/auth/register`, formData);
-//       console.log(response.data);
-//     } catch (e) {
-//       console.error('register', e);
-//     }
-//   }
-//   function handleUpload(e) {
-//     // type=file 的 input
-//     // 選好的檔案是放在 e.target.files[0]
-//     setMember({ ...member, photo: e.target.files[0] });
-//   }
-
-//   return (
-//     <form className="bg-purple-100 h-screen md:h-full md:my-20 md:mx-16 lg:mx-28 xl:mx-40 py-16 md:py-8 px-24 text-gray-800 md:shadow md:rounded flex flex-col md:justify-center">
-//       <h2 className="flex justify-center text-3xl mb-6 border-b-2 pb-2 border-gray-300">
-//         註冊帳戶
-//       </h2>
-//       <div className="mb-4 text-2xl">
-//         <label htmlFor="name" className="flex mb-2 w-32">
-//           Email
-//         </label>
-//         <input
-//           className="w-full border-2 border-purple-200 rounded-md h-10 focus:outline-none focus:border-purple-400 px-2"
-//           type="text"
-//           id="email"
-//           name="email"
-//           value={member.email}
-//           // onChange={handleChange}
-//           // onChange={(e) => {
-//           //   // 原生的其實有改變
-//           //   console.log(e.target.value, e.target.name);
-//           //   // 不能直接去動 state
-//           //   // (X) member.email = e.target.value;
-//           //   // 把原本的 member 複製一個出來
-//           //   let newMember = { ...member };
-//           //   newMember.email = e.target.value;
-//           //   setMember(newMember);
-//           // }}
-//           onChange={handleChange}
-//         />
-//       </div>
-//       <div className="mb-4 text-2xl">
-//         <label htmlFor="name" className="flex mb-2 w-32">
-//           姓名
-//         </label>
-//         <input
-//           className="w-full border-2 border-purple-200 rounded-md h-10 focus:outline-none focus:border-purple-400 px-2"
-//           type="text"
-//           id="name"
-//           name="name"
-//           value={member.name}
-//           onChange={handleChange}
-//         />
-//       </div>
-//       <div className="mb-4 text-2xl">
-//         <label htmlFor="password" className="flex mb-2 w-16">
-//           密碼
-//         </label>
-//         <input
-//           className="w-full border-2 border-purple-200 rounded-md h-10 focus:outline-none focus:border-purple-400 px-2"
-//           type="password"
-//           id="password"
-//           name="password"
-//           value={member.password}
-//           onChange={handleChange}
-//         />
-//       </div>
-//       <div className="mb-8 text-2xl">
-//         <label htmlFor="password" className="flex mb-2 w-32">
-//           確認密碼
-//         </label>
-//         <input
-//           className="w-full border-2 border-purple-200 rounded-md h-10 focus:outline-none focus:border-purple-400 px-2"
-//           type="password"
-//           id="confirmPassword"
-//           name="confirmPassword"
-//           value={member.confirmPassword}
-//           onChange={handleChange}
-//         />
-//       </div>
-//       <div className="mb-8 text-2xl">
-//         <label htmlFor="photo" className="flex mb-2 w-32">
-//           圖片
-//         </label>
-//         <input
-//           className="w-full border-2 border-purple-200 rounded-md h-10 focus:outline-none focus:border-purple-400 px-2"
-//           type="file"
-//           id="photo"
-//           name="photo"
-//           onChange={handleUpload}
-//         />
-//       </div>
-//       <button
-//         className="text-xl bg-indigo-300 px-4 py-2.5 rounded hover:bg-indigo-400 transition duration-200 ease-in"
-//         onClick={handleSubmit}
-//       >
-//         註冊
-//       </button>
-//     </form>
-//   );
-// };
-
-// export default Homepage;
