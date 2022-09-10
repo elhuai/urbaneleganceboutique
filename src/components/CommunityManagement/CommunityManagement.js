@@ -3,6 +3,7 @@ import React from 'react';
 import './CommunityManagement.scss';
 import { Tabs, Tab } from 'react-bootstrap';
 import dogIcon from '../../images/travel_dog_paws.svg';
+import { Link } from 'react';
 
 function CommunityManagement() {
   return (
