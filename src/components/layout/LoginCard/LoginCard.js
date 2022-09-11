@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import './_loginCard.scss';
 
-const LoginCard = ({ isLogin, confirm, setAuth }) => {
+const LoginCard = ({ isLogin, confirm, setUser }) => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
 
@@ -13,7 +13,7 @@ const LoginCard = ({ isLogin, confirm, setAuth }) => {
         className="login_card_form"
         onSubmit={(e) => {
           e.preventDefault();
-          setAuth((oldStatus) => ({ ...oldStatus, status: true }));
+          setUser((oldStatus) => ({ ...oldStatus, auth: true }));
           confirm();
         }}
       >
@@ -57,7 +57,7 @@ const LoginCard = ({ isLogin, confirm, setAuth }) => {
         className="login_card_button"
         type="button"
         onClick={() => {
-          setAuth((oldStatus) => ({ ...oldStatus, status: false }));
+          setUser((oldStatus) => ({ ...oldStatus, auth: false }));
           confirm();
         }}
       >

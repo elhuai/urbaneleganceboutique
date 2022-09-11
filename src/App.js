@@ -8,7 +8,7 @@ import Travel from './pages/Travel';
 import CommunityList from './pages/Community/';
 import AdminCenterPage from './pages/AdminCenter/AdminCenterPage';
 import Travelmap from './pages/Travel_map';
-import { AuthProvider } from './hooks/useAuth';
+import { UserInfoProvider } from './hooks/useUserInfo';
 
 import 'swiper/css/bundle';
 import './styles/style.scss';
@@ -16,7 +16,7 @@ import './styles/style.scss';
 function App() {
   return (
     <div className="app">
-      <AuthProvider>
+      <UserInfoProvider>
         <Header />
         <Routes>
           <Route path="/" element={<Homepage />} />
@@ -27,7 +27,7 @@ function App() {
           <Route path="/adminCenter" element={<AdminCenterPage />} />
         </Routes>
         <Footer />
-      </AuthProvider>
+      </UserInfoProvider>
     </div>
   );
 }

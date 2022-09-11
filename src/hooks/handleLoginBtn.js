@@ -3,7 +3,7 @@ import Swal from 'sweetalert2';
 import withReactContent from 'sweetalert2-react-content';
 import LoginCard from '../components/layout/LoginCard/LoginCard';
 
-export const handleLoginBtn = (isLogin, setAuth) => {
+export const handleLoginBtn = (isLogin, setUser) => {
   const loginCard = withReactContent(Swal);
   loginCard
     .fire({
@@ -11,7 +11,7 @@ export const handleLoginBtn = (isLogin, setAuth) => {
         <LoginCard
           isLogin={isLogin}
           confirm={loginCard.clickConfirm}
-          setAuth={setAuth}
+          setUser={setUser}
         />
       ),
       showConfirmButton: false,

@@ -7,13 +7,13 @@ import { Link } from 'react-router-dom';
 import RwdMenu from '../Menu/RwdMenu';
 import MenuLink from '../Menu/MenuLink';
 import { handleLoginBtn } from '../../../hooks/handleLoginBtn';
-import { useAuth } from '../../../hooks/useAuth';
+import { useUserInfo } from '../../../hooks/useUserInfo';
 import './_Header.scss';
 
 const Header = () => {
-  const { auth, setAuth } = useAuth();
+  const { user, setUser } = useUserInfo();
   const AuthBtn = () => {
-    if (auth.status) {
+    if (user.auth) {
       return (
         <>
           <Link to="/adminCenter" className="header_Icon_user">
@@ -21,7 +21,7 @@ const Header = () => {
           </Link>
           <div
             className="header_Icon_logout"
-            onClick={() => handleLoginBtn(false, setAuth)}
+            onClick={() => handleLoginBtn(false, setUser)}
           >
             <BiLogOut />
           </div>
@@ -31,7 +31,7 @@ const Header = () => {
     return (
       <div
         className="header_Icon_user"
-        onClick={() => handleLoginBtn(true, setAuth)}
+        onClick={() => handleLoginBtn(true, setUser)}
       >
         <FaUser />
       </div>
