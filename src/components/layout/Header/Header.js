@@ -24,7 +24,7 @@ const Header = () => {
             <IoCart />
           </Link>
           {/* TODO: ICON更改 */}
-          <Link to="/personalHomePage" className="header_Icon_user">
+          <Link to="/adminCenter" className="header_Icon_user">
             {/* <HiUser /> */}
             <FaUser />
           </Link>

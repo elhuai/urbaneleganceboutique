@@ -6,7 +6,7 @@ import { Link } from 'react-router-dom';
 import { BiLike } from 'react-icons/bi';
 import { MdLocationOn } from 'react-icons/md';
 import dogIcon from '../../images/travel_dog_paws.svg';
-import WYSIWYG from '../../components/WYSIWYG/WYSIWYG';
+import Editor from '../../components/WYSIWYG/Editor';
 // import { Swiper, SwiperSlide } from 'swiper/react';
 // import '../node_modules/react-draft-wysiwyg/dist/react-draft-wysiwyg.css';
 
@@ -51,8 +51,17 @@ function PostManagement() {
           </div>
           <hr></hr>
           <p>所見及所得區</p>
-          <WYSIWYG></WYSIWYG>
-
+          <Editor></Editor>
+          <div className="article_section">
+            <h5>
+              一年一度的大稻埕煙火秀即將登場！因應七夕情人節，每年夏天的大稻埕煙火總吸引大批民眾前往，精彩的花火倒映在水面上的絕美畫面真的不容錯過，接下來就來看看今年的大稻埕煙火時間、觀賞地點、活動內容，趕快跟著好朋友、伴侶一起籌劃一下如何度過難忘的浪漫夜晚吧！
+            </h5>
+            <h3>大稻埕情人節煙火</h3>
+            <h5>
+              2022大稻埕煙火以「愛，一直都在」為主題，包含480秒煙火秀、復古市集、以及抽獎活動，這次的煙火不僅引進「日本花火大會的變色花柱」，更將首次推出震撼的「水上爆破秀」！
+            </h5>
+            <img src="https://picsum.photos/200/300?random8" alt=""></img>
+          </div>
           <div className="post_map">
             <p>行程地圖</p>
             <div className="map_photo">
