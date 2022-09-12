@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import './PostWYSIWYGEdit.scss';
-// import coverPhoto from '../../images/test2.jpg';
+import CoverBackground from '../../images/postcover_background.jpg';
 import mapPhoto from '../../images/screenshop map_photo.png';
 // import { Link } from 'react-router-dom';
 // import { BiLike } from 'react-icons/bi';
@@ -61,7 +61,7 @@ function PostWYSIWYGEdit() {
             </div>
           </div>
           <div className="post_cover_photo d-flex flex-column justify-content-end align-items-end">
-            <img src={(preview)?(preview):(dogIcon)} alt=""></img>
+            <img src={(preview)?(preview):(CoverBackground)} alt=""></img>
             {/* <img src={require('../../images/footer92.jpg')} alt="Background"/> */}
             <label className="cover_photo_upload d-flex flex-column justify-content-center align-items-center">
               <MdPhotoSizeSelectActual className="cover_photo_upload_icon"></MdPhotoSizeSelectActual>

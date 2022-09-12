@@ -30,13 +30,16 @@ body {
     .post_cover_photo {
       object-fit: contain;
       width: 100%;
-      height: 300px;
+      height: 400px;
       background-color: $button-color-hover;
       border-radius: 8px;
       z-index: 1;
+      overflow: hidden;
       img {
+        display: flex;
+        justify-content: center;
         width: 100%;
-        height: 100%;
+        // height: 100%;
       }
       .cover_photo_upload {
         font-size: 1rem;
