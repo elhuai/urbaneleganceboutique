@@ -1,16 +1,16 @@
 import React from 'react';
-import './PostManagement.scss';
+import './PostWYSIWYG.scss';
 import coverPhoto from '../../images/test2.jpg';
 import mapPhoto from '../../images/screenshop map_photo.png';
 import { Link } from 'react-router-dom';
 import { BiLike } from 'react-icons/bi';
 import { MdLocationOn } from 'react-icons/md';
 import dogIcon from '../../images/travel_dog_paws.svg';
-import Editor from '../../components/WYSIWYG/Editor';
+import PostEditor from '../../components/WYSIWYG/PostEditor';
 // import { Swiper, SwiperSlide } from 'swiper/react';
-// import '../node_modules/react-draft-wysiwyg/dist/react-draft-wysiwyg.css';
+// import '../node_modules/reatct-draft-wysiwyg/dist/react-draft-wysiwyg.css';
 
-function PostManagement() {
+function PostWYSIWYG() {
   return (
     <>
       <div className="d-flex justify-content-center">
@@ -51,7 +51,7 @@ function PostManagement() {
           </div>
           <hr></hr>
           <p>所見及所得區</p>
-          <Editor></Editor>
+          <PostEditor></PostEditor>
           <div className="article_section">
             <h5>
               一年一度的大稻埕煙火秀即將登場！因應七夕情人節，每年夏天的大稻埕煙火總吸引大批民眾前往，精彩的花火倒映在水面上的絕美畫面真的不容錯過，接下來就來看看今年的大稻埕煙火時間、觀賞地點、活動內容，趕快跟著好朋友、伴侶一起籌劃一下如何度過難忘的浪漫夜晚吧！
@@ -71,12 +71,12 @@ function PostManagement() {
           <div className="recommand_product_list">
             <p>推薦行程/商品</p>
             <div className="d-flex justify-content-between">
-              <Link to="/">
+            <Link to="/">
                 <div className="rec_product_card">
                   <div className="product_photo">
                     <img
                       alt=""
-                      src="https://picsum.photos/200/300?random6"
+                      src="https://picsum.photos/200/300?random1"
                     ></img>
                   </div>
                   <div className="product_title d-flex aligin-items-center ">
@@ -84,8 +84,8 @@ function PostManagement() {
                       澎湖自由行 | 吉貝島來回船票機車 住宿 | 入住新港景亞泰民宿
                     </p>
                   </div>
-                  <div className="rec_product_state d-flex justify-content-between ">
-                    <div className="rec_product_rank">
+                  <div className="rec_product_state d-flex justify-content-between align-items-end ">
+                    <div className="rec_product_rank mb-1 ms-1">
                       <img
                         className="rank_paws mb-1 me-2"
                         alt=""
@@ -93,7 +93,7 @@ function PostManagement() {
                       ></img>
                       5.0
                     </div>
-                    <div className="rec_product_price">NT$9220</div>
+                    <div className="rec_product_price">NT$2020</div>
                   </div>
                 </div>
               </Link>
@@ -102,7 +102,7 @@ function PostManagement() {
                   <div className="product_photo">
                     <img
                       alt=""
-                      src="https://picsum.photos/200/300?random6"
+                      src="https://picsum.photos/200/300?random2"
                     ></img>
                   </div>
                   <div className="product_title d-flex aligin-items-center ">
@@ -110,8 +110,8 @@ function PostManagement() {
                       澎湖自由行 | 吉貝島來回船票機車 住宿 | 入住新港景亞泰民宿
                     </p>
                   </div>
-                  <div className="rec_product_state d-flex justify-content-between ">
-                    <div className="rec_product_rank">
+                  <div className="rec_product_state d-flex justify-content-between align-items-end ">
+                    <div className="rec_product_rank mb-1 ms-1">
                       <img
                         className="rank_paws mb-1 me-2"
                         alt=""
@@ -119,7 +119,7 @@ function PostManagement() {
                       ></img>
                       5.0
                     </div>
-                    <div className="rec_product_price">NT$620</div>
+                    <div className="rec_product_price">NT$1020</div>
                   </div>
                 </div>
               </Link>
@@ -128,7 +128,7 @@ function PostManagement() {
                   <div className="product_photo">
                     <img
                       alt=""
-                      src="https://picsum.photos/200/300?random6"
+                      src="https://picsum.photos/200/300?random3"
                     ></img>
                   </div>
                   <div className="product_title d-flex aligin-items-center ">
@@ -136,8 +136,8 @@ function PostManagement() {
                       澎湖自由行 | 吉貝島來回船票機車 住宿 | 入住新港景亞泰民宿
                     </p>
                   </div>
-                  <div className="rec_product_state d-flex justify-content-between ">
-                    <div className="rec_product_rank">
+                  <div className="rec_product_state d-flex justify-content-between align-items-end ">
+                    <div className="rec_product_rank mb-1 ms-1">
                       <img
                         className="rank_paws mb-1 me-2"
                         alt=""
@@ -145,7 +145,7 @@ function PostManagement() {
                       ></img>
                       5.0
                     </div>
-                    <div className="rec_product_price">NT$1120</div>
+                    <div className="rec_product_price">NT$220</div>
                   </div>
                 </div>
               </Link>
@@ -163,7 +163,7 @@ function PostManagement() {
                     </p>
                   </div>
                   <div className="rec_product_state d-flex justify-content-between align-items-end ">
-                    <div className="rec_product_rank">
+                    <div className="rec_product_rank mb-1 ms-1">
                       <img
                         className="rank_paws mb-1 me-2"
                         alt=""
@@ -171,7 +171,7 @@ function PostManagement() {
                       ></img>
                       5.0
                     </div>
-                    <div className="rec_product_price">NT$1020</div>
+                    <div className="rec_product_price">NT$100</div>
                   </div>
                 </div>
               </Link>
@@ -186,11 +186,11 @@ function PostManagement() {
                   <div className="user_comment_photo">
                     <img
                       alt=""
-                      src="https://picsum.photos/200/300?random10"
+                      src="https://picsum.photos/200/300?random9"
                     ></img>
                   </div>
                   <div className="user_comment_detail mx-5">
-                    <div className="user_comment_name">啊喵</div>
+                    <div className="user_comment_name">阿寶愛睡覺</div>
                     <div className="user_comment_text">
                       你這個貼文給過 但構圖實在是...c8 8c c8 8c 8c
                       djfidjfdijfdijfdijd
@@ -207,7 +207,7 @@ function PostManagement() {
                   <div className="user_comment_photo">
                     <img
                       alt=""
-                      src="https://picsum.photos/200/300?random7"
+                      src="https://picsum.photos/200/300?random2"
                     ></img>
                   </div>
                   <div className="user_comment_detail mx-5">
@@ -232,7 +232,7 @@ function PostManagement() {
                   className="form-control comment_input"
                   placeholder="有什麼想說的呢？"
                   rows="4"
-                  maxlength="80"
+                  maxlength="100"
                 />
               </form>
               <div className="d-flex justify-content-end my-3  post_edit_button ">
@@ -247,4 +247,4 @@ function PostManagement() {
   );
 }
 
-export default PostManagement;
+export default PostWYSIWYG;

@@ -38,9 +38,13 @@ function CommunityManagement() {
                       <p>發布日期：2022/09/02</p>
                     </div>
                     <div className="post_edit_button d-flex">
-                      <button className="btn post_edit my-1 ">編輯</button>
+                    <Link to="/postTripEdit">
+                        <button className="btn post_edit my-1 ">編輯</button>
+                      </Link>
                       <button className="btn post_delete my-1">刪除</button>
-                      <button className="btn check_post my-1">預覽</button>
+                      <Link to="/postTrip">
+                        <button className="btn check_post my-1">預覽</button>
+                      </Link>
                     </div>
                   </div>
                   <div className="post_status">草稿</div>
@@ -54,9 +58,11 @@ function CommunityManagement() {
                       <p>發布日期：2022/09/02</p>
                     </div>
                     <div className="post_edit_button d-flex">
-                      <button className="btn post_edit my-1 ">編輯</button>
+                      <Link to="/postWYSIWYGEdit">
+                        <button className="btn post_edit my-1 ">編輯</button>
+                      </Link>
                       <button className="btn post_delete my-1">刪除</button>
-                      <Link to="/PostManagement">
+                      <Link to="/postWYSIWYG">
                         <button className="btn check_post my-1">
                           查看貼文
                         </button>
@@ -282,10 +288,7 @@ function CommunityManagement() {
       </div>
       <div className="post_new_button mt-5">
         <button className="post_new ">
-          <RiEditFill
-            color="#FFC715"
-            className="edit-icon me-2"
-          ></RiEditFill>
+          <RiEditFill color="#FFC715" className="edit-icon me-2"></RiEditFill>
           新增貼文
         </button>
       </div>
