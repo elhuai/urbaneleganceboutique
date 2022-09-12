@@ -15,11 +15,12 @@ import { MdPhotoSizeSelectActual } from 'react-icons/md';
 // import '../node_modules/reatct-draft-wysiwyg/dist/react-draft-wysiwyg.css';
 
 function PostWYSIWYGEdit() {
-  const [selectedFile, setSelectedFile] = useState("");
-  const [preview, setPreview] = useState("");
+  const [selectedFile, setSelectedFile] = useState('');
+  const [preview, setPreview] = useState('');
+
   useEffect(() => {
     if (!selectedFile) {
-      setPreview("");
+      setPreview('');
       return;
     }
     const objectUrl = URL.createObjectURL(selectedFile);
@@ -59,13 +60,12 @@ function PostWYSIWYGEdit() {
               <button className="btn">發布</button>
             </div>
           </div>
-          <div
-            className="post_cover_photo d-flex flex-column justify-content-end align-items-end"
-          >
-            <img src={preview} alt="" />
-            <div className="cover_photo_upload d-flex flex-column justify-content-center align-items-center">
+          <div className="post_cover_photo d-flex flex-column justify-content-end align-items-end">
+            <img src={(preview)?(preview):(dogIcon)} alt=""></img>
+            {/* <img src={require('../../images/footer92.jpg')} alt="Background"/> */}
+            <label className="cover_photo_upload d-flex flex-column justify-content-center align-items-center">
               <MdPhotoSizeSelectActual className="cover_photo_upload_icon"></MdPhotoSizeSelectActual>
-              <div>封面照片上傳預覽</div>
+              <div>封面照片上傳</div>
               <input
                 type="file"
                 className="form-control mt-2"
@@ -73,7 +73,7 @@ function PostWYSIWYGEdit() {
                 onChange={changeHandler}
                 hidden
               />
-            </div>
+            </label>
           </div>
           <label className="mt-2">
             <MdTitle className="mb-1 me-1"></MdTitle>貼文標題
