@@ -145,14 +145,15 @@ $font-weight: 1000;
   .header_product,
   .header_main,
   .header_dog-logo,
-  .header_community {
+  .header_community,
+  .header_IconRwdnone {
     display: none;
   }
   .header_main_Body {
     height: 0px;
   }
   .header_main {
-    height: 80px;
+    height: 67px;
     padding: 0 1rem;
     .header_dog-logo {
       margin-left: 30px;
@@ -174,11 +175,12 @@ $font-weight: 1000;
     margin-left: 275px;
     margin-top: 10px;
     bottom: 10px;
+    right: -275px;
+    top: 12px;
     svg {
       color: $graycolor;
       width: 20px;
       height: 20px;
-      // margin: 0 1px;
     }
   }
 

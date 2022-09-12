@@ -9,6 +9,7 @@ import CommunityList from './pages/Community';
 import AdminCenterPage from './pages/AdminCenter/AdminCenterPage';
 import Travelmap from './pages/Travel_map';
 import 'swiper/css/bundle';
+import '@reach/combobox/styles.css';
 import './styles/style.scss';
 
 function App() {

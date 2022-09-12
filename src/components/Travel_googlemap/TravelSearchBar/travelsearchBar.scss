@@ -1,0 +1,33 @@
+.travel_searchbar {
+  // background-color: #eeb569;
+  // position: relative;
+  // top: 30px;
+  // left: 200px;
+  // right: 20%;
+  // transform: translateX(-50%);
+  // z-index: 1011;
+  // width: 300px;
+}
+.travelmap_coboboxBody {
+  // width: 850px;
+  .travel_input_searchBar_sum {
+    border: 1px solid #ccc;
+    border-radius: 8px;
+  }
+  .travelmap_combobox-input {
+    width: 830px;
+
+    width: 100%;
+    padding: 0.5rem 2rem;
+    border-radius: 8px;
+    border: none;
+  }
+  .travelmap_input_icondiv {
+    padding-top: 5px;
+    // padding-left: ;
+    width: 0px;
+    height: 10px;
+    z-index: 1;
+    padding-left: 10px;
+  }
+}

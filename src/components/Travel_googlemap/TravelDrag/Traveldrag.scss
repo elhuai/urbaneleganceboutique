@@ -1,0 +1,169 @@
+$maincolor: #ffc715;
+$supcolor: #feefc3;
+$supbackcolor: #e7e7e9;
+.travleDrag_body {
+  padding-top: 30px;
+  .travleDrag_menu {
+    margin-left: 40px;
+    height: 893px;
+    width: 755px;
+    // border: #aaa 1px solid;
+
+    .travleDrag_header_top {
+      margin-left: 24px;
+      height: 120px;
+      // align-items: center;  TODO:看 編輯按鈕要在中間還上面
+      justify-content: space-between;
+      min-height: 48px;
+      padding: 0 16px;
+      color: #000;
+      background-color: $supcolor;
+      margin-bottom: 50px;
+      border-radius: 8px;
+      position: relative;
+      border: 1px solid transparent;
+
+      &:hover {
+        opacity: 0.9;
+        border: 1px solid #d9d9d9;
+        // transform: scale(1.1);
+      }
+    }
+    .travleDrag_header_top_left {
+      .travleDrag_header_back {
+        margin-top: 10px;
+        height: 25px;
+        width: 25px;
+        background-position: center;
+        background-repeat: no-repeat;
+        background-size: 100%;
+        background-image: url('../../../images/traveldragBackIcon.svg');
+        cursor: pointer;
+        -moz-transform: scaleX(-1);
+        -webkit-transform: scaleX(-1);
+        -o-transform: scaleX(-1);
+        transform: scaleX(0-1);
+      }
+      .travleDrag_header_tittle {
+        font-size: 38px;
+        width: calc(100% - 45px);
+        height: 39px;
+        font-weight: 700;
+        word-wrap: break-word;
+        text-overflow: ellipsis;
+        display: -webkit-box;
+        -webkit-line-clamp: 1;
+        -webkit-box-orient: vertical;
+        overflow: hidden;
+        line-height: 1;
+        padding-left: 50px;
+      }
+      .travleDrag_header_date {
+        padding-left: 55px;
+        font-size: 20px;
+        font-weight: 500;
+        line-height: 1.5;
+      }
+    }
+    .travleDrag_header_edit {
+      margin-top: 10px;
+      border-radius: 19px;
+      background-color: white;
+      align-items: center;
+      color: #000;
+      font-size: 14px;
+      cursor: pointer;
+      padding: 6px 8px;
+      height: 32px;
+      &:hover {
+        color: #222;
+        border-radius: 19px;
+        box-shadow: 0 2px 4px 0rgba (0, 0, 0, 0.5);
+        background-color: #e7e7e9;
+      }
+      .travleDrag_header_icon {
+        display: inline-block;
+        height: 20px;
+        width: 20px;
+        background-position: center;
+        background-repeat: no-repeat;
+        background-size: 100%;
+        background-image: url('../../../images/Traveldragbrush.svg');
+      }
+    }
+    .travleDrag_day_container {
+      margin-left: 24px;
+      width: 730px;
+      height: 80px;
+      border: $supbackcolor 1px solid;
+      // margin-bottom: 20px;
+      border-radius: 8px;
+      margin-bottom: -10px;
+      .travelDrage_Tab {
+        margin: 8px 10px;
+        font-size: 24px;
+        // width: 280px;
+      }
+      .css-1aquho2-MuiTabs-indicator {
+        background-color: $maincolor;
+      }
+      .MuiButtonBase-root {
+        color: #000;
+      }
+    }
+
+    .travleDrag_Main {
+      border-radius: 8px;
+      width: 730px;
+      border: $supbackcolor 1px solid;
+      .travelDrag_Options {
+      }
+      .travelDrag_tittle {
+        font-weight: 700;
+        font-size: 1.3rem;
+        align-items: center;
+        &::before {
+          content: '';
+          width: 35px;
+          height: 25px;
+          background: url('../../../images/TravelDragbluecar.png') no-repeat;
+          //TODO: 用SVG圖繪掛掉 只能用PNG
+          bottom: -35px;
+          left: 85px;
+          position: absolute;
+          display: inline-block;
+        }
+      }
+
+      .travelDrag_container {
+        // margin-left: 50px;
+        width: 730px;
+        height: 590px;
+        background: #eee;
+        overflow: auto;
+
+        .travelDrag_container::-webkit-scrollbar {
+          width: 1em;
+        }
+        .travelDrag_container::-webkit-scrollbar-button {
+          background: #fff;
+        }
+        .travelDrag_container::-webkit-scrollbar-track-piece {
+          background: #aaa;
+        }
+
+        .travelDrag_container::-webkit-scrollbar-corner {
+          border: 1px solid red;
+        }
+        .travelDrag_container::-webkit-scrollbar-track {
+          box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+        }
+
+        .travelDrag_container::-webkit-scrollbar-thumb {
+          background-color: white;
+          border: 1px solid slategrey;
+        }
+      }
+    }
+  }
+}
