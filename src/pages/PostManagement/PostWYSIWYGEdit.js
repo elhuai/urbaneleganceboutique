@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import './PostWYSIWYGEdit.scss';
 // import coverPhoto from '../../images/test2.jpg';
 import mapPhoto from '../../images/screenshop map_photo.png';
@@ -10,14 +10,40 @@ import PostEditor from '../../components/WYSIWYG/PostEditor';
 import { AiFillTag } from 'react-icons/ai';
 import { MdTitle } from 'react-icons/md';
 import { MdPhotoSizeSelectActual } from 'react-icons/md';
+
 // import { Swiper, SwiperSlide } from 'swiper/react';
 // import '../node_modules/reatct-draft-wysiwyg/dist/react-draft-wysiwyg.css';
 
-const click = function () {
-  console.log('click');
-};
-
 function PostWYSIWYGEdit() {
+  const [selectedFile, setSelectedFile] = useState("");
+  const [preview, setPreview] = useState("");
+  useEffect(() => {
+    if (!selectedFile) {
+      setPreview("");
+      return;
+    }
+    const objectUrl = URL.createObjectURL(selectedFile);
+    console.log(objectUrl);
+    setPreview(objectUrl);
+
+    // 當元件unmounted時清除記憶體
+    return () => URL.revokeObjectURL(objectUrl);
+  }, [selectedFile]);
+
+  const changeHandler = (e) => {
+    const file = e.target.files[0];
+
+    if (file) {
+      // setIsFilePicked(true);
+      setSelectedFile(file);
+      // setImgServerUrl('');
+    } else {
+      // setIsFilePicked(false);
+      setSelectedFile(null);
+      // setImgServerUrl('');
+    }
+  };
+
   return (
     <>
       <div className="d-flex justify-content-center">
@@ -33,15 +59,20 @@ function PostWYSIWYGEdit() {
               <button className="btn">發布</button>
             </div>
           </div>
-          <div className="post_cover_photo d-flex flex-column justify-content-center align-items-center">
-            <div
-              className="cover_photo_upload d-flex flex-column justify-content-center align-items-center"
-              onClick={click}
-            >
+          <div
+            className="post_cover_photo d-flex flex-column justify-content-end align-items-end"
+          >
+            <img src={preview} alt="" />
+            <div className="cover_photo_upload d-flex flex-column justify-content-center align-items-center">
               <MdPhotoSizeSelectActual className="cover_photo_upload_icon"></MdPhotoSizeSelectActual>
               <div>封面照片上傳預覽</div>
-              <input type="file" className="form-control mt-2" hidden></input>
-              {/* <img className="post_cover_photo" alt=""></img> */}
+              <input
+                type="file"
+                className="form-control mt-2"
+                accept="image/*"
+                onChange={changeHandler}
+                hidden
+              />
             </div>
           </div>
           <label className="mt-2">

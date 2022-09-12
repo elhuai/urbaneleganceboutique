@@ -6,7 +6,6 @@ import { Link } from 'react-router-dom';
 import { BiLike } from 'react-icons/bi';
 import { MdLocationOn } from 'react-icons/md';
 import dogIcon from '../../images/travel_dog_paws.svg';
-import PostEditor from '../../components/WYSIWYG/PostEditor';
 // import { Swiper, SwiperSlide } from 'swiper/react';
 // import '../node_modules/reatct-draft-wysiwyg/dist/react-draft-wysiwyg.css';
 
@@ -51,7 +50,6 @@ function PostWYSIWYG() {
           </div>
           <hr></hr>
           <p>所見及所得區</p>
-          <PostEditor></PostEditor>
           <div className="article_section">
             <h5>
               一年一度的大稻埕煙火秀即將登場！因應七夕情人節，每年夏天的大稻埕煙火總吸引大批民眾前往，精彩的花火倒映在水面上的絕美畫面真的不容錯過，接下來就來看看今年的大稻埕煙火時間、觀賞地點、活動內容，趕快跟著好朋友、伴侶一起籌劃一下如何度過難忘的浪漫夜晚吧！
