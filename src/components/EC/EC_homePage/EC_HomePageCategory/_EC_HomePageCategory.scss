@@ -1,17 +1,42 @@
-.ec_category{
-  margin: 1rem 200px;
-  &_main_title{
+.ec_category {
+  max-width: 1440px;
+  width: 100%;
+  margin: 1rem auto;
+
+  &_main_title {
     font-weight: 700;
   }
+
   // &_card{
 
   // }
-  &_img{
-    width:100px;
+  &_img {
+    width: 100px;
     height: 100px;
   }
-  &_name{
+
+  &_name {
     font-size: 1rem;
     font-weight: 900;
+  }
+}
+
+// ========== RWD ======== //
+@media (max-width: 768px) {
+  .ec_category {
+    padding: 0 1rem;
+
+    &_card {
+      overflow-y: hidden;
+      // overflow-x: hidden;
+
+    }
+  }
+
+  .ec_category_img {
+    margin: 1rem 1rem auto auto;
+    background-color: white;
+    border-radius: 5px;
+    border: 1px solid #ccc;
   }
 }

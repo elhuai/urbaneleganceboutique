@@ -5,19 +5,29 @@ $fmain_color: #ffc200; // 主色
   margin: .8rem 0;
 
   .swiper-pagination-bullet {
-    background:$fmain_color
+    background: $fmain_color
   }
 }
 
-
-.ecHomePage_img {
-  height: 500px;
-  width: 1440px;
-  border-radius: 15px;
-  overflow: hidden;
-
-  img {
+.ecHomePage_slider {
+  .ecHomePage_img {
+    max-height: 500px;
+    max-width: 1440px;
     width: 100%;
-    height: 100%;
+    border-radius: 15px;
+    overflow: hidden;
+
+    img {
+      width: 100%;
+      height: 100%;
+    }
+  }
+}
+
+@media (max-width: 768px) {
+  .ecHomePage_slider {
+    max-width: 345px;
+    width: 100%;
+    margin: 1rem auto;
   }
 }

@@ -26,16 +26,16 @@ export default function EcHomePageCategory() {
     },
     {
       name: '骨骼保養品',
-      img: 'https://www.vbone.com.tw/images/upload/Image/4205-c-new-2021.jpg',
+      img: 'https://img8.shop2000.com.tw/101993/p31/product_30913066_1.jpg',
     },
   ];
   return (
     <div className="ec_category">
-      <h4 className="ec_category_main_title my-2">熱門類別</h4>
-      <div className="d-flex flex-row justify-content-between">
+      <h4 className="ec_category_main_title my-2 flex-fixed">熱門類別</h4>
+      <div className="ec_category_card d-flex flex-row justify-content-between">
         {categoryTitle.map((data, index) => {
           return (
-            <Link to="/" className="ec_category_card">
+            <Link to="/" className="ec_category_card_items">
               <div className="d-flex flex-column align-items-center">
                 <img src={data.img} alt="" className="ec_category_img" />
                 <p className="ec_category_name my-1">{data.name}</p>

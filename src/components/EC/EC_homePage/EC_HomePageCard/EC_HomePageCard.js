@@ -5,7 +5,7 @@ import { Autoplay } from 'swiper';
 import { FaPaw } from 'react-icons/fa';
 import './_EC_HomePageCard.scss';
 
-const foodComment = [
+const foodRecommend = [
   {
     title: '【BEST 倍思特】純淨原粹 寒天 機能犬罐 80g 超大罐 大型犬 中型犬',
     img: 'https://picsum.photos/id/129/600/300',
@@ -13,8 +13,7 @@ const foodComment = [
     price: '1110',
   },
   {
-    title:
-      '【Hug 哈格】 狗罐頭 700g x 12罐【３種口味任選】超大罐 大型犬 中型犬',
+    title: '【Hug 哈格】 狗罐頭 700g x 12罐【3種口味任選】超大罐 大型犬 中型犬',
     img: 'https://picsum.photos/id/229/600/300',
     comment: '3',
     price: '870',
@@ -35,46 +34,68 @@ const foodComment = [
 
 export default function EC_HomePageCard() {
   return (
-    <div className="ec_card ">
-      <div className="d-flex justify-content-between">
-        <div className="ec_card_main">
-          <h4 className="ec_card_main_title my-2 d-flex justify-content-right position-absolute">
-            寵物主食推薦
-          </h4>
-          {/* <div className="object-cover"> */}
-          <img
-            className="ec_card_main_img"
-            alt=""
-            src="https://img.freepik.com/free-photo/spaniel-puppy-playing-studio-cute-doggy-pet-is-sitting-isolated-blue-background-cavalier-king-charles-negative-space-insert-your-text-image-concept-movement-animal-rights_155003-33840.jpg?w=1380&t=st=1662832183~exp=1662832783~hmac=1e85bc9cb5256dcfd0620abd74fc678f4694a0f0eea66ecb3fe405d94df693f6"
-          ></img>
-          {/* </div> */}
-        </div>
-
-        <div className="d-flex justify-content-right ">
-          {foodComment.map((data, index) => {
+    <div className="ec_card d-flex">
+      {/* 分類標題區 */}
+      <div className="ec_card_main_left">
+        <h4 className="ec_card_main_title m-3 d-flex justify-content-right position-absolute">
+          寵物主食推薦
+        </h4>
+        <img
+          className="ec_card_main_img"
+          alt=""
+          src="https://img.freepik.com/free-photo/spaniel-puppy-playing-studio-cute-doggy-pet-is-sitting-isolated-blue-background-cavalier-king-charles-negative-space-insert-your-text-image-concept-movement-animal-rights_155003-33840.jpg?w=1380&t=st=1662832183~exp=1662832783~hmac=1e85bc9cb5256dcfd0620abd74fc678f4694a0f0eea66ecb3fe405d94df693f6"
+        ></img>
+      </div>
+      {/*輪播商品區  */}
+      <div className="ec_card_recommend_list align-items-end">
+        <Swiper
+          loop={true}
+          slidesPerView={4}
+          spaceBetween={0}
+          className="ec_card_swiper"
+          modules={[Autoplay]}
+          autoplay={{
+            delay: 3000,
+            disableOnInteraction: false,
+          }}
+          onSlideChange={(e) => {}}
+          onSwiper={(swiper) => {}}
+        >
+          {/* <div className="ec_card_right_card"></div> */}
+          {foodRecommend.map((data, index) => {
             return (
-              <Link to="/">
-                <div className="ec_card_card">
-                  <div className="product_photo">
-                    <img alt="" src={data.img}></img>
-                  </div>
-                  <div className="ec_card_content_title d-flex align-items-center ">
-                    <p>{data.title}</p>
-                  </div>
-                  <div className="ec_card_state d-flex justify-content-between align-items-end">
-                    <div className="ec_card_rank d-flex flex-row align-items-center pb-1">
-                      <FaPaw />
-                      {data.comment}
-                    </div>
-                    <div className="ec_card_price">NT${data.price}</div>
-                  </div>
-                </div>
-              </Link>
+              <div className="">
+                <SwiperSlide
+                  key={'recommend' + index}
+                  className="ec_card_recommend_swiper "
+                >
+                  <Link to="/" className=" d-flex flex-column">
+                    {/* <div className="d-flex justify-content-between"> */}
+                    <Link to="/">
+                      <div className="ec_card_card d-flex flex-col">
+                        <div className="ec_card_product_photo">
+                          <img alt="" src={data.img}></img>
+                        </div>
+                        <div className="ec_card_content_title d-flex ">
+                          <p>{data.title}</p>
+                        </div>
+                        <div className="ec_card_state d-flex justify-content-between align-items-end ">
+                          <div className="ec_card_rank d-flex flex-row align-items-center pb-1">
+                            <FaPaw />
+                            {data.comment}
+                          </div>
+                          <div className="ec_card_price">NT${data.price}</div>
+                        </div>
+                      </div>
+                    </Link>
+                    {/* </div> */}
+                  </Link>
+                </SwiperSlide>
+              </div>
             );
           })}
-        </div>
+        </Swiper>
       </div>
     </div>
   );
-  // });
 }

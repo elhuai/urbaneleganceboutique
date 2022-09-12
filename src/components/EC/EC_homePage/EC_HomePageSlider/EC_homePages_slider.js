@@ -47,7 +47,7 @@ export default function EC_HomePageCard() {
             key={'ecHomePage' + index}
             className="h-100 d-flex justify-content-center"
           >
-            <Link to="/" className="ecHomePage_card d-flex flex-column">
+            <Link to="/" className="ecHomePage_slider d-flex flex-column">
               <div className="ecHomePage_img d-flex justify-content-center">
                 <img src={data.img} alt="" />
               </div>
