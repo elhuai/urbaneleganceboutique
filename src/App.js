@@ -5,8 +5,8 @@ import Header from './components/layout/Header';
 import Homepage from './pages/HomePage';
 import ExamplePage from './pages/ExamplePage';
 import Travel from './pages/Travel';
-import CommunityList from './pages/Community/';
-import CommunityHome from './pages/CommunityHome';
+import CommunityList from './pages/CommunityList';
+import CommunityHomePage from './pages/CommunityHomePage';
 import AdminCenterPage from './pages/AdminCenter/AdminCenterPage';
 import Travelmap from './pages/Travel_map';
 import 'swiper/css/bundle';
@@ -23,8 +23,8 @@ function App() {
         <Route path="example" element={<ExamplePage />} />
         <Route path="/travel" element={<Travel />} />
         <Route path="/Travel_map" element={<Travelmap />} />
-        <Route path="/communitylist" element={<CommunityList />} />
-        <Route path="/communityhome" element={<CommunityHome />} />
+        <Route path="/communityList" element={<CommunityList />} />
+        <Route path="/communityHomePage" element={<CommunityHomePage />} />
         <Route path="/adminCenter" element={<AdminCenterPage />} />
         <Route path="/personalHomePage" element={<PersonalHomePage />} />
         <Route path="/AdminCenterPage" element={<AdminCenterPage />} />
