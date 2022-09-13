@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import './PostWYSIWYGEdit.scss';
-import CoverBackground from '../../images/postcover_background.jpg';
+import CoverBackground from '../../images/post_edit_background_banner.png';
 import mapPhoto from '../../images/screenshop map_photo.png';
 // import { Link } from 'react-router-dom';
 // import { BiLike } from 'react-icons/bi';
@@ -52,7 +52,7 @@ function PostWYSIWYGEdit() {
           <div className="d-flex justify-content-between">
             <div className="mt-2 edit_title d-flex align-items-center">
               <img alt="" src={dogIcon} className="dog_paw_icon me-2"></img>
-              <p className="mt-3">貼文編輯:一般貼文</p>
+              <p className="mt-3">貼文編輯：一般貼文</p>
             </div>
             <div className="d-flex justify-content-end mt-4 post_edit_button ">
               <button className="btn">清空</button>
@@ -62,7 +62,6 @@ function PostWYSIWYGEdit() {
           </div>
           <div className="post_cover_photo d-flex flex-column justify-content-end align-items-end">
             <img src={(preview)?(preview):(CoverBackground)} alt=""></img>
-            {/* <img src={require('../../images/footer92.jpg')} alt="Background"/> */}
             <label className="cover_photo_upload d-flex flex-column justify-content-center align-items-center">
               <MdPhotoSizeSelectActual className="cover_photo_upload_icon"></MdPhotoSizeSelectActual>
               <div>封面照片上傳</div>

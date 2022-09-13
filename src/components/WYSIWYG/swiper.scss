@@ -5,12 +5,11 @@ body {
   height: 100%;
 }
 
-
-.swiper {
-  width: 100%;
-  height: 100%;
-}
-
+.trip-record-section{
+  .swiper {
+    width: 100%;
+    // height: 100%;
+  }
 .swiper-slide {
   text-align: center;
   font-size: 18px;
@@ -36,4 +35,5 @@ body {
   width: 100%;
   height: 100%;
   object-fit: cover;
+}
 }

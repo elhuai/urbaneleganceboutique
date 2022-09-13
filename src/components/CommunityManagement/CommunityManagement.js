@@ -5,6 +5,7 @@ import { Tabs, Tab } from 'react-bootstrap';
 import dogIcon from '../../images/travel_dog_paws.svg';
 import { Link } from 'react-router-dom';
 import { RiEditFill } from 'react-icons/ri';
+import ConfrimBox from './ConfrimBox';
 
 function CommunityManagement() {
   return (
@@ -38,7 +39,7 @@ function CommunityManagement() {
                       <p>發布日期：2022/09/02</p>
                     </div>
                     <div className="post_edit_button d-flex">
-                    <Link to="/postTripEdit">
+                      <Link to="/postTripEdit">
                         <button className="btn post_edit my-1 ">編輯</button>
                       </Link>
                       <button className="btn post_delete my-1">刪除</button>
@@ -287,11 +288,15 @@ function CommunityManagement() {
         </Tabs>
       </div>
       <div className="post_new_button mt-5">
-        <button className="post_new ">
-          <RiEditFill color="#FFC715" className="edit-icon me-2"></RiEditFill>
-          新增貼文
-        </button>
+        <Link to="/">
+          <button className="post_new">
+            <RiEditFill color="#FFC715" className="edit-icon me-2"></RiEditFill>
+            新增貼文
+          </button>
+        </Link>
       </div>
+
+      {/* <ConfrimBox></ConfrimBox> */}
     </div>
   );
 }
