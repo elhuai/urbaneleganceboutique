@@ -23,14 +23,14 @@
 
 .admin_side {
 	margin-top: 40px;
-	width: 400px;
+	width: 300px;
 	min-width: 150px;
 	height: 90%;
 	font-size: 20px;
 	border-right: 2px solid $line-color--light;
 	//會員基本資料
 	.profile_bar {
-		padding: 15px;
+		padding: 10px;
 		width: 100%;
 		border-bottom: 2px solid $line-color--light;
 		.user_photobox {
@@ -80,7 +80,7 @@
 	// 會員中心子項目
 	.admin_sidemenu {
 		padding-top: 20px;
-		padding-left: 60px;
+		padding-left: 20px;
 		// margin-left: 30px;
 		width: 100%;
 		li {

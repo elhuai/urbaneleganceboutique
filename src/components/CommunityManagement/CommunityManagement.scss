@@ -42,13 +42,14 @@ ul.communityManagementTab {
 }
 .tab_claw{
   width: 25px;
+  margin-top: 10;
 }
 
 // 追蹤者管理
 
  
 .follower_list{
-  width: 1040px;
+  width: 980px;
   .follower_detail {
     height: 700px; 
     overflow-y: scroll;
@@ -122,7 +123,7 @@ ul.communityManagementTab {
 // 我的貼文管理
 
 .post_list{
-  width: 1040px;
+  width: 980px;
   // margin-top: 150px;
   border-radius: 10px;
 
@@ -216,7 +217,7 @@ ul.communityManagementTab {
 // 追蹤貼文列表
 
 .follow_post_list{
-  width: 1040px;
+  width: 980px;
   // margin-top: 150px;
   border-radius: 10px;
   .follow_post_detail {
@@ -235,10 +236,48 @@ ul.communityManagementTab {
     }
   }}}
 
-  // .d-flex .post_new {
-  //   color:white;
-  //   margin-right: 50px;
-  //   margin-top: 10px;
-  //   border: none;
 
-  // }
+  .confirmBox_background{
+    position: absolute;
+    width: 100%;
+    height: calc(100vh + 31px);
+    top: 0;
+    left: 0;
+    z-index: 2;
+    background-color: #7474747a;
+  }
+.create_post_confirm_box{
+  border-radius: 8px ;
+  position: relative;
+  top: calc((100vh - 350px)/2);
+  z-index: 3;
+  width: 300px;
+  height: 180px;
+  background-color: lighten($main-color,30%);
+
+} 
+.delete_confirm_box{
+  position: relative;
+  top: calc((100vh - 300px)/2);
+  border-radius: 8px ;
+  z-index: 3;
+  width: 300px;
+  height: 150px;
+  background-color:lighten($main-color,30%);
+
+
+}
+.confirm_button {
+  
+  margin: 5px;
+  width: 120px;
+  height: 50px;
+  border-radius: 8px;
+  background-color: $main-color;
+  color: white;
+  font-size: 16px;
+  border: none;
+  &:hover{
+    background-color: darken($main-color, 5%);
+  }
+}

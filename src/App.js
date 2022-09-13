@@ -12,7 +12,10 @@ import Travelmap from './pages/Travel_map';
 import 'swiper/css/bundle';
 import './styles/style.scss';
 import PersonalHomePage from './pages/AdminCenter/PersonalHomePage';
-import PostManagement from './pages/PostManagement/PostManagement';
+import PostWYSIWYG from './pages/PostManagement/PostWYSIWYG';
+import PostTrip from './pages/PostManagement/PostTrip';
+import PostWYSIWYGEdit from './pages/PostManagement/PostWYSIWYGEdit';
+import PostTripEdit from './pages/PostManagement/PostTripEdit';
 
 function App() {
   return (
@@ -28,7 +31,10 @@ function App() {
         <Route path="/adminCenter" element={<AdminCenterPage />} />
         <Route path="/personalHomePage" element={<PersonalHomePage />} />
         <Route path="/AdminCenterPage" element={<AdminCenterPage />} />
-        <Route path="/PostManagement" element={<PostManagement />} />
+        <Route path="/postWYSIWYG" element={<PostWYSIWYG />} />
+        <Route path="/postWYSIWYGEdit" element={<PostWYSIWYGEdit />} />
+        <Route path="/postTrip" element={<PostTrip />} />
+        <Route path="/postTripEdit" element={<PostTripEdit />} />
       </Routes>
       <Footer />
     </div>
