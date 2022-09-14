@@ -51,12 +51,12 @@ function PostTrip() {
             </div>
           </div>
           <hr></hr>
-          <div className="d-flex justify-content-between">
+          <div className="d-flex justify-content-between align-items-start">
             <ul className="article_section">
               <div className="my-2">第一天</div>
-              <li className="trip-record-section">
-                <div className="post_location_mark">
-                  <p>
+              <li className="trip_record_section" id="locate1">
+                <div className="post_location_mark" >
+                  <p >
                     <MdLocationOn className="mb-1 me-1"></MdLocationOn>10分 |
                     台北捷運台北車站
                   </p>
@@ -68,7 +68,7 @@ function PostTrip() {
                 <PostSwiper></PostSwiper>
                 <hr></hr>
               </li>
-              <li className="trip-record-section">
+              <li className="trip_record_section" id="locate2">
                 <div className="post_location_mark">
                   <p>
                     <MdLocationOn className="mb-1 me-1"></MdLocationOn>2小時 |
@@ -82,7 +82,7 @@ function PostTrip() {
                 <PostSwiper></PostSwiper>
                 <hr></hr>
               </li>
-              <li className="trip-record-section">
+              <li className="trip_record_section" id="locate3">
                 <div className="post_location_mark">
                   <p>
                     <MdLocationOn className="mb-1 me-1"></MdLocationOn>1小時 |
@@ -98,7 +98,38 @@ function PostTrip() {
                 <hr></hr>
               </li>
               <div className="my-2">第二天</div>
-              <li className="trip-record-section">
+              <li className="trip_record_section" id="locate4">
+                <div className="post_location_mark">
+                  <p>
+                    <MdLocationOn className="location_icon mb-1 me-1"></MdLocationOn>
+                    1.5小時 | 花蓮七星潭
+                  </p>
+                </div>
+                <p>
+                花蓮七星潭風景也太美了
+                美到我不知道該說什麼
+                </p>
+                <PostSwiper></PostSwiper>
+                <hr></hr>
+              </li>
+              <li className="trip_record_section" id="locate5">
+                <div className="post_location_mark">
+                  <p>
+                    <MdLocationOn className="mb-1 me-1"></MdLocationOn>1.5小時 |
+                    依山午
+                  </p>
+                </div>
+                <p>
+                  這次的住宿真的超級滿意！ 很幸運的住到一樓 陽台外可以餵魚
+                  特別喜歡它的浴缸！二個人一起泡位置也很大
+                  帶了最喜歡的LUSH泡澡球跟白酒 超放鬆～
+                  園區也很美很漂亮🌸🌸🌸🌸✨
+                </p>
+                <PostSwiper></PostSwiper>
+                <hr></hr>
+              </li>
+              <div className="my-2">第三天</div>
+              <li className="trip_record_section" id="locate6">
                 <div className="post_location_mark">
                   <p>
                     <MdLocationOn className="location_icon mb-1 me-1"></MdLocationOn>
@@ -112,18 +143,15 @@ function PostTrip() {
                 <PostSwiper></PostSwiper>
                 <hr></hr>
               </li>
-              <li className="trip-record-section">
+              <li className="trip_record_section" id="locate7">
                 <div className="post_location_mark">
                   <p>
                     <MdLocationOn className="mb-1 me-1"></MdLocationOn>1.5小時 |
-                    依午山
+                    花蓮南濱公園
                   </p>
                 </div>
                 <p>
-                  這次的住宿真的超級滿意！ 很幸運的住到一樓 陽台外可以餵魚
-                  特別喜歡它的浴缸！二個人一起泡位置也很大
-                  帶了最喜歡的LUSH泡澡球跟白酒 超放鬆～
-                  園區也很美很漂亮🌸🌸🌸🌸✨
+                  顆顆顆 南濱公園這次去沒什麼人 海景很漂亮但是風很大 這是最後的行程 再來就要回台北囉～
                 </p>
                 <PostSwiper></PostSwiper>
                 <hr></hr>
@@ -132,26 +160,34 @@ function PostTrip() {
 
             <div className="trip_outline">
               <div>
-                <p className="post_date_count">第一天</p>
-                <Link to="/">
+                <p className="post_date_count">Day 1</p>
+                <a href="#locate1">
                   <p>｜台北捷運台北火車站</p>
-                </Link>
-                <Link to="/">
+                </a>
+                <a href="#locate2">
                   <p>｜太魯閣國家公園</p>
-                </Link>
+                </a>
+                <a href="#locate3">
+                  <p>｜ 煙波大飯店花蓮館</p>
+                </a>
               </div>
               <div>
-                <p className="post_date_count">第二天</p>
-                <Link to="/">
-                  <p>｜太魯閣</p>
+                <p className="post_date_count">Day 2</p>
+                <a href="#locate4">
+                  <p>｜花蓮七星潭</p>
+                </a>
+                <a href="#locate5">
                   <p>｜依山午</p>
-                </Link>
+                </a>
               </div>
               <div>
-                <p className="post_date_count">第三天</p>
-                <Link to="/">
+                <p className="post_date_count">Day 3</p>
+                <a href="#locate6">
                   <p>｜鹽寮龍蝦海鮮餐廳</p>
-                </Link>
+                </a>
+                <a href="#locate7">
+                  <p>｜花蓮南濱公園</p>
+                </a>
               </div>
             </div>
           </div>
