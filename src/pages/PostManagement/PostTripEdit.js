@@ -161,7 +161,7 @@ function PostTripEdit() {
                   <img src={preview1 ? preview1 : dogIcon} alt=""></img>
                   <img src={preview1 ? preview1 : dogIcon} alt=""></img>
                   <img src={preview1 ? preview1 : dogIcon} alt=""></img>
-                  </swiper> */}
+                  </swiper> */} 
                 </label>
               </div>
               <div className="trip_location mt-3">

@@ -325,7 +325,7 @@ function PostTrip() {
                   className="form-control comment_input"
                   placeholder="有什麼想說的呢？"
                   rows="4"
-                  maxlength="100"
+                  maxLength="100"
                 />
               </form>
               <div className="d-flex justify-content-end my-3  post_edit_button ">

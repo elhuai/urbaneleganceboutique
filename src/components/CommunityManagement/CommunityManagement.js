@@ -5,9 +5,17 @@ import { Tabs, Tab } from 'react-bootstrap';
 import dogIcon from '../../images/travel_dog_paws.svg';
 import { Link } from 'react-router-dom';
 import { RiEditFill } from 'react-icons/ri';
-import ConfrimBox from './ConfrimBox';
+// import ConfirmBox from './ConfirmBox';
+import { useState } from 'react';
 
 function CommunityManagement() {
+  const [showCFBox, setShowCFBox] = useState(0);
+
+  const ConfirmHandle = (e) => {
+    setShowCFBox(e);
+    console.log(showCFBox);
+  };
+
   return (
     <div className="d-flex">
       <div>
@@ -42,7 +50,12 @@ function CommunityManagement() {
                       <Link to="/postTripEdit">
                         <button className="btn post_edit my-1 ">編輯</button>
                       </Link>
-                      <button className="btn post_delete my-1">刪除</button>
+                      <button
+                        className="btn post_delete my-1"
+                        onClick={() => ConfirmHandle(1)}
+                      >
+                        刪除
+                      </button>
                       <Link to="/postTrip">
                         <button className="btn check_post my-1">預覽</button>
                       </Link>
@@ -62,7 +75,12 @@ function CommunityManagement() {
                       <Link to="/postWYSIWYGEdit">
                         <button className="btn post_edit my-1 ">編輯</button>
                       </Link>
-                      <button className="btn post_delete my-1">刪除</button>
+                      <button
+                        className="btn post_delete my-1"
+                        onClick={() => ConfirmHandle(1)}
+                      >
+                        刪除
+                      </button>
                       <Link to="/postWYSIWYG">
                         <button className="btn check_post my-1">
                           查看貼文
@@ -109,7 +127,10 @@ function CommunityManagement() {
                     </div>
                   </div>
                   <div className="follower_button d-flex flex-column">
-                    <button className="btn remove_follow my-1 ">
+                    <button
+                      className="btn remove_follow my-1 "
+                      onClick={() => ConfirmHandle(3)}
+                    >
                       解除追蹤
                     </button>
                     <button className="btn follower_checked_detail my-1">
@@ -134,7 +155,10 @@ function CommunityManagement() {
                     </div>
                   </div>
                   <div className="follower_button d-flex flex-column">
-                    <button className="btn remove_follow my-1 ">
+                    <button
+                      className="btn remove_follow my-1 "
+                      onClick={() => ConfirmHandle(3)}
+                    >
                       解除追蹤
                     </button>
                     <button className="btn follower_checked_detail my-1">
@@ -157,7 +181,10 @@ function CommunityManagement() {
                     </div>
                   </div>
                   <div className="follower_button d-flex flex-column">
-                    <button className="btn remove_follow my-1 ">
+                    <button
+                      className="btn remove_follow my-1 "
+                      onClick={() => ConfirmHandle(3)}
+                    >
                       解除追蹤
                     </button>
                     <button className="btn follower_checked_detail my-1">
@@ -180,7 +207,10 @@ function CommunityManagement() {
                     </div>
                   </div>
                   <div className="follower_button d-flex flex-column">
-                    <button className="btn remove_follow my-1 ">
+                    <button
+                      className="btn remove_follow my-1 "
+                      onClick={() => ConfirmHandle(3)}
+                    >
                       解除追蹤
                     </button>
                     <button className="btn follower_checked_detail my-1">
@@ -203,7 +233,10 @@ function CommunityManagement() {
                     </div>
                   </div>
                   <div className="follower_button d-flex flex-column">
-                    <button className="btn remove_follow my-1 ">
+                    <button
+                      className="btn remove_follow my-1 "
+                      onClick={() => ConfirmHandle(3)}
+                    >
                       解除追蹤
                     </button>
                     <button className="btn follower_checked_detail my-1">
@@ -226,7 +259,10 @@ function CommunityManagement() {
                     </div>
                   </div>
                   <div className="follower_button d-flex flex-column">
-                    <button className="btn remove_follow my-1 ">
+                    <button
+                      className="btn remove_follow my-1 "
+                      onClick={() => ConfirmHandle(3)}
+                    >
                       解除追蹤
                     </button>
                     <button className="btn follower_checked_detail my-1">
@@ -256,7 +292,10 @@ function CommunityManagement() {
                       </div>
                     </div>
                     <div className="post_edit_button d-flex ps-4 py-2 ">
-                      <button className="btn remove_follow my-1 ">
+                      <button
+                        className="btn remove_follow my-1 "
+                        onClick={() => ConfirmHandle(3)}
+                      >
                         解除追蹤
                       </button>
                       <button className="btn follower_checked_detail my-1">
@@ -273,7 +312,10 @@ function CommunityManagement() {
                       </div>
                     </div>
                     <div className="post_edit_button d-flex ps-4 py-2 ">
-                      <button className="btn remove_follow my-1 ">
+                      <button
+                        className="btn remove_follow my-1 "
+                        onClick={() => ConfirmHandle(3)}
+                      >
                         解除追蹤
                       </button>
                       <button className="btn follower_checked_detail my-1">
@@ -288,15 +330,108 @@ function CommunityManagement() {
         </Tabs>
       </div>
       <div className="post_new_button mt-5">
-        <Link to="/">
-          <button className="post_new">
-            <RiEditFill color="#FFC715" className="edit-icon me-2"></RiEditFill>
-            新增貼文
-          </button>
-        </Link>
+        <button className="post_new" onClick={() => ConfirmHandle(2)}>
+          <RiEditFill color="#FFC715" className="edit-icon me-2"></RiEditFill>
+          新增貼文
+        </button>
       </div>
+      <div
+        className={
+          showCFBox === 2
+            ? 'confirmBox_background d-flex justify-content-center d-block'
+            : 'd-none'
+        }
+        onClick={() => {
+          ConfirmHandle(0);
+        }}
+      >
+        <div
+          className={
+            showCFBox === 2
+              ? 'create_post_confirm_box d-flex flex-column align-items-center justify-content-center d-block'
+              : 'd-none'
+          }
+        >
+          <p>請選擇貼文形式</p>
+          <Link to="/PostWYSIWYGEdit">
+            <button className="confirm_button">一般貼文</button>
+          </Link>
+            <button
+              className="confirm_button"
+              onClick={() =>{ ConfirmHandle(4)}}
+            >
+              行程貼文<br></br>（需匯入行程）
+            </button>
+        </div>
+      </div>
+      <div
+        className={
+          showCFBox === 1
+            ? 'confirmBox_background d-flex justify-content-center d-block'
+            : 'd-none'
+        }
+        onClick={() => ConfirmHandle(0)}
+      >
+        <div
+          className={
+            showCFBox === 1
+              ? 'delete_confirm_box d-flex flex-column align-items-center justify-content-center d-block'
+              : 'd-none'
+          }
+        >
+          <p>是否確認刪除？</p>
+          <Link to="/">
+            <button className="confirm_button">確認</button>
+          </Link>
+        </div>
+      </div>
+      <div
+        className={
+          showCFBox === 3
+            ? 'confirmBox_background d-flex justify-content-center d-block'
+            : 'd-none'
+        }
+        onClick={(e) => {
+          ConfirmHandle(0);
+        }}
+      >
+        <div
+          className={
+            showCFBox === 3
+              ? 'delete_follow_box d-flex flex-column align-items-center justify-content-center d-block'
+              : 'd-none'
+          }
+        >
+          <p>是否確認取消追蹤？</p>
+          <Link to="/">
+            <button className="confirm_button">確認</button>
+          </Link>
+        </div>
+      </div>
+      {/* TODO: 跑不出來！！ 事件聆聽功能 */}
+      <div
+        className={
+          showCFBox === 4
+            ? 'confirmBox_background d-flex justify-content-center d-block'
+            : 'd-none'
+        }
+        onClick={(e) => {
+          ConfirmHandle(0);
+        }}
+      >
+        <div className="trip-sample ">
+          <div className="d-block d-flex flex-column align-items-center my-2 container">
+            <p className="mb-2">請下拉選擇</p>
+            <select className="form-control mb-2" placeholder="請選擇我的行程">
+              <option>花蓮自由行</option>
+              <option>好想去台南</option>
+              <option>澎湖好像也很不錯</option>
+            </select>
 
-      {/* <ConfrimBox></ConfrimBox> */}
+            <button className="confirm_button">確認</button>
+          </div>
+        </div>
+      </div>
     </div>
   );
 }

@@ -10,6 +10,7 @@ import PostEditor from '../../components/WYSIWYG/PostEditor';
 import { AiFillTag } from 'react-icons/ai';
 import { MdTitle } from 'react-icons/md';
 import { MdPhotoSizeSelectActual } from 'react-icons/md';
+// import FileUpload from '../../components/WYSIWYG/FileUpload';
 
 // import { Swiper, SwiperSlide } from 'swiper/react';
 // import '../node_modules/reatct-draft-wysiwyg/dist/react-draft-wysiwyg.css';
@@ -101,6 +102,7 @@ function PostWYSIWYGEdit() {
           <div className="my-2">
             <p>貼文編輯器</p>
             <PostEditor></PostEditor>
+            {/* <FileUpload></FileUpload> */}
           </div>
           <div className="post_map">
             <p>行程地圖</p>
