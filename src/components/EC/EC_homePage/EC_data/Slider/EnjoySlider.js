@@ -1,11 +1,11 @@
 export const enjoySlider = [
   {
-    img: 'https://img.onl/ZMZPGv',
+    img: 'https://img.onl/EuBoUo',
   },
   {
-    img: 'https://img.onl/o8wjry',
+    img: 'https://img.onl/h7uSqG',
   },
   {
-    img: 'https://img.onl/OVAFDQ',
+    img: 'https://img.onl/hOBNR',
   },
 ];
