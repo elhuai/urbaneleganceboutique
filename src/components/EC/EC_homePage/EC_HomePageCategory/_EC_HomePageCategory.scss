@@ -25,8 +25,10 @@
 @media (max-width: 768px) {
   .ec_category {
     padding: 0 1rem;
+    margin: 0 auto;
 
     &_card {
+      padding-bottom: 1rem;
       overflow-y: hidden;
       // overflow-x: hidden;
 

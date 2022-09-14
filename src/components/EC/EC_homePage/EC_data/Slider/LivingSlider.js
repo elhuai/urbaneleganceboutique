@@ -1,14 +1,11 @@
 export const livingSlider = [
   {
-    img: 'https://img.onl/hmAqOc',
-    // 全台友善住宿
+    img: require('../../../../../images/EC_HomePages_Slider/LV1.png'),
   },
   {
-    img: 'https://img.onl/MTZrNT',
-    // 木屋
+    img: require('../../../../../images/EC_HomePages_Slider/LV2.png'),
   },
   {
-    img: 'https://img.onl/8k823g',
-    // 迴嘉居
+    img: require('../../../../../images/EC_HomePages_Slider/LV3.png'),
   },
 ];

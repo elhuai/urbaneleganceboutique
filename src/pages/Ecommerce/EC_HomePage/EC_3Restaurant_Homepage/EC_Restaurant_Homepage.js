@@ -17,8 +17,8 @@ function EcRestaurantHomepage() {
         <EcHomePageSlider ecTypeSlider={restaurantSlider} />
         <EcHomePageCategory ecTypeCategory={restaurantCategory} />
         <EcHomePageCard />
-        <EcHomePageCard />
-        <EcHomePageCard />
+        {/* <EcHomePageCard />
+        <EcHomePageCard /> */}
       </div>
     </>
   );

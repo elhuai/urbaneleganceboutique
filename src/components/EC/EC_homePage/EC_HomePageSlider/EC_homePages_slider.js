@@ -26,6 +26,7 @@ export default function EC_HomePageSlider(props) {
       onSwiper={(swiper) => {}}
     >
       {ecTypeSlider.map((data, index) => {
+        console.log(data.img);
         return (
           <SwiperSlide
             key={'ecHomePage' + index}

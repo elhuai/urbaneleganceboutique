@@ -17,8 +17,8 @@ function EcLivingHomepage() {
         <EcHomePageSlider ecTypeSlider={livingSlider} />
         <EcHomePageCategory ecTypeCategory={livingCategory} />
         <EcHomePageCard />
-        <EcHomePageCard />
-        <EcHomePageCard />
+        {/* <EcHomePageCard />
+        <EcHomePageCard /> */}
       </div>
     </>
   );

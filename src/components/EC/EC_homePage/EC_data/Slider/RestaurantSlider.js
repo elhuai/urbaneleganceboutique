@@ -1,11 +1,11 @@
 export const restaurantSlider = [
   {
-    img: 'https://img.onl/cchuUE',
+    img: require('../../../../../images/EC_HomePages_Slider/RES01.png'),
   },
   {
-    img: 'https://img.onl/SlO9M',
+    img: require('../../../../../images/EC_HomePages_Slider/RES02.png'),
   },
   {
-    img: 'https://img.onl/UqSmwg',
+    img: require('../../../../../images/EC_HomePages_Slider/RES03.png'),
   },
 ];
