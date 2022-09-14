@@ -1,4 +1,4 @@
-import * as React from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
 import Tabs from '@mui/material/Tabs';
 import Tab from '@mui/material/Tab';
@@ -25,7 +25,9 @@ function TabPanel(props) {
     >
       {value === index && (
         <Box sx={{ p: 3 }}>
-          <Typography>{children}</Typography>
+          <Typography component={'span'} variant={'body2'}>
+            {children}
+          </Typography>
         </Box>
       )}
     </div>
@@ -93,14 +95,15 @@ const Travel_map_Navbar = ({ setSelected }) => {
           />
         </Tabs>
       </Box>
-      <TabPanel value={value} index={0}>
-        外太空一日遊票卷
-      </TabPanel>
+      <TabPanel value={value} index={0}></TabPanel>
       <TabPanel value={value} index={1}>
         海底五日遊票卷
       </TabPanel>
-      <TabPanel value={value} index={2}>
-        <TravelSearchBar setSelected={setSelected} />
+      <TabPanel value={value} index={2} component={'span'} variant={'body2'}>
+        <div className="travelmap_NavserachBar">
+          <TravelSearchBar setSelected={setSelected} />
+          {/* <button className="travelmap_NavBtn">搜尋</button> */}
+        </div>
       </TabPanel>
     </Box>
   );

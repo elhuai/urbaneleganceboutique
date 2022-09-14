@@ -1,4 +1,7 @@
-$maincolor: #ffc715;
+$main_color: #ffc715;
+$sup_color: #eeb569;
+$font-size: 1.2rem;
+$font-weight: 700;
 
 .travel_map_Container {
   padding-top: 30px;
@@ -22,6 +25,12 @@ $maincolor: #ffc715;
     margin-right: 10px;
   }
   .css-1aquho2-MuiTabs-indicator {
-    background-color: $maincolor;
+    background-color: $main_color;
+  }
+  .travelmap_NavserachBar {
+    position: relative;
+    bottom: 20px;
+    right: 20px;
+    display: flex;
   }
 }

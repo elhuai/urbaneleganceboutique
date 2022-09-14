@@ -17,7 +17,7 @@ import { useState } from 'react';
 
 const PlacesAutocomplete = ({ setSelected }) => {
   const [mapDat, setMapDat] = useState([]);
-  const [mapState, setMapState] = useState([]);
+
   const [placeId, setPlaceId] = useState('');
   const {
     ready,
@@ -57,14 +57,8 @@ const PlacesAutocomplete = ({ setSelected }) => {
         for (const item of details.photos) {
           photosUrl.push(String(item.getUrl()));
         }
-        // let mapsname = [];
-        // let DataName = mapsname.push(details.formatted_phone_number);
-        setMapState(String(details.name));
-        console.log('setMapState', setMapState);
-        console.log('mapState', mapState);
-        //
         console.log('howard detail', photosUrl);
-        // setMapDat(photosUrl);
+        setMapDat(photosUrl);
         console.log('mapDat', mapDat);
       })
       .catch((error) => {
@@ -104,18 +98,9 @@ const PlacesAutocomplete = ({ setSelected }) => {
         搜尋
       </button>
       <div>
-        {/* <p>
-          {mapState.map((vaule) => {
-            return <p src={vaule} alt="#/" key={vaule.id} className="aaaa" >{vaule}</p>
-          })}
-        </p> */}
         <p>
-          {mapState.map((element, index) => {
-            return (
-              <div key={index}>
-                <h2>{element}</h2>
-              </div>
-            );
+          {mapDat.map((vaule) => {
+            return <img src={vaule} alt="#/" key={vaule.id} className="aaaa" />;
           })}
         </p>
       </div>
@@ -132,3 +117,4 @@ const TravelSearchBar = ({ setSelected }) => {
 };
 
 export default TravelSearchBar;
+console.log('Details photos: ', details.photos[1].getUrl());
