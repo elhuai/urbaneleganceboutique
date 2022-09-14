@@ -1,7 +1,7 @@
 import SearchBar from '../../components/SearchBar/SearchList_search';
 import test_photo from '../../images/test.jpg';
 import test_photo2 from '../../images/test2.jpg';
-import { IoLocationSharp, IoHeartOutline } from 'react-icons/io5';
+import { IoHeartOutline } from 'react-icons/io5';
 import { TiLocation } from 'react-icons/ti';
 import { BiLike } from 'react-icons/bi';
 
