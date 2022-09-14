@@ -100,7 +100,7 @@ const Travel_map_Navbar = ({ setSelected }) => {
         海底五日遊票卷
       </TabPanel>
       <TabPanel value={value} index={2} component={'span'} variant={'body2'}>
-        <div className="travelmap_NavserachBar">
+        <div className="travelmap_NavserachBar ">
           <TravelSearchBar setSelected={setSelected} />
           {/* <button className="travelmap_NavBtn">搜尋</button> */}
         </div>

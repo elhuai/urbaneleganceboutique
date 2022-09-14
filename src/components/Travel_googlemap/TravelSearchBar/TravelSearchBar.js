@@ -16,8 +16,9 @@ import {
 import { useState } from 'react';
 
 const PlacesAutocomplete = ({ setSelected }) => {
-  const [mapDat, setMapDat] = useState([]);
-  const [mapState, setMapState] = useState([]);
+  const [mapPhoto, setmapPhoto] = useState([]);
+  const [mapName, setmapName] = useState([]);
+  const [mapPhone, setMapPhone] = useState([]);
   const [placeId, setPlaceId] = useState('');
   const {
     ready,
@@ -38,8 +39,6 @@ const PlacesAutocomplete = ({ setSelected }) => {
     const { lat, lng } = await getLatLng(results[0]);
     setSelected({ lat, lng });
     // console.log('results[0]', results[0]);
-    // console.log('results', results[0].place_id);
-    // console.log('getLatLng1', getLatLng(results[0]));
   };
 
   const submit = (pId) => {
@@ -49,23 +48,17 @@ const PlacesAutocomplete = ({ setSelected }) => {
     };
     getDetails(parameter)
       .then((details) => {
-        console.log('Details: ', details);
-        console.log('formatted_phone_number: ', details.formatted_phone_number); //電話
-        console.log('name: ', details.name); //使用者可理解的地點地址
+        console.log('53 Details: ', details);
+        // console.log('formatted_phone_number: ', details.formatted_phone_number); //電話
+        // console.log('name: ', details.name); //使用者可理解的地點地址
 
-        let photosUrl = [];
-        for (const item of details.photos) {
-          photosUrl.push(String(item.getUrl()));
-        }
-        // let mapsname = [];
-        // let DataName = mapsname.push(details.formatted_phone_number);
-        setMapState(String(details.name));
-        console.log('setMapState', setMapState);
-        console.log('mapState', mapState);
-        //
-        console.log('howard detail', photosUrl);
-        // setMapDat(photosUrl);
-        console.log('mapDat', mapDat);
+        setmapName([details.name]);
+        console.log('setmapName', setmapName);
+        console.log('mapName', mapName);
+
+        setmapPhoto([details.photos[0].getUrl()]);
+        console.log('IMAGEurl ', mapPhoto);
+        setMapPhone([details.formatted_phone_number]);
       })
       .catch((error) => {
         console.log('Error: ', error);
@@ -96,28 +89,63 @@ const PlacesAutocomplete = ({ setSelected }) => {
       </ComboboxPopover>
 
       <button
-        className="travelmap_SearchBtn"
+        className="travelmap_SearchBtn "
         onClick={() => {
           submit(placeId);
         }}
       >
         搜尋
       </button>
-      <div>
-        {/* <p>
-          {mapState.map((vaule) => {
-            return <p src={vaule} alt="#/" key={vaule.id} className="aaaa" >{vaule}</p>
-          })}
-        </p> */}
-        <p>
-          {mapState.map((element, index) => {
-            return (
-              <div key={index}>
-                <h2>{element}</h2>
-              </div>
-            );
-          })}
-        </p>
+      {/* TODO: useStae 狀態要存到localstorage */}
+      <div className="TravelSearchBar_Wrap ">
+        <div>
+          {mapPhoto.length === 0 ? (
+            <div>
+              <h5 className=" "> 圖片</h5>
+            </div>
+          ) : (
+            mapPhoto.map((vaule) => {
+              return (
+                <img
+                  src={vaule}
+                  alt="#/"
+                  key={vaule.id}
+                  className="travelSearchBar_photo"
+                />
+              );
+            })
+          )}
+        </div>
+        <div>
+          {mapName.length === 0 ? (
+            <div>
+              <h5 className=""> 店家名稱</h5>
+            </div>
+          ) : (
+            mapName.map((element, index) => {
+              return (
+                <div key={index}>
+                  <h2>{element}</h2>
+                </div>
+              );
+            })
+          )}
+        </div>
+        <div>
+          {mapPhone.length === 0 ? (
+            <div>
+              <h5 className=""> 電話號碼</h5>
+            </div>
+          ) : (
+            mapPhone.map((element, index) => {
+              return (
+                <div key={index}>
+                  <p>{element}</p>
+                </div>
+              );
+            })
+          )}
+        </div>
       </div>
     </Combobox>
   );
@@ -126,7 +154,6 @@ const TravelSearchBar = ({ setSelected }) => {
   return (
     <>
       <PlacesAutocomplete setSelected={setSelected} />
-      <p>lorem</p>
     </>
   );
 };
