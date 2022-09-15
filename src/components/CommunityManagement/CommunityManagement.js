@@ -7,6 +7,7 @@ import { Link } from 'react-router-dom';
 import { RiEditFill } from 'react-icons/ri';
 // import ConfirmBox from './ConfirmBox';
 import { useState } from 'react';
+import { MdOutlineClose } from 'react-icons/md';
 
 function CommunityManagement() {
   const [showCFBox, setShowCFBox] = useState(0);
@@ -131,7 +132,7 @@ function CommunityManagement() {
                       className="btn remove_follow my-1 "
                       onClick={() => ConfirmHandle(3)}
                     >
-                      解除追蹤
+                      取消追蹤
                     </button>
                     <button className="btn follower_checked_detail my-1">
                       查看內容
@@ -159,7 +160,7 @@ function CommunityManagement() {
                       className="btn remove_follow my-1 "
                       onClick={() => ConfirmHandle(3)}
                     >
-                      解除追蹤
+                      取消追蹤
                     </button>
                     <button className="btn follower_checked_detail my-1">
                       查看內容
@@ -185,7 +186,7 @@ function CommunityManagement() {
                       className="btn remove_follow my-1 "
                       onClick={() => ConfirmHandle(3)}
                     >
-                      解除追蹤
+                      取消追蹤
                     </button>
                     <button className="btn follower_checked_detail my-1">
                       查看內容
@@ -211,7 +212,7 @@ function CommunityManagement() {
                       className="btn remove_follow my-1 "
                       onClick={() => ConfirmHandle(3)}
                     >
-                      解除追蹤
+                      取消追蹤
                     </button>
                     <button className="btn follower_checked_detail my-1">
                       查看內容
@@ -237,7 +238,7 @@ function CommunityManagement() {
                       className="btn remove_follow my-1 "
                       onClick={() => ConfirmHandle(3)}
                     >
-                      解除追蹤
+                      取消追蹤
                     </button>
                     <button className="btn follower_checked_detail my-1">
                       查看內容
@@ -278,7 +279,7 @@ function CommunityManagement() {
             title={
               <div className="d-flex">
                 <img className=" tab_claw me-2" src={dogIcon} alt="" />
-                <p className="my-2 tab_text_size">追蹤貼文列表</p>
+                <p className="my-2 tab_text_size">按讚貼文列表</p>
               </div>
             }
           >
@@ -296,7 +297,7 @@ function CommunityManagement() {
                         className="btn remove_follow my-1 "
                         onClick={() => ConfirmHandle(3)}
                       >
-                        解除追蹤
+                        取消按讚
                       </button>
                       <button className="btn follower_checked_detail my-1">
                         查看內容
@@ -316,7 +317,7 @@ function CommunityManagement() {
                         className="btn remove_follow my-1 "
                         onClick={() => ConfirmHandle(3)}
                       >
-                        解除追蹤
+                        取消按讚
                       </button>
                       <button className="btn follower_checked_detail my-1">
                         查看內容
@@ -341,9 +342,9 @@ function CommunityManagement() {
             ? 'confirmBox_background d-flex justify-content-center d-block'
             : 'd-none'
         }
-        onClick={() => {
-          ConfirmHandle(0);
-        }}
+        // onClick={() => {
+        //   ConfirmHandle(0);
+        // }}
       >
         <div
           className={
@@ -352,16 +353,26 @@ function CommunityManagement() {
               : 'd-none'
           }
         >
-          <p>請選擇貼文形式</p>
+          <p>
+            請選擇貼文形式
+            <MdOutlineClose
+              className="close_icon"
+              onClick={() => {
+                ConfirmHandle(0);
+              }}
+            ></MdOutlineClose>
+          </p>
           <Link to="/PostWYSIWYGEdit">
             <button className="confirm_button">一般貼文</button>
           </Link>
-            <button
-              className="confirm_button"
-              onClick={() =>{ ConfirmHandle(4)}}
-            >
-              行程貼文<br></br>（需匯入行程）
-            </button>
+          <button
+            className="confirm_button"
+            onClick={() => {
+              ConfirmHandle(4);
+            }}
+          >
+            行程貼文<br></br>（需匯入行程）
+          </button>
         </div>
       </div>
       <div
@@ -370,7 +381,7 @@ function CommunityManagement() {
             ? 'confirmBox_background d-flex justify-content-center d-block'
             : 'd-none'
         }
-        onClick={() => ConfirmHandle(0)}
+        // onClick={(e) => ConfirmHandle(0)}
       >
         <div
           className={
@@ -379,7 +390,15 @@ function CommunityManagement() {
               : 'd-none'
           }
         >
-          <p>是否確認刪除？</p>
+          <p>
+            是否確認刪除？
+            <MdOutlineClose
+              className="close_icon"
+              onClick={() => {
+                ConfirmHandle(0);
+              }}
+            ></MdOutlineClose>
+          </p>
           <Link to="/">
             <button className="confirm_button">確認</button>
           </Link>
@@ -391,9 +410,9 @@ function CommunityManagement() {
             ? 'confirmBox_background d-flex justify-content-center d-block'
             : 'd-none'
         }
-        onClick={(e) => {
-          ConfirmHandle(0);
-        }}
+        // onClick={(e) => {
+        //   ConfirmHandle(0);
+        // }}
       >
         <div
           className={
@@ -402,7 +421,15 @@ function CommunityManagement() {
               : 'd-none'
           }
         >
-          <p>是否確認取消追蹤？</p>
+          <p>
+            是否確認取消追蹤/按讚？
+            <MdOutlineClose
+              className="close_icon"
+              onClick={() => {
+                ConfirmHandle(0);
+              }}
+            ></MdOutlineClose>
+          </p>
           <Link to="/">
             <button className="confirm_button">確認</button>
           </Link>
@@ -415,20 +442,29 @@ function CommunityManagement() {
             ? 'confirmBox_background d-flex justify-content-center d-block'
             : 'd-none'
         }
-        onClick={(e) => {
-          ConfirmHandle(0);
-        }}
+        // onClick={(e) => {
+        //   ConfirmHandle(0);
+        // }}
       >
         <div className="trip-sample ">
           <div className="d-block d-flex flex-column align-items-center my-2 container">
-            <p className="mb-2">請下拉選擇</p>
+            <p className="mb-2">
+              請下拉選擇{' '}
+              <MdOutlineClose
+                className="close_icon"
+                onClick={() => {
+                  ConfirmHandle(0);
+                }}
+              ></MdOutlineClose>
+            </p>
             <select className="form-control mb-2" placeholder="請選擇我的行程">
               <option>花蓮自由行</option>
               <option>好想去台南</option>
               <option>澎湖好像也很不錯</option>
             </select>
-
-            <button className="confirm_button">確認</button>
+            <Link to="/">
+              <button className="confirm_button">確認</button>
+            </Link>
           </div>
         </div>
       </div>
