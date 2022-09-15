@@ -11,6 +11,7 @@ import { MdTitle } from 'react-icons/md';
 // import PostSwiper from '../../components/WYSIWYG/Swiper';
 import { MdPhotoSizeSelectActual } from 'react-icons/md';
 import { RiEditFill } from 'react-icons/ri';
+import { MdOutlineClose } from 'react-icons/md';
 // import { Swiper, SwiperSlide } from 'swiper/react';
 // import '../node_modules/reatct-draft-wysiwyg/dist/react-draft-wysiwyg.css';
 
@@ -38,36 +39,6 @@ function PostTripEdit() {
       setSelectedFile(null);
     }
   };
-
-  //上傳多張照片 並預覽 並可檢視 並swiper
-  // const [selectedFile1, setSelectedFile1] = useState(null);
-  // const [preview1, setPreview1] = useState([]);
-  // useEffect(() => {
-  //   if (!selectedFile1) {
-  //     setPreview1('');
-  //     return;
-  //   }
-
-  //   const objectUrl1 = URL.createObjectURL(selectedFile1);
-  //   // console.log(objectUrl1);
-  //   setPreview1(objectUrl1);
-
-  //   return () => URL.revokeObjectURL(objectUrl1);
-  // }, [selectedFile1]);
-
-  // const changeHandler1 = (e) => {
-  //   const file = e.target.files[0];
-
-  //   if (file) {
-  //     setSelectedFile1([...file, URL.createObjectURL(e.target.files[0])]);
-  //   } else {
-  //     setSelectedFile1(null);
-  //   }
-  // };
-
-  // let data = [{ id: 1, description: '<p>1234</p>' }];
-  // data = JSON.parse(JSON.stringify(data));
-  // console.log(data);
 
   return (
     <>
@@ -123,160 +94,207 @@ function PostTripEdit() {
         </form>
 
         <hr></hr>
-        <div className="d-flex justify-content-between row mx-1">
-          <form className="article_edit col-9">
+        <form className="d-flex justify-content-between align-items-start row mx-1">
+          <ul className="article_edit col-9">
             <div className="date_count mt-1">
               <p>Day 1</p>
-              <div className="trip_location mt-3">
-                <p className="trip_location_title">
+            </div>
+            <li className="trip_location mt-3" id="locate1">
+              <div className="d-flex justify-content-between align-items-center">
+                <div className="trip_location_title">
                   <TiLocation className="mb-1 ms-1" />{' '}
                   1.5小時｜台北捷運台北火車站
-                  <Link to="/">
-                    <RiEditFill className="ms-1 mb-1 "></RiEditFill>
-                  </Link>
-                </p>
-                <textarea
-                  type="textarea"
-                  className="form-control"
-                  rows="4"
-                  maxlength="100"
-                  placeholder="為旅途留下回憶"
-                ></textarea>
-                <label>
-                  上傳照片
-                  <input
-                    type="file"
-                    accept="images/*"
-                    hidden
-                    onChange={changeHandler}
-                    multiple
-                    disabled={5}
-                  ></input>
-                  {/* <swiper>
-                  <img src={preview1 ? preview1 : dogIcon} alt=""></img>
-                  <img src={preview1 ? preview1 : dogIcon} alt=""></img>
-                  <img src={preview1 ? preview1 : dogIcon} alt=""></img>
-                  <img src={preview1 ? preview1 : dogIcon} alt=""></img>
-                  <img src={preview1 ? preview1 : dogIcon} alt=""></img>
-                  <img src={preview1 ? preview1 : dogIcon} alt=""></img>
-                  <img src={preview1 ? preview1 : dogIcon} alt=""></img>
-                  <img src={preview1 ? preview1 : dogIcon} alt=""></img>
-                  </swiper> */} 
-                </label>
+                  <RiEditFill className="ms-1 mb-1 "></RiEditFill>
+                </div>
+                <div>刪除此景點<MdOutlineClose className="close_icon mb-1"></MdOutlineClose></div>
+             
               </div>
-              <div className="trip_location mt-3">
-                <p className="trip_location_title">
-                  <TiLocation className="mb-1 ms-1" />
-                  ｜太魯閣國家公園{' '}
-                  <Link to="/">
-                    <RiEditFill className="ms-1 mb-1"></RiEditFill>
-                  </Link>
-                </p>
-                <textarea
-                  type="textarea"
-                  className="form-control"
-                  rows="4"
-                  maxlength="100"
-                  placeholder="為旅途留下回憶"
-                ></textarea>
-                <label>
-                  上傳照片
-                  <input type="file" accept="images/*" hidden></input>
-                </label>
-              </div>
-            </div>
+              <textarea
+                type="textarea"
+                className="form-control"
+                rows="4"
+                maxlength="100"
+                placeholder="為旅途留下回憶"
+              ></textarea>
+              <label>
+                上傳照片
+                <input
+                  type="file"
+                  accept="images/*"
+                  hidden
+                  onChange={changeHandler}
+                  multiple
+                  disabled={5}
+                ></input>
+                {/* <swiper>
+                  <img src={preview1 ? preview1 : dogIcon} alt=""></img>
+                  <img src={preview1 ? preview1 : dogIcon} alt=""></img>
+                  <img src={preview1 ? preview1 : dogIcon} alt=""></img>
+                  <img src={preview1 ? preview1 : dogIcon} alt=""></img>
+                  <img src={preview1 ? preview1 : dogIcon} alt=""></img>
+                  <img src={preview1 ? preview1 : dogIcon} alt=""></img>
+                  <img src={preview1 ? preview1 : dogIcon} alt=""></img>
+                  <img src={preview1 ? preview1 : dogIcon} alt=""></img>
+                  </swiper> */}
+              </label>
+            </li>
+            <li className="trip_location mt-3" id="locate2">
+              <p className="trip_location_title">
+                <TiLocation className="mb-1 ms-1" />
+                3小時｜太魯閣國家公園{' '}
+                <RiEditFill className="ms-1 mb-1 "></RiEditFill>
+                <MdOutlineClose className="close_icon"></MdOutlineClose>
+              </p>
+              <textarea
+                type="textarea"
+                className="form-control"
+                rows="4"
+                maxlength="100"
+                placeholder="為旅途留下回憶"
+              ></textarea>
+              <label>
+                上傳照片
+                <input type="file" accept="images/*" hidden></input>
+              </label>
+            </li>
+
+            <li className="trip_location mt-3" id="locate3">
+              <p className="trip_location_title">
+                <TiLocation className="mb-1 ms-1" />
+                2小時｜ 煙波大飯店花蓮館
+                <RiEditFill className="ms-1 mb-1 "></RiEditFill>
+                <MdOutlineClose className="close_icon"></MdOutlineClose>
+              </p>
+              <textarea
+                type="textarea"
+                className="form-control"
+                rows="4"
+                maxlength="100"
+                placeholder="為旅途留下回憶"
+              ></textarea>
+              <label>
+                上傳照片
+                <input type="file" accept="images/*" hidden></input>
+              </label>
+            </li>
             <div className="date_count mt-1">
               <p>Day 2</p>
-              <div className="trip_location mt-3">
-                <p className="trip_location_title">
-                  <TiLocation className="mb-1 ms-1" />
-                  ｜太魯閣風味餐{' '}
-                  <Link to="/">
-                    <RiEditFill className="ms-1 mb-1"></RiEditFill>
-                  </Link>
-                </p>
-                <textarea
-                  type="textarea"
-                  className="form-control"
-                  rows="4"
-                  maxlength="100"
-                  placeholder="為旅途留下回憶"
-                ></textarea>
-                <label>
-                  上傳照片
-                  <input type="file" accept="images/*" hidden></input>
-                </label>
-              </div>
-              <div className="trip_location mt-3">
-                <p className="trip_location_title">
-                  <TiLocation className="mb-1 ms-1" />
-                  ｜依山午{' '}
-                  <Link to="/">
-                    <RiEditFill className="ms-1 mb-1"></RiEditFill>
-                  </Link>
-                </p>
-                <textarea
-                  type="textarea"
-                  className="form-control"
-                  rows="4"
-                  maxlength="100"
-                  placeholder="為旅途留下回憶"
-                ></textarea>
-                <label>
-                  上傳照片
-                  <input type="file" accept="images/*" hidden></input>
-                </label>
-              </div>
             </div>
+            <li className="trip_location mt-3" id="locate4">
+              <p className="trip_location_title">
+                <TiLocation className="mb-1 ms-1" />
+                1.5小時｜花蓮七星潭
+                <RiEditFill className="ms-1 mb-1 "></RiEditFill>
+                <MdOutlineClose className="close_icon"></MdOutlineClose>
+              </p>
+              <textarea
+                type="textarea"
+                className="form-control"
+                rows="4"
+                maxlength="100"
+                placeholder="為旅途留下回憶"
+              ></textarea>
+              <label>
+                上傳照片
+                <input type="file" accept="images/*" hidden></input>
+              </label>
+            </li>
+
+            <li className="trip_location mt-3" id="locate5">
+              <p className="trip_location_title">
+                <TiLocation className="mb-1 ms-1" />
+                1.5小時｜依山午
+                <RiEditFill className="ms-1 mb-1 "></RiEditFill>
+                <MdOutlineClose className="close_icon"></MdOutlineClose>
+              </p>
+              <textarea
+                type="textarea"
+                className="form-control"
+                rows="4"
+                maxlength="100"
+                placeholder="為旅途留下回憶"
+              ></textarea>
+              <label>
+                上傳照片
+                <input type="file" accept="images/*" hidden></input>
+              </label>
+            </li>
             <div className="date_count mt-1">
-              <p>Day 3</p>
-              <div className="trip_location mt-3">
-                <p className="trip_location_title">
-                  <TiLocation className="mb-1 ms-1" />
-                  ｜鹽寮龍蝦海鮮餐廳{' '}
-                  <Link to="/">
-                    <RiEditFill className="ms-1 mb-1"></RiEditFill>
-                  </Link>
-                </p>
-                <textarea
-                  type="textarea"
-                  className="form-control"
-                  rows="4"
-                  maxlength="100"
-                  placeholder="為旅途留下回憶"
-                ></textarea>
-                <label>
-                  上傳照片
-                  <input type="file" accept="images/*" hidden></input>
-                </label>
-              </div>
+              <p>Day 3</p>{' '}
             </div>
-          </form>
-          <div className="trip_outline col-3">
+
+            <li className="trip_location mt-3" id="locate6">
+              <p className="trip_location_title">
+                <TiLocation className="mb-1 ms-1" />
+                2小時｜鹽寮龍蝦海鮮餐廳
+                <RiEditFill className="ms-1 mb-1 "></RiEditFill>
+                <MdOutlineClose className="close_icon"></MdOutlineClose>
+              </p>
+              <textarea
+                type="textarea"
+                className="form-control"
+                rows="4"
+                maxlength="100"
+                placeholder="為旅途留下回憶"
+              ></textarea>
+              <label>
+                上傳照片
+                <input type="file" accept="images/*" hidden></input>
+              </label>
+            </li>
+            <li className="trip_location mt-3" id="locate7">
+              <p className="trip_location_title">
+                <TiLocation className="mb-1 ms-1" />
+                2小時｜花蓮南濱公園
+                <RiEditFill className="ms-1 mb-1 "></RiEditFill>
+                <MdOutlineClose className="close_icon"></MdOutlineClose>
+              </p>
+              <textarea
+                type="textarea"
+                className="form-control"
+                rows="4"
+                maxlength="100"
+                placeholder="為旅途留下回憶"
+              ></textarea>
+              <label>
+                上傳照片
+                <input type="file" accept="images/*" hidden></input>
+              </label>
+            </li>
+          </ul>
+          <div className="trip_outline">
             <div>
               <p className="post_date_count">Day 1</p>
-              <Link to="/">
+              <a href="#locate1">
                 <p>｜台北捷運台北火車站</p>
-              </Link>
-              <Link to="/">
+              </a>
+              <a href="#locate2">
                 <p>｜太魯閣國家公園</p>
-              </Link>
+              </a>
+              <a href="#locate3">
+                <p>｜煙波大飯店花蓮館</p>
+              </a>
             </div>
             <div>
               <p className="post_date_count">Day 2</p>
-              <Link to="/">
-                <p>｜太魯閣</p>
+              <a href="#locate4">
+                <p>｜花蓮七星潭</p>
+              </a>
+              <a href="#locate5">
                 <p>｜依山午</p>
-              </Link>
+              </a>
             </div>
             <div>
               <p className="post_date_count">Day 3</p>
-              <Link to="/">
+              <a href="#locate6">
                 <p>｜鹽寮龍蝦海鮮餐廳</p>
-              </Link>
+              </a>
+              <a href="#locate7">
+                <p>｜花蓮南濱公園</p>
+              </a>
             </div>
           </div>
-        </div>
+        </form>
         <div className="post_map">
           <p>行程地圖</p>
           <div className="map_photo">

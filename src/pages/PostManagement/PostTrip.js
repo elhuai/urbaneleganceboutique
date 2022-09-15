@@ -53,10 +53,10 @@ function PostTrip() {
           <hr></hr>
           <div className="d-flex justify-content-between align-items-start">
             <ul className="article_section">
-              <div className="my-2">第一天</div>
+              <div className="my-2">Day 1 </div>
               <li className="trip_record_section" id="locate1">
-                <div className="post_location_mark" >
-                  <p >
+                <div className="post_location_mark">
+                  <p>
                     <MdLocationOn className="mb-1 me-1"></MdLocationOn>10分 |
                     台北捷運台北車站
                   </p>
@@ -97,7 +97,7 @@ function PostTrip() {
                 <PostSwiper></PostSwiper>
                 <hr></hr>
               </li>
-              <div className="my-2">第二天</div>
+              <div className="my-2">Day 2</div>
               <li className="trip_record_section" id="locate4">
                 <div className="post_location_mark">
                   <p>
@@ -105,10 +105,7 @@ function PostTrip() {
                     1.5小時 | 花蓮七星潭
                   </p>
                 </div>
-                <p>
-                花蓮七星潭風景也太美了
-                美到我不知道該說什麼
-                </p>
+                <p>花蓮七星潭風景也太美了 美到我不知道該說什麼</p>
                 <PostSwiper></PostSwiper>
                 <hr></hr>
               </li>
@@ -128,7 +125,7 @@ function PostTrip() {
                 <PostSwiper></PostSwiper>
                 <hr></hr>
               </li>
-              <div className="my-2">第三天</div>
+              <div className="my-2">Day 3</div>
               <li className="trip_record_section" id="locate6">
                 <div className="post_location_mark">
                   <p>
@@ -151,7 +148,8 @@ function PostTrip() {
                   </p>
                 </div>
                 <p>
-                  顆顆顆 南濱公園這次去沒什麼人 海景很漂亮但是風很大 這是最後的行程 再來就要回台北囉～
+                  顆顆顆 南濱公園這次去沒什麼人 海景很漂亮但是風很大
+                  這是最後的行程 再來就要回台北囉～
                 </p>
                 <PostSwiper></PostSwiper>
                 <hr></hr>

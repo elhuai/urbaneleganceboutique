@@ -62,7 +62,7 @@ function PostWYSIWYGEdit() {
             </div>
           </div>
           <div className="post_cover_photo d-flex flex-column justify-content-end align-items-end">
-            <img src={(preview)?(preview):(CoverBackground)} alt=""></img>
+            <img src={preview ? preview : CoverBackground} alt=""></img>
             <label className="cover_photo_upload d-flex flex-column justify-content-center align-items-center">
               <MdPhotoSizeSelectActual className="cover_photo_upload_icon"></MdPhotoSizeSelectActual>
               <div>封面照片上傳</div>
@@ -99,11 +99,15 @@ function PostWYSIWYGEdit() {
           </div>
 
           <hr></hr>
-          <div className="my-2">
+          <form className="my-2">
             <p>貼文編輯器</p>
             <PostEditor></PostEditor>
-            {/* <FileUpload></FileUpload> */}
-          </div>
+            <p>照片上傳</p>
+            <label className="post_photo_upload">
+              <input type="file" accept="image/*" multiple hidden />
+            </label>
+            <img alt=""></img>
+          </form>
           <div className="post_map">
             <p>行程地圖</p>
             <div className="map_photo">

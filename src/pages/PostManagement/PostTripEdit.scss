@@ -69,6 +69,8 @@ body {
       background-color: $button-color-hover;
       width: 20%;
       font-size: 16px;
+      position: sticky;
+      top: 100px;
       .post_date_count{
         font-weight: 800;
       }
@@ -115,17 +117,33 @@ body {
 .article_edit{
   padding: 10px;
   .date_count {
-    .trip_location_title{
-      color: $link-color;
-      font-size: 1rem;
-      font-weight: 600;
-    }
+    font-size: 1.2rem;
+    font-weight: 600;
+    color: $line-color--dark;
   }
+  .trip_location{
+    margin-top: 5px;
+    list-style-type: none;;
+    .trip_location_title{
+    color: $link-color;
+    font-size: 1rem;
+    font-weight: 600;
+  }}
 }
-  
+.close_icon{
+  font-size: 1.5rem;
+  position: relative;
+  right: 0;
+  color: $line-color--dark;
+  // margin-bottom: 4px;
+}    
 
+.trip_location:target{
+  padding-top: 100px !important ;
+  margin-top: -100px !important;
+}
 }
     
-    
+
 
   
