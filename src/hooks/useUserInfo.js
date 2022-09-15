@@ -7,7 +7,6 @@ export const UserInfoProvider = ({ children }) => {
     auth: false,
     data: [],
   });
-
   return (
     <userInfoContext.Provider value={{ user, setUser }}>
       {children}

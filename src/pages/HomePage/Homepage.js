@@ -6,9 +6,12 @@ import LeaderBoardSlide from '../../components/homePage/LeaderBoardSlide';
 import SocialBubble from '../../components/homePage/SocialBubble';
 import TravelCard from '../../components/homePage/TravelCard/';
 import FakeMap from '../../images/home_travel_map.png';
-import './homepage.scss';
+import { useUserInfo } from '../../hooks/useUserInfo';
+import Login from '../Login';
+import './_homepage.scss';
 
 const Homepage = () => {
+  const { user, setUser } = useUserInfo();
   const [heroAnimete, setHeroAnimete] = useState(false);
   const [heroActive, setHeroActive] = useState(false);
   const [newsActive, setNewsActive] = useState(1);
@@ -26,6 +29,22 @@ const Homepage = () => {
       setHeroAnimete(false);
     }, 1500);
   }, [heroAnimete]);
+
+  // if (!user.auth) {
+  //   delay(3000, true) // = 模擬後端驗證非同步請求，true 為成功，false 為失敗
+  //     .then((res) => {
+  //       console.log('驗證成功，有登入');
+  //       alert('驗證成功，有登入');
+  //       setUser((oldStatus) => ({ ...oldStatus, auth: true }));
+  //     })
+  //     .catch((err) => {
+  //       console.log('驗證失敗，未登入');
+  //       alert('我跳囉88');
+  //       window.location = window.location.origin + '/travel';
+  //     });
+  // }
+
+  // if (!user.auth) return <Login />;
   return (
     <div className="home_main">
       <div className="home_section_hero">

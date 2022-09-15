@@ -1,5 +1,5 @@
 import logobody from '../../../images/logo_dog_body1.svg';
-import { BiLogOut } from 'react-icons/bi';
+import { IoLogOut } from 'react-icons/io5';
 import { FaUser } from 'react-icons/fa';
 import { IoCart } from 'react-icons/io5';
 import React from 'react';
@@ -23,7 +23,7 @@ const Header = () => {
             className="header_Icon_logout"
             onClick={() => handleLoginBtn(false, setUser)}
           >
-            <BiLogOut />
+            <IoLogOut />
           </div>
         </>
       );
