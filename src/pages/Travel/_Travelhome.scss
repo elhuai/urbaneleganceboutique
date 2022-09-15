@@ -259,8 +259,8 @@ $look_line-height: 53px;
   .travel_Tab_Swiper-wrapper {
     // height: 450px;
     .travel_Tab_Swiper {
-      margin-left: 20px;
-      width: 380px !important;
+      margin-left: 10px;
+      width: 380px;
       height: 390px;
     }
     .travel_Tab_Img {
@@ -272,6 +272,10 @@ $look_line-height: 53px;
       font-style: normal;
       font-size: 28px;
       line-height: 83px;
+    }
+    .travel_noidea {
+      padding-left: 80px;
+      padding-top: 30px;
     }
   }
 
@@ -350,9 +354,5 @@ $look_line-height: 53px;
         line-height: $look_line-height;
       }
     }
-  }
-  .travel_noidea {
-    padding-left: 80px;
-    padding-top: 30px;
   }
 }

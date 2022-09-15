@@ -10,16 +10,16 @@ const MenuLink = () => {
         <NavLink to="Travel_map" className="header_product mx-3">
           景點&玩樂
         </NavLink>
-        <NavLink to="path3" className="header_product mx-3">
+        <NavLink to="path3" className="header_product mx-xxl-3">
           餐廳
         </NavLink>
-        <NavLink to="path4" className="header_product mx-3">
+        <NavLink to="path4" className="header_product mx-xxl-3">
           寵物商品
         </NavLink>
-        <NavLink to="/travel" className="header_product mx-3">
+        <NavLink to="/travel" className="header_product mx-xxl-3">
           我的行程
         </NavLink>
-        <NavLink to="communitylist" className="header_product mx-3">
+        <NavLink to="communitylist" className="header_product mx-xxl-3">
           社群分享
         </NavLink>
       </ul>

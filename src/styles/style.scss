@@ -1,6 +1,7 @@
 @import './custom_variables';
 @import '../../node_modules/bootstrap/scss/bootstrap.scss';
 
+
 * {
   margin: 0;
   padding: 0;
@@ -12,7 +13,7 @@ body {
 }
 
 .app {
-  margin-top: 80px;
+  margin-top: 94px;
 }
 @media screen and (max-width: 768px) {
   .app {
