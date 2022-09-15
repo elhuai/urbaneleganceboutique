@@ -8,6 +8,7 @@ import Travel from './pages/Travel';
 import CommunityList from './pages/Community/';
 import AdminCenterPage from './pages/AdminCenter/AdminCenterPage';
 import Travelmap from './pages/Travel_map';
+import Login from './pages/Login/Login';
 import { UserInfoProvider } from './hooks/useUserInfo';
 
 import 'swiper/css/bundle';
@@ -25,6 +26,7 @@ function App() {
           <Route path="/Travel_map" element={<Travelmap />} />
           <Route path="/communitylist" element={<CommunityList />} />
           <Route path="/adminCenter" element={<AdminCenterPage />} />
+          <Route path="/login" element={<Login />} />
         </Routes>
         <Footer />
       </UserInfoProvider>

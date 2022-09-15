@@ -19,11 +19,11 @@ export const handleLoginBtn = (isLogin, setUser) => {
     .then((result) => {
       if (result.isConfirmed)
         return loginCard.fire({
-          position: 'top-end',
+          position: 'center-center',
           icon: 'success',
           title: `${isLogin ? '登入成功' : '登出成功'}`,
           showConfirmButton: false,
-          timer: 1000,
+          timer: 40000000000,
         });
     });
 };

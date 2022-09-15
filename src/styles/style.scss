@@ -17,6 +17,22 @@ body {
 .app {
   margin-top: 94px;
 }
+
+.swal2-icon.swal2-success {
+  border-color: rgba(255, 194, 0,.8);
+  color: rgba(255, 194, 0,.8);
+}
+
+.swal2-icon.swal2-success [class^=swal2-success-line] {
+  background-color: rgba(255, 194, 0, 1);
+}
+
+.swal2-icon.swal2-success .swal2-success-ring {
+  border: 0.25em solid rgba(255, 194, 0,.4);
+}
+
+
+
 @media screen and (max-width: 768px) {
   .app {
     margin-top: 80px;
