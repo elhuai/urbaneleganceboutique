@@ -6,7 +6,7 @@ import { Link } from 'react-router-dom';
 // import { BiLike } from 'react-icons/bi';
 import { MdLocationOn } from 'react-icons/md';
 import dogIcon from '../../images/travel_dog_paws.svg';
-import PostSwiper from '../../components/WYSIWYG/Swiper';
+import PhotoReviewSwiper from '../../components/WYSIWYG/PhotoView';
 // import { Swiper, SwiperSlide } from 'swiper/react';
 // import '../node_modules/reatct-draft-wysiwyg/dist/react-draft-wysiwyg.css';
 
@@ -65,7 +65,7 @@ function PostTrip() {
                   ✍🏻台北到花蓮 開車大約3-4小時 中間可以到蘇澳休息站休息～
                   建議7:00前出發比較不容易塞車
                 </p>
-                <PostSwiper></PostSwiper>
+                <PhotoReviewSwiper></PhotoReviewSwiper>
                 <hr></hr>
               </li>
               <li className="trip_record_section" id="locate2">
@@ -79,7 +79,7 @@ function PostTrip() {
                   ✍🏻天氣太熱～ 真的是車遊太魯閣 從頭到尾沒有下車
                   緩慢的速度欣賞沿途風景
                 </p>
-                <PostSwiper></PostSwiper>
+                <PhotoReviewSwiper></PhotoReviewSwiper>
                 <hr></hr>
               </li>
               <li className="trip_record_section" id="locate3">
@@ -94,7 +94,7 @@ function PostTrip() {
                   煙波的浴缸也很棒 離市區也很近 有山景跟海景房可以選擇
                   （挑選住宿的條件一定要有大浴缸！）
                 </p>
-                <PostSwiper></PostSwiper>
+                <PhotoReviewSwiper></PhotoReviewSwiper>
                 <hr></hr>
               </li>
               <div className="my-2">Day 2</div>
@@ -106,7 +106,7 @@ function PostTrip() {
                   </p>
                 </div>
                 <p>花蓮七星潭風景也太美了 美到我不知道該說什麼</p>
-                <PostSwiper></PostSwiper>
+                <PhotoReviewSwiper></PhotoReviewSwiper>
                 <hr></hr>
               </li>
               <li className="trip_record_section" id="locate5">
@@ -122,7 +122,7 @@ function PostTrip() {
                   帶了最喜歡的LUSH泡澡球跟白酒 超放鬆～
                   園區也很美很漂亮🌸🌸🌸🌸✨
                 </p>
-                <PostSwiper></PostSwiper>
+                <PhotoReviewSwiper></PhotoReviewSwiper>
                 <hr></hr>
               </li>
               <div className="my-2">Day 3</div>
@@ -137,7 +137,7 @@ function PostTrip() {
                   ✍🏻原本要吃055龍蝦 剛好遇到店休 所以來吃旁邊的鹽寮龍蝦🦞
                   我覺得差別在景的部分 055可以更近距離看到海
                 </p>
-                <PostSwiper></PostSwiper>
+                <PhotoReviewSwiper></PhotoReviewSwiper>
                 <hr></hr>
               </li>
               <li className="trip_record_section" id="locate7">
@@ -151,7 +151,7 @@ function PostTrip() {
                   顆顆顆 南濱公園這次去沒什麼人 海景很漂亮但是風很大
                   這是最後的行程 再來就要回台北囉～
                 </p>
-                <PostSwiper></PostSwiper>
+                <PhotoReviewSwiper></PhotoReviewSwiper>
                 <hr></hr>
               </li>
             </ul>

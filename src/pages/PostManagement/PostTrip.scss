@@ -221,11 +221,12 @@ body {
   padding: 10px;
   background-color: $button-color-hover;
   width: 20%;
-  font-size: 16px;
+  font-size: 1rem;
   position: sticky;
   top:100px;
   .post_date_count{
     font-weight: 800;
+    font-size: 1.3rem;
   }
 
 }

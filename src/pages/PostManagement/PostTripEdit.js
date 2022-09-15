@@ -49,7 +49,7 @@ function PostTripEdit() {
             </div>
             <div className="d-flex justify-content-end mt-4 post_edit_button ">
               <button className="btn">清空</button>
-              <button className="btn">儲存草稿</button>
+              <button className="btn">儲存</button>
               <button className="btn">發布</button>
             </div>
           </div>
@@ -92,16 +92,18 @@ function PostTripEdit() {
         </form>
 
         <hr></hr>
-        <form className="d-flex justify-content-between align-items-start row mx-1">
-          <ul className="article_edit col-9">
+        <form
+          className="d-flex justify-content-between align-items-start"
+          enctype="multipart/form-data"
+        >
+          <ul className="article_edit">
             <div className="date_count mt-1">
               <p>Day 1</p>
             </div>
             <li className="trip_location mt-3" id="locate1">
               <div className="d-flex justify-content-between align-items-center mb-1">
                 <div className="trip_location_title">
-                  <TiLocation className="mb-1" />{' '}
-                  1.5小時｜台北捷運台北火車站
+                  <TiLocation className="mb-1" /> 1.5小時｜台北捷運台北火車站
                   <RiEditFill className="ms-1 mb-1 "></RiEditFill>
                 </div>
                 <div>
@@ -149,7 +151,7 @@ function PostTripEdit() {
                 maxlength="100"
                 placeholder="為旅途留下回憶"
               ></textarea>
-                            <label
+              <label
                 className="trip_locate_photo_upload d-flex align-items-center
               justify-content-center"
               >
@@ -183,7 +185,7 @@ function PostTripEdit() {
                 maxlength="100"
                 placeholder="為旅途留下回憶"
               ></textarea>
-                           <label
+              <label
                 className="trip_locate_photo_upload d-flex align-items-center
               justify-content-center"
               >
@@ -219,7 +221,7 @@ function PostTripEdit() {
                 maxlength="100"
                 placeholder="為旅途留下回憶"
               ></textarea>
-                           <label
+              <label
                 className="trip_locate_photo_upload d-flex align-items-center
               justify-content-center"
               >
@@ -253,7 +255,7 @@ function PostTripEdit() {
                 maxlength="100"
                 placeholder="為旅途留下回憶"
               ></textarea>
-                           <label
+              <label
                 className="trip_locate_photo_upload d-flex align-items-center
               justify-content-center"
               >
@@ -313,8 +315,8 @@ function PostTripEdit() {
                 maxlength="100"
                 placeholder="為旅途留下回憶"
               ></textarea>
-                           <label
-                className="trip_locate_photo_upload d-flex align-items-center
+              <label
+                className="photo_upload d-flex align-items-center
               justify-content-center"
               >
                 上傳照片
@@ -360,17 +362,20 @@ function PostTripEdit() {
                 <p>｜花蓮南濱公園</p>
               </a>
             </div>
+            <div className="d-flex justify-content-center my-2 post_edit_button ">
+              <button className="btn">清除</button>
+              <button className="btn" type="submit">
+                儲存
+              </button>
+            </div>
           </div>
         </form>
+
         <div className="post_map">
           <p>行程地圖</p>
           <div className="map_photo">
             <img alt="" src={mapPhoto} />
           </div>
-        </div>
-        <div className="d-flex justify-content-end my-3  post_edit_button ">
-          <button className="btn">清除</button>
-          <button className="btn">送出</button>
         </div>
       </div>
     </>

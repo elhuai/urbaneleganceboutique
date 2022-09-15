@@ -6,8 +6,8 @@ function PersonalHomePage() {
   return (
     <>
       {/* <AdminCenter /> */}
-      <div className="personal_home_page d-flex justify-content-center ">
-        <div className="personal_bar d-flex">
+      <div className="personal_home_page d-flex flex-column justify-content-center">
+        <div className="personal_bar d-flex justify-content-evenly align-items-center">
           <div className="user_photobox">
             <img
               className="admin_user_photo w-100 h-100"
@@ -26,31 +26,22 @@ function PersonalHomePage() {
               </p>
             </div>
           </div>
-          <div className="pet_card">
-            <div className="pet_card_description d-flex justify-content-center">
-              <div className="pet_card_list d-flex">
-                <div className="pet_photobox">
-                  <img
-                    classNaeme="w-100 h-100"
-                    alt=""
-                    src="https://picsum.photos/200/300?random6"
-                  ></img>
-                </div>
-                <div className="pet_info ms-4 d-flex flex-column">
-                  <div className="">
-                    <p>Doggy</p>
-                  </div>
-                  <div className="">
-                    <p>拉布拉多</p>
-                  </div>
-                </div>
+          <div className="pet_card_description d-flex justify-content-center">
+            <div className="pet_card_list d-flex flex-column align-items-center">
+              <div className="pet_photobox">
+                <img
+                  classNaeme="w-100 h-100"
+                  alt=""
+                  src="https://picsum.photos/200/300?random6"
+                ></img>
               </div>
             </div>
           </div>
         </div>
+        <div className="my_trip_list">q</div>
+        <div className="my_post_list">q</div>
       </div>
-      <div className="my_trip_list"></div>
-      <div className="my_post_list"></div>
+
       <Link to="/AdminCenterPage">
         {' '}
         testing button navigate to admin center -- community manangment

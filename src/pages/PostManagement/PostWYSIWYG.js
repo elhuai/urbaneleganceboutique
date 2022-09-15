@@ -6,7 +6,7 @@ import { Link } from 'react-router-dom';
 import { BiLike } from 'react-icons/bi';
 import { MdLocationOn } from 'react-icons/md';
 import dogIcon from '../../images/travel_dog_paws.svg';
-// import { Swiper, SwiperSlide } from 'swiper/react';
+import PhotoReviewSwiperDefault from '../../components/WYSIWYG/PhotoViewDefault';
 // import '../node_modules/reatct-draft-wysiwyg/dist/react-draft-wysiwyg.css';
 
 function PostWYSIWYG() {
@@ -58,8 +58,8 @@ function PostWYSIWYG() {
             <h5>
               2022大稻埕煙火以「愛，一直都在」為主題，包含480秒煙火秀、復古市集、以及抽獎活動，這次的煙火不僅引進「日本花火大會的變色花柱」，更將首次推出震撼的「水上爆破秀」！
             </h5>
-            <img src="https://picsum.photos/200/300?random8" alt=""></img>
           </div>
+          <PhotoReviewSwiperDefault></PhotoReviewSwiperDefault>
           <div className="post_map">
             <p>行程地圖</p>
             <div className="map_photo">
@@ -69,7 +69,7 @@ function PostWYSIWYG() {
           <div className="recommand_product_list">
             <p>推薦行程/商品</p>
             <div className="d-flex justify-content-between">
-            <Link to="/">
+              <Link to="/">
                 <div className="rec_product_card">
                   <div className="product_photo">
                     <img

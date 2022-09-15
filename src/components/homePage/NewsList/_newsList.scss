@@ -8,7 +8,7 @@
     cursor: pointer;
     background-color: #FFF;
     transition: .3s ease-out;
-    animation: fadeIn .3s ease-out 0s 1 forwards;
+    animation: newsList_fadeIn .3s ease-out 0s 1 forwards;
     box-shadow: 2px 2px 8px rgba(0, 0, 0, .1);
     opacity: 0;
   
@@ -37,7 +37,7 @@
 }
 
 
-@keyframes fadeIn {
+@keyframes newsList_fadeIn {
   0% {
     opacity: 0;
     left: calc(100% + 20px);
