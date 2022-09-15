@@ -1,3 +1,18 @@
-.comHome_container {
-  margin: 10px 60px;
+.CommunityHomePage {
+  .searchBar_main_search_left_dog {
+    width: 80px;
+    position: absolute;
+    top: 24px;
+    left: calc(100% - 64%);
+  }
+
+  .searchBar_main_search_right_dog {
+    position: absolute;
+    width: 80px;
+    top: 29px;
+    right: calc(100% - 64%);
+  }
+  .comHome_container {
+    margin: 10px 60px;
+  }
 }
