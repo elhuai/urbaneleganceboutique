@@ -77,7 +77,7 @@ export default function communityHomePageCard() {
                   </div>
                   <div className="communitySwiper_card_info d-flex justify-content-between align-items-end">
                     <div className="communitySwiper_card_author">{data.author}</div>
-                    <div className="communitySwiper_card_like"> {data.like}<BiLike /></div>
+                    <div className="communitySwiper_card_like">｜{data.like}<BiLike /></div>
                   </div>
                 </div>
               </Link>
