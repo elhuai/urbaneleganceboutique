@@ -19,6 +19,7 @@ const PlacesAutocomplete = ({ setSelected }) => {
   const [mapPhoto, setmapPhoto] = useState([]);
   const [mapName, setmapName] = useState([]);
   const [mapPhone, setMapPhone] = useState([]);
+  const [mapopenTime, setMapopenTime] = useState([]);
   const [placeId, setPlaceId] = useState('');
   const {
     ready,
@@ -44,16 +45,32 @@ const PlacesAutocomplete = ({ setSelected }) => {
   const submit = (pId) => {
     const parameter = {
       placeId: pId,
-      fields: ['name', 'rating', 'photo', 'formatted_phone_number'],
+      fields: [
+        'name',
+        'rating',
+        'photo',
+        'formatted_phone_number',
+        'adr_address',
+        'business_status',
+        // 'utc_offset_minutes',
+        'opening_hours',
+      ],
     };
     getDetails(parameter)
       .then((details) => {
         console.log('53 Details: ', details);
+        console.log('adr_address', details.adr_address);
+        console.log('business_status', details.business_status);
+        // console.log('utc_offset_minutes', details.utc_offset_minutes);
+        console.log(
+          'opening_hours/open_now',
+          details.opening_hours.weekday_text
+        );
         // console.log('formatted_phone_number: ', details.formatted_phone_number); //電話
         // console.log('name: ', details.name); //使用者可理解的地點地址
-
+        setMapopenTime([details.opening_hours.weekday_text]);
         setmapName([details.name]);
-        console.log('setmapName', setmapName);
+        // console.log('setmapName', setmapName);
         console.log('mapName', mapName);
 
         setmapPhoto([details.photos[0].getUrl()]);
@@ -68,40 +85,62 @@ const PlacesAutocomplete = ({ setSelected }) => {
   return (
     <Combobox onSelect={handleSelect} className="travelmap_coboboxBody">
       <div className="travel_input_searchBar_sum  d-flex  ">
-        <div className="travelmap_input_icondiv ">
-          <img src={mapicon} alt="#/" className="travel_input_mapicon " />
+        <div className="travel_input_searchBar_sum">
+          <div className="travelmap_input_icondiv ">
+            <img src={mapicon} alt="#/" className="travel_input_mapicon " />
+          </div>
+          <ComboboxInput
+            value={value}
+            onChange={(e) => setValue(e.target.value)}
+            disabled={!ready}
+            className="travelmap_combobox-input "
+            placeholder="請輸入城市、地區"
+          />
         </div>
-        <ComboboxInput
-          value={value}
-          onChange={(e) => setValue(e.target.value)}
-          disabled={!ready}
-          className="travelmap_combobox-input "
-          placeholder="請輸入城市、地區"
-        />
+        <ComboboxPopover>
+          <ComboboxList>
+            {status === 'OK' &&
+              data.map(({ place_id, description }) => (
+                <ComboboxOption key={place_id} value={description} />
+              ))}
+          </ComboboxList>
+        </ComboboxPopover>
+        <button
+          className="travelmap_SearchBtn "
+          onClick={() => {
+            submit(placeId);
+          }}
+        >
+          搜尋
+        </button>
       </div>
-      <ComboboxPopover>
-        <ComboboxList>
-          {status === 'OK' &&
-            data.map(({ place_id, description }) => (
-              <ComboboxOption key={place_id} value={description} />
-            ))}
-        </ComboboxList>
-      </ComboboxPopover>
-
-      <button
-        className="travelmap_SearchBtn "
-        onClick={() => {
-          submit(placeId);
-        }}
-      >
-        搜尋
-      </button>
       {/* TODO: useStae 狀態要存到localstorage */}
-      <div className="TravelSearchBar_Wrap ">
-        <div>
+      <div className="TravelSearchBar_Wrap  d-flex flex-wrap  justify-content-center">
+        <div className="TravelSearchBar_Card">
+          {mapName.length === 0 ? (
+            <div>
+              <h5 className="TravelSearchBar_CardTittle">
+                景點名稱稱稱稱稱稱稱稱稱稱稱
+              </h5>
+            </div>
+          ) : (
+            mapName.map((element, index) => {
+              return (
+                <div key={index}>
+                  <h5 className="TravelSearchBar_CardTittle">{element}</h5>
+                </div>
+              );
+            })
+          )}
+        </div>
+        <div className="TravelSearchBar_Card">
           {mapPhoto.length === 0 ? (
             <div>
-              <h5 className=" "> 圖片</h5>
+              <img
+                src="https://picsum.photos/200/300?random40"
+                alt="#/"
+                className="travelSearchBar_photo"
+              />
             </div>
           ) : (
             mapPhoto.map((vaule) => {
@@ -117,21 +156,20 @@ const PlacesAutocomplete = ({ setSelected }) => {
           )}
         </div>
         <div>
-          {mapName.length === 0 ? (
-            <div>
-              <h5 className=""> 店家名稱</h5>
-            </div>
-          ) : (
-            mapName.map((element, index) => {
+          <h5>
+            {mapopenTime.map((element, index) => {
               return (
                 <div key={index}>
-                  <h2>{element}</h2>
+                  <h5 className="">{element}</h5>
                 </div>
               );
-            })
-          )}
+            })}
+            星期一: 08:00 – 23:00 1 : 星期二: 08:00 – 23:00 2 : 星期三: 08:00 –
+            23:00 3 : 星期四: 08:00 – 23:00 4 : 星期五: 08:00 – 23:00 5 :
+            星期六: 08:00 – 23:00 6 : 星期日: 08:00 – 23:00
+          </h5>
         </div>
-        <div>
+        {/* <div>
           {mapPhone.length === 0 ? (
             <div>
               <h5 className=""> 電話號碼</h5>
@@ -145,7 +183,7 @@ const PlacesAutocomplete = ({ setSelected }) => {
               );
             })
           )}
-        </div>
+        </div> */}
       </div>
     </Combobox>
   );
