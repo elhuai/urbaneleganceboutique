@@ -60,19 +60,21 @@ body {
       }
     }
     .article_edit {
-      background-color: #E7E7E9;
+      // background-color: #E7E7E9;
       padding: 5px;
     }
     .trip_outline{
       border-radius: 8px;
       padding: 10px;
-      background-color: $button-color-hover;
+      // background-color: $button-color-hover;
       width: 20%;
       font-size: 16px;
       position: sticky;
       top: 100px;
+      border: 1px solid $link-color;
       .post_date_count{
-        font-weight: 800;
+        font-weight: bolder;
+        color: $link-color;
       }
     }
     
@@ -118,7 +120,7 @@ body {
   padding: 10px;
   .date_count {
     font-size: 1.2rem;
-    font-weight: 600;
+    font-weight: 800;
     color: $line-color--dark;
   }
   .trip_location{
@@ -126,16 +128,24 @@ body {
     list-style-type: none;;
     .trip_location_title{
     color: $link-color;
-    font-size: 1rem;
+    font-size: 1.3rem;
     font-weight: 600;
   }}
+  .trip_locate_photo_upload{
+    background-color: $line-color--blue;
+    width: 100px;
+    height: 30px;
+    margin-top: 0.5rem;
+    font-size: 0.75rem;
+    border-radius: 5px;
+  }
 }
 .close_icon{
-  font-size: 1.5rem;
+  font-size: 1.25rem;
   position: relative;
   right: 0;
   color: $line-color--dark;
-  // margin-bottom: 4px;
+
 }    
 
 .trip_location:target{
