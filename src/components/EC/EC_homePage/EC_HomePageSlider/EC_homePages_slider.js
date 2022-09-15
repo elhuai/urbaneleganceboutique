@@ -26,10 +26,9 @@ export default function EC_HomePageSlider(props) {
       onSwiper={(swiper) => {}}
     >
       {ecTypeSlider.map((data, index) => {
-        console.log(data.img);
         return (
           <SwiperSlide
-            key={'ecHomePage' + index}
+            key={'ecHomePageSlider' + index}
             className="h-100 d-flex justify-content-center"
           >
             <Link to="/" className="ecHomePage_slider d-flex flex-column">

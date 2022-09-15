@@ -10,7 +10,11 @@ export default function EcHomePageCategory(props) {
       <div className="ec_category_card d-flex flex-row justify-content-between">
         {ecTypeCategory.map((data, index) => {
           return (
-            <Link to="/" className="ec_category_card_items">
+            <Link
+              key={'ecHomePageCategory' + index}
+              to="/"
+              className="ec_category_card_items"
+            >
               <div className="d-flex flex-column align-items-center">
                 <img src={data.img} alt="" className="ec_category_img" />
                 <p className="ec_category_name my-1">{data.name}</p>

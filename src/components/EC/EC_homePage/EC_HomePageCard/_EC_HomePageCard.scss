@@ -40,7 +40,10 @@ $button-color-remove: #EF7A70;
     display: flex;
     flex-flow: column;
   }
-
+  &_main_title{
+    font-weight: 800;
+    text-shadow:1px 1px 3px white;
+  }
   &_product_photo {
     // width: 100%;
     flex-shrink: 0;
@@ -56,15 +59,17 @@ $button-color-remove: #EF7A70;
   // card商品標題
   .ec_card_pc_content_title {
     height: 100%;
-    // flex: auto;
-    padding: 10px;
-    font-size: 1.1rem;
-    color: $line-color--dark;
-    font-weight: 700;
-    line-height: 1.4rem;
-
+    padding: 10px 10px 0 10px;
     p {
-      margin: 0px;
+      margin-bottom: 1px;
+      font-size: 1rem;
+      color: $line-color--dark;
+      font-weight: 700;
+      text-overflow: ellipsis;
+      display:  -webkit-box;;
+      -webkit-line-clamp: 3;
+      -webkit-box-orient: vertical;
+      overflow: hidden;
     }
 
   }
