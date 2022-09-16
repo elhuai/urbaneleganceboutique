@@ -10,6 +10,7 @@ import { BiLike } from 'react-icons/bi';
 import { MdLocationOn } from 'react-icons/md';
 import dogIcon from '../../images/travel_dog_paws.svg';
 import PhotoReviewSwiperDefault from '../../components/WYSIWYG/PhotoViewDefault';
+import second from '../../components/layout/';
 // import '../node_modules/reatct-draft-wysiwyg/dist/react-draft-wysiwyg.css';
 
 function PostWYSIWYG() {
