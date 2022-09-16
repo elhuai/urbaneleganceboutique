@@ -9,6 +9,7 @@ import CommunityList from './pages/CommunityList';
 import CommunityHomePage from './pages/CommunityHomePage';
 import AdminCenterPage from './pages/AdminCenter/AdminCenterPage';
 import Travelmap from './pages/Travel_map';
+import Loading from './pages/Loading';
 import { UserInfoProvider } from './hooks/useUserInfo';
 
 import 'swiper/css/bundle';
@@ -38,6 +39,7 @@ function App() {
           <Route path="/postWYSIWYGEdit" element={<PostWYSIWYGEdit />} />
           <Route path="/postTrip" element={<PostTrip />} />
           <Route path="/postTripEdit" element={<PostTripEdit />} />
+          <Route path="/login" element={<Loading />} />
         </Routes>
         <Footer />
       </UserInfoProvider>
