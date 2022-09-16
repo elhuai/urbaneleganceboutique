@@ -8,21 +8,21 @@ const travelticket = [
     name: '高雄一日遊一天天天天天天',
     start_time: 20220823,
     end_time: 20220830,
-    img: 'https://picsum.photos/200/300?random10',
+    img: 'https://picsum.photos/200/300?random2',
   },
   {
     id: 2,
     name: '台中二日遊',
     start_time: 20220820,
     end_time: 20220825,
-    img: 'https://picsum.photos/200/300?random87',
+    img: 'https://picsum.photos/200/300?random5',
   },
   {
     id: 3,
     name: '基隆一日遊',
     start_time: 20220823,
     end_time: 20220830,
-    img: 'https://picsum.photos/200/300?random50',
+    img: 'https://picsum.photos/200/300?random21',
   },
   {
     id: 4,
@@ -54,7 +54,7 @@ const Travel_ticketNavbar = () => {
         <div className="row g-1">
           <div className="col-md-3 me-3">
             <img
-              src="https://picsum.photos/1600/1300?random7"
+              src="https://picsum.photos/200/300?random2"
               className="Travel_ticketNavbar_card_img"
               alt="..."
             />

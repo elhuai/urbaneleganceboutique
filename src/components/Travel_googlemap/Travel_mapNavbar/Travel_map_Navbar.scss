@@ -27,18 +27,12 @@ $font-weight: 700;
   .css-1aquho2-MuiTabs-indicator {
     background-color: $main_color;
   }
-  .travelmap_NavserachBar {
-    // position: absolute;
-    // top: 0;
-    // left: 0;
-    // transform: translateY(-150%);
-    // z-index: 2;
-  }
+
   .TravelTicketNavbarBody {
     position: relative;
     top: 193px;
-    left: -5px;
-    max-width: 960px;
+    left: -10px;
+    width: 930px;
     height: 160px;
     border: 1px solid #ccc;
   }

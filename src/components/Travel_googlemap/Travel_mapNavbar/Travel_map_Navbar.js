@@ -110,7 +110,7 @@ const Travel_map_Navbar = ({ setSelected }) => {
         </div>
       </TabPanel>
       <TabPanel value={value} index={2} component={'span'} variant={'body2'}>
-        <div className="travelmap_NavserachBar ">
+        <div className=" ">
           <TravelSearchBar setSelected={setSelected} />
         </div>
       </TabPanel>

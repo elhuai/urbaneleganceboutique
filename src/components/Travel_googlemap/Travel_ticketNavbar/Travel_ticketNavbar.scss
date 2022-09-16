@@ -43,10 +43,12 @@
     font-weight: 700;
   }
   .Travel_ticketNavbar_cardText {
-    width: 600px;
+    // TODO: 記得改寬度會報版
+    width: 550px;
     .Travel_ticketNavbar_text {
       text-indent: 24px;
       line-height: 1.8;
+      font-size: 16px;
       display: -webkit-box; /*值必須為-webkit-box或者-webkit-inline-box*/
       -webkit-box-orient: vertical; /*值必須為vertical*/
       -webkit-line-clamp: 2; /*值為數字，表示一共顯示幾行*/

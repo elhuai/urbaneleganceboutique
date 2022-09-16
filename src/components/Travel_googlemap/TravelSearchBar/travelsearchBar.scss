@@ -1,5 +1,6 @@
 $main_color: #ffc715;
 $sup_color: #eeb569;
+$icon_color: #ef7a70;
 $font-size: 1.2rem;
 $font-weight: 700;
 .travelmap_coboboxBody {
@@ -69,32 +70,99 @@ $font-weight: 700;
   }
 }
 .travelSearchBar_photo {
-  margin-left: 120px;
+  // margin-left: 80px;
+  margin-right: 60px;
   margin-top: 5px;
   width: 160px;
   height: 100px;
+  cursor: pointer;
 }
-.TravelSearchBar_Wrap {
+.travelSearchBar_Wrap {
   // display: none;
   position: relative;
-  top: 100px;
+  top: 10px;
   opacity: 0.8;
   z-index: 2;
   margin: 10px 10px;
   width: 845px;
   height: 150px;
   border: 1px solid #ccc;
-  .TravelSearchBar_Card {
+  .travelSearchBar_Card {
+    cursor: pointer;
     height: 110px;
     margin: 0px 3rem;
-    width: 280px;
+    width: 300px;
   }
-  .TravelSearchBar_CardTittle {
+  .travelSearchBar_CardTittle {
     margin-top: 40px;
     font-weight: 700;
     font-size: 28px;
     overflow: hidden;
     white-space: nowrap;
     text-overflow: ellipsis;
+  }
+}
+.searchBAR_IconBack {
+  display: none;
+}
+
+.travelSearch_storedetail {
+  position: relative;
+  transition: 0.3s ease-out;
+  animation: travelDetail_fadeIn 0.5s ease-out 0s 1 forwards;
+  @keyframes travelDetail_fadeIn {
+    0% {
+      opacity: 0;
+      right: calc(100% + 20px);
+    }
+
+    100% {
+      right: 0%;
+      opacity: 1;
+    }
+  }
+
+  margin-top: 10px;
+  margin-left: 10px;
+  width: 500px;
+  .travelSearchBar_backIcon {
+    cursor: pointer;
+
+    svg {
+      width: 35px;
+      height: 35px;
+    }
+  }
+  .travelSearch_storedetail_tittle {
+    padding-top: 4px;
+    padding-left: 15px;
+    font-size: 24px;
+    font-weight: 600;
+  }
+  .travelSearch_storedetail_card {
+    padding: 10px 10px;
+    height: 400px;
+  }
+  .travelSearch_storedetail_contain {
+    width: 220px;
+    line-height: 2;
+    font-size: 18px;
+    font-weight: 500;
+
+    .travelSearch_storedetail_starTime {
+      position: relative;
+      left: 45px;
+      margin: auto 20px;
+      // word-spacing: 10px;
+    }
+  }
+  .travelSearch_storedetail_phone {
+    margin-right: 150px;
+    font-size: 20px;
+    text-align: center;
+    padding-right: 120px;
+    svg {
+      color: $icon_color;
+    }
   }
 }

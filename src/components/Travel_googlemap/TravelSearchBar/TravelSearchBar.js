@@ -1,5 +1,7 @@
 import React from 'react';
 import mapicon from '../../../images/Travel_input_location.svg';
+import { HiChevronLeft } from 'react-icons/hi';
+import { HiOutlinePhone } from 'react-icons/hi';
 import './travelsearchBar.scss';
 import usePlacesAutocomplete, {
   getGeocode,
@@ -17,21 +19,24 @@ import { useState } from 'react';
 import { useEffect } from 'react';
 
 const PlacesAutocomplete = ({ setSelected }) => {
-  // const pictureOnclick = () => {
-  //   // console.log('123');
-  //   setImageurl(true);
-  //   // console.log(imageurl);
-  // };
-  // useEffect(() => {
-  //   setImageurl(true);
-  //   console.log(imageurl);
-  // }, []);
+  const pictureOnclick = (e) => {
+    setStoredetail(1);
+    console.log('storedetail Onclick', storedetail);
+  };
+
+  const iconBackClick = (e) => {
+    setbackicon(1);
+    console.log('backicon', backicon);
+  };
+
   const [mapPhoto, setmapPhoto] = useState([]);
   const [mapName, setmapName] = useState([]);
   const [mapPhone, setMapPhone] = useState([]);
   const [mapopenTime, setMapopenTime] = useState([]);
   const [placeId, setPlaceId] = useState('');
-  const [imageurl, setImageurl] = useState(false);
+  const [showBox, setShowBox] = useState(0);
+  const [storedetail, setStoredetail] = useState(0);
+  const [backicon, setbackicon] = useState(0);
   const {
     ready,
     value,
@@ -54,6 +59,7 @@ const PlacesAutocomplete = ({ setSelected }) => {
   };
 
   const submit = (pId) => {
+    setShowBox(placeId);
     const parameter = {
       placeId: pId,
       fields: [
@@ -63,7 +69,6 @@ const PlacesAutocomplete = ({ setSelected }) => {
         'formatted_phone_number',
         'adr_address',
         'business_status',
-        // 'utc_offset_minutes',
         'opening_hours',
       ],
     };
@@ -126,30 +131,38 @@ const PlacesAutocomplete = ({ setSelected }) => {
         </button>
       </div>
       {/* TODO: useStae 狀態要存到localstorage */}
-      <div className="TravelSearchBar_Wrap  card border-primary ">
+      <div
+        className={
+          showBox === placeId
+            ? 'travelSearchBar_Wrap  card border-primary '
+            : 'd-none'
+        }
+      >
         <div className="d-flex d-flex justify-content-between">
-          <div className="TravelSearchBar_Card">
+          <div className="travelSearchBar_Card">
+            {/* Getapi storeName */}
             {mapName.length === 0 ? (
               <div>
-                <h5 className="TravelSearchBar_CardTittle">趕緊搜尋吧!</h5>
+                <h5 className="travelSearchBar_CardTittle">
+                  還沒有行程趕緊搜尋吧!
+                </h5>
               </div>
             ) : (
               mapName.map((element, index) => {
                 return (
                   <div key={index}>
-                    <h5 className="TravelSearchBar_CardTittle">{element}</h5>
+                    <h5 className="travelSearchBar_CardTittle">{element}</h5>
                   </div>
                 );
               })
             )}
           </div>
           <div className="TravelSearchBar_Card ">
+            {/* Getapi Image */}
             {mapPhoto.length === 0 ? (
               <div>
-                <img
-                  src="https://picsum.photos/200/300?random40"
-                  alt="#/"
-                  onClick={pictureOnclick}
+                <div
+                  onClick={() => pictureOnclick(1)}
                   className="travelSearchBar_photo"
                 />
               </div>
@@ -160,41 +173,90 @@ const PlacesAutocomplete = ({ setSelected }) => {
                     src={vaule}
                     alt="#/"
                     key={vaule.id}
-                    onClick={pictureOnclick}
+                    onClick={() => pictureOnclick(1)}
                     className="travelSearchBar_photo"
                   />
                 );
               })
             )}
           </div>
-          {/* <h5>
-            {mapopenTime.map((element, index) => {
-              return (
-                <div key={index}>
-                  <h5 className="">{element}</h5>
-                </div>
-              );
-            })}
-            星期一: 08:00 – 23:00 1 : 星期二: 08:00 – 23:00 2 : 星期三: 08:00 –
-            23:00 3 : 星期四: 08:00 – 23:00 4 : 星期五: 08:00 – 23:00 5 :
-            星期六: 08:00 – 23:00 6 : 星期日: 08:00 – 23:00
-          </h5> */}
         </div>
-        {/* <div>
-          {mapPhone.length === 0 ? (
-            <div>
-              <h5 className=""> 電話號碼</h5>
-            </div>
-          ) : (
-            mapPhone.map((element, index) => {
-              return (
-                <div key={index}>
-                  <p>{element}</p>
+      </div>
+      {/* 店家資訊開始 */}
+      <div className={backicon === 1 ? 'searchBAR_IconBack' : ''}>
+        <div
+          className={storedetail === 1 ? 'travelSearch_storedetail' : 'd-none'}
+        >
+          <div className="travelSearch_storedetail_card card border-primary  d-flex">
+            <div className="d-flex">
+              <div className="travelSearchBar_backIcon ">
+                <HiChevronLeft onClick={() => iconBackClick(1)} />
+              </div>
+              {mapName.length === 0 ? (
+                <div>
+                  <h5 className="travelSearch_storedetail_tittle">
+                    台中肯德基一中店
+                  </h5>
                 </div>
-              );
-            })
-          )}
-        </div> */}
+              ) : (
+                mapName.map((element, index) => {
+                  return (
+                    <div key={index}>
+                      <h5 className="travelSearch_storedetail_tittle">
+                        {element}
+                      </h5>
+                    </div>
+                  );
+                })
+              )}
+            </div>
+            {/* Getapi phone */}
+            {mapPhone.length === 0 ? (
+              <div className="mt-3">
+                <p className="travelSearch_storedetail_phone">
+                  <HiOutlinePhone className="me-3" />
+                  06 298 4722
+                </p>
+              </div>
+            ) : (
+              mapPhone.map((element, index) => {
+                return (
+                  <div className="mt-3" key={index}>
+                    <p className="travelSearch_storedetail_phone ">
+                      <HiOutlinePhone className="me-3" />
+                      {element}
+                    </p>
+                  </div>
+                );
+              })
+            )}
+            <div>
+              {mapopenTime.length === 0 ? (
+                <div className="travelSearch_storedetail_contain">
+                  <p className="travelSearch_storedetail_starTime">
+                    星期一: 09:00 – 18:00星期二: 09:00 – 18:00星期三: 09:00 –
+                    18:00星期四: 09:00 – 18:00星期五: 09:00 – 18:00星期六: 09:00
+                    – 18:00星期日: 09:00 – 18:00
+                  </p>
+                </div>
+              ) : (
+                mapopenTime.map((element, index) => {
+                  return (
+                    <div
+                      key={index}
+                      className="travelSearch_storedetail_contain"
+                    >
+                      <p className="travelSearch_storedetail_starTime">
+                        {element}
+                      </p>
+                    </div>
+                  );
+                })
+              )}
+            </div>
+            <div></div>
+          </div>
+        </div>
       </div>
     </Combobox>
   );
