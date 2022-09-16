@@ -1,8 +1,11 @@
 import React, { useState } from 'react';
-import { LINE_LOGIN_URL } from '../../../utils/config';
+import { API_URL, LINE_LOGIN_URL } from '../../../utils/config';
 import { HiChevronLeft } from 'react-icons/hi';
-import { registerApi } from '../../../api/authApi';
-
+import {
+  callRegisterApi,
+  callLoginApi,
+  callLogoutApi,
+} from '../../../api/authApi';
 import './_loginCard.scss';
 
 const LoginCard = ({ isLogin, confirm, setUser }) => {
@@ -19,27 +22,22 @@ const LoginCard = ({ isLogin, confirm, setUser }) => {
   });
   const [registerError, setRegisterError] = useState([]);
 
-  const handleLogin = (e) => {
+  const handleLogin = async (e) => {
     e.preventDefault();
-    // setUser((oldStatus) => ({ ...oldStatus, auth: true }));
-    // confirm();
-    // axios.post(`${API_URL}/register`, { id: 1, name: '你好' });
+    console.log('call login API');
+    callLoginApi(loginInfo, setUser, confirm);
+  };
+
+  const handleLogout = async (e) => {
+    e.preventDefault();
+    console.log('call logout API');
+    callLogoutApi(setUser, confirm);
   };
 
   const handleRegisterRequest = (e) => {
     e.preventDefault();
     console.log('call register API');
-    try {
-      registerApi(registInfo);
-    } catch (err) {
-      let errorArr = [];
-      if (err.response.data.error) {
-        for (const errItem of err.response.data.error) {
-          errorArr.push(errItem.param);
-        }
-        setRegisterError(errorArr);
-      }
-    }
+    callRegisterApi(registInfo, setRegisterError, setUser, confirm);
   };
 
   const handleLoginChange = (e) => {
@@ -212,10 +210,7 @@ const LoginCard = ({ isLogin, confirm, setUser }) => {
       <button
         className="login_card_button--logout"
         type="button"
-        onClick={() => {
-          setUser((oldStatus) => ({ ...oldStatus, auth: false }));
-          confirm();
-        }}
+        onClick={handleLogout}
       >
         確認登出
       </button>

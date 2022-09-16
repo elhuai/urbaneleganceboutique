@@ -45,6 +45,7 @@ const Homepage = () => {
   // }
 
   // if (!user.auth) return <Login />;
+  console.log(321);
   return (
     <div className="home_main">
       <div className="home_section_hero">

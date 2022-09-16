@@ -23,7 +23,10 @@ export const handleLoginCard = (isLogin, setUser) => {
           icon: 'success',
           title: `${isLogin ? '登入成功' : '登出成功'}`,
           showConfirmButton: false,
-          timer: 800,
+          timer: 1500,
         });
     });
+  // .then((result) => {
+  //   console.log(result);
+  // });
 };
