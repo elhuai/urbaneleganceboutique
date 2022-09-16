@@ -1,5 +1,8 @@
 import React from 'react';
+import { useState, useEffect } from 'react';
 import './PostWYSIWYG.scss';
+import axios from 'axios';
+import { API_URL } from '../../utils/config';
 import coverPhoto from '../../images/test2.jpg';
 import mapPhoto from '../../images/screenshop map_photo.png';
 import { Link } from 'react-router-dom';
@@ -10,6 +13,51 @@ import PhotoReviewSwiperDefault from '../../components/WYSIWYG/PhotoViewDefault'
 // import '../node_modules/reatct-draft-wysiwyg/dist/react-draft-wysiwyg.css';
 
 function PostWYSIWYG() {
+  // const postData = [
+  //   {
+  //     id: 12346,
+  //     post_type_id: 1,
+  //     "user_id": 2,
+  //     "title":
+  //       '【食】台北大安┃浪漫歐式氛圍的玻璃屋┃必吃的法式甜點┃寵物友善餐廳┃Bonica Café',
+  //     content:
+
+  //     "main_photo": 'dogsuit.png',
+  //     travel_id: 1,
+  //     "create_time": '2022-09-16 08:26:25',
+  //     update_time: '2022-09-16 08:26:25',
+  //     status: 1,
+  //   },
+  // ];
+
+  {
+    /* 關聯資料庫 */
+  }
+  const [post, setPost] = useState([]);
+  // const [waterCard, setWaterCard] = useState([]);
+  // const [healthCard, setHealthCard] = useState([]);
+
+  useEffect(() => {
+    const fetchPost = async () => {
+      // const arrStr = [
+      //   { id: '4', text: '飲水機', setState: setFishCard },
+      //   { id: '4', text: '小魚乾', setState: setWaterCard },
+      //   { id: '4', text: '益生菌', setState: setHealthCard },
+      // ];
+
+      const result = await axios.get(
+        `http://localhost:3007/api/1.0/community/post`
+      );
+      console.log(result.data);
+      // const data = result.data;
+      setPost(result.data);
+    };
+    // console.log(fishData);
+    fetchPost();
+  }, []);
+  console.log('post', post);
+
+  // return .map((data) => {
   return (
     <>
       <div className="d-flex justify-content-center">
@@ -18,19 +66,17 @@ function PostWYSIWYG() {
             <img className="" alt="" src={coverPhoto}></img>
           </div>
           <div className="post_title d-flex">
-            <p className="">
-              花蓮三日遊 好吃又好玩 好吃又好玩 好吃又好吃又好玩 好吃又好吃又好玩
-              好吃又
-            </p>
+            <p className="">{post[0].title}</p>
           </div>
           <div className="post_state_bar d-flex justify-content-between">
             <div className="d-flex  ">
               <div className="post_date pe-4">
-                <p>2022.07.18</p>
+                <p></p>
               </div>
               <div className="post_auther d-flex pe-4">
                 <Link to="/" className="pe-3">
                   大寶愛睡覺 大寶愛睡覺
+                  {/* 關聯資料庫 */}
                 </Link>
                 <Link to="/" className="follow_link">
                   追蹤
@@ -50,15 +96,7 @@ function PostWYSIWYG() {
           </div>
           <hr></hr>
           <p>所見及所得區</p>
-          <div className="article_section">
-            <h5>
-              一年一度的大稻埕煙火秀即將登場！因應七夕情人節，每年夏天的大稻埕煙火總吸引大批民眾前往，精彩的花火倒映在水面上的絕美畫面真的不容錯過，接下來就來看看今年的大稻埕煙火時間、觀賞地點、活動內容，趕快跟著好朋友、伴侶一起籌劃一下如何度過難忘的浪漫夜晚吧！
-            </h5>
-            <h3>大稻埕情人節煙火</h3>
-            <h5>
-              2022大稻埕煙火以「愛，一直都在」為主題，包含480秒煙火秀、復古市集、以及抽獎活動，這次的煙火不僅引進「日本花火大會的變色花柱」，更將首次推出震撼的「水上爆破秀」！
-            </h5>
-          </div>
+          <div className="article_section"></div>
           <PhotoReviewSwiperDefault></PhotoReviewSwiperDefault>
           <div className="post_map">
             <p>行程地圖</p>
@@ -67,7 +105,7 @@ function PostWYSIWYG() {
             </div>
           </div>
           <div className="recommand_product_list">
-            <p>推薦行程/商品</p>
+            <p>推薦行程/商品</p> {/* 關聯資料庫 */}
             <div className="d-flex justify-content-between">
               <Link to="/">
                 <div className="rec_product_card">
@@ -177,7 +215,7 @@ function PostWYSIWYG() {
           </div>
           <hr></hr>
           <div className="post_comment_list">
-            <p>回應</p>
+            <p>回應</p> {/* 關聯資料庫 */}
             <div className=" d-flex flex-column align-items-center">
               <li className="d-flex justify-content-between comment_descript_list align-items-start">
                 <div className="d-flex justify-content-center">
@@ -243,6 +281,7 @@ function PostWYSIWYG() {
       </div>
     </>
   );
+  // });
 }
 
 export default PostWYSIWYG;
