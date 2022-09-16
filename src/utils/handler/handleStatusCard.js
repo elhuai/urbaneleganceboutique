@@ -1,7 +1,5 @@
 import Swal from 'sweetalert2';
 import withReactContent from 'sweetalert2-react-content';
-import { useHistory } from 'react-router-dom';
-// const navigate = useNavigate();
 
 export const handleSuccess = (title, redirect, html) => {
   const loginCard = withReactContent(Swal);
