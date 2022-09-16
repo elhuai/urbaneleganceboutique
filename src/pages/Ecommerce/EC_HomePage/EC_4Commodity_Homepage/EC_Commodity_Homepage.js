@@ -9,6 +9,8 @@ import EcHomePageCard from '../../../../components/EC/EC_homePage/EC_HomePageCar
 import { commoditySlider } from '../../../../components/EC/EC_homePage/EC_data/Slider/CommoditySlider';
 import { commodityCategory } from '../../../../components/EC/EC_homePage/EC_data/Category/CommodityCategory';
 
+import { API_URL } from '../../../../utils/config';
+
 const EcCommodityHomepage = () => {
   // 推薦標題
   const cardTitle = [

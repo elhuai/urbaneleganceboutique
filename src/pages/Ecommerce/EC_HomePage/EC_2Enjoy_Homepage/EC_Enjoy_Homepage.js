@@ -8,6 +8,8 @@ import EcHomePageCard from '../../../../components/EC/EC_homePage/EC_HomePageCar
 
 import { enjoySlider } from '../../../../components/EC/EC_homePage/EC_data/Slider/EnjoySlider';
 import { enjoyCategory } from '../../../../components/EC/EC_homePage/EC_data/Category/EnjoyCategory';
+import { API_URL } from '../../../../utils/config';
+
 function EcEnjoyHomepage() {
   // 推薦標題
   const cardTitle = [
@@ -39,7 +41,7 @@ function EcEnjoyHomepage() {
 
       for (let index = 0; index < arrStr.length; index++) {
         const result = await axios.get(
-          `http://localhost:3007/api/1.0/product/recommendProduct?id=${arrStr[index].id}&name=${arrStr[index].text}`
+          `${API_URL}/product/recommendProduct?id=${arrStr[index].id}&name=${arrStr[index].text}`
         );
         const data = result.data;
         arrStr[index].setState(data);
