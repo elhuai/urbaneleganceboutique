@@ -1,0 +1,46 @@
+
+  $line-color--light:#E7E7E9;
+  $line-color--dark:#747474;
+  $button-color-hover: #FEEFC3;
+  $button-color-remove: #ef7a70;
+  $main-color:#FFC715;
+  $list-color: #F0EDE0;
+  $list-color-hover: #FEEFC3;
+  $link-color:#2DA9D7;
+  $line-color--blue: #D5EEEE;
+
+  @import url('https://fonts.googleapis.com/css2?family=Open+Sans&display=swap');
+
+
+
+.post_cover_photo {
+  object-fit: cover;
+  width: 100%;
+  height: 300px;
+  img{
+ width: 100%;
+ height: 100%;
+}
+}
+.post_title p {
+  width: 85%;
+  font-size: 3rem;
+  color: $button-color-remove;
+  font-weight: bold;
+  // height: 120px;
+  line-height: 65px;
+  text-align: start;
+}
+.post_state_bar {
+  height: 30px;
+  font-size: 1.25rem;
+  .post_auther{
+    font-weight: bold;
+    .follow_link{
+      color: $link-color;
+    }
+  }
+  .post_location{
+    color: $button-color-remove;
+  }
+}

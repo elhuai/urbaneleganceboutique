@@ -12,8 +12,8 @@ const CommunityList = () => {
   return (
     <>
       {/* <div style={{ minHeight: '100vh' }}> */}
-      <div className='CommunityList'>
-      <SearchBar
+      <div className="CommunityList">
+        <SearchBar
           searchBar_title="想要什麼商品呢"
           searchBar_placeholder="好吃的狗罐罐"
         />

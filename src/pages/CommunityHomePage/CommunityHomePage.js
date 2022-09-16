@@ -7,17 +7,17 @@ import CommunitySwiperRight from '../../components/Community/CommunitySwiper/Com
 const CommunityHomePage = () => {
   return (
     <>
-    <div className='CommunityHomePage'>
-      <SearchBar
-        searchBar_title="想要什麼商品呢"
-        searchBar_placeholder="好吃的狗罐罐"
-      />
-      <div className="comHome_container">
-        <CommunitySwiperRight />
-        <CommunitySwiperLeft />
-        <CommunitySwiperRight />
-        <CommunitySwiperLeft />
-      </div>
+      <div className="CommunityHomePage">
+        <SearchBar
+          searchBar_title="想要什麼商品呢"
+          searchBar_placeholder="好吃的狗罐罐"
+        />
+        <div className="comHome_container">
+          <CommunitySwiperRight />
+          <CommunitySwiperLeft />
+          <CommunitySwiperRight />
+          <CommunitySwiperLeft />
+        </div>
       </div>
     </>
   );
