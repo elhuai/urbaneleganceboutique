@@ -1,8 +1,7 @@
 import React, { useState } from 'react';
 import { LINE_LOGIN_URL } from '../../../utils/config';
 import { HiChevronLeft } from 'react-icons/hi';
-import axios from 'axios';
-import { API_URL } from '../../../utils/config';
+import { registerApi } from '../../../api/authApi';
 
 import './_loginCard.scss';
 
@@ -26,27 +25,23 @@ const LoginCard = ({ isLogin, confirm, setUser }) => {
     // confirm();
     // axios.post(`${API_URL}/register`, { id: 1, name: '你好' });
   };
+
   const handleRegisterRequest = (e) => {
     e.preventDefault();
     console.log('call register API');
-    axios
-      .post(`${API_URL}/auth/user/register`, registInfo, {
-        withCredentials: true,
-      })
-      .then((res) => {
-        console.log(res.data);
-      })
-      .catch((err) => {
-        let errorArr = [];
-        console.error(err);
-        if (err.response.data.error) {
-          for (const errItem of err.response.data.error) {
-            errorArr.push(errItem.param);
-          }
-          setRegisterError(errorArr);
+    try {
+      registerApi(registInfo);
+    } catch (err) {
+      let errorArr = [];
+      if (err.response.data.error) {
+        for (const errItem of err.response.data.error) {
+          errorArr.push(errItem.param);
         }
-      });
+        setRegisterError(errorArr);
+      }
+    }
   };
+
   const handleLoginChange = (e) => {
     setLoginInfo((oldInfo) => ({
       ...oldInfo,

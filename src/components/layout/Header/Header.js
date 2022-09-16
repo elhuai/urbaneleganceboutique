@@ -6,7 +6,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import RwdMenu from '../Menu/RwdMenu';
 import MenuLink from '../Menu/MenuLink';
-import { handleLoginBtn } from '../../../hooks/handleLoginBtn';
+import { handleLoginCard } from '../../../utils/handler/handleLoginCard';
 import { useUserInfo } from '../../../hooks/useUserInfo';
 import './_Header.scss';
 
@@ -21,7 +21,7 @@ const Header = () => {
           </Link>
           <div
             className="header_Icon_logout"
-            onClick={() => handleLoginBtn(false, setUser)}
+            onClick={() => handleLoginCard(false, setUser)}
           >
             <IoLogOut />
           </div>
@@ -31,7 +31,7 @@ const Header = () => {
     return (
       <div
         className="header_Icon_user"
-        onClick={() => handleLoginBtn(true, setUser)}
+        onClick={() => handleLoginCard(true, setUser)}
       >
         <FaUser />
       </div>

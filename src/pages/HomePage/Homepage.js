@@ -7,7 +7,7 @@ import SocialBubble from '../../components/homePage/SocialBubble';
 import TravelCard from '../../components/homePage/TravelCard/';
 import FakeMap from '../../images/home_travel_map.png';
 import { useUserInfo } from '../../hooks/useUserInfo';
-import Login from '../Login';
+import Login from '../Loading';
 import './_homepage.scss';
 
 const Homepage = () => {
