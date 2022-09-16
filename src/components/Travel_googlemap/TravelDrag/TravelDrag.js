@@ -50,17 +50,19 @@ const TravelDrag = () => {
   };
   const getItemStyle = (isDragging, draggableStyle) => ({
     userSelect: 'none',
+    border: 'none',
     height: 100,
     width: 640,
     padding: `10px 0 10px 10px`,
     margin: `10px 0 45px 30px`,
-    background: isDragging ? '#EEB569' : '#feefc3',
+    background: isDragging ? 'white' : '#fffef4',
     ...draggableStyle,
   });
   const getListStyle = (isDraggingOver) => ({
-    background: isDraggingOver ? 'lightyellow' : 'white',
+    background: isDraggingOver ? '#feefc3' : 'white',
     // height: 850,
     width: 725,
+    border: 'none',
   });
 
   const [items, setItems] = useState([]);

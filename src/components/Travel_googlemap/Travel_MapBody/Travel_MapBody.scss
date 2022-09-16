@@ -1,15 +1,17 @@
 $second_color: #eeb569; // 主色
 .travelmap_body {
   max-width: 1280px;
-  // height: 100vh;
-  // position: relative;
+  margin: 0px 10px;
+
   .travelmap_mainMap {
+    position: relative;
     margin-left: 50px;
   }
 
   .travelmap_container {
+    margin-top: 5px;
     width: 960px;
-    height: 580px;
+    height: 812px;
   }
   .travelmap_InfoWindow_Countain {
     display: flex;

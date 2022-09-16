@@ -19,7 +19,7 @@ $supbackcolor: #e7e7e9;
       color: #000;
       background-color: $supcolor;
       margin-bottom: 50px;
-      border-radius: 8px;
+      border-radius: 6px;
       position: relative;
       border: 1px solid transparent;
 
@@ -31,18 +31,18 @@ $supbackcolor: #e7e7e9;
     }
     .travleDrag_header_top_left {
       .travleDrag_header_back {
-        margin-top: 10px;
+        margin-top: 3px;
         height: 25px;
-        width: 25px;
         background-position: center;
         background-repeat: no-repeat;
         background-size: 100%;
-        background-image: url('../../../images/traveldragBackIcon.svg');
         cursor: pointer;
-        -moz-transform: scaleX(-1);
-        -webkit-transform: scaleX(-1);
-        -o-transform: scaleX(-1);
-        transform: scaleX(0-1);
+        .travleDrag_header_backIcon {
+        }
+        svg {
+          width: 45px;
+          height: 45px;
+        }
       }
       .travleDrag_header_tittle {
         font-size: 34px;
@@ -126,7 +126,8 @@ $supbackcolor: #e7e7e9;
           content: '';
           width: 35px;
           height: 25px;
-          background: url('../../../images/TravelDragbluecar.png') no-repeat;
+          background: url('../../../images/TravelDragbluecar.png') no-repeat
+            center / contain;
           //TODO: 用SVG圖繪掛掉 只能用PNG
           bottom: -35px;
           left: 85px;

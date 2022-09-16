@@ -8,6 +8,7 @@ import { useState } from 'react';
 import { TbTicket } from 'react-icons/tb';
 import { AiOutlineSearch } from 'react-icons/ai';
 import { IoHeartOutline } from 'react-icons/io5';
+import TravelTicketNavbar from '../Travel_ticketNavbar';
 import TravelSearchBar from '../TravelSearchBar';
 
 import './Travel_map_Navbar.scss';
@@ -95,14 +96,22 @@ const Travel_map_Navbar = ({ setSelected }) => {
           />
         </Tabs>
       </Box>
-      <TabPanel value={value} index={0}></TabPanel>
+      <TabPanel value={value} index={0}>
+        <div className="TravelTicketNavbarBody">
+          <TravelTicketNavbar />
+        </div>
+      </TabPanel>
       <TabPanel value={value} index={1}>
-        海底五日遊票卷
+        <div className="TravelTicketNavbarBody">
+          <TravelTicketNavbar />
+          <TravelTicketNavbar />
+          <TravelTicketNavbar />
+          <TravelTicketNavbar />
+        </div>
       </TabPanel>
       <TabPanel value={value} index={2} component={'span'} variant={'body2'}>
         <div className="travelmap_NavserachBar ">
           <TravelSearchBar setSelected={setSelected} />
-          {/* <button className="travelmap_NavBtn">搜尋</button> */}
         </div>
       </TabPanel>
     </Box>

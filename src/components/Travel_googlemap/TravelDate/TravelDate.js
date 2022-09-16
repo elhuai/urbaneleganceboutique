@@ -5,6 +5,9 @@ import Tab from '@mui/material/Tab';
 import Typography from '@mui/material/Typography';
 import Box from '@mui/material/Box';
 import TravelDrag from '../TravelDrag/TravelDrag';
+import { HiChevronLeft } from 'react-icons/hi';
+import { NavLink } from 'react-router-dom';
+
 const data = [
   {
     id: 'item-1',
@@ -92,7 +95,9 @@ const TravelDate = () => {
           <div className="travleDrag_header_top  mt-3 d-flex">
             <div className="travleDrag_header_top_left  ">
               <div className="travleDrag_header_back">
-                <a href="/#/123" alt="/#/123"></a>
+                <NavLink to="/travel" className="travleDrag_header_backIcon">
+                  <HiChevronLeft />
+                </NavLink>
               </div>
               <h1 className="travleDrag_header_tittle ">台中阿拉瓜花嘩嘩嘩</h1>
               <h3 className="travleDrag_header_date">2022/09/11~2022/09/12</h3>

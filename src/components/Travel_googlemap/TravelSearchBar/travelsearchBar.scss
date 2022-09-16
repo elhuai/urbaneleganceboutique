@@ -5,15 +5,30 @@ $font-weight: 700;
 .travelmap_coboboxBody {
   display: flex;
   flex-direction: column;
-  position: relative;
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  bottom: 1px;
+  z-index: 1;
   width: 820px;
+  transition: 0.5s ease-in;
+  animation: wrapper-gradient 0.3s linear;
+  @keyframes wrapper-gradient {
+    0% {
+      transform: translateY(-100%);
+    }
+    100% {
+      transform: translateY(0);
+    }
+  }
+
   input:focus {
     outline: none;
   }
   .travel_input_searchBar_sum {
     position: relative;
+    left: 5px;
     width: 850px;
-    border: 1px solid #ccc;
     border-radius: 8px;
     .travelmap_combobox-input {
       width: 100%;
@@ -37,7 +52,7 @@ $font-weight: 700;
 }
 
 .travelmap_SearchBtn {
-  position: relative;
+  // position: relative;
   // right: 1px;
   border-top-right-radius: 8px;
   border-bottom-right-radius: 8px;
@@ -54,21 +69,28 @@ $font-weight: 700;
   }
 }
 .travelSearchBar_photo {
-  width: 150px;
+  margin-left: 120px;
+  margin-top: 5px;
+  width: 160px;
   height: 100px;
 }
 .TravelSearchBar_Wrap {
-  margin: 20px auto;
-  margin-bottom: -25px;
-  width: 950px;
+  // display: none;
+  position: relative;
+  top: 100px;
+  opacity: 0.8;
+  z-index: 2;
+  margin: 10px 10px;
+  width: 845px;
   height: 150px;
   border: 1px solid #ccc;
   .TravelSearchBar_Card {
-    margin: 1.5rem 6rem;
-    width: 250px;
+    height: 110px;
+    margin: 0px 3rem;
+    width: 280px;
   }
   .TravelSearchBar_CardTittle {
-    margin-top: 30px;
+    margin-top: 40px;
     font-weight: 700;
     font-size: 28px;
     overflow: hidden;
