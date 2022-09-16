@@ -1,6 +1,7 @@
 import Swal from 'sweetalert2';
 import withReactContent from 'sweetalert2-react-content';
-import { Navigate } from 'react-router-dom';
+import { useHistory } from 'react-router-dom';
+// const navigate = useNavigate();
 
 export const handleSuccess = (title, redirect, html) => {
   const loginCard = withReactContent(Swal);
@@ -15,7 +16,7 @@ export const handleSuccess = (title, redirect, html) => {
     })
     .then((data) => {
       if (redirect) {
-        return (window.location = '/');
+        return (window.location = redirect);
       }
     });
 };
@@ -33,7 +34,7 @@ export const handleFailed = (title, redirect, html) => {
     })
     .then((data) => {
       if (redirect) {
-        return (window.location = '/');
+        return (window.location = redirect);
       }
     });
 };
@@ -51,7 +52,7 @@ export const handleWarning = (title, redirect, html) => {
     })
     .then((data) => {
       if (redirect) {
-        return (window.location = '/');
+        return (window.location = redirect);
       }
     });
 };
@@ -69,7 +70,7 @@ export const handleInfo = (title, redirect, html) => {
     })
     .then((data) => {
       if (redirect) {
-        return (window.location = '/');
+        return (window.location = redirect);
       }
     });
 };

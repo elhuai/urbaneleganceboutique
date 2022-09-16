@@ -37,7 +37,7 @@ export default function Example() {
           className="btn btn-info m-3 text-white fw-bold"
           style={{ background: 'green' }}
           onClick={() => {
-            handleSuccess(
+            return handleSuccess(
               '註冊成功',
               false,
               '<p style="color: green;">快去購買商品吧！</p>'
