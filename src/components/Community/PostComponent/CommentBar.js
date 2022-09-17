@@ -1,4 +1,5 @@
-import React from 'react'
+import React from 'react';
+import './CommentBar.scss';
 
 function CommentBar() {
   return (

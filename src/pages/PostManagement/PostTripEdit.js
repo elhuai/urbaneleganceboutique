@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import './PostTripEdit.scss';
 import CoverBackground from '../../images/post_edit_background_banner.png';
-import mapPhoto from '../../images/screenshop map_photo.png';
 // import { Link } from 'react-router-dom';
 import { TiLocation } from 'react-icons/ti';
 import { AiFillTag } from 'react-icons/ai';
@@ -11,7 +10,8 @@ import { MdTitle } from 'react-icons/md';
 import { MdPhotoSizeSelectActual } from 'react-icons/md';
 import { RiEditFill } from 'react-icons/ri';
 import { MdOutlineClose } from 'react-icons/md';
-import { Swiper, SwiperSlide } from 'swiper/react';
+import PostMap from '../../components/Community/PostComponent/PostMap';
+import TripOutline from '../../components/Community/PostComponent/TripOutline';
 
 function PostTripEdit() {
   const [selectedFile, setSelectedFile] = useState('');
@@ -85,298 +85,273 @@ function PostTripEdit() {
             <div className="col-6">
               <label className="mt-3">
                 <AiFillTag className="mb-1 me-1"></AiFillTag>標籤
+                (請輸入＃區分標籤)
               </label>
               <input type="loaction" className="form-control mt-2"></input>
             </div>
           </div>
-        </form>
 
-        <hr></hr>
-        <form
-          className="d-flex justify-content-between align-items-start"
-          enctype="multipart/form-data"
-        >
-          <ul className="article_edit">
-            <div className="date_count mt-1">
-              <p>Day 1</p>
-            </div>
-            <li className="trip_location mt-3" id="locate1">
-              <div className="d-flex justify-content-between align-items-center mb-1">
-                <div className="trip_location_title">
-                  <TiLocation className="mb-1" /> 1.5小時｜台北捷運台北火車站
-                  <RiEditFill className="ms-1 mb-1 "></RiEditFill>
-                </div>
-                <div>
-                  刪除
-                  <MdOutlineClose className="close_icon mb-1"></MdOutlineClose>
-                </div>
+          <hr></hr>
+          <form
+            className="d-flex align-items-start justify-content-around"
+            enctype="multipart/form-data"
+          >
+            <div className="article_edit">
+              <div className="date_count mt-1">
+                <p>Day 1</p>
               </div>
-              <textarea
-                type="textarea"
-                className="form-control"
-                rows="4"
-                maxlength="100"
-                placeholder="為旅途留下回憶"
-              ></textarea>
-              <label
-                className="trip_locate_photo_upload d-flex align-items-center
-              justify-content-center"
-              >
-                上傳照片
-                <input
-                  type="file"
-                  accept="images/*"
-                  hidden
-                  onChange={changeHandler}
-                  multiple
-                  className="form-control"
-                ></input>
-              </label>
-            </li>
-            <li className="trip_location mt-3" id="locate2">
-              <div className="d-flex justify-content-between align-items-center mb-1">
-                <div className="trip_location_title">
-                  <TiLocation className="mb-1 " /> 1.5小時｜太魯閣國家公園
-                  <RiEditFill className="ms-1 mb-1 "></RiEditFill>
+              <li className="trip_location mt-3" id="locate1">
+                <div className="d-flex justify-content-between align-items-center mb-1">
+                  <div className="trip_location_title">
+                    <TiLocation className="mb-1" /> 1.5小時｜台北捷運台北火車站
+                    <RiEditFill className="ms-1 mb-1 "></RiEditFill>
+                  </div>
+                  <div>
+                    刪除
+                    <MdOutlineClose className="close_icon mb-1"></MdOutlineClose>
+                  </div>
                 </div>
-                <div>
-                  刪除
-                  <MdOutlineClose className="close_icon mb-1"></MdOutlineClose>
-                </div>
-              </div>
-              <textarea
-                type="textarea"
-                className="form-control"
-                rows="4"
-                maxlength="100"
-                placeholder="為旅途留下回憶"
-              ></textarea>
-              <label
-                className="trip_locate_photo_upload d-flex align-items-center
-              justify-content-center"
-              >
-                上傳照片
-                <input
-                  type="file"
-                  accept="images/*"
-                  hidden
-                  onChange={changeHandler}
-                  multiple
+                <textarea
+                  type="textarea"
                   className="form-control"
-                ></input>
-              </label>
-            </li>
+                  rows="4"
+                  maxlength="100"
+                  placeholder="為旅途留下回憶"
+                ></textarea>
+                  <label
+                  className="photo_upload d-flex align-items-center
+              justify-content-center"
+                >
+                  上傳照片
+                  <input
+                    type="file"
+                    accept="images/*"
+                    hidden
+                    onChange={changeHandler}
+                    multiple
+                    className="form-control"
+                  ></input>
+                </label>
+              </li>
+              <li className="trip_location mt-3" id="locate2">
+                <div className="d-flex justify-content-between align-items-center mb-1">
+                  <div className="trip_location_title">
+                    <TiLocation className="mb-1 " /> 1.5小時｜太魯閣國家公園
+                    <RiEditFill className="ms-1 mb-1 "></RiEditFill>
+                  </div>
+                  <div>
+                    刪除
+                    <MdOutlineClose className="close_icon mb-1"></MdOutlineClose>
+                  </div>
+                </div>
+                <textarea
+                  type="textarea"
+                  className="form-control"
+                  rows="4"
+                  maxlength="100"
+                  placeholder="為旅途留下回憶"
+                ></textarea>
+                <label
+                  className="photo_upload d-flex align-items-center
+              justify-content-center"
+                >
+                  上傳照片
+                  <input
+                    type="file"
+                    accept="images/*"
+                    hidden
+                    onChange={changeHandler}
+                    multiple
+                    className="form-control"
+                  ></input>
+                </label>
+              </li>
 
-            <li className="trip_location mt-3" id="locate3">
-              <div className="d-flex justify-content-between align-items-center mb-1">
-                <div className="trip_location_title">
-                  <TiLocation className="mb-1 " /> 1.5小時｜煙波大飯店花蓮館
-                  <RiEditFill className="ms-1 mb-1 "></RiEditFill>
+              <li className="trip_location mt-3" id="locate3">
+                <div className="d-flex justify-content-between align-items-center mb-1">
+                  <div className="trip_location_title">
+                    <TiLocation className="mb-1 " /> 1.5小時｜煙波大飯店花蓮館
+                    <RiEditFill className="ms-1 mb-1 "></RiEditFill>
+                  </div>
+                  <div>
+                    刪除
+                    <MdOutlineClose className="close_icon mb-1"></MdOutlineClose>
+                  </div>
                 </div>
-                <div>
-                  刪除
-                  <MdOutlineClose className="close_icon mb-1"></MdOutlineClose>
-                </div>
-              </div>
-              <textarea
-                type="textarea"
-                className="form-control"
-                rows="4"
-                maxlength="100"
-                placeholder="為旅途留下回憶"
-              ></textarea>
-              <label
-                className="trip_locate_photo_upload d-flex align-items-center
-              justify-content-center"
-              >
-                上傳照片
-                <input
-                  type="file"
-                  accept="images/*"
-                  hidden
-                  onChange={changeHandler}
-                  multiple
+                <textarea
+                  type="textarea"
                   className="form-control"
-                ></input>
-              </label>
-            </li>
-            <div className="date_count mt-1">
-              <p>Day 2</p>
-            </div>
-            <li className="trip_location mt-3" id="locate4">
-              <div className="d-flex justify-content-between align-items-center mb-1">
-                <div className="trip_location_title">
-                  <TiLocation className="mb-1 " /> 1.5小時｜花蓮七星潭
-                  <RiEditFill className="ms-1 mb-1 "></RiEditFill>
-                </div>
-                <div>
-                  刪除
-                  <MdOutlineClose className="close_icon mb-1"></MdOutlineClose>
-                </div>
-              </div>
-              <textarea
-                type="textarea"
-                className="form-control"
-                rows="4"
-                maxlength="100"
-                placeholder="為旅途留下回憶"
-              ></textarea>
-              <label
-                className="trip_locate_photo_upload d-flex align-items-center
+                  rows="4"
+                  maxlength="100"
+                  placeholder="為旅途留下回憶"
+                ></textarea>
+          <label
+                  className="photo_upload d-flex align-items-center
               justify-content-center"
-              >
-                上傳照片
-                <input
-                  type="file"
-                  accept="images/*"
-                  hidden
-                  onChange={changeHandler}
-                  multiple
+                >
+                  上傳照片
+                  <input
+                    type="file"
+                    accept="images/*"
+                    hidden
+                    onChange={changeHandler}
+                    multiple
+                    className="form-control"
+                  ></input>
+                </label>
+              </li>
+              <div className="date_count mt-1">
+                <p>Day 2</p>
+              </div>
+              <li className="trip_location mt-3" id="locate4">
+                <div className="d-flex justify-content-between align-items-center mb-1">
+                  <div className="trip_location_title">
+                    <TiLocation className="mb-1 " /> 1.5小時｜花蓮七星潭
+                    <RiEditFill className="ms-1 mb-1 "></RiEditFill>
+                  </div>
+                  <div>
+                    刪除
+                    <MdOutlineClose className="close_icon mb-1"></MdOutlineClose>
+                  </div>
+                </div>
+                <textarea
+                  type="textarea"
                   className="form-control"
-                ></input>
-              </label>
-            </li>
+                  rows="4"
+                  maxlength="100"
+                  placeholder="為旅途留下回憶"
+                ></textarea>
+                <label
+                  className="photo_upload d-flex align-items-center
+              justify-content-center"
+                >
+                  上傳照片
+                  <input
+                    type="file"
+                    accept="images/*"
+                    hidden
+                    onChange={changeHandler}
+                    multiple
+                    className="form-control"
+                  ></input>
+                </label>
+              </li>
 
-            <li className="trip_location mt-3" id="locate5">
-              <div className="d-flex justify-content-between align-items-center mb-1">
-                <div className="trip_location_title">
-                  <TiLocation className="mb-1 " /> 1.5小時｜依午山
-                  <RiEditFill className="ms-1 mb-1 "></RiEditFill>
+              <li className="trip_location mt-3" id="locate5">
+                <div className="d-flex justify-content-between align-items-center mb-1">
+                  <div className="trip_location_title">
+                    <TiLocation className="mb-1 " /> 1.5小時｜依午山
+                    <RiEditFill className="ms-1 mb-1 "></RiEditFill>
+                  </div>
+                  <div>
+                    刪除
+                    <MdOutlineClose className="close_icon mb-1"></MdOutlineClose>
+                  </div>
                 </div>
-                <div>
-                  刪除
-                  <MdOutlineClose className="close_icon mb-1"></MdOutlineClose>
-                </div>
-              </div>
-              <textarea
-                type="textarea"
-                className="form-control"
-                rows="4"
-                maxlength="100"
-                placeholder="為旅途留下回憶"
-              ></textarea>
-              <label
-                className="trip_locate_photo_upload d-flex align-items-center
-              justify-content-center"
-              >
-                上傳照片
-                <input
-                  type="file"
-                  accept="images/*"
-                  hidden
-                  onChange={changeHandler}
-                  multiple
+                <textarea
+                  type="textarea"
                   className="form-control"
-                ></input>
-              </label>
-            </li>
-            <div className="date_count mt-1">
-              <p>Day 3</p>{' '}
-            </div>
+                  rows="4"
+                  maxlength="100"
+                  placeholder="為旅途留下回憶"
+                ></textarea>
+                <label
+                  className="photo_upload d-flex align-items-center
+              justify-content-center"
+                >
+                  上傳照片
+                  <input
+                    type="file"
+                    accept="images/*"
+                    hidden
+                    onChange={changeHandler}
+                    multiple
+                    className="form-control"
+                  ></input>
+                </label>
+              </li>
+              <div className="date_count mt-1">
+                <p>Day 3</p>{' '}
+              </div>
 
-            <li className="trip_location mt-3" id="locate6">
-              <div className="d-flex justify-content-between align-items-center mb-1">
-                <div className="trip_location_title">
-                  <TiLocation className="mb-1 " /> 1.5小時｜鹽寮龍蝦海鮮餐廳
-                  <RiEditFill className="ms-1 mb-1 "></RiEditFill>
+              <li className="trip_location mt-3" id="locate6">
+                <div className="d-flex justify-content-between align-items-center mb-1">
+                  <div className="trip_location_title">
+                    <TiLocation className="mb-1 " /> 1.5小時｜鹽寮龍蝦海鮮餐廳
+                    <RiEditFill className="ms-1 mb-1 "></RiEditFill>
+                  </div>
+                  <div>
+                    刪除
+                    <MdOutlineClose className="close_icon mb-1"></MdOutlineClose>
+                  </div>
                 </div>
-                <div>
-                  刪除
-                  <MdOutlineClose className="close_icon mb-1"></MdOutlineClose>
-                </div>
-              </div>
-              <textarea
-                type="textarea"
-                className="form-control"
-                rows="4"
-                maxlength="100"
-                placeholder="為旅途留下回憶"
-              ></textarea>
-              <label className="trip_locate_photo_upload">
-                上傳照片
-                <input type="file" accept="images/*" hidden></input>
-              </label>
-            </li>
-            <li className="trip_location mt-3" id="locate7">
-              <div className="d-flex justify-content-between align-items-center mb-1">
-                <div className="trip_location_title">
-                  <TiLocation className="mb-1 " /> 1.5小時｜花蓮南濱公園
-                  <RiEditFill className="ms-1 mb-1 "></RiEditFill>
-                </div>
-                <div>
-                  刪除
-                  <MdOutlineClose className="close_icon mb-1"></MdOutlineClose>
-                </div>
-              </div>
-              <textarea
-                type="textarea"
-                className="form-control"
-                rows="4"
-                maxlength="100"
-                placeholder="為旅途留下回憶"
-              ></textarea>
-              <label
-                className="photo_upload d-flex align-items-center
-              justify-content-center"
-              >
-                上傳照片
-                <input
-                  type="file"
-                  accept="images/*"
-                  hidden
-                  onChange={changeHandler}
-                  multiple
+                <textarea
+                  type="textarea"
                   className="form-control"
-                ></input>
-              </label>
-            </li>
-          </ul>
-          <div className="trip_outline">
-            <div>
-              <p className="post_date_count">Day 1</p>
-              <a href="#locate1">
-                <p>｜台北捷運台北火車站</p>
-              </a>
-              <a href="#locate2">
-                <p>｜太魯閣國家公園</p>
-              </a>
-              <a href="#locate3">
-                <p>｜煙波大飯店花蓮館</p>
-              </a>
+                  rows="4"
+                  maxlength="100"
+                  placeholder="為旅途留下回憶"
+                ></textarea>
+                <label
+                  className="photo_upload d-flex align-items-center
+              justify-content-center"
+                >
+                  上傳照片
+                  <input
+                    type="file"
+                    accept="images/*"
+                    hidden
+                    onChange={changeHandler}
+                    multiple
+                    className="form-control"
+                  ></input>
+                </label>
+              </li>
+              <li className="trip_location mt-3" id="locate7">
+                <div className="d-flex justify-content-between align-items-center mb-1">
+                  <div className="trip_location_title">
+                    <TiLocation className="mb-1 " /> 1.5小時｜花蓮南濱公園
+                    <RiEditFill className="ms-1 mb-1 "></RiEditFill>
+                  </div>
+                  <div>
+                    刪除
+                    <MdOutlineClose className="close_icon mb-1"></MdOutlineClose>
+                  </div>
+                </div>
+                <textarea
+                  type="textarea"
+                  className="form-control"
+                  rows="4"
+                  maxlength="100"
+                  placeholder="為旅途留下回憶"
+                ></textarea>
+                <label
+                  className="photo_upload d-flex align-items-center
+              justify-content-center"
+                >
+                  上傳照片
+                  <input
+                    type="file"
+                    accept="images/*"
+                    hidden
+                    onChange={changeHandler}
+                    multiple
+                    className="form-control"
+                  ></input>
+                </label>
+              </li>
             </div>
-            <div>
-              <p className="post_date_count">Day 2</p>
-              <a href="#locate4">
-                <p>｜花蓮七星潭</p>
-              </a>
-              <a href="#locate5">
-                <p>｜依山午</p>
-              </a>
-            </div>
-            <div>
-              <p className="post_date_count">Day 3</p>
-              <a href="#locate6">
-                <p>｜鹽寮龍蝦海鮮餐廳</p>
-              </a>
-              <a href="#locate7">
-                <p>｜花蓮南濱公園</p>
-              </a>
-            </div>
-            <div className="d-flex justify-content-center my-2 post_edit_button ">
-              <button className="btn">清除</button>
-              <button className="btn" type="submit">
-                儲存
-              </button>
-            </div>
+            <TripOutline className=""></TripOutline>
+          </form>
+          <div className="d-flex justify-content-end my-2 me-4 post_edit_button ">
+            <button className="btn">清除</button>
+            <button className="btn" type="submit">
+              儲存
+            </button>
           </div>
-        </form>
 
-        <div className="post_map">
-          <p>行程地圖</p>
-          <div className="map_photo">
-            <img alt="" src={mapPhoto} />
-          </div>
-        </div>
+          <PostMap></PostMap>
+        </form>
       </div>
     </>
   );

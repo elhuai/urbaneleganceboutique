@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import './PostWYSIWYGEdit.scss';
+import './PostEdit.scss';
 import CoverBackground from '../../images/post_edit_background_banner.png';
 import mapPhoto from '../../images/screenshop map_photo.png';
 // import { Link } from 'react-router-dom';
@@ -89,13 +89,14 @@ function PostWYSIWYGEdit() {
                 type="loaction"
                 className="form-control mt-2"
                 placeholder="請輸入城市地區"
+                
               ></input>
             </div>
             <div className="col-6">
               <label className="mt-3">
-                <AiFillTag className="mb-1 me-1"></AiFillTag>標籤
+                <AiFillTag className="mb-1 me-1"></AiFillTag>標籤 (請輸入＃區分標籤)
               </label>
-              <input type="loaction" className="form-control mt-2"></input>
+              <input type="loaction" placeHolder="#台北市" className="form-control mt-2"></input>
             </div>
           </div>
 

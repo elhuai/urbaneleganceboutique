@@ -1,5 +1,6 @@
 import React from 'react';
 import mapPhoto from '../../../images/screenshop map_photo.png';
+import './PostMap.scss';
 
 function PostMap() {
   return (

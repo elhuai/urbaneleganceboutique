@@ -12,7 +12,7 @@
   @import url('https://fonts.googleapis.com/css2?family=Open+Sans&display=swap');
 
 
-
+.postStateBar{
 .post_cover_photo {
   object-fit: cover;
   width: 100%;
@@ -43,4 +43,5 @@
   .post_location{
     color: $button-color-remove;
   }
+}
 }

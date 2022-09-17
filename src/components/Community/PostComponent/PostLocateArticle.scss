@@ -1,0 +1,28 @@
+$line-color--light:#E7E7E9;
+$line-color--dark:#747474;
+$button-color-hover: #FEEFC3;
+$button-color-remove: #ef7a70;
+$main-color:#FFC715;
+$list-color: #F0EDE0;
+$list-color-hover: #FEEFC3;
+$link-color:#2DA9D7;
+$line-color--blue: #D5EEEE;
+
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans&display=swap');
+
+.article_section{
+  padding: 5px;
+  width: 80%;
+  .trip_record_section{
+    list-style-type: none;
+    .post_location_mark{
+      color: $line-color--dark;
+      font-size: 18px;
+    }
+  }
+}
+.post_mySwiper{
+  width: 100%;
+  height: 200px;
+
+}

@@ -70,50 +70,6 @@ export default function PhotoReviewSwiperDefault() {
   return (
     <>
       <ShowSwiper data={imgArr} />
-      {/*       
-      <SwiperSlide>
-      
-        <img src="https://picsum.photos/200/300?random2" alt="" />
-        
-      </SwiperSlide>
-      <SwiperSlide>
-        <img src="https://picsum.photos/200/300?random3" alt="" />
-      </SwiperSlide>
-      <SwiperSlide>
-        <img src="https://picsum.photos/200/300?random4" alt="" />
-      </SwiperSlide>
-      <SwiperSlide>
-        <button onClick={ReviewHandle}>點我看更多</button>
-      </SwiperSlide>
-      <SwiperSlide>
-        <img src="https://picsum.photos/200/300?random1" alt="" />
-      </SwiperSlide>
-      <SwiperSlide>
-        <img src="https://picsum.photos/200/300?random1" alt="" />
-      </SwiperSlide>
-      <SwiperSlide>
-        <img src="https://picsum.photos/200/300?random1" alt="" />
-      </SwiperSlide>
-      <SwiperSlide>
-        <img src="https://picsum.photos/200/300?random1" alt="" />
-      </SwiperSlide>
-
-      <PhotoProvider>
-        <PhotoView src="https://picsum.photos/200/300?random2">
-          <img src="https://picsum.photos/200/300?random2" alt="" />
-        </PhotoView>
-      </PhotoProvider>
-      <PhotoView src="https://picsum.photos/200/300?random3"></PhotoView>
-      <PhotoView src="https://picsum.photos/200/300?random1"></PhotoView>
-      <PhotoView src="https://picsum.photos/200/300?random4"></PhotoView>
-      <PhotoView src="https://picsum.photos/200/300?random5"></PhotoView>
-      <PhotoView src="https://picsum.photos/200/300?random6"></PhotoView>
-      <PhotoView src="https://picsum.photos/200/300?random7"></PhotoView>
-      <PhotoView src="https://picsum.photos/200/300?random8"></PhotoView>
-      <PhotoView src="https://picsum.photos/200/300?random19"></PhotoView>
-      <PhotoView src="https://picsum.photos/200/300?random10"></PhotoView>
-      <PhotoView src="https://picsum.photos/200/300?random11"></PhotoView>
-      <PhotoView src="https://picsum.photos/200/300?random12"></PhotoView> */}
     </>
   );
 }

@@ -1,10 +1,9 @@
 import React from 'react';
 import { useState, useEffect } from 'react';
-import './PostWYSIWYG.scss';
+import './Post.scss';
 import axios from 'axios';
 import { API_URL } from '../../utils/config';
 
-// import { Link } from 'react-router-dom';
 import PostMap from '../../components/Community/PostComponent/PostMap';
 import RecommandProduct from '../../components/Community/PostComponent/RecommandProduct';
 import PhotoReviewSwiperDefault from '../../components/WYSIWYG/PhotoViewDefault';
@@ -12,7 +11,7 @@ import CommentBar from '../../components/Community/PostComponent/CommentBar';
 import PostStateBar from '../../components/Community/PostComponent/PostStateBar';
 import TextSection from '../../components/Community/PostComponent/TextSection';
 
-function PostWYSIWYG() {
+function Post() {
 
   const [post, setPost] = useState([]);
 
@@ -54,4 +53,4 @@ function PostWYSIWYG() {
   // });
 }
 
-export default PostWYSIWYG;
+export default Post;
