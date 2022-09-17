@@ -1,5 +1,5 @@
 import React from 'react';
-import { Routes, Route } from 'react-router-dom';
+import { Routes, Route, Outlet } from 'react-router-dom';
 import Footer from './components/layout/Footer';
 import Header from './components/layout/Header';
 import Homepage from './pages/HomePage';
@@ -13,12 +13,13 @@ import EcRestaurantHomepage from './pages/Ecommerce/EC_HomePage/EC_3Restaurant_H
 import EcCommodityHomepage from './pages/Ecommerce/EC_HomePage/EC_4Commodity_Homepage';
 import EcProductDetail from './pages/Ecommerce/ProductDetail';
 import EcProductFilter from './pages/Ecommerce/EC_productFilter';
+import ECOrderSteps from './pages/Ecommerce/EC_checkout'
 import Travelmap from './pages/Travel_map';
 import 'swiper/scss';
 import 'swiper/css/bundle';
 import './styles/style.scss';
 
-function App() {
+function App() { 
   return (
     <div className="app">
       <Header />
@@ -39,6 +40,7 @@ function App() {
           element={<EcRestaurantHomepage />}
         />
       </Routes>
+      <Outlet />
       <Footer />
     </div>
   );
