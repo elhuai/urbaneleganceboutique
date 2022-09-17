@@ -7,7 +7,7 @@ const MenuLink = () => {
         <NavLink to="/ec-livinghomepage" className="header_product mx-3">
           住宿
         </NavLink>
-        <NavLink to="path2" className="header_product mx-3">
+        <NavLink to="/ec-ordersteps" className="header_product mx-3">
           景點&玩樂
         </NavLink>
         <NavLink to="/ec-productfilter" className="header_product mx-3">

@@ -13,7 +13,7 @@ import './_ProductDetail.scss';
 const ProductDetail = () => {
     return (
         <>
-            <body className=' data-bs-spy="scroll" '>
+            <body className='ProductDetail'>
                 {/* <div className="container"> */}
                 <div className="topRow">
                     <div className="imageColumn">
@@ -51,33 +51,33 @@ const ProductDetail = () => {
                                 <div className="tags">8天前可免費取消</div>
                                 <div className="tags">交通方便</div>
                             </div>
-                            <div className='MainAddSection'>
+                            <div className="MainAddSection">
                                 <pre>+ 用尚優惠的價格加購</pre>
                                 <hr />
-                                <div className='addSection'>
-                                    <div className='addSubSection'>
-                                        <img src={Guess_U_Like1}/>
+                                <div className="addSection">
+                                    <div className="addSubSection">
+                                        <img src={Guess_U_Like1} />
                                         <a href="#">寵物外出包｜PETRICK Backpack 派翠克</a>
                                     </div>
-                                    <div className='addSubSection'>
-                                        <p className='addCost'>1780</p>
-                                        <p className='addMainCost'>890</p>
+                                    <div className="addCostSection">
+                                        <p className="addCost">1780</p>
+                                        <p className="addMainCost">890</p>
                                     </div>
-                                    <div className='addSubSection'>
-                                    <button>加入購物車</button>
+                                    <div className="addSubSection">
+                                        <button>加入購物車</button>
                                     </div>
                                 </div>
-                                <div className='addSection'>
-                                    <div className='addSubSection'>
-                                        <img src={Guess_U_Like2}/>
+                                <div className="addSection">
+                                    <div className="addSubSection">
+                                        <img src={Guess_U_Like2} />
                                         <a href="#">彈性緩衝反光牽繩 ｜Chillax Leash</a>
                                     </div>
-                                    <div className='addSubSection'>
-                                        <p className='addCost'>780</p>
-                                        <p className='addMainCost'>560</p>
+                                    <div className="addCostSection">
+                                        <p className="addCost">780</p>
+                                        <p className="addMainCost">560</p>
                                     </div>
-                                    <div className='addSubSection'>
-                                    <button>加入購物車</button>
+                                    <div className="addSubSection">
+                                        <button>加入購物車</button>
                                     </div>
                                 </div>
                             </div>
