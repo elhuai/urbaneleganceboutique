@@ -1,6 +1,7 @@
 import React from 'react';
 import { useState, useEffect } from 'react';
 import axios from 'axios';
+import { API_URL } from '../../../../utils/config';
 import SearchBar from '../../../../components/SearchBar/SearchBar_search';
 import EcHomePageSlider from '../../../../components/EC/EC_homePage/EC_HomePageSlider';
 import EcHomePageCategory from '../../../../components/EC/EC_homePage/EC_HomePageCategory';
@@ -8,8 +9,6 @@ import EcHomePageCard from '../../../../components/EC/EC_homePage/EC_HomePageCar
 
 import { commoditySlider } from '../../../../components/EC/EC_homePage/EC_data/Slider/CommoditySlider';
 import { commodityCategory } from '../../../../components/EC/EC_homePage/EC_data/Category/CommodityCategory';
-
-import { API_URL } from '../../../../utils/config';
 
 const EcCommodityHomepage = () => {
   // 推薦標題
@@ -42,7 +41,7 @@ const EcCommodityHomepage = () => {
 
       for (let index = 0; index < arrStr.length; index++) {
         const result = await axios.get(
-          `http://localhost:3007/api/1.0/product/recommendProduct?id=${arrStr[index].id}&name=${arrStr[index].text}`
+          `${API_URL}/product/recommendProduct?id=${arrStr[index].id}&name=${arrStr[index].text}`
         );
         const data = result.data;
         arrStr[index].setState(data);

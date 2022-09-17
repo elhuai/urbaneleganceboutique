@@ -3,7 +3,7 @@ import main_search_left_dog from '../../images/main_search_left_dog.png';
 import main_search_right_dog from '../../images/main_search_right_dog.png';
 import { AiOutlineSearch } from 'react-icons/ai';
 
-function SearchBar(props) {
+function SearchBar(props, { value, changeInput }) {
   const { searchBar_title, searchBar_placeholder } = props;
   return (
     <>
@@ -15,6 +15,8 @@ function SearchBar(props) {
               type="text"
               className="searchBar_searchTerm"
               placeholder={searchBar_placeholder}
+              value={value}
+              onChange={changeInput}
             />
             <button type="submit" className="searchBar_searchButton">
               <i className="searchBar_fa searchBar_fa-search">

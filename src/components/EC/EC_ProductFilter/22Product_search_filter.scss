@@ -16,10 +16,6 @@ $royal-blue:#22C3FF;
 }
 
 
-.product-filterList{
-  margin: 0 240px;
-}
-
 // 左側篩選欄==========================
 .product-filter-left {
   display: inline-block;
@@ -28,6 +24,7 @@ $royal-blue:#22C3FF;
 	padding: 0 .5em;
   margin-bottom: 8px;
   width: 30%;
+  // overflow-y: auto;
   .product-filter-group{
     padding-bottom: 5px;
   }

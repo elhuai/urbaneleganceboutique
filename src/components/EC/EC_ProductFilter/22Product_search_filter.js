@@ -6,14 +6,14 @@ import { TiLocation } from 'react-icons/ti';
 import { FaPaw } from 'react-icons/fa';
 import { AiFillFire } from 'react-icons/ai';
 import { HiChevronLeft, HiChevronRight } from 'react-icons/hi';
+// import FilterListToggle from './FilterListToggle/FilterListToggle';
 
 const SearchFilter = () => {
   return (
     <>
-      <div className=" product-filterList justify-content-between col d-flex">
+      <div className=" product-filterList col d-flex">
         {/* 左邊篩選特價 */}
         <section className="product-filter-left">
-          {/* __超值區域 */}
           <div className="product-filter-group row">
             <p className="product-category-title mb-2">超值活動</p>
             <label for="limitedTime07" className="product-label-active">
@@ -29,7 +29,7 @@ const SearchFilter = () => {
           {/*END __超值區域 */}
 
           {/*__地區篩選 */}
-          <fieldset className="filter-group pf-checkboxes">
+          <div className="filter-group pf-checkboxes">
             <div className="product-filter-category my-3 align-items-center justify-content-between">
               <p className="product-category-title">地區</p>
               <button className="product-category-morebtn">
@@ -69,7 +69,8 @@ const SearchFilter = () => {
               />
               <label>高雄市</label>
             </div>
-          </fieldset>
+          </div>
+
           {/*END __地區篩選 */}
         </section>
 

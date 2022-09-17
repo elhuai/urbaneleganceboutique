@@ -4,8 +4,8 @@ const MenuLink = () => {
   return (
     <>
       <ul className="header_container list-unstyled d-flex  mt-3">
-        <NavLink to="/ec-livinghomepage" className="header_product mx-3">
-          住宿
+        <NavLink to="/ec-productfilter" className="header_product mx-3">
+          篩選
         </NavLink>
         <NavLink to="/ec-enjoyhomepage" className="header_product mx-3">
           景點&玩樂

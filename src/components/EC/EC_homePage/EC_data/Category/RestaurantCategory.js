@@ -8,10 +8,6 @@ export const restaurantCategory = [
     img: 'https://s.yimg.com/zp/MerchandiseImages/7F605BAB08-SP-7077750.jpg',
   },
   {
-    name: '餐酒館',
-    img: 'https://img.my-best.tw/press_component/item_part_images/27aefeb7a49230b76a2b9cc4ae631ccd.jpg?ixlib=rails-4.2.0&q=70&lossless=0&w=640&h=640&fit=clip',
-  },
-  {
     name: '中式料理',
     img: 'https://cf.shopee.tw/file/fad96816ced8ba0dfb1e04dc27c0dfe5',
   },
