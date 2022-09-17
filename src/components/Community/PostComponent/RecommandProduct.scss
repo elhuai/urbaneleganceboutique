@@ -14,12 +14,14 @@
   
   
   // 推薦商品區
-  .recommand_product_list { 
-    margin-top: 5px;
-  p{ 
+  .recommand_product_title{
     font-size: 1.25rem;
     font-weight: 600;
+    // margin-top: 5px;
+
   }
+  .recommand_product_list { 
+    margin-top: 5px;
 }
   .rec_product_card {
     width:300px;

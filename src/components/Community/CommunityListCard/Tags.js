@@ -3,7 +3,6 @@
 // function Tags({ data }) {
 //   let tag = data.tags.split('#').filter((item) => item);
 //   console.log(tag[2]);
-
 // for(let i=0 ;i<tag.length;i++){
 //   tag.map((tet) => {
 //     return (

@@ -73,9 +73,9 @@ export default function CommunityListCard({ post }) {
                     <h5 className="card-title mb-1">{data.title}</h5>
                     <IoHeartOutline />
                   </div>
-                  {tags.map((data,index) => {
+                  {tags.map((data, index) => {
                     return (
-                      <div>
+                      <div className="">
                         <p className="comList_main_card_placeName_text card-text mb-2">
                           {data}
                         </p>
