@@ -1,1 +1,2 @@
 export const API_URL = process.env.REACT_APP_BASE_API_URL + '/api/1.0';
+export const BE_URL = process.env.REACT_APP_BASE_API_URL;

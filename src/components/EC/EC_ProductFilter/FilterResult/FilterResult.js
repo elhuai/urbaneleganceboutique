@@ -11,7 +11,11 @@ import { AiFillFire } from 'react-icons/ai';
 
 const FilterResult = () => {
   const [productData, setProductData] = useState([]);
-
+  const [data, setData] = useState([]);
+  // 總共有 lastPage 這麼多頁
+  const [lastPage, setLastPage] = useState(1);
+  // 目前在第幾頁
+  const [page, setPage] = useState(1);
   useEffect(() => {
     const fetchProductData = async (index) => {
       const result = await axios.get(`${API_URL}/filter/products`);
@@ -33,23 +37,23 @@ const FilterResult = () => {
         <p classNameName="product-title me-3">排序 :</p>
         <span className="align-items-center">
           <span className="gap">|</span>{' '}
-          <a className="sort-selected">價格：高到低</a>
+          <label className="sort-selected">價格：高到低</label>
         </span>
         <span>
           <span className="gap">|</span>{' '}
-          <a className="sort-selected">
+          <label className="sort-selected">
             <i className="fa fa-usd"></i>
             價格：低到高
-          </a>
+          </label>
         </span>
         <span>
           <span className="gap">|</span>{' '}
-          <a className="sort-selected">熱門程度</a>
+          <label className="sort-selected">熱門程度</label>
         </span>
-        <span>
+        {/* <span>
           <span className="gap">|</span>{' '}
-          <a className="sort-selected">用戶評價</a>
-        </span>
+          <label className="sort-selected">用戶評價</label>
+        </span> */}
       </div>
       {/* END排序 */}
       {/* ==================搜尋結果====================== */}

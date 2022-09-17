@@ -14,13 +14,7 @@ const FilterList = () => {
     const fetchTitle = async (index) => {
       const result = await axios.get(`${API_URL}/filter/choices`);
       console.log(result.data);
-      // for (let index = 0; index < data.length; index++) {
-      //   const tags = data[index].tags;
-
-      // }
       setTitle(result.data);
-      // const data = result.data;
-      // arrStr[index].setState(data);
     };
     fetchTitle();
   }, []);
@@ -40,7 +34,7 @@ const FilterList = () => {
             </div>
             {title[index].tags.map((data, index) => {
               return (
-                <div className="pf-checkbox">
+                <div className="pf-checkbox" key={'tags' + index}>
                   <input
                     type="checkbox"
                     value={data.tag_id}

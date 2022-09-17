@@ -1,15 +1,16 @@
-$pink:#EF7A70;
+$pink: #EF7A70;
 $graycolor: #747474;
 $fmain_color: #ffc200; // 主色
-$royal-blue:#22C3FF;
-%product-filter-title{
+$royal-blue: #22C3FF;
+
+%product-filter-title {
   font-size: 20px;
   font-weight: 700;
   color: black;
   // margin: 0;
 }
 
-%normal-text{
+%normal-text {
   font-size: 16px;
   color: $graycolor;
 }
@@ -20,10 +21,11 @@ $royal-blue:#22C3FF;
   max-width: 1280px;
   width: 100%;
   margin: 1rem auto;
+
   &_filter_section {
-  // flex: auto;
-  // display: flex;
-}
+    // flex: auto;
+    // display: flex;
+  }
 }
 
 
@@ -32,7 +34,6 @@ $royal-blue:#22C3FF;
   display: inline-block;
   border-right: 1px solid lightgrey;
   margin: 0 1em 0 0;
-	padding: 0 .5em;
+  padding: 0 .5em;
   margin-bottom: 8px;
 }
-

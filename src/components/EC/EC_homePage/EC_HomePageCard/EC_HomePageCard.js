@@ -1,10 +1,9 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import { Link } from 'react-router-dom';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Autoplay } from 'swiper';
 import { FaPaw } from 'react-icons/fa';
 import './_EC_HomePageCard.scss';
-import { API_URL } from '../../../../utils/config';
 const ECHomePageCard = (props) => {
   const { ecTypeCard, ecTypeCardTitle } = props;
   return (
@@ -20,7 +19,6 @@ const ECHomePageCard = (props) => {
           src={ecTypeCardTitle.img}
         ></img>
       </div>
-
       {/*PC 輪播商品區  */}
       <div className="ec_card_pc_recommend_list align-items-end">
         <Swiper
@@ -28,7 +26,7 @@ const ECHomePageCard = (props) => {
           slidesPerView={4}
           spaceBetween={1}
           className="ec_card_pc_swiper"
-          // modules={[Autoplay]}
+          modules={[Autoplay]}
           autoplay={{
             delay: 3000,
             disableOnInteraction: false,
@@ -106,6 +104,7 @@ const ECHomePageCard = (props) => {
                         <div className="ec_card_rwd_product_photo">
                           <img
                             alt=""
+                            // TODO
                             src={`http://localhost:3007${data.photo_path}/${data.main_photo}`}
                           ></img>
                         </div>
