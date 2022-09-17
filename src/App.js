@@ -13,13 +13,13 @@ import EcRestaurantHomepage from './pages/Ecommerce/EC_HomePage/EC_3Restaurant_H
 import EcCommodityHomepage from './pages/Ecommerce/EC_HomePage/EC_4Commodity_Homepage';
 import EcProductDetail from './pages/Ecommerce/ProductDetail';
 import EcProductFilter from './pages/Ecommerce/EC_productFilter';
-import ECOrderSteps from './pages/Ecommerce/EC_checkout'
+import ECOrderSteps from './pages/Ecommerce/EC_checkout';
 import Travelmap from './pages/Travel_map';
 import 'swiper/scss';
 import 'swiper/css/bundle';
 import './styles/style.scss';
 
-function App() { 
+function App() {
   return (
     <div className="app">
       <Header />

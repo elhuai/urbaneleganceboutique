@@ -1,16 +1,16 @@
-$pink:#EF7A70;
+$pink: #EF7A70;
 $graycolor: #747474;
 $fmain_color: #ffc200; // 主色
-$royal-blue:#22C3FF;
+$royal-blue: #22C3FF;
 
-%product-filter-title{
+%product-filter-title {
   font-size: 20px;
   font-weight: 700;
   color: black;
   // margin: 0;
 }
 
-%normal-text{
+%normal-text {
   font-size: 16px;
   color: $graycolor;
 }
@@ -21,65 +21,75 @@ $royal-blue:#22C3FF;
   display: inline-block;
   border-right: 1px solid lightgrey;
   margin: 0 1em 0 0;
-	padding: 0 .5em;
+  padding: 0 .5em;
   margin-bottom: 8px;
   width: 30%;
+
   // overflow-y: auto;
-  .product-filter-group{
+  .product-filter-group {
     padding-bottom: 5px;
   }
-  .product-category-title{
-    @extend  %product-filter-title
+
+  .product-category-title {
+    @extend %product-filter-title
   }
-  .product-label-active{
+
+  .product-label-active {
     color: #22C3FF;
     font-size: 18px;
     font-weight: 700;
   }
 
-  .pf-checkbox{
+  .pf-checkbox {
     vertical-align: top;
     text-align: left;
     margin-bottom: 8px;
   }
-  .product-check-items{
+
+  .product-check-items {
     @extend %normal-text;
   }
 }
+
 // 篩選標題&下拉選單
-.product-filter-category{
+.product-filter-category {
   width: 100%;
   display: flex;
   border-bottom: $fmain_color 1px solid;
+
   // margin: 1rem 0;
   .product-category-title {
     margin-bottom: 0;
   }
-  .product-category-morebtn{
+
+  .product-category-morebtn {
     width: 30px;
     height: 30px;
     border: 1px solid #ffc200;
     background: #ffc200;
     text-align: center;
     color: #fff;
-    border-radius:5px 5px 0 0;
+    border-radius: 5px 5px 0 0;
     cursor: pointer;
     font-size: 20px;
   }
 }
 
 // ==========右右右右右右右右右右右==========
-.product-filter-right{
+.product-filter-right {
   margin-left: 1rem;
 }
+
 // 上方篩選結果
 .product-filter-result {
-  margin-left:0 ;
-  p{
-    margin-bottom:0px;
+  margin-left: 0;
+
+  p {
+    margin-bottom: 0px;
     font-weight: 600;
   }
-  .chip{
+
+  .chip {
     color: $royal-blue;
     font-weight: 600;
     cursor: default;
@@ -88,6 +98,7 @@ $royal-blue:#22C3FF;
     padding: 3px;
     border-radius: 8px;
   }
+
   a {
     padding: 0px 5px;
     transition: none;
@@ -96,12 +107,14 @@ $royal-blue:#22C3FF;
     overflow: hidden;
     text-overflow: ellipsis;
   }
-  .clearall{
+
+  .clearall {
     background: $royal-blue;
     color: #fff;
     cursor: pointer;
   }
-  .delete-chip{
+
+  .delete-chip {
 
     right: 10px;
     top: 1px;
@@ -113,16 +126,18 @@ $royal-blue:#22C3FF;
 }
 
 // 排序
-.sort-board{
-  p{
-    margin-bottom:0px;
+.sort-board {
+  p {
+    margin-bottom: 0px;
     font-weight: 600;
   }
-  .gap{
-  margin: 0 0 0 10px;
-  color: #aaa;
-  } 
-  .sort-selected{
+
+  .gap {
+    margin: 0 0 0 10px;
+    color: #aaa;
+  }
+
+  .sort-selected {
     color: $graycolor;
     font-weight: 700;
   }
@@ -130,56 +145,69 @@ $royal-blue:#22C3FF;
 
 
 // Card----------------------
-.card{
+.card {
   border-radius: 15px;
   border: 2px solid $fmain_color;
   margin: 1rem 0;
-  .card-title{
+
+  .card-title {
     font-weight: 600;
   }
-  .card-text{
+
+  .card-text {
     @extend %normal-text;
-    font-weight:600;
+    font-weight: 600;
   }
-  .product-card-label{
+
+  .product-card-label {
     border-radius: 5px 0 5px 0;
   }
-  .product-card-comment{
-    color:black
+
+  .product-card-comment {
+    color: black
   }
 }
 
 
-.product-card-price{
+.product-card-price {
   font-weight: 700;
-  color:$pink;
+  color: $pink;
   font-size: 24px;
-  p{
+
+  p {
     margin-bottom: 0;
   }
 }
-.product_main_card{
+
+.product_main_card {
   overflow: hidden;
 }
 
-.product_main_card_img{
-  // border-radius: 8px 0 0 8px;
-  width: 100%;
-  height: 100%;
+.product_main_card_img--box {
+  height: 240px;
+
+  .product_main_card_img {
+    // border-radius: 8px 0 0 8px;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
 }
 
-.product_main_card_title{
-  p{
+
+.product_main_card_title {
+  p {
     margin-bottom: 0;
   }
-  svg{
+
+  svg {
     color: $pink;
     width: 1.5rem;
     height: 1.5rem;
   }
 }
 
-.product_main_card_placeName_text{
+.product_main_card_placeName_text {
   display: inline-block;
   color: #2DA9D7;
   background-color: #D5EEEE;
@@ -189,51 +217,57 @@ $royal-blue:#22C3FF;
 }
 
 
-.product_main_card_locate_text{
-  p{
+.product_main_card_locate_text {
+  p {
     color: black;
     font-weight: 600;
     margin: 0;
   }
-  svg{
+
+  svg {
     color: #2DA9D7;
     width: 1.25rem;
     height: 1.25rem;
   }
 }
-.product_main_card_like_text{
 
-  svg{
+.product_main_card_like_text {
+
+  svg {
     width: 1.25rem;
     height: 1.25rem;
   }
 }
-.product_filter_rwd_filter{
+
+.product_filter_rwd_filter {
   display: none;
 }
 
 // 
-.product_filter_pages{
+.product_filter_pages {
   width: 100%;
-  margin:0 auto;
-  font-size:0;
-  text-align:center;
+  margin: 0 auto;
+  font-size: 0;
+  text-align: center;
   padding-bottom: 20px;
-  svg{
+
+  svg {
     width: 1.5rem;
     height: 1.5rem;
   }
-  button{
+
+  button {
     font-size: 1rem;
     width: 35px;
     height: 35px;
     background-color: #fff;
-    border:none;
-    color:$fmain_color;
-    outline:none;
-    &:hover{
+    border: none;
+    color: $fmain_color;
+    outline: none;
+
+    &:hover {
       background-color: $fmain_color;
-      color:#fff;
+      color: #fff;
       cursor: pointer;
       border-radius: 5px;
     }
@@ -242,21 +276,24 @@ $royal-blue:#22C3FF;
 
 // ========== RWD ======== //
 @media (max-width: 768px) {
-  .product-searchList{
+  .product-searchList {
     margin: auto 12px;
   }
-  .product-filter-left{
+
+  .product-filter-left {
     display: none;
   }
-  .product-filter-right-top{
+
+  .product-filter-right-top {
     display: none;
   }
-  .product-filter-right{
+
+  .product-filter-right {
     margin-left: 0;
   }
 
   // 篩選
-  .product_filter_rwd_filter{
-    display:block;
+  .product_filter_rwd_filter {
+    display: block;
   }
 }

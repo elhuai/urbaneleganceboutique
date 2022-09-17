@@ -46,10 +46,10 @@ const EcCommodityHomepage = () => {
         const data = result.data;
         arrStr[index].setState(data);
       }
-      // console.log(fishData);
     };
     fetchFishProducts();
   }, []);
+  console.log(fishCard);
   return (
     <>
       <div className="EcCommodityHomepage_main">

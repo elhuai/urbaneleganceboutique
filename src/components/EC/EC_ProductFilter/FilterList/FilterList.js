@@ -9,11 +9,10 @@ import { IoIosArrowDown } from 'react-icons/io';
 
 const FilterList = () => {
   const [title, setTitle] = useState([]);
-  const [selection, setSelection] = useState({});
 
   useEffect(() => {
     const fetchTitle = async (index) => {
-      const result = await axios.get(`${API_URL}/filter/filterproduct`);
+      const result = await axios.get(`${API_URL}/filter/choices`);
       console.log(result.data);
       // for (let index = 0; index < data.length; index++) {
       //   const tags = data[index].tags;
@@ -25,11 +24,6 @@ const FilterList = () => {
     };
     fetchTitle();
   }, []);
-  // for (let index = 0; index < title.length; index++) {
-  //   // const tagsItems = tags[index];
-  //   const tags = title[index].tags;
-  //   console.log(tags);
-  //   // setSelection(tags);
   // }
 
   return (

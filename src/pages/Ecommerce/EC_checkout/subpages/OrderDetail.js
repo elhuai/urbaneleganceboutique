@@ -3,7 +3,7 @@ function OrderDetail(props) {
     <>
       <h1>購物明細 - OrderDetail</h1>
     </>
-  )
+  );
 }
 
-export default OrderDetail
+export default OrderDetail;

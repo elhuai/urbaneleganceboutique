@@ -12,74 +12,78 @@ import ProgressBar from './components/ProgressBar';
 import './styles/_EC_orderSteps.scss';
 
 function OrderSteps() {
-    const maxSteps = 3;
+  const maxSteps = 3;
 
-    const [step, setStep] = useState(1);
+  const [step, setStep] = useState(1);
 
-    const [shipping, setShippingData] = useState({
-        name: '',
-        address: '',
-        phone: '',
-    });
+  const [shipping, setShippingData] = useState({
+    name: '',
+    address: '',
+    phone: '',
+  });
 
-    // 動態元件語法
-    const components = [Cart, Payment, OrderDetail];
-    const BlockComponent = components[step - 1];
+  // 動態元件語法
+  const components = [Cart, Payment, OrderDetail];
+  const BlockComponent = components[step - 1];
 
-    // 進度條使用
-    const progressNames = ['確認購物車內容', '確認付款資訊', '送出訂單'];
+  // 進度條使用
+  const progressNames = ['確認購物車內容', '確認付款資訊', '送出訂單'];
 
-    // 上一步 下一步按鈕
-    const next = () => {
-        // 運送表單用檢查
-        if (step === 2) {
-            const { name, address, phone } = shipping;
+  // 上一步 下一步按鈕
+  const next = () => {
+    // 運送表單用檢查
+    if (step === 2) {
+      const { name, address, phone } = shipping;
 
-            // 有錯誤訊息會跳出警告，不會到"下一步"
-            const errors = [];
+      // 有錯誤訊息會跳出警告，不會到"下一步"
+      const errors = [];
 
-            if (!name) errors.push('姓名沒填~ ');
+      if (!name) errors.push('姓名沒填~ ');
 
-            if (!address) errors.push('住址沒填~ ');
+      if (!address) errors.push('住址沒填~ ');
 
-            if (!phone) errors.push('電話沒填~ ');
+      if (!phone) errors.push('電話沒填~ ');
 
-            if (errors.length > 0) {
-                alert(errors.join(','));
-                return;
-            }
-        }
+      if (errors.length > 0) {
+        alert(errors.join(','));
+        return;
+      }
+    }
 
-        // 沒錯誤才會到下一步
-        if (step < maxSteps) setStep(step + 1);
-    };
+    // 沒錯誤才會到下一步
+    if (step < maxSteps) setStep(step + 1);
+  };
 
-    // 上一步按鈕
-    const prev = () => {
-        if (step > 1) setStep(step - 1);
-    };
+  // 上一步按鈕
+  const prev = () => {
+    if (step > 1) setStep(step - 1);
+  };
 
-    return (
-        <>
-            {/* 進度條 */}
-            <div>
-                <ProgressBar maxSteps={maxSteps} step={step} progressNames={progressNames} />
-            </div>
-            {/* 子頁面區域 */}
-            <div>
-                <BlockComponent shipping={shipping} setShippingData={setShippingData} />
-            </div>
-            {/* 按鈕 */}
-            <div className="orderButton">
-                <button className="nextBnt" onClick={next} disabled={step === maxSteps}>
-                    前往下一步
-                </button>
-                <button className="prevBnt" onClick={prev} disabled={step === 1}>
-                    回到上一步
-                </button>
-            </div>
-        </>
-    );
+  return (
+    <>
+      {/* 進度條 */}
+      <div>
+        <ProgressBar
+          maxSteps={maxSteps}
+          step={step}
+          progressNames={progressNames}
+        />
+      </div>
+      {/* 子頁面區域 */}
+      <div>
+        <BlockComponent shipping={shipping} setShippingData={setShippingData} />
+      </div>
+      {/* 按鈕 */}
+      <div className="orderButton">
+        <button className="nextBnt" onClick={next} disabled={step === maxSteps}>
+          前往下一步
+        </button>
+        <button className="prevBnt" onClick={prev} disabled={step === 1}>
+          回到上一步
+        </button>
+      </div>
+    </>
+  );
 }
 
 export default OrderSteps;
