@@ -14,8 +14,6 @@ import EcproductFilter from './pages/Ecommerce/EC_productFilter';
 import ECOrderSteps from './pages/Ecommerce/EC_checkout'
 // import Eccheckout2 from './pages/Ecommerce/EC_checkout/EC_checkout_2'
 import Travelmap from './pages/Travel_map';
-import '../node_modules/card-js/card-js.min.css';
-import '../node_modules/card-js/card-js.min.js';
 import 'swiper/scss';
 import 'swiper/css/bundle';
 import './styles/style.scss';

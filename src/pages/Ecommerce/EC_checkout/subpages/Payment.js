@@ -47,7 +47,6 @@ const Payment = () => {
                       <div className="CCardNumber">
                         <div>信用卡卡號</div>
                         <input type="text" />
-                        
                       </div>
                     </div>
                     <input className="radioInput" type="radio" />
