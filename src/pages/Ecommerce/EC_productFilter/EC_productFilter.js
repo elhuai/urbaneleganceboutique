@@ -2,7 +2,6 @@ import React from 'react';
 import SearchBar from '../../../components/SearchBar/SearchBar_search';
 import FilterActive from '../../../components/EC/EC_ProductFilter/FilterActive';
 import FilterList from '../../../components/EC/EC_ProductFilter/FilterList';
-import FilterPages from '../../../components/EC/EC_ProductFilter/FilterPages';
 import FilterResult from '../../../components/EC/EC_ProductFilter/FilterResult';
 import './_EC_productFilter.scss';
 
@@ -27,7 +26,6 @@ function ecProductFilter() {
           {/*篩選結果 */}
           <div className="ecProductFilter_result flex-2">
             <FilterResult />
-            <FilterPages />
           </div>
         </div>
       </div>

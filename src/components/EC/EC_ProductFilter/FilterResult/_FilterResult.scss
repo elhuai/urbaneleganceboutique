@@ -138,8 +138,14 @@ $royal-blue: #22C3FF;
   }
 
   .sort-selected {
+    border: none;
+    background: none;
     color: $graycolor;
     font-weight: 700;
+    &:active{
+      color: $fmain_color;
+
+    }
   }
 }
 

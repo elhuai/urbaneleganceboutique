@@ -5,6 +5,8 @@ import { API_URL } from '../../../../utils/config';
 
 import './_FilterList.scss';
 import { IoIosArrowDown } from 'react-icons/io';
+import { Link } from 'react-router-dom';
+import { Checkbox } from '@material-ui/core';
 // import FilterListToggle from './FilterListToggle/FilterListToggle';
 
 const FilterList = () => {
@@ -24,23 +26,31 @@ const FilterList = () => {
     <>
       {/*__地區篩選 */}
       {title.map((data, index) => {
+        let tags = title[index].tags;
         return (
-          <div className="filter-group pf-checkboxes" key={'filter' + index}>
+          <div className="filter-group pf-checkboxes" key={data.cate_id}>
             <div className="product-filter-category my-3 align-items-center justify-content-between">
               <p className="product-category-title">{data.cate_name}</p>
               <button className="product-category-moreBtn">
                 <IoIosArrowDown />
               </button>
             </div>
-            {title[index].tags.map((data, index) => {
+            {tags.map((data, index) => {
               return (
-                <div className="pf-checkbox" key={'tags' + index}>
-                  <input
-                    type="checkbox"
-                    value={data.tag_id}
-                    className="product-check-items me-2"
-                  />
-                  <label>{data.tag_name}</label>
+                <div className="pf-checkbox">
+                  <Link
+                    to={`/ec-productfilter?filter=${data.tag_name}`}
+                    key={data.tag_name}
+                  >
+                    <label for="checkbox_id">
+                      <input
+                        type="checkbox"
+                        value={data.tag_id}
+                        className="product-check-items me-2"
+                      />
+                      {data.tag_name}
+                    </label>
+                  </Link>
                 </div>
               );
             })}
