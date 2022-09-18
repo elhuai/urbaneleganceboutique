@@ -51,7 +51,7 @@ export default function communityHomePageCard() {
       <Swiper
         loop={true}
         freeMode={true}
-        spaceBetween={300}
+        spaceBetween={150}
         slidesPerView={4}
         className="communitySwiper_Right"
         modules={[Autoplay]}

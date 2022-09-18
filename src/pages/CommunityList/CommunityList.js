@@ -14,8 +14,8 @@ const CommunityList = () => {
       {/* <div style={{ minHeight: '100vh' }}> */}
       <div className='CommunityList'>
       <SearchBar
-          searchBar_title="想要什麼商品呢"
-          searchBar_placeholder="好吃的狗罐罐"
+          searchBar_title="最可愛的萌寵都在這"
+          searchBar_placeholder="阿部柯基頂呱呱"
         />
         <section>
           <div className="d-flex justify-content-center align-items-center m-3">
