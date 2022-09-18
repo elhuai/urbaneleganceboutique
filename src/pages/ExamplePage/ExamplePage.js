@@ -5,7 +5,6 @@ const ExamplePage = () => {
   return (
     <div>
       <ExampleComponents />
-      這是第二行
     </div>
   );
 };

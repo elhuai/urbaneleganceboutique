@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import './PostWYSIWYGEdit.scss';
+import './PostEdit.scss';
 import CoverBackground from '../../images/post_edit_background_banner.png';
 import mapPhoto from '../../images/screenshop map_photo.png';
 // import { Link } from 'react-router-dom';
@@ -10,6 +10,7 @@ import PostEditor from '../../components/WYSIWYG/PostEditor';
 import { AiFillTag } from 'react-icons/ai';
 import { MdTitle } from 'react-icons/md';
 import { MdPhotoSizeSelectActual } from 'react-icons/md';
+import PhotoReviewSwiperDefault from '../../components/WYSIWYG/PhotoViewDefault';
 // import FileUpload from '../../components/WYSIWYG/FileUpload';
 
 // import { Swiper, SwiperSlide } from 'swiper/react';
@@ -88,13 +89,14 @@ function PostWYSIWYGEdit() {
                 type="loaction"
                 className="form-control mt-2"
                 placeholder="請輸入城市地區"
+                
               ></input>
             </div>
             <div className="col-6">
               <label className="mt-3">
-                <AiFillTag className="mb-1 me-1"></AiFillTag>標籤
+                <AiFillTag className="mb-1 me-1"></AiFillTag>標籤 (請輸入＃區分標籤)
               </label>
-              <input type="loaction" className="form-control mt-2"></input>
+              <input type="loaction" placeHolder="#台北市" className="form-control mt-2"></input>
             </div>
           </div>
 
@@ -102,11 +104,25 @@ function PostWYSIWYGEdit() {
           <form className="my-2">
             <p>貼文編輯器</p>
             <PostEditor></PostEditor>
-            <p>照片上傳</p>
+            <label
+              className="photo_upload d-flex align-items-center
+              justify-content-center"
+            >
+              上傳照片
+              <input
+                type="file"
+                accept="images/*"
+                hidden
+                onChange={changeHandler}
+                multiple
+                className="form-control"
+              ></input>
+            </label>
+
             <label className="post_photo_upload">
               <input type="file" accept="image/*" multiple hidden />
             </label>
-            <img alt=""></img>
+            <PhotoReviewSwiperDefault></PhotoReviewSwiperDefault>
           </form>
           <div className="post_map">
             <p>行程地圖</p>

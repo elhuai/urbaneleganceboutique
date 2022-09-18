@@ -1,9 +1,9 @@
 import React from 'react';
 import Swal from 'sweetalert2';
 import withReactContent from 'sweetalert2-react-content';
-import LoginCard from '../components/layout/LoginCard/LoginCard';
+import LoginCard from '../../components/layout/LoginCard/LoginCard';
 
-export const handleLoginBtn = (isLogin, setUser) => {
+export const handleLoginCard = (isLogin, setUser) => {
   const loginCard = withReactContent(Swal);
   loginCard
     .fire({
@@ -19,11 +19,11 @@ export const handleLoginBtn = (isLogin, setUser) => {
     .then((result) => {
       if (result.isConfirmed)
         return loginCard.fire({
-          position: 'top-end',
+          position: 'center-center',
           icon: 'success',
           title: `${isLogin ? '登入成功' : '登出成功'}`,
           showConfirmButton: false,
-          timer: 1000,
+          timer: 800,
         });
     });
 };

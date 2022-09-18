@@ -9,14 +9,15 @@ import CommunityList from './pages/CommunityList';
 import CommunityHomePage from './pages/CommunityHomePage';
 import AdminCenterPage from './pages/AdminCenter/AdminCenterPage';
 import Travelmap from './pages/Travel_map';
+import Loading from './pages/Loading';
 import { UserInfoProvider } from './hooks/useUserInfo';
 
 import 'swiper/css/bundle';
 import './styles/style.scss';
 import PersonalHomePage from './pages/AdminCenter/PersonalHomePage';
-import PostWYSIWYG from './pages/PostManagement/PostWYSIWYG';
+import Post from './pages/PostManagement/Post';
 import PostTrip from './pages/PostManagement/PostTrip';
-import PostWYSIWYGEdit from './pages/PostManagement/PostWYSIWYGEdit';
+import PostEdit from './pages/PostManagement/PostEdit';
 import PostTripEdit from './pages/PostManagement/PostTripEdit';
 
 function App() {
@@ -34,10 +35,11 @@ function App() {
           <Route path="/adminCenter" element={<AdminCenterPage />} />
           <Route path="/personalHomePage" element={<PersonalHomePage />} />
           <Route path="/AdminCenterPage" element={<AdminCenterPage />} />
-          <Route path="/postWYSIWYG" element={<PostWYSIWYG />} />
-          <Route path="/postWYSIWYGEdit" element={<PostWYSIWYGEdit />} />
+          <Route path="/postWYSIWYG" element={<Post />} />
+          <Route path="/postWYSIWYGEdit" element={<PostEdit />} />
           <Route path="/postTrip" element={<PostTrip />} />
           <Route path="/postTripEdit" element={<PostTripEdit />} />
+          <Route path="/login" element={<Loading />} />
         </Routes>
         <Footer />
       </UserInfoProvider>

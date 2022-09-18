@@ -1,17 +1,64 @@
 import React from 'react';
+import axios from 'axios';
 import { Link } from 'react-router-dom';
+import { API_URL } from '../../utils/config';
 // import AdminCenter from "../../components/AdminCenter/AdminCenter";
 import './PersonalHomePage.scss';
 function PersonalHomePage() {
+  const fakeData = [
+    {
+      id: 1,
+      title: '大寶遊花蓮 二日遊',
+      img: 'https://picsum.photos/id/15/450/270',
+      tag: '忘憂亭',
+      content:
+        '透過OH DOG CAT 購買吉貝島澎湖自由行，超級優惠價格一次搞定。水上活動玩到飽!另可加值星空BBQ了!',
+      location: '花蓮',
+      like: '1234',
+    },
+    {
+      id: 2,
+      title: '嗄嘟遊台中 三日遊',
+      img: 'https://picsum.photos/id/20/450/270',
+      tag: '忘憂森林',
+      content:
+        '透過OH DOG CAT 購買吉貝島澎湖自由行，超級優惠價格一次搞定。水上活動玩到飽!另可加值星空BBQ了!',
+      location: '花蓮',
+      like: '2234',
+    },
+    {
+      id: 3,
+      title: '橘子中秋節烤肉趣 一日遊',
+      img: 'https://picsum.photos/id/25/450/270',
+      tag: '忘憂谷',
+      content:
+        '透過OH DOG CAT 購買吉貝島澎湖自由行，超級優惠價格一次搞定。水上活動玩到飽!另可加值星空BBQ了!',
+      location: '花蓮',
+      like: '3234',
+    },
+    {
+      id: 4,
+      title: '前端工程師從入門到放棄 一百二十日遊',
+      img: 'https://picsum.photos/id/30/450/270',
+      tag: '忘憂湖',
+      content:
+        '透過OH DOG CAT 購買吉貝島澎湖自由行，超級優惠價格一次搞定。水上活動玩到飽!另可加值星空BBQ了!',
+      location: '花蓮',
+      like: '4234',
+    },
+  ];
+
+
+
   return (
     <>
       {/* <AdminCenter /> */}
-      <div className="personal_home_page d-flex justify-content-center ">
-        <div className="personal_bar d-flex">
+      <div className="personal_home_page d-flex flex-column justify-content-center">
+        <div className="personal_bar d-flex justify-content-evenly align-items-center">
           <div className="user_photobox">
             <img
               className="admin_user_photo w-100 h-100"
-              src="https://picsum.photos/200/300?random8"
+              src=""
               alt=""
             ></img>
           </div>
@@ -20,37 +67,26 @@ function PersonalHomePage() {
               <p>User Name</p>
             </div>
             <div className="description_text">
-              <p>
-                lorem lorem lorem lorem lorem
-                loremefefdfdfdfdfdfdfdfdfdfdfdfdfdfdfdefef
+              <p>fdijfidjfidjfi
               </p>
             </div>
           </div>
-          <div className="pet_card">
-            <div className="pet_card_description d-flex justify-content-center">
-              <div className="pet_card_list d-flex">
-                <div className="pet_photobox">
-                  <img
-                    classNaeme="w-100 h-100"
-                    alt=""
-                    src="https://picsum.photos/200/300?random6"
-                  ></img>
-                </div>
-                <div className="pet_info ms-4 d-flex flex-column">
-                  <div className="">
-                    <p>Doggy</p>
-                  </div>
-                  <div className="">
-                    <p>拉布拉多</p>
-                  </div>
-                </div>
+          <div className="pet_card_description d-flex justify-content-center">
+            <div className="pet_card_list d-flex flex-column align-items-center">
+              <div className="pet_photobox">
+                <img
+                  classNaeme="w-100 h-100"
+                  alt=""
+                  src="https://picsum.photos/200/300?random6"
+                ></img>
               </div>
             </div>
           </div>
         </div>
+        <div className="my_trip_list">q</div>
+        <div className="my_post_list">q</div>
       </div>
-      <div className="my_trip_list"></div>
-      <div className="my_post_list"></div>
+
       <Link to="/AdminCenterPage">
         {' '}
         testing button navigate to admin center -- community manangment

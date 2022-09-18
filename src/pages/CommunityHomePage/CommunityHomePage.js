@@ -275,6 +275,7 @@ const CommunityHomePage = () => {
               </div>
             </div>
           </div>
+
         </div>
       </div>
     </>
