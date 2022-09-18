@@ -73,15 +73,17 @@ export default function CommunityListCard({ post }) {
                     <h5 className="card-title mb-1">{data.title}</h5>
                     <IoHeartOutline />
                   </div>
+                  <div className="d-flex">
                   {tags.map((data, index) => {
                     return (
                       <div className="">
-                        <p className="comList_main_card_placeName_text card-text mb-2">
+                        <p className="comList_main_card_placeName_text card-text mx-1">
                           {data}
                         </p>
                       </div>
                     );
                   })}
+                  </div>
                   {/* <Tags data={data}></Tags> */}
                   <p className="card-text">{data.content}</p>
                   <div className="comList_main_card_bottom_text card-text d-flex justify-content-between">
