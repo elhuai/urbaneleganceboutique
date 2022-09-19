@@ -5,6 +5,7 @@ import { AiOutlineSearch } from 'react-icons/ai';
 
 function SearchBar(props, { value, changeInput }) {
   const { searchBar_title, searchBar_placeholder } = props;
+  const { titleSearch, setTitleSearch, setSearch } = props;
   return (
     <>
       <section className="searchBar_section_main_bg mb-4">
@@ -13,17 +14,24 @@ function SearchBar(props, { value, changeInput }) {
           <div className="searchBar_search">
             <input
               type="text"
-              className="searchBar_searchTerm"
+              className="searchBar_searchInput"
               placeholder={searchBar_placeholder}
-              value={value}
-              onChange={changeInput}
+              maxLength={15}
+              value={titleSearch}
+              onChange={(e) => {
+                console.log(e.target.value);
+                let textValue = e.target.value.replace(/[, ]/g, '');
+                setTitleSearch(textValue);
+              }}
             />
             <button
               type="submit"
               className="searchBar_searchButton"
-              // onChange={(e) => {
-              //   console.log(e.target.value);
-              // }}
+              onClick={() => {
+                if (titleSearch === '') return setSearch('');
+                setSearch(titleSearch);
+                // setPage(1);
+              }}
             >
               <i className="searchBar_fa searchBar_fa-search">
                 <AiOutlineSearch />

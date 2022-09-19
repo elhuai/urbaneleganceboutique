@@ -70,11 +70,11 @@ const FilterResult = (props) => {
 
       {/* 搜尋結果====================== */}
       {productData.map((data, index) => {
+        let tags = productData[index].product_tag;
+        const tag = tags.split(/[#,＃]/).filter((item) => item);
+
         return (
-          <div
-            className="product_main_card card border-primary "
-            key={'filterCard' + index}
-          >
+          <div className="product_main_card card border-primary " key={index}>
             <div className="row g-0">
               <div className="d-flex justify-content-right position-absolute">
                 <div className="label-sale">
@@ -100,9 +100,19 @@ const FilterResult = (props) => {
                     <h5 className="card-title">{data.name}</h5>
                     <IoHeartOutline />
                   </div>
-                  <p className="product_main_card_placeName_text my-2">
-                    北回歸線
-                  </p>
+                  {/* 標籤 */}
+                  <div className="d-flex flex-row">
+                    {tag.map((data, index) => {
+                      return (
+                        <p
+                          key={tags.index}
+                          className="product_main_card_placeName_text my-2 me-2"
+                        >
+                          {tag[index]}
+                        </p>
+                      );
+                    })}
+                  </div>
                   <p className="card-text my-2">{data.intro}</p>
                   <div className="product_main_card_bottom_text d-flex justify-content-between align-items-center">
                     <p className="product_main_card_locate_text align-items-center d-flex">

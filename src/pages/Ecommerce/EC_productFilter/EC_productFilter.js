@@ -1,3 +1,4 @@
+// 有裝套件 yarn add antd
 import React from 'react';
 import SearchBar from '../../../components/SearchBar/SearchBar_search';
 import FilterActive from '../../../components/EC/EC_ProductFilter/FilterActive';
@@ -13,14 +14,18 @@ import { useState, useEffect } from 'react';
 function EcProductFilter() {
   const [user, setUser] = useState(null);
   const [error, setError] = useState(null);
+
+  // 搜尋==========
+  const [search, setSearch] = useState('');
+  const [titleSearch, setTitleSearch] = useState('');
+  // 頁碼===============
   const [productData, setProductData] = useState([]);
   const [lastPage, setLastPage] = useState(1);
+  const [page, setPage] = useState(1);
 
-  // =======
+  // 篩選選項=======
   const [typeId, setTypeId] = useState('');
   const [order, setOrder] = useState('');
-  const [page, setPage] = useState(1);
-  const [search, setSearch] = useState('');
   const [maxPrice, setMaxPrice] = useState('');
   const [minPrice, setMinPrice] = useState('');
   const [tag, setTag] = useState([]);
@@ -30,18 +35,18 @@ function EcProductFilter() {
   useEffect(() => {
     const fetchProductData = async (index) => {
       const response = await axios.get(
-        `${API_URL}/filter/products?typeId=${typeId}&maxPrice=${maxPrice}&minPrice=${minPrice}&search=${search}&order=${order}&page=${page}&tag=${tag}`
+        `${API_URL}/filter/products?typeId=${typeId}&minPrice=${minPrice}&maxPrice=${maxPrice}&search=${search}&order=${order}&page=${page}&tag=${tag}`
       );
       console.log(response.data);
       setProductData(response.data.data);
       setLastPage(response.data.pagesDetail.lastPage);
     };
     fetchProductData();
-  }, [minPrice, maxPrice, order, search, page, user, tag]);
+  }, [minPrice, maxPrice, order, search, page, user, tag, search]);
 
   useEffect(() => {
-    console.log('=== tag ===', tag);
-  }, [tag]);
+    console.log('=== minPrice ===', minPrice, maxPrice);
+  }, [minPrice, maxPrice]);
 
   // 設定頁碼
 
@@ -52,6 +57,10 @@ function EcProductFilter() {
         <SearchBar
           searchBar_title="想要去哪裡玩耍呢"
           searchBar_placeholder="想去你心裡玩耍"
+          search={search}
+          setSearch={setSearch}
+          titleSearch={titleSearch}
+          setTitleSearch={setTitleSearch}
         />
         {/*篩選區域 */}
         <div className="ecProductFilter_filter_section d-flex">
@@ -59,7 +68,14 @@ function EcProductFilter() {
           {/* 左邊篩選特價 */}
           <div className="product-filter-left flex-1">
             <FilterActive />
-            <FilterList setProductData={setProductData} setTag={setTag} />
+            <FilterList
+              setProductData={setProductData}
+              setTag={setTag}
+              maxPrice={maxPrice}
+              setMaxPrice={setMaxPrice}
+              minPrice={minPrice}
+              setMinPrice={setMinPrice}
+            />
           </div>
           {/* </div> */}
           {/*篩選結果 */}

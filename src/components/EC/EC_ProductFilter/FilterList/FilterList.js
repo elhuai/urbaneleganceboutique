@@ -5,12 +5,12 @@ import { API_URL } from '../../../../utils/config';
 
 import './_FilterList.scss';
 import { IoIosArrowDown } from 'react-icons/io';
-import { Link } from 'react-router-dom';
-import { Checkbox } from '@material-ui/core';
+import { Slider } from 'antd';
+import 'antd/dist/antd.css';
 // import FilterListToggle from './FilterListToggle/FilterListToggle';
 
 const FilterList = (props) => {
-  const { setTag } = props;
+  const { setTag, setMaxPrice, setMinPrice, minPrice, maxPrice } = props;
   const { tagStatus, setTagStatus } = useState([]);
   const [title, setTitle] = useState([]);
 
@@ -25,15 +25,22 @@ const FilterList = (props) => {
         return { ...item, tags: newTags };
       });
       setTitle(newTitleArray);
+      setMaxPrice(10000);
+      setMinPrice(0);
     };
     fetchTitle();
-
     // setTagStatus();
   }, []);
   // }
+  function log(value) {
+    setMinPrice(value[0]);
+    setMaxPrice(value[1]);
+    // setPage(1);
+    console.log(value);
+  }
 
   return (
-    <>
+    <div className="filter-list">
       {/*__地區篩選 */}
       {title.map((data, index) => {
         let tags = title[index].tags;
@@ -87,7 +94,28 @@ const FilterList = (props) => {
           </div>
         );
       })}
-    </>
+      {/* 價格篩選 */}
+      <div className="product-price">
+        <div className="product-filter-category my-3">
+          <p className="product-category-title">價格</p>
+        </div>
+
+        <Slider
+          className="product-price-bar"
+          range
+          step={1}
+          max={8000}
+          defaultValue={[0, 8000]}
+          // onChange={log}
+          onAfterChange={log}
+        />
+        <div className="product-price-num">
+          <div className="my-2">
+            ${minPrice} - ${maxPrice}
+          </div>
+        </div>
+      </div>
+    </div>
   );
 };
 
