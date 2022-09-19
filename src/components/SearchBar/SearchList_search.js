@@ -1,7 +1,7 @@
-import "./_SearchList_search.scss";
-import main_search_left_dog from "../../images/main_search_left_dog.png";
-import main_search_right_dog from "../../images/main_search_right_dog.png";
-import { AiOutlineSearch } from "react-icons/ai";
+import './_SearchList_search.scss';
+import main_search_left_dog from '../../images/main_search_left_dog.png';
+import main_search_right_dog from '../../images/main_search_right_dog.png';
+import { AiOutlineSearch } from 'react-icons/ai';
 
 const SearchBar = () => {
   return (

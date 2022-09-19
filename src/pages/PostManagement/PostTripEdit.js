@@ -106,8 +106,10 @@ function PostTripEdit() {
                   1.5小時｜台北捷運台北火車站
                   <RiEditFill className="ms-1 mb-1 "></RiEditFill>
                 </div>
-                <div>刪除此景點<MdOutlineClose className="close_icon mb-1"></MdOutlineClose></div>
-             
+                <div>
+                  刪除此景點
+                  <MdOutlineClose className="close_icon mb-1"></MdOutlineClose>
+                </div>
               </div>
               <textarea
                 type="textarea"

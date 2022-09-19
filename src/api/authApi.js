@@ -1,7 +1,8 @@
 import axios from 'axios';
-import { act } from 'react-dom/test-utils';
+import { LINE_CALLBACK_URL } from '../utils/config';
 import { API_URL } from '../utils/config';
 import {
+  handleSuccess,
   handleFailed,
   handleSucccessComfirm,
 } from '../utils/handler/handleStatusCard';
@@ -22,7 +23,7 @@ export const callRegisterApi = async (
       registInfo,
       credentialsConfig
     );
-    setUser({ data: res.data.user, auth: true });
+    setUser((user) => ({ ...user, data: res.data.user, auth: true }));
     confirm();
     return res.data;
   } catch (err) {
@@ -44,7 +45,7 @@ export const callLoginApi = async (loginInfo, setUser, confirm) => {
       loginInfo,
       credentialsConfig
     );
-    setUser({ data: result.data.user, auth: true });
+    setUser((user) => ({ ...user, data: result.data.user, auth: true }));
     let isInfoCompleted;
     for (const key in result.data.user) {
       if (!result.data.user[key]) {
@@ -73,7 +74,7 @@ export const callLogoutApi = async (setUser, confirm) => {
       credentialsConfig
     );
     if (result.data.status === 'ok') {
-      setUser({ data: {}, auth: false });
+      setUser((user) => ({ ...user, data: [], auth: false }));
       confirm();
     }
   } catch (err) {
@@ -89,9 +90,52 @@ export const callVertifyApi = async (setUser) => {
     );
     console.log(result.data);
     if (result.data.isLogin) {
-      setUser({ data: result.data.user, auth: true });
+      setUser((user) => ({
+        ...user,
+        data: result.data.user,
+        auth: true,
+        firstVertify: true,
+      }));
     }
+    setUser((user) => ({
+      ...user,
+      firstVertify: true,
+    }));
   } catch (err) {
     console.error(err);
+  }
+};
+
+export const callLineLoginApi = async (code, setUser, redirectPath) => {
+  try {
+    const result = await axios.post(
+      `${API_URL}/auth/user/login/line`,
+      {
+        code: code,
+        redirect_uri: LINE_CALLBACK_URL,
+      },
+      credentialsConfig
+    );
+    if (result.data.user.social_name === '') {
+      return setUser((user) => ({
+        ...user,
+        data: result.data.user,
+        auth: true,
+      }));
+    }
+    setUser((user) => ({
+      ...user,
+      data: result.data.user,
+      auth: true,
+    }));
+    const redirect =
+      window.localStorage.getItem('last_page') === '/'
+        ? false
+        : window.localStorage.getItem('last_page');
+    handleSuccess('LINE 連動登入成功', redirect);
+    window.localStorage.removeItem('last_page');
+  } catch (error) {
+    handleFailed('LINE 連動登入失敗', '/');
+    console.error(error);
   }
 };

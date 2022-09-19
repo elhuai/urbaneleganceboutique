@@ -6,28 +6,37 @@ import { RiMessage3Line } from 'react-icons/ri';
 import { BsPeople } from 'react-icons/bs';
 import { Link } from 'react-router-dom';
 import React from 'react';
-import './adminCenter.scss';
-// import { ReactComponent as OrderIcon } from "../";
+import { useUserInfo } from '../../hooks/useUserInfo';
+import Loading from '../layout/Loading';
 
-// import {Button} from "react-bootstrap";
+import './adminCenter.scss';
 
 const AdminCenter = () => {
-  return (
+  const BASE_URL = process.env.REACT_APP_BASE_API_URL;
+  const { user } = useUserInfo();
+  const { data } = user;
+  console.log(data);
+  return !user.auth && !user.firstVertify ? (
+    <Loading />
+  ) : (
     <div>
       <div className="admin_side">
         <div className="profile_bar d-flex justify-content-center">
           <div className="user_photobox">
             <img
               className="admin_user_photo w-100 h-100"
-              src="https://picsum.photos/200/300?random8"
+              // src={data.photo[0] === 'h' ? data.photo : BASE_URL + data.photo}
               alt=""
             ></img>
           </div>
           <div className="admin_user_name_bar">
-            <Link to="/personalHomePage" className="admin_user_name ">
+            <Link to="/apersonalHomePage" className="admin_user_name ">
               <p>User Name</p>
             </Link>
-            <Link to="/" className="text-decoration-none admin_myfile">
+            <Link
+              to="/personalHomePage"
+              className="text-decoration-none admin_myfile"
+            >
               <AiOutlineSetting className="settingicon admin_my_profile_text "></AiOutlineSetting>
               我的檔案
             </Link>

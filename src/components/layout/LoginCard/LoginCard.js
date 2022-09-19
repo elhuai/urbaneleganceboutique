@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
 import { API_URL, LINE_LOGIN_URL } from '../../../utils/config';
 import { HiChevronLeft } from 'react-icons/hi';
+import { LINE_CALLBACK_URL } from '../../../utils/config';
+import moment from 'moment';
 import {
   callRegisterApi,
   callLoginApi,
@@ -21,7 +23,6 @@ const LoginCard = ({ isLogin, confirm, setUser }) => {
     confirmPassword: '123123123',
   });
   const [registerError, setRegisterError] = useState([]);
-
   const handleLogin = async (e) => {
     e.preventDefault();
     console.log('call login API');
@@ -32,6 +33,15 @@ const LoginCard = ({ isLogin, confirm, setUser }) => {
     e.preventDefault();
     console.log('call logout API');
     callLogoutApi(setUser, confirm);
+  };
+
+  const handleLineLogin = async (e) => {
+    window.localStorage.setItem('last_page', window.location.pathname);
+    window.localStorage.setItem(
+      'line_login',
+      moment().format('YYYYMMDDhhmmss')
+    );
+    window.location = LINE_LOGIN_URL + '&redirect_uri=' + LINE_CALLBACK_URL;
   };
 
   const handleRegisterRequest = (e) => {
@@ -60,9 +70,8 @@ const LoginCard = ({ isLogin, confirm, setUser }) => {
       });
     }
   };
-  const isError = (name) => {
-    return registerError.find((i) => i === name) ? 'error' : '';
-  };
+  const isError = (name) =>
+    registerError.find((i) => i === name) ? 'error' : '';
 
   return isLogin ? (
     <div className="login_card--global d-flex">
@@ -102,14 +111,14 @@ const LoginCard = ({ isLogin, confirm, setUser }) => {
 
           <div className="flex-fill d-flex flex-column justify-content-end">
             <div className="login_card_line d-flex justify-content-center mb-3">
-              <a href={LINE_LOGIN_URL}>
+              <div onClick={handleLineLogin}>
                 <div className="login_card_line--bg_mask d-flex">
                   <div className="login_card_line--logo flex-shrink-0"></div>
                   <div className="login_card_line--text text-center d-flex align-items-center">
                     與 LINE 連動
                   </div>
                 </div>
-              </a>
+              </div>
             </div>
             <div>
               <button className="mb-3 login_card_button--login" type="submit">

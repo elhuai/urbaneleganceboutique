@@ -5,20 +5,21 @@ import Header from './components/layout/Header';
 import Homepage from './pages/HomePage';
 import ExamplePage from './pages/ExamplePage';
 import Travel from './pages/Travel';
+import AdminCenter from './components/layout/AdminCenter';
 import CommunityList from './pages/CommunityList';
 import CommunityHomePage from './pages/CommunityHomePage';
-import AdminCenterPage from './pages/AdminCenter/AdminCenterPage';
+import CommunityManagement from './pages/CommunityManagement';
 import Travelmap from './pages/Travel_map';
-import Loading from './pages/Loading';
+import LineLogin from './pages/LineLogin';
 import { UserInfoProvider } from './hooks/useUserInfo';
 
-import 'swiper/css/bundle';
-import './styles/style.scss';
 import PersonalHomePage from './pages/AdminCenter/PersonalHomePage';
 import PostWYSIWYG from './pages/PostManagement/PostWYSIWYG';
 import PostTrip from './pages/PostManagement/PostTrip';
 import PostWYSIWYGEdit from './pages/PostManagement/PostWYSIWYGEdit';
 import PostTripEdit from './pages/PostManagement/PostTripEdit';
+import 'swiper/css/bundle';
+import './styles/style.scss';
 
 function App() {
   return (
@@ -32,14 +33,17 @@ function App() {
           <Route path="/Travel_map" element={<Travelmap />} />
           <Route path="/communityList" element={<CommunityList />} />
           <Route path="/communityHomePage" element={<CommunityHomePage />} />
-          <Route path="/adminCenter" element={<AdminCenterPage />} />
+          <Route path="admin" element={<AdminCenter />}>
+            <Route index element={<CommunityManagement />} />
+          </Route>
+          {/* <Route path="/adminCenter" element={<AdminCenterPage />} /> */}
           <Route path="/personalHomePage" element={<PersonalHomePage />} />
-          <Route path="/AdminCenterPage" element={<AdminCenterPage />} />
+          {/* <Route path="/AdminCenterPage" element={<AdminCenterPage />} /> */}
           <Route path="/postWYSIWYG" element={<PostWYSIWYG />} />
           <Route path="/postWYSIWYGEdit" element={<PostWYSIWYGEdit />} />
           <Route path="/postTrip" element={<PostTrip />} />
           <Route path="/postTripEdit" element={<PostTripEdit />} />
-          <Route path="/login" element={<Loading />} />
+          <Route path="/login/line" element={<LineLogin />} />
         </Routes>
         <Footer />
       </UserInfoProvider>

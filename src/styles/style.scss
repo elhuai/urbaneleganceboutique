@@ -18,6 +18,10 @@ body {
   margin-top: 94px;
 }
 
+.swal2-container {
+  z-index: 99999;
+} 
+
 .swal2-icon.swal2-success {
   border-color: rgba(255, 194, 0,.8);
   color: rgba(255, 194, 0,.8);

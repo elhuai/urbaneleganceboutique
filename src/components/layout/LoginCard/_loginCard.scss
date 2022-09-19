@@ -70,11 +70,12 @@
       cursor: pointer;
     }
     &_line {
-      > a {
+      > div {
         display: block;
         background-color: #06c755;
         border-radius: 8px;
         overflow: hidden;
+        cursor: pointer;
       }
       &--bg_mask {
         background-color: rgba(0, 0, 0, 0);

@@ -1,9 +1,11 @@
 export const API_URL = process.env.REACT_APP_BASE_API_URL + '/api/1.0';
 
+export const LINE_CALLBACK_URL =
+  'https://4c85-2402-7500-5df-344e-d0ed-8c7d-5271-1f61.jp.ngrok.io/api/1.0/auth/user/register/line';
+
 // = GET
 export const LINE_LOGIN_URL =
-  process.env.REACT_APP_LINE_LOGIN_URL +
-  '&redirect_uri=https://96ad-2402-7500-5d1-3b6b-1d75-c0ab-fe4-5149.jp.ngrok.io/login';
+  process.env.REACT_APP_LINE_LOGIN_URL + '&state=ohdogcat_Line_Login';
 
 // = GET/ query_string = access_token=<accessToken>
 export const LINE_LOGIN_VERIFY_URL =

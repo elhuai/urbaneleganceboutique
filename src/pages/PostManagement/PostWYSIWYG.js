@@ -69,7 +69,7 @@ function PostWYSIWYG() {
           <div className="recommand_product_list">
             <p>推薦行程/商品</p>
             <div className="d-flex justify-content-between">
-            <Link to="/">
+              <Link to="/">
                 <div className="rec_product_card">
                   <div className="product_photo">
                     <img

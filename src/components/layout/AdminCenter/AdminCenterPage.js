@@ -1,9 +1,8 @@
-import AdminCenter from '../../components/AdminCenter/AdminCenter';
-import CommunityManagement from '../../components/CommunityManagement/CommunityManagement';
-// import { Link } from 'react-router-dom';
 import React from 'react';
+import { Outlet } from 'react-router-dom';
+import CommunityManagement from '../../../pages/CommunityManagement';
+import AdminCenter from '../../AdminCenter/AdminCenter';
 import './_AdminCenterPage.scss';
-
 const AdminCenterPage = () => {
   return (
     <div
@@ -11,7 +10,8 @@ const AdminCenterPage = () => {
       className="admin_follower_position d-flex justify-content-center"
     >
       <AdminCenter />
-      <CommunityManagement />
+      {/* <CommunityManagement /> */}
+      <Outlet />
     </div>
   );
 };

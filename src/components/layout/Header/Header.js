@@ -6,7 +6,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import RwdMenu from '../Menu/RwdMenu';
 import MenuLink from '../Menu/MenuLink';
-import { handleLoginCard } from '../../../utils/handler/handleLoginCard';
+import { handleLoginCard } from '../../../utils/handler/handleInputCard';
 import { useUserInfo } from '../../../hooks/useUserInfo';
 import './_Header.scss';
 
@@ -16,7 +16,7 @@ const Header = () => {
     if (user.auth) {
       return (
         <>
-          <Link to="/adminCenter" className="header_Icon_user">
+          <Link to="/admin" className="header_Icon_user">
             <FaUser />
           </Link>
           <div
