@@ -3,6 +3,7 @@ import React from 'react';
 import SearchBar from '../../components/SearchBar/SearchList_search';
 import CommunitySwiperLeft from '../../components/CommunityHomePage/CommunitySwiperLeft/CommunitySwiperLeft';
 import CommunitySwiperRight from '../../components/CommunityHomePage/CommunitySwiperLeft/CommunitySwiperRight';
+import { useUserInfo } from '../../hooks/useUserInfo';
 
 const CommunityHomePage = () => {
   return (

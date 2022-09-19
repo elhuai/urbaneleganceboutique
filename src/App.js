@@ -13,7 +13,7 @@ import Travelmap from './pages/Travel_map';
 import LineLogin from './pages/LineLogin';
 import { UserInfoProvider } from './hooks/useUserInfo';
 
-import PersonalHomePage from './pages/AdminCenter/PersonalHomePage';
+// import PersonalHomePage from './pages/AdminCenter/PersonalHomePage';
 import PostWYSIWYG from './pages/PostManagement/PostWYSIWYG';
 import PostTrip from './pages/PostManagement/PostTrip';
 import PostWYSIWYGEdit from './pages/PostManagement/PostWYSIWYGEdit';
@@ -35,15 +35,16 @@ function App() {
           <Route path="/communityHomePage" element={<CommunityHomePage />} />
           <Route path="admin" element={<AdminCenter />}>
             <Route index element={<CommunityManagement />} />
+            <Route path="profile" element={<CommunityManagement />} />
           </Route>
           {/* <Route path="/adminCenter" element={<AdminCenterPage />} /> */}
-          <Route path="/personalHomePage" element={<PersonalHomePage />} />
+          {/* <Route path="/personalHomePage" element={<PersonalHomePage />} /> */}
           {/* <Route path="/AdminCenterPage" element={<AdminCenterPage />} /> */}
           <Route path="/postWYSIWYG" element={<PostWYSIWYG />} />
           <Route path="/postWYSIWYGEdit" element={<PostWYSIWYGEdit />} />
           <Route path="/postTrip" element={<PostTrip />} />
           <Route path="/postTripEdit" element={<PostTripEdit />} />
-          <Route path="/login/line" element={<LineLogin />} />
+          {/* <Route path="/login/line" element={<LineLogin />} /> */}
         </Routes>
         <Footer />
       </UserInfoProvider>

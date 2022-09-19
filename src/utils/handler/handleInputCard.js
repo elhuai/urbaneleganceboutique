@@ -5,29 +5,36 @@ import LoginCard from '../../components/layout/LoginCard/';
 import SocialNameEditCard from '../../components/layout/SocialNameEditCard';
 import { handleSuccess } from './handleStatusCard';
 
-export const handleLoginCard = (isLogin, setUser) => {
-  const loginCard = withReactContent(Swal);
-  loginCard
-    .fire({
-      html: (
-        <LoginCard
-          isLogin={isLogin}
-          confirm={loginCard.clickConfirm}
-          setUser={setUser}
-        />
-      ),
-      showConfirmButton: false,
-    })
-    .then((result) => {
-      if (result.isConfirmed)
-        return loginCard.fire({
-          position: 'center-center',
-          icon: 'success',
-          title: `${isLogin ? '登入成功' : '登出成功'}`,
-          showConfirmButton: false,
-          timer: 1500,
-        });
-    });
+export const handleLoginCard = (config, setUser) => {
+  loginCardFire();
+  function loginCardFire() {
+    const loginCard = withReactContent(Swal);
+    loginCard
+      .fire({
+        html: (
+          <LoginCard
+            isLogin={config.isLogin}
+            confirm={loginCard.clickConfirm}
+            setUser={setUser}
+          />
+        ),
+        showConfirmButton: false,
+      })
+      .then((result) => {
+        if (result.isConfirmed) {
+          loginCard.fire({
+            position: 'center-center',
+            icon: 'success',
+            title: `${config.isLogin ? '登入成功' : '登出成功'}`,
+            showConfirmButton: false,
+            timer: 1500,
+          });
+          if (config.logoutRedirect) return (window.location = '/');
+        } else if (!result.isConfirmed && config.strict) {
+          loginCardFire();
+        }
+      });
+  }
 };
 
 export const handleSocialNameEditCard = (setUser) => {

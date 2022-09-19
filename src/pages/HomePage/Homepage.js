@@ -9,11 +9,6 @@ import TravelCard from '../../components/homePage/TravelCard/';
 import Loading from '../../components/layout/Loading';
 import FakeMap from '../../images/home_travel_map.png';
 import { useUserInfo } from '../../hooks/useUserInfo';
-import { callLineLoginApi } from '../../api/authApi';
-import { handleFailed } from '../../utils/handler/handleStatusCard';
-import { API_URL } from '../../utils/config';
-import jwt_decode from 'jwt-decode';
-import axios from 'axios';
 
 import './_homepage.scss';
 
@@ -30,24 +25,24 @@ const Homepage = () => {
   const handleHeroAnimete = () => {
     setHeroAnimete(true);
   };
-  const redirectPath = window.localStorage.getItem('last_page');
-  if (
-    searchParam.get('line_login') &&
-    searchParam.get('code') &&
-    searchParam.get('state') === 'ohdogcat_Line_Login' &&
-    window.localStorage.getItem('line_login')
-  ) {
-    console.log('code');
-    const lineVerifyCode = searchParam.get('code');
-    console.log('first', user.firstVertify, 'user.auth', user.auth);
-    if (user.firstVertify && !user.auth) {
-      callLineLoginApi(lineVerifyCode, setUser, redirectPath);
-    }
-  } else {
-    if (searchParam.get('line_login') === 'false') {
-      handleFailed('LINE 連動登入失敗');
-    }
-  }
+  // const redirectPath = window.localStorage.getItem('last_page');
+  // if (
+  //   searchParam.get('line_login') &&
+  //   searchParam.get('code') &&
+  //   searchParam.get('state') === 'ohdogcat_Line_Login' &&
+  //   window.localStorage.getItem('line_login')
+  // ) {
+  //   console.log('code');
+  //   const lineVerifyCode = searchParam.get('code');
+  //   console.log('first', user.firstVerify, 'user.auth', user.auth);
+  //   if (!user.auth && !user.firstVerify) {
+  //     callLineLoginApi(lineVerifyCode, setUser, redirectPath);
+  //   }
+  // } else {
+  //   if (searchParam.get('line_login') === 'false') {
+  //     handleFailed('LINE 連動登入失敗');
+  //   }
+  // }
 
   useEffect(() => {
     if (!heroAnimete) return;
@@ -56,7 +51,7 @@ const Homepage = () => {
     }, 1500);
   }, [heroAnimete]);
 
-  return searchParam.get('line_login') && user.data.social_name == '' ? (
+  return searchParam.get('line_login') && user.data.social_name === '' ? (
     <Loading />
   ) : (
     <div className="home_main">
