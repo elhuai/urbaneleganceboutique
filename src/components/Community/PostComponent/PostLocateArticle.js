@@ -2,9 +2,10 @@ import React from 'react';
 import { useState, useEffect } from 'react';
 import axios from 'axios';
 import { API_URL } from '../../../utils/config';
-import { MdLocationOn } from 'react-icons/md';
+import { TiLocation } from 'react-icons/ti';
 import PhotoReviewSwiper from '../../WYSIWYG/PhotoView';
 import './PostLocateArticle.scss';
+import TripOutline from './TripOutline';
 
 export default function PostLocateArticle({ post }) {
   // const [tripDetail, setTripDetail] = useState([]);
@@ -35,11 +36,6 @@ export default function PostLocateArticle({ post }) {
           let locatePhoto = data.locate_photo
             .split(/[|]/)
             .filter((item) => item);
-          {
-            /* console.log('lphoto', locatePhoto); */
-          }
-          {/* let photoList = { locatePhoto }; */}
-          {/* console.log('photo list', photoList); */}
 
           let tripOutline = {
             name,
@@ -48,7 +44,6 @@ export default function PostLocateArticle({ post }) {
             context,
             locatePhoto,
           };
-          {/* console.log('tripOutline', tripOutline); */}
 
           return (
             <>
@@ -57,11 +52,15 @@ export default function PostLocateArticle({ post }) {
               {tripOutline.name.map((locate, index) => {
                 return (
                   <>
-                    <li className="trip_record_section" id={`locate${index}`}>
+                    <li
+                      key={locate.index}
+                      className="trip_record_section"
+                      id={`day${data.days}locate${index}`}
+                    >
                       <div>
                         <div className="post_location_mark d-flex align-items-center">
                           <p>
-                            <MdLocationOn className="mb-1 me-1 h5"></MdLocationOn>
+                            <TiLocation className="mb-1 me-1 h5"></TiLocation>
                             <strong className="ms-1 h5">{locate}</strong>
                           </p>
                           <p className="ms-1 post_location_duration small">
@@ -69,9 +68,9 @@ export default function PostLocateArticle({ post }) {
                           </p>
                         </div>
                         <p>{tripOutline.context[index]}</p>
-                        <PhotoReviewSwiper datay={tripOutline.locatePhoto[index]}></PhotoReviewSwiper>
-                        {/* {tripOutline.locatePhoto[index]}
-                        {tripOutline.coordinate[index]} */}
+                        <PhotoReviewSwiper
+                        list={tripOutline.locatePhoto[index]}
+                        ></PhotoReviewSwiper>
                         <hr></hr>
                       </div>
                     </li>

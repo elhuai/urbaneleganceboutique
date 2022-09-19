@@ -17,6 +17,21 @@ import axios from 'axios';
 import { API_URL } from '../../utils/config';
 
 function PostTripEdit() {
+  const [postTripEdit, setPostTripEdit] = useState([]);
+
+  // 單獨取行程明細
+  useEffect(() => {
+    const fetchPostTripEdit = async () => {
+      // const result = await axios.get(`http://localhost:3007/api/1.0/community/posttripedit`);
+      const result = await axios.get(`${API_URL}/community/posttripedit`);
+      // 取得後端來的資料
+      console.log(result.data);
+      setPostTripEdit(result.data);
+      // 存回 useState 狀態
+    };
+    fetchPostTripEdit();
+  }, []);
+
   //預覽照片！
   const [selectedFile, setSelectedFile] = useState('');
   const [preview, setPreview] = useState('');
@@ -41,23 +56,30 @@ function PostTripEdit() {
       setSelectedFile(null);
     }
   };
+  // 設定編輯按鈕
+  const [locationNameEdit, setLocationNameEdit] = useState(0);
+  const changeEditHandle = () => {
+    if (!locationNameEdit) {
+      setLocationNameEdit(1);
+    } else {
+      setLocationNameEdit(0);
+    }
+  };
+  // 新增欄位
+  const [addLocate, setAddLocate] = useState();
+  // 刪除欄位
+  const [deleteLocate, setDeleteLocate] = useState();
 
-  // 單獨取行程明細
-
-  const [postTripEdit, setPostTripEdit] = useState([]);
-
-  useEffect(() => {
-    const fetchPostTripEdit = async () => {
-      // const result = await axios.get(`http://localhost:3007/api/1.0/community/posttripedit`);
-      const result = await axios.get(`${API_URL}/community/posttripedit`);
-      // 取得後端來的資料
-      console.log(result.data);
-      setPostTripEdit(result.data);
-      // 存回 useState 狀態
-    };
-    fetchPostTripEdit();
-  }, []);
-  // console.log(postTripEdit[0]);
+  // const [locationNameEdit, setLocationNameEdit] = useState(false);
+  // const function= locationNameEditHandle (e)=>{
+  // console.log()
+  // if (locationNameEdit === false) {
+  //   setLocationNameEdit(true);
+  //   console.log('setLocate',locationNameEdit)
+  // } else {
+  //   setLocationNameEdit(false);
+  //   console.log('setLocate',locationNameEdit)
+  // }
 
   return (
     <>
@@ -97,8 +119,9 @@ function PostTripEdit() {
             <input
               type="text"
               className="form-control mt-2"
-              maxlength="50"
+              maxLength="50"
               value={postTripEdit[0].title}
+              onChange=""
             />
             <div className="d-flex row">
               <div className="col-6">
@@ -119,275 +142,127 @@ function PostTripEdit() {
                 <input
                   type="loaction"
                   className="form-control mt-2"
-                  value=""
                   placeholder="輸入標籤分類貼文類型"
                 ></input>
               </div>
             </div>
             <hr></hr>
-            <div className="d-flex align-items-start justify-content-around">
-              <div className="article_edit">
-                <div className="date_count mt-1">
-                  <p>Day 1</p>
-                </div>
-                <li className="trip_location mt-3" id="locate1">
-                  <div className="d-flex justify-content-between align-items-center mb-1">
-                    <div className="trip_location_title">
-                      <TiLocation className="mb-1" />{' '}
-                      1.5小時｜台北捷運台北火車站
-                      <RiEditFill className="ms-1 mb-1 "></RiEditFill>
-                    </div>
-                    <div className="d-flex trip_locate_edit">
-                      <button className="mx-2">
-                        插入行程
-                        <IoMdAdd className="close_icon mb-1"></IoMdAdd>
-                      </button>
-                      <button className="mx-2">
-                        刪除
-                        <MdOutlineClose className="close_icon mb-1"></MdOutlineClose>
-                      </button>
-                    </div>
-                  </div>
-                  <textarea
-                    type="textarea"
-                    className="form-control"
-                    rows="4"
-                    maxlength="100"
-                    placeholder="為旅途留下回憶"
-                  ></textarea>
+            {postTripEdit.map((data, index) => {
+              let name = data.locate_name.split(/[,]/);
+              let duration = data.locate_duration.split(/[,]/);
+              let coordinate = data.locate_coordinate
+                .split(/[#]/)
+                .filter((item) => item);
+              let context = data.locate_context
+                .split(/[###,＃＃＃]/)
+                .filter((item) => item);
+              let tripOutline = { name, duration, coordinate, context };
 
-                  <label
-                    className="photo_upload d-flex align-items-center
-              justify-content-center"
-                  >
-                    上傳照片
-                    <input
-                      type="file"
-                      accept="images/*"
-                      hidden
-                      onChange={changeHandler}
-                      multiple
-                      className="form-control"
-                    ></input>
-                  </label>
-                </li>
-                <li className="trip_location mt-3" id="locate2">
-                  <div className="d-flex justify-content-between align-items-center mb-1">
-                    <div className="trip_location_title">
-                      <TiLocation className="mb-1 " /> 1.5小時｜太魯閣國家公園
-                      <RiEditFill className="ms-1 mb-1 "></RiEditFill>
-                    </div>
-                    <div>
-                      刪除
-                      <MdOutlineClose className="close_icon mb-1"></MdOutlineClose>
-                    </div>
-                  </div>
-                  <textarea
-                    type="textarea"
-                    className="form-control"
-                    rows="4"
-                    maxlength="100"
-                    placeholder="為旅途留下回憶"
-                  ></textarea>
-                  <label
-                    className="photo_upload d-flex align-items-center
-              justify-content-center"
-                  >
-                    上傳照片
-                    <input
-                      type="file"
-                      accept="images/*"
-                      hidden
-                      onChange={changeHandler}
-                      multiple
-                      className="form-control"
-                    ></input>
-                  </label>
-                </li>
+              return (
+                <>
+                  <div className="d-flex align-items-start justify-content-around">
+                    <div className="article_edit">
+                      <div className="date_count mt-1">
+                        <p>Day {data.days}</p>
+                      </div>
+                      {tripOutline.name.map((locate, index) => {
+                        return (
+                          <>
+                            <li
+                              key={tripOutline[index]}
+                              className="trip_location mt-3"
+                              id="locate1"
+                            >
+                              <div className="d-flex justify-content-between align-items-center">
+                                <div className="trip_location_title d-flex align-items-center">
+                                  {locationNameEdit === 0 ? (
+                                    <div className="d-flex align-items-center">
+                                      <p>
+                                        <TiLocation className="mb-1 me-1 h5"></TiLocation>
+                                        <strong className="ms-1 h5">
+                                          {locate}
+                                        </strong>{' '}
+                                      </p>
+                                      <p className="ms-1 post_location_duration small ms-2 mx-1">
+                                        {tripOutline.duration[index]}
+                                      </p>
+                                    </div>
+                                  ) : (
+                                    // TODO: input 樣式太醜要改css
+                                    // TODO: 編輯按鈕按一個全部都會啟動
+                                    <div className="d-flex">
+                                      <TiLocation className="mb-1 me-1 h5"></TiLocation>
+                                      <input
+                                        className="col-3"
+                                        defaultValue={locate}
+                                      />
+                                      <input
+                                        className="col-2"
+                                        defaultValue={
+                                          tripOutline.duration[index]
+                                        }
+                                      />
+                                    </div>
+                                  )}
 
-                <li className="trip_location mt-3" id="locate3">
-                  <div className="d-flex justify-content-between align-items-center mb-1">
-                    <div className="trip_location_title">
-                      <TiLocation className="mb-1 " /> 1.5小時｜煙波大飯店花蓮館
-                      <RiEditFill className="ms-1 mb-1 "></RiEditFill>
-                    </div>
-                    <div>
-                      刪除
-                      <MdOutlineClose className="close_icon mb-1"></MdOutlineClose>
-                    </div>
-                  </div>
-                  <textarea
-                    type="textarea"
-                    className="form-control"
-                    rows="4"
-                    maxlength="100"
-                    placeholder="為旅途留下回憶"
-                  ></textarea>
-                  <label
-                    className="photo_upload d-flex align-items-center
-              justify-content-center"
-                  >
-                    上傳照片
-                    <input
-                      type="file"
-                      accept="images/*"
-                      hidden
-                      onChange={changeHandler}
-                      multiple
-                      className="form-control"
-                    ></input>
-                  </label>
-                </li>
-                <div className="date_count mt-1">
-                  <p>Day 2</p>
-                </div>
-                <li className="trip_location mt-3" id="locate4">
-                  <div className="d-flex justify-content-between align-items-center mb-1">
-                    <div className="trip_location_title">
-                      <TiLocation className="mb-1 " /> 1.5小時｜花蓮七星潭
-                      <RiEditFill className="ms-1 mb-1 "></RiEditFill>
-                    </div>
-                    <div>
-                      刪除
-                      <MdOutlineClose className="close_icon mb-1"></MdOutlineClose>
-                    </div>
-                  </div>
-                  <textarea
-                    type="textarea"
-                    className="form-control"
-                    rows="4"
-                    maxlength="100"
-                    placeholder="為旅途留下回憶"
-                  ></textarea>
-                  <label
-                    className="photo_upload d-flex align-items-center
-              justify-content-center"
-                  >
-                    上傳照片
-                    <input
-                      type="file"
-                      accept="images/*"
-                      hidden
-                      onChange={changeHandler}
-                      multiple
-                      className="form-control"
-                    ></input>
-                  </label>
-                </li>
+                                  <RiEditFill
+                                    className="ms-1 mb-3"
+                                    onClick={changeEditHandle}
+                                  ></RiEditFill>
+                                </div>
 
-                <li className="trip_location mt-3" id="locate5">
-                  <div className="d-flex justify-content-between align-items-center mb-1">
-                    <div className="trip_location_title">
-                      <TiLocation className="mb-1 " /> 1.5小時｜依午山
-                      <RiEditFill className="ms-1 mb-1 "></RiEditFill>
-                    </div>
-                    <div>
-                      刪除
-                      <MdOutlineClose className="close_icon mb-1"></MdOutlineClose>
-                    </div>
-                  </div>
-                  <textarea
-                    type="textarea"
-                    className="form-control"
-                    rows="4"
-                    maxlength="100"
-                    placeholder="為旅途留下回憶"
-                  ></textarea>
-                  <label
-                    className="photo_upload d-flex align-items-center
-              justify-content-center"
-                  >
-                    上傳照片
-                    <input
-                      type="file"
-                      accept="images/*"
-                      hidden
-                      onChange={changeHandler}
-                      multiple
-                      className="form-control"
-                    ></input>
-                  </label>
-                </li>
-                <div className="date_count mt-1">
-                  <p>Day 3</p>{' '}
-                </div>
+                                <div className="d-flex trip_locate_edit">
+                                  <button className="mx-2">
+                                    插入空白景點
+                                    <IoMdAdd
+                                      className="close_icon mb-1"
+                                      onClick={addLocate}
+                                    ></IoMdAdd>
+                                  </button>
+                                  <button className="mx-2">
+                                    刪除
+                                    <MdOutlineClose
+                                      className="close_icon mb-1"
+                                      onClick={deleteLocate}
+                                    ></MdOutlineClose>
+                                  </button>
+                                </div>
+                              </div>
+                              <textarea
+                                type="textarea"
+                                className="form-control"
+                                rows="4"
+                                maxLength="100"
+                                placeholder="為旅途留下回憶"
+                              ></textarea>
 
-                <li className="trip_location mt-3" id="locate6">
-                  <div className="d-flex justify-content-between align-items-center mb-1">
-                    <div className="trip_location_title">
-                      <TiLocation className="mb-1 " /> 1.5小時｜鹽寮龍蝦海鮮餐廳
-                      <RiEditFill className="ms-1 mb-1 "></RiEditFill>
+                              <label className="photo_upload d-flex align-items-center justify-content-center">
+                                上傳照片
+                                <input
+                                  type="file"
+                                  accept="images/*"
+                                  hidden
+                                  onChange={changeHandler}
+                                  multiple
+                                  className="form-control"
+                                ></input>
+                              </label>
+                            </li>
+                          </>
+                        );
+                      })}
                     </div>
-                    <div>
-                      刪除
-                      <MdOutlineClose className="close_icon mb-1"></MdOutlineClose>
-                    </div>
+                    {/* <TripOutlineEdit className="" post={postTripEdit}></TripOutlineEdit> */}
                   </div>
-                  <textarea
-                    type="textarea"
-                    className="form-control"
-                    rows="4"
-                    maxlength="100"
-                    placeholder="為旅途留下回憶"
-                  ></textarea>
-                  <label
-                    className="photo_upload d-flex align-items-center
-              justify-content-center"
-                  >
-                    上傳照片
-                    <input
-                      type="file"
-                      accept="images/*"
-                      hidden
-                      onChange={changeHandler}
-                      multiple
-                      className="form-control"
-                    ></input>
-                  </label>
-                </li>
-                <li className="trip_location mt-3" id="locate7">
-                  <div className="d-flex justify-content-between align-items-center mb-1">
-                    <div className="trip_location_title">
-                      <TiLocation className="mb-1 " /> 1.5小時｜花蓮南濱公園
-                      <RiEditFill className="ms-1 mb-1 "></RiEditFill>
-                    </div>
-                    <div>
-                      刪除
-                      <MdOutlineClose className="close_icon mb-1"></MdOutlineClose>
-                    </div>
-                  </div>
-                  <textarea
-                    type="textarea"
-                    className="form-control"
-                    rows="4"
-                    maxlength="100"
-                    placeholder="為旅途留下回憶"
-                  ></textarea>
-                  <label
-                    className="photo_upload d-flex align-items-center
-              justify-content-center"
-                  >
-                    上傳照片
-                    <input
-                      type="file"
-                      accept="images/*"
-                      hidden
-                      onChange={changeHandler}
-                      multiple
-                      className="form-control"
-                    ></input>
-                  </label>
-                </li>
-              </div>
-              <TripOutlineEdit className=""></TripOutlineEdit>
-            </div>
+                </>
+              );
+            })}
             <div className="d-flex justify-content-end my-2 me-4 post_edit_button ">
               <button className="btn">清除</button>
               <button className="btn" type="submit">
                 儲存
               </button>
             </div>
-
             <PostMap></PostMap>
           </form>
         </div>
