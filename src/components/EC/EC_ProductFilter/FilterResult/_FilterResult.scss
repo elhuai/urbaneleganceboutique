@@ -142,9 +142,14 @@ $royal-blue: #22C3FF;
     background: none;
     color: $graycolor;
     font-weight: 700;
-    &:active{
-      color: $fmain_color;
 
+    &:active {
+      color: $fmain_color;
+    }
+
+    &:focus {
+      color: $fmain_color;
+      font-weight: 900;
     }
   }
 }

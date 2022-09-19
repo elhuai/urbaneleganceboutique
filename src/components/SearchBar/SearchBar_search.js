@@ -18,7 +18,13 @@ function SearchBar(props, { value, changeInput }) {
               value={value}
               onChange={changeInput}
             />
-            <button type="submit" className="searchBar_searchButton">
+            <button
+              type="submit"
+              className="searchBar_searchButton"
+              // onChange={(e) => {
+              //   console.log(e.target.value);
+              // }}
+            >
               <i className="searchBar_fa searchBar_fa-search">
                 <AiOutlineSearch />
               </i>
