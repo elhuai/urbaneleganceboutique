@@ -11,7 +11,7 @@ export default function PostLocateArticle() {
 
   useEffect(() => {
     const fetchTripDetail = async () => {
-      const result = await axios.get(`${API_URL}/community/Trip`);
+      const result = await axios.get(`${API_URL}/community/trip`);
       // 取得後端來的資料
       console.log(result.data);
       setTripDetail(result.data);

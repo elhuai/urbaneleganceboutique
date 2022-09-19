@@ -60,7 +60,14 @@ body {
       }
     }
 
-   
+    .trip_locate_edit button{ 
+
+      color: $link-color;
+      border-radius: 8px;
+      padding: 3px;
+      border: 2px solid $line-color--dark;
+
+    }
 
     
 

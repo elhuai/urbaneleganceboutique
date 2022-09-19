@@ -5,55 +5,57 @@ import { BiLike } from 'react-icons/bi';
 
 import './_communityListCard.scss';
 
-const fakeData = [
-  {
-    id: 1,
-    title: '大寶遊花蓮 二日遊',
-    img: 'https://picsum.photos/id/15/450/270',
-    tag: '忘憂亭',
-    content:
-      '透過OH DOG CAT 購買吉貝島澎湖自由行，超級優惠價格一次搞定。水上活動玩到飽!另可加值星空BBQ了!',
-    location: '花蓮',
-    like: '1234',
-  },
-  {
-    id: 2,
-    title: '嗄嘟遊台中 三日遊',
-    img: 'https://picsum.photos/id/20/450/270',
-    tag: '忘憂森林',
-    content:
-      '透過OH DOG CAT 購買吉貝島澎湖自由行，超級優惠價格一次搞定。水上活動玩到飽!另可加值星空BBQ了!',
-    location: '花蓮',
-    like: '2234',
-  },
-  {
-    id: 3,
-    title: '橘子中秋節烤肉趣 一日遊',
-    img: 'https://picsum.photos/id/25/450/270',
-    tag: '忘憂谷',
-    content:
-      '透過OH DOG CAT 購買吉貝島澎湖自由行，超級優惠價格一次搞定。水上活動玩到飽!另可加值星空BBQ了!',
-    location: '花蓮',
-    like: '3234',
-  },
-  {
-    id: 4,
-    title: '前端工程師從入門到放棄 一百二十日遊',
-    img: 'https://picsum.photos/id/30/450/270',
-    tag: '忘憂湖',
-    content:
-      '透過OH DOG CAT 購買吉貝島澎湖自由行，超級優惠價格一次搞定。水上活動玩到飽!另可加值星空BBQ了!',
-    location: '花蓮',
-    like: '4234',
-  },
-];
+// const fakeData = [
+//   {
+//     id: 1,
+//     title: '大寶遊花蓮 二日遊',
+//     img: 'https://picsum.photos/id/15/450/270',
+//     tag: '忘憂亭',
+//     content:
+//       '透過OH DOG CAT 購買吉貝島澎湖自由行，超級優惠價格一次搞定。水上活動玩到飽!另可加值星空BBQ了!',
+//     location: '花蓮',
+//     like: '1234',
+//   },
+//   {
+//     id: 2,
+//     title: '嗄嘟遊台中 三日遊',
+//     img: 'https://picsum.photos/id/20/450/270',
+//     tag: '忘憂森林',
+//     content:
+//       '透過OH DOG CAT 購買吉貝島澎湖自由行，超級優惠價格一次搞定。水上活動玩到飽!另可加值星空BBQ了!',
+//     location: '花蓮',
+//     like: '2234',
+//   },
+//   {
+//     id: 3,
+//     title: '橘子中秋節烤肉趣 一日遊',
+//     img: 'https://picsum.photos/id/25/450/270',
+//     tag: '忘憂谷',
+//     content:
+//       '透過OH DOG CAT 購買吉貝島澎湖自由行，超級優惠價格一次搞定。水上活動玩到飽!另可加值星空BBQ了!',
+//     location: '花蓮',
+//     like: '3234',
+//   },
+//   {
+//     id: 4,
+//     title: '前端工程師從入門到放棄 一百二十日遊',
+//     img: 'https://picsum.photos/id/30/450/270',
+//     tag: '忘憂湖',
+//     content:
+//       '透過OH DOG CAT 購買吉貝島澎湖自由行，超級優惠價格一次搞定。水上活動玩到飽!另可加值星空BBQ了!',
+//     location: '花蓮',
+//     like: '4234',
+//   },
+// ];
 
 export default function CommunityListCard({ post }) {
   return (
     <>
       {post.map((data) => {
+
+        console.log('test', data.tags);
         const tags = data.tags.split(/[#,＃]/).filter((item) => item);
-        {/* console.log(tags); */}
+        console.log(tags);
 
         // 移除陣列空值 .filter(item=>item)
         return (
@@ -76,15 +78,15 @@ export default function CommunityListCard({ post }) {
                     <IoHeartOutline />
                   </div>
                   <div className="d-flex">
-                  {tags.map((data, index) => {
-                    return (
-                      <div key={tags.index} className="">
-                        <p className="comList_main_card_placeName_text card-text mx-1">
-                          {data}
-                        </p>
-                      </div>
-                    );
-                  })}
+                    {tags.map((data, index) => {
+                      return (
+                        <div key={tags.index} className="">
+                          <p className="comList_main_card_placeName_text card-text mx-1">
+                            {data}
+                          </p>
+                        </div>
+                      );
+                    })}
                   </div>
 
                   <p className="card-text">{data.content}</p>

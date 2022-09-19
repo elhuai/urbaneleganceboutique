@@ -24,15 +24,13 @@ const imgArr = [
   'https://picsum.photos/200/300?random8',
 ];
 
-const imgArr2 = [
-  'https://picsum.photos/200/300?random1',
-  'https://picsum.photos/200/300?random2',
-  'https://picsum.photos/200/300?random3',
-];
-
-export default function PhotoReviewSwiper() {
- 
+export default function PhotoReviewSwiper({ datay }) {
+  // console.log('photo',datay);
+  let photoList = datay.split(',').filter((item)=>item);
+  console.log('photolist', photoList);
   const ShowSwiper = ({ data }) => {
+   
+
     return (
       <Swiper
         slidesPerView={5}
@@ -65,7 +63,7 @@ export default function PhotoReviewSwiper() {
   };
   return (
     <>
-      <ShowSwiper data={imgArr} />
+      <ShowSwiper data={photoList} />
     </>
   );
 }

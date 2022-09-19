@@ -1,41 +1,50 @@
 import React from 'react';
 import './TripOutline.scss';
 
-function TripOutline() {
+export default function TripOutline({ post }) {
   return (
-    <div className="trip_outline">
-      <div>
-        <p className="post_date_count">Day 1</p>
-        <a href="#locate1">
-          <p>｜台北捷運台北火車站</p>
-        </a>
-        <a href="#locate2">
-          <p>｜太魯閣國家公園</p>
-        </a>
-        <a href="#locate3">
-          <p>｜ 煙波大飯店花蓮館</p>
-        </a>
-      </div>
-      <div>
-        <p className="post_date_count">Day 2</p>
-        <a href="#locate4">
-          <p>｜花蓮七星潭</p>
-        </a>
-        <a href="#locate5">
-          <p>｜依山午</p>
-        </a>
-      </div>
-      <div>
-        <p className="post_date_count">Day 3</p>
-        <a href="#locate6">
-          <p>｜鹽寮龍蝦海鮮餐廳</p>
-        </a>
-        <a href="#locate7">
-          <p>｜花蓮南濱公園</p>
-        </a>
-      </div>
-    </div>
+    <>
+      {post.length === 0 ? (
+        console.log('沒有資料')
+       //* 是否做loading 頁面
+      ) : (
+        <div className="trip_outline">
+          <div>
+            {post.map((data, index) => {
+              {
+                /* console.log(data); */
+              }
+              let name = data.locate_name.split(/[,]/);
+              let duration = data.locate_duration.split(/[,]/);
+              let coordinate = data.locate_coordinate
+                .split(/[#]/)
+                .filter((item) => item);
+              let context = data.locate_context
+                .split(/[###,＃＃＃]/)
+                .filter((item) => item);
+              let tripOutline = { name, duration, coordinate, context };
+              {
+                /* console.log('tripOutline', tripOutline); */
+              }
+
+              return (
+                <>
+                  <p className="post_date_count">Day {data.days}</p>
+                  {tripOutline.name.map((locate, index) => {
+                    return (
+                      <>
+                        <a href={`#locate${index}`}>
+                          <p>{locate}</p>
+                        </a>
+                      </>
+                    );
+                  })}
+                </>
+              );
+            })}
+          </div>
+        </div>
+      )}
+    </>
   );
 }
-
-export default TripOutline;

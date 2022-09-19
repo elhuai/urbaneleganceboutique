@@ -15,16 +15,15 @@ function PostTrip() {
 
   useEffect(() => {
     const fetchPostTrip = async () => {
-      const result = await axios.get(`${API_URL}/community/postTrip`);
+      const result = await axios.get(`${API_URL}/community/trip`);
       // 取得後端來的資料
-      console.log(result.data);
+      // console.log(result.data);
       setPostTrip(result.data);
       // 存回 useState 狀態
     };
     fetchPostTrip();
   }, []);
 
-  // console.log('test', postTrip[0].content);
 
   // // return .map((data) => {
   return (
@@ -32,14 +31,14 @@ function PostTrip() {
       {postTrip.length === 0 ? (
         '沒有資料' //* 是否做loading 頁面
       ) : (
-        <div className="d-flex justify-content-center">
+        <div key={postTrip.id} className="d-flex justify-content-center">
           <div className="post_bar d-flex flex-column">
             <PostStateBar post={postTrip}></PostStateBar>
 
             <hr></hr>
             <div className="d-flex align-items-start">
-              <PostLocateArticle></PostLocateArticle>
-              <TripOutline></TripOutline>
+              <PostLocateArticle post={postTrip}></PostLocateArticle>
+              <TripOutline post={postTrip}></TripOutline>
             </div>
             <PostMap></PostMap>
             <RecommandProduct></RecommandProduct>
