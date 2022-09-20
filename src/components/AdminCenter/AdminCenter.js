@@ -65,7 +65,7 @@ const AdminCenter = () => {
           </li>
           <li>
             <Link
-              to="/"
+              to="/admin/voucher"
               className="admin_select text-decoration-none icons d-flex"
             >
               <TbTicket
@@ -89,7 +89,7 @@ const AdminCenter = () => {
           </li>
           <li>
             <Link
-              to="/adminCenter"
+              to="/admin/community"
               className="text-decoration-none admin_select icons d-flex
               community"
             >
