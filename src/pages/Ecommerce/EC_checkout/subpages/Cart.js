@@ -1,7 +1,50 @@
-import { useState } from 'react';
+import React from 'react';
 import '../styles/_EC_subpages_Cart.scss';
+import axios from 'axios';
+import { useState, useEffect } from 'react';
+import { API_URL } from '../../../../utils/config';
+
+import { IoCaretBack, IoCaretForward } from 'react-icons/io5';
 
 const Cart = () => {
+  const [coupon, setCoupon] = useState([]);
+
+  useEffect(() => {
+    const fetchCoupon = async () => {
+      const result = await axios.get(`${API_URL}/orderSteps/coupon`);
+      // console.log(result.data);
+      setCoupon(result.data);
+      // const data = result.data;
+      // arrStr[index].setState(data);
+    };
+    fetchCoupon();
+  }, []);
+
+  const [title, setTitle] = useState({});
+
+  useEffect(() => {
+    const fetchTitle = async () => {
+      const result = await axios.get(`${API_URL}/productdetail/items`);
+      setTitle(result.data);
+    };
+    fetchTitle();
+  }, []);
+
+  const [selected, setSelected] = useState([]);
+  const [number, setNumber] = useState(1);
+
+  const MinusOne = () => {
+    setNumber(number > 1 ? number - 1 : 1);
+  };
+
+  const AddOne = () => {
+    setNumber(number + 1);
+  };
+
+  // console.log(title.price);
+  // const {title.price} = titlePrice;
+  // console.log('selected', selected);
+
   return (
     <>
       <body className="Cart">
@@ -12,7 +55,7 @@ const Cart = () => {
               <div className="infoColumn">
                 <div className="subSection">
                   <div className="subTitle">店家名稱</div>
-                  <div className="subInput">王樣活動開發整合行銷有限公司</div>
+                  <div className="subInput">{title.name}</div>
                 </div>
                 <div className="subSection">
                   <div className="subTitle">票券方案</div>
@@ -20,14 +63,31 @@ const Cart = () => {
                 </div>
                 <div className="subSection">
                   <div className="subTitle">票券數量</div>
-                  <div className="subInput">2</div>
+                  <div className="subInput">
+                    <div className="cartAddSection">
+                      <p>{number}</p>
+                      <div className="cartAddButton">
+                        <button onClick={MinusOne}>
+                          <IoCaretBack />
+                        </button>
+                        <button onClick={AddOne}>
+                          <IoCaretForward />
+                        </button>
+                      </div>
+                    </div>
+                  </div>
                 </div>
                 <div className="subSection">
                   <div className="subTitle">使用優惠券</div>
-                  <select className="subSelect">
-                    <option value="">選擇優惠券</option>
-                    <option value="1">選擇優惠券</option>
-                    <option value="2">選擇優惠券</option>
+                  <select className="subSelect" onChange={(e) => setSelected(e.target.value)}>
+                    {/* TODO:折價數字也要呈現 */}
+                    {coupon.map((v, i) => {
+                      return (
+                        <option key={v.id} value={v.name}>
+                          {v.name}
+                        </option>
+                      );
+                    })}
                   </select>
                 </div>
                 <div className="subSection">
@@ -67,29 +127,29 @@ const Cart = () => {
             <div className="totalColumn">
               <div className="totalName">
                 <p className="title">商品名稱</p>
-                <p>宜蘭東澳海蝕洞獨木舟/一泊二食星光露營體驗</p>
+                <p>{title.name}</p>
               </div>
               <div className="totalCate">
                 <p className="title">方案</p>
                 <p>A.獨木舟體驗全票</p>
                 <div className="subTotal">
                   <p>售價</p>
-                  <p>NT$3,500</p>
+                  <p>NT${title.price}</p>
                 </div>
                 <div className="subTotal">
                   <p>數量</p>
-                  <p>2張</p>
+                  <p>{number}張</p>
                 </div>
               </div>
 
               <div className="totalDiscount">
                 {/* todo:優惠券名字component  */}
-                <p className="title">優惠券-新會員入會折扣</p>
+                <p className="title">{selected}</p>
                 <p className="totalDiscountNumber">-NT$200</p>
               </div>
               <div className="totalNumber">
                 <p className="title">總計(付款金額)</p>
-                <p>NT$6,800</p>
+                <p>NT${number*title.price}</p>
               </div>
             </div>
           </div>

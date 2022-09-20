@@ -16,28 +16,7 @@ const ProductDetail = () => {
             <body className=' data-bs-spy="scroll" '>
                 {/* <div className="container"> */}
                 <div className="topRow">
-                    <div className="imageColumn">
-                        <div className="mainImage">
-                            <img src={Product_Detail1} alt="Paris" />
-                        </div>
-                        <div className="cardRow">
-                            <div>
-                                <img src={Product_Detail2} alt="" />
-                            </div>
-                            <div>
-                                <img src={Product_Detail3} alt="" />
-                            </div>
-                            <div>
-                                <img src={Product_Detail4} alt="" />
-                            </div>
-                            <div>
-                                <img src={Product_Detail5} alt="" />
-                            </div>
-                            <div>
-                                <img src={Product_Detail7} alt="" />
-                            </div>
-                        </div>
-                    </div>
+                    
                     <div className="productDesc">
                         <div className="productContainer">
                             <h1 className="headText">宜蘭礁溪．帝王行旅｜悠遊國旅住宿補助超值1301專案｜寵物友善飯店</h1>

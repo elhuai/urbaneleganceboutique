@@ -4,16 +4,16 @@ const MenuLink = () => {
   return (
     <>
       <ul className="header_container list-unstyled d-flex  mt-3">
-        <NavLink to="/ec-livinghomepage" className="header_product mx-3">
-          住宿
+        <NavLink to="/ec-productfilter" className="header_product mx-3">
+          篩選
         </NavLink>
-        <NavLink to="/ec-ordersteps" className="header_product mx-3">
+        <NavLink to="/ec-enjoyhomepage" className="header_product mx-3">
           景點&玩樂
         </NavLink>
-        <NavLink to="/ec-productfilter" className="header_product mx-3">
+        <NavLink to="/ec-restauranthomepage" className="header_product mx-3">
           餐廳
         </NavLink>
-        <NavLink to="/ec-productdetail" className="header_product mx-3">
+        <NavLink to="/ec-commodityhomepage" className="header_product mx-3">
           寵物商品
         </NavLink>
         <NavLink to="/travel" className="header_product mx-3">

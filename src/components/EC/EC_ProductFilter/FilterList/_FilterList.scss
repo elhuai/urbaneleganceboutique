@@ -1,0 +1,65 @@
+$pink: #EF7A70;
+$graycolor: #747474;
+$fmain_color: #ffc200; // 主色
+$royal-blue: #22C3FF;
+
+%product-filter-title {
+  font-size: 20px;
+  font-weight: 700;
+  color: black;
+  // margin: 0;
+}
+
+%normal-text {
+  font-size: 16px;
+  color: $graycolor;
+}
+
+.product-filter-group {
+  padding-bottom: 5px;
+}
+
+.product-category-title {
+  @extend %product-filter-title
+}
+
+.product-label-active {
+  color: #22C3FF;
+  font-size: 18px;
+  font-weight: 700;
+}
+
+.pf-checkbox {
+  vertical-align: top;
+  text-align: left;
+  margin-bottom: 8px;
+}
+
+.product-check-items {
+  @extend %normal-text;
+}
+
+
+// 篩選標題&下拉選單
+.product-filter-category {
+  width: 100%;
+  display: flex;
+  border-bottom: $fmain_color 1px solid;
+
+  // margin: 1rem 0;
+  .product-category-title {
+    margin-bottom: 0;
+  }
+
+  .product-category-moreBtn {
+    width: 30px;
+    height: 30px;
+    border: 1px solid #ffc200;
+    background: #ffc200;
+    text-align: center;
+    color: #fff;
+    border-radius: 5px 5px 0 0;
+    cursor: pointer;
+    font-size: 20px;
+  }
+}
