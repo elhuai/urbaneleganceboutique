@@ -57,7 +57,7 @@ export const callLoginApi = async (loginInfo, setUser, confirm) => {
     action(
       '登入成功',
       () => {
-        alert('要去修改資料');
+        window.location = '/admin/profile';
       },
       '但我們發現您的個人資料尚未齊全，是否前往修改？'
     );

@@ -1,8 +1,8 @@
 import React from 'react';
 import Swal from 'sweetalert2';
 import withReactContent from 'sweetalert2-react-content';
-import LoginCard from '../../components/layout/LoginCard/';
-import SocialNameEditCard from '../../components/layout/SocialNameEditCard';
+import LoginCard from '../../components/cards/LoginCard';
+import SocialNameEditCard from '../../components/cards/SocialNameEditCard';
 import { handleSuccess } from './handleStatusCard';
 
 export const handleLoginCard = (config, setUser) => {
@@ -54,7 +54,7 @@ export const handleSocialNameEditCard = (setUser) => {
       })
       .then((result) => {
         console.log(result);
-        if (!result.isConfirmed) inputCardFire(true);
+        if (!result.isConfirm2ed) inputCardFire(true);
         if (result.isConfirmed) {
           handleSuccess(
             'LINE 連動登入成功',

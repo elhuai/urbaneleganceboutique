@@ -20,6 +20,7 @@ import PostWYSIWYGEdit from './pages/PostManagement/PostWYSIWYGEdit';
 import PostTripEdit from './pages/PostManagement/PostTripEdit';
 import 'swiper/css/bundle';
 import './styles/style.scss';
+import AdminVocherPage from './pages/AdminVocherPage';
 
 function App() {
   return (
@@ -35,7 +36,9 @@ function App() {
           <Route path="/communityHomePage" element={<CommunityHomePage />} />
           <Route path="admin" element={<AdminCenter />}>
             <Route index element={<CommunityManagement />} />
-            <Route path="profile" element={<CommunityManagement />} />
+            <Route path="profile" element={<AdminVocherPage />} />
+            <Route path="voucher" element={<AdminVocherPage />} />
+            <Route path="community" element={<CommunityManagement />} />
           </Route>
           {/* <Route path="/adminCenter" element={<AdminCenterPage />} /> */}
           {/* <Route path="/personalHomePage" element={<PersonalHomePage />} /> */}

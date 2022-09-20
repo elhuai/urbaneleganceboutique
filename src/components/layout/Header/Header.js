@@ -20,7 +20,7 @@ const Header = () => {
     if (user.auth) {
       return (
         <>
-          <Link to="/admin" className="header_Icon_user">
+          <Link to="/admin/profile" className="header_Icon_user">
             <FaUser />
           </Link>
           <div

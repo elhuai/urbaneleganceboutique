@@ -2,6 +2,8 @@
 
 @import './custom_variables';
 @import '../../node_modules/bootstrap/scss/bootstrap.scss';
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans&display=swap');
+
 
 
 * {
@@ -10,8 +12,9 @@
   box-sizing: border-box;
   -webkit-user-drag: none;
 }
+
 body {
-  font-family: 'Roboto', sans-serif !important;
+  font-family: 'Open Sans', sans-serif !important;
 }
 
 .app {
