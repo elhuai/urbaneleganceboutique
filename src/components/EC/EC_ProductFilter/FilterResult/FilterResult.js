@@ -10,7 +10,7 @@ import { API_URL } from '../../../../utils/config';
 import axios from 'axios';
 
 const FilterResult = (props) => {
-  const { setOrder, productData, setfavProduct, favProduct } = props;
+  const { setOrder, productData } = props;
   // 收藏設定->登入與否
   const { user, setUser } = useUserInfo();
   const handleCollect = async (e, id) => {
@@ -29,7 +29,7 @@ const FilterResult = (props) => {
         } else if (result.data.message === '已成功收藏') {
           console.log('不成功');
 
-          e.target.style['color'] = 'red';
+          e.target.style['color'] = '#EF7A70';
         }
         console.log(result.data);
       } catch (error) {
@@ -105,16 +105,13 @@ const FilterResult = (props) => {
 
       {/* 搜尋結果====================== */}
       {productData.map((data, index) => {
-        console.log('====================================');
-        console.log(data);
-        console.log('====================================');
         let tags = productData[index].product_tag;
         const tag = tags.split(/[#,＃]/).filter((item) => item);
         return (
-          <div className="product_main_card card border-primary " key={index}>
+          <div className="product_main_card card border-primary" key={index}>
             <div className="row g-0">
-              <div className="d-flex justify-content-right position-absolute">
-                <div className="label-sale">
+              <div className="col-md-4 product_main_card_img--box">
+                <div className="d-flex justify-content-right position-absolute">
                   <span className="text-white bg-primary small d-flex align-items-center justify-content-center px-2 py-1  product_main_card_label">
                     <i className="small">
                       <AiFillFire />
@@ -122,13 +119,12 @@ const FilterResult = (props) => {
                     <span className="">精選</span>
                   </span>
                 </div>
-              </div>
-              <div className="col-md-4 product_main_card_img--box">
                 <img
                   src={`http://localhost:3007${data.photo_path}/${data.main_photo}`}
                   className="product_main_card_img"
                   alt="..."
                 />
+                <div></div>
               </div>
 
               <div className="col-md-8">
@@ -184,7 +180,7 @@ const FilterResult = (props) => {
                 </div>
               </div>
             </div>
-            <div></div>
+            <div className="product-card-hover position-absolute"></div>
           </div>
         );
       })}
