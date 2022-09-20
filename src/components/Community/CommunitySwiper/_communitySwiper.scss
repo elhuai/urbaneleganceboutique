@@ -1,5 +1,4 @@
 .CommunitySwiperLeft {
-
   margin-bottom: 30px;
 
   .communitySwiper_Left {
@@ -13,19 +12,19 @@
     border: 1px solid rgb(224, 224, 224);
     border-radius: 15px;
     overflow: hidden;
-    box-shadow: 4px 4px 6px rgba(0, 0, 0, .08);
+    box-shadow: 4px 4px 6px rgba(0, 0, 0, 0.08);
     .obj-fit {
-      img{
+      img {
         width: 390px;
         height: 270px;
         object-fit: cover;
-      }    
+      }
     }
     &_title {
       h5 {
         font-size: 18px;
         line-height: 1.35;
-        overflow:hidden;
+        overflow: hidden;
         white-space: nowrap;
         text-overflow: ellipsis;
       }
@@ -36,10 +35,10 @@
     &_like {
       font-size: 16px;
     }
-    .communitySwiper_card_heart{
-      svg{
+    .communitySwiper_card_heart {
+      svg {
         font-size: 20px;
-        color: #EF7A70;
+        color: #ef7a70;
       }
     }
   }
@@ -49,7 +48,6 @@
   //   transition-timing-function: linear !important;
   // }
 }
-
 
 .CommunitySwiperRight {
   margin-bottom: 60px;
@@ -65,9 +63,9 @@
     border: 1px solid rgb(224, 224, 224);
     border-radius: 15px;
     overflow: hidden;
-    box-shadow: 4px 4px 6px rgba(0, 0, 0, .08);
+    box-shadow: 4px 4px 6px rgba(0, 0, 0, 0.08);
     .obj-fit {
-      .img{
+      .img {
         width: 390px;
         height: 270px;
         border-radius: 15px;

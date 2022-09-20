@@ -10,7 +10,9 @@ export default function CommunityListCard({ post }) {
     <>
       {post.map((data) => {
         const tags = data.tags.split(/[#,＃]/).filter((item) => item);
-        {/* console.log(tags); */}
+        {
+          /* console.log(tags); */
+        }
 
         // 移除陣列空值 .filter(item=>item)
         return (
@@ -33,15 +35,15 @@ export default function CommunityListCard({ post }) {
                     <IoHeartOutline />
                   </div>
                   <div className="d-flex">
-                  {tags.map((data, index) => {
-                    return (
-                      <div key={tags.index} className="">
-                        <p className="comList_main_card_placeName_text card-text mx-1">
-                          {data}
-                        </p>
-                      </div>
-                    );
-                  })}
+                    {tags.map((data, index) => {
+                      return (
+                        <div key={tags.index} className="">
+                          <p className="comList_main_card_placeName_text card-text mx-1">
+                            {data}
+                          </p>
+                        </div>
+                      );
+                    })}
                   </div>
 
                   <p className="card-text">{data.content}</p>
