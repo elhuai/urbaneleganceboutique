@@ -14,9 +14,9 @@ import LineLogin from './pages/LineLogin';
 import { UserInfoProvider } from './hooks/useUserInfo';
 
 import PersonalHomePage from './pages/AdminCenter/PersonalHomePage';
-import PostWYSIWYG from './pages/PostManagement/PostWYSIWYG';
+import Post from './pages/PostManagement/Post';
 import PostTrip from './pages/PostManagement/PostTrip';
-import PostWYSIWYGEdit from './pages/PostManagement/PostWYSIWYGEdit';
+import PostEdit from './pages/PostManagement/PostEdit';
 import PostTripEdit from './pages/PostManagement/PostTripEdit';
 import 'swiper/css/bundle';
 import './styles/style.scss';
@@ -38,9 +38,8 @@ function App() {
           </Route>
           {/* <Route path="/adminCenter" element={<AdminCenterPage />} /> */}
           <Route path="/personalHomePage" element={<PersonalHomePage />} />
-          {/* <Route path="/AdminCenterPage" element={<AdminCenterPage />} /> */}
-          <Route path="/postWYSIWYG" element={<PostWYSIWYG />} />
-          <Route path="/postWYSIWYGEdit" element={<PostWYSIWYGEdit />} />
+          <Route path="/postWYSIWYG" element={<Post />} />
+          <Route path="/postWYSIWYGEdit" element={<PostEdit />} />
           <Route path="/postTrip" element={<PostTrip />} />
           <Route path="/postTripEdit" element={<PostTripEdit />} />
           <Route path="/login/line" element={<LineLogin />} />

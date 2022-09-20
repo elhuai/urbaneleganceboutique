@@ -1,0 +1,32 @@
+$line-color--light:#E7E7E9;
+$line-color--dark:#747474;
+$button-color-hover: #FEEFC3;
+$button-color-remove: #ef7a70;
+$main-color:#FFC715;
+$list-color: #F0EDE0;
+$list-color-hover: #FEEFC3;
+$link-color:#2DA9D7;
+$line-color--blue: #D5EEEE;
+
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans&display=swap');
+  
+.trip_record_section:target{
+  padding-top: 100px ;
+  margin-top: -100px ;
+}
+  
+.trip_outline{
+  border-radius: 8px;
+  padding: 10px;
+  // background-color: $button-color-hover;
+  border: 2px solid $link-color;
+  font-size: 1rem;
+  position: sticky;
+  top:100px;
+  width: 20%;
+  .post_date_count{
+    font-weight: 800;
+    font-size: 1.3rem;
+  }
+
+}

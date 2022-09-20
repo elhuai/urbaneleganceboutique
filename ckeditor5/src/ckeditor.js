@@ -15,11 +15,11 @@ import FontSize from '@ckeditor/ckeditor5-font/src/fontsize.js';
 import Heading from '@ckeditor/ckeditor5-heading/src/heading.js';
 import Highlight from '@ckeditor/ckeditor5-highlight/src/highlight.js';
 import HorizontalLine from '@ckeditor/ckeditor5-horizontal-line/src/horizontalline.js';
-import Image from '@ckeditor/ckeditor5-image/src/image.js';
-import ImageCaption from '@ckeditor/ckeditor5-image/src/imagecaption.js';
-import ImageInsert from '@ckeditor/ckeditor5-image/src/imageinsert.js';
-import ImageResize from '@ckeditor/ckeditor5-image/src/imageresize.js';
-import ImageUpload from '@ckeditor/ckeditor5-image/src/imageupload.js';
+// import Image from '@ckeditor/ckeditor5-image/src/image.js';
+// import ImageCaption from '@ckeditor/ckeditor5-image/src/imagecaption.js';
+// import ImageInsert from '@ckeditor/ckeditor5-image/src/imageinsert.js';
+// import ImageResize from '@ckeditor/ckeditor5-image/src/imageresize.js';
+// import ImageUpload from '@ckeditor/ckeditor5-image/src/imageupload.js';
 import Indent from '@ckeditor/ckeditor5-indent/src/indent.js';
 import IndentBlock from '@ckeditor/ckeditor5-indent/src/indentblock.js';
 import Italic from '@ckeditor/ckeditor5-basic-styles/src/italic.js';
@@ -38,67 +38,60 @@ class Editor extends ClassicEditor {}
 
 // Plugins to include in the build.
 Editor.builtinPlugins = [
-	Autoformat,
-	AutoImage,
-	BlockQuote,
-	Bold,
-	CKFinderUploadAdapter,
-	Essentials,
-	FontBackgroundColor,
-	FontColor,
-	FontSize,
-	Heading,
-	Highlight,
-	HorizontalLine,
-	Image,
-	ImageCaption,
-	ImageInsert,
-	ImageResize,
-	ImageUpload,
-	Indent,
-	IndentBlock,
-	Italic,
-	Link,
-	List,
-	ListProperties,
-	PageBreak,
-	Paragraph,
-	RemoveFormat,
-	SpecialCharacters,
-	SpecialCharactersArrows,
-	SpecialCharactersCurrency,
-	Underline
+  Autoformat,
+  AutoImage,
+  BlockQuote,
+  Bold,
+  CKFinderUploadAdapter,
+  Essentials,
+  FontBackgroundColor,
+  FontColor,
+  FontSize,
+  Heading,
+  Highlight,
+  HorizontalLine,
+  Indent,
+  IndentBlock,
+  Italic,
+  Link,
+  List,
+  ListProperties,
+  PageBreak,
+  Paragraph,
+  RemoveFormat,
+  SpecialCharacters,
+  SpecialCharactersArrows,
+  SpecialCharactersCurrency,
+  Underline,
 ];
 
 // Editor configuration.
 Editor.defaultConfig = {
-	toolbar: {
-		items: [
-			'heading',
-			'|',
-			'bold',
-			'italic',
-			'fontColor',
-			'fontSize',
-			'fontBackgroundColor',
-			'underline',
-			'highlight',
-			'horizontalLine',
-			'link',
-			'bulletedList',
-			'numberedList',
-			'|',
-			'outdent',
-			'indent',
-			'|',
-			'imageUpload',
-			'imageInsert',
-			'blockQuote',
-			'redo',
-			'undo'
-		]
-	},
-	language: 'zh'
+  toolbar: {
+    items: [
+      'heading',
+      '|',
+      'bold',
+      'italic',
+      'fontColor',
+      'fontSize',
+      'fontBackgroundColor',
+      'underline',
+      'highlight',
+      'horizontalLine',
+      'link',
+      'bulletedList',
+      'numberedList',
+      '|',
+      'outdent',
+      'indent',
+      '|',
+      'blockQuote',
+      'redo',
+      'undo',
+    ],
+  },
+  language: 'zh',
 };
 
 export default Editor;
