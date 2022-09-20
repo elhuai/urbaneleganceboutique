@@ -7,20 +7,21 @@ import { ClassicEditor } from 'ckeditor5-custom-build';
 import './PostEditor.scss';
 
 const MyCkeditor = (props) => {
-  const { getEditorData } = props;
+  const { setGetData } = props;
   return (
     <div>
       <div className="Apps">
         <CKEditor
-          config={{placeholder: "開始輸入內容吧"}}
+          config={{ placeholder: '開始輸入內容吧' }}
           editor={Editor}
           onReady={(editor) => {
             // You can store the "editor" and use when it is needed.,
-            // console.log('Editor is ready to use!', editor);
+            console.log('Editor is ready to use!', editor);
           }}
           onChange={(event, editor) => {
             const data = editor.getData();
-            console.log({ data });
+            setGetData(data)
+            // console.log({ data });
           }}
           onBlur={(event, editor) => {
             // console.log('Blur.', editor);

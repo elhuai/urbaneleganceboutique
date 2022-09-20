@@ -19,7 +19,7 @@ const MenuLink = () => {
         <NavLink to="/travel" className="header_product mx-xxl-3">
           我的行程
         </NavLink>
-        <NavLink to="communitylist" className="header_product mx-xxl-3">
+        <NavLink to="communityHomePage" className="header_product mx-xxl-3">
           社群分享
         </NavLink>
       </ul>

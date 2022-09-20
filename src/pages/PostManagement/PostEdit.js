@@ -1,4 +1,6 @@
 import React, { useState, useEffect } from 'react';
+import axios from 'axios';
+import { API_URL } from '../../utils/config';
 import './PostEdit.scss';
 import CoverBackground from '../../images/post_edit_background_banner.png';
 import mapPhoto from '../../images/screenshop map_photo.png';
@@ -20,12 +22,36 @@ import { ClassicEditor } from 'ckeditor5-custom-build';
 function PostWYSIWYGEdit() {
   const [selectedFile, setSelectedFile] = useState('');
   const [preview, setPreview] = useState('');
-  // const [addData, setAddData] = useState('');
-  // const handleChange = (e, editor) => {
-  //   const data = editor.getData();
-  //   setAddData(data);
-  // }
+  // === 取得所見即所得欄位資料  ===
+  const [getData, setGetData] = useState('');
 
+  // === 清空用 ===
+  const [clear, setClear] = useState('');
+
+  // === 其他欄位取得資料用 ===
+  const [postData, setPostData] = useState({
+    title: '【台北】動物園看貓熊、搭貓纜去貓空泡茶聊天、樟樹步道賞魯冰花海',
+    loaction: '台北市',
+    tags: '#台北#木柵#動物園#貓空纜車',
+    photo: '',
+  });
+
+  function handleChange(e) {
+    console.log('handleChange', e.target.name, e.target.value);
+    let newPostData = { ...postData };
+    newPostData[e.target.name] = e.target.value;
+    setPostData(newPostData);
+  }
+
+  const handleClick = (e) => {
+    e.preventDefault();
+    setPostData({ title: '', loaction: '', tags: '', photo: '' });
+    setGetData('');
+  };
+
+  function handleUpload(e) {
+    setPostData({ ...postData, photo: e.target.files[0] });
+  }
 
   useEffect(() => {
     if (!selectedFile) {
@@ -54,6 +80,23 @@ function PostWYSIWYGEdit() {
     }
   };
 
+  async function handleSubmit(e) {
+    // 把預設行為關掉
+    e.preventDefault();
+    try {
+      // 方法2: 要上傳圖片 FormData
+      let formData = new FormData();
+      formData.append('title', postData.title);
+      formData.append('loaction', postData.loaction);
+      formData.append('tags', postData.tags);
+      formData.append('photo', postData.photo);
+      let response = await axios.post(`${API_URL}/auth/register`, formData);
+      console.log(response.data);
+    } catch (e) {
+      console.error('register', e);
+    }
+  }
+
   return (
     <>
       <div className="d-flex justify-content-center">
@@ -64,7 +107,9 @@ function PostWYSIWYGEdit() {
               <p className="mt-3">貼文編輯：一般貼文</p>
             </div>
             <div className="d-flex justify-content-end mt-4 post_edit_button ">
-              <button className="btn">清空</button>
+              <button className="btn" onClick={handleClick}>
+                清空
+              </button>
               <button className="btn">儲存草稿</button>
               <button className="btn">發布</button>
             </div>
@@ -75,28 +120,42 @@ function PostWYSIWYGEdit() {
               <MdPhotoSizeSelectActual className="cover_photo_upload_icon"></MdPhotoSizeSelectActual>
               <div>封面照片上傳</div>
               <input
-                type="file"
                 className="form-control mt-2"
                 accept="image/*"
-                onChange={changeHandler}
                 hidden
+                type="file"
+                id="photo"
+                name="photo"
+                onChange={handleUpload}
               />
             </label>
           </div>
           <label className="mt-2">
             <MdTitle className="mb-1 me-1"></MdTitle>貼文標題
           </label>
-          <input type="text" className="form-control mt-2" maxlength="50" />
+          <input
+            className="form-control mt-2"
+            maxlength="50"
+            type="text"
+            id="title"
+            name="title"
+            value={postData.title}
+            onChange={handleChange}
+          />
           <div className="d-flex row">
             <div className="col-6">
               <label className="mt-3">
                 <MdLocationOn className="mb-1 me-1"></MdLocationOn>地點
               </label>
               <input
-                type="loaction"
                 className="form-control mt-2"
                 placeholder="請輸入城市地區"
-              ></input>
+                type="text"
+                id="loaction"
+                name="loaction"
+                value={postData.loaction}
+                onChange={handleChange}
+              />
             </div>
             <div className="col-6">
               <label className="mt-3">
@@ -104,18 +163,23 @@ function PostWYSIWYGEdit() {
                 (請輸入＃區分標籤)
               </label>
               <input
-                type="loaction"
-                placeHolder="#台北市"
                 className="form-control mt-2"
-              ></input>
+                placeHolder="#台北市"
+                type="text"
+                id="tags"
+                name="tags"
+                value={postData.tags}
+                onChange={handleChange}
+              />
             </div>
           </div>
 
           <hr></hr>
           <form className="my-2">
             <p>貼文編輯器</p>
-            {/* <PostEditor getEditorData={setAddData}/> */}
-            <PostEditor />
+            <PostEditor setGetData={setGetData} />
+            <h3>{getData}</h3>
+            {/* <PostEditor /> */}
             <label
               className="photo_upload d-flex align-items-center
               justify-content-center"
@@ -143,9 +207,15 @@ function PostWYSIWYGEdit() {
             </div>
           </div>
           <div className="d-flex justify-content-end my-3  post_edit_button ">
-            <button className="btn">清空</button>
-            <button className="btn">儲存草稿</button>
-            <button className="btn">發布</button>
+            <button className="btn" onClick={handleClick}>
+              清空
+            </button>
+            <button className="btn" onClick={handleSubmit}>
+              儲存草稿
+            </button>
+            <button className="btn" onClick={handleSubmit}>
+              發布
+            </button>
           </div>
         </form>
       </div>
