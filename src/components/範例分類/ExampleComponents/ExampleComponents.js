@@ -4,6 +4,9 @@ import {
   handleFailed,
   handleWarning,
   handleInfo,
+  handleWarningComfirm,
+  handleSucccessComfirm,
+  handleInfoComfirm,
 } from '../../../utils/handler/handleStatusCard';
 
 export default function Example() {
@@ -24,7 +27,7 @@ export default function Example() {
           {`但要用字串方式傳入，例如傳入 '<p style="color: red;"></p>'`}
           <br />
           <br />
-          {'第二及第三個參數非必填，或是可以填入 false'}
+          {'三個參數都非必填，或是可以填入 false'}
           <br />
           {`例如：handleSuccess( '註冊成功',  false,  '<p style="color: green;">快去購買商品吧！</p>')`}
           <br />
@@ -45,6 +48,62 @@ export default function Example() {
           }}
         >
           註冊成功
+        </button>
+        <br />
+        {
+          '0916 下午新增：handleWarningComfirm( 標題, function(){...do somthing}, 說明文字)'
+        }
+        <br />
+        {'第二個參數為用戶按下確認後執行的函式'}
+        <br />
+        上述範例：
+        <button
+          className="btn m-3 text-white fw-bold"
+          style={{ background: 'orange' }}
+          onClick={() => {
+            handleWarningComfirm(
+              '登入成功',
+              () => {
+                console.log('This function will doing somthing');
+                alert('做某些事');
+              },
+              '我們發現您的個人資料尚未齊全，是否前往修改？'
+            );
+          }}
+        >
+          Do or Not ?
+        </button>
+        <button
+          className="btn m-3 text-white fw-bold"
+          style={{ background: 'green' }}
+          onClick={() => {
+            handleSucccessComfirm(
+              '登入成功',
+              () => {
+                console.log('This function will doing somthing');
+                alert('做某些事');
+              },
+              '我們發現您的個人資料尚未齊全，是否前往修改？'
+            );
+          }}
+        >
+          Do or Not ?
+        </button>
+        <button
+          className="btn m-3 text-white fw-bold"
+          style={{ background: 'blue' }}
+          onClick={() => {
+            handleInfoComfirm(
+              '登入成功',
+              () => {
+                console.log('This function will doing somthing');
+                alert('做某些事');
+              },
+              '我們發現您的個人資料尚未齊全，是否前往修改？'
+            );
+          }}
+        >
+          Do or Not ?
         </button>
         <br />
         <button
@@ -114,6 +173,7 @@ export default function Example() {
         >
           提示：有跳轉
         </button>
+        <br />
       </div>
     </>
   );

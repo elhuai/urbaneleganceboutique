@@ -1,7 +1,7 @@
-
-
 @import './custom_variables';
 @import '../../node_modules/bootstrap/scss/bootstrap.scss';
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans&display=swap');
+
 
 
 * {
@@ -10,17 +10,22 @@
   box-sizing: border-box;
   -webkit-user-drag: none;
 }
+
 body {
-  font-family: 'Roboto', sans-serif !important;
+  font-family: 'Open Sans', sans-serif !important;
 }
 
 .app {
   margin-top: 94px;
 }
 
+.swal2-container {
+  z-index: 99999;
+}
+
 .swal2-icon.swal2-success {
-  border-color: rgba(255, 194, 0,.8);
-  color: rgba(255, 194, 0,.8);
+  border-color: rgba(255, 194, 0, .8);
+  color: rgba(255, 194, 0, .8);
 }
 
 .swal2-icon.swal2-success [class^=swal2-success-line] {
@@ -28,7 +33,7 @@ body {
 }
 
 .swal2-icon.swal2-success .swal2-success-ring {
-  border: 0.25em solid rgba(255, 194, 0,.4);
+  border: 0.25em solid rgba(255, 194, 0, .4);
 }
 
 
@@ -38,5 +43,3 @@ body {
     margin-top: 80px;
   }
 }
-
-

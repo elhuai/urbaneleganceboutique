@@ -16,7 +16,6 @@ import { MdOutlineClose } from 'react-icons/md';
 import { API_URL } from '../../utils/config';
 
 const CommunityHomePage = () => {
-
   const [showCFBox, setShowCFBox] = useState(0);
 
   const ConfirmHandle = (e) => {
@@ -42,7 +41,7 @@ const CommunityHomePage = () => {
     };
     fetchPost();
   }, []);
-  // TODO: 新增文章 按鈕調整，功能要加上 
+  // TODO: 新增文章 按鈕調整，功能要加上
   // TODO: 最新貼文的card 要改成component 並帶入資料，瀑布流型式
   // TODO: RWD版面切版，瀑布流顯示
   // TODO: 社群分享記得換成此頁
@@ -53,7 +52,7 @@ const CommunityHomePage = () => {
           searchBar_title="最可愛的萌寵都在這"
           searchBar_placeholder="阿部柯基頂呱呱"
         />
-        <div className='post_new_button'>
+        <div className="post_new_button">
           <div className="post_new_button mt-5">
             <button className="post_new" onClick={() => ConfirmHandle(2)}>
               <RiEditFill
@@ -277,7 +276,6 @@ const CommunityHomePage = () => {
               </div>
             </div>
           </div>
-
         </div>
       </div>
     </>

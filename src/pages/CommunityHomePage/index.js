@@ -1,1 +1,1 @@
-export {default} from './CommunityHomePage'
+export { default } from './CommunityHomePage';

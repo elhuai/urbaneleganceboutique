@@ -3,25 +3,34 @@ import { IoLogOut } from 'react-icons/io5';
 import { FaUser } from 'react-icons/fa';
 import { IoCart } from 'react-icons/io5';
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useSearchParams } from 'react-router-dom';
 import RwdMenu from '../Menu/RwdMenu';
 import MenuLink from '../Menu/MenuLink';
-import { handleLoginCard } from '../../../utils/handler/handleLoginCard';
+import { handleLoginCard } from '../../../utils/handler/handleInputCard';
 import { useUserInfo } from '../../../hooks/useUserInfo';
 import './_Header.scss';
+import { callLineLoginApi } from '../../../api/authApi';
+import { handleFailed } from '../../../utils/handler/handleStatusCard';
 
 const Header = () => {
   const { user, setUser } = useUserInfo();
+  const [searchParam] = useSearchParams();
+  const logoutRedirect = window.location.pathname.includes('admin');
   const AuthBtn = () => {
     if (user.auth) {
       return (
         <>
-          <Link to="/adminCenter" className="header_Icon_user">
+          <Link to="/admin/profile" className="header_Icon_user">
             <FaUser />
           </Link>
           <div
             className="header_Icon_logout"
-            onClick={() => handleLoginCard(false, setUser)}
+            onClick={() =>
+              handleLoginCard(
+                { isLogin: false, logoutRedirect: logoutRedirect },
+                setUser
+              )
+            }
           >
             <IoLogOut />
           </div>
@@ -31,12 +40,30 @@ const Header = () => {
     return (
       <div
         className="header_Icon_user"
-        onClick={() => handleLoginCard(true, setUser)}
+        onClick={() => handleLoginCard({ isLogin: true }, setUser)}
       >
         <FaUser />
       </div>
     );
   };
+  const redirectPath = window.localStorage.getItem('last_page');
+  if (
+    searchParam.get('line_login') &&
+    searchParam.get('code') &&
+    searchParam.get('state') === 'ohdogcat_Line_Login' &&
+    window.localStorage.getItem('line_login')
+  ) {
+    console.log('code');
+    const lineVerifyCode = searchParam.get('code');
+    console.log('first', user.firstVerify, 'user.auth', user.auth);
+    if (!user.auth && !user.firstVerify) {
+      callLineLoginApi(lineVerifyCode, setUser, redirectPath);
+    }
+  } else {
+    if (searchParam.get('line_login') === 'false') {
+      handleFailed('LINE 連動登入失敗');
+    }
+  }
 
   return (
     <div className="header_main_body fixed-top">

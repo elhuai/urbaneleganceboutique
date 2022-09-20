@@ -226,7 +226,6 @@ function PostTripEdit() {
                         {tripOutline.name.map((locate, index) => {
                           return (
                             <>
-                          
                               <li
                                 key={data.days | tripOutline[index]}
                                 className="trip_location mt-3"
@@ -323,75 +322,79 @@ function PostTripEdit() {
                                   ></input>
                                 </label>
                               </li>
-{addLocate === true ? ( <li
-                                className="trip_location mt-3"
-                                id={`locate${data.days}${tripOutline[index]}`}
-                              >
-                                <div className="d-flex justify-content-between align-items-center">
-                                  <div className="trip_location_title d-flex align-items-center">
-                                    <div className="d-flex title_editBar align-items-center justify-content-center">
-                                      <TiLocation className="me-1 mt-1 h5"></TiLocation>
-                                      <input
-                                        key={data.days | tripOutline[index]}
-                                        className="locate_name_edit"
-                                        defaultValue={tripPostLocName}
-                                        onBlur={(e) => {
-                                          setTripPostLocName(e.target.value);
-                                        }}
-                                      />
-                                      <input
-                                        // key={tripOutline[index]}
-                                        className="locate_duration_edit"
-                                        defaultValue={tripPostLocTime}
-                                        onBlur={(e) => {
-                                          setTripPostLocTime(e.target.value);
-                                        }}
-                                      />
+                              {addLocate === true ? (
+                                <li
+                                  className="trip_location mt-3"
+                                  id={`locate${data.days}${tripOutline[index]}`}
+                                >
+                                  <div className="d-flex justify-content-between align-items-center">
+                                    <div className="trip_location_title d-flex align-items-center">
+                                      <div className="d-flex title_editBar align-items-center justify-content-center">
+                                        <TiLocation className="me-1 mt-1 h5"></TiLocation>
+                                        <input
+                                          key={data.days | tripOutline[index]}
+                                          className="locate_name_edit"
+                                          defaultValue={tripPostLocName}
+                                          onBlur={(e) => {
+                                            setTripPostLocName(e.target.value);
+                                          }}
+                                        />
+                                        <input
+                                          // key={tripOutline[index]}
+                                          className="locate_duration_edit"
+                                          defaultValue={tripPostLocTime}
+                                          onBlur={(e) => {
+                                            setTripPostLocTime(e.target.value);
+                                          }}
+                                        />
+                                      </div>
+                                    </div>
+
+                                    <div className="d-flex trip_locate_edit mb-1">
+                                      <button className="mx-2">
+                                        插入空白景點
+                                        <IoMdAdd
+                                          className="close_icon mb-1"
+                                          onClick={addLocate}
+                                        ></IoMdAdd>
+                                      </button>
+                                      <button className="mx-2">
+                                        刪除
+                                        <MdOutlineClose
+                                          className="close_icon mb-1"
+                                          onClick={deleteLocate}
+                                        ></MdOutlineClose>
+                                      </button>
                                     </div>
                                   </div>
-
-                                  <div className="d-flex trip_locate_edit mb-1">
-                                    <button className="mx-2">
-                                      插入空白景點
-                                      <IoMdAdd
-                                        className="close_icon mb-1"
-                                        onClick={addLocate}
-                                      ></IoMdAdd>
-                                    </button>
-                                    <button className="mx-2">
-                                      刪除
-                                      <MdOutlineClose
-                                        className="close_icon mb-1"
-                                        onClick={deleteLocate}
-                                      ></MdOutlineClose>
-                                    </button>
-                                  </div>
-                                </div>
-                                <textarea
-                                  type="textarea"
-                                  className="form-control"
-                                  rows="4"
-                                  maxLength="100"
-                                  placeholder="為旅途留下回憶"
-                                  onBlur={(e) => {
-                                    setTripPostLocContext(e.target.value);
-                                  }}
-                                ></textarea>
-
-                                <label className="photo_upload d-flex align-items-center justify-content-center">
-                                  上傳照片
-                                  <input
-                                    type="file"
-                                    accept="images/*"
-                                    hidden
-                                    onChange={(e) => {
-                                      setTripPostLocPhoto(e.target.value);
-                                    }}
-                                    multiple
+                                  <textarea
+                                    type="textarea"
                                     className="form-control"
-                                  ></input>
-                                </label>
-                              </li>):(<>nodata</>)}
+                                    rows="4"
+                                    maxLength="100"
+                                    placeholder="為旅途留下回憶"
+                                    onBlur={(e) => {
+                                      setTripPostLocContext(e.target.value);
+                                    }}
+                                  ></textarea>
+
+                                  <label className="photo_upload d-flex align-items-center justify-content-center">
+                                    上傳照片
+                                    <input
+                                      type="file"
+                                      accept="images/*"
+                                      hidden
+                                      onChange={(e) => {
+                                        setTripPostLocPhoto(e.target.value);
+                                      }}
+                                      multiple
+                                      className="form-control"
+                                    ></input>
+                                  </label>
+                                </li>
+                              ) : (
+                                <>nodata</>
+                              )}
                             </>
                           );
                         })}
