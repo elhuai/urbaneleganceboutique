@@ -10,6 +10,7 @@ import './_EC_productFilter.scss';
 import axios from 'axios';
 import { API_URL } from '../../../utils/config';
 import { useState, useEffect } from 'react';
+import { useLocation } from 'react-router-dom';
 
 function EcProductFilter() {
   const [user, setUser] = useState(null);
@@ -29,26 +30,31 @@ function EcProductFilter() {
   const [maxPrice, setMaxPrice] = useState('');
   const [minPrice, setMinPrice] = useState('');
   const [tag, setTag] = useState([]);
-  // =======
 
+  // 拿取網頁關鍵字=======
+  // const [searchParams, setSearchParams] = useSearchParams();
+
+  const location = useLocation();
+  const urlSearchParams = new URLSearchParams(location.search);
+  const newTypeId = urlSearchParams.get('typeId');
+
+  const newSearchWord = urlSearchParams.get('searchword');
+  const currentType = newTypeId ? newTypeId : 2;
+  const newSearch = newSearchWord ? newSearchWord : '';
   // 商品list------------------
   useEffect(() => {
     const fetchProductData = async (index) => {
       const response = await axios.get(
-        `${API_URL}/filter/products?typeId=${typeId}&minPrice=${minPrice}&maxPrice=${maxPrice}&search=${search}&order=${order}&page=${page}&tag=${tag}`
+        // `${API_URL}/filter/products?typeId=${newTypeId}&minPrice=${minPrice}&maxPrice=${maxPrice}&search=${newSearchWord}&order=${order}&page=${page}&tag=${tag}`
+        `${API_URL}/filter/products?typeId=${currentType}&minPrice=${minPrice}&maxPrice=${maxPrice}&search=${newSearch}&order=${order}&page=${page}&tag=${tag}`
       );
+
       console.log(response.data);
       setProductData(response.data.data);
       setLastPage(response.data.pagesDetail.lastPage);
     };
     fetchProductData();
-  }, [minPrice, maxPrice, order, search, page, user, tag, search]);
-
-  useEffect(() => {
-    console.log('=== minPrice ===', minPrice, maxPrice);
-  }, [minPrice, maxPrice]);
-
-  // 設定頁碼
+  }, [minPrice, maxPrice, order, search, page, user, tag, search, typeId]);
 
   return (
     <>

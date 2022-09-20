@@ -2,8 +2,9 @@ import './_FilterActive.scss';
 const FilterActive = () => {
   return (
     <>
-      <div className="product-filter-group row">
-        <p className="product-category-title mb-2">超值活動</p>
+      <div className="product-filter-active row my-3">
+        <p className="product-category-title">超值活動</p>
+
         <label for="limitedTime07" className="product-label-active">
           ︱超值限定．限時打七折
         </label>

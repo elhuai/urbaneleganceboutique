@@ -86,7 +86,7 @@ const FilterList = (props) => {
                         }
                       }}
                     />
-                    {data.tag_name}
+                    <span className="h6">{data.tag_name}</span>
                   </label>
                 </div>
               );
@@ -110,7 +110,7 @@ const FilterList = (props) => {
           onAfterChange={log}
         />
         <div className="product-price-num">
-          <div className="my-2">
+          <div className="my-2 h6">
             ${minPrice} - ${maxPrice}
           </div>
         </div>

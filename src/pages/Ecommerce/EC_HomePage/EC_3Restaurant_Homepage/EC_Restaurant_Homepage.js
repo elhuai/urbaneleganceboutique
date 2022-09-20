@@ -31,6 +31,10 @@ function EcRestaurantHomepage() {
   const [cakeCard, setCakeCard] = useState([]);
   // const [healthCard, setHealthCard] = useState([]);
 
+  // 搜尋==========
+  const [search, setSearch] = useState('');
+  const [titleSearch, setTitleSearch] = useState('');
+
   useEffect(() => {
     const fetchFishProducts = async () => {
       const arrStr = [
@@ -51,11 +55,17 @@ function EcRestaurantHomepage() {
     // console.log(cakeCard);
   }, []);
   return (
-    <>
+    <div className="ecHomePage">
       <div className="EcRestaurantHomepage_main">
         <SearchBar
           searchBar_title="哪裡有好吃的餐廳？"
           searchBar_placeholder="尚好吃的攏底家"
+          search={search}
+          setSearch={setSearch}
+          titleSearch={titleSearch}
+          setTitleSearch={setTitleSearch}
+          setTypeId={3}
+          typeId={3}
         />
         <EcHomePageSlider ecTypeSlider={restaurantSlider} />
         <EcHomePageCategory ecTypeCategory={restaurantCategory} />
@@ -69,7 +79,7 @@ function EcRestaurantHomepage() {
           ecTypeCard={healthCard}
         /> */}
       </div>
-    </>
+    </div>
   );
 }
 

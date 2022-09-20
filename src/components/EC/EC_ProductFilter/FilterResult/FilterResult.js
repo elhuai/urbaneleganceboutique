@@ -1,6 +1,6 @@
 import './_FilterResult.scss';
 import React from 'react';
-import { IoHeartOutline } from 'react-icons/io5';
+import { FaHeart } from 'react-icons/fa';
 import { TiLocation } from 'react-icons/ti';
 import { FaPaw } from 'react-icons/fa';
 import { AiFillFire } from 'react-icons/ai';
@@ -72,7 +72,6 @@ const FilterResult = (props) => {
       {productData.map((data, index) => {
         let tags = productData[index].product_tag;
         const tag = tags.split(/[#,＃]/).filter((item) => item);
-
         return (
           <div className="product_main_card card border-primary " key={index}>
             <div className="row g-0">
@@ -98,26 +97,28 @@ const FilterResult = (props) => {
                 <div className="card-body">
                   <div className="product_main_card_title d-flex justify-content-between">
                     <h5 className="card-title">{data.name}</h5>
-                    <IoHeartOutline />
+                    <FaHeart />
                   </div>
                   {/* 標籤 */}
                   <div className="d-flex flex-row">
                     {tag.map((data, index) => {
-                      return (
-                        <p
-                          key={tags.index}
-                          className="product_main_card_placeName_text my-2 me-2"
-                        >
-                          {tag[index]}
-                        </p>
-                      );
+                      if (index > 0) {
+                        return (
+                          <p
+                            key={tags.index}
+                            className="product_main_card_placeName_text my-2 me-2"
+                          >
+                            {tag[index]}
+                          </p>
+                        );
+                      }
                     })}
                   </div>
                   <p className="card-text my-2">{data.intro}</p>
                   <div className="product_main_card_bottom_text d-flex justify-content-between align-items-center">
                     <p className="product_main_card_locate_text align-items-center d-flex">
                       <TiLocation />
-                      花蓮
+                      {tag[0]}
                     </p>
                   </div>
                   {/* 評分／價格 */}

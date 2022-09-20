@@ -31,6 +31,10 @@ const EcCommodityHomepage = () => {
   const [waterCard, setWaterCard] = useState([]);
   const [healthCard, setHealthCard] = useState([]);
 
+  // 搜尋==========
+  const [search, setSearch] = useState('');
+  const [titleSearch, setTitleSearch] = useState('');
+
   useEffect(() => {
     const fetchFishProducts = async () => {
       const arrStr = [
@@ -49,13 +53,19 @@ const EcCommodityHomepage = () => {
     };
     fetchFishProducts();
   }, []);
-  console.log(fishCard);
+
   return (
-    <>
+    <div className="ecHomePage">
       <div className="EcCommodityHomepage_main">
         <SearchBar
           searchBar_title="想要什麼商品呢"
           searchBar_placeholder="好吃的狗罐罐"
+          search={search}
+          setSearch={setSearch}
+          titleSearch={titleSearch}
+          setTitleSearch={setTitleSearch}
+          setTypeId={4}
+          typeId={4}
         />
         <EcHomePageSlider ecTypeSlider={commoditySlider} />
         <EcHomePageCategory ecTypeCategory={commodityCategory} />
@@ -66,7 +76,7 @@ const EcCommodityHomepage = () => {
           ecTypeCard={healthCard}
         />
       </div>
-    </>
+    </div>
   );
 };
 

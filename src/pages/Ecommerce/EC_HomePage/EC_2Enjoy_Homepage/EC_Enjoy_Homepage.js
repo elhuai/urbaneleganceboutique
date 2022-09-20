@@ -5,7 +5,7 @@ import SearchBar from '../../../../components/SearchBar/SearchBar_search';
 import EcHomePageSlider from '../../../../components/EC/EC_homePage/EC_HomePageSlider';
 import EcHomePageCategory from '../../../../components/EC/EC_homePage/EC_HomePageCategory';
 import EcHomePageCard from '../../../../components/EC/EC_homePage/EC_HomePageCard';
-
+import '../_ECHomepage.scss';
 import { enjoySlider } from '../../../../components/EC/EC_homePage/EC_data/Slider/EnjoySlider';
 import { enjoyCategory } from '../../../../components/EC/EC_homePage/EC_data/Category/EnjoyCategory';
 import { API_URL } from '../../../../utils/config';
@@ -31,6 +31,10 @@ function EcEnjoyHomepage() {
   const [cakeCard, setCakeCard] = useState([]);
   const [healthCard, setHealthCard] = useState([]);
 
+  // 搜尋==========
+  const [search, setSearch] = useState('');
+  const [titleSearch, setTitleSearch] = useState('');
+
   useEffect(() => {
     const fetchFishProducts = async () => {
       const arrStr = [
@@ -51,11 +55,16 @@ function EcEnjoyHomepage() {
     console.log(cakeCard);
   }, []);
   return (
-    <>
+    <div className="ecHomePage">
       <div className="EcEnjoyHomepage_main">
         <SearchBar
           searchBar_title="想去哪裡玩呢"
           searchBar_placeholder="來去你心裡玩耍吧"
+          search={search}
+          setSearch={setSearch}
+          titleSearch={titleSearch}
+          setTitleSearch={setTitleSearch}
+          typeId={2}
         />
         <EcHomePageSlider ecTypeSlider={enjoySlider} />
         <EcHomePageCategory ecTypeCategory={enjoyCategory} />
@@ -65,7 +74,7 @@ function EcEnjoyHomepage() {
         />
         <EcHomePageCard ecTypeCardTitle={cardTitle[1]} ecTypeCard={cakeCard} />
       </div>
-    </>
+    </div>
   );
 }
 

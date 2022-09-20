@@ -34,20 +34,6 @@ $royal-blue: #22C3FF;
     vertical-align: top;
     text-align: left;
     margin-bottom: 8px;
-
-    input[type=checkbox]:after {
-      position: absolute;
-      width: 10px;
-      height: 15px;
-      top: 0;
-      content: " ";
-      background-color: #ff0000;
-      color: #fff;
-      display: inline-block;
-      visibility: visible;
-      padding: 0px 3px;
-      border-radius: 3px;
-    }
   }
 
   .product-check-items {
@@ -59,7 +45,7 @@ $royal-blue: #22C3FF;
   .product-filter-category {
     width: 100%;
     display: flex;
-    border-bottom: $fmain_color 1px solid;
+    // border-bottom: $fmain_color 1px solid;
 
     // margin: 1rem 0;
     .product-category-title {

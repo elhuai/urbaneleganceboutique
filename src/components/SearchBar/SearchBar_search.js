@@ -2,10 +2,13 @@ import './_SearchBar_search.scss';
 import main_search_left_dog from '../../images/main_search_left_dog.png';
 import main_search_right_dog from '../../images/main_search_right_dog.png';
 import { AiOutlineSearch } from 'react-icons/ai';
+import { Link } from 'react-router-dom';
 
-function SearchBar(props, { value, changeInput }) {
+function SearchBar(props) {
   const { searchBar_title, searchBar_placeholder } = props;
-  const { titleSearch, setTitleSearch, setSearch } = props;
+  const { titleSearch, setTitleSearch, setSearch, typeId } = props;
+  const typeIdParams = typeId ? typeId : 2;
+  const searchWordParams = titleSearch ? titleSearch : '';
   return (
     <>
       <section className="searchBar_section_main_bg mb-4">
@@ -24,19 +27,19 @@ function SearchBar(props, { value, changeInput }) {
                 setTitleSearch(textValue);
               }}
             />
-            <button
+            <Link
               type="submit"
               className="searchBar_searchButton"
+              to={`/ec-productfilter?typeId=${typeIdParams}&searchword=${searchWordParams}`}
               onClick={() => {
                 if (titleSearch === '') return setSearch('');
                 setSearch(titleSearch);
-                // setPage(1);
               }}
             >
               <i className="searchBar_fa searchBar_fa-search">
                 <AiOutlineSearch />
               </i>
-            </button>
+            </Link>
           </div>
           <img
             className="searchBar_main_search_left_dog"
