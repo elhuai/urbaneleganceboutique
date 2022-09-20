@@ -28,3 +28,4 @@ export const LINE_LOGIN_REFRESH_URL = 'https://api.line.me/oauth2/v2.1/token';
 
 // = GET/ Header：{`Authorization: Bearer ${access token}`}
 export const LINE_GET_USER_PROFILE_URL = 'https://api.line.me/v2/profile';
+export const BE_URL = process.env.REACT_APP_BASE_API_URL;
