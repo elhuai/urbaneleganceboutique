@@ -10,19 +10,29 @@ $list-color-hover: #F0EDE0;
   font-size: 24px;
 }
 .personal_home_page{
-  // height: 80vh;
   margin: auto;
-  max-width: 1440px;
+  max-width: 1280px;
+  .personal_bar {
+    width: 100%;
+    height: 250px;
+    // margin-top: 150px;
+    background-color: #FEEFC3;
+  }
+
+  .my_trip_list{
+    max-width: 1280px;
+    height: 300px;
+    background-color: $line-color--light;
+  }
+  .my_post_list{
+    max-width: 1280px;
+    height: 300px;
+    background-color: $line-color--light;
+  }
+
 }
 // temperary setup
-.personal_bar {
-  width: 1000px;
-  height: 250px;
-  justify-content: space-evenly;
-  align-items: center;
-  // margin-top: 150px;
-  background-color: #FEEFC3;
-}
+
 .pet_card{
   width: 250px;
  
@@ -36,10 +46,10 @@ $list-color-hover: #F0EDE0;
     overflow: hidden;
 }
 .pet_card_description{
-  width: 250px;
+  width: 150px;
   background-color: #ef7a70;
   border-radius: 15px;
-  height: 100px;
+  height: 200px;
 }
 .pet_card_list{
   // margin-top: 50px;
@@ -60,3 +70,4 @@ $list-color-hover: #F0EDE0;
 .pet_info p {
   color: white;
 }
+

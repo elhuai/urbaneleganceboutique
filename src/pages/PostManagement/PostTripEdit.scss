@@ -59,39 +59,18 @@ body {
         
       }
     }
-    .article_edit {
-      background-color: #E7E7E9;
-      padding: 5px;
-    }
-    .trip_outline{
+
+    .trip_locate_edit button{ 
+
+      color: $link-color;
       border-radius: 8px;
-      padding: 10px;
-      background-color: $button-color-hover;
-      width: 20%;
-      font-size: 16px;
-      position: sticky;
-      top: 100px;
-      .post_date_count{
-        font-weight: 800;
-      }
+      padding: 3px;
+      border: 2px solid $line-color--dark;
+
     }
+
     
-// 行程地圖區
-    .post_map{
-      width: 100%;
-      p{
-        font-size: 1.25rem;
-        font-weight: 600;
-      }
-      .map_photo {  
-      width: 100%;
-      height: 420px;
-      img{
-        width: 100%;
-        height:100%
-      }
-    }
-    }
+
 
   .post_edit_button button{
     width: 90px;
@@ -115,10 +94,13 @@ body {
     }
  }
 .article_edit{
-  padding: 10px;
+  width: 80%;
+  padding:10px;
+  background-color: $line-color--light;
+  border-radius: 8px;
   .date_count {
     font-size: 1.2rem;
-    font-weight: 600;
+    font-weight: 800;
     color: $line-color--dark;
   }
   .trip_location{
@@ -126,16 +108,26 @@ body {
     list-style-type: none;;
     .trip_location_title{
     color: $link-color;
-    font-size: 1rem;
+    font-size: 1.3rem;
     font-weight: 600;
-  }}
+  }
+  .photo_upload{
+    background-color: $line-color--blue;
+    width: 100px;
+    height: 30px;
+    margin-top: 0.5rem;
+    font-size: 0.75rem;
+    border-radius: 5px;
+  }
+}
+  
 }
 .close_icon{
-  font-size: 1.5rem;
+  font-size: 1.25rem;
   position: relative;
   right: 0;
   color: $line-color--dark;
-  // margin-bottom: 4px;
+
 }    
 
 .trip_location:target{
@@ -143,7 +135,18 @@ body {
   margin-top: -100px !important;
 }
 }
-    
+
+   
+.title_editBar input{
+  height: 25px;
+  border: none;
+  border-radius: 3px;
+  margin: 5px;
+  font-size: 15px;
+  padding: 5px;
+  width: 120px;
+
+}
 
 
   
