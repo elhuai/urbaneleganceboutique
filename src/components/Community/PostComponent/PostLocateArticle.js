@@ -25,58 +25,28 @@ export default function PostLocateArticle({ post }) {
     <>
       <ul className="article_section">
         {post.map((data, index) => {
-          let name = data.locate_name.split(/[,]/);
-          let duration = data.locate_duration.split(/[,]/);
-          let coordinate = data.locate_coordinate
-            .split(/[#]/)
-            .filter((item) => item);
-          let context = data.locate_context
-            .split(/[###,＃＃＃]/)
-            .filter((item) => item);
-          let locatePhoto = data.locate_photo
-            .split(/[|]/)
-            .filter((item) => item);
-
-          let tripOutline = {
-            name,
-            duration,
-            coordinate,
-            context,
-            locatePhoto,
-          };
-
           return (
             <>
               <div className="my-2 post_dayCount">Day {data.days}</div>
-
-              {tripOutline.name.map((locate, index) => {
-                return (
-                  <>
-                    <li
-                      key={locate.index}
-                      className="trip_record_section"
-                      id={`day${data.days}locate${index}`}
-                    >
-                      <div>
-                        <div className="post_location_mark d-flex align-items-center">
-                          <p>
-                            <TiLocation className="mb-1 me-1 h5"></TiLocation>
-                            <strong className="ms-1 h5">{locate}</strong>
-                          </p>
-                          <p className="ms-1 post_location_duration small">
-                            {tripOutline.duration[index]}
-                          </p>
-                        </div>
-                        <p>{tripOutline.context[index]}</p>
-                        <PhotoReviewSwiper
-                        list={tripOutline.locatePhoto[index]}
-                        ></PhotoReviewSwiper>
-                        <hr></hr>
-                      </div>
-                    </li>
-                  </>
-                );
-              })}
+              <li
+                className="trip_record_section"
+                id={`day${data.days}locate${index}`}
+              >
+                <div>
+                  <div className="post_location_mark d-flex align-items-center">
+                    <p>
+                      <TiLocation className="mb-1 me-1 h5"></TiLocation>
+                      <strong className="ms-1 h5">{data.locate_name}</strong>
+                    </p>
+                    <p className="ms-1 post_location_duration small">
+                      {data.locate_duration}
+                    </p>
+                  </div>
+                  <p>{data.locate_context}</p>
+                  {/* <PhotoReviewSwiper list={data}></PhotoReviewSwiper> */}
+                  <hr></hr>
+                </div>
+              </li>
             </>
           );
         })}

@@ -25,8 +25,8 @@ import { Navigation } from 'swiper';
 // ];
 
 export default function PhotoReviewSwiper({ list }) {
-  // console.log('photo',datay);
-  let photoList = list.split(',').filter((item) => item);
+  console.log('list',list);
+  let photoList = list.locate_photo.split(',').filter((item) => item);
   // console.log('photolist', photoList);
   const ShowSwiper = ({ data }) => {
     return (
