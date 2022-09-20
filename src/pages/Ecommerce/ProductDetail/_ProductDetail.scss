@@ -3,263 +3,259 @@
 //   width: 100%;
 // }
 
-body{
-    position: relative;
-  
+body {
+  position: relative;
 }
 
 .topRow {
-    display: flex;
-    justify-content: space-evenly;
-    padding: 0 240px;
-    margin-top: 50px;
+  display: flex;
+  justify-content: space-evenly;
+  padding: 0 240px;
+  margin-top: 50px;
 }
 
 .checked {
-    color: green;
+  color: green;
 }
 
 .textGreen {
-    color: green;
-    font-size: 0.8rem;
+  color: green;
+  font-size: 0.8rem;
 }
 
 .underline {
-    text-decoration: underline;
-    font-size: 0.8rem;
+  text-decoration: underline;
+  font-size: 0.8rem;
 }
 
 .productDesc {
-    flex: 1;
+  flex: 1;
 }
 
 .headText {
-    margin-bottom: 20px;
-    font-size: 32px;
-    font-family: helvetica;
+  margin-bottom: 20px;
+  font-size: 32px;
+  font-family: helvetica;
 }
 
 .subText {
-    font-size: 16px;
+  font-size: 16px;
 }
 
 .tagsSection {
-    display: flex;
+  display: flex;
 }
 
 .tags {
-    // flex-direction: row-reverse;
-    
-    font-size: 14px;
-    color: #22c3ff;
-    font-weight: bold;
-    padding: 3px 10px;
-    margin-right: 20px;
-    border-radius: 4px;
-    background-color: #d5eeee;
+  // flex-direction: row-reverse;
+
+  font-size: 14px;
+  color: #22c3ff;
+  font-weight: bold;
+  padding: 3px 10px;
+  margin-right: 20px;
+  border-radius: 4px;
+  background-color: #d5eeee;
 }
 
 .costSection {
-    margin-top: 100px;
-    display: flex;
-    flex-direction: row-reverse;
-    align-items: flex-end;
+  margin-top: 100px;
+  display: flex;
+  flex-direction: row-reverse;
+  align-items: flex-end;
 }
 
 .cost {
-    color: #747474;
-    text-decoration: line-through;
-    margin-right: 15px;
-    font-size: 1rem;
-    font-weight: 1000;
+  color: #747474;
+  text-decoration: line-through;
+  margin-right: 15px;
+  font-size: 1rem;
+  font-weight: 1000;
 }
 
 .mainCost {
-    color: #ef7a70;
-    font-size: 32px;
-    font-weight: 800;
+  color: #ef7a70;
+  font-size: 32px;
+  font-weight: 800;
 }
 
 .imageColumn {
-    flex: 1;
-    min-width: 200px;
+  flex: 1;
+  min-width: 200px;
 }
 
 .addButton {
-    color: white;
-    width: 100%;
-    border-radius: 5px;
-    border-style: none;
-    background-color: #ffc200;
-    padding: 5px 0;
+  color: white;
+  width: 100%;
+  border-radius: 5px;
+  border-style: none;
+  background-color: #ffc200;
+  padding: 5px 0;
 }
 
 .mainImage {
-    margin: 0 auto;
+  margin: 0 auto;
 }
 
 .mainImage img {
-    width: 80%;
-    display: block;
-    margin-left: auto;
-    margin-right: auto;
+  width: 80%;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 .productContainer {
-    padding: 1 2rem;
+  padding: 1 2rem;
 }
 
 .cardRow {
-    width: 80%;
-    margin: 10px auto;
-    display: flex;
-    // height: 11vh;
-    justify-content: space-between;
+  width: 80%;
+  margin: 10px auto;
+  display: flex;
+  // height: 11vh;
+  justify-content: space-between;
 }
 
 .cardRow img {
-    width: 100%;
-    height: 100%;
-    transform: scale(0.8, 0.7);
+  width: 100%;
+  height: 100%;
+  transform: scale(0.8, 0.7);
 }
 
 .bottomRow {
-    display: flex;
-    justify-content: space-evenly;
-    padding: 4rem 240px;
-    // height: 3vh;
+  display: flex;
+  justify-content: space-evenly;
+  padding: 4rem 240px;
+  // height: 3vh;
 }
 
 .spec {
-  
   display: flex;
   flex-direction: column;
-  
 }
 
-.anchor{
+.anchor {
   display: flex;
   flex-direction: column;
-  position:sticky;
+  position: sticky;
   top: 100px;
 
-  a{
-
+  a {
     width: 157px;
     padding: 10px 15px;
     font-size: 20px;
     &:active {
-        width: 157px;
-        height: 46px;
-        background-image: url('../../../images/車頭.svg');
+      width: 157px;
+      height: 46px;
+      background-image: url('../../../images/admin-hover-background.svg');
     }
   }
 }
 
-.anchor1{
-flex-grow: 1;
+.anchor1 {
+  flex-grow: 1;
 }
 
 .spec2 {
-    margin-left: 5%;
-    width: 100%;
-    flex-grow: 1;
-    flex-shrink: 1;
-    flex-basis: 0%;
+  margin-left: 5%;
+  width: 100%;
+  flex-grow: 1;
+  flex-shrink: 1;
+  flex-basis: 0%;
 }
 
 .specText {
-    font-size: 0.8rem;
-    font-weight: 200;
+  font-size: 0.8rem;
+  font-weight: 200;
 }
 
-.description{
+.description {
   margin-bottom: 8%;
-  p{
+  p {
     line-height: 35px;
   }
 }
 
 @media only screen and (min-width: 768px) and (max-width: 1366px) {
-    .main {
-        padding: 0rem 2rem;
-    }
+  .main {
+    padding: 0rem 2rem;
+  }
 
-    .topRow {
-        padding: 0 1rem;
-    }
+  .topRow {
+    padding: 0 1rem;
+  }
 
-    .mainImage img {
-        width: 90%;
-        height: 100%;
-        display: block;
-        margin-left: auto;
-        margin-right: auto;
-    }
+  .mainImage img {
+    width: 90%;
+    height: 100%;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+  }
 
-    .productContainer {
-        padding: 2rem 4rem;
-    }
+  .productContainer {
+    padding: 2rem 4rem;
+  }
 
-    .cardRow {
-        width: 90%;
-        margin: 10px auto;
-        display: flex;
-        height: 12vh;
-        justify-content: space-between;
-    }
+  .cardRow {
+    width: 90%;
+    margin: 10px auto;
+    display: flex;
+    height: 12vh;
+    justify-content: space-between;
+  }
 
-    .imageColumn {
-        margin-top: 1rem;
-    }
+  .imageColumn {
+    margin-top: 1rem;
+  }
 
-    .bottomRow {
-        padding: 1rem 3rem;
-    }
+  .bottomRow {
+    padding: 1rem 3rem;
+  }
 }
 
 @media only screen and (max-width: 768px) {
-    .topRow {
-        flex-wrap: wrap;
-        padding: 0;
-    }
+  .topRow {
+    flex-wrap: wrap;
+    padding: 0;
+  }
 
-    .main {
-        padding: 2rem 2rem;
-    }
+  .main {
+    padding: 2rem 2rem;
+  }
 
-    .mainImage img {
-        width: 100%;
-    }
+  .mainImage img {
+    width: 100%;
+  }
 
-    .cardRow {
-        width: 100%;
-        height: 8vh;
-    }
+  .cardRow {
+    width: 100%;
+    height: 8vh;
+  }
 
-    .addButton1 {
-        width: 110px;
-        height: 40px;
-    }
+  .addButton1 {
+    width: 110px;
+    height: 40px;
+  }
 
-    .addButton2 {
-        width: 130px;
-        height: 40px;
-    }
+  .addButton2 {
+    width: 130px;
+    height: 40px;
+  }
 
-    .bottomRow {
-        display: flex;
-        /* flex-wrap: wrap; */
-        padding: 2rem 0;
-        justify-content: center;
-    }
+  .bottomRow {
+    display: flex;
+    /* flex-wrap: wrap; */
+    padding: 2rem 0;
+    justify-content: center;
+  }
 
-    .spec {
-        /* flex-grow: 1; */
-        text-align: center;
-        margin: 1rem 0;
-    }
-    /* 
+  .spec {
+    /* flex-grow: 1; */
+    text-align: center;
+    margin: 1rem 0;
+  }
+  /* 
   .spec2{
     flex-grow: 2;
     flex-shrink: 1;

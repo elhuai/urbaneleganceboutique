@@ -1,14 +1,13 @@
 import React from 'react';
 import axios from 'axios';
 import { Link } from 'react-router-dom';
-import { API_URL } from '../../utils/config';
+// import { API_URL } from '../../utils/config';
 // import AdminCenter from "../../components/AdminCenter/AdminCenter";
 import './PersonalHomePage.scss';
 
 //TODO: 最新貼文的文章帶入，最好能夠瀑布流
 //TODO: 最新貼文的CARD 間距還要調整
 //TODO: RWD 直接列出所有文章
-
 
 function PersonalHomePage() {
   const fakeData = [
@@ -54,27 +53,20 @@ function PersonalHomePage() {
     },
   ];
 
-
-
   return (
     <>
       {/* <AdminCenter /> */}
       <div className="personal_home_page d-flex flex-column justify-content-center">
         <div className="personal_bar d-flex justify-content-evenly align-items-center">
           <div className="user_photobox">
-            <img
-              className="admin_user_photo w-100 h-100"
-              src=""
-              alt=""
-            ></img>
+            <img className="admin_user_photo w-100 h-100" src="" alt=""></img>
           </div>
           <div className="personal_description d-flex flex-column">
             <div className="admin_user_name_bar">
               <p>User Name</p>
             </div>
             <div className="description_text">
-              <p>fdijfidjfidjfi
-              </p>
+              <p>fdijfidjfidjfi</p>
             </div>
           </div>
           <div className="pet_card_description d-flex justify-content-center">
