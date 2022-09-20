@@ -1,46 +1,9 @@
 import { DragDropContext, Droppable, Draggable } from 'react-beautiful-dnd';
 import React, { useEffect, useState } from 'react';
 import './Traveldrag.scss';
-const datas = [
-  {
-    id: 'item-1',
-    content: '我會披星戴月的想你',
-  },
-  {
-    id: 'item-2',
-    content: 'how do you like it',
-  },
-  {
-    id: 'item-3',
-    content: 'on the ground',
-  },
-  {
-    id: 'item-4',
-    content: 'Forever young',
-  },
-  {
-    id: 'item-5',
-    content: 'Lisa',
-  },
-  {
-    id: 'item-6',
-    content: 'Kill this love',
-  },
-  {
-    id: 'item-7',
-    content: 'Lovesick Girls ',
-  },
-  {
-    id: 'item-8',
-    content: '星火',
-  },
-  {
-    id: 'item-9',
-    content: '盛夏光年',
-  },
-];
 
-const TravelDrag = () => {
+const TravelDrag = ({ planning, indexs }) => {
+  console.log('拖移頁面', planning);
   const reorder = (list, startIndex, endIndex) => {
     const result = Array.from(list);
     const [removed] = result.splice(startIndex, 1);
@@ -68,7 +31,7 @@ const TravelDrag = () => {
   const [items, setItems] = useState([]);
 
   useEffect(() => {
-    setItems(datas);
+    setItems(planning);
   }, []);
 
   const onDragEnd = (result) => {
@@ -81,9 +44,9 @@ const TravelDrag = () => {
       result.source.index,
       result.destination.index
     );
-    // console.log({ reorderedItems });
     setItems(reorderedItems);
   };
+
   return (
     <>
       <div className="travleDrag_Main">
@@ -96,25 +59,35 @@ const TravelDrag = () => {
                 ref={provided.innerRef}
                 style={getListStyle(snapshot.isDraggingOver)}
               >
-                {items.map((item, index) => (
-                  <Draggable key={item.id} draggableId={item.id} index={index}>
-                    {/* TODO: index要調整  */}
-                    {(provided, snapshot) => (
-                      <div
-                        className="travelDrag_Options card  "
-                        ref={provided.innerRef}
-                        {...provided.draggableProps}
-                        {...provided.dragHandleProps}
-                        style={getItemStyle(
-                          snapshot.isDragging,
-                          provided.draggableProps.style
-                        )}
-                      >
-                        <div className="travelDrag_tittle">{item.content}</div>
-                      </div>
-                    )}
-                  </Draggable>
-                ))}
+                {items.map((item, index) =>
+                  indexs + 1 === item.days ? (
+                    <Draggable
+                      key={item.longitude}
+                      draggableId={item.latitude}
+                      index={index}
+                    >
+                      {/* TODO: index要調整  */}
+                      {(provided, snapshot) => (
+                        <div
+                          className="travelDrag_Options card  "
+                          ref={provided.innerRef}
+                          {...provided.draggableProps}
+                          {...provided.dragHandleProps}
+                          style={getItemStyle(
+                            snapshot.isDragging,
+                            provided.draggableProps.style
+                          )}
+                        >
+                          <div className="travelDrag_tittle">
+                            {item.location_id}
+                          </div>
+                        </div>
+                      )}
+                    </Draggable>
+                  ) : (
+                    ''
+                  )
+                )}
                 {provided.placeholder}
               </div>
             )}
