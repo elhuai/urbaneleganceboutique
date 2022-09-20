@@ -9,7 +9,9 @@ export default function CommunityListCard({ post }) {
   return (
     <>
       {post.map((data) => {
-        const tags = data.tags.split('#').filter((item) => item);
+        const tags = data.tags.split(/[#,＃]/).filter((item) => item);
+        {/* console.log(tags); */}
+
         // 移除陣列空值 .filter(item=>item)
         return (
           <div
@@ -33,7 +35,7 @@ export default function CommunityListCard({ post }) {
                   <div className="d-flex">
                   {tags.map((data, index) => {
                     return (
-                      <div className="">
+                      <div key={tags.index} className="">
                         <p className="comList_main_card_placeName_text card-text mx-1">
                           {data}
                         </p>
@@ -41,7 +43,7 @@ export default function CommunityListCard({ post }) {
                     );
                   })}
                   </div>
-                  {/* <Tags data={data}></Tags> */}
+
                   <p className="card-text">{data.content}</p>
                   <div className="comList_main_card_bottom_text card-text d-flex justify-content-between">
                     <p className="comList_main_card_locate_text card-text d-flex align-items-center">

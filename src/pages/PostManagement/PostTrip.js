@@ -38,7 +38,7 @@ function PostTrip() {
 
             <hr></hr>
             <div className="d-flex align-items-start">
-              <PostLocateArticle post={postTrip}></PostLocateArticle>
+              <PostLocateArticle></PostLocateArticle>
               <TripOutline></TripOutline>
             </div>
             <PostMap></PostMap>
