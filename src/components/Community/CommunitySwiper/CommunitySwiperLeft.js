@@ -7,6 +7,45 @@ import { IoHeartOutline } from 'react-icons/io5';
 
 import './_communitySwiper.scss';
 
+const fakeData = [
+  {
+    title: '故事的小黃花',
+    img: 'https://picsum.photos/id/123/450/270',
+    author: '黑松沙士比亞',
+    like: '1234',
+  },
+  {
+    title: '從出生那年就飄著',
+    img: 'https://picsum.photos/id/223/450/270',
+    author: '雪碧不見面',
+    like: '2234',
+  },
+  {
+    title: '童年的盪鞦韆',
+    img: 'https://picsum.photos/id/323/450/270',
+    author: '可口可樂果尚酥',
+    like: '3234',
+  },
+  {
+    title: '隨記憶一直晃到現在',
+    img: 'https://picsum.photos/id/43/450/270',
+    author: '蘋果西打咩唷',
+    like: '4234',
+  },
+  {
+    title: '吹著前奏望著天空',
+    img: 'https://picsum.photos/id/54/450/270',
+    author: '七喜咧哈囉',
+    like: '5234',
+  },
+  {
+    title: '我想起花瓣試著掉落',
+    img: 'https://picsum.photos/id/26/450/270',
+    author: '分達美樂披薩',
+    like: '6234',
+  },
+];
+
 export default function communityHomePageCard(props) {
   const { comHomePageCard } = props;
   // console.log('props', props);

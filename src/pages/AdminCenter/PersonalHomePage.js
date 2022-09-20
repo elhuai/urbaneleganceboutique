@@ -4,6 +4,12 @@ import { Link } from 'react-router-dom';
 import { API_URL } from '../../utils/config';
 // import AdminCenter from "../../components/AdminCenter/AdminCenter";
 import './PersonalHomePage.scss';
+
+//TODO: 最新貼文的文章帶入，最好能夠瀑布流
+//TODO: 最新貼文的CARD 間距還要調整
+//TODO: RWD 直接列出所有文章
+
+
 function PersonalHomePage() {
   const fakeData = [
     {

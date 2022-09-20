@@ -42,7 +42,10 @@ const CommunityHomePage = () => {
     };
     fetchPost();
   }, []);
-  // TODO: 新增文章 功能要加上
+  // TODO: 新增文章 按鈕調整，功能要加上 
+  // TODO: 最新貼文的card 要改成component 並帶入資料，瀑布流型式
+  // TODO: RWD版面切版，瀑布流顯示
+  // TODO: 社群分享記得換成此頁
   return (
     <>
       <div className="CommunityHomePage">
@@ -159,7 +162,6 @@ const CommunityHomePage = () => {
               </Link>
             </div>
           </div>
-          {/* TODO: 跑不出來！！ 事件聆聽功能 */}
           <div
             className={
               showCFBox === 4

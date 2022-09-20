@@ -45,14 +45,9 @@
     overflow: hidden;
     box-shadow: 4px 4px 6px rgba(0, 0, 0, 0.08);
     .obj-fit {
-      .img {
-        width: 390px;
-        height: 270px;
-        border-radius: 15px;
-      }
       width: 100%;
       height: 100%;
-      object-fit: fill;
+      object-fit: cover;
     }
     &_title {
       h5 {
