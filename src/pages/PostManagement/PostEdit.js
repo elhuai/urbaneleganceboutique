@@ -26,7 +26,6 @@ function PostWYSIWYGEdit() {
   //   setAddData(data);
   // }
 
-
   useEffect(() => {
     if (!selectedFile) {
       setPreview('');

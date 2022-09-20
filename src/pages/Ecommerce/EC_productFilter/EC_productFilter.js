@@ -13,7 +13,6 @@ import { useState, useEffect } from 'react';
 import { useLocation } from 'react-router-dom';
 
 function EcProductFilter() {
-  const [user, setUser] = useState(null);
   const [error, setError] = useState(null);
 
   // 搜尋==========
@@ -31,8 +30,8 @@ function EcProductFilter() {
   const [minPrice, setMinPrice] = useState('');
   const [tag, setTag] = useState([]);
 
-  // 拿取網頁關鍵字=======
-  // const [searchParams, setSearchParams] = useSearchParams();
+  // 收藏=======
+  const [favProducts, setFavProducts] = useState([]);
 
   const location = useLocation();
   const urlSearchParams = new URLSearchParams(location.search);
@@ -54,7 +53,7 @@ function EcProductFilter() {
       setLastPage(response.data.pagesDetail.lastPage);
     };
     fetchProductData();
-  }, [minPrice, maxPrice, order, search, page, user, tag, search, typeId]);
+  }, [minPrice, maxPrice, order, search, page, tag, search, typeId]);
 
   return (
     <>
@@ -93,6 +92,8 @@ function EcProductFilter() {
               page={page}
               setPage={setPage}
               error={error}
+              favProducts={favProducts}
+              setfavProducts={setFavProducts}
             />
             <FilterPages
               lastPage={lastPage}

@@ -12,7 +12,6 @@ import PostStateBar from '../../components/Community/PostComponent/PostStateBar'
 import TextSection from '../../components/Community/PostComponent/TextSection';
 
 function Post() {
-
   const [post, setPost] = useState([]);
 
   useEffect(() => {

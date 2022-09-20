@@ -4,9 +4,44 @@ import { FaHeart } from 'react-icons/fa';
 import { TiLocation } from 'react-icons/ti';
 import { FaPaw } from 'react-icons/fa';
 import { AiFillFire } from 'react-icons/ai';
+import { useUserInfo } from '../../../../hooks/useUserInfo';
+import { handleLoginCard } from '../../../../utils/handler/handleInputCard';
+import { API_URL } from '../../../../utils/config';
+import axios from 'axios';
 
 const FilterResult = (props) => {
-  const { setOrder, productData } = props;
+  const { setOrder, productData, setfavProduct, favProduct } = props;
+  // 收藏設定->登入與否
+  const { user, setUser } = useUserInfo();
+  const handleCollect = async (e, id) => {
+    if (user.auth) {
+      try {
+        const result = await axios.post(
+          `${API_URL}/collect/product/${id}`,
+          {},
+          {
+            withCredentials: true,
+          }
+        );
+        if (result.data.message === '已成功移除收藏') {
+          console.log('成功');
+          e.target.style['color'] = '#747474';
+        } else if (result.data.message === '已成功收藏') {
+          console.log('不成功');
+
+          e.target.style['color'] = 'red';
+        }
+        console.log(result.data);
+      } catch (error) {
+        console.log('====================================');
+        console.log('error', error);
+        console.log('====================================');
+      }
+    } else {
+      handleLoginCard({ isLogin: true }, setUser);
+    }
+  };
+  // 收藏設定－＞資料庫
 
   return (
     <>
@@ -70,6 +105,9 @@ const FilterResult = (props) => {
 
       {/* 搜尋結果====================== */}
       {productData.map((data, index) => {
+        console.log('====================================');
+        console.log(data);
+        console.log('====================================');
         let tags = productData[index].product_tag;
         const tag = tags.split(/[#,＃]/).filter((item) => item);
         return (
@@ -97,7 +135,13 @@ const FilterResult = (props) => {
                 <div className="card-body">
                   <div className="product_main_card_title d-flex justify-content-between">
                     <h5 className="card-title">{data.name}</h5>
-                    <FaHeart />
+                    {/* 收藏按鈕 */}
+                    <div
+                      className="product_main_card_collect"
+                      onClick={(e) => handleCollect(e, data.id)}
+                    >
+                      <FaHeart />
+                    </div>
                   </div>
                   {/* 標籤 */}
                   <div className="d-flex flex-row">

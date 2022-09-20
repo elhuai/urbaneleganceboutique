@@ -3,9 +3,9 @@
 //   width: 100%;
 // }
 
-body{
+body {
     position: relative;
-  
+
 }
 
 .topRow {
@@ -49,7 +49,7 @@ body{
 
 .tags {
     // flex-direction: row-reverse;
-    
+
     font-size: 14px;
     color: #22c3ff;
     font-weight: bold;
@@ -131,33 +131,34 @@ body{
 }
 
 .spec {
-  
-  display: flex;
-  flex-direction: column;
-  
+
+    display: flex;
+    flex-direction: column;
+
 }
 
-.anchor{
-  display: flex;
-  flex-direction: column;
-  position:sticky;
-  top: 100px;
+.anchor {
+    display: flex;
+    flex-direction: column;
+    position: sticky;
+    top: 100px;
 
-  a{
+    a {
 
-    width: 157px;
-    padding: 10px 15px;
-    font-size: 20px;
-    &:active {
         width: 157px;
-        height: 46px;
-        background-image: url('../../../images/車頭.svg');
+        padding: 10px 15px;
+        font-size: 20px;
+
+        &:active {
+            width: 157px;
+            height: 46px;
+            background-image: url('../../../images/admin-hover-background.svg');
+        }
     }
-  }
 }
 
-.anchor1{
-flex-grow: 1;
+.anchor1 {
+    flex-grow: 1;
 }
 
 .spec2 {
@@ -173,11 +174,12 @@ flex-grow: 1;
     font-weight: 200;
 }
 
-.description{
-  margin-bottom: 8%;
-  p{
-    line-height: 35px;
-  }
+.description {
+    margin-bottom: 8%;
+
+    p {
+        line-height: 35px;
+    }
 }
 
 @media only screen and (min-width: 768px) and (max-width: 1366px) {
@@ -259,6 +261,7 @@ flex-grow: 1;
         text-align: center;
         margin: 1rem 0;
     }
+
     /* 
   .spec2{
     flex-grow: 2;
