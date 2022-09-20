@@ -25,13 +25,10 @@ function PostWYSIWYGEdit() {
   // === 取得所見即所得欄位資料  ===
   const [getData, setGetData] = useState('');
 
-  // === 清空用 ===
-  const [clear, setClear] = useState('');
-
   // === 其他欄位取得資料用 ===
   const [postData, setPostData] = useState({
     title: '【台北】動物園看貓熊、搭貓纜去貓空泡茶聊天、樟樹步道賞魯冰花海',
-    loaction: '台北市',
+    location: '台北市',
     tags: '#台北#木柵#動物園#貓空纜車',
     photo: '',
   });
@@ -87,7 +84,7 @@ function PostWYSIWYGEdit() {
       // 方法2: 要上傳圖片 FormData
       let formData = new FormData();
       formData.append('title', postData.title);
-      formData.append('loaction', postData.loaction);
+      formData.append('location', postData.location);
       formData.append('tags', postData.tags);
       formData.append('photo', postData.photo);
       let response = await axios.post(`${API_URL}/auth/register`, formData);
