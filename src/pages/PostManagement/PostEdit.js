@@ -11,6 +11,7 @@ import { AiFillTag } from 'react-icons/ai';
 import { MdTitle } from 'react-icons/md';
 import { MdPhotoSizeSelectActual } from 'react-icons/md';
 import PhotoReviewSwiperDefault from '../../components/WYSIWYG/PhotoViewDefault';
+import { ClassicEditor } from 'ckeditor5-custom-build';
 // import FileUpload from '../../components/WYSIWYG/FileUpload';
 
 // import { Swiper, SwiperSlide } from 'swiper/react';
@@ -19,6 +20,12 @@ import PhotoReviewSwiperDefault from '../../components/WYSIWYG/PhotoViewDefault'
 function PostWYSIWYGEdit() {
   const [selectedFile, setSelectedFile] = useState('');
   const [preview, setPreview] = useState('');
+  // const [addData, setAddData] = useState('');
+  // const handleChange = (e, editor) => {
+  //   const data = editor.getData();
+  //   setAddData(data);
+  // }
+
 
   useEffect(() => {
     if (!selectedFile) {
@@ -89,21 +96,26 @@ function PostWYSIWYGEdit() {
                 type="loaction"
                 className="form-control mt-2"
                 placeholder="請輸入城市地區"
-                
               ></input>
             </div>
             <div className="col-6">
               <label className="mt-3">
-                <AiFillTag className="mb-1 me-1"></AiFillTag>標籤 (請輸入＃區分標籤)
+                <AiFillTag className="mb-1 me-1"></AiFillTag>標籤
+                (請輸入＃區分標籤)
               </label>
-              <input type="loaction" placeHolder="#台北市" className="form-control mt-2"></input>
+              <input
+                type="loaction"
+                placeHolder="#台北市"
+                className="form-control mt-2"
+              ></input>
             </div>
           </div>
 
           <hr></hr>
           <form className="my-2">
             <p>貼文編輯器</p>
-            <PostEditor></PostEditor>
+            {/* <PostEditor getEditorData={setAddData}/> */}
+            <PostEditor />
             <label
               className="photo_upload d-flex align-items-center
               justify-content-center"

@@ -5,6 +5,7 @@ import { BiLike } from 'react-icons/bi';
 
 import './_communityListCard.scss';
 
+<<<<<<< HEAD
 // const fakeData = [
 //   {
 //     id: 1,
@@ -48,6 +49,8 @@ import './_communityListCard.scss';
 //   },
 // ];
 
+=======
+>>>>>>> 2f2e130bf48cb7303d13b3f46e7142097bf17427
 export default function CommunityListCard({ post }) {
   return (
     <>
@@ -55,7 +58,13 @@ export default function CommunityListCard({ post }) {
 
         console.log('test', data.tags);
         const tags = data.tags.split(/[#,＃]/).filter((item) => item);
+<<<<<<< HEAD
         console.log(tags);
+=======
+        {
+          /* console.log(tags); */
+        }
+>>>>>>> 2f2e130bf48cb7303d13b3f46e7142097bf17427
 
         // 移除陣列空值 .filter(item=>item)
         return (
