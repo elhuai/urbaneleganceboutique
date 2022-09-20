@@ -13,6 +13,10 @@ $line-color--blue: #D5EEEE;
 .article_section{
   padding: 5px;
   width: 80%;
+  .post_dayCount{
+      font-weight: 800;
+      font-size: 1.3rem;
+  }
   .trip_record_section{
     list-style-type: none;
     .post_location_mark{

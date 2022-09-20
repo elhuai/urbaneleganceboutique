@@ -13,25 +13,21 @@ import './swiper.scss';
 
 // import required modules
 import { Navigation } from 'swiper';
-const imgArr = [
-  'https://picsum.photos/200/300?random1',
-  'https://picsum.photos/200/300?random2',
-  'https://picsum.photos/200/300?random3',
-  'https://picsum.photos/200/300?random4',
-  'https://picsum.photos/200/300?random5',
-  'https://picsum.photos/200/300?random6',
-  'https://picsum.photos/200/300?random7',
-  'https://picsum.photos/200/300?random8',
-];
+// const imgArr = [
+//   'https://picsum.photos/200/300?random1',
+//   'https://picsum.photos/200/300?random2',
+//   'https://picsum.photos/200/300?random3',
+//   'https://picsum.photos/200/300?random4',
+//   'https://picsum.photos/200/300?random5',
+//   'https://picsum.photos/200/300?random6',
+//   'https://picsum.photos/200/300?random7',
+//   'https://picsum.photos/200/300?random8',
+// ];
 
-const imgArr2 = [
-  'https://picsum.photos/200/300?random1',
-  'https://picsum.photos/200/300?random2',
-  'https://picsum.photos/200/300?random3',
-];
-
-export default function PhotoReviewSwiper() {
- 
+export default function PhotoReviewSwiper({ list }) {
+  console.log('list',list);
+  let photoList = list.locate_photo.split(',').filter((item) => item);
+  // console.log('photolist', photoList);
   const ShowSwiper = ({ data }) => {
     return (
       <Swiper
@@ -65,7 +61,7 @@ export default function PhotoReviewSwiper() {
   };
   return (
     <>
-      <ShowSwiper data={imgArr} />
+      <ShowSwiper data={photoList} />
     </>
   );
 }

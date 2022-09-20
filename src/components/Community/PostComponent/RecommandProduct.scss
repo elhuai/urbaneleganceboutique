@@ -25,7 +25,7 @@
 }
   .rec_product_card {
     width:300px;
-    height: 380px;
+    height: 360px;
     border: 2px solid $main-color;
     border-radius: 8px;
     overflow: hidden;
@@ -40,12 +40,18 @@
     }
     .product_title {
       padding: 10px;
+      height: 65px;
       font-size:1.2rem;
       color: $line-color--dark;
       font-weight: 500;
       line-height: 1.4rem;
+     
       p{
         margin: 0px;
+        display: -webkit-box;
+        -webkit-box-orient: vertical;
+        -webkit-line-clamp: 2;
+        overflow: hidden;
       }
     
     }

@@ -16,7 +16,7 @@ function CommunityManagement() {
 
   useEffect(() => {
     const fetchMyPost = async () => {
-      const result = await axios.get(`${API_URL}/community/`);
+      const result = await axios.get(`${API_URL}/community`);
       // 取得後端來的資料
       console.log(result.data);
       setMyPost(result.data);
@@ -58,10 +58,10 @@ function CommunityManagement() {
             >
               <div className="post_list">
                 <ul className="post_detail ">
-                  {myPost.map((data) => {
+                  {myPost.map((data,index) => {
                     return (
                       <>
-                        <li className="d-flex justify-content-between align-items-center px-5">
+                        <li key={data.index} className="d-flex justify-content-between align-items-center px-5">
                           <div className="post_description d-flex flex-column">
                             <div className="post_title">
                               <p className="">{data.title}</p>
