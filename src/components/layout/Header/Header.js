@@ -77,7 +77,7 @@ const Header = () => {
           </ul>
         </div>
         <div className="d-flex header_Icon align-items-center justify-content-end ">
-          <Link to="/" className="header_Icon_cart">
+        <Link to="/ec-ordersteps" className="header_Icon_cart">
             <IoCart />
           </Link>
           {/* TODO: ICON更改 */}

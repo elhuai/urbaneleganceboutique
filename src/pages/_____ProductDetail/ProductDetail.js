@@ -11,6 +11,7 @@ import Guess_U_Like2 from '../../images/Guess_U_Like2.png';
 import './_ProductDetail.scss';
 
 const ProductDetail = () => {
+<<<<<<< HEAD:src/pages/ProductDetail/ProductDetail.js
   return (
     <>
       <body className=' data-bs-spy="scroll" '>
@@ -68,6 +69,66 @@ const ProductDetail = () => {
                   <div className="addSubSection">
                     <button>加入購物車</button>
                   </div>
+=======
+    return (
+        <>
+            <body className=' data-bs-spy="scroll" '>
+                {/* <div className="container"> */}
+                <div className="topRow">
+                    
+                    <div className="productDesc">
+                        <div className="productContainer">
+                            <h1 className="headText">宜蘭礁溪．帝王行旅｜悠遊國旅住宿補助超值1301專案｜寵物友善飯店</h1>
+                            <ul>
+                                <li className="subText">
+                                    礁溪車站步行 3 分鐘，房內備有溫泉浴池，不用出門即可泡湯超Chill
+                                </li>
+                                <li className="subText">寵物友善，帶著毛小孩一同出遊吧</li>
+                            </ul>
+                            <div className="tagsSection">
+                                <div className="tags">8天前可免費取消</div>
+                                <div className="tags">交通方便</div>
+                            </div>
+                            <div className='MainAddSection'>
+                                <pre>+ 用尚優惠的價格加購</pre>
+                                <hr />
+                                <div className='addSection'>
+                                    <div className='addSubSection'>
+                                        <img src={Guess_U_Like1}/>
+                                        <a href="#">寵物外出包｜PETRICK Backpack 派翠克</a>
+                                    </div>
+                                    <div className='addSubSection'>
+                                        <p className='addCost'>1780</p>
+                                        <p className='addMainCost'>890</p>
+                                    </div>
+                                    <div className='addSubSection'>
+                                    <button>加入購物車</button>
+                                    </div>
+                                </div>
+                                <div className='addSection'>
+                                    <div className='addSubSection'>
+                                        <img src={Guess_U_Like2}/>
+                                        <a href="#">彈性緩衝反光牽繩 ｜Chillax Leash</a>
+                                    </div>
+                                    <div className='addSubSection'>
+                                        <p className='addCost'>780</p>
+                                        <p className='addMainCost'>560</p>
+                                    </div>
+                                    <div className='addSubSection'>
+                                    <button>加入購物車</button>
+                                    </div>
+                                </div>
+``                            </div>
+                            <div className="costSection">
+                                <p className="mainCost">NT$2300</p>
+                                <p className="cost">NT$2530</p>
+                            </div>
+                            <div className="buttonRow">
+                                <button className="addButton">加入購物車</button>
+                            </div>
+                        </div>
+                    </div>
+>>>>>>> ec-product-detail:src/pages/_____ProductDetail/ProductDetail.js
                 </div>
                 <div className="addSection">
                   <div className="addSubSection">
