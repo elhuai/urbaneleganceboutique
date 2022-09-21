@@ -30,9 +30,6 @@ function EcProductFilter() {
   const [minPrice, setMinPrice] = useState('');
   const [tag, setTag] = useState([]);
 
-  // 收藏=======
-  const [favProducts, setFavProducts] = useState([]);
-
   const location = useLocation();
   const urlSearchParams = new URLSearchParams(location.search);
   const newTypeId = urlSearchParams.get('typeId');
@@ -92,8 +89,6 @@ function EcProductFilter() {
               page={page}
               setPage={setPage}
               error={error}
-              favProducts={favProducts}
-              setfavProducts={setFavProducts}
             />
             <FilterPages
               lastPage={lastPage}
