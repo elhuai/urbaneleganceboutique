@@ -180,7 +180,6 @@ const FilterResult = (props) => {
                 </div>
               </div>
             </div>
-            <div className="product-card-hover position-absolute"></div>
           </div>
         );
       })}
