@@ -23,7 +23,7 @@ const ProductDetail = () => {
           <img src={Product_Detail1} alt="Paris" />
         </div>
         <div className="cardRow">
-        {/*商品細節圖 */}
+          {/*商品細節圖 */}
           <div>
             <img src={Product_Detail2} alt="" />
           </div>

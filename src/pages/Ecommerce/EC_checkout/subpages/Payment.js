@@ -44,7 +44,6 @@ const Payment = () => {
                         <input type="text" />-
                         <input type="text" />-
                         <input type="text" />
-                        
                       </div>
                       <div className="CCardGoodThu">
                         <div>有效期限</div>

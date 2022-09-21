@@ -43,15 +43,10 @@ body {
     font-size: 16px;
 }
 
-.tagsSection {
-    display: flex;
-}
-
 .tags {
-    // flex-direction: row-reverse;
-
+    display: inline-block;
+    color: #2DA9D7;
     font-size: 14px;
-    color: #22c3ff;
     font-weight: bold;
     padding: 3px 10px;
     margin-right: 20px;

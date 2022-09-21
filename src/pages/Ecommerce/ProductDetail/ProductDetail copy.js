@@ -16,29 +16,24 @@ import Guess_U_Like1 from '../../../images/Guess_U_Like1.png';
 import Guess_U_Like2 from '../../../images/Guess_U_Like2.png';
 
 const ProductDetail = () => {
-  const [productData, setProductData] = useState({});
+  const [title, setTitle] = useState({});
 
   useEffect(() => {
-    const fetchProductData = async () => {
+    const fetchTitle = async () => {
       let id = 519;
       const result = await axios.get(`${API_URL}/productdetail?id=${id}`);
-      // console.log(result.data);
-      setProductData(result.data);
+      console.log(result.data);
+      setTitle(result.data);
+      // const data = result.data;
+      // arrStr[index].setState(data);
     };
-    fetchProductData();
+    fetchTitle();
   }, []);
-  console.log('productData', productData);
-  // const product
-  // const tags = productData[0].product_tag;
-  // console.log(tags);
-  // const tag = tags.split(/[#]/).filter((item) => item);
-  // const photo = productData.photo;
-
-  // console.log(photo);
+  // console.log('title', title);
 
   return (
     <>
-      {productData.length === 0 ? (
+      {title.length === 0 ? (
         '沒有資料' //* 是否做loading 頁面
       ) : (
         <div className="ProductDetail">
@@ -46,10 +41,7 @@ const ProductDetail = () => {
           <div className="topRow">
             <div className="imageColumn">
               <div className="mainImage">
-                <img
-                  src={`http://localhost:3007${productData.photo_path}/${productData.main_photo}`}
-                  alt=""
-                />
+                <img src={Product_Detail1} alt="" />
               </div>
               <div className="cardRow">
                 <div>
@@ -71,21 +63,15 @@ const ProductDetail = () => {
             </div>
             <div className="productDesc">
               <div className="productContainer">
-                <h1 className="headText">{productData.name}</h1>
+                <h1 className="headText">{title.name}</h1>
                 <ul>
-                  <li className="subText">{productData.intro}</li>
+                  <li className="subText">{title.intro}</li>
                   {/* <li className="subText">寵物友善，帶著毛小孩一同出遊吧</li> */}
                 </ul>
-                <div className=" d-flex flex-row">
-                  {/* {tag.map((data, index) => {
-                    return (
-                      <p key={index} className="tags my-2 me-2">
-                        {data}
-                      </p>
-                    );
-                  })} */}
+                <div className="tagsSection">
+                  <div className="tags">{title.product_tag}</div>
+                  {/* <div className="tags">交通方便</div> */}
                 </div>
-                {/* <div className="tags">交通方便</div> */}
                 <div className="MainAddSection">
                   <pre>+ 用尚優惠的價格加購</pre>
                   <hr />
@@ -117,8 +103,8 @@ const ProductDetail = () => {
                   </div>
                 </div>
                 <div className="costSection">
-                  <p className="mainCost">NT${productData.price}</p>
-                  <p className="cost">NT${productData.og_price}</p>
+                  <p className="mainCost">NT${title.price}</p>
+                  <p className="cost">NT${title.og_price}</p>
                 </div>
                 <div className="buttonRow">
                   <button className="addButton">加入購物車</button>
@@ -139,8 +125,8 @@ const ProductDetail = () => {
             <div className="spec2">
               <div id="description" className="description">
                 <h4>商品說明</h4>
-                <p>{productData.description}</p>
-                <img src={''} alt="" />
+                <p>{title.description}</p>
+                <img src={Product_Detail8} alt="" />
               </div>
 
               <div id="toKnow" className="description">

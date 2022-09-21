@@ -45,7 +45,7 @@ function EcProductFilter() {
         `${API_URL}/filter/products?typeId=${currentType}&minPrice=${minPrice}&maxPrice=${maxPrice}&search=${newSearch}&order=${order}&page=${page}&tag=${tag}`
       );
 
-      console.log(response.data);
+      // console.log(response.data);
       setProductData(response.data.data);
       setLastPage(response.data.pagesDetail.lastPage);
     };

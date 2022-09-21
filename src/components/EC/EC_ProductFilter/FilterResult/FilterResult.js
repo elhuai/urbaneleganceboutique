@@ -9,6 +9,9 @@ import { handleLoginCard } from '../../../../utils/handler/handleInputCard';
 import { API_URL } from '../../../../utils/config';
 import axios from 'axios';
 
+// 收藏成功跳出視窗
+import { handleSuccess } from '../../../../utils/handler/handleStatusCard';
+
 const FilterResult = (props) => {
   const { setOrder, productData } = props;
   // 收藏設定->登入與否
@@ -26,22 +29,21 @@ const FilterResult = (props) => {
         if (result.data.message === '已成功移除收藏') {
           console.log('成功');
           e.target.style['color'] = '#747474';
+          handleSuccess('已成功移除收藏');
         } else if (result.data.message === '已成功收藏') {
           console.log('不成功');
 
           e.target.style['color'] = '#EF7A70';
+          handleSuccess('已成功收藏');
         }
-        console.log(result.data);
+        // console.log(result.data);
       } catch (error) {
-        console.log('====================================');
         console.log('error', error);
-        console.log('====================================');
       }
     } else {
       handleLoginCard({ isLogin: true }, setUser);
     }
   };
-  // 收藏設定－＞資料庫
 
   return (
     <>
@@ -130,7 +132,7 @@ const FilterResult = (props) => {
               <div className="col-md-8">
                 <div className="card-body">
                   <div className="product_main_card_title d-flex justify-content-between">
-                    <h5 className="card-title">{data.name}</h5>
+                    <h5 className="fw-bolder">{data.name}</h5>
                     {/* 收藏按鈕 */}
                     <div
                       className="product_main_card_collect"
@@ -146,7 +148,7 @@ const FilterResult = (props) => {
                         return (
                           <p
                             key={tags.index}
-                            className="product_main_card_placeName_text my-2 me-2"
+                            className="product_main_card_tag my-2 me-2"
                           >
                             {tag[index]}
                           </p>
@@ -154,21 +156,23 @@ const FilterResult = (props) => {
                       }
                     })}
                   </div>
-                  <p className="card-text my-2">{data.intro}</p>
+                  <p className="product_main_card_text my-2 fs-6">
+                    {data.intro}
+                  </p>
                   <div className="product_main_card_bottom_text d-flex justify-content-between align-items-center">
-                    <p className="product_main_card_locate_text align-items-center d-flex">
+                    <p className="product_main_card_locate_text align-items-center d-flex fw-bolder">
                       <TiLocation />
                       {tag[0]}
                     </p>
                   </div>
                   {/* 評分／價格 */}
                   <div className="d-flex justify-content-between align-items-center mt-3">
-                    <div className="text-warning d-flex">
-                      <i className="text-primary pe-2">
+                    <div className="text-warning d-flex ms-1 align-items-center">
+                      <i className="text-primary pe-1">
                         <FaPaw />
                       </i>
 
-                      <div className="product-card-comment">
+                      <div className="product-card-comment fs-6">
                         {Number(data.per_score.toFixed(1))}
                       </div>
                     </div>
