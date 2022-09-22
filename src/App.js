@@ -13,12 +13,12 @@ import LineLogin from './pages/LineLogin';
 import { UserInfoProvider } from './hooks/useUserInfo';
 import ExamplePage from './pages/ExamplePage/ExamplePage';
 
-import PersonalHomePage from './pages/AdminCenter/PersonalHomePage';
+import PersonalHomePage from './components/AdminCenter/AdminCenter';
 import Post from './pages/PostManagement/Post';
 import PostTrip from './pages/PostManagement/PostTrip';
 import PostEdit from './pages/PostManagement/PostEdit';
 import PostTripEdit from './pages/PostManagement/PostTripEdit';
-import AdminCenterPage from './pages/AdminCenter/AdminCenterPage';
+import AdminCenterPage from './components/layout/AdminCenter/AdminCenterPage';
 import EcEnjoyHomepage from './pages/Ecommerce/EC_HomePage/EC_2Enjoy_Homepage';
 import EcRestaurantHomepage from './pages/Ecommerce/EC_HomePage/EC_3Restaurant_Homepage';
 import EcCommodityHomepage from './pages/Ecommerce/EC_HomePage/EC_4Commodity_Homepage';

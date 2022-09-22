@@ -20,8 +20,10 @@ import { ClassicEditor } from 'ckeditor5-custom-build';
 // import '../node_modules/reatct-draft-wysiwyg/dist/react-draft-wysiwyg.css';
 
 function PostWYSIWYGEdit() {
+  // === 學儒封面照片上傳可直接預覽State ===
   const [selectedFile, setSelectedFile] = useState('');
   const [preview, setPreview] = useState('');
+
   // === 取得所見即所得欄位資料  ===
   const [getData, setGetData] = useState('');
 
@@ -40,12 +42,16 @@ function PostWYSIWYGEdit() {
     setPostData(newPostData);
   }
 
+
+  // === 清空按鈕用 === 
   const handleClick = (e) => {
     e.preventDefault();
-    setPostData({ title: '', loaction: '', tags: '', photo: '' });
+    setPostData({ title: '', location: '', tags: '', photo: '' });
     setGetData('');
   };
 
+  // === 圖片上傳 ===
+  // TODO: 可以多張上傳！先上傳一張試試
   function handleUpload(e) {
     setPostData({ ...postData, photo: e.target.files[0] });
   }
@@ -77,20 +83,22 @@ function PostWYSIWYGEdit() {
     }
   };
 
+  // === 送出 ===
   async function handleSubmit(e) {
     // 把預設行為關掉
     e.preventDefault();
     try {
-      // 方法2: 要上傳圖片 FormData
+      // 要上傳的FormData
       let formData = new FormData();
       formData.append('title', postData.title);
       formData.append('location', postData.location);
+      formData.append('content', getData);
       formData.append('tags', postData.tags);
       formData.append('photo', postData.photo);
-      let response = await axios.post(`${API_URL}/auth/register`, formData);
+      let response = await axios.post(`${API_URL}/post/postEdit`, formData);
       console.log(response.data);
     } catch (e) {
-      console.error('register', e);
+      console.error('postEdit', e);
     }
   }
 
@@ -148,9 +156,9 @@ function PostWYSIWYGEdit() {
                 className="form-control mt-2"
                 placeholder="請輸入城市地區"
                 type="text"
-                id="loaction"
-                name="loaction"
-                value={postData.loaction}
+                id="location"
+                name="location"
+                value={postData.location}
                 onChange={handleChange}
               />
             </div>
