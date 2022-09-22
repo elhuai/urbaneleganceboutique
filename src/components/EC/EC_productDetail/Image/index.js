@@ -1,1 +1,1 @@
-export { default } from './ItemsPicture.js';
+export { default } from './ItemsImage.js';
