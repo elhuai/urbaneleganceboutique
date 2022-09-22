@@ -1,10 +1,19 @@
 import { useState } from 'react';
 import '../styles/_EC_subpages_Payment.scss';
 
-const Payment = () => {
+const Payment = (props) => {
+ 
+    const { shipping, setShippingData } = props
+  
+    const handleFieldChange = (e) => {
+      const newShipping = { ...shipping, [e.target.name]: e.target.value }
+      setShippingData(newShipping)
+  
+      console.log(newShipping)
+    }
   return (
     <>
-      <body className="Payment">
+      <div className="Payment">
         <div className="middleRow">
           <div className="mainTitle">2.確認付款資訊</div>
           <div className="bottomColumn">
@@ -13,16 +22,16 @@ const Payment = () => {
                 <section>
                   <p>購買人資訊</p>
                   <div className="subSection">
-                    <div className="subTitle">姓名 ＊</div>
-                    <input type="text" />
+                    <div className="subTitle ">姓名 ＊</div>
+                    <input type="text" name='name' onChange={handleFieldChange}/>
                   </div>
                   <div className="subSection">
                     <div className="subTitle">email ＊</div>
-                    <input type="text" />
+                    <input type="text" name='email' onChange={handleFieldChange}/>
                   </div>
                   <div className="subSection">
                     <div className="subTitle">聯絡電話 ＊</div>
-                    <input type="text" />
+                    <input type="text" name='phone' onChange={handleFieldChange}/>
                   </div>
                 </section>
                 <section>
@@ -55,17 +64,30 @@ const Payment = () => {
                         <input type="text" />
                       </div>
                     </div>
-                    <input className="radioInput" type="radio" />
-                    <span> LinePay</span>
+                    <div className="paymentSubSection">
+                      <input type="radio" />
+                      <div className="iconLinePay"></div>
+                      <span>請備妥手機以完成交易</span>
+                    </div>
                   </div>
                 </section>
                 <section>
-                  <p>選擇優惠券</p>
                   <p>電子收據</p>
+                  <div className="receiptSection">
+                    <input type="radio" />
+                    <span className="radioInput">電子收據（個人）</span>
+                  </div>
+                  <div className="receiptSection">
+                    <input type="radio" />
+                    <span className="radioInput">電子收據（公司戶）</span>
+                  </div>
+                  <span>為響應環保，系統將自動寄送收據開立通知信至您的購買e-mail，您可在「旅行業代收轉付電子收據加值平台」下載或至e-mail信箱中列印本收據，作為收帳憑據使用。</span>
+                </section>
+                <section>
                   <div className="subSection">
-                    <div className="subDescription">注意事項</div>
-                    <div className="subValue">
-                      預約方式 <br />
+                    <p>注意事項</p>
+                    {/* <div className="subValue"> */}
+                      {/* 預約方式 <br />
                       1. 需提前三個工作天預訂，請先加入主辦單位官方LINE
                       ID：@ksadmg，並主動提供訊息告知預約本活動的日期、場次、人數、兌換券前五碼序號、聯絡人姓名、手機、保險資料等資訊，敬請配合，旺季時遊客較多可能客滿，建議提早預約{' '}
                       <br />
@@ -75,19 +97,19 @@ const Payment = () => {
                       3. 更換參加者務必於活動前一日的中午前通知，並提供新參加者的保險資料 <br />
                       4.
                       因個人因素需更改活動梯次(日期場次)，限改一次，並請提早告知(活動日前3天恕不再接受臨時更換梯次之要求)。更改梯次後不接受改期、取消，並不予退費{' '}
-                      <br />
-                    </div>
+                      <br /> */}
+                    {/* </div> */}
                   </div>
                 </section>
               </div>
             </div>
             <div className="totalColumn">
               <div className="totalName">
-                <p className="title">商品名稱</p>
+                <p className="title">店家名稱</p>
                 <p>宜蘭東澳海蝕洞獨木舟/一泊二食星光露營體驗</p>
               </div>
               <div className="totalCate">
-                <p className="title">方案</p>
+                <p className="title">票券方案</p>
                 <p>A.獨木舟體驗全票</p>
                 <div className="subTotal">
                   <p>售價</p>
@@ -111,7 +133,7 @@ const Payment = () => {
             </div>
           </div>
         </div>
-      </body>
+      </div>
     </>
   );
 };

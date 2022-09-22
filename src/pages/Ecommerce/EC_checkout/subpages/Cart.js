@@ -31,6 +31,7 @@ const Cart = () => {
   }, []);
 
   const [selected, setSelected] = useState([]);
+  const [quantity, setQuantity] = useState(0);
   const [number, setNumber] = useState(1);
 
   const MinusOne = () => {
@@ -47,7 +48,7 @@ const Cart = () => {
 
   return (
     <>
-      <body className="Cart">
+      <div className="Cart">
         <div className="middleRow">
           <div className="mainTitle">1.確認購物車內容</div>
           <div className="bottomColumn">
@@ -79,11 +80,17 @@ const Cart = () => {
                 </div>
                 <div className="subSection">
                   <div className="subTitle">使用優惠券</div>
-                  <select className="subSelect" onChange={(e) => setSelected(e.target.value)}>
+                  <select
+                    className="subSelect"
+                    onChange={(e) => {
+                      setSelected(e.target.value);
+                      setQuantity(e.target.quantity);
+                    }}
+                  >
                     {/* TODO:折價數字也要呈現 */}
                     {coupon.map((v, i) => {
                       return (
-                        <option key={v.id} value={v.name}>
+                        <option key={v.id} value={v.name} quantity={v.quantity}>
                           {v.name}
                         </option>
                       );
@@ -126,11 +133,11 @@ const Cart = () => {
             </div>
             <div className="totalColumn">
               <div className="totalName">
-                <p className="title">商品名稱</p>
+                <p className="title">店家名稱</p>
                 <p>{title.name}</p>
               </div>
               <div className="totalCate">
-                <p className="title">方案</p>
+                <p className="title">票券方案</p>
                 <p>A.獨木舟體驗全票</p>
                 <div className="subTotal">
                   <p>售價</p>
@@ -145,16 +152,16 @@ const Cart = () => {
               <div className="totalDiscount">
                 {/* todo:優惠券名字component  */}
                 <p className="title">{selected}</p>
-                <p className="totalDiscountNumber">-NT$200</p>
+                <p className="totalDiscountNumber">{quantity}%OFF</p>
               </div>
               <div className="totalNumber">
                 <p className="title">總計(付款金額)</p>
-                <p>NT${number*title.price}</p>
+                <p>NT${number * title.price}</p>
               </div>
             </div>
           </div>
         </div>
-      </body>
+      </div>
     </>
   );
 };

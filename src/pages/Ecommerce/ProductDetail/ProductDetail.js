@@ -29,10 +29,6 @@ const ProductDetail = () => {
   }, []);
   // console.log('title', title);
 
- 
-
-
-
   return (
     <>
       {title.length === 0 ? (
@@ -127,7 +123,7 @@ const ProductDetail = () => {
             <div className="spec2">
               <div id="description" className="description">
                 <h4>商品說明</h4>
-                <p>{title.description}</p>
+                <div dangerouslySetInnerHTML={{__html: title.description}} />
                 <img src={Product_Detail8} alt="" />
               </div>
 
