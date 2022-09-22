@@ -18,6 +18,7 @@ const FilterResult = (props) => {
   // 收藏設定->登入與否
   const { user, setUser } = useUserInfo();
   const handleCollect = async (e, id) => {
+    e.preventDefault();
     if (user.auth) {
       try {
         const result = await axios.post(
@@ -28,12 +29,11 @@ const FilterResult = (props) => {
           }
         );
         if (result.data.message === '已成功移除收藏') {
-          console.log('成功');
+          // console.log('成功');
           e.target.style['color'] = '#747474';
           handleSuccess('已成功移除收藏');
         } else if (result.data.message === '已成功收藏') {
-          console.log('不成功');
-
+          // console.log('不成功');
           e.target.style['color'] = '#EF7A70';
           handleSuccess('已成功收藏');
         }
@@ -111,7 +111,10 @@ const FilterResult = (props) => {
         let tags = productData[index].product_tag;
         const tag = tags.split(/[#,＃]/).filter((item) => item);
         return (
-          <Link type="submit" to={`/ec-productdetail?id=${data.id}`} key={data}>
+          <Link
+            to={`/ec-productdetail?id=${data.id}&typeid=${data.product_type_id}`}
+            key={data}
+          >
             <div className="product_main_card card border-primary" key={index}>
               <div className="row g-0">
                 <div className="col-md-4 product_main_card_img--box">
@@ -158,9 +161,7 @@ const FilterResult = (props) => {
                         }
                       })}
                     </div>
-                    <p className="product_main_card_text my-2 fs-6">
-                      {data.intro}
-                    </p>
+                    <p className="product_main_card_text my-2">{data.intro}</p>
                     <div className="product_main_card_bottom_text d-flex justify-content-between align-items-center">
                       <p className="product_main_card_locate_text align-items-center d-flex fw-bolder">
                         <TiLocation />

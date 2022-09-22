@@ -3,31 +3,33 @@ import { useState, useEffect } from 'react';
 import axios from 'axios';
 import { API_URL } from '../../../utils/config';
 import './_ProductDetail.scss';
-// Component
+import { useLocation } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 
-import Product_Detail1 from '../../../images/Product_Detail1.png';
-import Product_Detail2 from '../../../images/Product_Detail2.png';
-import Product_Detail3 from '../../../images/Product_Detail3.png';
-import Product_Detail4 from '../../../images/Product_Detail4.png';
-import Product_Detail5 from '../../../images/Product_Detail5.png';
-import Product_Detail7 from '../../../images/Product_Detail7.png';
-import Product_Detail8 from '../../../images/Product_Detail8.png';
 import Guess_U_Like1 from '../../../images/Guess_U_Like1.png';
 import Guess_U_Like2 from '../../../images/Guess_U_Like2.png';
-import { useLocation } from 'react-router-dom';
+
+// 加入購物車跳出視窗
+import { handleSuccess } from '../../../utils/handler/handleStatusCard';
+
+// 街景
+// import Streeview from '../../../components/EC/EC_productDetail/StreeView';
 
 const ProductDetail = () => {
   const [productData, setProductData] = useState([]);
   const [tag, setTags] = useState([]);
   const [photo, setPhoto] = useState([]);
+  const [recommend, setRecommend] = useState([]);
 
   const location = useLocation();
   const urlSearchParams = new URLSearchParams(location.search);
   const productId = urlSearchParams.get('id');
+  const typeId = urlSearchParams.get('typeid');
   // console.log('productId1111', productId);
 
   useEffect(() => {
     const fetchProductData = async () => {
+      // 抓商品細節資料
       const result = await axios.get(
         `${API_URL}/productdetail/item?id=${productId}`
       );
@@ -38,10 +40,14 @@ const ProductDetail = () => {
       const photos = result.data.photo;
       setPhoto(photos);
       setProductData(result.data);
+
+      // 抓推薦 第四館商品資料
+      const recommend = await axios.get(`${API_URL}/productdetail/recommend`);
+      setRecommend(recommend.data);
     };
     fetchProductData();
   }, []);
-  console.log('productData', productData);
+  console.log('recommend', recommend);
   const mainURL = productData.photo_path;
 
   return (
@@ -49,9 +55,9 @@ const ProductDetail = () => {
       {productData.length === 0 ? (
         console.log('沒有資料') //* 是否做loading 頁面
       ) : (
-        <div className="ProductDetail">
-          {/* <div className="container"> */}
+        <div className="productDetail mt-2">
           <div className="topRow">
+            {/* 商品照區域 */}
             <div className="imageColumn">
               <div className="mainImage">
                 <img
@@ -74,10 +80,9 @@ const ProductDetail = () => {
             </div>
             <div className="productDesc">
               <div className="productContainer">
-                <h1 className="headText">{productData.name}</h1>
+                <h1 className="headText fw-bolder">{productData.name}</h1>
                 <ul>
                   <li className="subText">{productData.intro}</li>
-                  {/* <li className="subText">寵物友善，帶著毛小孩一同出遊吧</li> */}
                 </ul>
                 <div className=" d-flex flex-row">
                   {tag.map((data, index) => {
@@ -88,49 +93,75 @@ const ProductDetail = () => {
                     );
                   })}
                 </div>
-                {/* <div className="tags">交通方便</div> */}
-                <div className="MainAddSection">
-                  <pre>+ 用尚優惠的價格加購</pre>
-                  <hr />
-                  <div className="addSection">
-                    <div className="addSubSection">
-                      <img src={Guess_U_Like1} />
-                      <a href="#">寵物外出包｜PETRICK Backpack 派翠克</a>
-                    </div>
-                    <div className="addCostSection">
-                      <p className="addCost">1780</p>
-                      <p className="addMainCost">890</p>
-                    </div>
-                    <div className="addSubSection">
-                      <button>加入購物車</button>
-                    </div>
-                  </div>
-                  <div className="addSection">
-                    <div className="addSubSection">
-                      <img src={Guess_U_Like2} />
-                      <a href="#">彈性緩衝反光牽繩 ｜Chillax Leash</a>
-                    </div>
-                    <div className="addCostSection">
-                      <p className="addCost">780</p>
-                      <p className="addMainCost">560</p>
-                    </div>
-                    <div className="addSubSection">
-                      <button>加入購物車</button>
-                    </div>
-                  </div>
-                </div>
-                <div className="costSection">
+                {/* 主要價格區域 */}
+                <div className="costSection ">
                   <p className="mainCost">NT${productData.price}</p>
-                  <p className="cost">
+                  <p className="ogCost text-decoration-line-through  ">
                     NT${Number((productData.price * 1.2).toFixed(0))}
                   </p>
                 </div>
+
+                {/* 加購區 */}
+                <div className="mainAddSection">
+                  <p className="text-muted">+ 尚優惠的加購價</p>
+                  <hr />
+                  {/* 推薦商品 */}
+                  {recommend.map((data, index) => {
+                    return (
+                      <div className="addSection d-flex flex-row mb-2">
+                        <div className="addSubSection d-flex align-items-center mb-0">
+                          <img
+                            className="addSubSection_img"
+                            // TODO 要記得換
+                            src={`http://localhost:3007${mainURL}/${productData.main_photo}`}
+                            alt="..."
+                          />
+                          <p className="addSubSection_name fw-bolder mb-0 ms-2">
+                            {data.name}
+                          </p>
+                        </div>
+                        <div className="addCartSection d-flex flex-row">
+                          <div className="addCostSection">
+                            <p className="addCost text-decoration-line-through m-0">
+                              NT${Number((data.price * 1.2).toFixed(0))}
+                            </p>
+                            <p className="addMainCost fs-5 fw-bolder m-0">
+                              NT${data.price}
+                            </p>
+                          </div>
+                          <div className="d-flex align-items-end">
+                            <button
+                              className="addSubSection_btn ms-2 py-2"
+                              onClick={() => {
+                                // console.log(e.target.value);
+                                handleSuccess('已成功加入購物車');
+                              }}
+                            >
+                              加入購物車
+                            </button>
+                          </div>
+                        </div>
+                      </div>
+                    );
+                  })}
+                </div>
+
+                {/* 此商品的加入購物車 */}
                 <div className="buttonRow">
-                  <button className="addButton">加入購物車</button>
+                  <button
+                    className="addButton"
+                    onClick={(e) => {
+                      // console.log(e.target.value);
+                      handleSuccess('已成功加入購物車');
+                    }}
+                  >
+                    加入購物車
+                  </button>
                 </div>
               </div>
             </div>
           </div>
+          <hr />
           <div className="bottomRow">
             <div className="spec">
               <div className="anchor">
@@ -168,7 +199,7 @@ const ProductDetail = () => {
                 <p>
                   • 憑證使用方式
                   <br />
-                  現場請出示電子憑證與護照正本或身份證
+                  現場請出示電子憑證與護照正本或身份證 text
                   <br />
                   • 憑證兌換期限
                   <br />
@@ -176,6 +207,7 @@ const ProductDetail = () => {
                   <br />
                 </p>
               </div>
+              {/* <Streeview /> */}
             </div>
           </div>
         </div>
