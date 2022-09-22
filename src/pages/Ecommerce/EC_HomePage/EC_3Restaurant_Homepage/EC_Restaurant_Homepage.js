@@ -38,14 +38,14 @@ function EcRestaurantHomepage() {
   useEffect(() => {
     const fetchFishProducts = async () => {
       const arrStr = [
-        { id: '3', text: '咖啡', setState: setCoffeeCard },
-        { id: '3', text: '蛋糕', setState: setCakeCard },
+        { id: '3', keyword: '咖啡', setState: setCoffeeCard },
+        { id: '3', keyword: '蛋糕', setState: setCakeCard },
         // { text: '益生菌', setState: setHealthCard },
       ];
 
       for (let index = 0; index < arrStr.length; index++) {
         const result = await axios.get(
-          `${API_URL}/product/recommendProduct?id=${arrStr[index].id}&name=${arrStr[index].text}`
+          `${API_URL}/product/recommendProduct?typeId=${arrStr[index].id}&keyword=${arrStr[index].keyword}`
         );
         const data = result.data;
         arrStr[index].setState(data);

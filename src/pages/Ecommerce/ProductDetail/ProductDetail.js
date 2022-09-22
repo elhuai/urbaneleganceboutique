@@ -14,32 +14,40 @@ import Product_Detail7 from '../../../images/Product_Detail7.png';
 import Product_Detail8 from '../../../images/Product_Detail8.png';
 import Guess_U_Like1 from '../../../images/Guess_U_Like1.png';
 import Guess_U_Like2 from '../../../images/Guess_U_Like2.png';
+import { useLocation } from 'react-router-dom';
 
 const ProductDetail = () => {
-  const [productData, setProductData] = useState({});
+  const [productData, setProductData] = useState([]);
+  const [tag, setTags] = useState([]);
+  const [photo, setPhoto] = useState([]);
+
+  const location = useLocation();
+  const urlSearchParams = new URLSearchParams(location.search);
+  const productId = urlSearchParams.get('id');
+  // console.log('productId1111', productId);
 
   useEffect(() => {
     const fetchProductData = async () => {
-      let id = 519;
-      const result = await axios.get(`${API_URL}/productdetail?id=${id}`);
-      // console.log(result.data);
+      const result = await axios.get(
+        `${API_URL}/productdetail/item?id=${productId}`
+      );
+      // console.log(result);
+      const tags = result.data.product_tag;
+      const tag = tags.split(/[#]/).filter((item) => item);
+      setTags(tag);
+      const photos = result.data.photo;
+      setPhoto(photos);
       setProductData(result.data);
     };
     fetchProductData();
   }, []);
   console.log('productData', productData);
-  // const product
-  // const tags = productData[0].product_tag;
-  // console.log(tags);
-  // const tag = tags.split(/[#]/).filter((item) => item);
-  // const photo = productData.photo;
-
-  // console.log(photo);
+  const mainURL = productData.photo_path;
 
   return (
     <>
       {productData.length === 0 ? (
-        '沒有資料' //* 是否做loading 頁面
+        console.log('沒有資料') //* 是否做loading 頁面
       ) : (
         <div className="ProductDetail">
           {/* <div className="container"> */}
@@ -47,26 +55,21 @@ const ProductDetail = () => {
             <div className="imageColumn">
               <div className="mainImage">
                 <img
-                  src={`http://localhost:3007${productData.photo_path}/${productData.main_photo}`}
+                  src={`http://localhost:3007${mainURL}/${productData.main_photo}`}
                   alt=""
                 />
               </div>
               <div className="cardRow">
-                <div>
-                  <img src={Product_Detail2} alt="" />
-                </div>
-                <div>
-                  <img src={Product_Detail3} alt="" />
-                </div>
-                <div>
-                  <img src={Product_Detail4} alt="" />
-                </div>
-                <div>
-                  <img src={Product_Detail5} alt="" />
-                </div>
-                <div>
-                  <img src={Product_Detail7} alt="" />
-                </div>
+                {photo.map((data, index) => {
+                  return (
+                    <div key={index}>
+                      <img
+                        src={`http://localhost:3007${mainURL}/${data['file_name']}`}
+                        alt=""
+                      />
+                    </div>
+                  );
+                })}
               </div>
             </div>
             <div className="productDesc">
@@ -77,13 +80,13 @@ const ProductDetail = () => {
                   {/* <li className="subText">寵物友善，帶著毛小孩一同出遊吧</li> */}
                 </ul>
                 <div className=" d-flex flex-row">
-                  {/* {tag.map((data, index) => {
+                  {tag.map((data, index) => {
                     return (
                       <p key={index} className="tags my-2 me-2">
                         {data}
                       </p>
                     );
-                  })} */}
+                  })}
                 </div>
                 {/* <div className="tags">交通方便</div> */}
                 <div className="MainAddSection">
@@ -118,7 +121,9 @@ const ProductDetail = () => {
                 </div>
                 <div className="costSection">
                   <p className="mainCost">NT${productData.price}</p>
-                  <p className="cost">NT${productData.og_price}</p>
+                  <p className="cost">
+                    NT${Number((productData.price * 1.2).toFixed(0))}
+                  </p>
                 </div>
                 <div className="buttonRow">
                   <button className="addButton">加入購物車</button>

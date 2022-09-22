@@ -11,6 +11,7 @@ import axios from 'axios';
 
 // 收藏成功跳出視窗
 import { handleSuccess } from '../../../../utils/handler/handleStatusCard';
+import { Link } from 'react-router-dom';
 
 const FilterResult = (props) => {
   const { setOrder, productData } = props;
@@ -44,7 +45,7 @@ const FilterResult = (props) => {
       handleLoginCard({ isLogin: true }, setUser);
     }
   };
-
+  console.log(productData);
   return (
     <>
       {/* __排序 */}
@@ -110,81 +111,83 @@ const FilterResult = (props) => {
         let tags = productData[index].product_tag;
         const tag = tags.split(/[#,＃]/).filter((item) => item);
         return (
-          <div className="product_main_card card border-primary" key={index}>
-            <div className="row g-0">
-              <div className="col-md-4 product_main_card_img--box">
-                <div className="d-flex justify-content-right position-absolute">
-                  <span className="text-white bg-primary small d-flex align-items-center justify-content-center px-2 py-1  product_main_card_label">
-                    <i className="small">
-                      <AiFillFire />
-                    </i>
-                    <span className="">精選</span>
-                  </span>
-                </div>
-                <img
-                  src={`http://localhost:3007${data.photo_path}/${data.main_photo}`}
-                  className="product_main_card_img"
-                  alt="..."
-                />
-                <div></div>
-              </div>
-
-              <div className="col-md-8">
-                <div className="card-body">
-                  <div className="product_main_card_title d-flex justify-content-between">
-                    <h5 className="fw-bolder">{data.name}</h5>
-                    {/* 收藏按鈕 */}
-                    <div
-                      className="product_main_card_collect"
-                      onClick={(e) => handleCollect(e, data.id)}
-                    >
-                      <FaHeart />
-                    </div>
-                  </div>
-                  {/* 標籤 */}
-                  <div className="d-flex flex-row">
-                    {tag.map((data, index) => {
-                      if (index > 0) {
-                        return (
-                          <p
-                            key={tags.index}
-                            className="product_main_card_tag my-2 me-2"
-                          >
-                            {tag[index]}
-                          </p>
-                        );
-                      }
-                    })}
-                  </div>
-                  <p className="product_main_card_text my-2 fs-6">
-                    {data.intro}
-                  </p>
-                  <div className="product_main_card_bottom_text d-flex justify-content-between align-items-center">
-                    <p className="product_main_card_locate_text align-items-center d-flex fw-bolder">
-                      <TiLocation />
-                      {tag[0]}
-                    </p>
-                  </div>
-                  {/* 評分／價格 */}
-                  <div className="d-flex justify-content-between align-items-center mt-3">
-                    <div className="text-warning d-flex ms-1 align-items-center">
-                      <i className="text-primary pe-1">
-                        <FaPaw />
+          <Link type="submit" to={`/ec-productdetail?id=${data.id}`} key={data}>
+            <div className="product_main_card card border-primary" key={index}>
+              <div className="row g-0">
+                <div className="col-md-4 product_main_card_img--box">
+                  <div className="d-flex justify-content-right position-absolute">
+                    <span className="text-white bg-primary small d-flex align-items-center justify-content-center px-2 py-1  product_main_card_label">
+                      <i className="small">
+                        <AiFillFire />
                       </i>
+                      <span className="">精選</span>
+                    </span>
+                  </div>
+                  <img
+                    src={`http://localhost:3007${data.photo_path}/${data.main_photo}`}
+                    className="product_main_card_img"
+                    alt="..."
+                  />
+                  <div></div>
+                </div>
 
-                      <div className="product-card-comment fs-6">
-                        {Number(data.per_score.toFixed(1))}
+                <div className="col-md-8">
+                  <div className="card-body">
+                    <div className="product_main_card_title d-flex justify-content-between">
+                      <h5 className="fw-bolder">{data.name}</h5>
+                      {/* 收藏按鈕 */}
+                      <div
+                        className="product_main_card_collect"
+                        onClick={(e) => handleCollect(e, data.id)}
+                      >
+                        <FaHeart />
                       </div>
                     </div>
-                    <div className="product-card-price text-right d-flex align-items-end">
-                      <p>NT${data.price}</p>
+                    {/* 標籤 */}
+                    <div className="d-flex flex-row">
+                      {tag.map((data, index) => {
+                        if (index > 0) {
+                          return (
+                            <p
+                              key={index}
+                              className="product_main_card_tag my-2 me-2"
+                            >
+                              {data}
+                            </p>
+                          );
+                        }
+                      })}
                     </div>
+                    <p className="product_main_card_text my-2 fs-6">
+                      {data.intro}
+                    </p>
+                    <div className="product_main_card_bottom_text d-flex justify-content-between align-items-center">
+                      <p className="product_main_card_locate_text align-items-center d-flex fw-bolder">
+                        <TiLocation />
+                        {tag[0]}
+                      </p>
+                    </div>
+                    {/* 評分／價格 */}
+                    <div className="d-flex justify-content-between align-items-center mt-3">
+                      <div className="text-warning d-flex ms-1 align-items-center">
+                        <i className="text-primary pe-1">
+                          <FaPaw />
+                        </i>
+
+                        <div className="product-card-comment fs-6">
+                          {Number(data.per_score.toFixed(1))}
+                        </div>
+                      </div>
+                      <div className="product-card-price text-right d-flex align-items-end">
+                        <p>NT${data.price}</p>
+                      </div>
+                    </div>
+                    {/* END 評分／價格 */}
                   </div>
-                  {/* END 評分／價格 */}
                 </div>
               </div>
             </div>
-          </div>
+          </Link>
         );
       })}
     </>

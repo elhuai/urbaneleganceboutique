@@ -56,8 +56,8 @@ const FilterList = (props) => {
 
             {tags.map((data, i) => {
               return (
-                <div className="product_checkbox">
-                  <label for={data.tag_name} key={data.tag_id}>
+                <div className="product_checkbox" key={data.tag_id}>
+                  <label for={data.tag_name}>
                     <input
                       type="checkbox"
                       id={data.tag_name}
