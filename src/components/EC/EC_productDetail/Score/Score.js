@@ -7,7 +7,7 @@ const Score = () => {
     <>
       <div id="perScore" className="description">
         <h4>票券評價</h4>
-        <div className="score mt-4">
+        <div className="score">
           <div className="score_circle">4.5</div>
           <div className=" score_total">
             <Rate allowHalf character={<FaPaw />} defaultValue={4.5} />
