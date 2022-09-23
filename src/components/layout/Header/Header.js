@@ -11,6 +11,7 @@ import { useUserInfo } from '../../../hooks/useUserInfo';
 import './_Header.scss';
 import { callLineLoginApi } from '../../../api/authApi';
 import { handleFailed } from '../../../utils/handler/handleStatusCard';
+import ShoppingCart from '../ShoppingCart/ShoppingCart';
 
 const Header = () => {
   const { user, setUser } = useUserInfo();
@@ -77,9 +78,7 @@ const Header = () => {
           </ul>
         </div>
         <div className="d-flex header_Icon align-items-center justify-content-end ">
-        <Link to="/ec-ordersteps" className="header_Icon_cart">
-            <IoCart />
-          </Link>
+        <ShoppingCart placement={'end'} name={'end'} />
           {/* TODO: ICON更改 */}
           <AuthBtn />
         </div>

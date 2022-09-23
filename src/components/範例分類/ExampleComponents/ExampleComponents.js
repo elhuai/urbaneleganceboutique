@@ -14,7 +14,7 @@ export default function Example() {
   return (
     <>
       
-        <ShoppingCart placement={'end'} name={'555'} />
+        <ShoppingCart placement={'end'} name={'end'} />
       
       <div className="text-center py-5">
         <p className="text-center pt-5 m-0">
