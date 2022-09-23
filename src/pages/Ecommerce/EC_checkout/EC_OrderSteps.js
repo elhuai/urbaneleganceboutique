@@ -6,7 +6,7 @@ import Payment from './subpages/Payment';
 import OrderDetail from './subpages/OrderDetail';
 
 // 進度條
-import ProgressBar from './components/ProgressBar';
+import ProgressBar from '../../../components/EC/EC_ordersteps/ProgressBar/ProgressBar';
 
 // css樣式
 import './styles/_EC_orderSteps.scss';
@@ -31,17 +31,18 @@ function OrderSteps() {
   // 上一步 下一步按鈕
   const next = () => {
     // 運送表單用檢查
+    // TODO:記得改回2!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
     if (step === 4) {
       const { name, email, phone } = shipping;
 
       // 有錯誤訊息會跳出警告，不會到"下一步"
       const errors = [];
 
-      if (!name) errors.push('姓名沒填~ ');
+      if (!name) errors.push('姓名沒有填喔！ ');
 
-      if (!email) errors.push('住址沒填~ ');
+      if (!email) errors.push('住址沒有填喔！ ');
 
-      if (!phone) errors.push('電話沒填~ ');
+      if (!phone) errors.push('電話沒有填喔！ ');
 
       if (errors.length > 0) {
         alert(errors.join(','));
@@ -60,7 +61,7 @@ function OrderSteps() {
 
   return (
     <>
-    {console.log(step, maxSteps)}
+      {console.log(step, maxSteps)}
       {/* 進度條 */}
       <div>
         <ProgressBar maxSteps={maxSteps} step={step} progressNames={progressNames} />
@@ -71,9 +72,11 @@ function OrderSteps() {
       </div>
       {/* 按鈕 */}
       <div className="orderButton">
-         {step < maxSteps && <button className="nextBnt" onClick={next} disabled={step === maxSteps}>
-          前往下一步 
-        </button>}
+        {step < maxSteps && (
+          <button className="nextBnt" onClick={next} disabled={step === maxSteps}>
+            前往下一步
+          </button>
+        )}
         <button className="prevBnt" onClick={prev} disabled={step === 1}>
           回到上一步
         </button>

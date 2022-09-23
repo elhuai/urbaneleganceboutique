@@ -1,5 +1,8 @@
 import { normalizeUnits } from 'moment';
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
+import axios from 'axios';
+import { API_URL } from '../../../utils/config';
+import { Link } from 'react-router-dom';
 import { IoChevronBack } from 'react-icons/io5';
 // import Button from 'react-bootstrap/Button';
 import Offcanvas from 'react-bootstrap/Offcanvas';
@@ -14,6 +17,7 @@ function ShoppingCart({ name, ...props }) {
   const handleShow = () => setShow(true);
 
   const [number, setNumber] = useState(1);
+  const [cart, setCart] = useState([]);
 
   const MinusOne = () => {
     setNumber(number > 1 ? number - 1 : 1);
@@ -23,10 +27,35 @@ function ShoppingCart({ name, ...props }) {
     setNumber(number + 1);
   };
 
+  useEffect(() => {
+    const fetchProductData = async () => {
+      // 抓商品細節資料
+      const result = await axios.get(`${API_URL}/cart/getcart`);
+      console.log('result', result.data);
+      const [cartData] = result.data;
+      // console.log(result);
+      // const tags = result.data.product_tag;
+      // const tag = tags.split(/[#]/).filter((item) => item);
+      // setTags(tag);
+      // const photos = result.data.photo;
+      // setPhoto(photos);
+      // const mainURL = result.data.photo_path;
+      // setMainURL(mainURL);
+      // setProductData(result.data);
+
+      // 抓推薦 第四館商品資料
+      // const recommend = await axios.get(`${API_URL}/productdetail/recommend`);
+      setCart(cartData);
+    };
+    fetchProductData();
+  }, []);
+  console.log('cart', cart);
+  // console.log('cart',[cart]);
+
   return (
     <>
       {/* <button onClick={handleShow}> */}
-      <IoCart onClick={handleShow} className="ioCart" />
+      <IoCart onClick={handleShow} className="ioCart flex-shrink-0" />
       {/* </button> */}
       <Offcanvas show={show} onHide={handleClose} {...props}>
         <div className="ShoppingCart">
@@ -48,7 +77,7 @@ function ShoppingCart({ name, ...props }) {
                     />
                   </div>
                   <div className="mainRowObjectText">
-                    <p>宜蘭傳藝園區｜門票・畫舫船遊河・DIY體驗套票</p>
+                    <p>{cart.name}</p>
                     {/* <span>宜蘭傳藝中心</span> */}
                   </div>
                 </div>
@@ -60,9 +89,11 @@ function ShoppingCart({ name, ...props }) {
                       <IoCaretForward onClick={AddOne} />
                     </div>
 
-                    <p>NT$12,030</p>
+                    <p>NT${number * cart.price}</p>
                   </div>
-                  <button>確定下單</button>
+                  <Link to="/ec-ordersteps">
+                    <button>確定下單</button>
+                  </Link>
                 </div>
               </div>
               {/* ----放進來的票券---- */}

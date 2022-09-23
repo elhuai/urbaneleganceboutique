@@ -3,17 +3,18 @@ import '../styles/_EC_subpages_Cart.scss';
 import axios from 'axios';
 import { useState, useEffect } from 'react';
 import { API_URL } from '../../../../utils/config';
-
 import { IoCaretBack, IoCaretForward } from 'react-icons/io5';
 
 const Cart = () => {
   
   const [coupon, setCoupon] = useState([]);
+  const [cart, setCart] = useState([]);
+
 
   useEffect(() => {
     const fetchCoupon = async () => {
       const result = await axios.get(`${API_URL}/orderSteps/coupon`);
-      // console.log(result.data);
+      console.log(result.data);
       setCoupon(result.data);
       // const data = result.data;
       // arrStr[index].setState(data);
@@ -21,15 +22,22 @@ const Cart = () => {
     fetchCoupon();
   }, []);
 
-  const [title, setTitle] = useState({});
+  // console.log('coupon', coupon);
+
 
   useEffect(() => {
-    const fetchTitle = async () => {
-      const result = await axios.get(`${API_URL}/productdetail/items`);
-      setTitle(result.data);
+    const fetchProductData = async () => {
+      // 抓商品細節資料
+      const result = await axios.get(`${API_URL}/cart/getcart`);
+      // console.log('result', result.data);
+      const [cartData] = result.data;
+    
+      setCart(cartData);
     };
-    fetchTitle();
+    fetchProductData();
   }, []);
+
+  // console.log('cart', cart);
 
   const [selected, setSelected] = useState([]);
   const [quantity, setQuantity] = useState(0);
@@ -57,12 +65,8 @@ const Cart = () => {
             <div className="mainColumn">
               <div className="infoColumn">
                 <div className="subSection">
-                  <div className="subTitle">店家名稱</div>
-                  <div className="subInput">{title.name}</div>
-                </div>
-                <div className="subSection">
-                  <div className="subTitle">票券方案</div>
-                  <div className="subInput">A.獨木舟體驗全票</div>
+                  <div className="subTitle">票券名稱</div>
+                  <div className="subInput">{cart.name}</div>
                 </div>
                 <div className="subSection">
                   <div className="subTitle">票券數量</div>
@@ -143,16 +147,13 @@ const Cart = () => {
               </div>
             </div>
             <div className="totalColumn">
-              <div className="totalName">
-                <p className="title">店家名稱</p>
-                <p>{title.name}</p>
-              </div>
+              
               <div className="totalCate">
-                <p className="title">票券方案</p>
-                <p>A.獨木舟體驗全票</p>
+                <p className="title">票券名稱</p>
+                <p>{cart.name}</p>
                 <div className="subTotal">
                   <p>售價</p>
-                  <p>NT${title.price}</p>
+                  <p>NT${cart.price}</p>
                 </div>
                 <div className="subTotal">
                   <p>數量</p>
@@ -167,7 +168,7 @@ const Cart = () => {
               </div>
               <div className="totalNumber">
                 <p className="title">總計(付款金額)</p>
-                <p>NT${number * title.price}</p>
+                <p>NT${number * cart.price}</p>
               </div>
             </div>
           </div>
