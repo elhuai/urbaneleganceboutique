@@ -45,6 +45,10 @@ $royal-blue: #22C3FF;
     text-align: left;
     margin-bottom: 8px;
 
+    >span {
+      font-size: 1rem
+    }
+
   }
 
   .product_check_items {
@@ -95,6 +99,10 @@ $royal-blue: #22C3FF;
     width: 85%;
     display: flex;
     align-items: center;
+
+    p {
+      font-size: large;
+    }
 
     button {
       font-size: 14px;
