@@ -9,11 +9,11 @@ export const restaurantCategory = [
   },
   {
     name: '中式料理',
-    img: 'https://cf.shopee.tw/file/fad96816ced8ba0dfb1e04dc27c0dfe5',
+    img: 'https://img.freepik.com/free-photo/schezwan-noodles-szechwan-vegetable-hakka-noodles-chow-mein-is-popular-indo-chinese-recipes-served-bowl-plate-with-wooden-chopsticks_466689-74636.jpg',
   },
   {
     name: '西式餐點',
-    img: 'https://img.meepshop.com/65ykI8Jockw-DUdCwSnm3RyLrN_EpSWJ9_vV9fASLK8/w:480/Z3M6Ly9pbWcubWVlcGNsb3VkLmNvbS9tZWVwc2hvcC85NmNlYzkzNS0yZGYyLTRlZTYtOTQyZC0wNGFhNDY4ZjBkNzgvZmlsZXMvMWIwZDQ0MjAtYTY5Yy00MWUwLTlmMTYtOTRkZjU3YmI4ZGFhLmpwZw',
+    img: 'https://img.freepik.com/premium-photo/top-view-fresh-delicious-fish-chips-with-sauces-wooden-board-table_181624-58491.jpg',
   },
   {
     name: '義式料理',

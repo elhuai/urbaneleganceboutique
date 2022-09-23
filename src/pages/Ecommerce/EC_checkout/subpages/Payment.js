@@ -22,15 +22,27 @@ const Payment = (props) => {
                   <p>購買人資訊</p>
                   <div className="subSection">
                     <div className="subTitle ">姓名 ＊</div>
-                    <input type="text" name="name" onChange={handleFieldChange} />
+                    <input
+                      type="text"
+                      name="name"
+                      onChange={handleFieldChange}
+                    />
                   </div>
                   <div className="subSection">
                     <div className="subTitle">email ＊</div>
-                    <input type="text" name="email" onChange={handleFieldChange} />
+                    <input
+                      type="text"
+                      name="email"
+                      onChange={handleFieldChange}
+                    />
                   </div>
                   <div className="subSection">
                     <div className="subTitle">聯絡電話 ＊</div>
-                    <input type="text" name="phone" onChange={handleFieldChange} />
+                    <input
+                      type="text"
+                      name="phone"
+                      onChange={handleFieldChange}
+                    />
                   </div>
                 </section>
                 <section>
@@ -93,9 +105,13 @@ const Payment = (props) => {
                       ID：@ksadmg，並主動提供訊息告知預約本活動的日期、場次、人數、兌換券前五碼序號、聯絡人姓名、手機、保險資料等資訊，敬請配合，旺季時遊客較多可能客滿，建議提早預約{' '}
                       <br />
                       2. 如雙方確認預約後不克前往，退改政策如下： <br />
-                      (1) 出發日前6日至前4日內(不含出發日)通知取消，將退回已付金額的50% <br />
+                      (1)
+                      出發日前6日至前4日內(不含出發日)通知取消，將退回已付金額的50%{' '}
+                      <br />
                       (2) 出發日前3日至當日內不接受改期、取消，並不予退費 <br />
-                      3. 更換參加者務必於活動前一日的中午前通知，並提供新參加者的保險資料 <br />
+                      3.
+                      更換參加者務必於活動前一日的中午前通知，並提供新參加者的保險資料{' '}
+                      <br />
                       4.
                       因個人因素需更改活動梯次(日期場次)，限改一次，並請提早告知(活動日前3天恕不再接受臨時更換梯次之要求)。更改梯次後不接受改期、取消，並不予退費{' '}
                       <br /> */}
