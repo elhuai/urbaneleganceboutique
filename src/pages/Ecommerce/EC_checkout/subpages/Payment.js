@@ -2,15 +2,14 @@ import { useState } from 'react';
 import '../styles/_EC_subpages_Payment.scss';
 
 const Payment = (props) => {
- 
-    const { shipping, setShippingData } = props
-  
-    const handleFieldChange = (e) => {
-      const newShipping = { ...shipping, [e.target.name]: e.target.value }
-      setShippingData(newShipping)
-  
-      console.log(newShipping)
-    }
+  const { shipping, setShippingData } = props;
+
+  const handleFieldChange = (e) => {
+    const newShipping = { ...shipping, [e.target.name]: e.target.value };
+    setShippingData(newShipping);
+
+    console.log(newShipping);
+  };
   return (
     <>
       <div className="Payment">
@@ -23,15 +22,15 @@ const Payment = (props) => {
                   <p>購買人資訊</p>
                   <div className="subSection">
                     <div className="subTitle ">姓名 ＊</div>
-                    <input type="text" name='name' onChange={handleFieldChange}/>
+                    <input type="text" name="name" onChange={handleFieldChange} />
                   </div>
                   <div className="subSection">
                     <div className="subTitle">email ＊</div>
-                    <input type="text" name='email' onChange={handleFieldChange}/>
+                    <input type="text" name="email" onChange={handleFieldChange} />
                   </div>
                   <div className="subSection">
                     <div className="subTitle">聯絡電話 ＊</div>
-                    <input type="text" name='phone' onChange={handleFieldChange}/>
+                    <input type="text" name="phone" onChange={handleFieldChange} />
                   </div>
                 </section>
                 <section>
@@ -81,13 +80,15 @@ const Payment = (props) => {
                     <input type="radio" />
                     <span className="radioInput">電子收據（公司戶）</span>
                   </div>
-                  <span>為響應環保，系統將自動寄送收據開立通知信至您的購買e-mail，您可在「旅行業代收轉付電子收據加值平台」下載或至e-mail信箱中列印本收據，作為收帳憑據使用。</span>
+                  <span>
+                    為響應環保，系統將自動寄送收據開立通知信至您的購買e-mail，您可在「旅行業代收轉付電子收據加值平台」下載或至e-mail信箱中列印本收據，作為收帳憑據使用。
+                  </span>
                 </section>
                 <section>
                   <div className="subSection">
                     <p>注意事項</p>
                     {/* <div className="subValue"> */}
-                      {/* 預約方式 <br />
+                    {/* 預約方式 <br />
                       1. 需提前三個工作天預訂，請先加入主辦單位官方LINE
                       ID：@ksadmg，並主動提供訊息告知預約本活動的日期、場次、人數、兌換券前五碼序號、聯絡人姓名、手機、保險資料等資訊，敬請配合，旺季時遊客較多可能客滿，建議提早預約{' '}
                       <br />
