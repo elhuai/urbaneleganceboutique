@@ -22,15 +22,27 @@ const Payment = (props) => {
                   <p>購買人資訊</p>
                   <div className="subSection">
                     <div className="subTitle ">姓名 ＊</div>
-                    <input type="text" name="name" onChange={handleFieldChange} />
+                    <input
+                      type="text"
+                      name="name"
+                      onChange={handleFieldChange}
+                    />
                   </div>
                   <div className="subSection">
                     <div className="subTitle">email ＊</div>
-                    <input type="text" name="email" onChange={handleFieldChange} />
+                    <input
+                      type="text"
+                      name="email"
+                      onChange={handleFieldChange}
+                    />
                   </div>
                   <div className="subSection">
                     <div className="subTitle">聯絡電話 ＊</div>
-                    <input type="text" name="phone" onChange={handleFieldChange} />
+                    <input
+                      type="text"
+                      name="phone"
+                      onChange={handleFieldChange}
+                    />
                   </div>
                 </section>
                 <section>

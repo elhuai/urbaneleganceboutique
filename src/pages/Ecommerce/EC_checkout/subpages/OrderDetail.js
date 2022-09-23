@@ -17,7 +17,9 @@ function OrderDetail(props) {
               <div className="subInput">屏東海生館</div>
             </div>
             <div className="calculateSection">
-              <div className="subTitle">票券名稱：屏東海生館｜門票・魚你同行</div>
+              <div className="subTitle">
+                票券名稱：屏東海生館｜門票・魚你同行
+              </div>
               <div className="subInput">NT$1200</div>
             </div>
             <div className="calculateSection">
