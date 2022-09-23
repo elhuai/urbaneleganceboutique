@@ -204,17 +204,14 @@
 
 
     a {
-
         width: 157px;
         padding: 1rem 2rem;
         font-size: 20px;
         padding-left: 0;
-
         &:active {
             width: 157px;
             height: 46px;
             background-image: url('../../../images/admin-hover-background.svg');
-
         }
     }
 }

@@ -1,5 +1,5 @@
 import React, { useState, useContext, createContext, useEffect } from 'react';
-import { handleSocialNameEditCard } from '../utils/handler/handleInputCard';
+import { handleSocialNameEditCard } from '../utils/handler/card/handleInputCard';
 import { callVerifyApi } from '../api/authApi';
 import Loading from '../components/layout/Loading';
 const userInfoContext = createContext(null);
@@ -12,10 +12,9 @@ export const UserInfoProvider = ({ children }) => {
   });
 
   if (!user.auth && !user.firstVerify) {
-    console.log('驗證');
+    console.log('驗證用戶是否登入');
     callVerifyApi(setUser);
   }
-  console.log(children);
   useEffect(() => {
     if (user.auth === true && user.data.social_name === '')
       handleSocialNameEditCard(setUser);

@@ -34,8 +34,8 @@ function CommunityManagement() {
 
   return (
     <>
-      <div className="d-flex">
-        <div>
+      <div className="d-flex flex-fill">
+        <div className="flex-fill position-relative">
           <div className="post_new_button mt-5">
             <button className="post_new" onClick={() => ConfirmHandle(2)}>
               <RiEditFill

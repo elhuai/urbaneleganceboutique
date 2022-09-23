@@ -5,7 +5,7 @@ import {
   handleSuccess,
   handleFailed,
   handleSucccessComfirm,
-} from '../utils/handler/handleStatusCard';
+} from '../utils/handler/card/handleStatusCard';
 
 const credentialsConfig = {
   withCredentials: true,
@@ -88,7 +88,7 @@ export const callVerifyApi = async (setUser) => {
       `${API_URL}/auth/user/verify`,
       credentialsConfig
     );
-    console.log(result.data);
+    console.log('user auth', result.data.user);
     if (result.data.isLogin) {
       setUser((user) => ({
         ...user,
@@ -103,6 +103,12 @@ export const callVerifyApi = async (setUser) => {
     }));
   } catch (err) {
     console.error(err);
+    setUser((user) => ({
+      ...user,
+      data: [],
+      auth: false,
+      firstVerify: true,
+    }));
   }
 };
 
