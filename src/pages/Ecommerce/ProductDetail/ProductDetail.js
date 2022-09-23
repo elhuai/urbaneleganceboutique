@@ -50,11 +50,8 @@ const ProductDetail = () => {
     };
     fetchProductData();
   }, []);
-<<<<<<< HEAD
   // console.log('title', title);
-=======
   console.log('recommend', recommend);
->>>>>>> feature-ecommerce
 
   return (
     <>
@@ -172,23 +169,6 @@ const ProductDetail = () => {
               </div>
             </div>
           </div>
-<<<<<<< HEAD
-          <div className="bottomRow">
-            <div className="spec">
-              <div className="anchor">
-                <a href="#description">｜商品說明</a>
-                <a href="#toKnow">｜購買須知</a>
-                <a href="#howToUse">｜如何使用</a>
-                <a href="#comment">｜票券評價</a>
-              </div>
-              <div className="anchor1"></div>
-            </div>
-            <div className="spec2">
-              <div id="description" className="description">
-                <h4>商品說明</h4>
-                <div dangerouslySetInnerHTML={{__html: title.description}} />
-                <img src={Product_Detail8} alt="" />
-=======
           {/* <hr /> */}
           <div className="descriptionSelection">
             <div className="bottomRow">
@@ -200,7 +180,6 @@ const ProductDetail = () => {
                   <a href="#comment">｜票券評價</a>
                 </div>
                 <div className="anchor1"></div>
->>>>>>> feature-ecommerce
               </div>
               <div className="spec2">
                 <div id="description" className="description">
