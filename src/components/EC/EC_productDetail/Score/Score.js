@@ -2,16 +2,17 @@ import './_Score.scss';
 import { Rate } from 'antd';
 import { FaPaw } from 'react-icons/fa';
 
-const Score = () => {
+const Score = (props) => {
+  const { perScore } = props;
   return (
     <>
       <div id="perScore" className="description">
         <h4>票券評價</h4>
         <div className="score">
-          <div className="score_circle">4.5</div>
+          <div className="score_circle">{perScore}</div>
           <div className=" score_total">
-            <Rate allowHalf character={<FaPaw />} defaultValue={4.5} />
-            <p>共有15人評價此商品</p>
+            <Rate allowHalf character={<FaPaw />} defaultValue={perScore} />
+            <p>共有{Number(({ perScore } * 1.7).toFixed(0))}人評價此商品</p>
           </div>
         </div>
         <div className="product_comment d-flex flex-row">

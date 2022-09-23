@@ -90,8 +90,13 @@
         }
     }
 
+    .addCartSection {
+        width: 200px;
+        justify-content: space-between;
+    }
+
     .addSubSection {
-        width: 65%;
+        width: calc(100% - 24px);
 
         img {
             border-radius: 8px;

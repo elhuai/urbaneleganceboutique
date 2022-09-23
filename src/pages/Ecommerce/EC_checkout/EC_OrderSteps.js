@@ -60,10 +60,14 @@ function OrderSteps() {
 
   return (
     <>
-    {console.log(step, maxSteps)}
+      {console.log(step, maxSteps)}
       {/* 進度條 */}
       <div>
-        <ProgressBar maxSteps={maxSteps} step={step} progressNames={progressNames} />
+        <ProgressBar
+          maxSteps={maxSteps}
+          step={step}
+          progressNames={progressNames}
+        />
       </div>
       {/* 子頁面區域 */}
       <div>
@@ -71,9 +75,15 @@ function OrderSteps() {
       </div>
       {/* 按鈕 */}
       <div className="orderButton">
-         {step < maxSteps && <button className="nextBnt" onClick={next} disabled={step === maxSteps}>
-          前往下一步 
-        </button>}
+        {step < maxSteps && (
+          <button
+            className="nextBnt"
+            onClick={next}
+            disabled={step === maxSteps}
+          >
+            前往下一步
+          </button>
+        )}
         <button className="prevBnt" onClick={prev} disabled={step === 1}>
           回到上一步
         </button>

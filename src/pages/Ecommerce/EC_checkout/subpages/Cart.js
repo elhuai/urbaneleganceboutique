@@ -7,7 +7,6 @@ import { API_URL } from '../../../../utils/config';
 import { IoCaretBack, IoCaretForward } from 'react-icons/io5';
 
 const Cart = () => {
-  
   const [coupon, setCoupon] = useState([]);
 
   useEffect(() => {
@@ -52,7 +51,7 @@ const Cart = () => {
       <div className="Cart">
         <div className="middleRow">
           <div className="mainTitle">1.確認購物車內容</div>
-          
+
           <div className="bottomColumn">
             <div className="mainColumn">
               <div className="infoColumn">

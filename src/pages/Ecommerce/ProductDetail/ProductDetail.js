@@ -9,7 +9,7 @@ import { Link } from 'react-router-dom';
 // 加入購物車跳出視窗
 import { handleSuccess } from '../../../utils/handler/handleStatusCard';
 // 商品照片
-// import ItemImage from '../../../components/EC/EC_productDetail/Image';
+import ItemImage from '../../../components/EC/EC_productDetail/Image';
 // 街景
 // import Streeview from '../../../components/EC/EC_productDetail/StreetView';
 // 商品評價
@@ -21,6 +21,7 @@ const ProductDetail = () => {
   const [photo, setPhoto] = useState([]);
   const [recommend, setRecommend] = useState([]);
   const [mainURL, setMainURL] = useState('');
+  const [perScore, setPerScore] = useState(4);
 
   const location = useLocation();
   const urlSearchParams = new URLSearchParams(location.search);
@@ -29,8 +30,11 @@ const ProductDetail = () => {
   // console.log('productId1111', productId);
 
   useEffect(() => {
+    // 抓商品細節資料
     const fetchProductData = async () => {
-      // 抓商品細節資料
+      // 加入購物車與否
+      // const { user, setUser } = useUserInfo();
+
       const result = await axios.get(
         `${API_URL}/productdetail/item?id=${productId}`
       );
@@ -43,6 +47,8 @@ const ProductDetail = () => {
       const mainURL = result.data.photo_path;
       setMainURL(mainURL);
       setProductData(result.data);
+      const score = Number(result.data.per_score.toFixed(1));
+      setPerScore(score);
 
       // 抓推薦 第四館商品資料
       const recommend = await axios.get(`${API_URL}/productdetail/recommend`);
@@ -51,40 +57,26 @@ const ProductDetail = () => {
     fetchProductData();
   }, []);
   // console.log('title', title);
-  console.log('recommend', recommend);
+
+  // = 加入購物車
 
   return (
     <>
       {productData.length === 0 ? (
         console.log('沒有資料') //* 是否做loading 頁面
       ) : (
-        <div className="productDetail mt-2">
-          <div className="topRow">
+        <div className="productDetail">
+          <div className="topRow row ">
             {/* 商品照區域 */}
-            {/* <ItemImage /> */}
-
-            {/* <div className="imageColumn">
-              <div className="mainImage">
-                <img
-                  src={`http://localhost:3007${mainURL}/${productData.main_photo}`}
-                  alt=""
-                />
-              </div>
-              <div className="cardRow">
-                {photo.map((data, index) => {
-                  return (
-                    <div key={index}>
-                      <img
-                        src={`http://localhost:3007${mainURL}/${data['file_name']}`}
-                        alt=""
-                      />
-                    </div>
-                  );
-                })}
-              </div>
-            </div> */}
+            <div className="col-5">
+              <ItemImage
+                mainURL={mainURL}
+                productData={productData}
+                photo={photo}
+              />
+            </div>
             {/* 商品標題 */}
-            <div className="productDesc">
+            <div className="productDesc col-">
               <div className="productContainer">
                 <h1 className="headText fw-bolder">{productData.name}</h1>
                 <ul>
@@ -128,7 +120,7 @@ const ProductDetail = () => {
                             </p>
                           </div>
                         </Link>
-                        <div className="addCartSection d-flex flex-row">
+                        <div className="addCartSection d-flex flex-row flex-shrink-0 row-4">
                           <div className="addCostSection">
                             <p className="addCost text-decoration-line-through m-0">
                               NT${Number((data.price * 1.2).toFixed(0))}
@@ -169,7 +161,7 @@ const ProductDetail = () => {
               </div>
             </div>
           </div>
-          {/* <hr /> */}
+          <hr />
           <div className="descriptionSelection">
             <div className="bottomRow">
               <div className="spec">
@@ -184,10 +176,13 @@ const ProductDetail = () => {
               <div className="spec2">
                 <div id="description" className="description">
                   <h4>商品說明</h4>
-                  <p>{productData.description}</p>
-                  <img src={''} alt="" />
+                  <div
+                    dangerouslySetInnerHTML={{
+                      __html: productData.description,
+                    }}
+                  />
+                  <img src="" alt="" />
                 </div>
-
                 <div id="toKnow" className="description">
                   <h4>購買須知</h4>
                   <p>
@@ -218,7 +213,7 @@ const ProductDetail = () => {
                   </p>
                 </div>
                 {/* <Streeview /> */}
-                <Score />
+                <Score perScore={perScore} />
               </div>
             </div>
           </div>
