@@ -6,7 +6,7 @@ import { RiMessage3Line } from 'react-icons/ri';
 import { BsPeople } from 'react-icons/bs';
 import { Link } from 'react-router-dom';
 import React from 'react';
-import { useUserInfo } from '../../hooks/useUserInfo';
+import { useUserInfo } from '../../../hooks/useUserInfo';
 
 import './adminCenter.scss';
 
@@ -14,7 +14,6 @@ const AdminCenter = () => {
   const BASE_URL = process.env.REACT_APP_BASE_API_URL;
   const { user } = useUserInfo();
   const { data } = user;
-  console.log(data);
   return (
     <div>
       <div className="admin_side">
@@ -53,7 +52,7 @@ const AdminCenter = () => {
           </li>
           <li>
             <Link
-              to="/"
+              to="/admin/collection"
               className="text-decoration-none admin_select icons d-flex"
             >
               <IoHeartOutline

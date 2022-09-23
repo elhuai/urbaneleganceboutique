@@ -1,7 +1,9 @@
 export const API_URL = process.env.REACT_APP_BASE_API_URL + '/api/1.0';
 
+export const BACKEND_OPEN_URL = 'https://9cc8-114-25-230-75.jp.ngrok.io';
+
 export const LINE_CALLBACK_URL =
-  'https://4c85-2402-7500-5df-344e-d0ed-8c7d-5271-1f61.jp.ngrok.io/api/1.0/auth/user/register/line';
+  BACKEND_OPEN_URL + '/api/1.0/auth/user/register/line';
 
 // = GET
 export const LINE_LOGIN_URL =

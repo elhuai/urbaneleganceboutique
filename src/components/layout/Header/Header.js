@@ -6,11 +6,11 @@ import React from 'react';
 import { Link, useSearchParams } from 'react-router-dom';
 import RwdMenu from '../Menu/RwdMenu';
 import MenuLink from '../Menu/MenuLink';
-import { handleLoginCard } from '../../../utils/handler/handleInputCard';
+import { handleLoginCard } from '../../../utils/handler/card/handleInputCard';
 import { useUserInfo } from '../../../hooks/useUserInfo';
 import './_Header.scss';
 import { callLineLoginApi } from '../../../api/authApi';
-import { handleFailed } from '../../../utils/handler/handleStatusCard';
+import { handleFailed } from '../../../utils/handler/card/handleStatusCard';
 
 const Header = () => {
   const { user, setUser } = useUserInfo();

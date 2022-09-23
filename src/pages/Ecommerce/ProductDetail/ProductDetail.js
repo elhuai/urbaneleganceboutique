@@ -7,7 +7,7 @@ import { useLocation } from 'react-router-dom';
 import { Link } from 'react-router-dom';
 
 // 加入購物車跳出視窗
-import { handleSuccess } from '../../../utils/handler/handleStatusCard';
+import { handleSuccess } from '../../../utils/handler/card/handleStatusCard';
 // 商品照片
 // import ItemImage from '../../../components/EC/EC_productDetail/Image';
 // 街景

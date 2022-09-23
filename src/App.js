@@ -2,9 +2,12 @@ import React from 'react';
 import { Routes, Route, Outlet } from 'react-router-dom';
 import Footer from './components/layout/Footer';
 import Header from './components/layout/Header';
+import ScrollToTop from './components/layout/ScrollToTop';
 import Homepage from './pages/HomePage';
 import Travel from './pages/Travel';
-import AdminCenter from './components/layout/AdminCenter';
+import AdminCenter from './components/adminPage/AdminCenter';
+import AdminVocherPage from './pages/AdminVocherPage';
+import AdminCollectionPage from './pages/AdminCollectionPage';
 import CommunityList from './pages/CommunityList';
 import CommunityHomePage from './pages/CommunityHomePage';
 import CommunityManagement from './pages/CommunityManagement';
@@ -26,7 +29,6 @@ import ECOrderSteps from './pages/Ecommerce/EC_checkout';
 import 'swiper/scss';
 import 'swiper/css/bundle';
 import './styles/style.scss';
-import AdminVocherPage from './pages/AdminVocherPage';
 
 function App() {
   return (
@@ -45,6 +47,7 @@ function App() {
             <Route path="profile" element={<AdminVocherPage />} />
             <Route path="voucher" element={<AdminVocherPage />} />
             <Route path="community" element={<CommunityManagement />} />
+            <Route path="collection" element={<AdminCollectionPage />} />
           </Route>
           {/* <Route path="/adminCenter" element={<AdminCenterPage />} /> */}
           <Route path="/postWYSIWYG" element={<Post />} />
@@ -66,8 +69,8 @@ function App() {
           <Route path="ec-ordersteps" element={<ECOrderSteps />} />
         </Routes>
         <Outlet />
-
         <Footer />
+        <ScrollToTop />
       </UserInfoProvider>
     </div>
   );
