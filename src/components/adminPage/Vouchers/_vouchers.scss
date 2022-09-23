@@ -1,0 +1,97 @@
+.admin_main {
+  .obj-fit {
+    img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+  }
+  .voucher {
+    &_content {
+      cursor: default;
+      padding-top: 24px;
+      padding-left: 30px;
+      width: 100%;
+    }
+    &_list {
+      width: 100%;
+      height: 200px;
+      border-radius: 8px;
+      border: 2px solid #FFC715;
+      overflow: hidden;
+      transition: .3s linear;
+      &:hover {
+        box-shadow: 0 0 8px rgba(0, 0, 0, .2);
+        transform: scale(1.01);
+      }
+    }
+    &_img {
+      width: 300px;
+      height: 200px;
+    }
+    &_info {
+      display: flex;
+      flex-direction: column;
+      &_title {
+        h5 {
+          display: -webkit-box;
+          overflow: hidden;
+          text-overflow: ellipsis;
+          -webkit-line-clamp: 2; 
+          -webkit-box-orient: vertical;
+          white-space: normal;
+        }
+      }
+      &_intro {
+        color: #747474;
+      }
+      &_detail {
+        .store, .validity {
+          font-size: 14px;
+        }
+        .validity {
+          span {
+            word-break: normal;
+          }
+        }
+        button {
+          padding: 8px 16px;
+          border-radius: 8px;
+          border: 0;
+          background-color: #EF7A70;
+          color: #FFF;
+          font-weight: bold;
+        }
+      }
+      &_quantity  {
+        background-color: #FFC715;
+        bottom: 0;
+        left: 0;
+        padding: 8px 16px;
+        border-radius: 0 8px 0 0;
+      }
+    }
+  }
+
+  .invalid.voucher_content{
+    opacity: .5;
+    .voucher {
+      &_list {
+        border: 2px solid #74747479;
+      }
+      &_info {
+        &_intro {
+          color: #747474;
+        }
+        &_detail {
+          button {
+            background-color: #747474;
+          }
+        }
+        &_quantity  {
+          background-color: #747474;
+        }
+      }
+    }
+  }
+}

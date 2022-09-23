@@ -3,10 +3,8 @@ import QRcode from 'qrcode';
 
 import './_qrcodeCard.scss';
 
-const QRcodeCard = () => {
+const QRcodeCard = ({ url }) => {
   const canvasRef = useRef(null);
-  const url =
-    'https://4c85-2402-7500-5df-344e-d0ed-8c7d-5271-1f61.jp.ngrok.io/';
   const QrcodeComfig = { errorCorrectionLevel: 'Q' };
   useEffect(() => {
     QRcode.toCanvas(canvasRef.current, url, QrcodeComfig, (error) => {
@@ -23,7 +21,7 @@ const QRcodeCard = () => {
             <canvas className="" ref={canvasRef}></canvas>
           </div>
           <div>
-            <a className="qrcode_card_button d-inline-block" href="連結">
+            <a className="qrcode_card_button d-inline-block" href={url}>
               直接前往核銷頁面
             </a>
           </div>

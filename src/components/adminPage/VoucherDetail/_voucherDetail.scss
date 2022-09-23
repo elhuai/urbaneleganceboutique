@@ -1,0 +1,68 @@
+.html_card--cos {
+  .voucher_detail {
+    width: 50vw;
+    min-width: 780px;
+    overflow: hidden;
+    .detail_swiper {
+      background-color: rgba(0, 0, 0, .05);
+    }
+    .swiper-button {
+      &-prev, &-next {
+        width: 36px;
+        padding: 32px 0;
+        background-color: rgba(0, 0, 0, 0.2);
+        overflow: hidden;
+        &::after {
+          color: #FFF;
+          font-size: 22px;
+        }
+      }
+      &-prev {
+        left: 0;
+        border-radius: 0 4px 4px 0;
+      }
+      &-next {
+        right: 0;
+        border-radius: 4px 0 0 4px;
+      }
+    }
+    .swiper-pagination-bullet-active {
+      background-color: rgb(255, 194, 0);
+    }
+    
+    .obj-fit {
+      width: 100%;
+      height: 400px;
+      img{
+        height: 100%;
+        width: 100%;
+        object-fit: contain;
+        cursor: grab;
+      }
+    }
+
+    button {
+      padding: 8px 16px;
+      border-radius: 8px;
+      border: 0;
+      background-color: rgba(255, 194, 0, 1);
+      color: #FFF;
+      font-weight: bold;
+      &.close {
+        background-color: #7474749c;
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 980px) {
+  .html_card--cos {
+    .voucher_detail {
+      min-width: 320px;
+      width: 80vw;
+      .detail_swiper {
+        background-color: rgba(0, 0, 0, .05);
+      }
+    }
+  }
+}
