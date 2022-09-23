@@ -1,8 +1,35 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Form, Button, InputGroup } from 'react-bootstrap';
-import caricon from '../../images/Travel_input_car.svg';
+import axios from 'axios';
+import { API_URL } from '../../utils/config';
+import { useNavigate } from 'react-router-dom';
 import mapicon from '../../images/Travel_input_location.svg';
 const TravelForm = () => {
+  const { addtravel, setAddtravel } = useState([]);
+
+  const [loginMember, setLoginMember] = useState({
+    title: '',
+    start_time: '',
+    end_time: '',
+  });
+  function handleChange(e) {
+    setLoginMember({ ...loginMember, [e.target.name]: e.target.value });
+  }
+  let navigate = useNavigate();
+
+  async function handleSubmit(e) {
+    // navigate('/Travel_map');
+    //TODOl記得加寫讀取畫面 別馬上跳走
+    e.preventDefault();
+    let response = await axios.post(
+      `${API_URL}/submit/addDate`,
+      loginMember,
+      {}
+    );
+    console.log('form表單', response.data);
+    setAddtravel(response.data);
+  }
+
   return (
     <>
       <Form className="travel_form_Container">
@@ -11,29 +38,53 @@ const TravelForm = () => {
             新增行程 :
           </h2>
         </div>
+
         <div className="travel_input_searchBar ">
-          <InputGroup className="travel_input_Allinput justify-content-center mb-3">
+          {/* <div className="travel_inputDate mt-5">
+            <h5 className="travel_inputDate_Text">旅遊日期</h5>
+          </div> */}
+          <InputGroup className="travel_input_Allinput  mb-3">
             {/* as="form" */}
             <div className="travel_input_searchBar_sum  d-flex ">
               <div className="travel_input_icondiv">
                 <img src={mapicon} alt="#/" className="travel_input_mapicon " />
               </div>
               <Form.Control
-                className="travel_input_Area "
-                placeholder="請輸入城市、地區"
+                type="text"
+                id="title"
+                name="title"
+                value={loginMember.travel}
+                className="travel_input_text"
+                placeholder="請輸入行程名稱"
                 aria-label="Recipient's username"
                 aria-describedby="basic-addon2"
+                onChange={handleChange}
               />
             </div>
-            <div className="travel_input_searchBar_sum d-flex">
-              <div className="travel_input_icondiv">
-                <img src={caricon} alt="#/" className="travel_input_mapicon " />
-              </div>
+            <div className="travel_input_searchBar_sumA ">
               <Form.Control
+                type="date"
+                id="start_time"
+                name="start_time"
+                value={loginMember.starttime}
+                className="travel_input_Area "
+                placeholder=""
+                aria-label="Recipient's username"
+                aria-describedby="basic-addon2"
+                onChange={handleChange}
+              />
+            </div>
+            <div className="travel_input_searchBar_sumA d-flex">
+              <Form.Control
+                type="date"
+                id="end_time"
+                name="end_time"
+                value={loginMember.endtime}
                 className=""
                 placeholder="請輸入景點關鍵字"
                 aria-label="Recipient's username"
                 aria-describedby="basic-addon2"
+                onChange={handleChange}
               />
             </div>
 
@@ -41,6 +92,8 @@ const TravelForm = () => {
               className="travel_input_button "
               variant="outline-secondary"
               id="button-addon2"
+              type="submit"
+              onClick={handleSubmit}
             >
               新增
             </Button>

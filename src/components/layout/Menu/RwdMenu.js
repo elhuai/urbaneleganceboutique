@@ -106,7 +106,7 @@ function RwdMenu() {
                 to="/path3"
                 onClick={() => setOpen(false)}
               >
-                <div className="header_rwd_menu_name">寵物商品</div>
+                <div className="header_rwd_menu_name"></div>
                 <img
                   className="header_rwd_menuNavLink_arrow"
                   src={headerRwdLinkarrow}
@@ -116,7 +116,7 @@ function RwdMenu() {
               <NavLink
                 className="header_rwd_menu_NavLink d-flex justify-content-between align-items-center"
                 reloadDocument
-                to="/path4"
+                to="/ec-productdetail"
                 onClick={() => setOpen(false)}
               >
                 <div className="header_rwd_menu_name">住宿</div>

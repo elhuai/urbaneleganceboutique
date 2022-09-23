@@ -1,6 +1,7 @@
 @import './custom_variables';
 @import '../../node_modules/bootstrap/scss/bootstrap.scss';
-
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@100;300;400;500;700&display=swap');
 
 * {
   margin: 0;
@@ -8,13 +9,32 @@
   box-sizing: border-box;
   -webkit-user-drag: none;
 }
+
 body {
-  font-family: 'Open Sans', sans-serif !important;
+  font-family: 'Noto Sans TC', 'Open Sans', sans-serif !important;
 }
 
 .app {
   margin-top: 94px;
 }
+
+.swal2-container {
+  z-index: 99999;
+}
+
+.swal2-icon.swal2-success {
+  border-color: rgba(255, 194, 0, 0.8);
+  color: rgba(255, 194, 0, 0.8);
+}
+
+.swal2-icon.swal2-success [class^='swal2-success-line'] {
+  background-color: rgba(255, 194, 0, 1);
+}
+
+.swal2-icon.swal2-success .swal2-success-ring {
+  border: 0.25em solid rgba(255, 194, 0, 0.4);
+}
+
 @media screen and (max-width: 768px) {
   .app {
     margin-top: 80px;

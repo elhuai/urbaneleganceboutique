@@ -1,5 +1,7 @@
 import React from 'react';
 import mapicon from '../../../images/Travel_input_location.svg';
+import axios from 'axios';
+import { API_URL } from '../../../utils/config';
 import { HiChevronLeft } from 'react-icons/hi';
 import { HiOutlinePhone } from 'react-icons/hi';
 import './travelsearchBar.scss';
@@ -18,9 +20,27 @@ import {
 import { useState } from 'react';
 import { useEffect } from 'react';
 
-const PlacesAutocomplete = ({ setSelected }) => {
+const PlacesAutocomplete = ({ selected, setSelected, travelTicket }) => {
+  const { tripdetail, setTripdetail } = useState([]);
+
+  async function handleSubmit(e) {
+    e.preventDefault();
+    let response = await axios.post(
+      `${API_URL}/submit/tripdetail`,
+      { mapPhone, mapPhoto, mapName, selected },
+
+      {}
+    );
+    // console.log(response.data);
+    setTripdetail(response.data);
+  }
+
+  // console.log('Travel收藏票卷', travelTicket);
   const pictureOnclick = (e) => {
     setStoredetail(1);
+
+    setbackicon(0);
+
     console.log('storedetail Onclick', storedetail);
   };
 
@@ -169,10 +189,7 @@ const PlacesAutocomplete = ({ setSelected }) => {
             ) : (
               mapPhoto.map((vaule) => {
                 return (
-                  <img
-                    src={vaule}
-                    alt="#/"
-                    key={vaule.id}
+                  <div
                     onClick={() => pictureOnclick(1)}
                     className="travelSearchBar_photo"
                   />
@@ -188,56 +205,83 @@ const PlacesAutocomplete = ({ setSelected }) => {
           className={storedetail === 1 ? 'travelSearch_storedetail' : 'd-none'}
         >
           <div className="travelSearch_storedetail_card card border-primary  d-flex">
-            <div className="d-flex">
+            <div className="d-flex travelSearch_storedetail_Div">
               <div className="travelSearchBar_backIcon ">
                 <HiChevronLeft onClick={() => iconBackClick(1)} />
               </div>
-              {mapName.length === 0 ? (
-                <div>
-                  <h5 className="travelSearch_storedetail_tittle">
-                    台中肯德基一中店
-                  </h5>
-                </div>
+              {/*  */}
+              {/* Getapi 景點圖片 */}
+              {mapPhoto.length === 0 ? (
+                <img
+                  src="https://picsum.photos/1000/300?random31"
+                  alt="#/"
+                  onClick={() => pictureOnclick(1)}
+                  className="travelSearch_storedetail_photo"
+                />
               ) : (
-                mapName.map((element, index) => {
+                mapPhoto.map((vaule) => {
                   return (
-                    <div key={index}>
-                      <h5 className="travelSearch_storedetail_tittle">
-                        {element}
-                      </h5>
-                    </div>
+                    <img
+                      src={vaule}
+                      alt="#/"
+                      key={vaule.id}
+                      onClick={() => pictureOnclick(1)}
+                      className="travelSearch_storedetail_photo"
+                    />
                   );
                 })
               )}
+
+              {/*  */}
             </div>
+            {/* 景點名稱 */}
+            {mapName.length === 0 ? (
+              <div className="travelSearch_storedetail_Div">
+                <h5 className="travelSearch_storedetail_tittle">
+                  台中肯德基一中店
+                </h5>
+              </div>
+            ) : (
+              mapName.map((element, index) => {
+                return (
+                  <div key={index} className="travelSearch_storedetail_Div">
+                    <h5 className="travelSearch_storedetail_tittle">
+                      {element}
+                    </h5>
+                  </div>
+                );
+              })
+            )}
             {/* Getapi phone */}
             {mapPhone.length === 0 ? (
-              <div className="mt-3">
+              <div className="mt-2">
                 <p className="travelSearch_storedetail_phone">
-                  <HiOutlinePhone className="me-3" />
+                  <HiOutlinePhone className="me-7" />
                   06 298 4722
                 </p>
               </div>
             ) : (
               mapPhone.map((element, index) => {
                 return (
-                  <div className="mt-3" key={index}>
+                  <div className="mt-2" key={index}>
                     <p className="travelSearch_storedetail_phone ">
-                      <HiOutlinePhone className="me-3" />
+                      <HiOutlinePhone className="me-7" />
                       {element}
                     </p>
                   </div>
                 );
               })
             )}
-            <div>
+            <div className="mt-2">
               {mapopenTime.length === 0 ? (
                 <div className="travelSearch_storedetail_contain">
-                  <p className="travelSearch_storedetail_starTime">
-                    星期一: 09:00 – 18:00星期二: 09:00 – 18:00星期三: 09:00 –
-                    18:00星期四: 09:00 – 18:00星期五: 09:00 – 18:00星期六: 09:00
-                    – 18:00星期日: 09:00 – 18:00
-                  </p>
+                  <ul>
+                    <li className="travelSearch_storedetail_starTime">
+                      星期一: 09:00 – 18:00星期二: 09:00 – 18:00星期三: 09:00 –
+                      18:00星期四: 09:00 – 18:00星期五: 09:00 – 18:00星期六:
+                      09:00 – 18:00星期日: 09:00 – 18:00
+                    </li>
+                  </ul>
                 </div>
               ) : (
                 mapopenTime.map((element, index) => {
@@ -246,25 +290,31 @@ const PlacesAutocomplete = ({ setSelected }) => {
                       key={index}
                       className="travelSearch_storedetail_contain"
                     >
-                      <p className="travelSearch_storedetail_starTime">
-                        {element}
-                      </p>
+                      <ul>
+                        <li className="travelSearch_storedetail_starTime">
+                          {element}
+                        </li>
+                      </ul>
                     </div>
                   );
                 })
               )}
             </div>
-            <div></div>
+            <div>
+              <button className="travelmap_input_button" onClick={handleSubmit}>
+                新增此行程
+              </button>
+            </div>
           </div>
         </div>
       </div>
     </Combobox>
   );
 };
-const TravelSearchBar = ({ setSelected }) => {
+const TravelSearchBar = ({ selected, setSelected }) => {
   return (
     <>
-      <PlacesAutocomplete setSelected={setSelected} />
+      <PlacesAutocomplete setSelected={setSelected} selected={selected} />
     </>
   );
 };

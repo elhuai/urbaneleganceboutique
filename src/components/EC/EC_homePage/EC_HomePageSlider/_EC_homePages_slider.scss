@@ -1,0 +1,33 @@
+$fmain_color: #ffc200; // 主色
+
+.ecHomePageSwiper {
+  height: 100%;
+  margin: .8rem 0;
+
+  .swiper-pagination-bullet {
+    background: $fmain_color
+  }
+}
+
+.ecHomePage_slider {
+  .ecHomePage_img {
+    // max-height: 500px;
+    max-width: 1280px;
+    width: 100%;
+    border-radius: 15px;
+    overflow: hidden;
+
+    img {
+      width: 1280px;
+      width: 100%;
+    }
+  }
+}
+
+@media (max-width: 768px) {
+  .ecHomePage_slider {
+    max-width: 345px;
+    width: 100%;
+    margin: 1rem auto;
+  }
+}

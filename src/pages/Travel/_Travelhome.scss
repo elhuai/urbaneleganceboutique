@@ -80,19 +80,39 @@ $look_line-height: 53px;
     margin-top: 4rem;
     width: 100%;
     .form-control {
-      padding: 0 4rem;
+      padding: 0 2rem;
     }
-
+    .travel_input_searchBar_sumA {
+      margin-top: 20px;
+      width: 300px;
+      height: 3rem;
+    }
     .travel_input_searchBar_sum {
       width: 550px;
+      .travel_input_text {
+        margin-top: 20px;
+        width: 550px;
+        height: 3rem;
+        // margin-left: 50px;
+      }
+    }
+    .travel_input_mapicon {
+      position: relative;
+      width: 25px;
+      height: 22px;
+      margin-top: 32px;
+      margin-left: 5px;
+      z-index: 2;
     }
     .travel_input_Allinput {
-      justify-content: center;
+      // justify-content: center;
       margin-top: 38px;
       width: 100%;
     }
     .travel_input_Allinput .travel_input_button {
       position: relative;
+      margin-top: 20px;
+      height: 3rem;
       right: 10px;
       border-radius: 8px;
       border: none;
@@ -111,18 +131,22 @@ $look_line-height: 53px;
       width: 0px;
       height: 10px;
     }
-    .travel_input_mapicon {
-      position: relative;
-      width: 25px;
-      height: 22px;
-      margin-top: 13px;
-      margin-left: 15px;
-    }
+
     .travel_input_Area {
       height: 3rem;
     }
     .travel_input_searchBar {
-      margin-top: 3.8rem;
+      margin-top: -2rem;
+      .travel_inputDate {
+        // font-size: 20px;
+        // margin-left: 53px;
+        position: relative;
+        top: 30px;
+        .travel_inputDate_Text {
+          font-size: 22px;
+          font-weight: 300;
+        }
+      }
     }
   }
   .Travel_input_icondiv {
@@ -135,10 +159,11 @@ $look_line-height: 53px;
     height: 22px;
     margin-top: 13px;
     margin-left: 15px;
+    z-index: 2;
   }
   .Travel_input_Area {
     padding: 0 4rem;
-    height: 3rem;
+    // height: 3rem;
   }
   .Travel_input_searchBar {
     margin-top: 4rem;
@@ -284,18 +309,45 @@ $look_line-height: 53px;
     .travel_input_searchBar {
       margin-top: 0.5rem;
     }
+    .travel_inputDate_Text {
+      position: relative;
+      right: 50px;
+      top: 10px;
+    }
     .travel_input_Allinput {
       margin-top: 1px;
+      .travel_input_searchBar_sumA {
+        width: 320px !important;
+        margin-left: 20px !important;
+      }
+      .travel_input_searchBar_sum {
+        margin: 1rem 0;
+        height: 50px;
+        .travel_input_text {
+          width: 320px !important;
+          // position: relative;
+          // right: 10px;
+          margin-left: 20px;
+        }
+
+        .travel_input_mapicon {
+          position: relative;
+          right: 50px;
+          width: 25px;
+          height: 22px;
+          // margin-top: 40px;
+          // margin-left: 25px;
+        }
+      }
     }
-    .travel_input_searchBar_sum {
-      margin: 1rem 0;
-      height: 50px;
-    }
+
     .travel_input_Allinput .travel_input_button {
       border-radius: 8px !important;
       margin-top: 10px;
+      margin-left: 150px !important;
     }
   }
+
   .travel_Swiper_EveryOnetrip_lookH2 {
     font-weight: $font-weight;
     font-size: 26px;

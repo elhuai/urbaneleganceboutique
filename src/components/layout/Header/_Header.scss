@@ -13,6 +13,7 @@ $font-weight: 1000;
   background-color: $header_bg_color;
   // #feefc3;
 }
+
 .header_main {
   padding: 0 80px;
   box-shadow: rgba(232, 232, 232, 0.662) 1px 1px 5px;
@@ -20,6 +21,7 @@ $font-weight: 1000;
   .header_menu {
     padding: 4px 0;
   }
+
   a {
     position: relative;
     text-decoration: none;
@@ -29,6 +31,7 @@ $font-weight: 1000;
     width: auto;
     height: 86px;
   }
+
   .header_container {
     width: auto;
   }
@@ -41,6 +44,7 @@ $font-weight: 1000;
     // margin-right: 50px;
   }
 }
+
 .header_product {
   letter-spacing: 0.2rem;
   color: #000;
@@ -48,9 +52,11 @@ $font-weight: 1000;
   // padding-left: 20px;
   padding: 8px 28px;
   position: relative;
+
   &:last-child::after {
     width: 0;
   }
+
   &::after {
     content: '';
     position: absolute;
@@ -61,6 +67,7 @@ $font-weight: 1000;
     right: -1rem;
     background: #000;
   }
+
   &::before {
     content: '';
     position: absolute;
@@ -71,28 +78,35 @@ $font-weight: 1000;
     border-bottom: 2.5px $fmain_color solid;
     transition: 0.3s all;
   }
+
   &:hover {
     color: $fmain_color;
     font-weight: bolder;
     // text-shadow:#ffbf00 1px 0px 1px ;
     transition: 0.5s all step-start;
+
     &::before {
       width: calc(100% - 16px);
     }
   }
+
   &.active::before {
     width: calc(100% - 16px);
   }
 }
+
 .aaaa {
   background-color: rgb(220, 31, 31);
 }
+
 .header_community {
   color: #000;
   padding: 0 48px;
   position: relative;
+
   &:hover {
     color: $fmain_color;
+
     &::after {
       content: '';
       position: absolute;
@@ -109,6 +123,7 @@ $font-weight: 1000;
 .header_Icon {
   width: 120px;
   gap: 16px;
+
   svg {
     cursor: pointer;
     color: $fmain_color;
@@ -116,6 +131,7 @@ $font-weight: 1000;
     height: 25px;
     margin: 3px;
   }
+
   .header_Icon {
     &_user {
       svg {
@@ -124,6 +140,7 @@ $font-weight: 1000;
     }
   }
 }
+
 // .header_Icon_cart{
 //   border-radius: 8px;
 //   svg {
@@ -150,6 +167,7 @@ $font-weight: 1000;
     position: relative;
     background-color: #feefc3;
     justify-content: center;
+
     button {
       position: absolute;
       top: 12px;
@@ -162,12 +180,14 @@ $font-weight: 1000;
         box-shadow: none;
       }
     }
+
     .header_rwd_menu_imgWrap {
       img {
         height: 180px;
       }
     }
   }
+
   .offcanvas-body {
     .header_rwd_menu_NavLink {
       position: relative;
@@ -176,6 +196,7 @@ $font-weight: 1000;
       padding: 12px 0;
       font-weight: bold;
       letter-spacing: 1.5px;
+
       &::after {
         content: '';
         position: absolute;
@@ -186,6 +207,7 @@ $font-weight: 1000;
         height: 1px;
         background-color: #74747440;
       }
+
       img {
         height: 12px;
       }
@@ -199,6 +221,7 @@ $font-weight: 1000;
     .header_main {
       padding: 0 40px;
     }
+
     .header_product {
       &::after {
         right: 0rem;
@@ -215,6 +238,7 @@ $font-weight: 1000;
 @media screen and (max-width: 1080px) {
   .header_main_body {
     box-shadow: 0px 0px 8px rgba(0, 0, 0, 0.05);
+
     .header_product,
     .header_main,
     .header_dog-logo,
@@ -222,13 +246,16 @@ $font-weight: 1000;
     .header_main {
       display: none !important;
     }
+
     .header_main {
       padding: 0 1rem;
+
       .header_dog-logo {
         margin-left: 30px;
         height: 80px;
       }
     }
+
     .header_mobile_menu {
       display: flex;
       width: 90%;
@@ -237,6 +264,7 @@ $font-weight: 1000;
       .header_rwd_menuBar {
         width: 100%;
       }
+
       .navbar-brand {
         margin: 0;
         padding: 0;
@@ -244,17 +272,21 @@ $font-weight: 1000;
           height: 64px;
         }
       }
+
       // = mobile icon area
       .header_Icon {
         flex: 1 1 auto;
         padding-right: 4px;
+
         a {
           margin: 0;
+
           svg {
             color: #747474;
           }
         }
       }
+
       // = mobile menu btn
       .header_rwd_menubtn {
         margin-left: 16px;
@@ -268,6 +300,7 @@ $font-weight: 1000;
       }
     }
   }
+
   .header_rwd_menu_Offcanvas {
     .header_rwd_tittle {
       .header_rwd_menu_imgWrap {
@@ -276,6 +309,7 @@ $font-weight: 1000;
         }
       }
     }
+
     .offcanvas-body {
       .header_rwd_tittle {
         .header_rwd_menu_imgWrap {
@@ -294,8 +328,10 @@ $font-weight: 1000;
       // = mobile icon area
       .header_Icon {
         padding: 0;
+
         a {
           margin-right: 12px;
+
           svg {
             width: 22px;
           }
@@ -306,6 +342,7 @@ $font-weight: 1000;
       }
     }
   }
+
   .header_rwd_menu_Offcanvas {
     width: 100% !important;
     .header_rwd_tittle {

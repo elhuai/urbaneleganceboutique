@@ -6,46 +6,12 @@ import Typography from '@mui/material/Typography';
 import Box from '@mui/material/Box';
 import TravelDrag from '../TravelDrag/TravelDrag';
 import { HiChevronLeft } from 'react-icons/hi';
-import { NavLink } from 'react-router-dom';
+import { MdPhotoSizeSelectActual } from 'react-icons/md';
+// import CoverBackground from '../../../images/post_edit_background_banner.png';
 
-const data = [
-  {
-    id: 'item-1',
-    content: '台中草悟道',
-  },
-  {
-    id: 'item-2',
-    content: 'GEM再見',
-  },
-  {
-    id: 'item-3',
-    content: '說愛你',
-  },
-  {
-    id: 'item-4',
-    content: '春泥',
-  },
-  {
-    id: 'item-5',
-    content: '愛上你算我賤',
-  },
-  {
-    id: 'item-6',
-    content: '離開地球表面',
-  },
-  {
-    id: 'item-7',
-    content: '忠孝東路走九遍',
-  },
-  {
-    id: 'item-8',
-    content: '浪子回頭',
-  },
-  {
-    id: 'item-9',
-    content: '算什麼男人',
-  },
-];
+import { NavLink } from 'react-router-dom';
+import axios from 'axios';
+import { API_URL } from '../../../utils/config';
 
 ////////////////Date  start
 function TabPanel(props) {
@@ -80,13 +46,100 @@ const travelprops = (index) => {
     'aria-controls': `simple-tabpanel-${index}`,
   };
 };
-const TravelDate = () => {
-  const [value, setValue] = useState(0);
+const TravelDate = ({ planning, traveltitle }) => {
+  ////傳給子層
+  const [deviceDetial, setDeviceDetial] = useState({}); //axios post 到後端
+  // console.log('移動變更後的deviceDetial', deviceDetial);
+  const [deviceindex, setDeviceindex] = useState({});
+  ///
+  const moment = require('moment');
 
+  // console.log('日期頁', planning);
+  // console.log('日期頁開頭和標題', traveltitle);
+  const [value, setValue] = useState(0);
   const handleChange = (event, newValue) => {
     setValue(newValue);
   };
-  ////////////////Date  end
+
+  const [showdate, setShowdate] = useState([]);
+  // console.log('showdate', showdate);
+  const handleClick = () => {
+    let newDate = [...showdate];
+    newDate.push(
+      moment(showdate[showdate.length - 1])
+        .add(1, 'days')
+        .format('yyyy-MM-DD')
+    );
+    setShowdate(newDate);
+  };
+
+  useEffect(() => {
+    const startDate = moment(
+      traveltitle[0] ? traveltitle[0].start_time : ''
+    ).format('yyyy-MM-DD');
+    const endDate = moment(traveltitle[0] ? traveltitle[0].end_time : '');
+    const differentDate = endDate.diff(startDate, 'days') + 1;
+    let newDateary = [];
+    for (let i = 0; i < differentDate; i++) {
+      newDateary.push(moment(startDate).add(i, 'days').format('yyyy-MM-DD'));
+    }
+    setShowdate(newDateary);
+  }, []);
+  /////////傳到後端post
+  const [editdetail, setEditdetail] = useState(0);
+  //開關 編輯送出 完成
+  const [closeeditdetail, setCloseEditdetail] = useState(0);
+  //設定form表單的東西
+  const [member, setMember] = useState({
+    title: traveltitle[0] ? traveltitle[0].title : '',
+
+    photo: '',
+  });
+  function inputhandleChange(e) {
+    let newMember = { ...member };
+    newMember[e.target.name] = e.target.value;
+    setMember(newMember);
+  }
+  async function handleSubmit(e) {
+    if (!editdetail) {
+      setEditdetail(closeeditdetail + 1);
+      setCloseEditdetail(1);
+    } else {
+      setEditdetail(closeeditdetail - 1);
+      setCloseEditdetail(0);
+    }
+    e.preventDefault();
+
+    try {
+      let formData = new FormData();
+      console.log('ALLllllllmember', member);
+      formData.append('title', member.title);
+      formData.append('photo', member.photo);
+      formData.append('date', showdate.pop());
+
+      let response = await axios.post(
+        `${API_URL}/post/datelocationId`,
+        formData
+      );
+
+      console.log('照片標題新增成功', response);
+    } catch (e) {
+      console.log('錯誤', e);
+    }
+
+    // let response = await axios.post(
+    //   `${API_URL}/post/datelocationId`,
+    //   // { showdate, deviceDetial, selectedFile },
+    //   {}
+    // );
+    // console.log(response.data);
+    // setTripdetail(response.data);
+  }
+
+  //上傳圖片
+  const changeHandler = (e) => {
+    setMember({ ...member, photo: e.target.files[0] });
+  };
 
   return (
     <>
@@ -99,15 +152,59 @@ const TravelDate = () => {
                   <HiChevronLeft />
                 </NavLink>
               </div>
-              <h1 className="travleDrag_header_tittle ">台中阿拉瓜花嘩嘩嘩</h1>
-              <h3 className="travleDrag_header_date">2022/09/11~2022/09/12</h3>
+              {traveltitle.map((data) => {
+                return (
+                  <div key={data.user_id}>
+                    {editdetail ? (
+                      <input
+                        className="travelDrage_input_title"
+                        type="text"
+                        id="title"
+                        name="title"
+                        value={member.title}
+                        onChange={inputhandleChange}
+                      />
+                    ) : (
+                      <h1 className="travleDrag_header_tittle ">
+                        {data.title}
+                      </h1>
+                    )}
+
+                    <h3 className="travleDrag_header_date">
+                      {data.start_time}~{data.end_time}
+                    </h3>
+                  </div>
+                );
+              })}
+            </div>
+            <div className="travleDrag_header_upImage">
+              {/* <img src={preview ? preview : CoverBackground} alt=""></img> */}
+              <label className="cover_photo_upload d-flex flex-column justify-content-center align-items-center">
+                {editdetail ? (
+                  <MdPhotoSizeSelectActual className="travleDrag_header_upicon"></MdPhotoSizeSelectActual>
+                ) : (
+                  ''
+                )}
+
+                <div className="">{editdetail ? '封面照片上傳' : ''}</div>
+                <input
+                  type="file"
+                  className=" mt-2"
+                  accept="image/*"
+                  id="photo"
+                  name="photo"
+                  onChange={changeHandler}
+                  hidden
+                />
+              </label>
             </div>
 
             <div className="travleDrag_header_edit d-flex">
               <div className="travleDrag_header_icon"></div>
-              <div>編輯</div>
+              <div onClick={handleSubmit}>{editdetail ? '完成' : '編輯'} </div>
             </div>
           </div>
+
           <Box>
             <div className="travleDrag_day_container">
               <Box
@@ -116,45 +213,49 @@ const TravelDate = () => {
                   bgcolor: 'background.paper',
                 }}
               >
-                <Tabs
-                  value={value}
-                  onChange={handleChange}
-                  variant="scrollable"
-                  scrollButtons="auto"
-                  aria-label="scrollable auto tabs example"
-                >
-                  <Tab
-                    label="7月29日(六)"
-                    {...travelprops(1)}
-                    className="travelDrage_Tab"
-                  />
-                  <Tab
-                    label="7月30日(7)"
-                    {...travelprops(2)}
-                    className="travelDrage_Tab"
-                  />
-                  <Tab
-                    label="7月31日(8)"
-                    {...travelprops(3)}
-                    className="travelDrage_Tab"
-                  />
-                  <Tab label="7月32日(9)" {...travelprops(4)} />
-                  <Tab label="7月33日(10)" {...travelprops(5)} />
-                  <Tab label="7月34日(11)" {...travelprops(6)} />
-                  <Tab label="7月35日(12)" {...travelprops(7)} />
-                </Tabs>
+                {traveltitle.map((data) => {
+                  return (
+                    <Tabs
+                      key={data.user_id}
+                      value={value}
+                      onChange={handleChange}
+                      variant="scrollable"
+                      scrollButtons="auto"
+                      aria-label="scrollable auto tabs example"
+                    >
+                      {showdate.map((value) => {
+                        return (
+                          <Tab
+                            label={value}
+                            {...travelprops(1)}
+                            className="travelDrage_Tab  "
+                          />
+                        );
+                      })}
+                      <Tab
+                        label="+"
+                        {...travelprops()}
+                        onClick={handleClick}
+                        className="travelDrage_Tab  "
+                      />
+                    </Tabs>
+                  );
+                })}
               </Box>
             </div>
 
-            <TabPanel value={value} index={0}>
-              <TravelDrag />
-            </TabPanel>
-            <TabPanel value={value} index={1}>
-              QQ元件好難切 這樣感覺不太行
-            </TabPanel>
-            <TabPanel value={value} index={2}>
-              <TravelDrag />
-            </TabPanel>
+            {showdate.map((data, indexs) => {
+              return (
+                <TabPanel value={value} index={indexs}>
+                  <TravelDrag
+                    planning={planning}
+                    indexs={indexs}
+                    setDeviceDetial={setDeviceDetial}
+                    editdetail={editdetail}
+                  />
+                </TabPanel>
+              );
+            })}
           </Box>
         </div>
       </div>

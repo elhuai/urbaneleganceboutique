@@ -47,12 +47,10 @@ const centers = [
     user: '席主席',
   },
 ];
-function Map() {
-  // const center = useMemo(() => ({ lat: 23.97565, lng: 120.9738819 }), []);
+function Map({ travelTicket, planning, traveltitle }) {
   const [center, setcenter] = useState({ lat: 23.17565, lng: 120.9738819 });
   const [zoom, setzoom] = useState(8);
   const [selected, setSelected] = useState(null);
-  // console.log('selected', selected);
   const mapRef = useRef(null);
 
   //  TODO: 別刪除
@@ -78,10 +76,14 @@ function Map() {
   return (
     <>
       <div className="travelmap_body d-flex">
-        <TravelDate />
+        <TravelDate planning={planning} traveltitle={traveltitle} />
         <div className="travelmap_mainMap">
           <div>
-            <TravelmapNavbar setSelected={setSelected} />
+            <TravelmapNavbar
+              selected={selected}
+              setSelected={setSelected}
+              travelTicket={travelTicket}
+            />
           </div>
           <GoogleMap
             // options={{

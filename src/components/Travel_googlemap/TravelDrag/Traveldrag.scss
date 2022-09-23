@@ -1,6 +1,106 @@
 $maincolor: #ffc715;
 $supcolor: #feefc3;
 $supbackcolor: #e7e7e9;
+.traveldrage_change {
+  width: 730px;
+  height: 590px;
+  // background: #eee;
+  overflow: auto;
+}
+.travel_drag_main_card {
+  .travelDrag_container {
+    // margin-left: 50px;
+    width: 730px;
+    height: 590px;
+    background: #eee;
+    overflow: auto;
+  }
+  // position: absolute;
+  // top: -210px;
+  position: relative;
+  left: 10px;
+  opacity: 0.8;
+  z-index: 1;
+  width: 685px;
+  // max-width: 960px;
+  // --bs-card-spacer-y: 0rem !important;
+  &:hover {
+    transform: translateY(-5px);
+    box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.2);
+  }
+  transition: 0.5s ease-in;
+  animation: wrapper-gradient 0.6s linear;
+  @keyframes wrapper-gradient {
+    0% {
+      transform: translateY(-100%);
+    }
+    100% {
+      transform: translateY(0);
+    }
+  }
+
+  .Travel_Drag_card_img {
+    width: 100%;
+    height: 120px;
+    margin-left: -1.6px;
+    margin-top: -6.5px;
+    // margin-bottom: -5.5px;
+    border-top-left-radius: 6px;
+    border-bottom-left-radius: 6px;
+  }
+  .Travel_Drag_card-title {
+    font-weight: 500;
+  }
+  .Travel_Drag_cardText {
+    // TODO: 記得改寬度會報版
+    width: 510px;
+    .travel_Dragmapicon {
+      height: 20px;
+      width: 20px;
+      position: relative;
+      top: 5px;
+    }
+    .Travel_DragNavbar_text {
+      font-size: 24px;
+      font-weight: 700;
+      margin-left: 20px;
+      display: -webkit-box; /*值必須為-webkit-box或者-webkit-inline-box*/
+      -webkit-box-orient: vertical; /*值必須為vertical*/
+      -webkit-line-clamp: 2; /*值為數字，表示一共顯示幾行*/
+      overflow: hidden;
+    }
+  }
+
+  .Travel_Drag_card_placeName_text {
+    display: inline-block;
+    color: #2da9d7;
+    background-color: #d5eeee;
+    border-radius: 8px;
+    padding: 2px 10px;
+  }
+
+  .Travel_Drag_trashIconn {
+    position: relative;
+    top: 1px;
+    left: 208px;
+    svg {
+      width: 1.25rem;
+      height: 1.25rem;
+      color: #ef7a70;
+    }
+  }
+
+  .Travel_Drag_cardNT {
+    cursor: pointer;
+    position: relative;
+    // top: 3px;
+    left: 40px;
+    color: #ef7a70;
+
+    font-size: 20px;
+  }
+}
+
 .travleDrag_body {
   padding-top: 30px;
   .travleDrag_menu {
@@ -44,9 +144,34 @@ $supbackcolor: #e7e7e9;
           height: 45px;
         }
       }
+      .travelDrage_input_title {
+        border-width: 0px;
+        background-color: $supcolor;
+        border-bottom: #ccc 2px solid;
+        position: relative;
+        left: 50px;
+        bottom: 10px;
+        font-size: 30px;
+        width: calc(100% - 45px);
+        height: 34px;
+        padding-bottom: 10px;
+        font-weight: 400;
+        word-wrap: break-word;
+        text-overflow: ellipsis;
+        display: -webkit-box;
+        -webkit-line-clamp: 1;
+        -webkit-box-orient: vertical;
+        overflow: hidden;
+        line-height: 1;
+        // padding-left: 50px;
+      }
+      input:focus {
+        outline: none;
+      }
       .travleDrag_header_tittle {
         font-size: 34px;
-        width: calc(100% - 45px);
+        // width: calc(100% - 2px);
+        width: calc(400px - 10px);
         height: 34px;
         font-weight: 700;
         word-wrap: break-word;
@@ -90,6 +215,15 @@ $supbackcolor: #e7e7e9;
         background-size: 100%;
         background-image: url('../../../images/Traveldragbrush.svg');
       }
+    }
+    .travleDrag_header_upImage {
+      position: relative;
+
+      top: 65px;
+      left: 140px;
+    }
+    .travleDrag_header_upicon {
+      cursor: pointer;
     }
     .travleDrag_day_container {
       margin-left: 24px;
