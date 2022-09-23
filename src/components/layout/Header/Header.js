@@ -10,7 +10,7 @@ import { handleLoginCard } from '../../../utils/handler/card/handleInputCard';
 import { useUserInfo } from '../../../hooks/useUserInfo';
 import './_Header.scss';
 import { callLineLoginApi } from '../../../api/authApi';
-import { handleFailed } from '../../../utils/handler/handleStatusCard';
+import { handleFailed } from '../../../utils/handler/card/handleStatusCard';
 import ShoppingCart from '../ShoppingCart/ShoppingCart';
 
 const Header = () => {

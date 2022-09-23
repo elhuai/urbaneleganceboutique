@@ -7,7 +7,7 @@ import {
   handleWarningComfirm,
   handleSucccessComfirm,
   handleInfoComfirm,
-} from '../../../utils/handler/handleStatusCard';
+} from '../../../utils/handler/card/handleStatusCard';
 import ShoppingCart from '../../layout/ShoppingCart/ShoppingCart';
 
 export default function Example() {
