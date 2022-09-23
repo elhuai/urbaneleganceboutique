@@ -11,6 +11,7 @@ import { useUserInfo } from '../../../hooks/useUserInfo';
 import './_Header.scss';
 import { callLineLoginApi } from '../../../api/authApi';
 import { handleFailed } from '../../../utils/handler/handleStatusCard';
+import ShoppingCart from '../ShoppingCart/ShoppingCart';
 
 const Header = () => {
   const { user, setUser } = useUserInfo();
