@@ -8,26 +8,39 @@ import './PostStateBar.scss';
 import { useState, useEffect } from 'react';
 import axios from 'axios';
 import { API_URL } from '../../../utils/config';
+import { handleSuccess } from '../../../utils/handler/handleStatusCard';
 
 export default function PostStateBar({ post }) {
+  // 按讚統計
+
   console.log(post);
   const [likes, setLikes] = useState(post[0][0].likes);
   const [likesState, setLikeState] = useState(0);
-
+  let postID = post[0][0].id;
+  // console.log(postID, likesState);
   const LikeHandle = async (e) => {
     e.preventDefault();
-
-    let responseData = await axios.post(`${API_URL}/community/likes`);
-    console.log('按讚成功', responseData);
 
     if (!likesState) {
       setLikes(likes + 1);
       setLikeState(1);
+      let likesData = await axios.post(`${API_URL}/community/likes`, {
+        postID,
+        likesState,
+      });
+      console.log('按讚成功', likesData);
+      handleSuccess('讚讚！');
       // console.log(likes);
       // console.log(likesState);
     } else {
       setLikes(likes - 1);
       setLikeState(0);
+      let likesData = await axios.post(`${API_URL}/community/likes`, {
+        postID,
+        likesState,
+      });
+      console.log('按讚成功', likesData);
+      handleSuccess('讚還來');
       // console.log(likes);
       // console.log(likesState);
     }

@@ -8,10 +8,8 @@ import dogIcon from '../../images/travel_dog_paws.svg';
 import { MdTitle } from 'react-icons/md';
 // import PostSwiper from '../../components/WYSIWYG/Swiper';
 import { MdPhotoSizeSelectActual } from 'react-icons/md';
-import { RiEditFill } from 'react-icons/ri';
 import { MdOutlineClose } from 'react-icons/md';
 import PostMap from '../../components/Community/PostComponent/PostMap';
-import { IoMdAdd } from 'react-icons/io';
 import axios from 'axios';
 import { API_URL } from '../../utils/config';
 import TripOutline from '../../components/Community/PostComponent/TripOutline';
@@ -20,7 +18,9 @@ import { useParams, useLocation } from 'react-router-dom';
 import { handleSuccess } from '../../utils/handler/handleStatusCard';
 
 // 驗證登入
-// import { useUserInfo } from '../../hooks/useUserInfo';
+import { useUserInfo } from '../../hooks/useUserInfo';
+
+// const { user, setUser } = useUserInfo();
 
 function PostTripEdit() {
   //原始資料
@@ -47,12 +47,36 @@ function PostTripEdit() {
   // 景點停留時間
   const [tripPostLocTime, setTripPostLocTime] = useState('');
 
+  //預覽照片 (封面照片)
+  const [selectedCoverFile, setSelectedCoverFile] = useState('');
+  const [preview, setPreview] = useState('');
+
   // 貼文ＩＤ從網址字串抓
   const location = useLocation();
   const urlSearchParams = new URLSearchParams(location.search);
   const postID = urlSearchParams.get('postID');
-  // console.log('getpostid', postID);
+
   //預計打回後端資料庫的物件 (新增)
+  // 打包整筆資料可編輯更新
+  const updateObject = {
+    travel_id: travelID,
+    title: tripPostTitle,
+    coordinate: tripPostLocMark,
+    tags: tripPostTags,
+  };
+
+  //拆景點明細更新
+  const locateDetail = {
+    id: locateID,
+    locate_context: tripPostLocContext,
+    locate_duration: tripPostLocTime,
+  };
+
+  //拆分圖片更新 TODO:
+  const updataPhoto = {
+    main_photo: tripPostCover,
+    locate_photo: tripPostLocPhoto, //how to retreive the data
+  };
 
   // 單獨取行程明細
   useEffect(() => {
@@ -114,40 +138,14 @@ function PostTripEdit() {
     };
     fetchPostTripEdit();
   }, []);
-  postTripEdit.map((data, qe) => {
-    console.log('map', data, qe);
-    return <></>;
-  });
-  // console.log('testposttrip1', postTripEdit[0]);
-  // console.log('testposttrip2', postTripEdit[1]);
-  // console.log('testposttrip3', postTripEdit[2]);
+  //TODO: 不同資料有不同的數字
+  // postTripEdit.map((data, qe) => {
+  //   console.log('map', data, qe);
+  //   return <></>;
+  // });
 
-  console.log('days', postTripEdit.length);
   //回傳資料庫
-  // const { user, setUser } = useUserInfo();
-  // async function handleSubmit() {
-
-  // 打包整筆資料可編輯更新
-  const updateObject = {
-    travel_id: travelID,
-    title: tripPostTitle,
-    coordinate: tripPostLocMark,
-    tags: tripPostTags,
-  };
-
-  //拆景點明細更新
-  const locateDetail = {
-    id: locateID,
-    locate_context: tripPostLocContext,
-    locate_duration: tripPostLocTime,
-  };
-
-  //拆分圖片更新
-  const updataPhoto = {
-    main_photo: tripPostCover,
-    locate_photo: tripPostLocPhoto, //how to retreive the data
-  };
-
+  //儲存
   const handleSubmit = async (e) => {
     e.preventDefault();
     let responseData = await axios.post(
@@ -157,11 +155,17 @@ function PostTripEdit() {
     console.log('回傳編輯資料', responseData);
     handleSuccess('貼文儲存成功', '/admin');
   };
+  //清空
+  const resetForm = () => {
+    setTripPostLocContext('');
+    setTripPostLocPhoto('');
+    setTripPostLocTime('');
+    setTripPostTitle('');
+    setTripPostLocMark('');
+    setTripPostTags('');
+  };
 
   //預覽照片 (封面照片)
-  const [selectedCoverFile, setSelectedCoverFile] = useState('');
-
-  const [preview, setPreview] = useState('');
   useEffect(() => {
     if (!selectedCoverFile) {
       setPreview('');
@@ -185,43 +189,31 @@ function PostTripEdit() {
       setSelectedCoverFile(null);
     }
   };
+  console.log('整理好的資料', postTripEdit);
+  // const [selectedPhotoFile, setSelectedPhotoFile] = useState('');
+  // const changePhotoHandler = (e) => {
+  //   const files = e.target.files;
+  //   console.log(files);
+  //   const photoGroup = [];
+  //   for (let i = 0; i < files.length; i++) {
+  //     // console.log(files[i]['name']);
+  //     photoGroup.push(files[i]['name']);
+  //   }
+  //   console.log('Newphotogroup', photoGroup);
+  //   let a = photoGroup.toString();
+  //   console.log(a);
 
-  const [selectedPhotoFile, setSelectedPhotoFile] = useState('');
-  const changePhotoHandler = (e) => {
-    const files = e.target.files;
-    console.log(files);
+  //TODO:轉換成字串存放在對應陣列
 
-    const photoGroup = [];
-    for (let i = 0; i < files.length; i++) {
-      // console.log(files[i]['name']);
-      photoGroup.push(files[i]['name']);
-    }
-
-    console.log('Newphotogroup', photoGroup);
-    let a = photoGroup.toString();
-    console.log(a);
-
-    //TODO:轉換成字串存放在對應陣列
-
-    if (files) {
-      // setTripPostLocPhoto(photoGroup);
-      setSelectedPhotoFile(files);
-    } else {
-      // setTripPostLocPhoto(photoGroup);
-      setSelectedPhotoFile(null);
-    }
-  };
+  // if (files) {
+  //   // setTripPostLocPhoto(photoGroup);
+  //   setSelectedPhotoFile(files);
+  // } else {
+  //   // setTripPostLocPhoto(photoGroup);
+  //   setSelectedPhotoFile(null);
+  // }
 
   // reset the form input value
-
-  const resetForm = () => {
-    setTripPostLocContext('');
-    setTripPostLocPhoto('');
-    setTripPostLocTime('');
-    setTripPostTitle('');
-    setTripPostLocMark('');
-    setTripPostTags('');
-  };
 
   return (
     <>
@@ -311,9 +303,9 @@ function PostTripEdit() {
             <div className="d-flex align-items-start justify-content-around">
               <div className="article_edit">
                 {postTripEdit.map((data, index) => {
-                  console.log('datattttttt', data);
-                  console.log('data================', data[index].days);
-                  console.log('ind', index);
+                  console.log('該天陣列', data);
+                  console.log('該天為第幾天', data[index].days);
+                  console.log('索引', index);
 
                   return (
                     <>

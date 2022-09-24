@@ -7,6 +7,8 @@ import { Link } from 'react-router-dom';
 import { RiEditFill } from 'react-icons/ri';
 import { MdOutlineClose } from 'react-icons/md';
 import { useState, useEffect } from 'react';
+import moment from 'moment';
+import { AiTwotoneLike } from 'react-icons/ai';
 import axios from 'axios';
 import { API_URL } from '../../utils/config';
 // import TripImport from '../../components/Community/PostComponent/TripImport';
@@ -14,6 +16,7 @@ import { handleSuccess } from '../../utils/handler/handleStatusCard';
 
 function CommunityManagement() {
   //roll 全部貼文資料
+
   const [myPost, setMyPost] = useState([]);
 
   // 我的貼文ＩＤ點擊編輯查看內容跳轉
@@ -24,14 +27,14 @@ function CommunityManagement() {
 
   //匯入我的行程
   const [tripImport, setTripImport] = useState([]);
-  //
+  // 回傳新增貼文預設欄位
   const [tripID, setTripID] = useState('');
 
   useEffect(() => {
     const fetchMyPost = async () => {
       const result = await axios.get(`${API_URL}/community`);
       // 取得後端來的資料
-      console.log(result.data);
+      // console.log(result.data);
       setMyPost(result.data);
       setIfDelete(false);
       // 存回 useState 狀態
@@ -55,24 +58,24 @@ function CommunityManagement() {
   };
   //匯入行程製作貼文
   // creatNewTripPost
+  const createTime = moment(new Date()).format('YYYY-MM-DD hh:mm:ss');
+
   const creatNewTripPost = async (e) => {
     e.preventDefault();
-
-    let checktData = await axios.get(`${API_URL}/community/tripPostDetail`, {
+    let creatData = await axios.post(`${API_URL}/community/tripPostNew`, {
       tripID,
+      createTime,
     });
-    let creatData = await axios.get(`${API_URL}/community/tripPostDetail`, {});
-    console.log(creatData, '資料刪除成功');
-    handleSuccess('貼文刪除成功');
+    console.log(creatData, '行程貼文新增成功');
+    handleSuccess('貼文匯入成功', '/admin');
   };
-  console.log('tripidddd', tripID);
 
-  //匯入我的行程
+  //匯入我的行程選單
   useEffect(() => {
     const fetchMyTrip = async () => {
       const result = await axios.get(`${API_URL}/community/tripDetailImport`);
       // 取得後端來的資料
-      console.log(result.data);
+      // console.log('fefefefe', result.data);
       setTripImport(result.data);
       // 存回 useState 狀態
     };
@@ -102,7 +105,7 @@ function CommunityManagement() {
               title={
                 <div className="d-flex">
                   <img className="tab_claw me-2 " src={dogIcon} alt="" />
-                  <p className="my-2 tab_text_size">我的貼文</p>
+                  <p className="my-2 tab_text_size">一般貼文</p>
                 </div>
               }
             >
@@ -168,8 +171,14 @@ function CommunityManagement() {
                               </Link>
                             </div>
                           </div>
-                          <div className="post_status">
-                            {data.status === 1 ? '發布中' : '草稿'}
+                          <div className="d-flex flex-column align-items-center justify-content-end py-5">
+                            <div className="post_status ms-5">
+                              {data.status === 1 ? '發布中' : '草稿'}
+                            </div>
+                            <div className="post_like mt-5 ms-5">
+                              <AiTwotoneLike></AiTwotoneLike>
+                              {data.likes}
+                            </div>
                           </div>
                         </li>
                       </>
@@ -183,7 +192,7 @@ function CommunityManagement() {
               title={
                 <div className="d-flex">
                   <img className=" tab_claw me-2" src={dogIcon} alt="" />
-                  <p className="my-2 tab_text_size">追蹤者列表</p>
+                  <p className="my-2 tab_text_size">行程貼文</p>
                 </div>
               }
             >
@@ -543,23 +552,20 @@ function CommunityManagement() {
                 placeholder="請選擇我的行程"
                 onChange={(e) => {
                   setTripID(e.target.value);
-                  // console.log('test', e.target.value);
                 }}
               >
-                <option>請選擇匯入的行程</option>
+                <option selected>請選擇匯入的行程</option>
                 {tripImport.map((data, index) => {
                   return (
                     <>
                       <option value={data.id}>{data.title}</option>
+                      {/* TODO:如何將data.title的值回傳到select onChange */}
                     </>
                   );
                 })}
               </select>
-              <Link to={`/postTripEdit?postID=`}>
-                <button
-                  className="confirm_button"
-                  onClick={(e) => creatNewTripPost}
-                >
+              <Link to={`/`}>
+                <button className="confirm_button" onClick={creatNewTripPost}>
                   確認
                 </button>
               </Link>
