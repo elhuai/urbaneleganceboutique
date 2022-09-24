@@ -1,5 +1,6 @@
 import React from 'react';
 import coverPhoto from '../../../images/test2.jpg';
+import { BE_URL } from '../../../utils/config';
 import { Link } from 'react-router-dom';
 import { BiLike } from 'react-icons/bi';
 import { AiTwotoneLike } from 'react-icons/ai';
@@ -16,6 +17,7 @@ export default function PostStateBar({ post }) {
     if (!likesState) {
       setLikes(likes + 1);
       setLikeState(1);
+      // TODO:傳值給資料庫做加減
       // console.log(likes);
       // console.log(likesState);
     } else {
@@ -38,7 +40,9 @@ export default function PostStateBar({ post }) {
             className=""
             alt=""
             src={
-              post[0].main_photo.length === 0 ? coverPhoto : post[0].main_photo
+              post[0].main_photo.length === 0
+                ? coverPhoto
+                : { BE_URL } + post[0].main_photo
             }
           ></img>
         </div>
@@ -69,9 +73,7 @@ export default function PostStateBar({ post }) {
               {tags.map((data, index) => {
                 return (
                   <div key={tags.index} className="post_tags">
-                    <p className="mx-1">
-                      {data}
-                    </p>
+                    <p className="mx-1">{data}</p>
                   </div>
                 );
               })}

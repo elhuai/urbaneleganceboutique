@@ -14,6 +14,7 @@ import { MdTitle } from 'react-icons/md';
 import { MdPhotoSizeSelectActual } from 'react-icons/md';
 import PhotoReviewSwiperDefault from '../../components/WYSIWYG/PhotoViewDefault';
 import { ClassicEditor } from 'ckeditor5-custom-build';
+// import ImageToolbar from '@ckeditor/ckeditor5-image/src/imagetoolbar';
 // import FileUpload from '../../components/WYSIWYG/FileUpload';
 
 // import { Swiper, SwiperSlide } from 'swiper/react';
@@ -42,8 +43,7 @@ function PostWYSIWYGEdit() {
     setPostData(newPostData);
   }
 
-
-  // === 清空按鈕用 === 
+  // === 清空按鈕用 ===
   const handleClick = (e) => {
     e.preventDefault();
     setPostData({ title: '', location: '', tags: '', photo: '' });
@@ -54,6 +54,18 @@ function PostWYSIWYGEdit() {
   // TODO: 可以多張上傳！先上傳一張試試
   function handleUpload(e) {
     setPostData({ ...postData, photo: e.target.files[0] });
+
+    const file = e.target.files[0];
+
+    if (file) {
+      // setIsFilePicked(true);
+      setSelectedFile(file);
+      // setImgServerUrl('');
+    } else {
+      // setIsFilePicked(false);
+      setSelectedFile(null);
+      // setImgServerUrl('');
+    }
   }
 
   useEffect(() => {
@@ -69,19 +81,19 @@ function PostWYSIWYGEdit() {
     return () => URL.revokeObjectURL(objectUrl);
   }, [selectedFile]);
 
-  const changeHandler = (e) => {
-    const file = e.target.files[0];
+  // const changeHandler = (e) => {
+  //   const file = e.target.files[0];
 
-    if (file) {
-      // setIsFilePicked(true);
-      setSelectedFile(file);
-      // setImgServerUrl('');
-    } else {
-      // setIsFilePicked(false);
-      setSelectedFile(null);
-      // setImgServerUrl('');
-    }
-  };
+  //   if (file) {
+  //     // setIsFilePicked(true);
+  //     setSelectedFile(file);
+  //     // setImgServerUrl('');
+  //   } else {
+  //     // setIsFilePicked(false);
+  //     setSelectedFile(null);
+  //     // setImgServerUrl('');
+  //   }
+  // };
 
   // === 送出 ===
   async function handleSubmit(e) {
@@ -185,7 +197,7 @@ function PostWYSIWYGEdit() {
             <PostEditor setGetData={setGetData} />
             <h3>{getData}</h3>
             {/* <PostEditor /> */}
-            <label
+            {/* <label
               className="photo_upload d-flex align-items-center
               justify-content-center"
             >
@@ -194,7 +206,7 @@ function PostWYSIWYGEdit() {
                 type="file"
                 accept="images/*"
                 hidden
-                onChange={changeHandler}
+                // onChange={changeHandler}
                 multiple
                 className="form-control"
               ></input>
@@ -203,7 +215,7 @@ function PostWYSIWYGEdit() {
             <label className="post_photo_upload">
               <input type="file" accept="image/*" multiple hidden />
             </label>
-            <PhotoReviewSwiperDefault></PhotoReviewSwiperDefault>
+            <PhotoReviewSwiperDefault></PhotoReviewSwiperDefault> */}
           </form>
           <div className="post_map">
             <p>行程地圖</p>
@@ -216,7 +228,7 @@ function PostWYSIWYGEdit() {
               清空
             </button>
             <button className="btn" onClick={handleSubmit}>
-              儲存草稿
+              儲存草稿123
             </button>
             <button className="btn" onClick={handleSubmit}>
               發布
