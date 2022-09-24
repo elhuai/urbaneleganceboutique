@@ -17,10 +17,6 @@ export default function ItemsImage(props) {
   const [thumbsSwiper, setThumbsSwiper] = useState(null);
   const { mainURL, productData, photo } = props;
 
-  console.log('====================================');
-  console.log(productData.main_photo);
-  console.log(photo['file_name']);
-  console.log('====================================');
   return (
     <div className="d-flex flex-column img_bar">
       <Swiper

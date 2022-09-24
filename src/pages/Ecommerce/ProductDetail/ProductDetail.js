@@ -8,6 +8,8 @@ import { Link } from 'react-router-dom';
 
 // 加入購物車跳出視窗
 import { handleSuccess } from '../../../utils/handler/card/handleStatusCard';
+import { useUserInfo } from '../../../hooks/useUserInfo';
+
 // 商品照片
 import ItemImage from '../../../components/EC/EC_productDetail/Image';
 // 街景
@@ -32,9 +34,6 @@ const ProductDetail = () => {
   useEffect(() => {
     // 抓商品細節資料
     const fetchProductData = async () => {
-      // 加入購物車與否
-      // const { user, setUser } = useUserInfo();
-
       const result = await axios.get(
         `${API_URL}/productdetail/item?id=${productId}`
       );
@@ -59,6 +58,26 @@ const ProductDetail = () => {
   // console.log('title', title);
 
   // = 加入購物車
+  const { user, setUser } = useUserInfo();
+  const addCart = async (e, id) => {
+    // e.preventDefault();
+    if (user.auth) {
+      try {
+        const result = await axios.post(
+          `${API_URL}/cart/postmore/${id}`,
+          {},
+          {
+            withCredentials: true,
+          }
+        );
+        handleSuccess('已成功加入購物車');
+      } catch (error) {
+        console.log('error', error);
+      }
+    } else {
+      addCart({ isLogin: true }, setUser);
+    }
+  };
 
   return (
     <>
@@ -106,7 +125,10 @@ const ProductDetail = () => {
                   {/* 推薦商品 */}
                   {recommend.map((data, index) => {
                     return (
-                      <div className="addSection d-flex flex-row mb-2">
+                      <div
+                        className="addSection d-flex flex-row mb-2"
+                        key={index}
+                      >
                         <Link to={`/ec-productdetail?id=${data.id}`}>
                           <div className="addSubSection d-flex align-items-center mb-0">
                             <img
@@ -132,9 +154,10 @@ const ProductDetail = () => {
                           <div className="d-flex align-items-end">
                             <button
                               className="addSubSection_btn ms-2 py-2"
-                              onClick={() => {
+                              onClick={(e) => {
+                                addCart(e, data.id);
                                 // console.log(e.target.value);
-                                handleSuccess('已成功加入購物車');
+                                // handleSuccess('已成功加入購物車');
                               }}
                             >
                               加入購物車
@@ -151,8 +174,9 @@ const ProductDetail = () => {
                   <button
                     className="addButton"
                     onClick={(e) => {
-                      // console.log(e.target.value);
-                      handleSuccess('已成功加入購物車');
+                      console.log(e.target.value);
+                      addCart(e, productId);
+                      // handleSuccess('已成功加入購物車');
                     }}
                   >
                     加入購物車
