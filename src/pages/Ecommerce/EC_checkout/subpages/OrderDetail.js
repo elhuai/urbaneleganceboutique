@@ -1,32 +1,40 @@
 import '../styles/_EC_subpages_OrderDetail.scss';
+import axios from 'axios';
+import { react, useState, useEffect } from 'react';
+import { API_URL } from '../../../../utils/config';
 
 function OrderDetail(props) {
+  const [cart, setCart] = useState([]);
+
+  useEffect(() => {
+    const fetchProductData = async () => {
+      // 抓商品細節資料
+      const result = await axios.get(`${API_URL}/cart/getcart`);
+      // console.log('result', result.data);
+      const [cartData] = result.data;
+    
+      setCart(cartData);
+    };
+    fetchProductData();
+  }, []);
   return (
     <>
       <div className="OrderDetail">
-        <div className="mainTitle">1.確認購物車內容</div>
+        <div className="mainTitle">3.送出訂單</div>
 
         <div className="bottomColumn">
-          {/* <div className="subSection1">
-            <div className="subTitle">票券方案</div>
-            <div className="subInput">屏東海生館｜門票・魚你同行</div>
-          </div> */}
           <div className="subSection2">
             <div className="calculateSection">
-              <div className="subTitle">店家名稱</div>
-              <div className="subInput">屏東海生館</div>
-            </div>
-            <div className="calculateSection">
-              <div className="subTitle">票券名稱：屏東海生館｜門票・魚你同行</div>
-              <div className="subInput">NT$1200</div>
+              <div className="subTitle">票券名稱：{cart.name}</div>
+              <div className="subInput">NT${cart.price}</div>
             </div>
             <div className="calculateSection">
               <div className="subTitle">票券數量</div>
-              <div className="subInput">2張</div>
+              <div className="subInput">{cart.quantity}張</div>
             </div>
           </div>
           <div className="subSection2">
-            <span>NT$2400</span>
+            <span>NT${cart.price}</span>
             <div className="calculateSection">
               <div className="subTitle">優惠券：歡慶雙十10%OFF</div>
               <div className="subInput">10%OFF</div>
@@ -35,7 +43,7 @@ function OrderDetail(props) {
           <div className="subSection3">
             <div className="calculateSection">
               <div className="subTitle">購買人</div>
-              <div className="subInput">阿尼基</div>
+              <div className="subInput">{cart.user_id}</div>
             </div>
             <div className="calculateSection">
               <div className="subTitle">付款方式</div>
@@ -48,7 +56,7 @@ function OrderDetail(props) {
           </div>
           <div className="calculateSection1">
             <div className="subTitle">總計(付款金額)</div>
-            <div className="subInput">NT$5200</div>
+            <div className="subInput">NT${cart.price}</div>
           </div>
           <button>來去結帳</button>
         </div>
