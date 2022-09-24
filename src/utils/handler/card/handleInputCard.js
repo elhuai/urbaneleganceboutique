@@ -1,9 +1,10 @@
 import React from 'react';
 import Swal from 'sweetalert2';
 import withReactContent from 'sweetalert2-react-content';
-import LoginCard from '../../components/cards/LoginCard';
-import SocialNameEditCard from '../../components/cards/SocialNameEditCard';
-import { handleSuccess } from './handleStatusCard';
+import LoginCard from '../../../components/cards/LoginCard';
+import SocialNameEditCard from '../../../components/cards/SocialNameEditCard';
+import VoucherExchangeCard from '../../../components/cards/VoucherExchangeCard';
+import { handleSuccess, handleFailed } from './handleStatusCard';
 
 export const handleLoginCard = (config, setUser) => {
   loginCardFire();
@@ -29,9 +30,6 @@ export const handleLoginCard = (config, setUser) => {
             showConfirmButton: false,
             timer: 1500,
           });
-          if (config.logoutRedirect) return (window.location = '/');
-        } else if (!result.isConfirmed && config.strict) {
-          loginCardFire();
         }
       });
   }
@@ -63,6 +61,35 @@ export const handleSocialNameEditCard = (setUser) => {
           window.localStorage.removeItem('last_page');
           window.localStorage.removeItem('line_login');
         }
+      });
+  }
+};
+
+export const handleVoucherExchangeCard = (itemData) => {
+  inputCardFire();
+  function inputCardFire() {
+    const inputCard = withReactContent(Swal);
+    inputCard
+      .fire({
+        html: (
+          <VoucherExchangeCard
+            confirm={inputCard.clickConfirm}
+            itemData={itemData}
+          />
+        ),
+        showConfirmButton: false,
+      })
+      .then((result) => {
+        // console.log(result);
+        // if (!result.isConfirm2ed) inputCardFire(true);
+        // if (result.isConfirmed) {
+        //   handleSuccess(
+        //     'LINE 連動登入成功',
+        //     window.localStorage.getItem('last_page')
+        //   );
+        //   window.localStorage.removeItem('last_page');
+        //   window.localStorage.removeItem('line_login');
+        // }
       });
   }
 };

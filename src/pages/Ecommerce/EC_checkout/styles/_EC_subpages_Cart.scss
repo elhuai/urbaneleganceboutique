@@ -82,6 +82,22 @@
                         background-size: contain, cover;
                         background-repeat: no-repeat, repeat;
                     }
+                    .cartAddSection{
+                        display: flex;
+                        justify-content: space-between;
+                        p{
+                            display: flex;
+                            margin: 0;
+                        }
+                        .cartAddButton{
+                            display: flex;
+                        }
+                        button{
+                            border:0;
+                            background-color: white;
+                            margin-left: 10px;
+                        }
+                    }
                 }
             }
             .totalColumn {

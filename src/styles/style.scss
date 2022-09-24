@@ -1,7 +1,7 @@
 @import './custom_variables';
 @import '../../node_modules/bootstrap/scss/bootstrap.scss';
 @import url('https://fonts.googleapis.com/css2?family=Open+Sans&display=swap');
-
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@100;300;400;500;700&display=swap');
 
 
 * {
@@ -12,11 +12,16 @@
 }
 
 body {
-  font-family: 'Open Sans', sans-serif !important;
+  font-family: 'Noto Sans TC', 'Open Sans', sans-serif !important;
 }
 
 .app {
   margin-top: 94px;
+}
+
+.swal2-popup {
+  width: auto;
+  min-width: 420px;
 }
 
 .swal2-container {
@@ -41,5 +46,9 @@ body {
 @media screen and (max-width: 768px) {
   .app {
     margin-top: 80px;
+  }
+  .swal2-popup {
+    width: auto;
+    min-width: 260px;
   }
 }

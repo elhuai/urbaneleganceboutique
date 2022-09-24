@@ -34,14 +34,17 @@ function CommunityManagement() {
 
   return (
     <>
-      <div className="d-flex">
-        <div>
-        <div className="post_new_button mt-5">
-          <button className="post_new" onClick={() => ConfirmHandle(2)}>
-            <RiEditFill color="#FFC715" className="edit-icon me-2"></RiEditFill>
-            新增貼文
-          </button>
-        </div>
+      <div className="d-flex flex-fill">
+        <div className="flex-fill position-relative">
+          <div className="post_new_button mt-5">
+            <button className="post_new" onClick={() => ConfirmHandle(2)}>
+              <RiEditFill
+                color="#FFC715"
+                className="edit-icon me-2"
+              ></RiEditFill>
+              新增貼文
+            </button>
+          </div>
           <Tabs
             defaultActiveKey="article_list"
             id="uncontrolled-tab-example"
@@ -58,10 +61,13 @@ function CommunityManagement() {
             >
               <div className="post_list">
                 <ul className="post_detail ">
-                  {myPost.map((data,index) => {
+                  {myPost.map((data, index) => {
                     return (
                       <>
-                        <li key={data.index} className="d-flex justify-content-between align-items-center px-5">
+                        <li
+                          key={data.index}
+                          className="d-flex justify-content-between align-items-center px-5"
+                        >
                           <div className="post_description d-flex flex-column">
                             <div className="post_title">
                               <p className="">{data.title}</p>
@@ -331,9 +337,8 @@ function CommunityManagement() {
               </div>
             </Tab>
           </Tabs>
-         
         </div>
-       
+
         <div
           className={
             showCFBox === 2

@@ -35,7 +35,6 @@ const imgArr2 = [
 ];
 
 export default function PhotoReviewSwiperDefault() {
- 
   const ShowSwiper = ({ data }) => {
     return (
       <Swiper
