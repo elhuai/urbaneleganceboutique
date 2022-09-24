@@ -69,12 +69,11 @@ export default function PostStateBar({ post }) {
               {tags.map((data, index) => {
                 return (
                   <div key={tags.index} className="post_tags">
-                    <p className="mx-1">
-                      {data}
-                    </p>
+                    <p className="mx-1">{data}</p>
                   </div>
                 );
               })}
+              x
             </div>
           </div>
           <div className="post_like me-2">

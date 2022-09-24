@@ -18,6 +18,11 @@ body {
   margin-top: 94px;
 }
 
+.swal2-popup {
+  width: auto;
+  min-width: 420px;
+}
+
 .swal2-container {
   z-index: 99999;
 }
@@ -38,5 +43,9 @@ body {
 @media screen and (max-width: 768px) {
   .app {
     margin-top: 80px;
+  }
+  .swal2-popup {
+    width: auto;
+    min-width: 260px;
   }
 }

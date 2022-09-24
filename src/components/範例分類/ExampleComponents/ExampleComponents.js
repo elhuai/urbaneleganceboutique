@@ -7,7 +7,7 @@ import {
   handleWarningComfirm,
   handleSucccessComfirm,
   handleInfoComfirm,
-} from '../../../utils/handler/handleStatusCard';
+} from '../../../utils/handler/card/handleStatusCard';
 
 export default function Example() {
   return (

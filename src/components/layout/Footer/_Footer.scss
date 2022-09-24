@@ -9,9 +9,9 @@ $font-weight: 700;
 }
 .footer_container {
   position: relative;
-  margin: 0 auto;
+  margin: 0 auto !important;
   width: 200px;
-  height: 200px;
+  padding: 60px 0;
 }
 .footer_dog {
   width: 100%;

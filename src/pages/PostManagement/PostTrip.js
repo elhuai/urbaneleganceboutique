@@ -24,7 +24,6 @@ function PostTrip() {
     fetchPostTrip();
   }, []);
 
-
   // // return .map((data) => {
   return (
     <>

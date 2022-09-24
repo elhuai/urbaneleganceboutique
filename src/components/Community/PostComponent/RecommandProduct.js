@@ -26,39 +26,38 @@ function Recommand_product() {
         <p>推薦行程/商品</p> {/* 關聯資料庫 */}
       </div>
       <div className="d-flex justify-content-between">
-      {card.map((data, index) => {
-        return (
-          <div className="recommand_product_list">
-            <div className="d-flex justify-content-between">
-              <Link to="/">
-                <div className="rec_product_card">
-                  <div className="product_photo">
-                    <img
-                      alt=""
-                      src={`http://localhost:3007${data.photo_path}/${data.main_photo}`}
-                    ></img>
-                  </div>
-                  <div className="product_title d-flex aligin-items-center ">
-                    <p>{data.name}</p>
-                  </div>
-                  <div className="rec_product_state d-flex justify-content-between align-items-end ">
-                    <div className="rec_product_rank mb-1 ms-1">
+        {card.map((data, index) => {
+          return (
+            <div className="recommand_product_list">
+              <div className="d-flex justify-content-between">
+                <Link to="/">
+                  <div className="rec_product_card">
+                    <div className="product_photo">
                       <img
-                        className="rank_paws mb-1 me-2"
                         alt=""
-                        src={dogIcon}
+                        src={`http://localhost:3007${data.photo_path}/${data.main_photo}`}
                       ></img>
-                      {Number(data.per_score.toFixed(1))}
                     </div>
-                    <div className="rec_product_price">NT${data.price}</div>
+                    <div className="product_title d-flex aligin-items-center ">
+                      <p>{data.name}</p>
+                    </div>
+                    <div className="rec_product_state d-flex justify-content-between align-items-end ">
+                      <div className="rec_product_rank mb-1 ms-1">
+                        <img
+                          className="rank_paws mb-1 me-2"
+                          alt=""
+                          src={dogIcon}
+                        ></img>
+                        {Number(data.per_score.toFixed(1))}
+                      </div>
+                      <div className="rec_product_price">NT${data.price}</div>
+                    </div>
                   </div>
-                </div>
-              </Link>
+                </Link>
+              </div>
             </div>
-          </div>
-        );
-      
-      })}
+          );
+        })}
       </div>
     </>
   );
