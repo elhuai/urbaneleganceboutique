@@ -63,7 +63,7 @@ const ProductDetail = () => {
     // e.preventDefault();
     if (user.auth) {
       try {
-        const result = await axios.post(
+        await axios.post(
           `${API_URL}/cart/postmore/${id}`,
           {},
           {

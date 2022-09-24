@@ -9,7 +9,7 @@ const Score = (props) => {
       <div id="perScore" className="description">
         <h4>票券評價</h4>
         <div className="score">
-          <div className="score_circle">{perScore}</div>
+          <div className="score_circle">{Number(perScore.toFixed(1))}</div>
           <div className=" score_total">
             <Rate allowHalf character={<FaPaw />} defaultValue={perScore} />
             <p>共有{Number(({ perScore } * 1.7).toFixed(0))}人評價此商品</p>

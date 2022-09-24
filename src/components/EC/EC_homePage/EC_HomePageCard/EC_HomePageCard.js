@@ -2,8 +2,10 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Autoplay } from 'swiper';
+import { Pagination } from 'swiper';
 import { FaPaw } from 'react-icons/fa';
 import './_EC_HomePageCard.scss';
+
 const ECHomePageCard = (props) => {
   const { ecTypeCard, ecTypeCardTitle } = props;
   return (
@@ -22,11 +24,12 @@ const ECHomePageCard = (props) => {
       {/*PC 輪播商品區  */}
       <div className="ec_card_pc_recommend_list align-items-end">
         <Swiper
+          pagination={true}
           loop={true}
           slidesPerView={4}
           spaceBetween={1}
           className="ec_card_pc_swiper"
-          modules={[Autoplay]}
+          modules={[Autoplay, Pagination]}
           autoplay={{
             delay: 3000,
             disableOnInteraction: false,
