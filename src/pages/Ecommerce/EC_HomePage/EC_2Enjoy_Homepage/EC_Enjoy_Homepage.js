@@ -14,16 +14,12 @@ function EcEnjoyHomepage() {
   // 推薦標題
   const cardTitle = [
     {
-      name: '海派出遊',
+      name: '戶外活動',
       img: 'https://img.freepik.com/free-photo/little-terrier-dog-playing-sea_53876-94775.jpg?w=740&t=st=1663244690~exp=1663245290~hmac=040682012ba7e69a8d923017729d16983533bb08eb105512b0127b50be81ba56',
     },
     {
-      name: '山派出遊',
-      img: 'https://img.freepik.com/free-photo/vertical-closeup-shot-german-shepherd-dog-standing-stone-sunny-day_181624-30529.jpg?w=740&t=st=1663244783~exp=1663245383~hmac=62eb3445184fc65138690b78c22cf9a7f0a7247e541e0d017f1f6fb9b7f384fc',
-    },
-    {
-      name: '寵物益生菌推薦',
-      img: 'https://img.freepik.com/free-photo/spaniel-puppy-playing-studio-cute-doggy-pet-is-sitting-isolated-blue-background-cavalier-king-charles-negative-space-insert-your-text-image-concept-movement-animal-rights_155003-33840.jpg',
+      name: '室內景點',
+      img: 'https://img.freepik.com/free-photo/white-black-french-bulldog-pink-hoodie-looks-camera-while-sitting-alone-chair-pets-concept_197531-31320.jpg',
     },
   ];
   // 推薦區域商品
@@ -38,8 +34,8 @@ function EcEnjoyHomepage() {
   useEffect(() => {
     const fetchFishProducts = async () => {
       const arrStr = [
-        { id: '2', keyword: '水', setState: setCoffeeCard },
-        { id: '2', keyword: '山', setState: setCakeCard },
+        { id: '2', keyword: '戶外活動', setState: setCoffeeCard },
+        { id: '2', keyword: '室內景點', setState: setCakeCard },
         // { text: '益生菌', setState: setHealthCard },
       ];
 

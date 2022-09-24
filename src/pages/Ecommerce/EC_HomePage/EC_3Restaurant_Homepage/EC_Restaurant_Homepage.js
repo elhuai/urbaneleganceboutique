@@ -38,7 +38,7 @@ function EcRestaurantHomepage() {
   useEffect(() => {
     const fetchFishProducts = async () => {
       const arrStr = [
-        { id: '3', keyword: '咖啡', setState: setCoffeeCard },
+        { id: '3', keyword: '下午茶', setState: setCoffeeCard },
         { id: '3', keyword: '甜點', setState: setCakeCard },
         // { text: '益生菌', setState: setHealthCard },
       ];

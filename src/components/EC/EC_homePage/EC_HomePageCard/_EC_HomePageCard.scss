@@ -40,10 +40,11 @@ $button-color-remove: #EF7A70;
     overflow: hidden;
     display: flex;
     flex-flow: column;
+    transition: transform .3s ease-out;
 
     &:hover {
-      transform: translate(-2px, -2px);
-      transition: .5s;
+      transform: translate(-3px, -3px);
+      // transition: .5s;
     }
   }
 

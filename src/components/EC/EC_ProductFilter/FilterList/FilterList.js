@@ -84,6 +84,7 @@ const FilterList = (props) => {
                           setTag((tag) => {
                             let newArray = [...tag];
                             newArray.push(e.target.name);
+                            setPage(1);
                             return newArray;
                           });
                         } else {
@@ -91,6 +92,8 @@ const FilterList = (props) => {
                             let newArray = [...tag].filter(
                               (item) => item !== e.target.name
                             );
+                            setPage(1);
+
                             return newArray;
                           });
                         }

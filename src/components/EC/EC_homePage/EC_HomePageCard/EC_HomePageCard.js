@@ -2,7 +2,6 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Autoplay } from 'swiper';
-import { Pagination } from 'swiper';
 import { FaPaw } from 'react-icons/fa';
 import './_EC_HomePageCard.scss';
 
@@ -24,14 +23,13 @@ const ECHomePageCard = (props) => {
       {/*PC 輪播商品區  */}
       <div className="ec_card_pc_recommend_list align-items-end">
         <Swiper
-          pagination={true}
           loop={true}
           slidesPerView={4}
           spaceBetween={1}
           className="ec_card_pc_swiper"
-          modules={[Autoplay, Pagination]}
+          modules={[Autoplay]}
           autoplay={{
-            delay: 3000,
+            delay: 2000,
             disableOnInteraction: false,
           }}
           onSlideChange={(e) => {}}
@@ -65,7 +63,7 @@ const ECHomePageCard = (props) => {
                         <div className="ec_card_rank d-flex flex-row align-items-center pb-1">
                           <FaPaw />
                           {/* {Number(Math.round(data.per_score))} */}
-                          {Number(data.per_score.toFixed(1))}
+                          {data.per_score.toFixed(1)}
                         </div>
                         <div className="ec_card_price">NT${data.price}</div>
                       </div>
