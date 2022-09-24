@@ -2,11 +2,9 @@ import React, { useState } from 'react';
 import { Form, Button, InputGroup } from 'react-bootstrap';
 import axios from 'axios';
 import { API_URL } from '../../utils/config';
-import { useNavigate } from 'react-router-dom';
 import mapicon from '../../images/Travel_input_location.svg';
+import { handleSuccess } from '../../utils/handler/handleStatusCard';
 const TravelForm = () => {
-  const { addtravel, setAddtravel } = useState([]);
-
   const [loginMember, setLoginMember] = useState({
     title: '',
     start_time: '',
@@ -15,11 +13,8 @@ const TravelForm = () => {
   function handleChange(e) {
     setLoginMember({ ...loginMember, [e.target.name]: e.target.value });
   }
-  let navigate = useNavigate();
-
+  //TODO: userid還沒寫進資料庫
   async function handleSubmit(e) {
-    // navigate('/Travel_map');
-    //TODOl記得加寫讀取畫面 別馬上跳走
     e.preventDefault();
     let response = await axios.post(
       `${API_URL}/submit/addDate`,
@@ -27,7 +22,7 @@ const TravelForm = () => {
       {}
     );
     console.log('form表單', response.data);
-    setAddtravel(response.data);
+    handleSuccess('成功建立此行程!', '/Travel_map');
   }
 
   return (

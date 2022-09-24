@@ -10,18 +10,24 @@ import './_Travelhome.scss';
 import { Container } from 'react-bootstrap';
 
 const Travel = () => {
-  const [fishCard, setFishCard] = useState([]);
+  const [travelCommunity, setTravelCommunity] = useState([]); // 拿日期 標題
   useEffect(() => {
-    const callTravelTicketApi = async () => {
-      const arrStr = [{ id: '4', text: '飲水機', setState: setFishCard }];
-      for (let index = 0; index < arrStr.length; index++) {
-        const result = await axios.get(`${API_URL}/travel/travelTicket/title`);
-        const data = result.data;
-        // console.log(data);
-        arrStr[index].setState(data);
+    const calltitledateApi = async () => {
+      try {
+        const arrStr = [
+          { id: '4', text: '飲水機', setState: setTravelCommunity },
+        ];
+        for (let index = 0; index < arrStr.length; index++) {
+          const result = await axios.get(`${API_URL}/travelCommunity`);
+          const data = result.data;
+          // console.log('calltitledateApi', data);
+          arrStr[index].setState(data);
+        }
+      } catch (err) {
+        console.error('calltitledateApi Error', err);
       }
     };
-    callTravelTicketApi();
+    calltitledateApi();
   }, []);
   return (
     <>
@@ -35,7 +41,7 @@ const Travel = () => {
         <h2 className="travel_Swiper_EveryOnetrip_lookH2  user-select-none">
           路克路克大家的行程 :
         </h2>
-        <TravelEveryOneSwiper />
+        <TravelEveryOneSwiper travelCommunity={travelCommunity} />
       </Container>
     </>
   );
