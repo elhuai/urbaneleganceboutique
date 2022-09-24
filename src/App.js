@@ -13,7 +13,7 @@ import Travelmap from './pages/Travel_map';
 import LineLogin from './pages/LineLogin';
 import { UserInfoProvider } from './hooks/useUserInfo';
 
-import PersonalHomePage from './pages/AdminCenter/PersonalHomePage';
+
 import Post from './pages/PostManagement/Post';
 import PostTrip from './pages/PostManagement/PostTrip';
 import PostEdit from './pages/PostManagement/PostEdit';
@@ -37,7 +37,7 @@ function App() {
             <Route index element={<CommunityManagement />} />
           </Route>
           {/* <Route path="/adminCenter" element={<AdminCenterPage />} /> */}
-          <Route path="/personalHomePage" element={<PersonalHomePage />} />
+          {/* <Route path="/personalHomePage" element={<PersonalHomePage />} /> */}
           <Route path="/postWYSIWYG" element={<Post />} />
           <Route path="/postWYSIWYGEdit" element={<PostEdit />} />
           <Route path="/postTrip" element={<PostTrip />} />

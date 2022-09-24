@@ -12,7 +12,7 @@ const MyCkeditor = (props) => {
     <div>
       <div className="Apps">
         <CKEditor
-          config={{placeholder: "開始輸入內容吧"}}
+          config={{ placeholder: '開始輸入內容吧' }}
           editor={Editor}
           onReady={(editor) => {
             // You can store the "editor" and use when it is needed.,

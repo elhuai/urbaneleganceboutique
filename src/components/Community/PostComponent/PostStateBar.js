@@ -5,14 +5,21 @@ import { BiLike } from 'react-icons/bi';
 import { AiTwotoneLike } from 'react-icons/ai';
 import { MdLocationOn } from 'react-icons/md';
 import './PostStateBar.scss';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
+import axios from 'axios';
+import { API_URL } from '../../../utils/config';
 
 export default function PostStateBar({ post }) {
-  // console.log(post);
-  const [likes, setLikes] = useState(post[0].likes);
+  console.log(post);
+  const [likes, setLikes] = useState(post[0][0].likes);
   const [likesState, setLikeState] = useState(0);
 
-  const LikeHandle = () => {
+  const LikeHandle = async (e) => {
+    e.preventDefault();
+
+    let responseData = await axios.post(`${API_URL}/community/likes`);
+    console.log('按讚成功', responseData);
+
     if (!likesState) {
       setLikes(likes + 1);
       setLikeState(1);
@@ -25,11 +32,21 @@ export default function PostStateBar({ post }) {
       // console.log(likesState);
     }
   };
-  const time = post[0].create_time.split(' ');
-  // console.log('test', data.tags);
-  const tags = post[0].tags.split(/[#,＃]/).filter((item) => item);
-  // console.log(tags);
-  // console.log(time[0]);
+
+  // useEffect(() => {
+  //   const fetchPost = async () => {
+  //     const result = await axios.post(`${API_URL}/community/like`);
+  //     // 取得後端來的資料
+  //     console.log(result.data);
+  //     setLikes(result.data);
+  //     // 存回 useState 狀態
+  //   };
+  //   fetchPost();
+  // }, [likesState]);
+
+  const time = post[0][0].create_time.split(' ');
+  const tags = post[0][0].tags.split(/[#,＃]/).filter((item) => item);
+
   return (
     <>
       <div className="postStateBar">
@@ -38,12 +55,14 @@ export default function PostStateBar({ post }) {
             className=""
             alt=""
             src={
-              post[0].main_photo.length === 0 ? coverPhoto : post[0].main_photo
+              post[0][0].main_photo.length === 0
+                ? coverPhoto
+                : post[0][0].main_photo
             }
           ></img>
         </div>
         <div className="post_title d-flex">
-          <p className="">{post[0].title}</p>
+          <p className="">{post[0][0].post_title}</p>
         </div>
         <div className="post_state_bar d-flex justify-content-between">
           <div className="d-flex">
@@ -52,7 +71,7 @@ export default function PostStateBar({ post }) {
             </div>
             <div className="post_auther d-flex pe-4">
               <Link to="/" className="pe-3">
-                {post[0].name}
+                {post[0][0].social_name}
                 {/* 關聯資料庫 */}
               </Link>
               <Link to="/" className="follow_link">
@@ -68,10 +87,8 @@ export default function PostStateBar({ post }) {
             <div className="d-flex ">
               {tags.map((data, index) => {
                 return (
-                  <div key={tags.index} className="post_tags">
-                    <p className="mx-1">
-                      {data}
-                    </p>
+                  <div key={index} className="post_tags">
+                    <p className="mx-1">{data}</p>
                   </div>
                 );
               })}

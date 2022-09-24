@@ -13,17 +13,37 @@ import TripOutline from '../../components/Community/PostComponent/TripOutline';
 function PostTrip() {
   const [postTrip, setPostTrip] = useState([]);
 
+  // 單獨取行程明細
   useEffect(() => {
-    const fetchPostTrip = async () => {
-      const result = await axios.get(`${API_URL}/community/trip`);
-      // 取得後端來的資料
-      console.log(result.data);
-      setPostTrip(result.data);
+    const fetchPostTripEdit = async () => {
+      try {
+        const result = await axios.get(`${API_URL}/community/tripPostDetail`);
+        // 取得後端來的資料
+        // const data2 = await result.data;
+        if (result) {
+          let daysFilter = [];
+          // 分組按照日期分組
+
+          for (const [index, item] of result.data.entries()) {
+            if (daysFilter.length === 0) {
+              daysFilter.push([item]);
+            } else if (
+              daysFilter[daysFilter.length - 1][0].days !== item.days
+            ) {
+              daysFilter.push([item]);
+            } else {
+              daysFilter[daysFilter.length - 1].push(item);
+            }
+          }
+          setPostTrip(daysFilter);
+        }
+      } catch (err) {
+        console.log('setPostTripEdit ', err);
+      }
       // 存回 useState 狀態
     };
-    fetchPostTrip();
+    fetchPostTripEdit();
   }, []);
-
 
   // // return .map((data) => {
   return (

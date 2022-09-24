@@ -28,7 +28,7 @@ export default function PostLocateArticle() {
           return (
             <>
               <div className="my-2">Day 1 </div>
-              
+
               <li className="trip_record_section" id="locate1">
                 <div className="post_location_mark">
                   <p>

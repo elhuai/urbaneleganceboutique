@@ -5,14 +5,27 @@ import { Tabs, Tab } from 'react-bootstrap';
 import dogIcon from '../../images/travel_dog_paws.svg';
 import { Link } from 'react-router-dom';
 import { RiEditFill } from 'react-icons/ri';
-// import ConfirmBox from './ConfirmBox';
 import { MdOutlineClose } from 'react-icons/md';
 import { useState, useEffect } from 'react';
 import axios from 'axios';
 import { API_URL } from '../../utils/config';
+// import TripImport from '../../components/Community/PostComponent/TripImport';
+import { handleSuccess } from '../../utils/handler/handleStatusCard';
 
 function CommunityManagement() {
+  //roll 全部貼文資料
   const [myPost, setMyPost] = useState([]);
+
+  // 我的貼文ＩＤ點擊編輯查看內容跳轉
+  const [myPostID, setMyPostID] = useState('');
+  // 點擊按鈕狀態感變
+  const [showCFBox, setShowCFBox] = useState(0);
+  const [ifDelete, setIfDelete] = useState(false);
+
+  //匯入我的行程
+  const [tripImport, setTripImport] = useState([]);
+  //
+  const [tripID, setTripID] = useState('');
 
   useEffect(() => {
     const fetchMyPost = async () => {
@@ -20,28 +33,65 @@ function CommunityManagement() {
       // 取得後端來的資料
       console.log(result.data);
       setMyPost(result.data);
+      setIfDelete(false);
       // 存回 useState 狀態
     };
     fetchMyPost();
-  }, []);
-
-  const [showCFBox, setShowCFBox] = useState(0);
+  }, [ifDelete]); //如果[]為空值只執行一次api // 若[]裡面的useState變數狀態改變重新執行api
 
   const ConfirmHandle = (e) => {
     setShowCFBox(e);
-    // console.log(showCFBox);
   };
+  //刪除貼文
+  const deleteConfirm = async (e) => {
+    e.preventDefault();
+    let deleteData = await axios.post(`${API_URL}/community`, {
+      myPostID,
+    });
+    console.log(deleteData, '資料刪除成功');
+    handleSuccess('貼文刪除成功');
+    ConfirmHandle(0);
+    setIfDelete(true);
+  };
+  //匯入行程製作貼文
+  // creatNewTripPost
+  const creatNewTripPost = async (e) => {
+    e.preventDefault();
+
+    let checktData = await axios.get(`${API_URL}/community/tripPostDetail`, {
+      tripID,
+    });
+    let creatData = await axios.get(`${API_URL}/community/tripPostDetail`, {});
+    console.log(creatData, '資料刪除成功');
+    handleSuccess('貼文刪除成功');
+  };
+  console.log('tripidddd', tripID);
+
+  //匯入我的行程
+  useEffect(() => {
+    const fetchMyTrip = async () => {
+      const result = await axios.get(`${API_URL}/community/tripDetailImport`);
+      // 取得後端來的資料
+      console.log(result.data);
+      setTripImport(result.data);
+      // 存回 useState 狀態
+    };
+    fetchMyTrip();
+  }, []);
 
   return (
     <>
       <div className="d-flex">
         <div>
-        <div className="post_new_button mt-5">
-          <button className="post_new" onClick={() => ConfirmHandle(2)}>
-            <RiEditFill color="#FFC715" className="edit-icon me-2"></RiEditFill>
-            新增貼文
-          </button>
-        </div>
+          <div className="post_new_button mt-5">
+            <button className="post_new" onClick={() => ConfirmHandle(2)}>
+              <RiEditFill
+                color="#FFC715"
+                className="edit-icon me-2"
+              ></RiEditFill>
+              新增貼文
+            </button>
+          </div>
           <Tabs
             defaultActiveKey="article_list"
             id="uncontrolled-tab-example"
@@ -58,37 +108,69 @@ function CommunityManagement() {
             >
               <div className="post_list">
                 <ul className="post_detail ">
-                  {myPost.map((data,index) => {
+                  {myPost.map((data, index) => {
                     return (
                       <>
-                        <li key={data.index} className="d-flex justify-content-between align-items-center px-5">
+                        <li
+                          key={data.index}
+                          className="d-flex justify-content-between align-items-center px-5"
+                        >
                           <div className="post_description d-flex flex-column">
                             <div className="post_title">
-                              <p className="">{data.title}</p>
+                              <p className="">{data.post_title}</p>
                             </div>
                             <div className="post_date">
                               <p>發布日期：{data.create_time}</p>
                             </div>
                             <div className="post_edit_button d-flex">
-                              <Link to="/postTripEdit">
-                                <button className="btn post_edit my-1 ">
+                              <Link
+                                to={
+                                  data.post_type_id === 2
+                                    ? `/postTripEdit?postID=${data.id}`
+                                    : `/postEdit?postID=${data.id}`
+                                }
+                              >
+                                <button
+                                  value={data.id}
+                                  className="btn post_edit my-1"
+                                  onClick={(e) => {
+                                    setMyPostID(e.target.value);
+                                  }}
+                                >
                                   編輯
                                 </button>
                               </Link>
                               <button
+                                key={data.id}
                                 className="btn post_delete my-1"
-                                onClick={() => ConfirmHandle(1)}
+                                onClick={(e) => {
+                                  ConfirmHandle(1);
+                                  setMyPostID(data.id);
+                                }}
                               >
                                 刪除
                               </button>
-                              <Link to="/postTrip">
-                                <button className="btn check_post my-1">
-                                  預覽
+                              <Link
+                                to={
+                                  data.post_type_id === 2
+                                    ? `/postTrip?postID=${data.id}`
+                                    : `/post?postID=${data.id}`
+                                }
+                              >
+                                <button
+                                  className="btn check_post my-1"
+                                  onClick={() => {
+                                    setMyPostID(data.id);
+                                  }}
+                                >
+                                  {data.status === 1 ? '查看內容' : '預覽'}
                                 </button>
                               </Link>
                             </div>
                           </div>
-                          <div className="post_status">草稿{data.status}</div>
+                          <div className="post_status">
+                            {data.status === 1 ? '發布中' : '草稿'}
+                          </div>
                         </li>
                       </>
                     );
@@ -331,9 +413,8 @@ function CommunityManagement() {
               </div>
             </Tab>
           </Tabs>
-         
         </div>
-       
+
         <div
           className={
             showCFBox === 2
@@ -392,13 +473,15 @@ function CommunityManagement() {
               是否確認刪除？
               <MdOutlineClose
                 className="close_icon"
-                onClick={() => {
+                onClick={(e) => {
                   ConfirmHandle(0);
                 }}
               ></MdOutlineClose>
             </p>
-            <Link to="/">
-              <button className="confirm_button">確認</button>
+            <Link to="/admin">
+              <button className="confirm_button" onClick={deleteConfirm}>
+                確認
+              </button>
             </Link>
           </div>
         </div>
@@ -458,13 +541,27 @@ function CommunityManagement() {
               <select
                 className="form-control mb-2"
                 placeholder="請選擇我的行程"
+                onChange={(e) => {
+                  setTripID(e.target.value);
+                  // console.log('test', e.target.value);
+                }}
               >
-                <option>花蓮自由行</option>
-                <option>好想去台南</option>
-                <option>澎湖好像也很不錯</option>
+                <option>請選擇匯入的行程</option>
+                {tripImport.map((data, index) => {
+                  return (
+                    <>
+                      <option value={data.id}>{data.title}</option>
+                    </>
+                  );
+                })}
               </select>
-              <Link to="/">
-                <button className="confirm_button">確認</button>
+              <Link to={`/postTripEdit?postID=`}>
+                <button
+                  className="confirm_button"
+                  onClick={(e) => creatNewTripPost}
+                >
+                  確認
+                </button>
               </Link>
             </div>
           </div>
