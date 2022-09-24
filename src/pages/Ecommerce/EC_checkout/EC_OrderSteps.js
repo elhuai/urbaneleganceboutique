@@ -64,7 +64,11 @@ function OrderSteps() {
       {console.log(step, maxSteps)}
       {/* 進度條 */}
       <div>
-        <ProgressBar maxSteps={maxSteps} step={step} progressNames={progressNames} />
+        <ProgressBar
+          maxSteps={maxSteps}
+          step={step}
+          progressNames={progressNames}
+        />
       </div>
       {/* 子頁面區域 */}
       <div>

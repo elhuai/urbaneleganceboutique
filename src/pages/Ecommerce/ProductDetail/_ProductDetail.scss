@@ -90,8 +90,13 @@
         }
     }
 
+    .addCartSection {
+        width: 200px;
+        justify-content: space-between;
+    }
+
     .addSubSection {
-        width: 65%;
+        width: calc(100% - 24px);
 
         img {
             border-radius: 8px;
@@ -199,7 +204,6 @@
 
 
     a {
-
         width: 157px;
         padding: 1rem 2rem;
         font-size: 20px;
@@ -209,7 +213,6 @@
             width: 157px;
             height: 46px;
             background-image: url('../../../images/admin-hover-background.svg');
-
         }
     }
 }
@@ -237,6 +240,8 @@
     margin: 0 0 1rem 2rem;
     border-bottom: lightgray 1px solid;
     padding-bottom: 0.5rem;
+
+    h4 {}
 
     p {
         line-height: 35px;

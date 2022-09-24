@@ -77,6 +77,7 @@ function EcProductFilter() {
               setMaxPrice={setMaxPrice}
               minPrice={minPrice}
               setMinPrice={setMinPrice}
+              typeId={currentType}
             />
           </div>
           {/* </div> */}

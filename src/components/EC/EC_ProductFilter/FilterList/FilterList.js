@@ -10,14 +10,23 @@ import 'antd/dist/antd.css';
 // import FilterListToggle from './FilterListToggle/FilterListToggle';
 
 const FilterList = (props) => {
-  const { setTag, setMaxPrice, setMinPrice, minPrice, maxPrice, setPage } =
-    props;
+  const {
+    setTag,
+    setMaxPrice,
+    setMinPrice,
+    minPrice,
+    maxPrice,
+    setPage,
+    typeId,
+  } = props;
   const { tagStatus, setTagStatus } = useState([]);
   const [title, setTitle] = useState([]);
 
   useEffect(() => {
     const fetchTitle = async (index) => {
-      const result = await axios.get(`${API_URL}/filter/choices`);
+      const result = await axios.get(
+        `${API_URL}/filter/choices?typeId=${typeId}`
+      );
       console.log('fetchTitle', result.data);
       const newTitleArray = result.data.map((item) => {
         const newTags = item.tags.map((i) => {
