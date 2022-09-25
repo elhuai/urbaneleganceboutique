@@ -7,7 +7,6 @@ import { BsPeople } from 'react-icons/bs';
 import { Link } from 'react-router-dom';
 import React from 'react';
 import { useUserInfo } from '../../hooks/useUserInfo';
-import Loading from '../layout/Loading';
 
 import './adminCenter.scss';
 
@@ -16,25 +15,23 @@ const AdminCenter = () => {
   const { user } = useUserInfo();
   const { data } = user;
   console.log(data);
-  return !user.auth && !user.firstVertify ? (
-    <Loading />
-  ) : (
+  return (
     <div>
       <div className="admin_side">
         <div className="profile_bar d-flex justify-content-center">
           <div className="user_photobox">
             <img
               className="admin_user_photo w-100 h-100"
-              // src={data.photo[0] === 'h' ? data.photo : BASE_URL + data.photo}
+              src={data.photo[0] === 'h' ? data.photo : BASE_URL + data.photo}
               alt=""
             ></img>
           </div>
           <div className="admin_user_name_bar">
             <Link to="/apersonalHomePage" className="admin_user_name ">
-              <p>User Name</p>
+              <p>{data.social_name}</p>
             </Link>
             <Link
-              to="/personalHomePage"
+              to="/admin/profile"
               className="text-decoration-none admin_myfile"
             >
               <AiOutlineSetting className="settingicon admin_my_profile_text "></AiOutlineSetting>
@@ -68,7 +65,7 @@ const AdminCenter = () => {
           </li>
           <li>
             <Link
-              to="/"
+              to="/admin/voucher"
               className="admin_select text-decoration-none icons d-flex"
             >
               <TbTicket
@@ -92,7 +89,7 @@ const AdminCenter = () => {
           </li>
           <li>
             <Link
-              to="/adminCenter"
+              to="/admin/community"
               className="text-decoration-none admin_select icons d-flex
               community"
             >

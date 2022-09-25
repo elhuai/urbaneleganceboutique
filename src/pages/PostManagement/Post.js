@@ -12,8 +12,33 @@ import PostStateBar from '../../components/Community/PostComponent/PostStateBar'
 import TextSection from '../../components/Community/PostComponent/TextSection';
 
 function Post() {
-
-  const [post, setPost] = useState([]);
+  const [post, setPost] = useState([])
+  const [comment, setComment] = useState([
+    {
+      id:1,
+      user_id:1,
+      comment:'來過好幾次了！還是很喜歡動物園',
+      time:'2022/03/28 12:22',
+    },
+    {
+      id:2,
+      user_id:2,
+      comment:'老少咸宜的場所，從幼稚園、青少年、成人到老人都有！童年的回憶',
+      time:'2022/04/09 20:56',
+    },
+    {
+      id:3,
+      user_id:3,
+      comment:'大人、小孩都愛去的地方，如果天氣涼爽，動物更是不吝嗇的讓你看得夠XD；交通也方便，開車前往、搭乘大眾運輸都很可以。',
+      time:'2022/07/13 23:15',
+    },
+    {
+      id:4,
+      user_id:4,
+      comment:'園區廣大，生物種類繁多，規劃友善且票價親民，兼具休閒娛樂與教育意義，不論大人小孩皆是值得一推的好去處。',
+      time:'2022/08/29 17:15',
+    },
+  ]);
 
   useEffect(() => {
     const fetchPost = async () => {
@@ -39,11 +64,11 @@ function Post() {
               <PostStateBar post={post}></PostStateBar>
               <hr></hr>
               <TextSection post={post}></TextSection>
-              <PhotoReviewSwiperDefault></PhotoReviewSwiperDefault>
+              {/* <PhotoReviewSwiperDefault></PhotoReviewSwiperDefault> */}
               <PostMap></PostMap>
               <RecommandProduct></RecommandProduct>
               <hr></hr>
-              <CommentBar></CommentBar>
+              <CommentBar comment={comment}></CommentBar>
             </div>
           </div>
         </>

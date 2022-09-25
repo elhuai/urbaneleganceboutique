@@ -1,0 +1,67 @@
+$pink:#EF7A70;
+$graycolor: #747474;
+$fmain_color: #ffc200; // 主色
+$royal-blue:#22C3FF;
+
+%product-filter-title{
+  font-size: 20px;
+  font-weight: 700;
+  color: black;
+  // margin: 0;
+}
+
+%normal-text{
+  font-size: 16px;
+  color: $graycolor;
+}
+
+
+
+// 
+.product_filter_pages{
+  width: 100%;
+  margin:0 auto;
+  font-size:0;
+  text-align:center;
+  padding-bottom: 20px;
+  svg{
+    width: 1.5rem;
+    height: 1.5rem;
+  }
+  button{
+    font-size: 1rem;
+    width: 35px;
+    height: 35px;
+    background-color: #fff;
+    border:none;
+    color:$fmain_color;
+    outline:none;
+    &:hover{
+      background-color: $fmain_color;
+      color:#363636;
+      cursor: pointer;
+      border-radius: 5px;
+    }
+  }
+}
+
+// ========== RWD ======== //
+@media (max-width: 768px) {
+  .product-searchList{
+    margin: auto 12px;
+  }
+  .product-filter-left{
+    display: none;
+  }
+  .product-filter-right-top{
+    display: none;
+  }
+  .product-filter-right{
+    margin-left: 0;
+  }
+
+  // 篩選
+  .product_filter_rwd_filter{
+    display:block;
+  }
+}

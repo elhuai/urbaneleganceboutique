@@ -1,7 +1,7 @@
 import React from 'react';
 import './CommentBar.scss';
 
-function CommentBar() {
+function CommentBar(comment) {
   return (
     <div className="post_comment_list">
       <p>回應</p> {/* 關聯資料庫 */}
@@ -62,3 +62,28 @@ function CommentBar() {
 }
 
 export default CommentBar;
+
+// {comment.map((data) => {
+//   <div className=" d-flex flex-column align-items-center">
+//   <li className="d-flex justify-content-between comment_descript_list align-items-start">
+//     <div className="d-flex justify-content-center">
+//       <div className="user_comment_photo">
+//         <img
+//           alt=""
+//           src="https://picsum.photos/200/300?random9"
+//         ></img>
+//       </div>
+//       <div className="user_comment_detail mx-5">
+//         <div className="user_comment_name">阿寶愛睡覺</div>
+//         <div className="user_comment_text">
+//           你這個貼文給過 但構圖實在是...c8 8c c8 8c 8c
+//           djfidjfdijfdijfdijd
+//           dfdfdfdfddfffffjijijdijfijdfjfjdjfkdjkdjfkjdkfjdkfjdkfjdskjfaldkjfkldjsaljdfskfdkfjdkfj
+//         </div>
+//       </div>
+//     </div>
+//     <div className="user_comment_datetime d-flex align-items-start">
+//       <p className="d-block">留言時間： 2022/08/06 23:15</p>
+//     </div>
+//   </li>
+//   })

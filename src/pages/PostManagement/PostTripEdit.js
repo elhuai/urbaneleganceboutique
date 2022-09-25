@@ -138,7 +138,7 @@ function PostTripEdit() {
     };
     fetchPostTripEdit();
   }, []);
-  //TODO: 不同資料有不同的數字
+  //TODO: 問題：已經有按照分組整理好 但在map的時候只有index 2筆資料 但實際應該是要有3筆
   // postTripEdit.map((data, qe) => {
   //   console.log('map', data, qe);
   //   return <></>;
@@ -303,9 +303,11 @@ function PostTripEdit() {
             <div className="d-flex align-items-start justify-content-around">
               <div className="article_edit">
                 {postTripEdit.map((data, index) => {
-                  console.log('該天陣列', data);
+                  {
+                    /* console.log('該天陣列', data);
                   console.log('該天為第幾天', data[index].days);
-                  console.log('索引', index);
+                  console.log('索引', index); */
+                  }
 
                   return (
                     <>
@@ -386,7 +388,6 @@ function PostTripEdit() {
                                     // defaultValue={data.locate_photo}
                                   ></input>
                                 </label> */}
-                                <hr></hr>
                                 <PhotoReviewSwiper
                                   list={data}
                                 ></PhotoReviewSwiper>

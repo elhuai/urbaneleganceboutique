@@ -1,5 +1,6 @@
 import React from 'react';
 import coverPhoto from '../../../images/test2.jpg';
+import { BE_URL } from '../../../utils/config';
 import { Link } from 'react-router-dom';
 import { BiLike } from 'react-icons/bi';
 import { AiTwotoneLike } from 'react-icons/ai';
@@ -11,13 +12,16 @@ import { API_URL } from '../../../utils/config';
 import { handleSuccess } from '../../../utils/handler/handleStatusCard';
 
 export default function PostStateBar({ post }) {
-  // 按讚統計
-
-  console.log(post);
+  console.log('post', post);
+  let postID = post[0][0].id;
+  console.log('此貼文ＩＤ', postID);
+  // 資料按讚數
   const [likes, setLikes] = useState(post[0][0].likes);
   const [likesState, setLikeState] = useState(0);
-  let postID = post[0][0].id;
-  // console.log(postID, likesState);
+
+  // console.log(post);
+
+  // 按讚按鈕
   const LikeHandle = async (e) => {
     e.preventDefault();
 
@@ -30,6 +34,7 @@ export default function PostStateBar({ post }) {
       });
       console.log('按讚成功', likesData);
       handleSuccess('讚讚！');
+      // TODO:傳值給資料庫做加減
       // console.log(likes);
       // console.log(likesState);
     } else {
@@ -39,23 +44,12 @@ export default function PostStateBar({ post }) {
         postID,
         likesState,
       });
-      console.log('按讚成功', likesData);
+      console.log('收回讚', likesData);
       handleSuccess('讚還來');
       // console.log(likes);
       // console.log(likesState);
     }
   };
-
-  // useEffect(() => {
-  //   const fetchPost = async () => {
-  //     const result = await axios.post(`${API_URL}/community/like`);
-  //     // 取得後端來的資料
-  //     console.log(result.data);
-  //     setLikes(result.data);
-  //     // 存回 useState 狀態
-  //   };
-  //   fetchPost();
-  // }, [likesState]);
 
   const time = post[0][0].create_time.split(' ');
   const tags = post[0][0].tags.split(/[#,＃]/).filter((item) => item);
@@ -70,7 +64,7 @@ export default function PostStateBar({ post }) {
             src={
               post[0][0].main_photo.length === 0
                 ? coverPhoto
-                : post[0][0].main_photo
+                : { BE_URL } + post[0].main_photo
             }
           ></img>
         </div>
@@ -94,13 +88,13 @@ export default function PostStateBar({ post }) {
             <div className="post_location pe-4">
               <p>
                 <MdLocationOn className="mb-1"></MdLocationOn>
-                {post[0].coordinate}
+                {post[0][0].coordinate}
               </p>
             </div>
             <div className="d-flex ">
               {tags.map((data, index) => {
                 return (
-                  <div key={index} className="post_tags">
+                  <div key={tags.index} className="post_tags">
                     <p className="mx-1">{data}</p>
                   </div>
                 );

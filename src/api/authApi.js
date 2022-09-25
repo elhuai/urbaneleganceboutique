@@ -57,7 +57,7 @@ export const callLoginApi = async (loginInfo, setUser, confirm) => {
     action(
       '登入成功',
       () => {
-        alert('要去修改資料');
+        window.location = '/admin/profile';
       },
       '但我們發現您的個人資料尚未齊全，是否前往修改？'
     );
@@ -82,10 +82,10 @@ export const callLogoutApi = async (setUser, confirm) => {
   }
 };
 
-export const callVertifyApi = async (setUser) => {
+export const callVerifyApi = async (setUser) => {
   try {
     const result = await axios.get(
-      `${API_URL}/auth/user/vertify`,
+      `${API_URL}/auth/user/verify`,
       credentialsConfig
     );
     console.log(result.data);
@@ -94,12 +94,12 @@ export const callVertifyApi = async (setUser) => {
         ...user,
         data: result.data.user,
         auth: true,
-        firstVertify: true,
+        firstVerify: true,
       }));
     }
     setUser((user) => ({
       ...user,
-      firstVertify: true,
+      firstVerify: true,
     }));
   } catch (err) {
     console.error(err);
@@ -133,6 +133,9 @@ export const callLineLoginApi = async (code, setUser, redirectPath) => {
         ? false
         : window.localStorage.getItem('last_page');
     handleSuccess('LINE 連動登入成功', redirect);
+    if (window.location.href.includes('?')) {
+      window.history.pushState({}, null, window.location.href.split('?')[0]);
+    }
     window.localStorage.removeItem('last_page');
   } catch (error) {
     handleFailed('LINE 連動登入失敗', '/');

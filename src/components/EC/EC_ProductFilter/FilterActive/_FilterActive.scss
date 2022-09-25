@@ -1,0 +1,44 @@
+$pink: #EF7A70;
+$graycolor: #747474;
+$fmain_color: #ffc200; // 主色
+$royal-blue: #22C3FF;
+
+%product-filter-title {
+  font-size: 20px;
+  font-weight: 700;
+  color: black;
+  // margin: 0;
+}
+
+%normal-text {
+  font-size: 16px;
+  color: $graycolor;
+}
+
+
+.product-filter-category {
+  width: 100%;
+  display: flex;
+  
+  // margin: 1rem 0;
+  .product-category-title {
+    margin-bottom: 0;
+    
+  }
+
+  .product-label-active {
+    color: #22C3FF;
+    font-size: 18px;
+    font-weight: 700;
+  }
+
+  .pf-checkbox {
+    vertical-align: top;
+    text-align: left;
+    margin-bottom: 8px;
+  }
+
+  .product-check-items {
+    @extend %normal-text;
+  }
+}

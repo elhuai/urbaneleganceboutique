@@ -14,16 +14,6 @@ import './swiper.scss';
 // import required modules
 import { Navigation } from 'swiper';
 import { useEffect } from 'react';
-// const imgArr = [
-//   'https://picsum.photos/200/300?random1',
-//   'https://picsum.photos/200/300?random2',
-//   'https://picsum.photos/200/300?random3',
-//   'https://picsum.photos/200/300?random4',
-//   'https://picsum.photos/200/300?random5',
-//   'https://picsum.photos/200/300?random6',
-//   'https://picsum.photos/200/300?random7',
-//   'https://picsum.photos/200/300?random8',
-// ];
 
 export default function PhotoReviewSwiper({ list }) {
   // console.log('list', list);
@@ -33,6 +23,17 @@ export default function PhotoReviewSwiper({ list }) {
     let newPhotoList = list.locate_photo.split(',').filter((item) => item);
     setNewList(newPhotoList);
   }, [list]);
+
+  const hoverHandle = (e) => {
+    console.log('hoveR!!');
+    console.log('hoverwhate', e.target.value);
+    // let creatData = await axios.post(`${API_URL}/community/tripPostNew`, {
+    //   tripID,
+    //   createTime,
+    // });
+    // console.log(creatData, '行程貼文新增成功');
+    // handleSuccess('貼文匯入成功', '/admin');
+  };
   //
   // console.log('photolist', photoList);
   const ShowSwiper = ({ data }) => {
@@ -49,14 +50,23 @@ export default function PhotoReviewSwiper({ list }) {
         {data.map((v, index) => {
           return (
             <SwiperSlide key={'swiper' + index}>
-              <PhotoProvider>
-                {data.map((img, imgIndex) => {
+              <PhotoProvider maskOpacity={0.8}>
+                {data.map((img, imgIndex, i) => {
                   return index === imgIndex ? (
                     <PhotoView key={'img' + imgIndex} src={img}>
-                      <img src={img} alt="" />
+                      <img
+                        src={img}
+                        value={data[imgIndex]}
+                        alt=""
+                        style={{ objectFit: 'fill' }}
+                        onClick={hoverHandle}
+                      />
                     </PhotoView>
                   ) : (
-                    <PhotoView src={img}></PhotoView>
+                    <PhotoView
+                      src={img}
+                      style={{ objectFit: 'fill' }}
+                    ></PhotoView>
                   );
                 })}
               </PhotoProvider>
@@ -68,7 +78,7 @@ export default function PhotoReviewSwiper({ list }) {
   };
   return (
     <>
-      <label className="photo_upload d-flex align-items-center justify-content-center">
+      <label className="photo_upload d-flex align-items-center justify-content-center mb-2">
         上傳照片
         <input
           type="file"
@@ -81,13 +91,12 @@ export default function PhotoReviewSwiper({ list }) {
             let files = e.target.files;
             let newPic = [];
             for (let i = 0; i < files.length; i++) {
-              console.log('i', files[i]);
+              // console.log('i', files[i]);
               newPic.push(URL.createObjectURL(files[i]));
             }
             // console.log(result);
-            console.log('teeeeeet', newList);
             let newPhotoList = [...newList, ...newPic];
-            console.log('avc', newPhotoList);
+            console.log('final', newPhotoList);
             setNewList(newPhotoList);
           }}
           //TODO:如何存取？
