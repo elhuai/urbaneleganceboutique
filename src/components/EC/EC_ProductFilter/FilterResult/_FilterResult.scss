@@ -182,32 +182,4 @@ $royal-blue: #22C3FF;
       }
     }
   }
-
-  // ========== RWD ======== //
-  @media (max-width: 768px) {
-    .ecProductFilter {
-
-      .product-searchList {
-        margin: auto 12px;
-      }
-
-      .product-filter-left {
-        display: none;
-      }
-
-      .product-filter-right-top {
-        display: none;
-      }
-
-      .product-filter-right {
-        margin-left: 0;
-      }
-
-      // 篩選
-      .product_filter_rwd_filter {
-        display: block;
-      }
-
-    }
-  }
 }

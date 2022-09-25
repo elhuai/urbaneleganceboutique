@@ -163,7 +163,7 @@ const FilterResult = (props) => {
                         </div>
                       </div>
                       {/* 標籤 */}
-                      <div className="d-flex flex-row">
+                      <div className="d-flex flex-row product_main_card_tags">
                         {tag.map((data, index) => {
                           if (index > 0) {
                             return (

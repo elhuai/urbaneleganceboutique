@@ -5,29 +5,31 @@ const FilterPages = (props) => {
   const getPages = () => {
     let pages = [];
     for (let i = 1; i <= lastPage; i++) {
-      pages.push(
-        <button
-          style={{
-            fontSize: '1rem',
+      if (i < 11) {
+        pages.push(
+          <button
+            style={{
+              fontSize: '1rem',
 
-            backgroundColor: page === i ? '#ffc200' : '',
-            borderColor: page === i ? '#00d1b2' : '#dbdbdb',
-            color: page === i ? '#fff' : '#363636',
-            borderRadius: page === i ? '5px' : '5px',
-            width: '35px',
-            height: '35px',
-            //   borderRadius: '3px',
-            //   textAlign: '10px',
-            outline: 'none',
-          }}
-          key={i}
-          onClick={(e) => {
-            setPage(i);
-          }}
-        >
-          {i}
-        </button>
-      );
+              backgroundColor: page === i ? '#ffc200' : '',
+              borderColor: page === i ? '#00d1b2' : '#dbdbdb',
+              color: page === i ? '#fff' : '#363636',
+              borderRadius: page === i ? '5px' : '5px',
+              width: '35px',
+              height: '35px',
+              //   borderRadius: '3px',
+              //   textAlign: '10px',
+              outline: 'none',
+            }}
+            key={i}
+            onClick={(e) => {
+              setPage(i);
+            }}
+          >
+            {i}
+          </button>
+        );
+      }
     }
     return pages;
   };
