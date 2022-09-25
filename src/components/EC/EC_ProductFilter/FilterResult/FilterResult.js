@@ -133,7 +133,7 @@ const FilterResult = (props) => {
         return (
           <Link
             to={`/ec-productdetail?id=${data.id}&typeid=${data.product_type_id}`}
-            key={data}
+            key={index}
           >
             <div className="product_main_card card border-primary" key={index}>
               <div className="row g-0">
