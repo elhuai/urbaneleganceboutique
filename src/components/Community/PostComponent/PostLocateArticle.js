@@ -4,7 +4,7 @@ import axios from 'axios';
 import { API_URL } from '../../../utils/config';
 import { TiLocation } from 'react-icons/ti';
 import './PostLocateArticle.scss';
-import PhotoReviewSwiper from '../../WYSIWYG/PhotoView';
+import PhotoReviewSwiper from '../../WYSIWYG/PhotoViewReview';
 
 export default function PostLocateArticle({ post }) {
   // let daycount = post.days
@@ -41,7 +41,12 @@ export default function PostLocateArticle({ post }) {
                             </p>
                           </div>
                           <p>{data.locate_context}</p>
-                          <PhotoReviewSwiper list={data}></PhotoReviewSwiper>
+                          {data.locate_photo.split(',').filter((item) => item)
+                            .length === 0 ? (
+                            ''
+                          ) : (
+                            <PhotoReviewSwiper list={data}></PhotoReviewSwiper>
+                          )}
                           <hr></hr>
                         </div>
                       </li>

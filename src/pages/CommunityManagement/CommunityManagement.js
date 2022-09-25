@@ -14,6 +14,11 @@ import { API_URL } from '../../utils/config';
 // import TripImport from '../../components/Community/PostComponent/TripImport';
 import { handleSuccess } from '../../utils/handler/handleStatusCard';
 
+// 驗證登入
+// import { useUserInfo } from '../../hooks/useUserInfo';
+
+// const { user, setUser } = useUserInfo();
+
 function CommunityManagement() {
   //roll 全部貼文資料
 
@@ -59,23 +64,26 @@ function CommunityManagement() {
   //匯入行程製作貼文
   // creatNewTripPost
   const createTime = moment(new Date()).format('YYYY-MM-DD hh:mm:ss');
+  const [tripPostTitleDefault, setTripTitile] = useState('');
 
   const creatNewTripPost = async (e) => {
     e.preventDefault();
     let creatData = await axios.post(`${API_URL}/community/tripPostNew`, {
       tripID,
       createTime,
+      tripPostTitleDefault,
     });
     console.log(creatData, '行程貼文新增成功');
     handleSuccess('貼文匯入成功', '/admin');
   };
-
+  console.log('匯入行程貼文預設標題', tripPostTitleDefault);
   //匯入我的行程選單
   useEffect(() => {
     const fetchMyTrip = async () => {
       const result = await axios.get(`${API_URL}/community/tripDetailImport`);
       // 取得後端來的資料
       // console.log('fefefefe', result.data);
+      console.log(result.data);
       setTripImport(result.data);
       // 存回 useState 狀態
     };
@@ -552,6 +560,8 @@ function CommunityManagement() {
                 placeholder="請選擇我的行程"
                 onChange={(e) => {
                   setTripID(e.target.value);
+                  console.log('title', e.target.getAttribute('data-title'));
+                  console.log('value', e.target.value);
                 }}
               >
                 <option selected>請選擇匯入的行程</option>

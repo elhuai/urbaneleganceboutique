@@ -23,56 +23,56 @@ function PostTrip() {
 
   // 整理該貼文共有多少使用者點讚
 
-  useEffect(() => {
-    // 按讚統計
-    const fetchLikes = async () => {
-      try {
-        const result = await axios.get(`${API_URL}/community/likesStatic`);
-        // 取得後端來的資料
-        console.log('sotierd', result.data);
-        console.log('有沒有跑這隻api', result);
-        // setLikes(result.data);
-        // 存回 useState 狀態
-      } catch (err) {
-        console.log('like ', err);
-      }
-    };
-    fetchLikes();
-  }, [postID]);
   // useEffect(() => {
-  //   // 單獨取行程明細
-  //   const fetchPostTripEdit = async () => {
+  //   // 按讚統計
+  //   const fetchLikes = async () => {
   //     try {
-  //       const result = await axios.get(
-  //         `${API_URL}/community/tripPostDetail?postID=${postID}`
-  //       );
+  //       const result = await axios.get(`${API_URL}/community/likesStatic`);
   //       // 取得後端來的資料
-  //       console.log('是否資料有進來？', postID);
-  //       console.log('是否資料有進來 打ＡＰＩ 貼文內容？', result);
-  //       if (result) {
-  //         let daysFilter = [];
-  //         // 分組按照日期分組
-
-  //         for (const [index, item] of result.data.entries()) {
-  //           if (daysFilter.length === 0) {
-  //             daysFilter.push([item]);
-  //           } else if (
-  //             daysFilter[daysFilter.length - 1][0].days !== item.days
-  //           ) {
-  //             daysFilter.push([item]);
-  //           } else {
-  //             daysFilter[daysFilter.length - 1].push(item);
-  //           }
-  //         }
-  //         setPostTrip(daysFilter);
-  //       }
+  //       console.log('sotierd', result.data);
+  //       console.log('有沒有跑這隻api', result);
+  //       // setLikes(result.data);
+  //       // 存回 useState 狀態
   //     } catch (err) {
-  //       console.log('setPostTripEdit ', err);
+  //       console.log('like ', err);
   //     }
-  //     // 存回 useState 狀態
   //   };
-  //   fetchPostTripEdit();
+  //   fetchLikes();
   // }, [postID]);
+  useEffect(() => {
+    // 單獨取行程明細
+    const fetchPostTripEdit = async () => {
+      try {
+        const result = await axios.get(
+          `${API_URL}/community/tripPostDetail?postID=${postID}`
+        );
+        // 取得後端來的資料
+        console.log('是否資料有進來？', postID);
+        console.log('是否資料有進來 打ＡＰＩ 貼文內容？', result);
+        if (result) {
+          let daysFilter = [];
+          // 分組按照日期分組
+
+          for (const [index, item] of result.data.entries()) {
+            if (daysFilter.length === 0) {
+              daysFilter.push([item]);
+            } else if (
+              daysFilter[daysFilter.length - 1][0].days !== item.days
+            ) {
+              daysFilter.push([item]);
+            } else {
+              daysFilter[daysFilter.length - 1].push(item);
+            }
+          }
+          setPostTrip(daysFilter);
+        }
+      } catch (err) {
+        console.log('setPostTripEdit ', err);
+      }
+      // 存回 useState 狀態
+    };
+    fetchPostTripEdit();
+  }, [postID]);
 
   console.log('整理好的資料', postTrip);
   // // return .map((data) => {

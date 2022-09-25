@@ -18,7 +18,7 @@ import { useParams, useLocation } from 'react-router-dom';
 import { handleSuccess } from '../../utils/handler/handleStatusCard';
 
 // 驗證登入
-import { useUserInfo } from '../../hooks/useUserInfo';
+// import { useUserInfo } from '../../hooks/useUserInfo';
 
 // const { user, setUser } = useUserInfo();
 
@@ -43,13 +43,14 @@ function PostTripEdit() {
   // 景點內文
   const [tripPostLocContext, setTripPostLocContext] = useState([]);
   // 景點照片
-  const [tripPostLocPhoto, setTripPostLocPhoto] = useState([]);
+  // const [tripPostLocPhoto, setTripPostLocPhoto] = useState([]);
   // 景點停留時間
   const [tripPostLocTime, setTripPostLocTime] = useState('');
 
   //預覽照片 (封面照片)
   const [selectedCoverFile, setSelectedCoverFile] = useState('');
   const [preview, setPreview] = useState('');
+  // const [coverFile, setCoverFile] = useState({ title: '', photo: '' });
 
   // 貼文ＩＤ從網址字串抓
   const location = useLocation();
@@ -75,7 +76,7 @@ function PostTripEdit() {
   //拆分圖片更新 TODO:
   const updataPhoto = {
     main_photo: tripPostCover,
-    locate_photo: tripPostLocPhoto, //how to retreive the data
+    // locate_photo: tripPostLocPhoto, //how to retreive the data 改由component 傳
   };
 
   // 單獨取行程明細
@@ -86,7 +87,7 @@ function PostTripEdit() {
           `${API_URL}/community/tripPostDetail?postID=${postID}`
         );
         // 取得後端來的資料
-        console.log('result,data', result.data);
+        // console.log('result,data', result.data);
         if (result) {
           let daysFilter = [];
           // 分組按照日期分組
@@ -123,7 +124,7 @@ function PostTripEdit() {
 
           setLocateID(locateIDData);
           setTripPostLocContext(contextData);
-          setTripPostLocPhoto(photoData);
+          // setTripPostLocPhoto(photoData);
           setTripPostLocTime(timeData);
           setTravelID(result.data[0].travel_id);
           setTripPostTitle(result.data[0].post_title);
@@ -158,28 +159,47 @@ function PostTripEdit() {
   //清空
   const resetForm = () => {
     setTripPostLocContext('');
-    setTripPostLocPhoto('');
+    // setTripPostLocPhoto('');
     setTripPostLocTime('');
     setTripPostTitle('');
     setTripPostLocMark('');
     setTripPostTags('');
   };
 
-  //預覽照片 (封面照片)
+  //預覽封面照片
   useEffect(() => {
     if (!selectedCoverFile) {
       setPreview('');
       return;
     }
     const objectUrl = URL.createObjectURL(selectedCoverFile);
-    console.log(objectUrl);
+    // console.log(objectUrl);
     setPreview(objectUrl);
+    // console.log('預覽照片url網址', preview);
 
     return () => URL.revokeObjectURL(objectUrl);
   }, [selectedCoverFile]);
 
-  const changeCoverHandler = (e) => {
+  // 上傳封面照片
+  const changeCoverHandler = async (e) => {
+    e.preventDefault();
     const file = e.target.files[0];
+    console.log('file', file);
+    console.log('預覽照片url網址 and id', preview, postID);
+    try {
+      // let formData = new FormData();
+      console.log('預覽照片的檔名？', preview);
+      let response = await axios.post(
+        `${API_URL}/community/tripPostCoverUpload`,
+        { preview, postID }
+      );
+      console.log('封面照片新增成功', response);
+      // formData.append('title', coverFile.title);
+      // formData.append('photo', coverFile.photo);
+      // console.log('formData', formData);
+    } catch (err) {
+      console.log('上傳錯誤', err);
+    }
 
     if (file) {
       setTripPostCover(e.target.value);
@@ -189,7 +209,7 @@ function PostTripEdit() {
       setSelectedCoverFile(null);
     }
   };
-  console.log('整理好的資料', postTripEdit);
+  // console.log('整理好的資料', postTripEdit);
   // const [selectedPhotoFile, setSelectedPhotoFile] = useState('');
   // const changePhotoHandler = (e) => {
   //   const files = e.target.files;
@@ -308,7 +328,6 @@ function PostTripEdit() {
                   console.log('該天為第幾天', data[index].days);
                   console.log('索引', index); */
                   }
-
                   return (
                     <>
                       <div>
@@ -365,29 +384,7 @@ function PostTripEdit() {
                                     });
                                   }}
                                 ></textarea>
-                                {/* <label className="photo_upload d-flex align-items-center justify-content-center">
-                                  上傳照片
-                                  <input
-                                    type="file"
-                                    accept="images/*"
-                                    hidden
-                                    multiple
-                                    className="form-control"
-                                    onChange={changePhotoHandler}
-                                    //TODO:如何存取？
-                                    // onChange={(e) => {
-                                    //   setTripPostLocPhoto((photoGroup) => {
-                                    //     let newPic = JSON.stringify([
-                                    //       ...photoGroup,
-                                    //     ]);
-                                    //     newPic[index][i] = e.target.value;
-                                    //     console.log(newPic);
-                                    //     return newPic;
-                                    //   });
-                                    // }}
-                                    // defaultValue={data.locate_photo}
-                                  ></input>
-                                </label> */}
+
                                 <PhotoReviewSwiper
                                   list={data}
                                 ></PhotoReviewSwiper>

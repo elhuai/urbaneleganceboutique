@@ -24,16 +24,16 @@ export default function PhotoReviewSwiper({ list }) {
     setNewList(newPhotoList);
   }, [list]);
 
-  const hoverHandle = (e) => {
-    console.log('hoveR!!');
-    console.log('hoverwhate', e.target.value);
-    // let creatData = await axios.post(`${API_URL}/community/tripPostNew`, {
-    //   tripID,
-    //   createTime,
-    // });
-    // console.log(creatData, '行程貼文新增成功');
-    // handleSuccess('貼文匯入成功', '/admin');
-  };
+  // const hoverHandle = (e) => {
+  //   console.log('hoveR!!');
+  //   console.log('hoverwhate', e.target.value);
+  // let creatData = await axios.post(`${API_URL}/community/tripPostNew`, {
+  //   tripID,
+  //   createTime,
+  // });
+  // console.log(creatData, '行程貼文新增成功');
+  // handleSuccess('貼文匯入成功', '/admin');
+  // };
   //
   // console.log('photolist', photoList);
   const ShowSwiper = ({ data }) => {
@@ -59,7 +59,6 @@ export default function PhotoReviewSwiper({ list }) {
                         value={data[imgIndex]}
                         alt=""
                         style={{ objectFit: 'fill' }}
-                        onClick={hoverHandle}
                       />
                     </PhotoView>
                   ) : (
@@ -120,7 +119,7 @@ export default function PhotoReviewSwiper({ list }) {
           // ]);
         ></input>
       </label>
-      <ShowSwiper data={newList} />
+      {newList.length === 0 ? '' : <ShowSwiper data={newList} />}
     </>
   );
 }
