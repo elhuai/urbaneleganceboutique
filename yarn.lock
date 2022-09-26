@@ -3433,6 +3433,8 @@
 "ckeditor5-custom-build@file:ckeditor5":
   "resolved" "file:ckeditor5"
   "version" "0.0.1"
+  dependencies:
+    "@ckeditor/ckeditor5-upload" "^35.1.0"
 
 "ckeditor5@^35.1.0":
   "version" "35.1.0"

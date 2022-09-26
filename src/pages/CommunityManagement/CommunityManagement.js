@@ -12,11 +12,26 @@ import axios from 'axios';
 import { API_URL } from '../../utils/config';
 
 function CommunityManagement() {
+  //roll 全部貼文資料
   const [myPost, setMyPost] = useState([]);
+
+  // 我的貼文ＩＤ點擊編輯查看內容跳轉
+  const [myPostID, setMyPostID] = useState('');
+
+  // 點擊按鈕狀態改變
+  const [showCFBox, setShowCFBox] = useState(0);
+  const [ifDelete, setIfDelete] = useState(false);
+
+  //匯入我的行程
+  const [tripImport, setTripImport] = useState([]);
+  // 回傳新增貼文預設欄位
+  const [tripID, setTripID] = useState('');
 
   useEffect(() => {
     const fetchMyPost = async () => {
-      const result = await axios.get(`${API_URL}/community`);
+      const result = await axios.get(`${API_URL}/community`, {
+        withCredentials: true,
+      });
       // 取得後端來的資料
       console.log(result.data);
       setMyPost(result.data);
@@ -25,23 +40,28 @@ function CommunityManagement() {
     fetchMyPost();
   }, []);
 
-  const [showCFBox, setShowCFBox] = useState(0);
-
   const ConfirmHandle = (e) => {
     setShowCFBox(e);
     // console.log(showCFBox);
   };
 
+  const handleEdit = (e) => {
+    console.log('click', e.target.value);
+  };
+
   return (
     <>
-      <div className="d-flex">
-        <div>
-        <div className="post_new_button mt-5">
-          <button className="post_new" onClick={() => ConfirmHandle(2)}>
-            <RiEditFill color="#FFC715" className="edit-icon me-2"></RiEditFill>
-            新增貼文
-          </button>
-        </div>
+      <div className="d-flex flex-fill">
+        <div className="flex-fill position-relative">
+          <div className="post_new_button mt-5">
+            <button className="post_new" onClick={() => ConfirmHandle(2)}>
+              <RiEditFill
+                color="#FFC715"
+                className="edit-icon me-2"
+              ></RiEditFill>
+              新增貼文
+            </button>
+          </div>
           <Tabs
             defaultActiveKey="article_list"
             id="uncontrolled-tab-example"
@@ -58,10 +78,13 @@ function CommunityManagement() {
             >
               <div className="post_list">
                 <ul className="post_detail ">
-                  {myPost.map((data,index) => {
+                  {myPost.map((data, index) => {
                     return (
                       <>
-                        <li key={data.index} className="d-flex justify-content-between align-items-center px-5">
+                        <li
+                          key={data.index}
+                          className="d-flex justify-content-between align-items-center px-5"
+                        >
                           <div className="post_description d-flex flex-column">
                             <div className="post_title">
                               <p className="">{data.title}</p>
@@ -70,20 +93,47 @@ function CommunityManagement() {
                               <p>發布日期：{data.create_time}</p>
                             </div>
                             <div className="post_edit_button d-flex">
-                              <Link to="/postTripEdit">
-                                <button className="btn post_edit my-1 ">
+                              <Link
+                                to={
+                                  data.post_type_id === 2
+                                    ? `/postTripEdit?postID=${data.id}`
+                                    : `/postWYSIWYGedit?postID=${data.id}`
+                                }
+                              >
+                                <button
+                                  value={data.id}
+                                  className="btn post_edit my-1"
+                                  onClick={(e) => {
+                                    setMyPostID(e.target.value);
+                                  }}
+                                >
                                   編輯
                                 </button>
                               </Link>
                               <button
+                                key={data.id}
                                 className="btn post_delete my-1"
-                                onClick={() => ConfirmHandle(1)}
+                                onClick={(e) => {
+                                  ConfirmHandle(1);
+                                  setMyPostID(data.id);
+                                }}
                               >
                                 刪除
                               </button>
-                              <Link to="/postTrip">
-                                <button className="btn check_post my-1">
-                                  預覽
+                              <Link
+                                to={
+                                  data.post_type_id === 2
+                                    ? `/postTrip?postID=${data.id}`
+                                    : `/postWYSIWYG?postID=${data.id}`
+                                }
+                              >
+                                <button
+                                  className="btn check_post my-1"
+                                  onClick={() => {
+                                    setMyPostID(data.id);
+                                  }}
+                                >
+                                  {data.status === 1 ? '查看內容' : '預覽'}
                                 </button>
                               </Link>
                             </div>
@@ -331,9 +381,8 @@ function CommunityManagement() {
               </div>
             </Tab>
           </Tabs>
-         
         </div>
-       
+
         <div
           className={
             showCFBox === 2

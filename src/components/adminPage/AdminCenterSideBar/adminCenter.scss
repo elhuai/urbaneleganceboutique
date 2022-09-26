@@ -87,16 +87,19 @@ $line-color--light:#E7E7E9;
 			width: 100%;
 			.admin_select {
 				&:hover{
-				background: url(../../images/admin-hover-background.svg) no-repeat;
-				background-position: left;
-			}
-			.icon_size {
-			font-size: 30px;
-			width: 24px;
-			margin-right: 10px;
-			margin-bottom: 15px;
-			// transform: rotate(90deg);
-			}
+          background: url('../../../images/admin-hover-background.svg') no-repeat;
+          background-position: left;
+        }
+        p {
+          font-weight: bold;
+        }
+        .icon_size {
+        font-size: 30px;
+        width: 24px;
+        margin-right: 10px;
+        margin-bottom: 15px;
+        // transform: rotate(90deg);
+        }
 			}
 		}
 	}

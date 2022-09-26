@@ -4,23 +4,25 @@ import { API_URL } from '../../utils/config';
 import './PostEdit.scss';
 import CoverBackground from '../../images/post_edit_background_banner.png';
 import mapPhoto from '../../images/screenshop map_photo.png';
-// import { Link } from 'react-router-dom';
-// import { BiLike } from 'react-icons/bi';
 import { MdLocationOn } from 'react-icons/md';
 import dogIcon from '../../images/travel_dog_paws.svg';
 import PostEditor from '../../components/WYSIWYG/PostEditor';
 import { AiFillTag } from 'react-icons/ai';
 import { MdTitle } from 'react-icons/md';
 import { MdPhotoSizeSelectActual } from 'react-icons/md';
-import PhotoReviewSwiperDefault from '../../components/WYSIWYG/PhotoViewDefault';
-import { ClassicEditor } from 'ckeditor5-custom-build';
-// import ImageToolbar from '@ckeditor/ckeditor5-image/src/imagetoolbar';
-// import FileUpload from '../../components/WYSIWYG/FileUpload';
-
-// import { Swiper, SwiperSlide } from 'swiper/react';
-// import '../node_modules/reatct-draft-wysiwyg/dist/react-draft-wysiwyg.css';
+import { useUserInfo } from '../../hooks/useUserInfo';
+import { useParams, useLocation } from 'react-router-dom';
 
 function PostWYSIWYGEdit() {
+  // === 貼文ID從網址字串抓 ===
+  const location = useLocation();
+  const urlSearchParams = new URLSearchParams(location.search);
+  const postID = urlSearchParams.get('postID');
+
+  // 登入狀態驗證
+  const { user, setUser } = useUserInfo();
+  const [userId, setUserId] = useState();
+
   // === 學儒封面照片上傳可直接預覽State ===
   const [selectedFile, setSelectedFile] = useState('');
   const [preview, setPreview] = useState('');
@@ -28,14 +30,36 @@ function PostWYSIWYGEdit() {
   // === 取得所見即所得欄位資料  ===
   const [getData, setGetData] = useState('');
 
-  // === 其他欄位取得資料用 ===
+  // === 取得一般欄位資料 ===
   const [postData, setPostData] = useState({
-    title: '【台北】動物園看貓熊、搭貓纜去貓空泡茶聊天、樟樹步道賞魯冰花海',
-    location: '台北市',
-    tags: '#台北#木柵#動物園#貓空纜車',
+    title: '',
+    location: '',
+    tags: '',
     photo: '',
   });
 
+  // 匯入資料庫資料
+  useEffect(() => {
+    const fetchPost = async () => {
+      try {
+        const result = await axios.get(
+          `${API_URL}/post/postDetail?postID=${postID}`,
+          {
+            withCredentials: true,
+          }
+        );
+        // 取得後端來的資料
+        console.log('result,data', result.data);
+        setPostData(result.data);
+      } catch (err) {
+        console.log('setPost', err);
+      }
+      // 存回 useState 狀態
+    };
+    fetchPost();
+  }, []);
+
+  // === 將輸入欄位資料存入State裡 ===
   function handleChange(e) {
     console.log('handleChange', e.target.name, e.target.value);
     let newPostData = { ...postData };
@@ -43,7 +67,7 @@ function PostWYSIWYGEdit() {
     setPostData(newPostData);
   }
 
-  // === 清空按鈕用 ===
+  // === 清空按鈕 ===
   const handleClick = (e) => {
     e.preventDefault();
     setPostData({ title: '', location: '', tags: '', photo: '' });
@@ -51,7 +75,6 @@ function PostWYSIWYGEdit() {
   };
 
   // === 圖片上傳 ===
-  // TODO: 可以多張上傳！先上傳一張試試
   function handleUpload(e) {
     setPostData({ ...postData, photo: e.target.files[0] });
 
@@ -68,6 +91,7 @@ function PostWYSIWYGEdit() {
     }
   }
 
+  // 圖片預覽
   useEffect(() => {
     if (!selectedFile) {
       setPreview('');
@@ -80,20 +104,6 @@ function PostWYSIWYGEdit() {
     // 當元件unmounted時清除記憶體
     return () => URL.revokeObjectURL(objectUrl);
   }, [selectedFile]);
-
-  // const changeHandler = (e) => {
-  //   const file = e.target.files[0];
-
-  //   if (file) {
-  //     // setIsFilePicked(true);
-  //     setSelectedFile(file);
-  //     // setImgServerUrl('');
-  //   } else {
-  //     // setIsFilePicked(false);
-  //     setSelectedFile(null);
-  //     // setImgServerUrl('');
-  //   }
-  // };
 
   // === 送出 ===
   async function handleSubmit(e) {
@@ -152,6 +162,7 @@ function PostWYSIWYGEdit() {
           </label>
           <input
             className="form-control mt-2"
+            placeholder="請輸入貼文標題"
             maxlength="50"
             type="text"
             id="title"

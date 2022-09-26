@@ -32,6 +32,7 @@ export default function PostStateBar({ post }) {
   const tags = post[0].tags.split(/[#,＃]/).filter((item) => item);
   // console.log(tags);
   // console.log(time[0]);
+  console.log(BE_URL)
   return (
     <>
       <div className="postStateBar">
@@ -42,7 +43,7 @@ export default function PostStateBar({ post }) {
             src={
               post[0].main_photo.length === 0
                 ? coverPhoto
-                : { BE_URL } + post[0].main_photo
+                :  BE_URL + post[0].main_photo
             }
           ></img>
         </div>
@@ -77,6 +78,7 @@ export default function PostStateBar({ post }) {
                   </div>
                 );
               })}
+              x
             </div>
           </div>
           <div className="post_like me-2">

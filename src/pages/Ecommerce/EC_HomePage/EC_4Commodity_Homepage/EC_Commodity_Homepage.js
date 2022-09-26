@@ -38,14 +38,14 @@ const EcCommodityHomepage = () => {
   useEffect(() => {
     const fetchFishProducts = async () => {
       const arrStr = [
-        { id: '4', text: '飲水機', setState: setFishCard },
-        { id: '4', text: '小魚乾', setState: setWaterCard },
-        { id: '4', text: '益生菌', setState: setHealthCard },
+        { id: '4', keyword: '飲水機', setState: setFishCard },
+        { id: '4', keyword: '小魚乾', setState: setWaterCard },
+        { id: '4', keyword: '益生菌', setState: setHealthCard },
       ];
 
       for (let index = 0; index < arrStr.length; index++) {
         const result = await axios.get(
-          `${API_URL}/product/recommendProduct?id=${arrStr[index].id}&name=${arrStr[index].text}`
+          `${API_URL}/product/recommendProduct?typeId=${arrStr[index].id}&keyword=${arrStr[index].keyword}`
         );
         const data = result.data;
         arrStr[index].setState(data);

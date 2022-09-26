@@ -33,19 +33,25 @@ const Payment = () => {
                       <span className="radioInput">信用卡付款</span>
                     </div>
                     <div className="paymentCCard">
-                      <div className="iconVisa"></div>
-                      <div className="iconMaster"></div>
-                      <div className="iconJCB"></div>
+                      <div className="paymentIcon">
+                        <div className="iconVisa"></div>
+                        <div className="iconMaster"></div>
+                        <div className="iconJCB"></div>
+                      </div>
                       <div className="CCardNumber">
                         <div>信用卡卡號</div>
+                        <input type="text" />-
+                        <input type="text" />-
+                        <input type="text" />-
                         <input type="text" />
                       </div>
                       <div className="CCardGoodThu">
                         <div>有效期限</div>
-                        <input type="text" />
+                        <input type="month" />
+                        <input type="" />
                       </div>
                       <div className="CCardNumber">
-                        <div>信用卡卡號</div>
+                        <div>卡片背面末三碼</div>
                         <input type="text" />
                       </div>
                     </div>

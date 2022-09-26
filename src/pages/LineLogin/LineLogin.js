@@ -2,7 +2,7 @@ import React from 'react';
 import { useEffect } from 'react';
 import { useSearchParams, useNavigate } from 'react-router-dom';
 import Loading from '../../components/layout/Loading';
-import { handleFailed } from '../../utils/handler/handleStatusCard';
+import { handleFailed } from '../../utils/handler/card/handleStatusCard';
 // import { callLineLoginApi } from '../../api/authApi';
 import { useUserInfo } from '../../hooks/useUserInfo';
 import axios from 'axios';

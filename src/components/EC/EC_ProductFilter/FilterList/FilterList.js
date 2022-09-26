@@ -10,7 +10,8 @@ import 'antd/dist/antd.css';
 // import FilterListToggle from './FilterListToggle/FilterListToggle';
 
 const FilterList = (props) => {
-  const { setTag, setMaxPrice, setMinPrice, minPrice, maxPrice } = props;
+  const { setTag, setMaxPrice, setMinPrice, minPrice, maxPrice, setPage } =
+    props;
   const { tagStatus, setTagStatus } = useState([]);
   const [title, setTitle] = useState([]);
 
@@ -35,7 +36,7 @@ const FilterList = (props) => {
   function log(value) {
     setMinPrice(value[0]);
     setMaxPrice(value[1]);
-    // setPage(1);
+    setPage(1);
     console.log(value);
   }
 
@@ -55,12 +56,12 @@ const FilterList = (props) => {
 
             {tags.map((data, i) => {
               return (
-                <div className="product_checkbox">
-                  <label for={data.tag_name} key={data.tag_id}>
+                <div className="product_checkbox" key={data.tag_id}>
+                  <label for={data.tag_name}>
                     <input
                       type="checkbox"
-                      name={data.tag_name}
                       id={data.tag_name}
+                      name={data.tag_name}
                       value={data.status}
                       className="product_checkbox_item me-2"
                       onClick={(e) => {
@@ -86,7 +87,7 @@ const FilterList = (props) => {
                         }
                       }}
                     />
-                    <span className="h6">{data.tag_name}</span>
+                    <span className="fs-6">{data.tag_name}</span>
                   </label>
                 </div>
               );
