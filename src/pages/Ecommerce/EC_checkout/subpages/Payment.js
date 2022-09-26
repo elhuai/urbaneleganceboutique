@@ -9,22 +9,21 @@ const Payment = (props) => {
   const handleFieldChange = (e) => {
     const newShipping = { ...shipping, [e.target.name]: e.target.value };
     setShippingData(newShipping);
-};
-
-const [cart, setCart] = useState([]);
-
-
-useEffect(() => {
-  const fetchProductData = async () => {
-    // 抓商品細節資料
-    const result = await axios.get(`${API_URL}/cart/getcart`);
-    // console.log('result', result.data);
-    const [cartData] = result.data;
-  
-    setCart(cartData);
   };
-  fetchProductData();
-}, []);
+
+  const [cart, setCart] = useState([]);
+
+  useEffect(() => {
+    const fetchProductData = async () => {
+      // 抓商品細節資料
+      const result = await axios.get(`${API_URL}/cart/getcart`);
+      // console.log('result', result.data);
+      const [cartData] = result.data;
+
+      setCart(cartData);
+    };
+    fetchProductData();
+  }, []);
 
   return (
     <>
@@ -108,7 +107,7 @@ useEffect(() => {
                     <input type="radio" />
                     <span className="radioInput">電子收據（公司戶）</span>
                   </div>
-                  <span className='receiptContent'>
+                  <span className="receiptContent">
                     為響應環保，系統將自動寄送收據開立通知信至您的購買e-mail，您可在「旅行業代收轉付電子收據加值平台」下載或至e-mail信箱中列印本收據，作為收帳憑據使用。
                   </span>
                 </section>

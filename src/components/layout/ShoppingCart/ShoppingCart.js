@@ -49,7 +49,6 @@ function ShoppingCart({ name, ...props }) {
 
         setCart(result.data[0]);
         // handleSuccess('已成功加入購物車');
-        
       } catch (error) {
         console.log('error', error);
       }
@@ -84,7 +83,6 @@ function ShoppingCart({ name, ...props }) {
 
         setCart(result.data[0]);
         // handleSuccess('-1');
-        
       } catch (error) {
         console.log('error', error);
       }
@@ -138,18 +136,22 @@ function ShoppingCart({ name, ...props }) {
                     <div className="mainRowObjectBtn">
                       <div>
                         <div className="cartAddButton">
-                          <IoCaretBack onClick={(e) => {
-                                minusCart(e, v.product_id);
-                                
-                                // console.log(e.v.product_id);
-                              }} />
+                          <IoCaretBack
+                            onClick={(e) => {
+                              minusCart(e, v.product_id);
+
+                              // console.log(e.v.product_id);
+                            }}
+                          />
                           <span>{v.quantity}</span>
-                          <IoCaretForward onClick={(e) => {
-                                addCart(e, v.product_id);
-                                
-                                // console.log(e.v.product_id);
-                                // handleSuccess('已成功加入購物車');
-                              }} />
+                          <IoCaretForward
+                            onClick={(e) => {
+                              addCart(e, v.product_id);
+
+                              // console.log(e.v.product_id);
+                              // handleSuccess('已成功加入購物車');
+                            }}
+                          />
                         </div>
 
                         <p>NT${v.quantity * v.price}</p>
