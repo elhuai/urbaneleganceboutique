@@ -158,6 +158,7 @@ const ProductDetail = () => {
                             </p>
                           </div>
                           <div className="d-flex align-items-end">
+                          {/* TODO:同步更新購物車 */}
                             <button
                               className="addSubSection_btn ms-2 py-2"
                               onClick={(e) => {

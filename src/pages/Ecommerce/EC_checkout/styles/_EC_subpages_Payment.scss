@@ -8,7 +8,7 @@
   .topRow {
     display: flex;
     justify-content: center;
-    font-size: 20px;
+    font-size: 24px;
     margin-bottom: 30px;
     .step1 {
       margin-right: 5%;
@@ -49,6 +49,7 @@
           border-bottom: 1px solid #e7e7e9;
           p {
             font-weight: 500;
+            font-size: 20px;
           }
         }
 
@@ -68,6 +69,8 @@
           .subTitle {
             display: flex;
             width: 100px;
+            font-size: 18px;
+
             align-items: center;
             margin-right: 30px;
           }
@@ -79,6 +82,8 @@
           .subInput {
             width: 100%;
             border: 3px solid #e7e7e9;
+            font-size: 18px;
+
             border-radius: 8px;
             padding: 5px 15px;
           }
@@ -98,6 +103,7 @@
         height: 100%;
         .title {
           font-weight: 500;
+          font-size: 18px;
         }
         .totalName {
           border-bottom: 1px solid #e7e7e9;
@@ -106,11 +112,11 @@
           margin-top: 3%;
           border-bottom: 1px solid #e7e7e9;
           p {
-            font-size: 14px;
+            font-size: 16px;
           }
           .title {
             font-weight: 500;
-            font-size: 16px;
+            font-size: 18px;
           }
           .subTotal {
             display: flex;
@@ -126,6 +132,8 @@
           .totalDiscountNumber {
             width: 100px;
             display: flex;
+            font-size: 16px;
+
             flex-direction: row-reverse;
             border-left: 1px solid #e7e7e9;
           }
@@ -146,6 +154,8 @@
   }
   .radioInput {
     display: flex;
+    font-size: 18px;
+
     margin-left: 5px;
   }
   .paymentCCard {
@@ -216,6 +226,9 @@
   }
   .paymentSubSection {
     display: flex;
+    span {
+      font-size: 18px;
+    }
   }
 
   .iconLinePay {
@@ -242,10 +255,13 @@
       background-color: #2da9d7;
     }
     p {
-      font-size: 14px;
+      font-size: 16px;
       text-decoration: underline;
       margin: 5px;
       color: #747474;
     }
+  }
+  .receiptContent {
+    font-size: 16px;
   }
 }
