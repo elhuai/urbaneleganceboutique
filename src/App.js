@@ -52,6 +52,7 @@ function App() {
             <Route path="collection" element={<AdminCollectionPage />} />
           </Route>
           {/* <Route path="/adminCenter" element={<AdminCenterPage />} /> */}
+          {/* <Route path="/personalHomePage" element={<PersonalHomePage />} /> */}
           <Route path="/postWYSIWYG" element={<Post />} />
           <Route path="/postWYSIWYGEdit" element={<PostEdit />} />
           <Route path="/postTrip" element={<PostTrip />} />
