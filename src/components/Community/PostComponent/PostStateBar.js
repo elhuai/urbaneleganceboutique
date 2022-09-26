@@ -10,13 +10,36 @@ import { useState, useEffect } from 'react';
 import axios from 'axios';
 import { API_URL } from '../../../utils/config';
 import { handleSuccess } from '../../../utils/handler/card/handleStatusCard';
+import { useUserInfo } from '../../../hooks/useUserInfo';
 
 export default function PostStateBar({ post, postID }) {
   console.log('post', post);
   console.log('此貼文ＩＤ', postID);
   // 資料按讚數
+  const { user, setUser } = useUserInfo();
+  console.log('user', user.data.id);
+  const userID = user.data.id;
   const [likes, setLikes] = useState(post[0][0].likes);
+
+  // //判斷是否有按過讚
   const [likesState, setLikeState] = useState(0);
+  // //TODO: 如何設計初始值 判斷使用者是否已經按讚過了
+  // useEffect(() => {
+  //   const fetchLikeState = async () => {
+  //     try {
+  //       const result = await axios.get(`${API_URL}/community/likestatic`, {
+  //         postID,
+  //         userID,
+  //       });
+  //       // 取得後端來的資料
+  //       console.log('result,data', result.data);
+  //       result.data.length ? setLikeState(0) : setLikeState(1);
+  //     } catch (err) {
+  //       console.log('fetchLikeState', err);
+  //     }
+  //   };
+  //   fetchLikeState();
+  // }, []);
 
   console.log('poststatebar', post);
 
@@ -26,29 +49,35 @@ export default function PostStateBar({ post, postID }) {
 
     if (!likesState) {
       setLikes(likes + 1);
-
+      setLikeState(1);
+      console.log('現在按讚狀態', likesState);
+      console.log('現在按讚數', likes);
       let likesData = await axios.post(`${API_URL}/community/likes`, {
         postID,
         likesState,
+        likes,
+        userID,
       });
       console.log('按讚成功', likesData);
       handleSuccess('讚讚！');
-      setLikeState(1);
       // TODO:傳值給資料庫做加減
       console.log(likes);
-      console.log(likesState);
+      console.log('現在按讚狀態', likesState);
     } else {
       setLikes(likes - 1);
-
+      setLikeState(0);
+      console.log('現在按讚狀態', likesState);
+      console.log('現在按讚數', likes);
       let likesData = await axios.post(`${API_URL}/community/likes`, {
         postID,
         likesState,
+        likes,
+        userID,
       });
       console.log('收回讚', likesData);
       handleSuccess('讚還來');
-      setLikeState(0);
       console.log(likes);
-      console.log(likesState);
+      console.log('現在按讚狀態', likesState);
     }
   };
 
@@ -100,7 +129,6 @@ export default function PostStateBar({ post, postID }) {
                   </div>
                 );
               })}
-              x
             </div>
           </div>
           <div className="post_like me-2">
