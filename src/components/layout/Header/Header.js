@@ -53,10 +53,13 @@ const Header = () => {
     searchParam.get('state') === 'ohdogcat_Line_Login' &&
     window.localStorage.getItem('line_login')
   ) {
-    console.log('code');
     const lineVerifyCode = searchParam.get('code');
     console.log('first', user.firstVerify, 'user.auth', user.auth);
-    if (!user.auth && !user.firstVerify) {
+    if (
+      !user.auth &&
+      user.firstVerify &&
+      window.location.search.includes('line_login')
+    ) {
       callLineLoginApi(lineVerifyCode, setUser, redirectPath);
     }
   } else {
