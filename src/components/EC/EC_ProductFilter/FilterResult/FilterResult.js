@@ -114,9 +114,6 @@ const FilterResult = (props) => {
       {/* 搜尋結果====================== */}
       {productData.map((data, index) => {
         let tags = productData[index].product_tag;
-<<<<<<< HEAD
-        {/* const tag = tags.split(/[#,＃]/).filter((item) => item); */}
-=======
         const tag = tags.split(/[#,＃]/).filter((item) => item);
         const getLabel = () => {
           let label = [];
@@ -133,7 +130,6 @@ const FilterResult = (props) => {
           console.log(label);
           return label;
         };
->>>>>>> feature-ecommerce
         return (
           <Link
             to={`/ec-productdetail?id=${data.id}&typeid=${data.product_type_id}`}
@@ -166,29 +162,6 @@ const FilterResult = (props) => {
                           <FaHeart />
                         </div>
                       </div>
-<<<<<<< HEAD
-                    </div>
-                    {/* 標籤 */}
-                    {/* <div className="d-flex flex-row">
-                      {tag.map((data, index) => {
-                        if (index > 0) {
-                          return (
-                            <p
-                              key={index}
-                              className="product_main_card_tag my-2 me-2"
-                            >
-                              {data}
-                            </p>
-                          );
-                        }
-                      })}
-                    </div> */}
-                    <p className="product_main_card_text my-2">{data.intro}</p>
-                    <div className="product_main_card_bottom_text d-flex justify-content-between align-items-center">
-                      <p className="product_main_card_locate_text align-items-center d-flex fw-bolder">
-                        <TiLocation />
-                        {/* {tag[0]} */}
-=======
                       {/* 標籤 */}
                       <div className="d-flex flex-row product_main_card_tags">
                         {tag.map((data, index) => {
@@ -206,7 +179,6 @@ const FilterResult = (props) => {
                       </div>
                       <p className="product_main_card_text my-2">
                         {data.intro}
->>>>>>> feature-ecommerce
                       </p>
                       <div className="product_main_card_bottom_text d-flex justify-content-between align-items-center">
                         <p className="product_main_card_locate_text align-items-center d-flex fw-bolder">

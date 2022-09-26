@@ -10,7 +10,7 @@ function OrderDetail(props) {
   useEffect(() => {
     const fetchProductData = async () => {
       // 抓商品細節資料
-      const result = await axios.get(`${API_URL}/cart/getcart`);
+      const result = await axios.get(`${API_URL}/cart/getcart/`);
       const [cartData] = result.data;
 
       setCart(cartData);
