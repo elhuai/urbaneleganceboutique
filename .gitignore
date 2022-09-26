@@ -30,3 +30,5 @@ yarn-error.log*
 .prettierrc
 .eslintignore
 .prettierignore
+
+public
