@@ -4,6 +4,10 @@ import { react, useState, useEffect } from 'react';
 import { API_URL } from '../../../../utils/config';
 
 function OrderDetail(props) {
+  const { cartProductData, setCartProductData } = props;
+  console.log('cartData=====OrderDetail===', cartProductData);
+
+
   const [cart, setCart] = useState([]);
   const [order, setOrder] = useState(null);
 
