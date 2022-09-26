@@ -1,0 +1,15 @@
+.post_map {
+  width: 100%;
+}
+.post_map p {
+  font-size: 1.25rem;
+  font-weight: 600;
+}
+.post_map .map_photo {
+  width: 100%;
+  height: 420px;
+}
+.post_map .map_photo img {
+  width: 100%;
+  height: 100%;
+}/*# sourceMappingURL=PostMap.css.map */
