@@ -61,7 +61,7 @@ function OrderSteps() {
 
   return (
     <>
-      {console.log(step, maxSteps)}
+      {/* {console.log(step, maxSteps)} */}
       {/* 進度條 */}
       <div>
         <ProgressBar
