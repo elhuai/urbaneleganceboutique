@@ -11,15 +11,14 @@ import axios from 'axios';
 import { API_URL } from '../../../utils/config';
 import { handleSuccess } from '../../../utils/handler/handleStatusCard';
 
-export default function PostStateBar({ post }) {
+export default function PostStateBar({ post, postID }) {
   console.log('post', post);
-  let postID = post[0][0].id;
   console.log('此貼文ＩＤ', postID);
   // 資料按讚數
   const [likes, setLikes] = useState(post[0][0].likes);
   const [likesState, setLikeState] = useState(0);
 
-  // console.log(post);
+  console.log('poststatebar', post);
 
   // 按讚按鈕
   const LikeHandle = async (e) => {
@@ -27,27 +26,29 @@ export default function PostStateBar({ post }) {
 
     if (!likesState) {
       setLikes(likes + 1);
-      setLikeState(1);
+
       let likesData = await axios.post(`${API_URL}/community/likes`, {
         postID,
         likesState,
       });
       console.log('按讚成功', likesData);
       handleSuccess('讚讚！');
+      setLikeState(1);
       // TODO:傳值給資料庫做加減
-      // console.log(likes);
-      // console.log(likesState);
+      console.log(likes);
+      console.log(likesState);
     } else {
       setLikes(likes - 1);
-      setLikeState(0);
+
       let likesData = await axios.post(`${API_URL}/community/likes`, {
         postID,
         likesState,
       });
       console.log('收回讚', likesData);
       handleSuccess('讚還來');
-      // console.log(likes);
-      // console.log(likesState);
+      setLikeState(0);
+      console.log(likes);
+      console.log(likesState);
     }
   };
 
@@ -64,7 +65,7 @@ export default function PostStateBar({ post }) {
             src={
               post[0][0].main_photo.length === 0
                 ? coverPhoto
-                : { BE_URL } + post[0].main_photo
+                : post[0][0].main_photo
             }
           ></img>
         </div>

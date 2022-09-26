@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import './PostTripEdit.scss';
 import CoverBackground from '../../images/post_edit_background_banner.png';
-// import { Link } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import { TiLocation } from 'react-icons/ti';
 import { AiFillTag, AiOutlineConsoleSql } from 'react-icons/ai';
 import dogIcon from '../../images/travel_dog_paws.svg';
@@ -50,7 +50,8 @@ function PostTripEdit() {
   //預覽照片 (封面照片)
   const [selectedCoverFile, setSelectedCoverFile] = useState('');
   const [preview, setPreview] = useState('');
-  // const [coverFile, setCoverFile] = useState({ title: '', photo: '' });
+  const [coverFile, setCoverFile] = useState({});
+  const [postState, setPostState] = useState('');
 
   // 貼文ＩＤ從網址字串抓
   const location = useLocation();
@@ -87,7 +88,7 @@ function PostTripEdit() {
           `${API_URL}/community/tripPostDetail?postID=${postID}`
         );
         // 取得後端來的資料
-        // console.log('result,data', result.data);
+        console.log('result,data', result.data);
         if (result) {
           let daysFilter = [];
           // 分組按照日期分組
@@ -121,10 +122,8 @@ function PostTripEdit() {
           }
           // console.log('dayfileter', daysFilter);
           setPostTripEdit(daysFilter);
-
           setLocateID(locateIDData);
           setTripPostLocContext(contextData);
-          // setTripPostLocPhoto(photoData);
           setTripPostLocTime(timeData);
           setTravelID(result.data[0].travel_id);
           setTripPostTitle(result.data[0].post_title);
@@ -135,18 +134,12 @@ function PostTripEdit() {
       } catch (err) {
         console.log('setPostTripEdit ', err);
       }
-      // 存回 useState 狀態
     };
     fetchPostTripEdit();
   }, []);
-  //TODO: 問題：已經有按照分組整理好 但在map的時候只有index 2筆資料 但實際應該是要有3筆
-  // postTripEdit.map((data, qe) => {
-  //   console.log('map', data, qe);
-  //   return <></>;
-  // });
 
-  //回傳資料庫
-  //儲存
+  //回傳資料庫 包含coverphoto
+  //文字儲存
   const handleSubmit = async (e) => {
     e.preventDefault();
     let responseData = await axios.post(
@@ -154,16 +147,32 @@ function PostTripEdit() {
       { updateObject, locateDetail }
     );
     console.log('回傳編輯資料', responseData);
-    handleSuccess('貼文儲存成功', '/admin');
+    console.log('發布狀態', postState);
+    handleSuccess('貼文儲存成功', '/admin/community');
   };
-  //清空
-  const resetForm = () => {
-    setTripPostLocContext('');
-    // setTripPostLocPhoto('');
-    setTripPostLocTime('');
-    setTripPostTitle('');
-    setTripPostLocMark('');
-    setTripPostTags('');
+  //TODO:清空
+  // const resetForm = () => {
+  //   setTripPostLocContext('');
+  //   // setTripPostLocPhoto('');
+  //   setTripPostLocTime('');
+  //   setTripPostTitle('');
+  //   setTripPostLocMark('');
+  //   setTripPostTags('');
+  // };
+
+  //TODO: 發布
+  const handleRelease = async (e) => {
+    e.preventDefault();
+    setPostState(e.target.value);
+    console.log('stew');
+    console.log(postState, postID);
+    let res = await axios.post(`${API_URL}/community/release`, {
+      postID,
+      postState,
+    });
+    //TODO: 如何點擊按鈕改變狀態同時打api回去
+    console.log('貼文發布成功', res);
+    handleSuccess('貼文發布成功', `/postTrip?postID=${postID}`);
   };
 
   //預覽封面照片
@@ -181,22 +190,30 @@ function PostTripEdit() {
   }, [selectedCoverFile]);
 
   // 上傳封面照片
+  // function inputhandleChange(e) {}
+
   const changeCoverHandler = async (e) => {
     e.preventDefault();
+    let newCover = { ...coverFile };
+    newCover[e.target.name] = e.target.value;
+    setCoverFile(newCover);
+    console.log('newcover', newCover);
+    console.log('coverfile', coverFile);
+
     const file = e.target.files[0];
     console.log('file', file);
-    console.log('預覽照片url網址 and id', preview, postID);
+    console.log('預覽照片url網址 / id', preview, postID);
     try {
-      // let formData = new FormData();
-      console.log('預覽照片的檔名？', preview);
+      let formData = new FormData();
+      console.log('ALLllllllcover', coverFile);
+      formData.append('coverPhoto', coverFile.coverPhoto);
+
       let response = await axios.post(
         `${API_URL}/community/tripPostCoverUpload`,
-        { preview, postID }
+        { preview, postID, coverFile }
       );
       console.log('封面照片新增成功', response);
-      // formData.append('title', coverFile.title);
-      // formData.append('photo', coverFile.photo);
-      // console.log('formData', formData);
+      console.log('formData', formData);
     } catch (err) {
       console.log('上傳錯誤', err);
     }
@@ -248,24 +265,26 @@ function PostTripEdit() {
                 <p className="mt-3">貼文編輯：行程貼文</p>
               </div>
               <div className="d-flex justify-content-end mt-4 post_edit_button ">
-                <button className="btn" onClick={resetForm}>
-                  清空
-                </button>
+                <button className="btn">清空</button>
                 <button className="btn" onClick={handleSubmit}>
                   儲存
                 </button>
-                <button className="btn">發布</button>
+                {postTripEdit[0][0].status === 2 ? (
+                  <button className="btn" value="1" onClick={handleRelease}>
+                    發布
+                  </button>
+                ) : (
+                  ''
+                )}
               </div>
             </div>
             <div className="post_cover_photo d-flex flex-column justify-content-end align-items-end">
-              <img
-                src={preview ? preview : postTripEdit[0][0].main_photo}
-                alt=""
-              ></img>
+              <img src={preview ? preview : CoverBackground} alt=""></img>
               <label className="cover_photo_upload d-flex flex-column justify-content-center align-items-center">
                 <MdPhotoSizeSelectActual className="cover_photo_upload_icon"></MdPhotoSizeSelectActual>
                 <div>封面照片上傳</div>
                 <input
+                  name="coverPhoto"
                   type="file"
                   className="form-control mt-2"
                   accept="image/*"
@@ -323,16 +342,11 @@ function PostTripEdit() {
             <div className="d-flex align-items-start justify-content-around">
               <div className="article_edit">
                 {postTripEdit.map((data, index) => {
-                  {
-                    /* console.log('該天陣列', data);
-                  console.log('該天為第幾天', data[index].days);
-                  console.log('索引', index); */
-                  }
                   return (
                     <>
                       <div>
                         <div className="date_count mt-1">
-                          <p>Day {data[index].days} </p>
+                          <p>Day {data[0].days} </p>
                         </div>
                         {data.map((data, i) => {
                           return (
@@ -400,7 +414,7 @@ function PostTripEdit() {
               <TripOutline post={postTripEdit}></TripOutline>
             </div>
             <div className="d-flex justify-content-end my-2 me-4 post_edit_button ">
-              <button className="btn" onClick={resetForm} value="清除">
+              <button className="btn" value="清除">
                 {/* TODO:無法更新到input的value */}
                 清空
               </button>

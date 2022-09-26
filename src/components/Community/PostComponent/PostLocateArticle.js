@@ -20,7 +20,7 @@ export default function PostLocateArticle({ post }) {
           {post.map((data, index) => {
             return (
               <>
-                <div className="my-2 post_dayCount">Day {data[index].days}</div>
+                <div className="my-2 post_dayCount">Day {data[0].days}</div>
                 {data.map((data, i) => {
                   return (
                     <>

@@ -72,10 +72,9 @@ function PostTrip() {
       // 存回 useState 狀態
     };
     fetchPostTripEdit();
-  }, [postID]);
+  }, []);
 
   console.log('整理好的資料', postTrip);
-  // // return .map((data) => {
   return (
     <>
       {postTrip.length === 0 ? (
@@ -83,7 +82,7 @@ function PostTrip() {
       ) : (
         <div key={postTrip.id} className="d-flex justify-content-center">
           <div className="post_bar d-flex flex-column">
-            <PostStateBar post={postTrip}></PostStateBar>
+            <PostStateBar post={postTrip} postID={postID}></PostStateBar>
 
             <hr></hr>
             <div className="d-flex align-items-start">

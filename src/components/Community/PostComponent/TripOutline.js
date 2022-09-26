@@ -9,7 +9,7 @@ export default function TripOutline({ post }) {
           {post.map((data, index) => {
             return (
               <>
-                <p className="post_date_count">Day {data[index].days}</p>
+                <p className="post_date_count">Day {data[0].days}</p>
                 {data.map((data, i) => {
                   return (
                     <>
