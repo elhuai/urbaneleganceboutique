@@ -4,27 +4,27 @@ import { API_URL } from '../../../../utils/config';
 import '../styles/_EC_subpages_Payment.scss';
 
 const Payment = (props) => {
-  const { shipping, setShippingData } = props;
+  const { shipping, setShippingData, cartProductData, setCartProductData } = props;
+  console.log('cartData=====Payment===', cartProductData);
 
   const handleFieldChange = (e) => {
     const newShipping = { ...shipping, [e.target.name]: e.target.value };
     setShippingData(newShipping);
-};
-
-const [cart, setCart] = useState([]);
-
-
-useEffect(() => {
-  const fetchProductData = async () => {
-    // 抓商品細節資料
-    const result = await axios.get(`${API_URL}/cart/getcart`);
-    // console.log('result', result.data);
-    const [cartData] = result.data;
-  
-    setCart(cartData);
   };
-  fetchProductData();
-}, []);
+
+  const [cart, setCart] = useState([]);
+
+  useEffect(() => {
+    const fetchProductData = async () => {
+      // 抓商品細節資料
+      const result = await axios.get(`${API_URL}/cart/getcart`);
+      // console.log('result', result.data);
+      const [cartData] = result.data;
+
+      setCart(cartData);
+    };
+    fetchProductData();
+  }, []);
 
   return (
     <>
@@ -38,27 +38,15 @@ useEffect(() => {
                   <p>購買人資訊</p>
                   <div className="subSection">
                     <div className="subTitle ">姓名 ＊</div>
-                    <input
-                      type="text"
-                      name="name"
-                      onChange={handleFieldChange}
-                    />
+                    <input type="text" name="name" onChange={handleFieldChange} />
                   </div>
                   <div className="subSection">
                     <div className="subTitle">email ＊</div>
-                    <input
-                      type="text"
-                      name="email"
-                      onChange={handleFieldChange}
-                    />
+                    <input type="text" name="email" onChange={handleFieldChange} />
                   </div>
                   <div className="subSection">
                     <div className="subTitle">聯絡電話 ＊</div>
-                    <input
-                      type="text"
-                      name="phone"
-                      onChange={handleFieldChange}
-                    />
+                    <input type="text" name="phone" onChange={handleFieldChange} />
                   </div>
                 </section>
                 <section>
@@ -108,7 +96,7 @@ useEffect(() => {
                     <input type="radio" />
                     <span className="radioInput">電子收據（公司戶）</span>
                   </div>
-                  <span className='receiptContent'>
+                  <span className="receiptContent">
                     為響應環保，系統將自動寄送收據開立通知信至您的購買e-mail，您可在「旅行業代收轉付電子收據加值平台」下載或至e-mail信箱中列印本收據，作為收帳憑據使用。
                   </span>
                 </section>
@@ -139,14 +127,14 @@ useEffect(() => {
             <div className="totalColumn">
               <div className="totalCate">
                 <p className="title">票券名稱</p>
-                <p>{cart.name}</p>
+                <p>{cartProductData.name}</p>
                 <div className="subTotal">
                   <p>售價</p>
-                  <p>NT${cart.price}</p>
+                  <p>NT${cartProductData.price}</p>
                 </div>
                 <div className="subTotal">
                   <p>數量</p>
-                  <p>{cart.quantity}張</p>
+                  <p>{cartProductData.quantity}張</p>
                 </div>
               </div>
 
@@ -157,7 +145,7 @@ useEffect(() => {
               </div>
               <div className="totalNumber">
                 <p className="title">總計(付款金額)</p>
-                <p>NT$6,800</p>
+                <p>NT${cartProductData.quantity * cartProductData.price}</p>
               </div>
             </div>
           </div>

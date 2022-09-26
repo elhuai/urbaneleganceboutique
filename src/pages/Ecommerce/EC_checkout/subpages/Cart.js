@@ -71,8 +71,9 @@ console.log('cartData=====cart===',cartProductData);
                   <div className="subTitle">票券數量</div>
                   <div className="subInput">
                     <div className="cartAddSection">
-                      <p>{number}</p>
+                      <p>{cartProductData.quantity}</p>
                       <div className="cartAddButton">
+                      {/* TODO: */}
                         <button onClick={MinusOne}>
                           <IoCaretBack />
                         </button>
@@ -139,14 +140,14 @@ console.log('cartData=====cart===',cartProductData);
             <div className="totalColumn">
               <div className="totalCate">
                 <p className="title">票券名稱</p>
-                <p>{cart.name}</p>
+                <p>{cartProductData.name}</p>
                 <div className="subTotal">
                   <p>售價</p>
-                  <p>NT${cart.price}</p>
+                  <p>NT${cartProductData.price}</p>
                 </div>
                 <div className="subTotal">
                   <p>數量</p>
-                  <p>{number}張</p>
+                  <p>{cartProductData.quantity}張</p>
                 </div>
               </div>
 
@@ -157,7 +158,7 @@ console.log('cartData=====cart===',cartProductData);
               </div>
               <div className="totalNumber">
                 <p className="title">總計(付款金額)</p>
-                <p>NT${number * cart.price}</p>
+                <p>NT${cartProductData.quantity * cartProductData.price}</p>
               </div>
             </div>
           </div>
