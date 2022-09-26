@@ -3,10 +3,12 @@
   color: #ffc200;
   cursor: pointer;
 }
+
 .ShoppingCart {
   background-color: #feefc356;
   height: 100%;
   padding: 200px 20px;
+
   // display: flex;
   section {
     display: flex;
@@ -17,6 +19,7 @@
     height: 100%;
     // margin: 200px 0;
     background-color: white;
+
     .headerRow {
       color: #747474;
       display: flex;
@@ -24,12 +27,15 @@
       border-bottom: 1px solid #eeeef0;
       padding: 10px 15px;
     }
+
     .mainRow {
       overflow: auto;
       height: 100%;
       padding: 20px 20px;
+
       .mainRowObject {
         border-bottom: 1px solid #eeeef0;
+
         // padding-bottom: 20px;
         .mainRowObjectContent {
           padding: 10px 15px;
@@ -39,10 +45,12 @@
           background-color: #ffc40038;
           margin-top: 10px;
           display: flex;
+
           .mainRowObjectPic {
             display: flex;
             align-items: center;
             margin-right: 10px;
+
             img {
               border-radius: 8px;
               width: 60px;
@@ -50,9 +58,11 @@
               object-fit: cover;
             }
           }
+
           .mainRowObjectText {
             display: flex;
             align-items: center;
+
             p {
               margin: 0;
               color: #393939;
@@ -61,28 +71,35 @@
               width: 100%;
               overflow: hidden;
               display: -webkit-box;
-              -webkit-line-clamp: 2; /*省略第n行後的文字*/
-              -webkit-box-orient: vertical; /*設定元素是垂直布局*/
+              -webkit-line-clamp: 2;
+              /*省略第n行後的文字*/
+              -webkit-box-orient: vertical;
+              /*設定元素是垂直布局*/
               padding-bottom: 5px;
             }
           }
         }
+
         .mainRowObjectBtn {
           display: flex;
           justify-content: space-between;
           align-items: center;
           padding: 15px 5px;
+
           div {
             display: flex;
           }
+
           .cartAddButton {
             display: flex;
             align-items: center;
             color: #747474;
+
             .arrow {
               cursor: pointer;
             }
           }
+
           button {
             border: none;
             background-color: #ffc200;
@@ -91,6 +108,7 @@
             border-radius: 10px;
             padding: 3px 10px;
           }
+
           p {
             margin: 0 0 0 8px;
             color: #ef7a70;
@@ -98,6 +116,7 @@
         }
       }
     }
+
     .footerRow {
       color: #747474;
       display: flex;
@@ -105,10 +124,12 @@
       justify-content: space-between;
       border-top: 1px solid #eeeef0;
       padding: 10px 15px;
+
       .leftColumn {
         display: flex;
         align-items: center;
       }
+
       p {
         margin: 0;
         font-size: 20px;

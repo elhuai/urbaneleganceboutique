@@ -19,11 +19,7 @@ function EcRestaurantHomepage() {
     },
     {
       name: '寵物甜點推薦',
-      img: 'https://img.freepik.com/premium-photo/cute-ginger-kitten-peeks-out-from-edge-white-board-copy-space_96064-788.jpg?w=826',
-    },
-    {
-      name: '寵物益生菌推薦',
-      img: 'https://img.freepik.com/free-photo/spaniel-puppy-playing-studio-cute-doggy-pet-is-sitting-isolated-blue-background-cavalier-king-charles-negative-space-insert-your-text-image-concept-movement-animal-rights_155003-33840.jpg',
+      img: 'https://img.freepik.com/premium-photo/gray-scottish-cat-with-big-cheeks-yellow-eyes_107760-260.jpg',
     },
   ];
   // 推薦區域商品

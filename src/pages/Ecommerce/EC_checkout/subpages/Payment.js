@@ -1,4 +1,6 @@
-import { useState } from 'react';
+import axios from 'axios';
+import { useState, useEffect } from 'react';
+import { API_URL } from '../../../../utils/config';
 import '../styles/_EC_subpages_Payment.scss';
 
 const Payment = (props) => {
@@ -7,9 +9,22 @@ const Payment = (props) => {
   const handleFieldChange = (e) => {
     const newShipping = { ...shipping, [e.target.name]: e.target.value };
     setShippingData(newShipping);
-
-    console.log(newShipping);
   };
+
+  const [cart, setCart] = useState([]);
+
+  useEffect(() => {
+    const fetchProductData = async () => {
+      // 抓商品細節資料
+      const result = await axios.get(`${API_URL}/cart/getcart`);
+      // console.log('result', result.data);
+      const [cartData] = result.data;
+
+      setCart(cartData);
+    };
+    fetchProductData();
+  }, []);
+
   return (
     <>
       <div className="Payment">
@@ -92,7 +107,7 @@ const Payment = (props) => {
                     <input type="radio" />
                     <span className="radioInput">電子收據（公司戶）</span>
                   </div>
-                  <span>
+                  <span className="receiptContent">
                     為響應環保，系統將自動寄送收據開立通知信至您的購買e-mail，您可在「旅行業代收轉付電子收據加值平台」下載或至e-mail信箱中列印本收據，作為收帳憑據使用。
                   </span>
                 </section>
@@ -121,20 +136,16 @@ const Payment = (props) => {
               </div>
             </div>
             <div className="totalColumn">
-              <div className="totalName">
-                <p className="title">店家名稱</p>
-                <p>宜蘭東澳海蝕洞獨木舟/一泊二食星光露營體驗</p>
-              </div>
               <div className="totalCate">
-                <p className="title">票券方案</p>
-                <p>A.獨木舟體驗全票</p>
+                <p className="title">票券名稱</p>
+                <p>{cart.name}</p>
                 <div className="subTotal">
                   <p>售價</p>
-                  <p>NT$3,500</p>
+                  <p>NT${cart.price}</p>
                 </div>
                 <div className="subTotal">
                   <p>數量</p>
-                  <p>2張</p>
+                  <p>{cart.quantity}張</p>
                 </div>
               </div>
 

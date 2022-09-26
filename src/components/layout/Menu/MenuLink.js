@@ -4,9 +4,6 @@ const MenuLink = () => {
   return (
     <>
       <ul className="header_container list-unstyled d-flex  mt-3">
-        <NavLink to="/ec-productfilter" className="header_product mx-xxl-3">
-          篩選
-        </NavLink>
         <NavLink to="/ec-enjoyhomepage" className="header_product mx-xxl-3">
           景點&玩樂
         </NavLink>
@@ -22,7 +19,7 @@ const MenuLink = () => {
         <NavLink to="/travel" className="header_product mx-xxl-3">
           我的行程
         </NavLink>
-        <NavLink to="/ec-productdetail" className="header_product mx-xxl-3">
+        <NavLink to="/communityHomePage" className="header_product mx-xxl-3">
           社群分享
         </NavLink>
       </ul>

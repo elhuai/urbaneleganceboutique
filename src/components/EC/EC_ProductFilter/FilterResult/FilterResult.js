@@ -135,7 +135,7 @@ const FilterResult = (props) => {
             to={`/ec-productdetail?id=${data.id}&typeid=${data.product_type_id}`}
             key={index}
           >
-            <div className="product_main_card card border-primary" key={index}>
+            <div className=" card border-primary" key={index}>
               <div className="row g-0">
                 <div className="col-md-4 product_main_card_img--box">
                   <div className="d-flex justify-content-right position-absolute">

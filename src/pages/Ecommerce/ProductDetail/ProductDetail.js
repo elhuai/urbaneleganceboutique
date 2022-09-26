@@ -29,7 +29,7 @@ const ProductDetail = () => {
   const urlSearchParams = new URLSearchParams(location.search);
   const productId = urlSearchParams.get('id');
   // const typeId = urlSearchParams.get('typeid');
-  // console.log('productId1111', productId);
+  // console.log('urlSearchParams', urlSearchParams);
 
   useEffect(() => {
     // 抓商品細節資料
@@ -78,6 +78,14 @@ const ProductDetail = () => {
       addCart({ isLogin: true }, setUser);
     }
   };
+  console.log(productData);
+  console.log(productData.id);
+  console.log('22', productData.intro);
+  const introLi = () => {
+    if (productData.id < 559) {
+      <li>{productData.intro}</li>;
+    }
+  };
 
   return (
     <>
@@ -98,10 +106,8 @@ const ProductDetail = () => {
             <div className="productDesc col-">
               <div className="productContainer">
                 <h1 className="headText fw-bolder">{productData.name}</h1>
-                <ul>
-                  <li className="subText">{productData.intro}</li>
-                </ul>
-                <div className=" d-flex flex-row">
+                <div className="subText">{productData.intro}</div>
+                <div className=" d-flex flex-row productContainer_tags">
                   {tag.map((data, index) => {
                     return (
                       <p key={index} className="tags my-2 me-2">
@@ -121,9 +127,10 @@ const ProductDetail = () => {
                 {/* 加購區 */}
                 <div className="mainAddSection">
                   <p className="text-muted fw-bolder">+ 尚優惠的加購價</p>
-                  <hr />
+                  <hr className="mainAddSection_hr" />
                   {/* 推薦商品 */}
                   {recommend.map((data, index) => {
+                    console.log(data);
                     return (
                       <div
                         className="addSection d-flex flex-row mb-2"
@@ -133,8 +140,7 @@ const ProductDetail = () => {
                           <div className="addSubSection d-flex align-items-center mb-0">
                             <img
                               className="addSubSection_img"
-                              // TODO 要記得換
-                              src={`http://localhost:3007${mainURL}/${productData.main_photo}`}
+                              src={`http://localhost:3007${data.photo_path}/${data.main_photo}`}
                               alt="..."
                             />
                             <p className="addSubSection_name fw-bolder mb-0 ms-2">
@@ -152,6 +158,7 @@ const ProductDetail = () => {
                             </p>
                           </div>
                           <div className="d-flex align-items-end">
+                            {/* TODO:同步更新購物車 */}
                             <button
                               className="addSubSection_btn ms-2 py-2"
                               onClick={(e) => {
@@ -174,7 +181,7 @@ const ProductDetail = () => {
                   <button
                     className="addButton"
                     onClick={(e) => {
-                      console.log(e.target.value);
+                      // console.log(e.target.value);
                       addCart(e, productId);
                       // handleSuccess('已成功加入購物車');
                     }}
@@ -228,7 +235,7 @@ const ProductDetail = () => {
                   <p>
                     • 憑證使用方式
                     <br />
-                    現場請出示電子憑證與護照正本或身份證 text
+                    到會員中心田現場請出示電子憑證
                     <br />
                     • 憑證兌換期限
                     <br />
