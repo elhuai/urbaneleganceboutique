@@ -48,7 +48,7 @@ function ShoppingCart({ name, ...props }) {
         // console.log(newCart);
 
         setCart(result.data[0]);
-        handleSuccess('已成功加入購物車');
+        // handleSuccess('已成功加入購物車');
         
       } catch (error) {
         console.log('error', error);
@@ -154,7 +154,7 @@ function ShoppingCart({ name, ...props }) {
 
                         <p>NT${v.quantity * v.price}</p>
                       </div>
-                      <Link to="/ec-ordersteps">
+                      <Link to={`/ec-ordersteps?productId=${v.product_id}`}>
                         <button>確定下單</button>
                       </Link>
                     </div>

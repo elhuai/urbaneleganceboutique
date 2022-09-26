@@ -1,4 +1,6 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
+import axios from 'axios';
+import { API_URL } from '../../../utils/config';
 
 // 子頁面(區域)
 import Cart from './subpages/Cart';
@@ -10,6 +12,8 @@ import ProgressBar from '../../../components/EC/EC_ordersteps/ProgressBar/Progre
 
 // css樣式
 import './styles/_EC_orderSteps.scss';
+
+import { useLocation } from 'react-router-dom';
 
 function OrderSteps() {
   const maxSteps = 3;
@@ -59,20 +63,43 @@ function OrderSteps() {
     if (step > 1) setStep(step - 1);
   };
 
+  // 拿網址資料=======================================
+
+  const location = useLocation();
+  const urlSearchParams = new URLSearchParams(location.search);
+  const productId = urlSearchParams.get('productId');
+  console.log(productId);
+
+  // 抓購物車資訊
+  const [cartProductData, setCartProductData] = useState([]);
+
+  useEffect(() => {
+    // 抓商品細節資料
+    const fetchProductData = async () => {
+      const result = await axios.get(`${API_URL}/cart/showcart?productId=${productId}`);
+      // setProductData(result.data);
+      console.log('here', result.data[0]);
+      setCartProductData(result.data[0]);
+    };
+    fetchProductData();
+  }, []);
+  console.log('cartData', cartProductData);
+
   return (
     <>
       {/* {console.log(step, maxSteps)} */}
       {/* 進度條 */}
       <div>
-        <ProgressBar
-          maxSteps={maxSteps}
-          step={step}
-          progressNames={progressNames}
-        />
+        <ProgressBar maxSteps={maxSteps} step={step} progressNames={progressNames} />
       </div>
       {/* 子頁面區域 */}
       <div>
-        <BlockComponent shipping={shipping} setShippingData={setShippingData} />
+        <BlockComponent
+          shipping={shipping}
+          setShippingData={setShippingData}
+          cartProductData={cartProductData}
+          setCartProductData={setCartProductData}
+        />
       </div>
       {/* 按鈕 */}
       <div className="orderButton">
