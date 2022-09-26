@@ -50,8 +50,8 @@ const FilterResult = (props) => {
   return (
     <>
       {/* __排序 */}
-      <div class="board product-result sort-board d-flex flex-row justify-content-end">
-        <p classNameName="product-title me-3">排序 :</p>
+      <div class="sort-board d-flex flex-row justify-content-end">
+        <p classNameName="product-sort-title me-3">排序 :</p>
         <span className="align-items-center">
           <span className="gap">|</span>
           {/* TODO */}

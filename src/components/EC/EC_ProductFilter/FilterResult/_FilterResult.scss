@@ -67,9 +67,6 @@ $royal-blue: #22C3FF;
       border-radius: 15px;
     }
 
-    // &::after {
-    //   transform: translate(-3px, -3px);
-    // }
 
     // Card----------------------
 
@@ -178,6 +175,11 @@ $royal-blue: #22C3FF;
         width: 1.25rem;
         height: 1.25rem;
       }
+    }
+
+    .sort-board-rwd {
+      display: none;
+
     }
   }
 }

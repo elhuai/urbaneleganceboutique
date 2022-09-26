@@ -12,6 +12,9 @@ import { useUserInfo } from '../../../hooks/useUserInfo';
 
 // 商品照片
 import ItemImage from '../../../components/EC/EC_productDetail/Image';
+// 兌換方式照片
+import Exchange from '../../../images/EC_detail/exchange.svg';
+
 // 街景
 // import Streeview from '../../../components/EC/EC_productDetail/StreetView';
 // 商品評價
@@ -78,14 +81,6 @@ const ProductDetail = () => {
       addCart({ isLogin: true }, setUser);
     }
   };
-  console.log(productData);
-  console.log(productData.id);
-  console.log('22', productData.intro);
-  const introLi = () => {
-    if (productData.id < 559) {
-      <li>{productData.intro}</li>;
-    }
-  };
 
   return (
     <>
@@ -95,7 +90,7 @@ const ProductDetail = () => {
         <div className="productDetail">
           <div className="topRow row ">
             {/* 商品照區域 */}
-            <div className="col-5">
+            <div className="productDetail_itemImage">
               <ItemImage
                 mainURL={mainURL}
                 productData={productData}
@@ -103,18 +98,20 @@ const ProductDetail = () => {
               />
             </div>
             {/* 商品標題 */}
-            <div className="productDesc col-">
+            <div className="productDesc col">
               <div className="productContainer">
-                <h1 className="headText fw-bolder">{productData.name}</h1>
-                <div className="subText">{productData.intro}</div>
-                <div className=" d-flex flex-row productContainer_tags">
-                  {tag.map((data, index) => {
-                    return (
-                      <p key={index} className="tags my-2 me-2">
-                        {data}
-                      </p>
-                    );
-                  })}
+                <div className="productContainer_content">
+                  <h1 className="headText fw-bolder">{productData.name}</h1>
+                  <div className="subText">{productData.intro}</div>
+                  <div className=" d-flex flex-row productContainer_tags">
+                    {tag.map((data, index) => {
+                      return (
+                        <p key={index} className="tags my-2 me-2">
+                          {data}
+                        </p>
+                      );
+                    })}
+                  </div>
                 </div>
                 {/* 主要價格區域 */}
                 <div className="costSection ">
@@ -197,10 +194,18 @@ const ProductDetail = () => {
             <div className="bottomRow">
               <div className="spec">
                 <div className="anchor">
-                  <a href="#description">｜商品說明</a>
-                  <a href="#toKnow">｜購買須知</a>
-                  <a href="#howToUse">｜如何使用</a>
-                  <a href="#comment">｜票券評價</a>
+                  <a className="anchor_a" href="#description">
+                    <span>商品說明</span>
+                  </a>
+                  <a className="anchor_a" href="#toKnow">
+                    <span>購買須知</span>
+                  </a>
+                  <a className="anchor_a" href="#howToUse">
+                    <span>如何使用</span>
+                  </a>
+                  <a className="anchor_a" href="#comment">
+                    <span>票券評價</span>
+                  </a>
                 </div>
                 <div className="anchor1"></div>
               </div>
@@ -217,10 +222,9 @@ const ProductDetail = () => {
                 <div className="description">
                   <h4 id="toKnow">購買須知</h4>
                   <p>
-                    •
-                    為提供顧客良好住宿體驗，不提供加人加價服務，請依適合人數選擇房型。
+                    • 因應疫情及政府規範，現場兌換商品請符合防疫等相關規定。
                     <br />
-                    • 客房格局依實際入住安排為主。
+                    • 購買餐廳票券請提前電話預約並告知使用兌換券
                     <br />
                     •
                     入住登記者須年滿18歲。未滿18歲之未成年旅客，須由家長陪同入住。
@@ -232,16 +236,9 @@ const ProductDetail = () => {
                 </div>
                 <div id="howToUse" className="description">
                   <h4>如何使用</h4>
-                  <p>
-                    • 憑證使用方式
-                    <br />
-                    到會員中心田現場請出示電子憑證
-                    <br />
-                    • 憑證兌換期限
-                    <br />
-                    需要按照預訂日期及當天開放時間內兌換，逾期失效
-                    <br />
-                  </p>
+                  <img src={Exchange} alt="" />
+
+                  <div></div>
                 </div>
                 {/* <Streeview /> */}
                 <Score perScore={perScore} productId={productId} />

@@ -1,0 +1,129 @@
+$pink: #EF7A70;
+$graycolor: #747474;
+$fmain_color: #ffc200; // 主色
+$royal-blue: #22C3FF;
+
+.ecProductFilter {
+
+  %product-filter-title {
+    font-size: 20px;
+    font-weight: 700;
+    color: black;
+    // margin: 0;
+  }
+
+  %normal-text {
+    font-size: 16px;
+    color: $graycolor;
+  }
+
+
+  // 左側篩選欄==========================
+  .product-filter-left {
+    display: inline-block;
+    border-right: 1px solid lightgrey;
+    margin: 0 1em 0 0;
+    padding: 0 .5em;
+    margin-bottom: 8px;
+    width: 30%;
+
+    // overflow-y: auto;
+    .product-filter-group {
+      padding-bottom: 5px;
+    }
+
+    .product-category-title {
+      @extend %product-filter-title
+    }
+
+    .product-label-active {
+      color: #22C3FF;
+      font-size: 18px;
+      font-weight: 700;
+    }
+
+    .product_checkbox {
+      vertical-align: top;
+      text-align: left;
+      margin-bottom: 8px;
+      cursor: pointer;
+
+      >span {
+        font-size: 1rem
+      }
+
+    }
+
+    .product_check_items {
+      @extend %normal-text;
+    }
+  }
+
+  // 篩選標題&下拉選單
+  .product-filter-category {
+    width: 100%;
+    display: flex;
+    border-bottom: $fmain_color 1px solid;
+
+    // margin: 1rem 0;
+    .product-category-title {
+      margin-bottom: 0;
+    }
+
+    .product-category-moreBtn {
+      width: 30px;
+      height: 30px;
+      border: 1px solid #ffc200;
+      background: #ffc200;
+      text-align: center;
+      color: #fff;
+      border-radius: 5px 5px 0 0;
+      cursor: pointer;
+      font-size: 20px;
+    }
+  }
+
+  // 價格欄
+  .product-price {
+    &-bar {
+      width: 85%;
+      margin: 20px 10px 10px;
+
+      .ant-slider-track {
+        background-color: $fmain_color;
+      }
+
+      .ant-slider-handle {
+        border-color: $fmain_color;
+      }
+    }
+
+    &-num {
+      width: 85%;
+      display: flex;
+      align-items: center;
+
+      p {
+        font-size: large;
+      }
+
+      button {
+        font-size: 14px;
+        font-weight: 350;
+        background-color: $fmain_color;
+        border: none;
+        border-radius: 30px;
+        color: white;
+        padding: 3px 14px;
+        margin: 10px 0;
+        transition: .5s;
+
+        &:hover {
+          box-shadow: .2px .2px 6px rgba(0, 0, 0, 0.5);
+        }
+      }
+
+
+    }
+  }
+}

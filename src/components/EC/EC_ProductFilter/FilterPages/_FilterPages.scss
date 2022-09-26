@@ -53,6 +53,17 @@ $royal-blue: #22C3FF;
 // ========== RWD ======== //
 @media (max-width: 768px) {
   .ecProductFilter {
+    max-width: 345px;
+    width: 100%;
+    margin: 0 auto;
+
+    .sort-board-rwd {
+      display: block;
+      max-width: 345px;
+      width: 100%;
+      margin: 0 auto;
+    }
+
     .product-searchList {
       margin: auto 12px;
     }
@@ -69,15 +80,34 @@ $royal-blue: #22C3FF;
       margin-left: 0;
     }
 
-    // 篩選結果card
-    .product_main_card {
-      max-width: 345px;
-      width: 100%;
-      height: 375px;
-      margin: 1rem auto;
+    // 篩選
+    .sort-board {
+      p {
+        display: none;
+      }
+
+      .sort-selected {
+        display: none;
+      }
+
+      .gap {
+        display: none;
+
+      }
+
+      span {
+        display: none;
+      }
     }
 
+    // 篩選結果card
+
     .card {
+      max-width: 345px;
+      margin: 0 auto;
+      margin-bottom: 1rem;
+      height: 320px;
+
       .product_main_card_title {
         h5 {
           text-overflow: ellipsis;
@@ -88,8 +118,16 @@ $royal-blue: #22C3FF;
         }
       }
 
+      .sort-board {
+        display: none
+      }
+
       .product_main_card_img--box {
-        height: 180px;
+        height: 170px;
+      }
+
+      .product_main_card_locate_text {
+        display: none;
       }
 
       .product_main_card_tag {
@@ -97,7 +135,7 @@ $royal-blue: #22C3FF;
       }
 
       .card_content {
-        height: 115px;
+        height: 77px;
       }
 
       .card-body {
