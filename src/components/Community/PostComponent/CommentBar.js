@@ -7,6 +7,8 @@ function CommentBar({ comment }) {
       <p>回應</p> {/* 關聯資料庫 */}
       <div className=" d-flex flex-column align-items-center">
         {comment.map((data) => {
+          console.log('cm', comment);
+          console.log('data', comment);
           return (
             <li
               key={data.id}

@@ -45,7 +45,7 @@ function App() {
           <Route path="/communityList" element={<CommunityList />} />
           <Route path="/communityHomePage" element={<CommunityHomePage />} />
           <Route path="admin" element={<AdminCenterPage />}>
-            <Route index element={<CommunityManagement />} />
+            {/* <Route index element={<CommunityManagement />} /> */}
             <Route path="profile" element={<AdminVocherPage />} />
             <Route path="voucher" element={<AdminVocherPage />} />
             <Route path="community" element={<CommunityManagement />} />
@@ -53,8 +53,8 @@ function App() {
           </Route>
           {/* <Route path="/adminCenter" element={<AdminCenterPage />} /> */}
           {/* <Route path="/personalHomePage" element={<PersonalHomePage />} /> */}
-          <Route path="/postWYSIWYG" element={<Post />} />
-          <Route path="/postWYSIWYGEdit" element={<PostEdit />} />
+          <Route path="/post" element={<Post />} />
+          <Route path="/postEdit" element={<PostEdit />} />
           <Route path="/postTrip" element={<PostTrip />} />
           <Route path="/postTripEdit" element={<PostTripEdit />} />
           {/* <Route path="/login/line" element={<LineLogin />} /> */}

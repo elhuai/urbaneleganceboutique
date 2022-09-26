@@ -1,4 +1,4 @@
-import FollowerPhoto from '../../images/logo_dog_body1.svg';
+// import FollowerPhoto from '../../images/logo_dog_body1.svg';
 import React from 'react';
 import './CommunityManagement.scss';
 import { Tabs, Tab } from 'react-bootstrap';
@@ -9,6 +9,7 @@ import { MdOutlineClose } from 'react-icons/md';
 import { useState, useEffect } from 'react';
 import moment from 'moment';
 import { AiTwotoneLike } from 'react-icons/ai';
+import { BiLike } from 'react-icons/bi';
 import axios from 'axios';
 import { API_URL } from '../../utils/config';
 // import TripImport from '../../components/Community/PostComponent/TripImport';
@@ -31,7 +32,7 @@ function CommunityManagement() {
   const [showCFBox, setShowCFBox] = useState(0);
   const [ifDelete, setIfDelete] = useState(false);
   const [ifLike, setifLike] = useState(false);
-  const [likeList, setLikeList] = useState('');
+  const [likeList, setLikeList] = useState([]);
   //匯入我的行程
   const [tripImport, setTripImport] = useState([]);
   // 回傳新增貼文預設欄位
@@ -53,13 +54,9 @@ function CommunityManagement() {
   // 取一般貼文總表
   useEffect(() => {
     const fetchMyPost = async () => {
-<<<<<<< HEAD
-      const result = await axios.get(`${API_URL}/community/post`);
-=======
-      const result = await axios.get(`${API_URL}/community`, {
+      const result = await axios.get(`${API_URL}/community/post`, {
         withCredentials: true,
       });
->>>>>>> d554f1dfebc36e53111af4bd2da5aebf4a9dd624
       // 取得後端來的資料
       console.log(result.data);
       setMyPost(result.data);
@@ -136,13 +133,8 @@ function CommunityManagement() {
     fetchMyTrip();
   }, []);
 
-  const handleEdit = (e) => {
-    console.log('click', e.target.value);
-  };
-
   return (
     <>
-
       <div className="d-flex">
         <div>
           <div className="post_new_button mt-5">
@@ -153,9 +145,10 @@ function CommunityManagement() {
               ></RiEditFill>
               新增貼文
             </button>
+            {/* //TODO: 無法固定在位置 */}
           </div>
           <Tabs
-            defaultActiveKey="article_list"
+            defaultActiveKey="article_list_post"
             id="uncontrolled-tab-example"
             className="communityManagementTab"
           >
@@ -179,7 +172,7 @@ function CommunityManagement() {
                         >
                           <div className="post_description d-flex flex-column">
                             <div className="post_title">
-                              <p className="">{data.title}</p>
+                              <p className="">{data.post_title}</p>
                             </div>
                             <div className="post_date">
                               <p>發布日期：{data.create_time}</p>
@@ -189,8 +182,7 @@ function CommunityManagement() {
                                 to={
                                   data.post_type_id === 2
                                     ? `/postTripEdit?postID=${data.id}`
-                                    : `/postWYSIWYGedit?postID=${data.id}`
-                          
+                                    : `/postEdit?postID=${data.id}`
                                 }
                               >
                                 <button
@@ -217,8 +209,7 @@ function CommunityManagement() {
                                 to={
                                   data.post_type_id === 2
                                     ? `/postTrip?postID=${data.id}`
-                                    : `/postWYSIWYG?postID=${data.id}`
-                                    
+                                    : `/post?postID=${data.id}`
                                 }
                               >
                                 <button
@@ -346,26 +337,43 @@ function CommunityManagement() {
             >
               <div className="follow_post_list">
                 <ul className="follow_post_detail">
-                  <li className="d-flex flex-column ">
-                    <div className="d-flex  justify-content-between ">
-                      <div className="d-flex flex-column">
-                        <div className="post_title ps-4 py-3">
-                          <p className=""></p>
-                        </div>
-                      </div>
-                      <div className="post_edit_button d-flex ps-4 py-2 ">
-                        <button
-                          className="btn remove_follow my-1 "
-                          onClick={() => ConfirmHandle(3)}
-                        >
-                          取消按讚
-                        </button>
-                        <button className="btn follower_checked_detail my-1">
-                          查看內容
-                        </button>
-                      </div>
-                    </div>
-                  </li>
+                  {likeList.map((data, index) => {
+                    return (
+                      <>
+                        <li className="d-flex flex-column" key={data.id}>
+                          <div className="d-flex  justify-content-between ">
+                            <div className="d-flex flex-column">
+                              <div className="post_title ps-4 py-3">
+                                <p className="">
+                                  <BiLike className="me-2"></BiLike>
+                                  {data.post_title}
+                                </p>
+                              </div>
+                            </div>
+                            <div className="post_edit_button d-flex ps-4 py-2 ">
+                              <button
+                                className="btn remove_follow my-1 "
+                                onClick={() => ConfirmHandle(3)}
+                              >
+                                取消按讚
+                              </button>
+                              <Link
+                                to={
+                                  data.post_type_id === 2
+                                    ? `/postTrip?postID=${data.id}`
+                                    : `/post?postID=${data.id}`
+                                }
+                              >
+                                <button className="btn follower_checked_detail my-1">
+                                  查看內容
+                                </button>
+                              </Link>
+                            </div>
+                          </div>
+                        </li>
+                      </>
+                    );
+                  })}
                 </ul>
               </div>
             </Tab>

@@ -52,7 +52,6 @@ export default function PostStateBar({ post, postID }) {
     }
   };
 
-
   const time = post[0][0].create_time.split(' ');
   const tags = post[0][0].tags.split(/[#,＃]/).filter((item) => item);
 
@@ -66,11 +65,7 @@ export default function PostStateBar({ post, postID }) {
             src={
               post[0][0].main_photo.length === 0
                 ? coverPhoto
-<<<<<<< HEAD
-                : post[0][0].main_photo
-=======
-                :  BE_URL + post[0].main_photo
->>>>>>> d554f1dfebc36e53111af4bd2da5aebf4a9dd624
+                : BE_URL + post[0].main_photo
             }
           ></img>
         </div>
