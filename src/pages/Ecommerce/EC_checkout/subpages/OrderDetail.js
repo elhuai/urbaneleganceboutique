@@ -86,7 +86,7 @@ function OrderDetail(props) {
               <div className="subInput">NT${cart.price}</div>
             </div>
             {/* <form action=""> */}
-              <button onClick={handlePay}>來去結帳</button>
+            <button onClick={handlePay}>來去結帳</button>
             {/* </form> */}
             {/* {!!order ? (<div>{order.amount}</div>) : null} */}
           </div>

@@ -76,7 +76,9 @@ function OrderSteps() {
   useEffect(() => {
     // 抓商品細節資料
     const fetchProductData = async () => {
-      const result = await axios.get(`${API_URL}/cart/showcart?productId=${productId}`);
+      const result = await axios.get(
+        `${API_URL}/cart/showcart?productId=${productId}`
+      );
       // setProductData(result.data);
       console.log('here', result.data[0]);
       setCartProductData(result.data[0]);
@@ -90,7 +92,11 @@ function OrderSteps() {
       {/* {console.log(step, maxSteps)} */}
       {/* 進度條 */}
       <div>
-        <ProgressBar maxSteps={maxSteps} step={step} progressNames={progressNames} />
+        <ProgressBar
+          maxSteps={maxSteps}
+          step={step}
+          progressNames={progressNames}
+        />
       </div>
       {/* 子頁面區域 */}
       <div>
@@ -104,7 +110,11 @@ function OrderSteps() {
       {/* 按鈕 */}
       <div className="orderButton">
         {step < maxSteps && (
-          <button className="nextBnt" onClick={next} disabled={step === maxSteps}>
+          <button
+            className="nextBnt"
+            onClick={next}
+            disabled={step === maxSteps}
+          >
             前往下一步
           </button>
         )}
