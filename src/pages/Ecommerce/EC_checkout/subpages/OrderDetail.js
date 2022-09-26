@@ -22,7 +22,7 @@ function OrderDetail(props) {
           {
             id: packageIdGenerater(cart.user_id),
             amount: cart.price,
-            products: cart,
+            products: [cart],
           },
         ],
         // })
@@ -30,25 +30,18 @@ function OrderDetail(props) {
       // console.log(cart,order);
     };
     fetchProductData();
-  }, [cart,order]);
+  }, [cart, order]);
 
   let dt = new Date();
-  
- 
 
   const packageIdGenerater = (user_id) => {
     let dt = new Date();
     return `${dt.getTime()}_${user_id}`;
   };
 
-  
   const handlePay = () => {
-    
-    
-    // console.log('order', order);
-   
+    console.log('order', order);
   };
-
 
   return (
     <>
@@ -92,9 +85,9 @@ function OrderDetail(props) {
               <div className="subTitle">總計(付款金額)</div>
               <div className="subInput">NT${cart.price}</div>
             </div>
-            <button onClick={handlePay}>
-              來去結帳
-            </button>
+            {/* <form action=""> */}
+              <button onClick={handlePay}>來去結帳</button>
+            {/* </form> */}
             {/* {!!order ? (<div>{order.amount}</div>) : null} */}
           </div>
         ) : null}
