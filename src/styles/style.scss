@@ -41,6 +41,13 @@ body {
   border: 0.25em solid rgba(255, 194, 0, .4);
 }
 
+.swal2-styled.swal2-confirm {
+  background-color: #EF7A70;
+}
+
+.swal2-styled.swal2-cancel:focus, .swal2-styled.swal2-confirm:focus {
+  box-shadow: 0 0 0 0px ;
+}
 
 
 @media screen and (max-width: 768px) {

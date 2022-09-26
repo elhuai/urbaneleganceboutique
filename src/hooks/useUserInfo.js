@@ -2,6 +2,7 @@ import React, { useState, useContext, createContext, useEffect } from 'react';
 import { handleSocialNameEditCard } from '../utils/handler/card/handleInputCard';
 import { callVerifyApi } from '../api/authApi';
 import Loading from '../components/layout/Loading';
+
 const userInfoContext = createContext(null);
 
 export const UserInfoProvider = ({ children }) => {
@@ -15,9 +16,16 @@ export const UserInfoProvider = ({ children }) => {
     console.log('驗證用戶是否登入');
     callVerifyApi(setUser);
   }
+
   useEffect(() => {
-    if (user.auth === true && user.data.social_name === '')
+    if (user.auth === true && user.data.social_name === '') {
       handleSocialNameEditCard(setUser);
+    }
+
+    // if (user.auth && user.firstVerify) {
+    //   console.log('觸發 socket connection');
+    //   setSocket(webSocket('http://localhost:3007/'));
+    // }
   }, [user]);
   return !user.firstVerify ? (
     <userInfoContext.Provider value={{ user, setUser }}>
