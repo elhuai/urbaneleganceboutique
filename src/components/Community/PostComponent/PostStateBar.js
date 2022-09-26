@@ -9,7 +9,7 @@ import './PostStateBar.scss';
 import { useState, useEffect } from 'react';
 import axios from 'axios';
 import { API_URL } from '../../../utils/config';
-import { handleSuccess } from '../../../utils/handler/handleStatusCard';
+import { handleSuccess } from '../../../utils/handler/card/handleStatusCard';
 
 export default function PostStateBar({ post, postID }) {
   console.log('post', post);
@@ -52,6 +52,7 @@ export default function PostStateBar({ post, postID }) {
     }
   };
 
+
   const time = post[0][0].create_time.split(' ');
   const tags = post[0][0].tags.split(/[#,＃]/).filter((item) => item);
 
@@ -65,7 +66,11 @@ export default function PostStateBar({ post, postID }) {
             src={
               post[0][0].main_photo.length === 0
                 ? coverPhoto
+<<<<<<< HEAD
                 : post[0][0].main_photo
+=======
+                :  BE_URL + post[0].main_photo
+>>>>>>> d554f1dfebc36e53111af4bd2da5aebf4a9dd624
             }
           ></img>
         </div>
@@ -100,6 +105,7 @@ export default function PostStateBar({ post, postID }) {
                   </div>
                 );
               })}
+              x
             </div>
           </div>
           <div className="post_like me-2">

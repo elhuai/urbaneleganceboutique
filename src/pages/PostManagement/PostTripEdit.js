@@ -15,7 +15,7 @@ import { API_URL } from '../../utils/config';
 import TripOutline from '../../components/Community/PostComponent/TripOutline';
 import PhotoReviewSwiper from '../../components/WYSIWYG/PhotoView';
 import { useParams, useLocation } from 'react-router-dom';
-import { handleSuccess } from '../../utils/handler/handleStatusCard';
+import { handleSuccess } from '../../utils/handler/card/handleStatusCard';
 
 // 驗證登入
 // import { useUserInfo } from '../../hooks/useUserInfo';

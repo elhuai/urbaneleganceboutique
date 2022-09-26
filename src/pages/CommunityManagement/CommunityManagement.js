@@ -12,7 +12,7 @@ import { AiTwotoneLike } from 'react-icons/ai';
 import axios from 'axios';
 import { API_URL } from '../../utils/config';
 // import TripImport from '../../components/Community/PostComponent/TripImport';
-import { handleSuccess } from '../../utils/handler/handleStatusCard';
+import { handleSuccess } from '../../utils/handler/card/handleStatusCard';
 
 // 驗證登入
 import { useUserInfo } from '../../hooks/useUserInfo';
@@ -26,7 +26,8 @@ function CommunityManagement() {
   const [myPost, setMyPost] = useState([]);
   // 我的貼文ＩＤ點擊編輯查看內容跳轉
   const [myPostID, setMyPostID] = useState('');
-  // 點擊按鈕狀態感變
+
+  // 點擊按鈕狀態改變
   const [showCFBox, setShowCFBox] = useState(0);
   const [ifDelete, setIfDelete] = useState(false);
   const [ifLike, setifLike] = useState(false);
@@ -52,7 +53,13 @@ function CommunityManagement() {
   // 取一般貼文總表
   useEffect(() => {
     const fetchMyPost = async () => {
+<<<<<<< HEAD
       const result = await axios.get(`${API_URL}/community/post`);
+=======
+      const result = await axios.get(`${API_URL}/community`, {
+        withCredentials: true,
+      });
+>>>>>>> d554f1dfebc36e53111af4bd2da5aebf4a9dd624
       // 取得後端來的資料
       console.log(result.data);
       setMyPost(result.data);
@@ -129,8 +136,13 @@ function CommunityManagement() {
     fetchMyTrip();
   }, []);
 
+  const handleEdit = (e) => {
+    console.log('click', e.target.value);
+  };
+
   return (
     <>
+
       <div className="d-flex">
         <div>
           <div className="post_new_button mt-5">
@@ -167,7 +179,7 @@ function CommunityManagement() {
                         >
                           <div className="post_description d-flex flex-column">
                             <div className="post_title">
-                              <p className="">{data.post_title}</p>
+                              <p className="">{data.title}</p>
                             </div>
                             <div className="post_date">
                               <p>發布日期：{data.create_time}</p>
@@ -177,7 +189,8 @@ function CommunityManagement() {
                                 to={
                                   data.post_type_id === 2
                                     ? `/postTripEdit?postID=${data.id}`
-                                    : `/postEdit?postID=${data.id}`
+                                    : `/postWYSIWYGedit?postID=${data.id}`
+                          
                                 }
                               >
                                 <button
@@ -204,7 +217,8 @@ function CommunityManagement() {
                                 to={
                                   data.post_type_id === 2
                                     ? `/postTrip?postID=${data.id}`
-                                    : `/post?postID=${data.id}`
+                                    : `/postWYSIWYG?postID=${data.id}`
+                                    
                                 }
                               >
                                 <button

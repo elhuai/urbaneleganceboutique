@@ -2,9 +2,12 @@ import React from 'react';
 import { Routes, Route, Outlet } from 'react-router-dom';
 import Footer from './components/layout/Footer';
 import Header from './components/layout/Header';
+import ScrollToTop from './components/layout/ScrollToTop';
 import Homepage from './pages/HomePage';
 import Travel from './pages/Travel';
-import AdminCenter from './components/layout/AdminCenter';
+import AdminCenter from './components/adminPage/AdminCenter';
+import AdminVocherPage from './pages/AdminVocherPage';
+import AdminCollectionPage from './pages/AdminCollectionPage';
 import CommunityList from './pages/CommunityList';
 import CommunityHomePage from './pages/CommunityHomePage';
 import CommunityManagement from './pages/CommunityManagement';
@@ -18,7 +21,7 @@ import Post from './pages/PostManagement/Post';
 import PostTrip from './pages/PostManagement/PostTrip';
 import PostEdit from './pages/PostManagement/PostEdit';
 import PostTripEdit from './pages/PostManagement/PostTripEdit';
-import AdminCenterPage from './components/layout/AdminCenter/AdminCenterPage';
+import AdminCenterPage from './components/adminPage/AdminCenter/AdminCenterPage';
 import EcEnjoyHomepage from './pages/Ecommerce/EC_HomePage/EC_2Enjoy_Homepage';
 import EcRestaurantHomepage from './pages/Ecommerce/EC_HomePage/EC_3Restaurant_Homepage';
 import EcCommodityHomepage from './pages/Ecommerce/EC_HomePage/EC_4Commodity_Homepage';
@@ -28,7 +31,6 @@ import ECOrderSteps from './pages/Ecommerce/EC_checkout';
 import 'swiper/scss';
 import 'swiper/css/bundle';
 import './styles/style.scss';
-import AdminVocherPage from './pages/AdminVocherPage';
 
 function App() {
   return (
@@ -42,11 +44,12 @@ function App() {
           <Route path="/Travel_map" element={<Travelmap />} />
           <Route path="/communityList" element={<CommunityList />} />
           <Route path="/communityHomePage" element={<CommunityHomePage />} />
-          <Route path="admin" element={<AdminCenter />}>
+          <Route path="admin" element={<AdminCenterPage />}>
             <Route index element={<CommunityManagement />} />
             <Route path="profile" element={<AdminVocherPage />} />
             <Route path="voucher" element={<AdminVocherPage />} />
             <Route path="community" element={<CommunityManagement />} />
+            <Route path="collection" element={<AdminCollectionPage />} />
           </Route>
           {/* <Route path="/adminCenter" element={<AdminCenterPage />} /> */}
           {/* <Route path="/personalHomePage" element={<PersonalHomePage />} /> */}
@@ -69,8 +72,8 @@ function App() {
           <Route path="ec-ordersteps" element={<ECOrderSteps />} />
         </Routes>
         <Outlet />
-
         <Footer />
+        <ScrollToTop />
       </UserInfoProvider>
     </div>
   );
