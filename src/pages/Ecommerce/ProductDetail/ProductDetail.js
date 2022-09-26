@@ -63,7 +63,7 @@ const ProductDetail = () => {
     // e.preventDefault();
     if (user.auth) {
       try {
-        const result = await axios.post(
+        await axios.post(
           `${API_URL}/cart/postmore/${id}`,
           {},
           {
@@ -198,8 +198,8 @@ const ProductDetail = () => {
                 <div className="anchor1"></div>
               </div>
               <div className="spec2">
-                <div id="description" className="description">
-                  <h4>商品說明</h4>
+                <div className="description">
+                  <h4 id="description">商品說明</h4>
                   <div
                     dangerouslySetInnerHTML={{
                       __html: productData.description,
@@ -207,8 +207,8 @@ const ProductDetail = () => {
                   />
                   <img src="" alt="" />
                 </div>
-                <div id="toKnow" className="description">
-                  <h4>購買須知</h4>
+                <div className="description">
+                  <h4 id="toKnow">購買須知</h4>
                   <p>
                     •
                     為提供顧客良好住宿體驗，不提供加人加價服務，請依適合人數選擇房型。
@@ -237,7 +237,7 @@ const ProductDetail = () => {
                   </p>
                 </div>
                 {/* <Streeview /> */}
-                <Score perScore={perScore} />
+                <Score perScore={perScore} productId={productId} />
               </div>
             </div>
           </div>

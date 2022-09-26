@@ -3,192 +3,183 @@ $graycolor: #747474;
 $fmain_color: #ffc200; // 主色
 $royal-blue: #22C3FF;
 
-%product-filter-title {
-  font-size: 20px;
-  font-weight: 700;
-  color: black;
-  // margin: 0;
-}
+.ecProductFilter {
 
-%normal-text {
-  font-size: 16px;
-  color: $graycolor;
-}
-
-// 排序
-.sort-board {
-  p {
-    margin-bottom: 0px;
-    font-weight: 600;
+  %product-filter-title {
+    font-size: 20px;
+    font-weight: 700;
+    color: black;
+    // margin: 0;
   }
 
-  .gap {
-    margin: 0 0 0 10px;
-    color: #aaa;
-  }
-
-  .sort-selected {
-    border: none;
-    background: none;
+  %normal-text {
+    font-size: 16px;
     color: $graycolor;
-    font-weight: 700;
-
-    &:active {
-      color: $fmain_color;
-    }
-
-    &:focus {
-      color: $fmain_color;
-      font-weight: 900;
-    }
-  }
-}
-
-.card {
-  --bs-card-border-width: 2px;
-  margin: 1rem 0;
-  border-radius: 15px;
-  height: 250px;
-  overflow: hidden;
-  width: 960px;
-
-
-  &:hover {
-    transform: translate(-3px, -3px);
-    transition: .5s;
-    border-radius: 15px;
   }
 
-  // Card----------------------
+  // 排序
 
-  .card-title {
-    font-weight: 600;
-  }
-
-  .card-text {
-    @extend %normal-text;
-    font-weight: 600;
-  }
-
-  .product-card-label {
-    border-radius: 5px 0 5px 0;
-  }
-
-  .product-card-comment {
-    color: black
-  }
-
-
-
-  .product-card-price {
-    font-weight: 700;
-    color: $pink;
-    font-size: 24px;
-
+  .sort-board {
     p {
-      margin-bottom: 0;
-    }
-  }
-
-
-  .product_main_card_img--box {
-    height: 240px;
-
-    img {
-      // border-radius: 8px 0 0 8px;
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
+      margin-bottom: 0px;
+      font-weight: 600;
     }
 
-  }
-
-  .card-body {
-    height: 240px;
-  }
-
-
-  .product_main_card_title {
-    p {
-      margin-bottom: 0;
-    }
-
-    svg {
+    .gap {
+      margin: 0 10px;
       color: #aaa;
-      width: 1.3rem;
-      height: 1.3rem;
     }
 
-    .product_main_card_collect {
-      cursor: pointer;
+    .sort-board {
+      font-size: 1.2rem;
+    }
+
+    .sort-selected {
+      border: none;
+      background: none;
+      color: $graycolor;
+      font-weight: 700;
+
+      &:hover {
+        color: $fmain_color;
+        font-weight: 900;
+      }
+
+      &:active {
+        color: $fmain_color;
+      }
+
     }
   }
 
-  .product_main_card_tag {
-    display: inline-block;
-    color: #2DA9D7;
-    background-color: #D5EEEE;
-    border-radius: 8px;
-    padding: 2px 10px;
-    font-weight: 600;
-  }
-
-  .product_main_card_text {
-    color: $graycolor;
-    font-weight: 600;
-    text-overflow: ellipsis;
-    display: -webkit-box;
-    -webkit-line-clamp: 2;
-    -webkit-box-orient: vertical;
+  .card {
+    --bs-card-border-width: 2px;
+    margin: 1rem 0;
+    border-radius: 15px;
+    height: 250px;
     overflow: hidden;
+    width: 960px;
+    transition: transform .3s ease-out;
+
+    &:hover {
+      transform: translate(-3px, -3px);
+      transition: .5s;
+      border-radius: 15px;
+    }
+
+    // &::after {
+    //   transform: translate(-3px, -3px);
+    // }
+
+    // Card----------------------
+
+    .card-title {
+      font-weight: 600;
+    }
+
+    .card-text {
+      @extend %normal-text;
+      font-weight: 600;
+    }
+
+    .product-card-label {
+      border-radius: 5px 0 5px 0;
+    }
+
+    .product-card-comment {
+      color: black
+    }
 
 
-  }
 
-  .product_main_card_locate_text {
-    color: $graycolor;
-    font-weight: 600;
-    margin: 0;
+    .product-card-price {
+      font-weight: 700;
+      color: $pink;
+      font-size: 24px;
 
-    svg {
+      p {
+        margin-bottom: 0;
+      }
+    }
+
+
+    .product_main_card_img--box {
+      height: 250px;
+
+      img {
+        // border-radius: 8px 0 0 8px;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
+
+    }
+
+    .card-body {
+      height: 240px;
+
+      .card_content {
+        height: 165px;
+      }
+    }
+
+
+    .product_main_card_title {
+      p {
+        margin-bottom: 0;
+      }
+
+      svg {
+        color: #aaa;
+        width: 1.3rem;
+        height: 1.3rem;
+      }
+
+      .product_main_card_collect {
+        cursor: pointer;
+      }
+    }
+
+    .product_main_card_tag {
+      display: inline-block;
       color: #2DA9D7;
-      width: 1.25rem;
-      height: 1.25rem;
-    }
-  }
-
-  .product-card-comment {
-    color: $graycolor;
-
-    svg {
-      width: 1.25rem;
-      height: 1.25rem;
-    }
-  }
-
-
-  // ========== RWD ======== //
-  @media (max-width: 768px) {
-    .product-searchList {
-      margin: auto 12px;
+      background-color: #D5EEEE;
+      border-radius: 8px;
+      padding: 2px 10px;
+      font-weight: 600;
     }
 
-    .product-filter-left {
-      display: none;
+    .product_main_card_text {
+      color: $graycolor;
+      font-weight: 600;
+      text-overflow: ellipsis;
+      display: -webkit-box;
+      -webkit-line-clamp: 2;
+      -webkit-box-orient: vertical;
+      overflow: hidden;
+
+
     }
 
-    .product-filter-right-top {
-      display: none;
+    .product_main_card_locate_text {
+      color: $graycolor;
+      font-weight: 600;
+      margin: 0;
+
+      svg {
+        color: #2DA9D7;
+        width: 1.25rem;
+        height: 1.25rem;
+      }
     }
 
-    .product-filter-right {
-      margin-left: 0;
-    }
+    .product-card-comment {
+      color: $graycolor;
 
-    // 篩選
-    .product_filter_rwd_filter {
-      display: block;
+      svg {
+        width: 1.25rem;
+        height: 1.25rem;
+      }
     }
-
   }
 }

@@ -1,22 +1,26 @@
 export const restaurantCategory = [
   {
     name: '早午餐',
-    img: 'https://www.costco.com.tw/medias/sys_master/images/hb6/h9c/68097114832926.jpg',
+    img: require('../../../../../images/EC_HomePages_category/res_sandwich.png'),
   },
   {
     name: '下午茶',
-    img: 'https://s.yimg.com/zp/MerchandiseImages/7F605BAB08-SP-7077750.jpg',
+    img: require('../../../../../images/EC_HomePages_category/res_pancake.png'),
   },
   {
     name: '中式料理',
-    img: 'https://img.freepik.com/free-photo/schezwan-noodles-szechwan-vegetable-hakka-noodles-chow-mein-is-popular-indo-chinese-recipes-served-bowl-plate-with-wooden-chopsticks_466689-74636.jpg',
+    img: require('../../../../../images/EC_HomePages_category/res_bao.png'),
+  },
+  {
+    name: '日式料理',
+    img: require('../../../../../images/EC_HomePages_category/res_japan.png'),
   },
   {
     name: '西式餐點',
-    img: 'https://img.freepik.com/premium-photo/top-view-fresh-delicious-fish-chips-with-sauces-wooden-board-table_181624-58491.jpg',
+    img: require('../../../../../images/EC_HomePages_category/res_burger.png'),
   },
   {
     name: '義式料理',
-    img: 'https://img8.shop2000.com.tw/101993/p31/product_30913066_1.jpg',
+    img: require('../../../../../images/EC_HomePages_category/res_pizza.png'),
   },
 ];

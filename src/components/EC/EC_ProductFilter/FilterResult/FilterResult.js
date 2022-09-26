@@ -14,7 +14,7 @@ import { handleSuccess } from '../../../../utils/handler/card/handleStatusCard';
 import { Link } from 'react-router-dom';
 
 const FilterResult = (props) => {
-  const { setOrder, productData } = props;
+  const { setOrder, productData, setPage } = props;
   // 收藏設定->登入與否
   const { user, setUser } = useUserInfo();
   const handleCollect = async (e, id) => {
@@ -45,7 +45,8 @@ const FilterResult = (props) => {
       handleLoginCard({ isLogin: true }, setUser);
     }
   };
-  // console.log(productData);
+  // console.log('productData', productData);
+
   return (
     <>
       {/* __排序 */}
@@ -60,6 +61,7 @@ const FilterResult = (props) => {
             onClick={(e) => {
               // console.log(e.target.value);
               setOrder(e.target.value);
+              setPage(1);
             }}
           >
             價格：低到高
@@ -73,6 +75,7 @@ const FilterResult = (props) => {
             onClick={(e) => {
               // console.log(e.target.value);
               setOrder(e.target.value);
+              setPage(1);
             }}
           >
             價格：高到低
@@ -85,6 +88,7 @@ const FilterResult = (props) => {
             value={3}
             onClick={(e) => {
               setOrder(e.target.value);
+              setPage(1);
             }}
           >
             評價：高到低
@@ -98,6 +102,7 @@ const FilterResult = (props) => {
             onClick={(e) => {
               // console.log(e.target.value);
               setOrder(e.target.value);
+              setPage(1);
             }}
           >
             評價：低到高
@@ -109,22 +114,36 @@ const FilterResult = (props) => {
       {/* 搜尋結果====================== */}
       {productData.map((data, index) => {
         let tags = productData[index].product_tag;
+<<<<<<< HEAD
         {/* const tag = tags.split(/[#,＃]/).filter((item) => item); */}
+=======
+        const tag = tags.split(/[#,＃]/).filter((item) => item);
+        const getLabel = () => {
+          let label = [];
+          if (index < 2) {
+            label.push(
+              <span className="text-white bg-primary small d-flex align-items-center justify-content-center px-2 py-1  product_main_card_label">
+                <i className="small">
+                  <AiFillFire />
+                </i>
+                <span className="">精選</span>
+              </span>
+            );
+          }
+          console.log(label);
+          return label;
+        };
+>>>>>>> feature-ecommerce
         return (
           <Link
             to={`/ec-productdetail?id=${data.id}&typeid=${data.product_type_id}`}
-            key={data}
+            key={index}
           >
             <div className="product_main_card card border-primary" key={index}>
               <div className="row g-0">
                 <div className="col-md-4 product_main_card_img--box">
                   <div className="d-flex justify-content-right position-absolute">
-                    <span className="text-white bg-primary small d-flex align-items-center justify-content-center px-2 py-1  product_main_card_label">
-                      <i className="small">
-                        <AiFillFire />
-                      </i>
-                      <span className="">精選</span>
-                    </span>
+                    {getLabel()}
                   </div>
                   <img
                     src={`http://localhost:3007${data.photo_path}/${data.main_photo}`}
@@ -136,15 +155,18 @@ const FilterResult = (props) => {
 
                 <div className="col-md-8">
                   <div className="card-body">
-                    <div className="product_main_card_title d-flex justify-content-between">
-                      <h5 className="fw-bolder">{data.name}</h5>
-                      {/* 收藏按鈕 */}
-                      <div
-                        className="product_main_card_collect"
-                        onClick={(e) => handleCollect(e, data.id)}
-                      >
-                        <FaHeart />
+                    <div className="card_content">
+                      <div className="product_main_card_title d-flex justify-content-between">
+                        <h5 className="fw-bolder">{data.name}</h5>
+                        {/* 收藏按鈕 */}
+                        <div
+                          className="product_main_card_collect"
+                          onClick={(e) => handleCollect(e, data.id)}
+                        >
+                          <FaHeart />
+                        </div>
                       </div>
+<<<<<<< HEAD
                     </div>
                     {/* 標籤 */}
                     {/* <div className="d-flex flex-row">
@@ -166,7 +188,32 @@ const FilterResult = (props) => {
                       <p className="product_main_card_locate_text align-items-center d-flex fw-bolder">
                         <TiLocation />
                         {/* {tag[0]} */}
+=======
+                      {/* 標籤 */}
+                      <div className="d-flex flex-row product_main_card_tags">
+                        {tag.map((data, index) => {
+                          if (index > 0) {
+                            return (
+                              <p
+                                key={index}
+                                className="product_main_card_tag my-2 me-2"
+                              >
+                                {data}
+                              </p>
+                            );
+                          }
+                        })}
+                      </div>
+                      <p className="product_main_card_text my-2">
+                        {data.intro}
+>>>>>>> feature-ecommerce
                       </p>
+                      <div className="product_main_card_bottom_text d-flex justify-content-between align-items-center">
+                        <p className="product_main_card_locate_text align-items-center d-flex fw-bolder">
+                          <TiLocation />
+                          {tag[0]}
+                        </p>
+                      </div>
                     </div>
                     {/* 評分／價格 */}
                     <div className="d-flex justify-content-between align-items-center mt-3">
@@ -176,7 +223,7 @@ const FilterResult = (props) => {
                         </i>
 
                         <div className="product-card-comment fs-6">
-                          {Number(data.per_score.toFixed(1))}
+                          {data.per_score.toFixed(1)}
                         </div>
                       </div>
                       <div className="product-card-price text-right d-flex align-items-end">
