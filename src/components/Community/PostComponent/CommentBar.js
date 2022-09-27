@@ -11,7 +11,7 @@ function CommentBar() {
   //   const fetchComment = async (postID) => {
   //     try {
   //       const result = await axios.get(
-  //         `${API_URL}/post/postDetail?postID=${postID}`,
+  //         `${API_URL}/post/postComment?postID=${postID}`,
   //         {
   //           withCredentials: true,
   //         }
