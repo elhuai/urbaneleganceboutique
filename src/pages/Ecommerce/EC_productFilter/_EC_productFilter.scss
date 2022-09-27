@@ -47,6 +47,9 @@ $royal-blue: #22C3FF;
 
 @media (max-width: 768px) {
   .ecProductFilter_list_rwd {
+    margin: 0 0 .5rem 0.5rem;
     display: block;
+    display: flex;
+    justify-content: flex-start;
   }
 }

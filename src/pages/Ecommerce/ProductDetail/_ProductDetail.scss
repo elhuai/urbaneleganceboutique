@@ -297,6 +297,14 @@
         p {
             line-height: 35px;
         }
+
+        .exchangeImg {
+            width: 850px;
+        }
+
+        .exchangeRWD {
+            display: none;
+        }
     }
 }
 
@@ -450,6 +458,18 @@
             h4 {
                 margin-top: 1rem
             }
+
+            .exchangeImg {
+                width: 300px;
+            }
+            
+        .exchangeImg {
+            display: none;
+        }
+
+        .exchangeRWD {
+            display: block;
+        }
         }
 
         .product_comment_img {
@@ -457,6 +477,7 @@
             width: 70px;
             height: 70px;
         }
+
 
     }
 

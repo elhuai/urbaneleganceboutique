@@ -21,7 +21,7 @@ const Score = (props) => {
 
   return (
     <>
-      <div id="perScore" className="description">
+      <div id="comment" className="description">
         <h4>票券評價</h4>
         <div className="score">
           <div className="score_circle">{perScore.toFixed(1)}</div>

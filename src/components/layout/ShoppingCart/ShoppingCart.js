@@ -14,12 +14,12 @@ import './_ShoppingCart.scss';
 
 function ShoppingCart({ name, ...props }) {
   const [show, setShow] = useState(false);
+  const { cart, setCart } = props;
 
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
 
   // const [number, setNumber] = useState(1);
-  const [cart, setCart] = useState([]);
   const [quantity, setQuantity] = useState(0);
 
   const { user, setUser } = useUserInfo();
@@ -34,8 +34,8 @@ function ShoppingCart({ name, ...props }) {
             withCredentials: true,
           }
         );
-        console.log('-----addCart-----');
-        console.log(result.data[0]);
+        // console.log('-----addCart-----');
+        // console.log(result.data[0]);
 
         // 如果想用假的數字結果可用：
         // let newCart = [...cart];
@@ -68,8 +68,8 @@ function ShoppingCart({ name, ...props }) {
             withCredentials: true,
           }
         );
-        console.log('----minusCart------');
-        console.log(result.data[0]);
+        // console.log('----minusCart------');
+        // console.log(result.data[0]);
 
         // 如果想用假的數字結果可用：
         // let newCart = [...cart];
@@ -94,12 +94,12 @@ function ShoppingCart({ name, ...props }) {
     const fetchProductData = async () => {
       // 抓商品細節資料
       const result = await axios.get(`${API_URL}/cart/list`);
-      console.log('result', result.data);
+      // console.log('result', result.data);
       const cartData = result.data;
       setCart(cartData);
     };
     fetchProductData();
-  }, []);
+  }, [show]);
   // console.log('cart', cart);
 
   return (
@@ -168,8 +168,7 @@ function ShoppingCart({ name, ...props }) {
             </div>
             <div className="footerRow">
               <div className="leftColumn">
-                <TbTicket />
-                共5件商品
+                <TbTicket />共 {cart.length} 件商品
               </div>
             </div>
           </section>
