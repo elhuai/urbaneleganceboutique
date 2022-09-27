@@ -1,0 +1,98 @@
+@import url("https://fonts.googleapis.com/css2?family=Open+Sans&display=swap");
+body {
+  font-family: "Open Sans", sans-serif !important;
+}
+
+.post_edit_bar {
+  width: 1280px;
+}
+.post_edit_bar .edit_title {
+  font-size: 1.25rem;
+}
+.post_edit_bar .edit_title .dog_paw_icon {
+  font-size: 1rem;
+  width: 40px;
+}
+
+.post_cover_photo {
+  width: 100%;
+  height: 300px;
+  background-color: #FEEFC3;
+  border-radius: 8px;
+  z-index: 1;
+  overflow: hidden;
+}
+.post_cover_photo img {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+}
+.post_cover_photo .cover_photo_upload {
+  font-size: 1rem;
+  width: 120px;
+  height: 120px;
+  margin: 15px;
+  background-color: rgba(240, 237, 224, 0.6784313725);
+  border-radius: 50%;
+  position: absolute;
+}
+.post_cover_photo .cover_photo_upload_icon {
+  font-size: 3rem;
+}
+.post_cover_photo .cover_photo_upload:hover {
+  background-color: #e8e3cf;
+  transition: 0.5s;
+  cursor: pointer;
+}
+
+.photo_upload {
+  background-color: #D5EEEE;
+  width: 100px;
+  height: 30px;
+  margin-top: 0.5rem;
+  font-size: 0.75rem;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.post_map {
+  width: 100%;
+}
+.post_map p {
+  font-size: 1.25rem;
+  font-weight: 600;
+}
+.post_map .map_photo {
+  width: 100%;
+  height: 420px;
+}
+.post_map .map_photo img {
+  width: 100%;
+  height: 100%;
+}
+
+.post_edit_button button {
+  width: 90px;
+  height: 35px;
+  border-radius: 8px;
+  background-color: #FFC715;
+  color: white;
+  font-size: 1rem;
+  margin-left: 4px;
+  text-align: center;
+  border: none;
+}
+.post_edit_button button:focus {
+  border: none;
+  color: white;
+  background-color: #FFC715;
+}
+.post_edit_button button:hover {
+  border: none;
+  color: white;
+  background-color: #fbbf00;
+}
+
+.article_section {
+  padding: 5px;
+}/*# sourceMappingURL=PostEdit.css.map */
