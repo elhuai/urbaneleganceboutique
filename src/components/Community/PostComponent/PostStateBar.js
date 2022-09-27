@@ -14,13 +14,14 @@ import { handleSuccess } from '../../../utils/handler/card/handleStatusCard';
 export default function PostStateBar({ post, postID }) {
   console.log('post', post);
   console.log('此貼文ＩＤ', postID);
-  // 資料按讚數
-  const [likes, setLikes] = useState(post[0][0].likes);
+  // 資料按讚數 學儒調整中
+  // const [likes, setLikes] = useState(post[0][0].likes); 
+  const [likes, setLikes] = useState(post[0].likes);
   const [likesState, setLikeState] = useState(0);
 
   console.log('poststatebar', post);
 
-  // 按讚按鈕
+  // 按讚按鈕 學儒調整中
   const LikeHandle = async (e) => {
     e.preventDefault();
 
@@ -51,9 +52,11 @@ export default function PostStateBar({ post, postID }) {
       console.log(likesState);
     }
   };
-
-  const time = post[0][0].create_time.split(' ');
-  const tags = post[0][0].tags.split(/[#,＃]/).filter((item) => item);
+  // 學儒調整中
+  // const time = post[0][0].create_time.split(' ');
+  // const tags = post[0][0].tags.split(/[#,＃]/).filter((item) => item);
+  const time = post[0].create_time.split(' ');
+  const tags = post[0].tags.split(/[#,＃]/).filter((item) => item);
 
   return (
     <>
@@ -63,14 +66,16 @@ export default function PostStateBar({ post, postID }) {
             className=""
             alt=""
             src={
-              post[0][0].main_photo.length === 0
+              // post[0][0].main_photo.length === 0 學儒調整中
+              post[0].main_photo.length === 0
                 ? coverPhoto
                 : BE_URL + post[0].main_photo
             }
           ></img>
         </div>
         <div className="post_title d-flex">
-          <p className="">{post[0][0].post_title}</p>
+          {/* <p className="">{post[0][0].post_title}</p> 學儒調整中*/}
+          <p className="">{post[0].post_title}</p>
         </div>
         <div className="post_state_bar d-flex justify-content-between">
           <div className="d-flex">
@@ -79,7 +84,7 @@ export default function PostStateBar({ post, postID }) {
             </div>
             <div className="post_auther d-flex pe-4">
               <Link to="/" className="pe-3">
-                {post[0][0].social_name}
+                {/* {post[0][0].social_name} 學儒調整中*/}
                 {/* 關聯資料庫 */}
               </Link>
               <Link to="/" className="follow_link">
@@ -89,7 +94,8 @@ export default function PostStateBar({ post, postID }) {
             <div className="post_location pe-4">
               <p>
                 <MdLocationOn className="mb-1"></MdLocationOn>
-                {post[0][0].coordinate}
+                {/* {post[0][0].coordinate} 學儒調整中*/}
+                {post[0].coordinate}
               </p>
             </div>
             <div className="d-flex ">
