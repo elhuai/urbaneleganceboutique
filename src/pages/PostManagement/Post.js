@@ -60,7 +60,7 @@ function Post() {
               <PostMap></PostMap>
               <RecommandProduct></RecommandProduct>
               <hr></hr>
-              <CommentBar ></CommentBar>
+              <CommentBar></CommentBar>
             </div>
           </div>
         </>

@@ -12,7 +12,7 @@ function SearchBar(props) {
     setKeywordSearch,
     setSearch,
   } = props;
-  
+
   const handleSearch = (e) => {
     if (keywordSearch === '') return setSearch('');
     setSearch(keywordSearch);
@@ -58,26 +58,5 @@ function SearchBar(props) {
     </>
   );
 }
-
-// const fakeData = [
-//   {
-//     id: 1,
-//     main_photo: '',
-//     coordinate: '',
-//     content: '',
-//     tags: '',
-//     likes: '',
-//     title: '1111',
-//   },
-//   {
-//     id: 4,
-//     main_photo: '',
-//     coordinate: '',
-//     content: '',
-//     tags: '',
-//     likes: '',
-//     title: '4444',
-//   },
-// ];
 
 export default SearchBar;

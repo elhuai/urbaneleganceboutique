@@ -15,7 +15,7 @@ export default function PostStateBar({ post, postID }) {
   console.log('post', post);
   console.log('此貼文ＩＤ', postID);
   // 資料按讚數 學儒調整中
-  // const [likes, setLikes] = useState(post[0][0].likes); 
+  // const [likes, setLikes] = useState(post[0][0].likes);
   const [likes, setLikes] = useState(post[0].likes);
   const [likesState, setLikeState] = useState(0);
 

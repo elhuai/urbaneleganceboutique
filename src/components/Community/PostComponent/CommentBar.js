@@ -27,7 +27,6 @@ function CommentBar() {
   //   fetchComment();
   // }, []);
 
-
   return (
     <div className="post_comment_list">
       <p>回應</p> {/* 關聯資料庫 */}
