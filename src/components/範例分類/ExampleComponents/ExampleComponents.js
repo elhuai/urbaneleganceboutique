@@ -8,10 +8,13 @@ import {
   handleSucccessComfirm,
   handleInfoComfirm,
 } from '../../../utils/handler/card/handleStatusCard';
+import ShoppingCart from '../../layout/ShoppingCart/ShoppingCart';
 
 export default function Example() {
   return (
     <>
+      <ShoppingCart placement={'end'} name={'end'} />
+
       <div className="text-center py-5">
         <p className="text-center pt-5 m-0">
           {'使用方式：當成 function 直接呼叫'}

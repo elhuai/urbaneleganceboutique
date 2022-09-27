@@ -2,8 +2,8 @@ import Swal from 'sweetalert2';
 import withReactContent from 'sweetalert2-react-content';
 
 export const handleSuccess = (title, redirect, html) => {
-  const loginCard = withReactContent(Swal);
-  loginCard
+  const card = withReactContent(Swal);
+  card
     .fire({
       position: 'center-center',
       icon: 'success',
@@ -20,8 +20,8 @@ export const handleSuccess = (title, redirect, html) => {
 };
 
 export const handleFailed = (title, redirect, html) => {
-  const loginCard = withReactContent(Swal);
-  loginCard
+  const card = withReactContent(Swal);
+  card
     .fire({
       position: 'center-center',
       icon: 'error',
@@ -38,8 +38,8 @@ export const handleFailed = (title, redirect, html) => {
 };
 
 export const handleWarning = (title, redirect, html) => {
-  const loginCard = withReactContent(Swal);
-  loginCard
+  const card = withReactContent(Swal);
+  card
     .fire({
       position: 'center-center',
       icon: 'warning',
@@ -56,8 +56,8 @@ export const handleWarning = (title, redirect, html) => {
 };
 
 export const handleInfo = (title, redirect, html) => {
-  const loginCard = withReactContent(Swal);
-  loginCard
+  const card = withReactContent(Swal);
+  card
     .fire({
       position: 'center-center',
       icon: 'info',
@@ -74,8 +74,8 @@ export const handleInfo = (title, redirect, html) => {
 };
 
 export const handleWarningComfirm = (title, action, html) => {
-  const loginCard = withReactContent(Swal);
-  loginCard
+  const card = withReactContent(Swal);
+  card
     .fire({
       position: 'center-center',
       icon: 'warning',
@@ -93,9 +93,10 @@ export const handleWarningComfirm = (title, action, html) => {
       }
     });
 };
+
 export const handleSucccessComfirm = (title, action, html) => {
-  const loginCard = withReactContent(Swal);
-  loginCard
+  const card = withReactContent(Swal);
+  card
     .fire({
       position: 'center-center',
       icon: 'success',
@@ -115,8 +116,8 @@ export const handleSucccessComfirm = (title, action, html) => {
 };
 
 export const handleInfoComfirm = (title, action, html) => {
-  const loginCard = withReactContent(Swal);
-  loginCard
+  const card = withReactContent(Swal);
+  card
     .fire({
       position: 'center-center',
       icon: 'info',
@@ -134,3 +135,24 @@ export const handleInfoComfirm = (title, action, html) => {
       }
     });
 };
+
+// export const handleInfoComfirm = (title, action, html) => {
+//   const card = withReactContent(Swal);
+//   card
+//     .fire({
+//       position: 'center-center',
+//       icon: 'info',
+//       title: title,
+//       html: html ? html : false,
+//       showConfirmButton: true,
+//       showCancelButton: true,
+//       confirmButtonText: '確認',
+//       cancelButtonText: '取消',
+//       timer: false,
+//     })
+//     .then((data) => {
+//       if (data.isConfirmed) {
+//         return action();
+//       }
+//     });
+// };

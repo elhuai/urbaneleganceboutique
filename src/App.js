@@ -1,5 +1,7 @@
 import React from 'react';
 import { Routes, Route, Outlet } from 'react-router-dom';
+import { UserInfoProvider } from './hooks/useUserInfo';
+import { SocketProvider } from './hooks/useSocket';
 import Footer from './components/layout/Footer';
 import Header from './components/layout/Header';
 import ScrollToTop from './components/layout/ScrollToTop';
@@ -8,26 +10,22 @@ import Travel from './pages/Travel';
 import AdminCenter from './components/adminPage/AdminCenter';
 import AdminVocherPage from './pages/AdminVocherPage';
 import AdminCollectionPage from './pages/AdminCollectionPage';
+import AdminMessageListPage from './pages/AdminMessageListPage';
+import AdminProfilePage from './pages/AdminProfilePage/AdminProfilePage';
 import CommunityList from './pages/CommunityList';
 import CommunityHomePage from './pages/CommunityHomePage';
 import CommunityManagement from './pages/CommunityManagement';
 import Travelmap from './pages/Travel_map';
 import LineLogin from './pages/LineLogin';
-import { UserInfoProvider } from './hooks/useUserInfo';
 import ExamplePage from './pages/ExamplePage/ExamplePage';
 
-<<<<<<< HEAD
 import PersonalHomePage from './components/layout/AdminCenter/PersonalHomePage';
-=======
->>>>>>> e7d505a42e3e77315970c5faab2159179c451892
+
 import Post from './pages/PostManagement/Post';
 import PostTrip from './pages/PostManagement/PostTrip';
 import PostEdit from './pages/PostManagement/PostEdit';
 import PostTripEdit from './pages/PostManagement/PostTripEdit';
-<<<<<<< HEAD
-import AdminCenterPage from './components/AdminCenter/AdminCenter';
-=======
->>>>>>> e7d505a42e3e77315970c5faab2159179c451892
+import AdminCenterPage from './components/adminPage/AdminCenter/AdminCenterPage';
 import EcEnjoyHomepage from './pages/Ecommerce/EC_HomePage/EC_2Enjoy_Homepage';
 import EcRestaurantHomepage from './pages/Ecommerce/EC_HomePage/EC_3Restaurant_Homepage';
 import EcCommodityHomepage from './pages/Ecommerce/EC_HomePage/EC_4Commodity_Homepage';
@@ -50,16 +48,17 @@ function App() {
           <Route path="/Travel_map" element={<Travelmap />} />
           <Route path="/communityList" element={<CommunityList />} />
           <Route path="/communityHomePage" element={<CommunityHomePage />} />
-          <Route path="admin" element={<AdminCenter />}>
-            <Route index element={<CommunityManagement />} />
+          <Route path="admin" element={<AdminCenterPage />}>
+            {/* <Route index element={<CommunityManagement />} /> */}
             <Route path="profile" element={<AdminVocherPage />} />
             <Route path="voucher" element={<AdminVocherPage />} />
             <Route path="community" element={<CommunityManagement />} />
             <Route path="collection" element={<AdminCollectionPage />} />
           </Route>
           {/* <Route path="/adminCenter" element={<AdminCenterPage />} /> */}
-          <Route path="/postWYSIWYG" element={<Post />} />
-          <Route path="/postWYSIWYGEdit" element={<PostEdit />} />
+          {/* <Route path="/personalHomePage" element={<PersonalHomePage />} /> */}
+          <Route path="/post" element={<Post />} />
+          <Route path="/postEdit" element={<PostEdit />} />
           <Route path="/postTrip" element={<PostTrip />} />
           <Route path="/postTripEdit" element={<PostTripEdit />} />
           {/* <Route path="/login/line" element={<LineLogin />} /> */}

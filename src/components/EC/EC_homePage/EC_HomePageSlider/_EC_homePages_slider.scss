@@ -29,5 +29,9 @@ $fmain_color: #ffc200; // 主色
     max-width: 345px;
     width: 100%;
     margin: 1rem auto;
+
+    .ecHomePage_img img {
+      height: 200px;
+    }
   }
 }

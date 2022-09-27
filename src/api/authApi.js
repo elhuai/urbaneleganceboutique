@@ -88,7 +88,6 @@ export const callVerifyApi = async (setUser) => {
       `${API_URL}/auth/user/verify`,
       credentialsConfig
     );
-    console.log('user auth', result.data.user);
     if (result.data.isLogin) {
       setUser((user) => ({
         ...user,
@@ -144,7 +143,15 @@ export const callLineLoginApi = async (code, setUser, redirectPath) => {
     }
     window.localStorage.removeItem('last_page');
   } catch (error) {
-    handleFailed('LINE 連動登入失敗', '/');
+    const redirect =
+      window.localStorage.getItem('last_page') === '/'
+        ? false
+        : window.localStorage.getItem('last_page');
+    handleFailed('LINE 連動登入失敗', redirect);
+    if (window.location.href.includes('?')) {
+      window.history.pushState({}, null, window.location.href.split('?')[0]);
+    }
+    window.localStorage.removeItem('last_page');
     console.error(error);
   }
 };

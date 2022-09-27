@@ -11,8 +11,9 @@
 
   // }
   &_img {
-    width: 100px;
+    // width: 100px;
     height: 100px;
+    object-fit: scale-down;
   }
 
   &_name {
@@ -27,18 +28,30 @@
     padding: 0 1rem;
     margin: 0 auto;
 
+    &_items {
+      margin: 0 1rem 0 0;
+    }
+
     &_card {
       padding-bottom: 1rem;
       overflow-y: hidden;
       // overflow-x: hidden;
-
     }
-  }
 
-  .ec_category_img {
-    margin: 1rem 1rem auto auto;
-    background-color: white;
-    border-radius: 5px;
-    border: 1px solid #ccc;
+    &_img {
+      width: 100px;
+    }
+
+
+    .ec_category_img {
+      margin: 1rem 1rem auto auto;
+      background-color: white;
+      border-radius: 5px;
+      border: 1px solid #ccc;
+    }
+
+    .ec_category_name {
+      padding: 0 1rem 0 0;
+    }
   }
 }

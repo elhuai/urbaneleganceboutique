@@ -11,6 +11,7 @@ import { useUserInfo } from '../../../hooks/useUserInfo';
 import './_Header.scss';
 import { callLineLoginApi } from '../../../api/authApi';
 import { handleFailed } from '../../../utils/handler/card/handleStatusCard';
+import ShoppingCart from '../ShoppingCart/ShoppingCart';
 
 const Header = () => {
   const { user, setUser } = useUserInfo();
@@ -53,10 +54,13 @@ const Header = () => {
     searchParam.get('state') === 'ohdogcat_Line_Login' &&
     window.localStorage.getItem('line_login')
   ) {
-    console.log('code');
     const lineVerifyCode = searchParam.get('code');
     console.log('first', user.firstVerify, 'user.auth', user.auth);
-    if (!user.auth && !user.firstVerify) {
+    if (
+      !user.auth &&
+      user.firstVerify &&
+      window.location.search.includes('line_login')
+    ) {
       callLineLoginApi(lineVerifyCode, setUser, redirectPath);
     }
   } else {
@@ -77,9 +81,7 @@ const Header = () => {
           </ul>
         </div>
         <div className="d-flex header_Icon align-items-center justify-content-end ">
-          <Link to="/ec-ordersteps" className="header_Icon_cart">
-            <IoCart />
-          </Link>
+          <ShoppingCart placement={'end'} name={'end'} />
           {/* TODO: ICON更改 */}
           <AuthBtn />
         </div>

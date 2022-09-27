@@ -4,6 +4,7 @@ import withReactContent from 'sweetalert2-react-content';
 import LoginCard from '../../../components/cards/LoginCard';
 import SocialNameEditCard from '../../../components/cards/SocialNameEditCard';
 import VoucherExchangeCard from '../../../components/cards/VoucherExchangeCard';
+import PasswordEditCard from '../../../components/cards/PasswordEditCard';
 import { handleSuccess, handleFailed } from './handleStatusCard';
 
 export const handleLoginCard = (config, setUser) => {
@@ -69,27 +70,25 @@ export const handleVoucherExchangeCard = (itemData) => {
   inputCardFire();
   function inputCardFire() {
     const inputCard = withReactContent(Swal);
-    inputCard
-      .fire({
-        html: (
-          <VoucherExchangeCard
-            confirm={inputCard.clickConfirm}
-            itemData={itemData}
-          />
-        ),
-        showConfirmButton: false,
-      })
-      .then((result) => {
-        // console.log(result);
-        // if (!result.isConfirm2ed) inputCardFire(true);
-        // if (result.isConfirmed) {
-        //   handleSuccess(
-        //     'LINE 連動登入成功',
-        //     window.localStorage.getItem('last_page')
-        //   );
-        //   window.localStorage.removeItem('last_page');
-        //   window.localStorage.removeItem('line_login');
-        // }
-      });
+    inputCard.fire({
+      html: (
+        <VoucherExchangeCard
+          confirm={inputCard.clickConfirm}
+          itemData={itemData}
+        />
+      ),
+      showConfirmButton: false,
+    });
+  }
+};
+
+export const handlePasswordEditCard = () => {
+  inputCardFire();
+  function inputCardFire() {
+    const inputCard = withReactContent(Swal);
+    inputCard.fire({
+      html: <PasswordEditCard confirm={inputCard.clickConfirm} />,
+      showConfirmButton: false,
+    });
   }
 };

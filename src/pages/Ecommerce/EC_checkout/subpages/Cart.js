@@ -3,34 +3,43 @@ import '../styles/_EC_subpages_Cart.scss';
 import axios from 'axios';
 import { useState, useEffect } from 'react';
 import { API_URL } from '../../../../utils/config';
-
 import { IoCaretBack, IoCaretForward } from 'react-icons/io5';
 
-const Cart = () => {
+const Cart = (props) => {
+  const { cartProductData, setCartProductData } = props;
+  console.log('cartData=====cart===', cartProductData);
   const [coupon, setCoupon] = useState([]);
+  const [cart, setCart] = useState([]);
+
+  // useEffect(() => {
+  //   const fetchCoupon = async () => {
+  //     const result = await axios.get(`${API_URL}/orderSteps/coupon`);
+  //     console.log(result.data);
+  //     setCoupon(result.data);
+  //     // const data = result.data;
+  //     // arrStr[index].setState(data);
+  //   };
+  //   fetchCoupon();
+  // }, []);
+
+  // console.log('coupon', coupon);
 
   useEffect(() => {
-    const fetchCoupon = async () => {
-      const result = await axios.get(`${API_URL}/orderSteps/coupon`);
-      // console.log(result.data);
-      setCoupon(result.data);
-      // const data = result.data;
-      // arrStr[index].setState(data);
+    const fetchProductData = async () => {
+      // 抓商品細節資料
+      const result = await axios.get(`${API_URL}/cart/getcart`);
+      // console.log('result', result.data);
+      const [cartData] = result.data;
+
+      setCart(cartData);
     };
-    fetchCoupon();
+    fetchProductData();
   }, []);
 
-  const [title, setTitle] = useState({});
-
-  useEffect(() => {
-    const fetchTitle = async () => {
-      const result = await axios.get(`${API_URL}/productdetail/items`);
-      setTitle(result.data);
-    };
-    fetchTitle();
-  }, []);
+  // console.log('cart', cart);
 
   const [selected, setSelected] = useState([]);
+  const [quantity, setQuantity] = useState(0);
   const [number, setNumber] = useState(1);
 
   const MinusOne = () => {
@@ -47,19 +56,16 @@ const Cart = () => {
 
   return (
     <>
-      <body className="Cart">
+      <div className="Cart">
         <div className="middleRow">
           <div className="mainTitle">1.確認購物車內容</div>
+
           <div className="bottomColumn">
             <div className="mainColumn">
               <div className="infoColumn">
                 <div className="subSection">
-                  <div className="subTitle">店家名稱</div>
-                  <div className="subInput">{title.name}</div>
-                </div>
-                <div className="subSection">
-                  <div className="subTitle">票券方案</div>
-                  <div className="subInput">A.獨木舟體驗全票</div>
+                  <div className="subTitle">票券名稱</div>
+                  <div className="subInput">{cartProductData.name}</div>
                 </div>
                 <div className="subSection">
                   <div className="subTitle">票券數量</div>
@@ -81,12 +87,15 @@ const Cart = () => {
                   <div className="subTitle">使用優惠券</div>
                   <select
                     className="subSelect"
-                    onChange={(e) => setSelected(e.target.value)}
+                    onChange={(e) => {
+                      setSelected(e.target.value);
+                      setQuantity(e.target.quantity);
+                    }}
                   >
                     {/* TODO:折價數字也要呈現 */}
                     {coupon.map((v, i) => {
                       return (
-                        <option key={v.id} value={v.name}>
+                        <option key={v.id} value={v.name} quantity={v.quantity}>
                           {v.name}
                         </option>
                       );
@@ -137,16 +146,12 @@ const Cart = () => {
               </div>
             </div>
             <div className="totalColumn">
-              <div className="totalName">
-                <p className="title">商品名稱</p>
-                <p>{title.name}</p>
-              </div>
               <div className="totalCate">
-                <p className="title">方案</p>
-                <p>A.獨木舟體驗全票</p>
+                <p className="title">票券名稱</p>
+                <p>{cart.name}</p>
                 <div className="subTotal">
                   <p>售價</p>
-                  <p>NT${title.price}</p>
+                  <p>NT${cart.price}</p>
                 </div>
                 <div className="subTotal">
                   <p>數量</p>
@@ -157,16 +162,16 @@ const Cart = () => {
               <div className="totalDiscount">
                 {/* todo:優惠券名字component  */}
                 <p className="title">{selected}</p>
-                <p className="totalDiscountNumber">-NT$200</p>
+                <p className="totalDiscountNumber">{quantity}%OFF</p>
               </div>
               <div className="totalNumber">
                 <p className="title">總計(付款金額)</p>
-                <p>NT${number * title.price}</p>
+                <p>NT${number * cart.price}</p>
               </div>
             </div>
           </div>
         </div>
-      </body>
+      </div>
     </>
   );
 };

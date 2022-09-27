@@ -21,7 +21,6 @@ export const editSocialName = async (
   setInputError,
   setUser
 ) => {
-  console.log('api', setUser);
   try {
     const result = await axios.post(
       `${BASE_URL}/edit/social_name`,
@@ -40,6 +39,39 @@ export const editSocialName = async (
       handleWarning('登入逾時，請重新登入', '/');
     } else if (error.response.data.message === '無法使用') {
       return setInputError(error.response.data.error.msg);
+    }
+  }
+};
+
+export const editProfile = async ({
+  target,
+  data,
+  rowData,
+  setRowData,
+  objKey,
+}) => {
+  console.log(target);
+  console.log(data);
+  try {
+    const result = await axios.post(
+      `${BASE_URL}/edit/${target}`,
+      data,
+      credentialsConfig
+    );
+    console.log(result);
+    if (result.status === 201) {
+      rowData[objKey] = result.data.value;
+      setRowData(rowData);
+      handleSuccess('資料更新成功');
+      return true;
+    }
+  } catch (error) {
+    console.error(error);
+    if (error.response.data.login === false) {
+      handleWarning('登入逾時，請重新登入', '/');
+    } else if (error.response.data.message === '無法使用') {
+      handleFailed(error.response.data.error.msg);
+    } else {
     }
   }
 };
@@ -67,3 +99,15 @@ export const exchangeUserVoucher = async (itemData, quantity) => {
     }
   }
 };
+
+export const getUserProfile = async (setRowData) => {
+  try {
+    let { data } = await axios.get(`${API_URL}/user`, credentialsConfig);
+
+    setRowData(data.data);
+  } catch (error) {
+    console.error(error);
+  }
+};
+
+export const getUsercollection = async () => {};
