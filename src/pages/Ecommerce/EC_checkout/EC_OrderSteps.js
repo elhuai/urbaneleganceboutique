@@ -19,7 +19,7 @@ function OrderSteps() {
   const [step, setStep] = useState(1);
   const [pay, setPay] = useState('');
   const [receipt, setReceipt] = useState('');
-  
+
   const [shipping, setShippingData] = useState({
     name: '',
     email: '',

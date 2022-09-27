@@ -1,3 +1,10 @@
+%input {
+  caret-color: #747474;
+  border: 3px solid #e7e7e9;
+  border-radius: 5px;
+  outline-color: #ffc715;
+}
+
 .Payment {
   // max-width: 1280px;
   // width: 100%;
@@ -5,14 +12,20 @@
   color: #747474;
   position: relative;
 
+  input {
+    @extend %input;
+  }
+
   .topRow {
     display: flex;
     justify-content: center;
     font-size: 24px;
     margin-bottom: 30px;
+
     .step1 {
       margin-right: 5%;
     }
+
     .step2 {
       margin-right: 5%;
     }
@@ -20,6 +33,7 @@
 
   .middleRow {
     border-radius: 15px;
+
     .mainTitle {
       font-size: 20px;
       font-weight: 700;
@@ -30,6 +44,7 @@
       background-color: #ffc715;
       border-radius: 15px 15px 0 0;
     }
+
     .bottomColumn {
       display: flex;
       border: 1px solid #e7e7e9;
@@ -47,6 +62,7 @@
           padding-bottom: 10px;
           margin-bottom: 25px;
           border-bottom: 1px solid #e7e7e9;
+
           p {
             font-weight: 500;
             font-size: 20px;
@@ -66,6 +82,7 @@
             padding: 5px;
             margin-bottom: 5px;
           }
+
           .subTitle {
             display: flex;
             width: 100px;
@@ -74,11 +91,13 @@
             align-items: center;
             margin-right: 30px;
           }
+
           .subDescription {
             display: flex;
             width: 100px;
             margin-right: 30px;
           }
+
           .subInput {
             width: 100%;
             border: 3px solid #e7e7e9;
@@ -87,6 +106,7 @@
             border-radius: 8px;
             padding: 5px 15px;
           }
+
           .subValue {
             width: 100%;
             line-height: 1.8em;
@@ -101,34 +121,42 @@
         border: 5px solid #f0ede0;
         border-radius: 15px;
         height: 100%;
+
         .title {
           font-weight: 500;
           font-size: 18px;
         }
+
         .totalName {
           border-bottom: 1px solid #e7e7e9;
         }
+
         .totalCate {
           margin-top: 3%;
           border-bottom: 1px solid #e7e7e9;
+
           p {
             font-size: 16px;
           }
+
           .title {
             font-weight: 500;
             font-size: 18px;
           }
+
           .subTotal {
             display: flex;
             justify-content: space-between;
           }
         }
+
         .totalDiscount {
           margin-top: 3%;
           border-bottom: 1px solid #e7e7e9;
           display: flex;
           justify-content: space-between;
           font-size: 14px;
+
           .totalDiscountNumber {
             width: 100px;
             display: flex;
@@ -138,6 +166,7 @@
             border-left: 1px solid #e7e7e9;
           }
         }
+
         .totalNumber {
           display: flex;
           justify-content: space-between;
@@ -148,16 +177,19 @@
       }
     }
   }
+
   .receiptSection {
     display: flex;
     margin: 20px 0;
   }
+
   .radioInput {
     display: flex;
     font-size: 18px;
 
     margin-left: 5px;
   }
+
   .paymentCCard {
     width: 100%;
     height: 220px;
@@ -181,6 +213,7 @@
         height: 40px;
         margin-right: 1px;
       }
+
       .iconMaster {
         background-image: url(../../../../images/master.png);
         background-size: contain;
@@ -189,6 +222,7 @@
         height: 40px;
         margin-right: 1px;
       }
+
       .iconJCB {
         background-image: url(../../../../images/jcb.png);
         background-size: contain;
@@ -198,17 +232,21 @@
         margin-right: 1px;
       }
     }
+
     .CCardNumber {
       display: flex;
       margin-bottom: 20px;
+
       div {
         width: 20%;
       }
+
       input {
         width: 10%;
         margin: 0 5px;
       }
     }
+
     .CCardGoodThu {
       display: flex;
       margin-bottom: 20px;
@@ -217,15 +255,19 @@
         width: 20%;
       }
     }
+
     .CCardNumber {
       display: flex;
+
       div {
         width: 20%;
       }
     }
   }
+
   .paymentSubSection {
     display: flex;
+
     span {
       font-size: 18px;
     }
@@ -239,6 +281,7 @@
     width: 80px;
     height: 25px;
   }
+
   .bottomRow {
     display: flex;
     flex-direction: column;
@@ -246,6 +289,7 @@
     position: absolute;
     bottom: -61px;
     right: calc(50% - 110px);
+
     button {
       width: 220px;
       color: white;
@@ -254,6 +298,7 @@
       border: none;
       background-color: #2da9d7;
     }
+
     p {
       font-size: 16px;
       text-decoration: underline;
@@ -261,6 +306,7 @@
       color: #747474;
     }
   }
+
   .receiptContent {
     font-size: 16px;
   }
