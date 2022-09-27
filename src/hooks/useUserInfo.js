@@ -21,11 +21,6 @@ export const UserInfoProvider = ({ children }) => {
     if (user.auth === true && user.data.social_name === '') {
       handleSocialNameEditCard(setUser);
     }
-
-    // if (user.auth && user.firstVerify) {
-    //   console.log('觸發 socket connection');
-    //   setSocket(webSocket('http://localhost:3007/'));
-    // }
   }, [user]);
   return !user.firstVerify ? (
     <userInfoContext.Provider value={{ user, setUser }}>

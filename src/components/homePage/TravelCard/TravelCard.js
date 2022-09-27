@@ -1,7 +1,8 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Autoplay } from 'swiper';
+import { AiTwotoneLike } from 'react-icons/ai';
 
 import './_travelCard.scss';
 
@@ -41,17 +42,78 @@ const fakeData = [
 ];
 
 export default function TravelCard() {
+  const [screen, setScreen] = useState(0);
+
+  function logWidth() {
+    console.log('onload');
+    if (document.body && document.body.offsetWidth) {
+      if (document.body.offsetWidth > 1280) return setScreen(1);
+      if (document.body.offsetWidth <= 1280 && document.body.offsetWidth > 980)
+        return setScreen(2);
+      if (document.body.offsetWidth <= 980 && document.body.offsetWidth > 540)
+        return setScreen(2);
+      if (document.body.offsetWidth <= 540) return setScreen(3);
+    }
+    if (
+      document.compatMode === 'CSS1Compat' &&
+      document.documentElement &&
+      document.documentElement.offsetWidth
+    ) {
+      if (document.documentElement.offsetWidth > 1280) return setScreen(1);
+      if (
+        document.documentElement.offsetWidth <= 1280 &&
+        document.documentElement.offsetWidth > 980
+      )
+        return setScreen(2);
+      if (
+        document.documentElement.offsetWidth <= 980 &&
+        document.documentElement.offsetWidth > 540
+      )
+        return setScreen(2);
+      if (document.documentElement.offsetWidth <= 540) return setScreen(3);
+    }
+    if (window.innerWidth) {
+      if (window.innerWidth > 1280) return setScreen(1);
+      if (window.innerWidth <= 1280 && window.innerWidth > 980)
+        return setScreen(2);
+      if (window.innerWidth <= 980 && window.innerWidth > 540)
+        return setScreen(2);
+      if (window.innerWidth <= 540) return setScreen(3);
+    }
+  }
+
+  useEffect(() => {
+    logWidth();
+    window.addEventListener('resize', logWidth);
+    return () => {
+      window.removeEventListener('resize', logWidth);
+    };
+  }, []);
+
+  function slidesPerView(size) {
+    switch (size) {
+      case 1:
+        return 3;
+      case 2:
+        return 2;
+      case 3:
+        return 1;
+      default:
+        break;
+    }
+  }
+
   return (
     <Swiper
       loop={true}
-      slidesPerView={3}
-      spaceBetween={6}
+      slidesPerView={slidesPerView(screen)}
+      spaceBetween={12}
       className="travelSwiper"
       modules={[Autoplay]}
-      autoplay={{
-        delay: 1500,
-        disableOnInteraction: false,
-      }}
+      // autoplay={{
+      //   delay: 1500,
+      //   disableOnInteraction: false,
+      // }}
       onSlideChange={(e) => {}}
       onSwiper={(swiper) => {}}
     >
@@ -68,7 +130,10 @@ export default function TravelCard() {
                 </div>
                 <div className="travel_card_info d-flex justify-content-between align-items-end">
                   <div className="travel_card_author">RainOuO</div>
-                  <div className="travel_card_like">5487</div>
+                  <div className="travel_card_like">
+                    5487
+                    <AiTwotoneLike />
+                  </div>
                 </div>
               </div>
             </Link>
@@ -77,5 +142,4 @@ export default function TravelCard() {
       })}
     </Swiper>
   );
-  // });
 }

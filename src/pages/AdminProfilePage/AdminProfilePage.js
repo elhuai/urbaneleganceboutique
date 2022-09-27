@@ -7,7 +7,7 @@ import { getUserProfile, editProfile } from '../../api/userApi';
 import './_adminProfilePage.scss';
 
 const AdminProfilePage = () => {
-  const { user, setUser } = useUserInfo();
+  const { setUser } = useUserInfo();
   const [rowData, setRowData] = useState({});
   const [editTarget, setEditTarget] = useState(0);
   const [edit, setEdit] = useState({
@@ -47,6 +47,7 @@ const AdminProfilePage = () => {
     switch (num) {
       case 1:
         if (edit.social_name === '') return handleWarning('更新欄位不可為空');
+        if (edit.social_name === rowData.social_name) return;
         apiConfig.target = 'social_name';
         apiConfig.data = { socialName: edit.social_name };
         apiConfig.objKey = 'social_name';
@@ -60,6 +61,7 @@ const AdminProfilePage = () => {
         break;
       case 3:
         if (edit.phone === '') return handleWarning('更新欄位不可為空');
+        if (edit.phone === rowData.phone) return;
         if (edit.phone.length !== 10)
           return handleWarning('請確認電話號碼格式', false, 'e.g. 09xxxxxxxx');
         apiConfig.target = 'phone';
@@ -69,6 +71,8 @@ const AdminProfilePage = () => {
       case 4:
         if (edit.gender === 0 || edit.gender === '')
           return handleWarning('更新欄位不可為空');
+        if (edit.gender === rowData.gender) return;
+
         apiConfig.target = 'gender';
         apiConfig.data = { gender: edit.gender };
         apiConfig.objKey = 'gender';
@@ -77,7 +81,7 @@ const AdminProfilePage = () => {
       default:
         break;
     }
-    if (editProfile(apiConfig)) setEditTarget(0);
+    if (editProfile(apiConfig, setUser)) setEditTarget(0);
   };
 
   useEffect(() => {
@@ -280,6 +284,7 @@ const PhoneNumber = ({
                 min={10}
                 maxLength={10}
                 placeholder="手機號碼"
+                value={edit}
                 onChange={(e) =>
                   setEdit((data) => ({ ...data, phone: e.target.value }))
                 }

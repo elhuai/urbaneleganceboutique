@@ -9,7 +9,7 @@ export const handleSuccess = (title, redirect, html) => {
       icon: 'success',
       title: title ? title : false,
       html: html ? html : false,
-      showConfirmButton: false,
+      showConfirmButton: redirect ? true : false,
       timer: 1500,
     })
     .then((data) => {

@@ -1,5 +1,7 @@
-import React from 'react';
+import React, { Fragment } from 'react';
 import { Link } from 'react-router-dom';
+import { Swiper, SwiperSlide } from 'swiper/react';
+import { Autoplay } from 'swiper';
 import './_newsList.scss';
 
 const fakeData = [
@@ -136,11 +138,14 @@ function items(index, active) {
         <div className="obj-fit flex-shrink-0 overflow-hidden">
           <img src={data.img} alt="" />
         </div>
-        <div className="flex-fill flex-shrink-1 px-2">
-          <div className="title">{data.title}</div>
-          <div className="d-flex justify-content-between">
-            <div className="score">{`${data.score} (${data.evaluate})`}</div>
-            <div className="price d-flex">
+        <div className="flex-fill flex-shrink-1 d-flex flex-column px-2">
+          <div className="title flex-fill">{data.title}</div>
+          <div className="d-flex justify-content-between px-2">
+            <div className="score">
+              {`${data.score}`}
+              <span> {`(${data.evaluate})`}</span>
+            </div>
+            <div className="price d-flex gap-2 align-items-end">
               <div className="old">TWD {data.oldPrice}</div>
               <div className="current">TWD {data.currentPrice}</div>
             </div>
@@ -152,8 +157,63 @@ function items(index, active) {
   return result;
 }
 
+function mobileItems(index, active) {
+  let result = fakeData[index].map((data, dataIndex) => {
+    return (
+      <SwiperSlide key={'newsCard' + data.id} className="h-100">
+        <Link to="/" className="news_list_card d-flex flex-column">
+          <div
+            className={`news_list_item ${
+              index === active ? 'd-block' : 'd-none'
+            }`}
+          >
+            <div className="obj-fit">
+              <img src={data.img} alt="" />
+            </div>
+            <div className="d-flex flex-fill flex-column p-3">
+              <div className="news_list_card_title flex-fill">
+                <h5>{data.title}</h5>
+              </div>
+              <div className="news_list_card_info d-flex justify-content-between align-items-end">
+                <div className="news_list_card_score">
+                  {`${data.score}`}
+                  <span> {`(${data.evaluate})`}</span>
+                </div>
+                <div className="news_list_card_price">
+                  <div className="old">TWD {data.oldPrice}</div>
+                  <div className="current">TWD {data.currentPrice}</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </Link>
+      </SwiperSlide>
+    );
+  });
+  return result;
+}
+
 export default function NewsList({ active }) {
   return fakeData.map((v, index) => {
-    return <div key={'list' + index}>{items(index, active - 1)}</div>;
+    return (
+      <Fragment key={'list' + index}>
+        <div className="desktop">{items(index, active - 1)}</div>
+        <div className="mobile">
+          <Swiper
+            loop={false}
+            slidesPerView={1}
+            spaceBetween={12}
+            className="newsListSwiper"
+            // modules={[Autoplay]}
+            autoplay={{
+              delay: 1500,
+              disableOnInteraction: false,
+            }}
+          >
+            {mobileItems(index, active - 1)}
+          </Swiper>
+        </div>
+      </Fragment>
+    );
   });
 }
