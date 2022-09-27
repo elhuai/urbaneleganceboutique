@@ -1,41 +1,142 @@
-import FollowerPhoto from '../../images/logo_dog_body1.svg';
+// import FollowerPhoto from '../../images/logo_dog_body1.svg';
 import React from 'react';
 import './CommunityManagement.scss';
 import { Tabs, Tab } from 'react-bootstrap';
 import dogIcon from '../../images/travel_dog_paws.svg';
 import { Link } from 'react-router-dom';
 import { RiEditFill } from 'react-icons/ri';
-// import ConfirmBox from './ConfirmBox';
 import { MdOutlineClose } from 'react-icons/md';
 import { useState, useEffect } from 'react';
+import moment from 'moment';
+import { AiTwotoneLike } from 'react-icons/ai';
+import { BiLike } from 'react-icons/bi';
 import axios from 'axios';
 import { API_URL } from '../../utils/config';
+// import TripImport from '../../components/Community/PostComponent/TripImport';
+import { handleSuccess } from '../../utils/handler/card/handleStatusCard';
+
+// 驗證登入
+import { useUserInfo } from '../../hooks/useUserInfo';
 
 function CommunityManagement() {
+  // const { user, setUser } = useUserInfo();
+  // console.log('使用者～！！', user.data.id);
+  // let userID = user.data.id;
+  // roll 全部貼文資料
+  const [myTripPost, setMyTripPost] = useState([]);
   const [myPost, setMyPost] = useState([]);
+  // 我的貼文ＩＤ點擊編輯查看內容跳轉
+  const [myPostID, setMyPostID] = useState('');
 
+  // 點擊按鈕狀態改變
+  const [showCFBox, setShowCFBox] = useState(0);
+  const [ifDelete, setIfDelete] = useState(false);
+  const [ifLike, setifLike] = useState(false);
+  const [likeList, setLikeList] = useState([]);
+  //匯入我的行程
+  const [tripImport, setTripImport] = useState([]);
+  // 回傳新增貼文預設欄位
+  const [tripID, setTripID] = useState('');
+
+  // 取行程貼文總表
+  useEffect(() => {
+    const fetchMyTripPost = async () => {
+      const result = await axios.get(`${API_URL}/community/tripPost`);
+      // 取得後端來的資料
+      console.log(result.data);
+      setMyTripPost(result.data);
+      setIfDelete(false);
+      // 存回 useState 狀態
+    };
+    fetchMyTripPost();
+  }, [ifDelete]); //如果[]為空值只執行一次api // 若[]裡面的useState變數狀態改變重新執行api
+
+  // 取一般貼文總表
   useEffect(() => {
     const fetchMyPost = async () => {
-      const result = await axios.get(`${API_URL}/community`);
+      const result = await axios.get(`${API_URL}/community/post`, {
+        withCredentials: true,
+      });
       // 取得後端來的資料
       console.log(result.data);
       setMyPost(result.data);
+      setIfDelete(false);
       // 存回 useState 狀態
     };
     fetchMyPost();
+  }, [ifDelete]); //如果[]為空值只執行一次api // 若[]裡面的useState變數狀態改變重新執行api
+
+  // // 取單一user 按讚貼文總表
+  useEffect(() => {
+    const fetchMyLikePost = async () => {
+      const result = await axios.get(`${API_URL}/community/likesStatic`);
+      // 取得後端來的資料
+      console.log(result.data);
+      setLikeList(result.data);
+      console.log('我的按讚列表', likeList);
+      // 存回 useState 狀態
+    };
+    fetchMyLikePost();
   }, []);
 
-  const [showCFBox, setShowCFBox] = useState(0);
-
+  //視窗狀態改變
   const ConfirmHandle = (e) => {
     setShowCFBox(e);
-    // console.log(showCFBox);
   };
+  //刪除貼文
+  const deleteConfirm = async (e) => {
+    e.preventDefault();
+    let deleteData = await axios.post(
+      `${API_URL}/community`,
+      {
+        myPostID,
+      },
+      {
+        withCredentials: true,
+      }
+    );
+    console.log(deleteData, '資料刪除成功');
+    handleSuccess('貼文刪除成功');
+    ConfirmHandle(0);
+    setIfDelete(true);
+  };
+  //匯入行程新增貼文
+  // creatNewTripPost
+  const createTime = moment(new Date()).format('YYYY-MM-DD hh:mm:ss');
+  const [tripPostTitleDefault, setTripTitile] = useState('');
+
+  const creatNewTripPost = async (e) => {
+    e.preventDefault();
+    let creatData = await axios.post(`${API_URL}/community/tripPostNew`, {
+      tripID,
+      createTime,
+      tripPostTitleDefault,
+    });
+    console.log(creatData, '行程貼文新增成功');
+    handleSuccess('貼文匯入成功', '/admin');
+  };
+  // console.log('匯入行程貼文預設標題', tripPostTitleDefault);
+  //匯入我的行程選單
+  useEffect(() => {
+    const fetchMyTrip = async () => {
+      const result = await axios.get(
+        `${API_URL}/community/tripDetailImport`,
+        {},
+        { withCredentials: true }
+      );
+      // 取得後端來的資料
+      // console.log('fefefefe', result.data);
+      console.log(result.data);
+      setTripImport(result.data);
+      // 存回 useState 狀態
+    };
+    fetchMyTrip();
+  }, []);
 
   return (
     <>
-      <div className="d-flex flex-fill">
-        <div className="flex-fill position-relative">
+      <div className="d-flex">
+        <div>
           <div className="post_new_button mt-5">
             <button className="post_new" onClick={() => ConfirmHandle(2)}>
               <RiEditFill
@@ -44,18 +145,19 @@ function CommunityManagement() {
               ></RiEditFill>
               新增貼文
             </button>
+            {/* //TODO: 無法固定在位置 */}
           </div>
           <Tabs
-            defaultActiveKey="article_list"
+            defaultActiveKey="article_list_post"
             id="uncontrolled-tab-example"
             className="communityManagementTab"
           >
             <Tab
-              eventKey="article_list"
+              eventKey="article_list_post"
               title={
                 <div className="d-flex">
                   <img className="tab_claw me-2 " src={dogIcon} alt="" />
-                  <p className="my-2 tab_text_size">我的貼文</p>
+                  <p className="my-2 tab_text_size">一般貼文</p>
                 </div>
               }
             >
@@ -70,31 +172,66 @@ function CommunityManagement() {
                         >
                           <div className="post_description d-flex flex-column">
                             <div className="post_title">
-                              <p className="">{data.title}</p>
+                              <p className="">{data.post_title}</p>
                             </div>
                             <div className="post_date">
                               <p>發布日期：{data.create_time}</p>
                             </div>
                             <div className="post_edit_button d-flex">
-                              <Link to="/postTripEdit">
-                                <button className="btn post_edit my-1 ">
+                              <Link
+                                to={
+                                  data.post_type_id === 2
+                                    ? `/postTripEdit?postID=${data.id}`
+                                    : `/postEdit?postID=${data.id}`
+                                }
+                              >
+                                <button
+                                  value={data.id}
+                                  className="btn post_edit my-1"
+                                  onClick={(e) => {
+                                    setMyPostID(e.target.value);
+                                  }}
+                                >
                                   編輯
                                 </button>
                               </Link>
                               <button
+                                key={data.id}
                                 className="btn post_delete my-1"
-                                onClick={() => ConfirmHandle(1)}
+                                onClick={(e) => {
+                                  ConfirmHandle(1);
+                                  setMyPostID(data.id);
+                                }}
                               >
                                 刪除
                               </button>
-                              <Link to="/postTrip">
-                                <button className="btn check_post my-1">
-                                  預覽
+                              <Link
+                                to={
+                                  data.post_type_id === 2
+                                    ? `/postTrip?postID=${data.id}`
+                                    : `/post?postID=${data.id}`
+                                }
+                              >
+                                <button
+                                  className="btn check_post my-1"
+                                  onClick={() => {
+                                    setMyPostID(data.id);
+                                  }}
+                                >
+                                  {data.status === 1 ? '查看內容' : '預覽'}
                                 </button>
                               </Link>
                             </div>
                           </div>
-                          <div className="post_status">草稿{data.status}</div>
+                          <div className="d-flex flex-column align-items-center justify-content-end py-5">
+                            <div className="post_status ms-5">
+                              {data.status === 1 ? '發布中' : '草稿'}
+                            </div>
+                            <div className="post_like mt-5 ms-5">
+                              <AiTwotoneLike></AiTwotoneLike>
+                              {data.likes}
+                            </div>
+                          </div>
                         </li>
                       </>
                     );
@@ -103,182 +240,89 @@ function CommunityManagement() {
               </div>
             </Tab>
             <Tab
-              eventKey="follower_list"
+              eventKey="article_list_tripPost"
               title={
                 <div className="d-flex">
-                  <img className=" tab_claw me-2" src={dogIcon} alt="" />
-                  <p className="my-2 tab_text_size">追蹤者列表</p>
+                  <img className="tab_claw me-2 " src={dogIcon} alt="" />
+                  <p className="my-2 tab_text_size">行程貼文</p>
                 </div>
               }
             >
-              <div className="follower_list">
-                <ul className="follower_detail">
-                  <li className="d-flex justify-content-between align-items-center px-5">
-                    <div className="follower_description d-flex">
-                      <div className="follower_photo ">
-                        <img
-                          src="https://picsum.photos/200/300?random11"
-                          alt=""
-                        ></img>
-                      </div>
-                      <div className="ps-3 m-1">
-                        <div>
-                          <p className="follower_user_name">阿尼基愛旅遊</p>
-                        </div>
-                        <div className="follower_description_text">
-                          <p>
-                            愛罐罐 愛睡覺 愛旅遊愛罐罐 愛睡覺 愛 愛睡覺
-                            愛旅遊愛罐罐 愛睡覺 愛 愛睡覺 愛旅遊愛罐罐 愛睡覺
-                            愛旅遊愛罐罐 愛睡覺 愛旅遊愛罐罐 愛睡覺 愛旅遊愛罐罐
-                            愛睡覺 愛旅遊愛罐罐 愛睡覺 愛旅遊
-                          </p>
-                        </div>
-                      </div>
-                    </div>
-                    <div className="follower_button d-flex flex-column">
-                      <button
-                        className="btn remove_follow my-1 "
-                        onClick={() => ConfirmHandle(3)}
-                      >
-                        取消追蹤
-                      </button>
-                      <button className="btn follower_checked_detail my-1">
-                        查看內容
-                      </button>
-                    </div>
-                  </li>
-                  <li className="d-flex justify-content-between align-items-center px-5">
-                    <div className="follower_description d-flex">
-                      <div className="follower_photo ">
-                        <img src={FollowerPhoto} alt=""></img>
-                      </div>
-                      <div className="ps-3 m-1">
-                        <div>
-                          <p className="follower_user_name">
-                            阿尼基愛旅遊111!!!!
-                          </p>
-                        </div>
-                        <div className="follower_description_text">
-                          <p>愛罐罐 愛睡覺 愛旅遊</p>
-                        </div>
-                      </div>
-                    </div>
-                    <div className="follower_button d-flex flex-column">
-                      <button
-                        className="btn remove_follow my-1 "
-                        onClick={() => ConfirmHandle(3)}
-                      >
-                        取消追蹤
-                      </button>
-                      <button className="btn follower_checked_detail my-1">
-                        查看內容
-                      </button>
-                    </div>
-                  </li>
-                  <li className="d-flex justify-content-between align-items-center px-5">
-                    <div className="follower_description d-flex">
-                      <div className="follower_photo ">
-                        <img src={FollowerPhoto} alt=""></img>
-                      </div>
-                      <div className="ps-3 m-1">
-                        <div>
-                          <p className="follower_user_name">阿尼基愛旅遊</p>
-                        </div>
-                        <div className="follower_description_text">
-                          <p>愛罐罐 愛睡覺 愛旅遊</p>
-                        </div>
-                      </div>
-                    </div>
-                    <div className="follower_button d-flex flex-column">
-                      <button
-                        className="btn remove_follow my-1 "
-                        onClick={() => ConfirmHandle(3)}
-                      >
-                        取消追蹤
-                      </button>
-                      <button className="btn follower_checked_detail my-1">
-                        查看內容
-                      </button>
-                    </div>
-                  </li>
-                  <li className="d-flex justify-content-between align-items-center px-5">
-                    <div className="follower_description d-flex">
-                      <div className="follower_photo ">
-                        <img src={FollowerPhoto} alt=""></img>
-                      </div>
-                      <div className="ps-3 m-1">
-                        <div>
-                          <p className="follower_user_name">阿尼基愛旅遊</p>
-                        </div>
-                        <div className="follower_description_text">
-                          <p>愛罐罐 愛睡覺 愛旅遊</p>
-                        </div>
-                      </div>
-                    </div>
-                    <div className="follower_button d-flex flex-column">
-                      <button
-                        className="btn remove_follow my-1 "
-                        onClick={() => ConfirmHandle(3)}
-                      >
-                        取消追蹤
-                      </button>
-                      <button className="btn follower_checked_detail my-1">
-                        查看內容
-                      </button>
-                    </div>
-                  </li>
-                  <li className="d-flex justify-content-between align-items-center px-5">
-                    <div className="follower_description d-flex">
-                      <div className="follower_photo ">
-                        <img src={FollowerPhoto} alt=""></img>
-                      </div>
-                      <div className="ps-3 m-1">
-                        <div>
-                          <p className="follower_user_name">阿尼基愛旅遊</p>
-                        </div>
-                        <div className="follower_description_text">
-                          <p>愛罐罐 愛睡覺 愛旅遊</p>
-                        </div>
-                      </div>
-                    </div>
-                    <div className="follower_button d-flex flex-column">
-                      <button
-                        className="btn remove_follow my-1 "
-                        onClick={() => ConfirmHandle(3)}
-                      >
-                        取消追蹤
-                      </button>
-                      <button className="btn follower_checked_detail my-1">
-                        查看內容
-                      </button>
-                    </div>
-                  </li>{' '}
-                  <li className="d-flex justify-content-between align-items-center px-5">
-                    <div className="follower_description d-flex">
-                      <div className="follower_photo ">
-                        <img src={FollowerPhoto} alt=""></img>
-                      </div>
-                      <div className="ps-3 m-1">
-                        <div>
-                          <p className="follower_user_name">阿尼基愛旅遊</p>
-                        </div>
-                        <div className="follower_description_text">
-                          <p>愛罐罐 愛睡覺 愛旅遊</p>
-                        </div>
-                      </div>
-                    </div>
-                    <div className="follower_button d-flex flex-column">
-                      <button
-                        className="btn remove_follow my-1 "
-                        onClick={() => ConfirmHandle(3)}
-                      >
-                        解除追蹤
-                      </button>
-                      <button className="btn follower_checked_detail my-1">
-                        查看內容
-                      </button>
-                    </div>
-                  </li>
+              <div className="post_list">
+                <ul className="post_detail ">
+                  {myTripPost.map((data, index) => {
+                    return (
+                      <>
+                        <li
+                          key={data.index}
+                          className="d-flex justify-content-between align-items-center px-5"
+                        >
+                          <div className="post_description d-flex flex-column">
+                            <div className="post_title">
+                              <p className="">{data.post_title}</p>
+                            </div>
+                            <div className="post_date">
+                              <p>發布日期：{data.create_time}</p>
+                            </div>
+                            <div className="post_edit_button d-flex">
+                              <Link
+                                to={
+                                  data.post_type_id === 2
+                                    ? `/postTripEdit?postID=${data.id}`
+                                    : `/postEdit?postID=${data.id}`
+                                }
+                              >
+                                <button
+                                  value={data.id}
+                                  className="btn post_edit my-1"
+                                  onClick={(e) => {
+                                    setMyPostID(e.target.value);
+                                  }}
+                                >
+                                  編輯
+                                </button>
+                              </Link>
+                              <button
+                                key={data.id}
+                                className="btn post_delete my-1"
+                                onClick={(e) => {
+                                  ConfirmHandle(1);
+                                  setMyPostID(data.id);
+                                }}
+                              >
+                                刪除
+                              </button>
+                              <Link
+                                to={
+                                  data.post_type_id === 2
+                                    ? `/postTrip?postID=${data.id}`
+                                    : `/post?postID=${data.id}`
+                                }
+                              >
+                                <button
+                                  className="btn check_post my-1"
+                                  onClick={() => {
+                                    setMyPostID(data.id);
+                                  }}
+                                >
+                                  {data.status === 1 ? '查看內容' : '預覽'}
+                                </button>
+                              </Link>
+                            </div>
+                          </div>
+                          <div className="d-flex flex-column align-items-center justify-content-end py-5">
+                            <div className="post_status ms-5">
+                              {data.status === 1 ? '發布中' : '草稿'}
+                            </div>
+                            <div className="post_like mt-5 ms-5">
+                              <AiTwotoneLike></AiTwotoneLike>
+                              {data.likes}
+                            </div>
+                          </div>
+                        </li>
+                      </>
+                    );
+                  })}
                 </ul>
               </div>
             </Tab>
@@ -293,46 +337,43 @@ function CommunityManagement() {
             >
               <div className="follow_post_list">
                 <ul className="follow_post_detail">
-                  <li className="d-flex flex-column ">
-                    <div className="d-flex  justify-content-between ">
-                      <div className="d-flex flex-column">
-                        <div className="post_title ps-4 py-3">
-                          <p className="">花蓮五日遊YOYOYOYOYOYOYOY必逛景點</p>
-                        </div>
-                      </div>
-                      <div className="post_edit_button d-flex ps-4 py-2 ">
-                        <button
-                          className="btn remove_follow my-1 "
-                          onClick={() => ConfirmHandle(3)}
-                        >
-                          取消按讚
-                        </button>
-                        <button className="btn follower_checked_detail my-1">
-                          查看內容
-                        </button>
-                      </div>
-                    </div>
-                  </li>
-                  <li className="d-flex flex-column">
-                    <div className="d-flex  justify-content-between">
-                      <div className="d-flex flex-column">
-                        <div className="post_title ps-4 py-3">
-                          <p className="">花蓮五日遊YOYOYOYOYOYOYOY必逛景點</p>
-                        </div>
-                      </div>
-                      <div className="post_edit_button d-flex ps-4 py-2 ">
-                        <button
-                          className="btn remove_follow my-1 "
-                          onClick={() => ConfirmHandle(3)}
-                        >
-                          取消按讚
-                        </button>
-                        <button className="btn follower_checked_detail my-1">
-                          查看內容
-                        </button>
-                      </div>
-                    </div>
-                  </li>
+                  {likeList.map((data, index) => {
+                    return (
+                      <>
+                        <li className="d-flex flex-column" key={data.id}>
+                          <div className="d-flex  justify-content-between ">
+                            <div className="d-flex flex-column">
+                              <div className="post_title ps-4 py-3">
+                                <p className="">
+                                  <BiLike className="me-2"></BiLike>
+                                  {data.post_title}
+                                </p>
+                              </div>
+                            </div>
+                            <div className="post_edit_button d-flex ps-4 py-2 ">
+                              <button
+                                className="btn remove_follow my-1 "
+                                onClick={() => ConfirmHandle(3)}
+                              >
+                                取消按讚
+                              </button>
+                              <Link
+                                to={
+                                  data.post_type_id === 2
+                                    ? `/postTrip?postID=${data.id}`
+                                    : `/post?postID=${data.id}`
+                                }
+                              >
+                                <button className="btn follower_checked_detail my-1">
+                                  查看內容
+                                </button>
+                              </Link>
+                            </div>
+                          </div>
+                        </li>
+                      </>
+                    );
+                  })}
                 </ul>
               </div>
             </Tab>
@@ -365,7 +406,7 @@ function CommunityManagement() {
                 }}
               ></MdOutlineClose>
             </p>
-            <Link to="/PostWYSIWYGEdit">
+            <Link to="/postEdit">
               <button className="confirm_button">一般貼文</button>
             </Link>
             <button
@@ -397,13 +438,15 @@ function CommunityManagement() {
               是否確認刪除？
               <MdOutlineClose
                 className="close_icon"
-                onClick={() => {
+                onClick={(e) => {
                   ConfirmHandle(0);
                 }}
               ></MdOutlineClose>
             </p>
-            <Link to="/">
-              <button className="confirm_button">確認</button>
+            <Link to="/admin">
+              <button className="confirm_button" onClick={deleteConfirm}>
+                確認
+              </button>
             </Link>
           </div>
         </div>
@@ -463,13 +506,30 @@ function CommunityManagement() {
               <select
                 className="form-control mb-2"
                 placeholder="請選擇我的行程"
+                onChange={(e) => {
+                  // TODO:
+                  setTripID(e.target.value);
+                  setTripTitile(e.target.name);
+                  console.log('title', e.target.getAttribute('data-title'));
+                  console.log('value', e.target.value);
+                }}
               >
-                <option>花蓮自由行</option>
-                <option>好想去台南</option>
-                <option>澎湖好像也很不錯</option>
+                <option>請選擇匯入的行程</option>
+                {tripImport.map((data, index) => {
+                  return (
+                    <>
+                      <option name={data.title} value={data.id}>
+                        {data.title}
+                      </option>
+                      {/* TODO:如何將data.title的值回傳到select onChange */}
+                    </>
+                  );
+                })}
               </select>
-              <Link to="/">
-                <button className="confirm_button">確認</button>
+              <Link to={`/admin/community`}>
+                <button className="confirm_button" onClick={creatNewTripPost}>
+                  確認
+                </button>
               </Link>
             </div>
           </div>

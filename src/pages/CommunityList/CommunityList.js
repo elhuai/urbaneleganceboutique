@@ -1,4 +1,4 @@
-import SearchBar from '../../components/SearchBar/SearchBar_search';
+import SearchBar from '../../components/SearchBar/SearchBar_community';
 import CommunityListCard from '../../components/Community/CommunityListCard/CommunityListCard';
 // import test_photo from '../../images/test.jpg';
 // import test_photo2 from '../../images/test2.jpg';

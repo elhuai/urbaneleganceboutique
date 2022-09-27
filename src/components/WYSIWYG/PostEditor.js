@@ -3,16 +3,73 @@ import { useState } from 'react';
 import Editor from 'ckeditor5-custom-build/build/ckeditor';
 // import {Editor as ClassicEditor} from 'ckeditor5-custom-build/build/ckeditor';
 import { CKEditor } from '@ckeditor/ckeditor5-react';
+// import { ImageToolbar } from '@ckeditor/ckeditor5-image/src/imagetoolbar';
 import { ClassicEditor } from 'ckeditor5-custom-build';
-import './PostEditor.scss';
+import { API_URL } from '../../utils/config';
 
+import './PostEditor.scss';
+// TODO: 圖像toolbar叫出來
 const MyCkeditor = (props) => {
-  const { getEditorData } = props;
+  const UPLOAD_ENDPOINT = 'uploadImages';
+  const IMG_URL = 'http://localhost:3007';
+
+  const { setGetData } = props;
+
+  const uploadAdapter = (loader) => {
+    return {
+      upload: () => {
+        return new Promise((resolve, reject) => {
+          const body = new FormData();
+          loader.file.then((file) => {
+            body.append('files', file);
+            fetch(`${API_URL}/post/${UPLOAD_ENDPOINT}`, {
+              method: 'post',
+              body: body,
+            })
+              .then((res) => res.json())
+              .then((res) => {
+                console.log(res);
+                resolve({
+                  default: `${IMG_URL}/uploads/${res}`,
+                });
+              })
+              .catch((err) => {
+                reject(err);
+              });
+          });
+        });
+      },
+    };
+  };
+
+  function uploadPlugin(editor) {
+    editor.plugins.get('FileRepository').createUploadAdapter = (loader) => {
+      return uploadAdapter(loader);
+    };
+  }
+
   return (
     <div>
       <div className="Apps">
         <CKEditor
-          config={{ placeholder: '開始輸入內容吧' }}
+          config={{
+            placeholder: '開始輸入內容吧',
+            toolbar: [
+              'heading',
+              '|',
+              'bold',
+              'italic',
+              'underline',
+              'link',
+              'bulletedList',
+              '|',
+              'uploadImage',
+              '|',
+              'undo',
+              'redo',
+            ],
+            extraPlugins: [uploadPlugin],
+          }}
           editor={Editor}
           onReady={(editor) => {
             // You can store the "editor" and use when it is needed.,
@@ -20,7 +77,8 @@ const MyCkeditor = (props) => {
           }}
           onChange={(event, editor) => {
             const data = editor.getData();
-            console.log({ data });
+            setGetData(data);
+            // console.log({ data });
           }}
           onBlur={(event, editor) => {
             // console.log('Blur.', editor);
