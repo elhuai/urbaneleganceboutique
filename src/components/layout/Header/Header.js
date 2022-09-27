@@ -2,7 +2,7 @@ import logobody from '../../../images/logo_dog_body1.svg';
 import { IoLogOut } from 'react-icons/io5';
 import { FaUser } from 'react-icons/fa';
 import { IoCart } from 'react-icons/io5';
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { Link, useSearchParams } from 'react-router-dom';
 import RwdMenu from '../Menu/RwdMenu';
 import MenuLink from '../Menu/MenuLink';
@@ -16,6 +16,8 @@ import ShoppingCart from '../ShoppingCart/ShoppingCart';
 const Header = () => {
   const { user, setUser } = useUserInfo();
   const [searchParam] = useSearchParams();
+  const [cart, setCart] = useState([]);
+
   const logoutRedirect = window.location.pathname.includes('admin');
   const AuthBtn = () => {
     if (user.auth) {
@@ -81,7 +83,12 @@ const Header = () => {
           </ul>
         </div>
         <div className="d-flex header_Icon align-items-center justify-content-end ">
-          <ShoppingCart placement={'end'} name={'end'} />
+          <ShoppingCart
+            placement={'end'}
+            name={'end'}
+            cart={cart}
+            setCart={setCart}
+          />
           {/* TODO: ICON更改 */}
           <AuthBtn />
         </div>

@@ -4,11 +4,37 @@ import { API_URL } from '../../../../utils/config';
 import '../styles/_EC_subpages_Payment.scss';
 
 const Payment = (props) => {
-  const { shipping, setShippingData } = props;
+  const {
+    pay,
+    setPay,
+    receipt,
+    setReceipt,
+    shipping,
+    setShippingData,
+    cartProductData,
+    setCartProductData,
+    couponName,
+    setCouponName,
+    selected,
+    setSelected,
+  } = props;
+  console.log('cartData=====Payment===', cartProductData);
 
   const handleFieldChange = (e) => {
     const newShipping = { ...shipping, [e.target.name]: e.target.value };
     setShippingData(newShipping);
+  };
+
+  const onChangePay = (e) => {
+    const newPay = e.target.value;
+    setPay(newPay);
+    console.log(pay);
+  };
+
+  const onChangeReceipt = (e) => {
+    const newReceipt = e.target.value;
+    setReceipt(newReceipt);
+    console.log(receipt);
   };
 
   const [cart, setCart] = useState([]);
@@ -36,7 +62,12 @@ const Payment = (props) => {
                 <section>
                   <p>購買人資訊</p>
                   <div className="subSection">
-                    <div className="subTitle ">姓名 ＊</div>
+                    <div className="subTitle ">
+                      姓名
+                      <span style={{ color: '#ef7a70', fontWeight: '500' }}>
+                        ＊
+                      </span>
+                    </div>
                     <input
                       type="text"
                       name="name"
@@ -44,7 +75,12 @@ const Payment = (props) => {
                     />
                   </div>
                   <div className="subSection">
-                    <div className="subTitle">email ＊</div>
+                    <div className="subTitle">
+                      信箱
+                      <span style={{ color: '#ef7a70', fontWeight: '500' }}>
+                        ＊
+                      </span>
+                    </div>
                     <input
                       type="text"
                       name="email"
@@ -52,7 +88,7 @@ const Payment = (props) => {
                     />
                   </div>
                   <div className="subSection">
-                    <div className="subTitle">聯絡電話 ＊</div>
+                    <div className="subTitle">聯絡電話</div>
                     <input
                       type="text"
                       name="phone"
@@ -64,7 +100,12 @@ const Payment = (props) => {
                   <p>付款方式</p>
                   <div className="paymentSection">
                     <div className="paymentSubSection">
-                      <input type="radio" />
+                      <input
+                        type="radio"
+                        value="信用卡"
+                        checked={pay === '信用卡'}
+                        onChange={onChangePay}
+                      />
                       <span className="radioInput">信用卡付款</span>
                     </div>
                     <div className="paymentCCard">
@@ -82,8 +123,8 @@ const Payment = (props) => {
                       </div>
                       <div className="CCardGoodThu">
                         <div>有效期限</div>
-                        <input type="month" />
-                        <input type="" />
+                        <input type="month" className="mx-1" />
+                        <input type="" className="mx-1" />
                       </div>
                       <div className="CCardNumber">
                         <div>卡片背面末三碼</div>
@@ -91,7 +132,12 @@ const Payment = (props) => {
                       </div>
                     </div>
                     <div className="paymentSubSection">
-                      <input type="radio" />
+                      <input
+                        type="radio"
+                        value="LinePay"
+                        checked={pay === 'LinePay'}
+                        onChange={onChangePay}
+                      />
                       <div className="iconLinePay"></div>
                       <span>請備妥手機以完成交易</span>
                     </div>
@@ -100,11 +146,21 @@ const Payment = (props) => {
                 <section>
                   <p>電子收據</p>
                   <div className="receiptSection">
-                    <input type="radio" />
+                    <input
+                      type="radio"
+                      value="電子收據（個人）"
+                      checked={receipt === '電子收據（個人）'}
+                      onChange={onChangeReceipt}
+                    />
                     <span className="radioInput">電子收據（個人）</span>
                   </div>
                   <div className="receiptSection">
-                    <input type="radio" />
+                    <input
+                      type="radio"
+                      value="電子收據（公司戶）"
+                      checked={receipt === '電子收據（公司戶）'}
+                      onChange={onChangeReceipt}
+                    />
                     <span className="radioInput">電子收據（公司戶）</span>
                   </div>
                   <span className="receiptContent">
@@ -114,23 +170,6 @@ const Payment = (props) => {
                 <section>
                   <div className="subSection">
                     <p>注意事項</p>
-                    {/* <div className="subValue"> */}
-                    {/* 預約方式 <br />
-                      1. 需提前三個工作天預訂，請先加入主辦單位官方LINE
-                      ID：@ksadmg，並主動提供訊息告知預約本活動的日期、場次、人數、兌換券前五碼序號、聯絡人姓名、手機、保險資料等資訊，敬請配合，旺季時遊客較多可能客滿，建議提早預約{' '}
-                      <br />
-                      2. 如雙方確認預約後不克前往，退改政策如下： <br />
-                      (1)
-                      出發日前6日至前4日內(不含出發日)通知取消，將退回已付金額的50%{' '}
-                      <br />
-                      (2) 出發日前3日至當日內不接受改期、取消，並不予退費 <br />
-                      3.
-                      更換參加者務必於活動前一日的中午前通知，並提供新參加者的保險資料{' '}
-                      <br />
-                      4.
-                      因個人因素需更改活動梯次(日期場次)，限改一次，並請提早告知(活動日前3天恕不再接受臨時更換梯次之要求)。更改梯次後不接受改期、取消，並不予退費{' '}
-                      <br /> */}
-                    {/* </div> */}
                   </div>
                 </section>
               </div>
@@ -138,25 +177,32 @@ const Payment = (props) => {
             <div className="totalColumn">
               <div className="totalCate">
                 <p className="title">票券名稱</p>
-                <p>{cart.name}</p>
+                <p>{cartProductData.name}</p>
                 <div className="subTotal">
                   <p>售價</p>
-                  <p>NT${cart.price}</p>
+                  <p>NT${cartProductData.price}</p>
                 </div>
                 <div className="subTotal">
                   <p>數量</p>
-                  <p>{cart.quantity}張</p>
+                  <p>{cartProductData.quantity}張</p>
                 </div>
               </div>
 
               <div className="totalDiscount">
                 {/* todo:優惠券名字component  */}
-                <p className="title">優惠券-新會員入會折扣</p>
-                <p className="totalDiscountNumber">-NT$200</p>
+                <p className="title">優惠券-{couponName}</p>
+                <p className="totalDiscountNumber">-NT${selected}</p>
               </div>
               <div className="totalNumber">
                 <p className="title">總計(付款金額)</p>
-                <p>NT$6,800</p>
+                <p>
+                  NT$
+                  {Number(
+                    cartProductData.quantity *
+                      cartProductData.price *
+                      (1 - selected / 100)
+                  ).toFixed(0)}
+                </p>
               </div>
             </div>
           </div>

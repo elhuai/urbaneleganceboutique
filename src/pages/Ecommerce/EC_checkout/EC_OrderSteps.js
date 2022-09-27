@@ -1,6 +1,8 @@
 import { useState, useEffect } from 'react';
 import axios from 'axios';
 import { API_URL } from '../../../utils/config';
+import { useLocation } from 'react-router-dom';
+import './styles/_EC_orderSteps.scss';
 
 // 子頁面(區域)
 import Cart from './subpages/Cart';
@@ -11,13 +13,12 @@ import OrderDetail from './subpages/OrderDetail';
 import ProgressBar from '../../../components/EC/EC_ordersteps/ProgressBar/ProgressBar';
 
 // css樣式
-import './styles/_EC_orderSteps.scss';
-
-import { useLocation } from 'react-router-dom';
 
 function OrderSteps() {
   const maxSteps = 3;
   const [step, setStep] = useState(1);
+  const [pay, setPay] = useState('');
+  const [receipt, setReceipt] = useState('');
 
   const [shipping, setShippingData] = useState({
     name: '',
@@ -72,6 +73,9 @@ function OrderSteps() {
 
   // 抓購物車資訊
   const [cartProductData, setCartProductData] = useState([]);
+  // 優惠券
+  const [selected, setSelected] = useState(0);
+  const [couponName, setCouponName] = useState();
 
   useEffect(() => {
     // 抓商品細節資料
@@ -105,6 +109,15 @@ function OrderSteps() {
           setShippingData={setShippingData}
           cartProductData={cartProductData}
           setCartProductData={setCartProductData}
+          productId={productId}
+          selected={selected}
+          setSelected={setSelected}
+          couponName={couponName}
+          setCouponName={setCouponName}
+          pay={pay}
+          setPay={setPay}
+          receipt={receipt}
+          setReceipt={setReceipt}
         />
       </div>
       {/* 按鈕 */}

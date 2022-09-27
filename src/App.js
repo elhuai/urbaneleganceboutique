@@ -31,6 +31,7 @@ import EcCommodityHomepage from './pages/Ecommerce/EC_HomePage/EC_4Commodity_Hom
 import EcProductDetail from './pages/Ecommerce/ProductDetail';
 import EcProductFilter from './pages/Ecommerce/EC_productFilter';
 import ECOrderSteps from './pages/Ecommerce/EC_checkout';
+import ECLinePay from './pages/Ecommerce/EC_LinePay';
 import 'swiper/scss';
 import 'swiper/css/bundle';
 import './styles/style.scss';
@@ -53,6 +54,7 @@ function App() {
             <Route path="voucher" element={<AdminVocherPage />} />
             <Route path="community" element={<CommunityManagement />} />
             <Route path="collection" element={<AdminCollectionPage />} />
+            {/* <Route path="messages" element={<AdminMessageListPage />} /> */}
           </Route>
           {/* <Route path="/adminCenter" element={<AdminCenterPage />} /> */}
           {/* <Route path="/personalHomePage" element={<PersonalHomePage />} /> */}
@@ -61,6 +63,8 @@ function App() {
           <Route path="/postTrip" element={<PostTrip />} />
           <Route path="/postTripEdit" element={<PostTripEdit />} />
           {/* <Route path="/login/line" element={<LineLogin />} /> */}
+
+          {/* EC section-------------------------------- */}
           <Route path="/ec-productfilter" element={<EcProductFilter />} />
           <Route path="/ec-productdetail" element={<EcProductDetail />} />
           <Route
@@ -73,6 +77,8 @@ function App() {
           />
           <Route path="/ec-enjoyhomepage" element={<EcEnjoyHomepage />} />
           <Route path="ec-ordersteps" element={<ECOrderSteps />} />
+          <Route path="/linePay/confirm" element={<ECLinePay />} />
+          {/* EC section-------------------------------- */}
         </Routes>
         <Outlet />
         <Footer />
