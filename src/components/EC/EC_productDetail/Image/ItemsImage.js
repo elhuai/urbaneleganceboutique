@@ -8,16 +8,17 @@ import 'swiper/css/free-mode';
 import 'swiper/css/navigation';
 import 'swiper/css/thumbs';
 
-import './styles.css';
+import './_ItemImage.scss';
 
 // import required modules
 import { FreeMode, Navigation, Thumbs } from 'swiper';
 
-export default function ItemsImage() {
+export default function ItemsImage(props) {
   const [thumbsSwiper, setThumbsSwiper] = useState(null);
-  // const { mainURL, productData, photo } = props;
+  const { mainURL, productData, photo } = props;
+
   return (
-    <>
+    <div className="d-flex flex-column img_bar">
       <Swiper
         style={{
           '--swiper-navigation-color': '#fff',
@@ -28,12 +29,28 @@ export default function ItemsImage() {
         navigation={true}
         thumbs={{ swiper: thumbsSwiper }}
         modules={[FreeMode, Navigation, Thumbs]}
-        className="mySwiper2"
+        className="mySwiper2 d-block mb-2"
       >
         <SwiperSlide>
-          <img src="https://swiperjs.com/demos/images/nature-1.jpg" />
+          <img
+            src={`http://localhost:3007${mainURL}/${productData.main_photo}`}
+            alt=""
+          />
         </SwiperSlide>
+        {photo.map((data, index) => {
+          return (
+            <SwiperSlide>
+              <div key={index} className="h-100 w-100">
+                <img
+                  src={`http://localhost:3007${mainURL}/${data['file_name']}`}
+                  alt=""
+                />
+              </div>
+            </SwiperSlide>
+          );
+        })}
       </Swiper>
+
       <Swiper
         onSwiper={setThumbsSwiper}
         loop={true}
@@ -45,36 +62,24 @@ export default function ItemsImage() {
         className="mySwiper"
       >
         <SwiperSlide>
-          <img src="https://swiperjs.com/demos/images/nature-1.jpg" />
+          <img
+            src={`http://localhost:3007${mainURL}/${productData.main_photo}`}
+            alt=""
+          />
         </SwiperSlide>
-        <SwiperSlide>
-          <img src="https://swiperjs.com/demos/images/nature-2.jpg" />
-        </SwiperSlide>
-        <SwiperSlide>
-          <img src="https://swiperjs.com/demos/images/nature-3.jpg" />
-        </SwiperSlide>
-        <SwiperSlide>
-          <img src="https://swiperjs.com/demos/images/nature-4.jpg" />
-        </SwiperSlide>
-        <SwiperSlide>
-          <img src="https://swiperjs.com/demos/images/nature-5.jpg" />
-        </SwiperSlide>
-        <SwiperSlide>
-          <img src="https://swiperjs.com/demos/images/nature-6.jpg" />
-        </SwiperSlide>
-        <SwiperSlide>
-          <img src="https://swiperjs.com/demos/images/nature-7.jpg" />
-        </SwiperSlide>
-        <SwiperSlide>
-          <img src="https://swiperjs.com/demos/images/nature-8.jpg" />
-        </SwiperSlide>
-        <SwiperSlide>
-          <img src="https://swiperjs.com/demos/images/nature-9.jpg" />
-        </SwiperSlide>
-        <SwiperSlide>
-          <img src="https://swiperjs.com/demos/images/nature-10.jpg" />
-        </SwiperSlide>
+        {photo.map((data, index) => {
+          return (
+            <SwiperSlide>
+              <div className="h-100 w-100" key={index}>
+                <img
+                  src={`http://localhost:3007${mainURL}/${data['file_name']}`}
+                  alt=""
+                />
+              </div>
+            </SwiperSlide>
+          );
+        })}
       </Swiper>
-    </>
+    </div>
   );
 }

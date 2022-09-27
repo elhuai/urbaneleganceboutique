@@ -8,8 +8,10 @@ import { Link } from 'react-router-dom';
 
 // 加入購物車跳出視窗
 import { handleSuccess } from '../../../utils/handler/card/handleStatusCard';
+import { useUserInfo } from '../../../hooks/useUserInfo';
+
 // 商品照片
-// import ItemImage from '../../../components/EC/EC_productDetail/Image';
+import ItemImage from '../../../components/EC/EC_productDetail/Image';
 // 街景
 // import Streeview from '../../../components/EC/EC_productDetail/StreetView';
 // 商品評價
@@ -21,16 +23,17 @@ const ProductDetail = () => {
   const [photo, setPhoto] = useState([]);
   const [recommend, setRecommend] = useState([]);
   const [mainURL, setMainURL] = useState('');
+  const [perScore, setPerScore] = useState(4);
 
   const location = useLocation();
   const urlSearchParams = new URLSearchParams(location.search);
   const productId = urlSearchParams.get('id');
   // const typeId = urlSearchParams.get('typeid');
-  // console.log('productId1111', productId);
+  // console.log('urlSearchParams', urlSearchParams);
 
   useEffect(() => {
+    // 抓商品細節資料
     const fetchProductData = async () => {
-      // 抓商品細節資料
       const result = await axios.get(
         `${API_URL}/productdetail/item?id=${productId}`
       );
@@ -43,6 +46,8 @@ const ProductDetail = () => {
       const mainURL = result.data.photo_path;
       setMainURL(mainURL);
       setProductData(result.data);
+      const score = Number(result.data.per_score.toFixed(1));
+      setPerScore(score);
 
       // 抓推薦 第四館商品資料
       const recommend = await axios.get(`${API_URL}/productdetail/recommend`);
@@ -50,46 +55,59 @@ const ProductDetail = () => {
     };
     fetchProductData();
   }, []);
-  console.log('recommend', recommend);
+  // console.log('title', title);
+
+  // = 加入購物車
+  const { user, setUser } = useUserInfo();
+  const addCart = async (e, id) => {
+    // e.preventDefault();
+    if (user.auth) {
+      try {
+        await axios.post(
+          `${API_URL}/cart/postmore/${id}`,
+          {},
+          {
+            withCredentials: true,
+          }
+        );
+        handleSuccess('已成功加入購物車');
+      } catch (error) {
+        console.log('error', error);
+      }
+    } else {
+      addCart({ isLogin: true }, setUser);
+    }
+  };
+  console.log(productData);
+  console.log(productData.id);
+  console.log('22', productData.intro);
+  const introLi = () => {
+    if (productData.id < 559) {
+      <li>{productData.intro}</li>;
+    }
+  };
 
   return (
     <>
       {productData.length === 0 ? (
         console.log('沒有資料') //* 是否做loading 頁面
       ) : (
-        <div className="productDetail mt-2">
-          <div className="topRow">
+        <div className="productDetail">
+          <div className="topRow row ">
             {/* 商品照區域 */}
-            {/* <ItemImage /> */}
-
-            {/* <div className="imageColumn">
-              <div className="mainImage">
-                <img
-                  src={`http://localhost:3007${mainURL}/${productData.main_photo}`}
-                  alt=""
-                />
-              </div>
-              <div className="cardRow">
-                {photo.map((data, index) => {
-                  return (
-                    <div key={index}>
-                      <img
-                        src={`http://localhost:3007${mainURL}/${data['file_name']}`}
-                        alt=""
-                      />
-                    </div>
-                  );
-                })}
-              </div>
-            </div> */}
+            <div className="col-5">
+              <ItemImage
+                mainURL={mainURL}
+                productData={productData}
+                photo={photo}
+              />
+            </div>
             {/* 商品標題 */}
-            <div className="productDesc">
+            <div className="productDesc col-">
               <div className="productContainer">
                 <h1 className="headText fw-bolder">{productData.name}</h1>
-                <ul>
-                  <li className="subText">{productData.intro}</li>
-                </ul>
-                <div className=" d-flex flex-row">
+                <div className="subText">{productData.intro}</div>
+                <div className=" d-flex flex-row productContainer_tags">
                   {tag.map((data, index) => {
                     return (
                       <p key={index} className="tags my-2 me-2">
@@ -109,17 +127,20 @@ const ProductDetail = () => {
                 {/* 加購區 */}
                 <div className="mainAddSection">
                   <p className="text-muted fw-bolder">+ 尚優惠的加購價</p>
-                  <hr />
+                  <hr className="mainAddSection_hr" />
                   {/* 推薦商品 */}
                   {recommend.map((data, index) => {
+                    console.log(data);
                     return (
-                      <div className="addSection d-flex flex-row mb-2">
+                      <div
+                        className="addSection d-flex flex-row mb-2"
+                        key={index}
+                      >
                         <Link to={`/ec-productdetail?id=${data.id}`}>
                           <div className="addSubSection d-flex align-items-center mb-0">
                             <img
                               className="addSubSection_img"
-                              // TODO 要記得換
-                              src={`http://localhost:3007${mainURL}/${productData.main_photo}`}
+                              src={`http://localhost:3007${data.photo_path}/${data.main_photo}`}
                               alt="..."
                             />
                             <p className="addSubSection_name fw-bolder mb-0 ms-2">
@@ -127,7 +148,7 @@ const ProductDetail = () => {
                             </p>
                           </div>
                         </Link>
-                        <div className="addCartSection d-flex flex-row">
+                        <div className="addCartSection d-flex flex-row flex-shrink-0 row-4">
                           <div className="addCostSection">
                             <p className="addCost text-decoration-line-through m-0">
                               NT${Number((data.price * 1.2).toFixed(0))}
@@ -137,11 +158,13 @@ const ProductDetail = () => {
                             </p>
                           </div>
                           <div className="d-flex align-items-end">
+                            {/* TODO:同步更新購物車 */}
                             <button
                               className="addSubSection_btn ms-2 py-2"
-                              onClick={() => {
+                              onClick={(e) => {
+                                addCart(e, data.id);
                                 // console.log(e.target.value);
-                                handleSuccess('已成功加入購物車');
+                                // handleSuccess('已成功加入購物車');
                               }}
                             >
                               加入購物車
@@ -159,7 +182,8 @@ const ProductDetail = () => {
                     className="addButton"
                     onClick={(e) => {
                       // console.log(e.target.value);
-                      handleSuccess('已成功加入購物車');
+                      addCart(e, productId);
+                      // handleSuccess('已成功加入購物車');
                     }}
                   >
                     加入購物車
@@ -168,7 +192,7 @@ const ProductDetail = () => {
               </div>
             </div>
           </div>
-          {/* <hr /> */}
+          <hr />
           <div className="descriptionSelection">
             <div className="bottomRow">
               <div className="spec">
@@ -181,14 +205,17 @@ const ProductDetail = () => {
                 <div className="anchor1"></div>
               </div>
               <div className="spec2">
-                <div id="description" className="description">
-                  <h4>商品說明</h4>
-                  <p>{productData.description}</p>
-                  <img src={''} alt="" />
+                <div className="description">
+                  <h4 id="description">商品說明</h4>
+                  <div
+                    dangerouslySetInnerHTML={{
+                      __html: productData.description,
+                    }}
+                  />
+                  <img src="" alt="" />
                 </div>
-
-                <div id="toKnow" className="description">
-                  <h4>購買須知</h4>
+                <div className="description">
+                  <h4 id="toKnow">購買須知</h4>
                   <p>
                     •
                     為提供顧客良好住宿體驗，不提供加人加價服務，請依適合人數選擇房型。
@@ -208,7 +235,7 @@ const ProductDetail = () => {
                   <p>
                     • 憑證使用方式
                     <br />
-                    現場請出示電子憑證與護照正本或身份證 text
+                    到會員中心田現場請出示電子憑證
                     <br />
                     • 憑證兌換期限
                     <br />
@@ -217,7 +244,7 @@ const ProductDetail = () => {
                   </p>
                 </div>
                 {/* <Streeview /> */}
-                <Score />
+                <Score perScore={perScore} productId={productId} />
               </div>
             </div>
           </div>

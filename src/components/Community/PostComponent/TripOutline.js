@@ -9,11 +9,16 @@ export default function TripOutline({ post }) {
           {post.map((data, index) => {
             return (
               <>
-                <p className="post_date_count">Day {data.days}</p>
-
-                <a key={data.index} href={`#day${data.days}locate${index}`}>
-                  <p>{data.locate_name}</p>
-                </a>
+                <p className="post_date_count">Day {data[0].days}</p>
+                {data.map((data, i) => {
+                  return (
+                    <>
+                      <a key={data.id} href={`#day${data.days}locate${i}`}>
+                        <p>{data.locate_name}</p>
+                      </a>
+                    </>
+                  );
+                })}
               </>
             );
           })}

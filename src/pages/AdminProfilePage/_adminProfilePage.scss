@@ -1,0 +1,146 @@
+$main-color: #FFC715;
+$hightLight-color: #EF7A70;
+
+// todo: 不屬於這裡
+.admin_main {
+  obj-fit {
+    img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+  }
+
+  .profile {
+    &_list {
+      height: 80px;
+      font-size: 18px;
+      .profile {
+        &_label, &_info, &_btn {
+          display: flex;
+          align-items: center;
+        }
+        &_label {
+          position: relative;
+          width: 180px;
+          padding-right: 16px;
+          justify-content: end;
+          &::after {
+            content: '';
+            position: absolute;
+            top: 50%;
+            right: 0;
+            transform: translateY(-50%);
+            width: 2px;
+            height: 30%;
+            border-radius: 8px;
+            background-color: #000;
+            opacity: .2;
+          }
+        }
+        &_info {
+          padding-left: 16px;
+          gap: 8px;
+          opacity: 0;
+          transform: translateX(8px);
+          animation: info-show .3s ease-out 0s 1 forwards;
+        }
+        &_btn {
+          flex-shrink: 0;
+          > div {
+            gap: 8px;
+          }
+          button {
+            position: relative;
+            z-index: 99;
+            &:nth-child(2) {
+              background-color: #a7a7a7;
+            }
+            &.completed {
+              transform: translateX(calc(100% + 8px));
+              animation: btn-show .3s ease-out 0s 1 forwards;
+              z-index: 9;
+            }
+          }
+        }
+      }
+      button {
+        padding: 8px 16px;
+        border-radius: 8px;
+        border: 0;
+        background-color: $main-color;
+        color: #FFF;
+        font-weight: bold;
+      }
+    }
+    &_password button{
+      padding: 8px 16px;
+      border-radius: 8px;
+      border: 0;
+      color: #FFF;
+      font-weight: bold;
+      background-color: $hightLight-color;
+    }
+    
+  }
+
+}
+
+@media screen and (max-width:(768px)) {
+  .admin_main {
+    .profile {
+      &_list {
+        flex-direction: column;
+        height: auto;
+        padding: 16px 0;
+        font-size: 16px;
+        border-bottom: 1px solid #e2e2e2;
+        .profile {
+          &_label {
+            padding: 0s;
+            justify-content: start;
+            &::after {
+              width: 0;
+            }
+          }
+          &_info {
+            height: 60px;
+            padding: 0;
+          }
+          &_btn {
+            justify-content: start;
+          }
+        }
+      }
+    }
+    button {
+      padding: 6px 12px;
+      border-radius: 6px;
+      border: 0;
+      background-color: $main-color;
+      color: #FFF;
+      font-weight: bold;
+      font-size: 14px;
+    }
+  }
+}
+
+@keyframes btn-show {
+  0% {
+    transform: translateX(calc(100% + 8px));
+  }
+  100% {
+    transform: translateX(0);
+  }
+}
+
+@keyframes info-show {
+  0% {
+    opacity: 0;
+    transform: translateX(8px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateX(0px);
+  }
+}

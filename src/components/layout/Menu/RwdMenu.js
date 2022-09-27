@@ -74,7 +74,7 @@ function RwdMenu() {
                   alt="#/"
                 ></img>
               </NavLink>
-              <NavLink
+              {/* <NavLink
                 className="header_rwd_menu_NavLink d-flex justify-content-between align-items-center "
                 reloadDocument
                 to="/path1"
@@ -86,11 +86,11 @@ function RwdMenu() {
                   src={headerRwdLinkarrow}
                   alt="#/"
                 ></img>
-              </NavLink>
+              </NavLink> */}
               <NavLink
                 className="header_rwd_menu_NavLink d-flex justify-content-between align-items-center"
                 reloadDocument
-                to="/path2"
+                to="/ec-enjoyhomepage"
                 onClick={() => setOpen(false)}
               >
                 <div className="header_rwd_menu_name">景點&玩樂</div>
@@ -103,10 +103,10 @@ function RwdMenu() {
               <NavLink
                 className="header_rwd_menu_NavLink d-flex justify-content-between align-items-center"
                 reloadDocument
-                to="/path3"
+                to="/ec-restauranthomepage"
                 onClick={() => setOpen(false)}
               >
-                <div className="header_rwd_menu_name"></div>
+                <div className="header_rwd_menu_name">餐廳</div>
                 <img
                   className="header_rwd_menuNavLink_arrow"
                   src={headerRwdLinkarrow}
@@ -116,10 +116,10 @@ function RwdMenu() {
               <NavLink
                 className="header_rwd_menu_NavLink d-flex justify-content-between align-items-center"
                 reloadDocument
-                to="/ec-productdetail"
+                to="/ec-commodityhomepage"
                 onClick={() => setOpen(false)}
               >
-                <div className="header_rwd_menu_name">住宿</div>
+                <div className="header_rwd_menu_name"> 寵物商品</div>
                 <img
                   className="header_rwd_menuNavLink_arrow"
                   src={headerRwdLinkarrow}
@@ -142,7 +142,7 @@ function RwdMenu() {
               <NavLink
                 className="header_rwd_menu_NavLink d-flex justify-content-between align-items-center "
                 reloadDocument
-                to="/path6"
+                to="/communityHomePage"
                 onClick={() => setOpen(false)}
               >
                 <div className="header_rwd_menu_name">社群分享</div>

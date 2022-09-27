@@ -18,6 +18,7 @@ const TravelFooterSwiper = ({ travelCommunity }) => {
     return differentDate;
     //Demo的時候盡量天數一樣 顯示總共幾天小有bug
   });
+  console.log('newArr', newArr);
 
   return (
     <>

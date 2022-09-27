@@ -26,9 +26,9 @@ const AdminCenter = () => {
             ></img>
           </div>
           <div className="admin_user_name_bar">
-            <Link to="/apersonalHomePage" className="admin_user_name ">
+            <div className="admin_user_name ">
               <p>{data.social_name}</p>
-            </Link>
+            </div>
             <Link
               to="/admin/profile"
               className="text-decoration-none admin_myfile"
@@ -76,7 +76,7 @@ const AdminCenter = () => {
           </li>
           <li>
             <Link
-              to="/"
+              to="/admin/messages"
               className="admin_select text-decoration-none icons d-flex"
             >
               <RiMessage3Line

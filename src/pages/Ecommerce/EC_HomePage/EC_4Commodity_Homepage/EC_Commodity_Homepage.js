@@ -14,15 +14,15 @@ const EcCommodityHomepage = () => {
   // 推薦標題
   const cardTitle = [
     {
-      name: '飲水機推薦',
+      name: '營養品推薦',
       img: 'https://img.freepik.com/free-photo/beautiful-pet-portrait-cat_23-2149218504.jpg?w=1060&t=st=1663212101~exp=1663212701~hmac=96e24d0679d878817239e68b62104c238c8d4dd3b9ab4699c4c37e96e52e60d7',
     },
     {
-      name: '小魚乾推薦',
+      name: '貓玩具推薦',
       img: 'https://img.freepik.com/premium-photo/cute-ginger-kitten-peeks-out-from-edge-white-board-copy-space_96064-788.jpg?w=826',
     },
     {
-      name: '寵物益生菌推薦',
+      name: '外出用品推薦',
       img: 'https://img.freepik.com/free-photo/spaniel-puppy-playing-studio-cute-doggy-pet-is-sitting-isolated-blue-background-cavalier-king-charles-negative-space-insert-your-text-image-concept-movement-animal-rights_155003-33840.jpg',
     },
   ];
@@ -38,9 +38,9 @@ const EcCommodityHomepage = () => {
   useEffect(() => {
     const fetchFishProducts = async () => {
       const arrStr = [
-        { id: '4', keyword: '飲水機', setState: setFishCard },
-        { id: '4', keyword: '小魚乾', setState: setWaterCard },
-        { id: '4', keyword: '益生菌', setState: setHealthCard },
+        { id: '4', keyword: '營養品', setState: setFishCard },
+        { id: '4', keyword: '貓玩具', setState: setWaterCard },
+        { id: '4', keyword: '外出用品', setState: setHealthCard },
       ];
 
       for (let index = 0; index < arrStr.length; index++) {

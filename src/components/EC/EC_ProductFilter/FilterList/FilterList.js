@@ -6,19 +6,27 @@ import { API_URL } from '../../../../utils/config';
 import './_FilterList.scss';
 import { IoIosArrowDown } from 'react-icons/io';
 import { Slider } from 'antd';
-// import 'antd/dist/antd.css';
 import 'antd/dist/antd.min.css';
 // import FilterListToggle from './FilterListToggle/FilterListToggle';
 
 const FilterList = (props) => {
-  const { setTag, setMaxPrice, setMinPrice, minPrice, maxPrice, setPage } =
-    props;
+  const {
+    setTag,
+    setMaxPrice,
+    setMinPrice,
+    minPrice,
+    maxPrice,
+    setPage,
+    typeId,
+  } = props;
   const { tagStatus, setTagStatus } = useState([]);
   const [title, setTitle] = useState([]);
 
   useEffect(() => {
     const fetchTitle = async (index) => {
-      const result = await axios.get(`${API_URL}/filter/choices`);
+      const result = await axios.get(
+        `${API_URL}/filter/choices?typeId=${typeId}`
+      );
       console.log('fetchTitle', result.data);
       const newTitleArray = result.data.map((item) => {
         const newTags = item.tags.map((i) => {
@@ -76,6 +84,7 @@ const FilterList = (props) => {
                           setTag((tag) => {
                             let newArray = [...tag];
                             newArray.push(e.target.name);
+                            setPage(1);
                             return newArray;
                           });
                         } else {
@@ -83,6 +92,8 @@ const FilterList = (props) => {
                             let newArray = [...tag].filter(
                               (item) => item !== e.target.name
                             );
+                            setPage(1);
+
                             return newArray;
                           });
                         }
