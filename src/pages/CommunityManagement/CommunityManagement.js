@@ -41,9 +41,11 @@ function CommunityManagement() {
   // 取行程貼文總表
   useEffect(() => {
     const fetchMyTripPost = async () => {
-      const result = await axios.get(`${API_URL}/community/tripPost`);
+      const result = await axios.get(`${API_URL}/community/tripPost`, {
+        withCredentials: true,
+      });
       // 取得後端來的資料
-      console.log(result.data);
+      console.log('行程貼文列表', result.data);
       setMyTripPost(result.data);
       setIfDelete(false);
       // 存回 useState 狀態
@@ -58,7 +60,7 @@ function CommunityManagement() {
         withCredentials: true,
       });
       // 取得後端來的資料
-      console.log(result.data);
+      console.log('一般貼文列表', result.data);
       setMyPost(result.data);
       setIfDelete(false);
       // 存回 useState 狀態
@@ -69,9 +71,15 @@ function CommunityManagement() {
   // // 取單一user 按讚貼文總表
   useEffect(() => {
     const fetchMyLikePost = async () => {
-      const result = await axios.get(`${API_URL}/community/likesStatic`);
+      const result = await axios.get(
+        `${API_URL}/community/likesStatic`,
+
+        {
+          withCredentials: true,
+        }
+      );
       // 取得後端來的資料
-      console.log(result.data);
+      console.log('取單一使用者按讚列表', result.data);
       setLikeList(result.data);
       console.log('我的按讚列表', likeList);
       // 存回 useState 狀態
