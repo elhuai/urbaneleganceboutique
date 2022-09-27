@@ -4,12 +4,37 @@ import { API_URL } from '../../../../utils/config';
 import '../styles/_EC_subpages_Payment.scss';
 
 const Payment = (props) => {
-  const { shipping, setShippingData, cartProductData, setCartProductData } = props;
+  const {
+    pay,
+    setPay,
+    receipt,
+    setReceipt,
+    shipping,
+    setShippingData,
+    cartProductData,
+    setCartProductData,
+    couponName,
+    setCouponName,
+    selected,
+    setSelected,
+  } = props;
   console.log('cartData=====Payment===', cartProductData);
 
   const handleFieldChange = (e) => {
     const newShipping = { ...shipping, [e.target.name]: e.target.value };
     setShippingData(newShipping);
+  };
+
+  const onChangePay = (e) => {
+    const newPay = e.target.value;
+    setPay(newPay);
+    console.log(pay);
+  };
+
+  const onChangeReceipt = (e) => {
+    const newReceipt = e.target.value;
+    setReceipt(newReceipt);
+    console.log(receipt);
   };
 
   const [cart, setCart] = useState([]);
@@ -53,7 +78,7 @@ const Payment = (props) => {
                   <p>付款方式</p>
                   <div className="paymentSection">
                     <div className="paymentSubSection">
-                      <input type="radio" />
+                      <input type="radio" value="信用卡" checked={pay === '信用卡'} onChange={onChangePay} />
                       <span className="radioInput">信用卡付款</span>
                     </div>
                     <div className="paymentCCard">
@@ -80,7 +105,7 @@ const Payment = (props) => {
                       </div>
                     </div>
                     <div className="paymentSubSection">
-                      <input type="radio" />
+                      <input type="radio" value="LinePay" checked={pay === 'LinePay'} onChange={onChangePay} />
                       <div className="iconLinePay"></div>
                       <span>請備妥手機以完成交易</span>
                     </div>
@@ -89,11 +114,21 @@ const Payment = (props) => {
                 <section>
                   <p>電子收據</p>
                   <div className="receiptSection">
-                    <input type="radio" />
+                    <input
+                      type="radio"
+                      value="電子收據（個人）"
+                      checked={receipt === '電子收據（個人）'}
+                      onChange={onChangeReceipt}
+                    />
                     <span className="radioInput">電子收據（個人）</span>
                   </div>
                   <div className="receiptSection">
-                    <input type="radio" />
+                    <input
+                      type="radio"
+                      value="電子收據（公司戶）"
+                      checked={receipt === '電子收據（公司戶）'}
+                      onChange={onChangeReceipt}
+                    />
                     <span className="radioInput">電子收據（公司戶）</span>
                   </div>
                   <span className="receiptContent">
@@ -140,12 +175,12 @@ const Payment = (props) => {
 
               <div className="totalDiscount">
                 {/* todo:優惠券名字component  */}
-                <p className="title">優惠券-新會員入會折扣</p>
-                <p className="totalDiscountNumber">-NT$200</p>
+                <p className="title">優惠券-{couponName}</p>
+                <p className="totalDiscountNumber">-NT${selected}</p>
               </div>
               <div className="totalNumber">
                 <p className="title">總計(付款金額)</p>
-                <p>NT${cartProductData.quantity * cartProductData.price}</p>
+                <p>NT${Number(cartProductData.quantity * cartProductData.price * (1 - selected / 100)).toFixed(0)}</p>
               </div>
             </div>
           </div>
