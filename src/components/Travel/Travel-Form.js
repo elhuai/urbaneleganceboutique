@@ -22,7 +22,7 @@ const TravelForm = () => {
       {}
     );
     console.log('form表單', response.data);
-    handleSuccess('成功建立此行程!', '/Travel_map');
+    handleSuccess('成功建立此行程!', '/Travel');
   }
 
   return (

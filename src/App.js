@@ -28,6 +28,7 @@ import EcProductFilter from './pages/Ecommerce/EC_productFilter';
 import ECOrderSteps from './pages/Ecommerce/EC_checkout';
 import 'swiper/scss';
 import 'swiper/css/bundle';
+
 import './styles/style.scss';
 
 function App() {

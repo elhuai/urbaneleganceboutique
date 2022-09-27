@@ -47,11 +47,14 @@ const centers = [
     user: '席主席',
   },
 ];
-function Map({ travelTicket, planning, traveltitle }) {
+function Map({ travelTicket, planning, traveltitle, gettravelid }) {
   const [center, setcenter] = useState({ lat: 23.17565, lng: 120.9738819 });
   const [zoom, setzoom] = useState(8);
   const [selected, setSelected] = useState(null);
   const mapRef = useRef(null);
+  //新增目前第幾天行程用
+  const [getDays, setGetDays] = useState([]);
+  // console.log('Date這是第幾天行程', getDays);
 
   //  TODO: 別刪除
   useEffect(() => {
@@ -76,13 +79,20 @@ function Map({ travelTicket, planning, traveltitle }) {
   return (
     <>
       <div className="travelmap_body d-flex">
-        <TravelDate planning={planning} traveltitle={traveltitle} />
+        <TravelDate
+          planning={planning}
+          traveltitle={traveltitle}
+          setGetDays={setGetDays}
+          gettravelid={gettravelid} //拿到travelid 更改或新增行程用
+        />
         <div className="travelmap_mainMap">
           <div>
             <TravelmapNavbar
               selected={selected}
               setSelected={setSelected}
-              travelTicket={travelTicket}
+              travelTicket={travelTicket} //票卷API
+              getDays={getDays} //   //新增目前第幾天行程用
+              gettravelid={gettravelid} //拿到travelid 更改或新增行程用
             />
           </div>
           <GoogleMap

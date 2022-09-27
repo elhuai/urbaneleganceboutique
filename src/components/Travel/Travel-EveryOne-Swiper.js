@@ -4,14 +4,14 @@ import { Link } from 'react-router-dom';
 const moment = require('moment');
 
 const TravelFooterSwiper = ({ travelCommunity }) => {
-  // console.log('travelCommunity', travelCommunity);
+  console.log('travelCommunity', travelCommunity);
 
   const newArr = travelCommunity.map((data) => {
     const startDate = moment(data.start_time);
     const endDate = moment(data.end_time);
     const differentDate = endDate.diff(startDate, 'days');
-    console.log(startDate + '跟' + endDate + '相差' + differentDate + '天');
-    console.log('differentDate', differentDate);
+    // console.log(startDate + '跟' + endDate + '相差' + differentDate + '天');
+    // console.log('differentDate', differentDate);
     for (let i = 0; i < travelCommunity.length; i++) {
       travelCommunity[i].differentDays = differentDate;
     }
@@ -71,7 +71,7 @@ const TravelFooterSwiper = ({ travelCommunity }) => {
                 </div>
                 <div className="d-flex align-items-center">
                   <h4 className="travel_Swiper_EveryOnetrip_username mx-md-3 user-select-none">
-                    {data.name}
+                    {data.social_name}
                   </h4>
                   <div>
                     <h4 className="travel_Swiper_EveryOnetrip_follow  ps-2">

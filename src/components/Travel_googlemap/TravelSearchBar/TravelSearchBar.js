@@ -4,6 +4,10 @@ import axios from 'axios';
 import { API_URL } from '../../../utils/config';
 import { HiChevronLeft } from 'react-icons/hi';
 import { HiOutlinePhone } from 'react-icons/hi';
+import { handleSuccess } from '../../../utils/handler/handleStatusCard';
+
+import '@reach/combobox/styles.css';
+
 import './travelsearchBar.scss';
 import usePlacesAutocomplete, {
   getGeocode,
@@ -20,19 +24,31 @@ import {
 import { useState } from 'react';
 import { useEffect } from 'react';
 
-const PlacesAutocomplete = ({ selected, setSelected, travelTicket }) => {
+const PlacesAutocomplete = ({
+  selected,
+  setSelected,
+  travelTicket,
+  getDays,
+  gettravelid,
+}) => {
+  // console.log('這是gettravelid', gettravelid);
   const { tripdetail, setTripdetail } = useState([]);
-
+  // console.log('這是第', getDays, '天的行程');
   async function handleSubmit(e) {
     e.preventDefault();
     let response = await axios.post(
       `${API_URL}/submit/tripdetail`,
-      { mapPhone, mapPhoto, mapName, selected },
+      { mapPhone, mapPhoto, mapName, selected, getDays, gettravelid },
 
       {}
     );
+    console.log('景點圖片新增成功', response);
+    handleSuccess('成功建立此行程!', `/Travel_map?travelid=${gettravelid}`);
+
+    // const data = response.data;
+
     // console.log(response.data);
-    setTripdetail(response.data);
+    // setTripdetail(data);
   }
 
   // console.log('Travel收藏票卷', travelTicket);
@@ -187,9 +203,10 @@ const PlacesAutocomplete = ({ selected, setSelected, travelTicket }) => {
                 />
               </div>
             ) : (
-              mapPhoto.map((vaule) => {
+              mapPhoto.map((vaule, index) => {
                 return (
                   <div
+                    key={index}
                     onClick={() => pictureOnclick(1)}
                     className="travelSearchBar_photo"
                   />
@@ -311,10 +328,15 @@ const PlacesAutocomplete = ({ selected, setSelected, travelTicket }) => {
     </Combobox>
   );
 };
-const TravelSearchBar = ({ selected, setSelected }) => {
+const TravelSearchBar = ({ selected, setSelected, getDays, gettravelid }) => {
   return (
     <>
-      <PlacesAutocomplete setSelected={setSelected} selected={selected} />
+      <PlacesAutocomplete
+        setSelected={setSelected}
+        selected={selected}
+        getDays={getDays}
+        gettravelid={gettravelid}
+      />
     </>
   );
 };

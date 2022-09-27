@@ -1,6 +1,10 @@
 import { DragDropContext, Droppable, Draggable } from 'react-beautiful-dnd';
 import React, { useEffect, useState } from 'react';
+import axios from 'axios';
+import { API_URL } from '../../../utils/config';
 import mapicon from '../../../images/Travel_input_location.svg';
+import { handleSuccess } from '../../../utils/handler/handleStatusCard';
+
 import './Traveldrag.scss';
 import { HiOutlineTrash } from 'react-icons/hi';
 
@@ -9,7 +13,8 @@ const TravelDrag = ({
   indexs,
   setDeviceDetial,
   editdetail,
-  setDeviceindex,
+  setGetDays,
+  gettravelid,
 }) => {
   //子傳父
   useEffect(() => {
@@ -20,7 +25,8 @@ const TravelDrag = ({
   // console.log('editdetail', editdetail);
 
   //
-  console.log('拖移頁面', planning);
+
+  // console.log('拖移頁面', planning);
   const reorder = (list, startIndex, endIndex) => {
     const result = Array.from(list);
     const [removed] = result.splice(startIndex, 1);
@@ -46,8 +52,13 @@ const TravelDrag = ({
   });
 
   const [items, setItems] = useState([]);
-
-  // console.log('移動頁面的items', items);
+  const [getsort, setGetsort] = useState({
+    getsort: {},
+  });
+  // const [getDays, setGetDays] = useState([]);
+  useEffect(() => {
+    setGetDays(indexs + 1);
+  }, []);
 
   useEffect(() => {
     setItems(planning);
@@ -64,8 +75,30 @@ const TravelDrag = ({
       result.destination.index
     );
     setItems(reorderedItems);
+    setGetsort(result.destination.index);
   };
+  console.log('getsort 目前順序是:', getsort);
+  async function handleSubmit(e) {
+    e.preventDefault();
+    try {
+      let formData = new FormData();
+      console.log('getsort', getsort);
+      formData.append('sortID', getsort);
+      // console.log('formData', formData);
+      let response = await axios.post(`${API_URL}/post/locationSort`, {
+        getsort,
+        getlocateid,
+      });
+      handleSuccess('成功變更順序!', `/Travel_map?travelid=${gettravelid}`);
 
+      console.log('sort更改順序成功', response);
+    } catch (e) {
+      console.log('錯誤', e);
+    }
+  }
+  //取景點id來更改順序
+  const [getlocateid, setGetlocateid] = useState([]);
+  console.log('這是景點的順序id', getlocateid);
   return (
     <>
       {editdetail === 0 ? (
@@ -84,13 +117,8 @@ const TravelDrag = ({
                         />
                       ) : (
                         <img
-                          // src={
-                          //   process.env.REACT_APP_BASE_API_URL +
-                          //   '/' +
-                          //   item.photo_path +
-                          //   '/' +
-                          //   item.main_photo
-                          // }
+                          //要Demo再放照片 每次炫覽都號一次google maps api
+                          // src={item.locate_photo}
                           src="https://picsum.photos/1300/1300?random31"
                           className="Travel_Drag_card_img"
                           alt="..."
@@ -99,11 +127,7 @@ const TravelDrag = ({
                     </div>
                     <div className="col-md-8">
                       <div className="card-body">
-                        <div className=" ">
-                          <h5 className="Travel_Drag_card-title">
-                            {/* {item.name} */}
-                          </h5>
-                        </div>
+                        <div className=" "></div>
                         <div className="Travel_Drag_cardText d-flex">
                           <img
                             src={mapicon}
@@ -144,8 +168,8 @@ const TravelDrag = ({
                   ref={provided.innerRef}
                   style={getListStyle(snapshot.isDraggingOver)}
                 >
-                  {items.map((item, index) =>
-                    indexs + 1 === item.days ? (
+                  {items.map((item, index) => {
+                    return indexs + 1 === item.days ? (
                       <Draggable
                         key={item.daysort}
                         draggableId={item.latitude}
@@ -163,7 +187,13 @@ const TravelDrag = ({
                               provided.draggableProps.style
                             )}
                           >
-                            <div className="travelDrag_tittle">
+                            <div
+                              className="travelDrag_tittle"
+                              onClick={() => {
+                                setGetlocateid(item.id);
+                                // console.log('這是景點的id', item.id);
+                              }}
+                            >
                               {item.locate_name}
                             </div>
                           </div>
@@ -171,16 +201,12 @@ const TravelDrag = ({
                       </Draggable>
                     ) : (
                       ''
-                    )
-                  )}
+                    );
+                  })}
                   {provided.placeholder}
-                  {/* <button
-                  onClick={() => {
-                    setDeviceDetial(items);
-                  }}
-                >
-                  123
-                </button> */}
+                  <div onClick={handleSubmit} className="btn border-primary">
+                    完成
+                  </div>
                 </div>
               )}
             </Droppable>

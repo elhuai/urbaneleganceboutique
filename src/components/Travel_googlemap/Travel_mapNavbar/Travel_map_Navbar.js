@@ -48,13 +48,17 @@ function a11yProps(index) {
   };
 }
 
-const Travel_map_Navbar = ({ selected, setSelected, travelTicket }) => {
+const Travel_map_Navbar = ({
+  selected,
+  setSelected,
+  travelTicket,
+  getDays,
+  gettravelid,
+}) => {
   const [value, setValue] = useState(0);
-
   const handleChange = (event, newValue) => {
     setValue(newValue);
   };
-
   return (
     <Box sx={{ width: '100%' }} className="travel_map_Container">
       <Box sx={{ borderBottom: 1, borderColor: 'divider' }} className="">
@@ -108,7 +112,12 @@ const Travel_map_Navbar = ({ selected, setSelected, travelTicket }) => {
       </TabPanel>
       <TabPanel value={value} index={2} component={'span'} variant={'body2'}>
         <div className=" ">
-          <TravelSearchBar setSelected={setSelected} selected={selected} />
+          <TravelSearchBar
+            setSelected={setSelected}
+            selected={selected}
+            getDays={getDays}
+            gettravelid={gettravelid}
+          />
         </div>
       </TabPanel>
     </Box>

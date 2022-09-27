@@ -7,6 +7,7 @@ import Box from '@mui/material/Box';
 import TravelDrag from '../TravelDrag/TravelDrag';
 import { HiChevronLeft } from 'react-icons/hi';
 import { MdPhotoSizeSelectActual } from 'react-icons/md';
+
 // import CoverBackground from '../../../images/post_edit_background_banner.png';
 
 import { NavLink } from 'react-router-dom';
@@ -46,16 +47,11 @@ const travelprops = (index) => {
     'aria-controls': `simple-tabpanel-${index}`,
   };
 };
-const TravelDate = ({ planning, traveltitle }) => {
+const TravelDate = ({ planning, traveltitle, setGetDays, gettravelid }) => {
   ////傳給子層
   const [deviceDetial, setDeviceDetial] = useState({}); //axios post 到後端
-  // console.log('移動變更後的deviceDetial', deviceDetial);
-  const [deviceindex, setDeviceindex] = useState({});
   ///
   const moment = require('moment');
-
-  // console.log('日期頁', planning);
-  // console.log('日期頁開頭和標題', traveltitle);
   const [value, setValue] = useState(0);
   const handleChange = (event, newValue) => {
     setValue(newValue);
@@ -116,6 +112,7 @@ const TravelDate = ({ planning, traveltitle }) => {
       formData.append('title', member.title);
       formData.append('photo', member.photo);
       formData.append('date', showdate.pop());
+      formData.append('travelID', gettravelid);
 
       let response = await axios.post(
         `${API_URL}/post/datelocationId`,
@@ -140,7 +137,6 @@ const TravelDate = ({ planning, traveltitle }) => {
   const changeHandler = (e) => {
     setMember({ ...member, photo: e.target.files[0] });
   };
-
   return (
     <>
       <div className="travleDrag_body">
@@ -244,6 +240,7 @@ const TravelDate = ({ planning, traveltitle }) => {
               </Box>
             </div>
 
+            {/* 記得這沒有key 找時間補上 */}
             {showdate.map((data, indexs) => {
               return (
                 <TabPanel value={value} index={indexs}>
@@ -252,6 +249,8 @@ const TravelDate = ({ planning, traveltitle }) => {
                     indexs={indexs}
                     setDeviceDetial={setDeviceDetial}
                     editdetail={editdetail}
+                    setGetDays={setGetDays}
+                    gettravelid={gettravelid}
                   />
                 </TabPanel>
               );
