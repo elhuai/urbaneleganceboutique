@@ -2,6 +2,7 @@ import axios from 'axios';
 import '../styles/_EC_subpages_OrderDetail.scss';
 import { react, useState, useEffect } from 'react';
 import { API_URL } from '../../../../utils/config';
+import moment from 'moment/moment';
 
 function OrderDetail(props) {
   const {
@@ -33,10 +34,8 @@ function OrderDetail(props) {
             products: [
               {
                 name: cartProductData.name,
-                quantity: cartProductData.quantity,
-                price: Number(
-                  (cartProductData.quantity * cartProductData.price * (1 - selected / 100)) / cartProductData.quantity
-                ).toFixed(0),
+                quantity: 1,
+                price: Number(cartProductData.quantity * cartProductData.price * (1 - selected / 100)).toFixed(0),
                 originalPrice: cartProductData.price,
               },
             ],
@@ -55,7 +54,7 @@ function OrderDetail(props) {
         pay: 'LinePay',
         coupon_number: 8,
         coupon_name: '小確幸92折優惠',
-        order_time: new Date().getTime(),
+        order_time: moment().format('YYYY-MM-DD HH:mm:ss'),
       });
       // console.log('orderBuying', orderBuying);
     };
@@ -76,7 +75,7 @@ function OrderDetail(props) {
     const createOrder = async (e, id) => {
       // e.preventDefault();
       try {
-        console.log('-----createOrderBuying---------', orderBuying);
+        console.log('----------createOrderBuying---------', orderBuying);
         let result = await axios.post(`${API_URL}/createorder/order`, { orderBuying });
       } catch (error) {
         console.log('error', error);
@@ -84,21 +83,32 @@ function OrderDetail(props) {
     };
     createOrder();
 
-    // const linePay = async (e, id) => {
-    //   // e.preventDefault();
-    //   try {
-    //     console.log('try-----order', order);
-    //     // 打後端ＬＩＮＥＡＰＩ
-    //     let result = await axios.post(`${API_URL}/line/createOrder`, { order });
-    //     if (result.data.status === 'ok') {
-    //       window.location = result.data.redirect;
-    //       // console.log(result.data.redirect);
-    //     }
-    //   } catch (error) {
-    //     console.log('error', error);
-    //   }
-    // };
-    // linePay();
+    const deleteCart = async (e, id) => {
+      // e.preventDefault();
+      try {
+        console.log('---------deleteCartId---------', cartProductData.product_id);
+        let result = await axios.post(`${API_URL}/deletecart/cart:${cartProductData.product_id}`);
+      } catch (error) {
+        console.log('error', error);
+      }
+    };
+    deleteCart();
+
+    const linePay = async (e, id) => {
+      // e.preventDefault();
+      try {
+        console.log('try-----order', order);
+        // 打後端ＬＩＮＥＡＰＩ
+        let result = await axios.post(`${API_URL}/line/createOrder`, { order });
+        if (result.data.status === 'ok') {
+          window.location = result.data.redirect;
+          // console.log(result.data.redirect);
+        }
+      } catch (error) {
+        console.log('error', error);
+      }
+    };
+    linePay();
   };
 
   return (
