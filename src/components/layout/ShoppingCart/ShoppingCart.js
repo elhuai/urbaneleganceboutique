@@ -4,7 +4,6 @@ import axios from 'axios';
 import { API_URL } from '../../../utils/config';
 import { Link } from 'react-router-dom';
 import { IoChevronBack } from 'react-icons/io5';
-// import Button from 'react-bootstrap/Button';
 import Offcanvas from 'react-bootstrap/Offcanvas';
 import { IoCart, IoCaretBack, IoCaretForward } from 'react-icons/io5';
 import { useUserInfo } from '../../../hooks/useUserInfo';
@@ -16,16 +15,13 @@ import './_ShoppingCart.scss';
 import { handleLoginCard } from '../../../utils/handler/card/handleInputCard';
 
 function ShoppingCart({ name, ...props }) {
+
   const [show, setShow] = useState(false);
   const { cart, setCart } = props;
-
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
-
-  // const [number, setNumber] = useState(1);
-  const [quantity, setQuantity] = useState(0);
-
   const { user, setUser } = useUserInfo();
+  
   const addCart = async (e, id) => {
     // e.preventDefault();
     if (user.auth) {
@@ -129,7 +125,7 @@ function ShoppingCart({ name, ...props }) {
           <section>
             <div className="headerRow">
               {' '}
-              <IoChevronBack />
+              <IoChevronBack onClick={handleClose}/>
               購物車-商品一覽
             </div>
             <div className="mainRow">

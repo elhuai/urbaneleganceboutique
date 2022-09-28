@@ -98,7 +98,7 @@ function OrderDetail(props) {
       // e.preventDefault();
       try {
         console.log('try-----order', order);
-        // 打後端ＬＩＮＥＡＰＩ
+        // 打後端LinePayAPI
         let result = await axios.post(`${API_URL}/line/createOrder`, { order });
         if (result.data.status === 'ok') {
           window.location = result.data.redirect;
