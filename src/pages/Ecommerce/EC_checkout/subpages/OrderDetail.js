@@ -19,35 +19,23 @@ function OrderDetail(props) {
 
   // const [cart, setCart] = useState([]);
   const [order, setOrder] = useState(null);
-  const [orderId, setOrderId] = useState();
+  const [orderBuying, setOrderBuying] = useState(null);
 
   useEffect(() => {
     const fetchProductData = async () => {
-      
       setOrder({
-        amount: Number(
-          cartProductData.quantity *
-            cartProductData.price *
-            (1 - selected / 100)
-        ).toFixed(0),
+        amount: Number(cartProductData.quantity * cartProductData.price * (1 - selected / 100)).toFixed(0),
         currency: 'TWD',
         packages: [
           {
             id: packageIdGenerater(cartProductData.user_id),
-            amount: Number(
-              cartProductData.quantity *
-                cartProductData.price *
-                (1 - selected / 100)
-            ).toFixed(0),
+            amount: Number(cartProductData.quantity * cartProductData.price * (1 - selected / 100)).toFixed(0),
             products: [
               {
                 name: cartProductData.name,
                 quantity: cartProductData.quantity,
                 price: Number(
-                  (cartProductData.quantity *
-                    cartProductData.price *
-                    (1 - selected / 100)) /
-                    cartProductData.quantity
+                  (cartProductData.quantity * cartProductData.price * (1 - selected / 100)) / cartProductData.quantity
                 ).toFixed(0),
                 originalPrice: cartProductData.price,
               },
@@ -55,14 +43,25 @@ function OrderDetail(props) {
           },
         ],
         orderId: packageIdGenerater(cartProductData.user_id),
-        // })
       });
-      console.log(order);
+      // console.log(order);
+      setOrderBuying({
+        user_id: cartProductData.user_id,
+        product_id: cartProductData.product_id,
+        product_quantity: cartProductData.quantity,
+        product_price: cartProductData.price,
+        order_no: packageIdGenerater(cartProductData.user_id),
+        total: Number(cartProductData.quantity * cartProductData.price * (1 - selected / 100)).toFixed(0),
+        pay: 'LinePay',
+        coupon_number: 8,
+        coupon_name: '小確幸92折優惠',
+        order_time: new Date().getTime(),
+      });
+      // console.log('orderBuying', orderBuying);
     };
+
     fetchProductData();
   }, []);
-
-  let dt = new Date();
 
   const packageIdGenerater = (user_id) => {
     let dt = new Date();
@@ -70,9 +69,20 @@ function OrderDetail(props) {
   };
 
   const handlePay = () => {
-    const id = order.packages[0].id;
-    console.log('id', id);
-    setOrderId(id);
+    // const id = order.packages[0].id;
+    // console.log('id', id);
+    // setOrderId(id);
+
+    const createOrder = async (e, id) => {
+      // e.preventDefault();
+      try {
+        console.log('-----createOrderBuying---------', orderBuying);
+        let result = await axios.post(`${API_URL}/createorder/order`, { orderBuying });
+      } catch (error) {
+        console.log('error', error);
+      }
+    };
+    createOrder();
 
     // const linePay = async (e, id) => {
     //   // e.preventDefault();
@@ -89,23 +99,6 @@ function OrderDetail(props) {
     //   }
     // };
     // linePay();
-
-
-    const linePay = async (e, id) => {
-      // e.preventDefault();
-      try {
-        console.log('try-----order', order);
-        // 打後端ＬＩＮＥＡＰＩ
-        let result = await axios.post(`${API_URL}/line/createOrder`, { order });
-        if (result.data.status === 'ok') {
-          window.location = result.data.redirect;
-          // console.log(result.data.redirect);
-        }
-      } catch (error) {
-        console.log('error', error);
-      }
-    };
-    linePay();
   };
 
   return (
@@ -150,11 +143,7 @@ function OrderDetail(props) {
               <div className="subTitle">總計(付款金額)</div>
               <div className="subInput">
                 NT$
-                {Number(
-                  cartProductData.quantity *
-                    cartProductData.price *
-                    (1 - selected / 100)
-                ).toFixed(0)}
+                {Number(cartProductData.quantity * cartProductData.price * (1 - selected / 100)).toFixed(0)}
               </div>
             </div>
             {/* <form action="/line/createOrder/<%= orderId %>" method="post"> */}
