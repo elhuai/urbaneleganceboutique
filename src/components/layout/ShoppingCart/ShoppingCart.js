@@ -12,6 +12,9 @@ import { handleSuccess } from '../../../utils/handler/card/handleStatusCard';
 import { TbTicket } from 'react-icons/tb';
 import './_ShoppingCart.scss';
 
+// 購物車跳出頁面
+import { handleLoginCard } from '../../../utils/handler/card/handleInputCard';
+
 function ShoppingCart({ name, ...props }) {
   const [show, setShow] = useState(false);
   const { cart, setCart } = props;
@@ -53,7 +56,7 @@ function ShoppingCart({ name, ...props }) {
         console.log('error', error);
       }
     } else {
-      addCart({ isLogin: true }, setUser);
+      handleLoginCard({ isLogin: true }, setUser);
     }
   };
 
@@ -90,6 +93,20 @@ function ShoppingCart({ name, ...props }) {
       addCart({ isLogin: true }, setUser);
     }
   };
+
+  const cartOrder = async (e, id) => {
+    e.preventDefault();
+    if (user.auth) {
+      try {
+        window.location = `/ec-ordersteps?productId=${id}`;
+      } catch (error) {
+        console.log('error', error);
+      }
+    } else {
+      addCart({ isLogin: true }, setUser);
+    }
+  };
+
   useEffect(() => {
     const fetchProductData = async () => {
       // 抓商品細節資料
@@ -156,9 +173,14 @@ function ShoppingCart({ name, ...props }) {
 
                         <p>NT${v.quantity * v.price}</p>
                       </div>
-                      <Link to={`/ec-ordersteps?productId=${v.product_id}`}>
-                        <button>確定下單</button>
-                      </Link>
+                      <button
+                        value={v.product_id}
+                        onClick={(e) => {
+                          cartOrder(e, v.product_id);
+                        }}
+                      >
+                        確定下單
+                      </button>
                     </div>
                   </div>
                 );
