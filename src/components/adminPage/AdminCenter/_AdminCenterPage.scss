@@ -11,8 +11,7 @@ $hightLight-color: #EF7A70;
 .admin_main {
   .admin_main{
     &_content {
-      padding: 40px 0 0 40px;
-      padding-right: 8px;
+      padding: 40px 6px 36px 40px;
       hr {
         margin: 24px 0 ;
         height: 3px;
@@ -21,6 +20,10 @@ $hightLight-color: #EF7A70;
         border-radius: 50px;
       }
     }
+  }
+  .tab-content {
+    padding-right: 6px;
+    padding-bottom: 36px;
   }
   > .d-flex {
     animation: admin-fade-in .2s ease-out 0s 1 forwards;
@@ -40,6 +43,17 @@ $hightLight-color: #EF7A70;
           border: 0;
           background-color: $main-color;
           border-radius: 50px;
+        }
+      }
+    }
+    .communityManagementTab {
+      margin-top: 20px;
+      margin-left: 20px;
+      margin-right: 20px;
+      button {
+        p{
+          font-size: 16px;
+          color: #333;
         }
       }
     }

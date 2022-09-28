@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { useSearchParams } from 'react-router-dom';
+import { useNavigate, useSearchParams } from 'react-router-dom';
 import HeroSearch from '../../components/homePage/HeroSearch';
 import NewsList from '../../components/homePage/NewsList';
 import TourRoute from '../../components/homePage/TourRoute';
@@ -7,12 +7,15 @@ import LeaderBoardSlide from '../../components/homePage/LeaderBoardSlide';
 import SocialBubble from '../../components/homePage/SocialBubble';
 import TravelCard from '../../components/homePage/TravelCard/';
 import Loading from '../../components/layout/Loading';
-import FakeMap from '../../images/home_travel_map.png';
+import sort_img1 from '../../images/home_travel_sort1.jpg';
+import sort_img2 from '../../images/home_travel_sort2.jpg';
+import sort_img3 from '../../images/home_travel_sort3.png';
 import { useUserInfo } from '../../hooks/useUserInfo';
 
 import './_homepage.scss';
 
 const Homepage = () => {
+  const navigate = useNavigate();
   const { user, setUser } = useUserInfo();
   const [heroAnimete, setHeroAnimete] = useState(false);
   const [heroActive, setHeroActive] = useState(false);
@@ -25,24 +28,6 @@ const Homepage = () => {
   const handleHeroAnimete = () => {
     setHeroAnimete(true);
   };
-  // const redirectPath = window.localStorage.getItem('last_page');
-  // if (
-  //   searchParam.get('line_login') &&
-  //   searchParam.get('code') &&
-  //   searchParam.get('state') === 'ohdogcat_Line_Login' &&
-  //   window.localStorage.getItem('line_login')
-  // ) {
-  //   console.log('code');
-  //   const lineVerifyCode = searchParam.get('code');
-  //   console.log('first', user.firstVerify, 'user.auth', user.auth);
-  //   if (!user.auth && !user.firstVerify) {
-  //     callLineLoginApi(lineVerifyCode, setUser, redirectPath);
-  //   }
-  // } else {
-  //   if (searchParam.get('line_login') === 'false') {
-  //     handleFailed('LINE 連動登入失敗');
-  //   }
-  // }
 
   useEffect(() => {
     if (!heroAnimete) return;
@@ -51,6 +36,19 @@ const Homepage = () => {
     }, 1500);
   }, [heroAnimete]);
 
+  const widthCalc = (heroActive) => {
+    switch (heroActive) {
+      case 0:
+        return '430px';
+      case 1:
+        return '760px';
+      case 2:
+        return '720px';
+      default:
+        break;
+    }
+  };
+
   return searchParam.get('line_login') && user.data.social_name === '' ? (
     <Loading />
   ) : (
@@ -58,9 +56,14 @@ const Homepage = () => {
       <div className="home_section_hero">
         <div className="section_container">
           <div
-            className={`hero_text_wrap hero_text_animation${heroActive}`}
-          ></div>
+            className={`hero_text_wrap wrap${
+              heroActive + 1
+            } hero_text_animation${heroActive + 1}`}
+          >
+            <div className="h-100 w-100"></div>
+          </div>
           <div className="hero_search_wrap">
+            {/* // TODO: 串接搜尋結果，檔案在 /src/components/homePage/HeroSearch */}
             <HeroSearch
               handleHeroAnimete={handleHeroAnimete}
               handleHeroActive={handleHeroActive}
@@ -79,7 +82,8 @@ const Homepage = () => {
               <h2>最新情報</h2>
             </div>
             <div className="news_sidebar_nav">
-              <ul className="list-unstyled m-0">
+              {/* // TODO: 電腦版 tab，要換字 */}
+              <ul className="list-unstyled m-0 desktop">
                 <li className={newsActive === 1 ? 'active' : ''}>
                   <button
                     onClick={() => {
@@ -117,12 +121,48 @@ const Homepage = () => {
                   </button>
                 </li>
               </ul>
+              {/* // TODO: 手機版 tab，要換字 */}
+              <ul className="list-unstyled m-0 mobile">
+                <li
+                  className={newsActive === 1 ? 'active' : ''}
+                  onClick={() => {
+                    setNewsActive(1);
+                  }}
+                >
+                  出遊必備
+                </li>
+                <li
+                  className={newsActive === 2 ? 'active' : ''}
+                  onClick={() => {
+                    setNewsActive(2);
+                  }}
+                >
+                  最夯景點
+                </li>
+                <li
+                  className={newsActive === 3 ? 'active' : ''}
+                  onClick={() => {
+                    setNewsActive(3);
+                  }}
+                >
+                  搶手住宿
+                </li>
+                <li
+                  className={newsActive === 4 ? 'active' : ''}
+                  onClick={() => {
+                    setNewsActive(4);
+                  }}
+                >
+                  優質餐廳
+                </li>
+              </ul>
             </div>
           </div>
           <div className="news_dog_img align-self-center">
-            <div className="dog"></div>
+            <div className={`dog${newsActive} active${newsActive}`}></div>
           </div>
           <div className="news_list">
+            {/* // TODO: 串接最新商品，檔案在 /src/components/homePage/NewsList */}
             <NewsList active={newsActive} />
           </div>
         </div>
@@ -133,6 +173,7 @@ const Homepage = () => {
             <p>跟著小編一起玩</p>
             <h2>小道消息報你知</h2>
           </div>
+          {/* // TODO: 放上連結，串接最新商品，檔案在 /src/components/homePage/TourRoute */}
           <TourRoute />
         </div>
       </div>
@@ -144,6 +185,7 @@ const Homepage = () => {
           </div>
         </div>
         <div className="leaderboard_slide">
+          {/* // TODO: 串接商品排行資料，檔案在 /src/components/homePage/LeaderBoardSlide */}
           <LeaderBoardSlide />
         </div>
       </div>
@@ -159,9 +201,13 @@ const Homepage = () => {
             </span>
             <br />
             <div>
-              <button className="w-100">來去看看</button>
+              {/* // TODO: 我不知道這邊你想怎麼串，頂多就是這顆按鈕多加連結吧 */}
+              <button className="w-100" onClick={() => navigate('/網址')}>
+                來去看看
+              </button>
             </div>
           </div>
+          {/* // TODO: 我不知道這邊你想怎麼串，檔案在 /src/components/homePage/SocialBubble */}
           <SocialBubble />
         </div>
       </div>
@@ -173,25 +219,56 @@ const Homepage = () => {
                 <p>哪裡好玩報給你</p>
                 <h2>行程規劃</h2>
               </div>
-              <div className="travel_search flex-fill align-self-end">
-                <input
-                  className="form-control"
-                  type="text"
-                  placeholder="請輸入地點"
-                />
-              </div>
+              <div className="travel_search flex-fill align-self-end"></div>
             </div>
             <div className="travel_body_wrap d-flex gap-4 w-100">
               <div className="travel_map">
-                <div className="obj-fit">
-                  <img src={FakeMap} alt="" />
+                <div className="travel_sort travel_sort1">
+                  <div className="obj-fit">
+                    <img src={sort_img1} alt="" />
+                  </div>
+                  <div className="travel_sort_text">
+                    <div className="time">| 90 分鐘</div>
+                    <div className="place">冬山河親水公園</div>
+                    <div className="location">
+                      268 宜蘭縣五結鄉親河路二段 2 號
+                    </div>
+                  </div>
+                </div>
+                <div className="travel_sort travel_sort2">
+                  <div className="obj-fit">
+                    <img src={sort_img2} alt="" />
+                  </div>
+                  <div className="travel_sort_text">
+                    <div className="time">| 60 分鐘</div>
+                    <div className="place">斑比山丘</div>
+                    <div className="location">
+                      269 宜蘭縣冬山鄉下湖路 285 號
+                    </div>
+                  </div>
+                </div>
+                <div className="travel_sort travel_sort3">
+                  <div className="obj-fit">
+                    <img src={sort_img3} alt="" />
+                  </div>
+                  <div className="travel_sort_text">
+                    <div className="time">| 30 分鐘</div>
+                    <div className="place">壯圍沙丘旅遊服務園區</div>
+                    <div className="location">
+                      263 宜蘭縣壯圍鄉壯濱路二段 196 巷 18 號
+                    </div>
+                  </div>
                 </div>
               </div>
               <div className="travel_content d-flex flex-column">
                 <div className="travel_content_card flex-fill">
+                  {/* // TODO: 串接資料跟連結，檔案在 /src/components/homePage/TravelCard */}
                   <TravelCard />
                 </div>
-                <button className="w-100">開始規劃你的行程</button>
+                {/* // TODO: 連結 */}
+                <button className="w-100" onClick={() => navigate('/網址')}>
+                  開始規劃你的行程
+                </button>
               </div>
             </div>
           </div>

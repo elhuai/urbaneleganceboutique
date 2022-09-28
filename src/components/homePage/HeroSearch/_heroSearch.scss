@@ -1,3 +1,7 @@
+$main-color: #FFC715;
+$hightLight-color: #EF7A70;
+
+
 %input-text {
   color: rgb(194, 194, 194);
   font-size: 14px;
@@ -16,12 +20,81 @@
           @extend %input-text;
         }
       }
+      button {
+        background-color: $main-color;
+        color: #fff;
+      }
     }
     .tab_wrap {
       button {
         background-color: #fff;
         border-radius: 0;
+        width: 33%;
+      }
+      .underline_effect {
+        position: absolute;
+        width: 33.3333333333333%;
+        height: 4px;
+        border-radius: 8px;
+        background-color: $main-color;
+        top: 40px;
+        left: 0;
+        transition: .3s ease-in-out;
       }
     }
   }
 }
+
+@media screen and (max-width: 768px) {
+  .home_main {
+    .hero_search {
+      .input_wrap {
+        input {
+          height: 50px;
+          font-size: 14px;
+        }
+        button {
+          width: 50px;
+          height: 50px;
+          padding: 0;
+          svg {
+            width: 30px;
+            height: 30px;
+          }
+        }
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 540px) {
+  .home_main {
+    .hero_search {
+      .tab_wrap {
+        button {
+          font-size: 14px;
+        }
+        .underline_effect {
+          top: 36px;
+          height: 3px;
+        }
+      }
+      .input_wrap {
+        padding: 24px 12px 20px 12px;
+        input {
+          height: 40px;
+          font-size: 14px;
+        }
+        button {
+          width: 40px;
+          height: 40px;
+          svg {
+            width: 20px;
+            height: 20px;
+          }
+        }
+      }
+    }
+  }
+}
+

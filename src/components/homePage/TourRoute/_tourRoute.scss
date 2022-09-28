@@ -1,3 +1,7 @@
+$main-color: #FFC715;
+$second-color: #FEEFC3;
+$hightLight-color: #EF7A70;
+
 @mixin media-1280 {
   @media screen and (max-width: 1280px) {
     @content;
@@ -9,8 +13,9 @@
     @content;
   }
 }
+
 @mixin media-phone {
-  @media screen and (max-width: 485px) {
+  @media screen and (max-width: 540px) {
     @content;
   }
 }
@@ -47,6 +52,11 @@ $top: (
       padding: 8px 16px;
       transform: translateY(-100%);
       z-index: 99;
+      background-color: $second-color;
+      color: #333;
+    }
+    @include media-1280 {
+      
     }
   }
   
@@ -82,9 +92,92 @@ $top: (
 
 @include media-1280 {
   .home_main {
+    .home_section_tour {
+      .section_container {
+        width: 90%;
+        margin: 0 auto;
+      }
+    }
     .tour_route {
+      transform: translateX(16px);
       background: url(../../../images/home_tour_route.png) no-repeat 20px center / contain;
-      height: calc((100vw - 120px) * 0.40852130325);
+      height: calc((90vw - 120px) * 0.40852130325);
+      &_item {
+        // width: calc(100vw * 0.15625);
+        height: calc(100vw * 0.17968);
+        transform: translateY(-95%) scale(.8) translateX(calc(-20% - 20px));
+        &:nth-child(4) {
+          transform: translateY(-95%) scale(.8) translateX(0%);
+        }
+        > div {
+          background-size: calc(100vw * 0.1328125);
+        }
+      }
     }
   }
 } 
+
+@media screen and (max-width: 980px) {
+  .home_main {
+    .tour_route {
+      display: flex;
+      flex-wrap: wrap;
+      background: none;
+      height: auto;
+      width: 100%;
+      transform: translateX(0) translateY(-24px);
+      &_item {
+        position: relative !important;
+        top: auto;
+        left: auto;
+        right: auto;
+        width: 25%;
+        height: 180px;
+        transform: translateY(0) scale(1) translateX(0) !important;
+        > div {
+          background-size: 140px;
+          background-position: center -12%;
+        };
+        button {
+          width: calc(100% - 16px);
+        }
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 780px) {
+  .home_main {
+    .tour_route {
+      transform: translateX(0) translateY(-24px);
+      &_item {
+        width: 50%;
+        height: 32vw;
+        > div {
+          background-size: 25.641vw;
+          background-position: center calc(-6% - 10px);
+        };
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 780px) {
+  .home_main {
+    .tour_route {
+      transform: translateX(0) translateY(-24px);
+      &_item {
+        width: 50%;
+        height: 200px;
+        > div {
+          background-size: 160px;
+          background-position: center calc(-6% - 10px);
+        }
+        button {
+          font-size: 14px;
+          font-weight: bold;
+        }
+      }
+    }
+  }
+}
