@@ -23,7 +23,6 @@ function OrderDetail(props) {
 
   useEffect(() => {
     const fetchProductData = async () => {
-      
       setOrder({
         amount: Number(
           cartProductData.quantity *
@@ -89,7 +88,6 @@ function OrderDetail(props) {
     //   }
     // };
     // linePay();
-
 
     const linePay = async (e, id) => {
       // e.preventDefault();
