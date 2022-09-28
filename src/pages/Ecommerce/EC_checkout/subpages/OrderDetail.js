@@ -23,12 +23,7 @@ function OrderDetail(props) {
 
   useEffect(() => {
     const fetchProductData = async () => {
-      // 抓商品細節資料
-      // const result = await axios.get(`${API_URL}/cart/getcart/`);
-      // const [cartData] = result.data;
-
-      // setCart(cartData);
-
+      
       setOrder({
         amount: Number(cartProductData.quantity * cartProductData.price * (1 - selected / 100)).toFixed(0),
         currency: 'TWD',
@@ -65,6 +60,23 @@ function OrderDetail(props) {
     const id = order.packages[0].id;
     console.log('id', id);
     setOrderId(id);
+
+    // const linePay = async (e, id) => {
+    //   // e.preventDefault();
+    //   try {
+    //     console.log('try-----order', order);
+    //     // 打後端ＬＩＮＥＡＰＩ
+    //     let result = await axios.post(`${API_URL}/line/createOrder`, { order });
+    //     if (result.data.status === 'ok') {
+    //       window.location = result.data.redirect;
+    //       // console.log(result.data.redirect);
+    //     }
+    //   } catch (error) {
+    //     console.log('error', error);
+    //   }
+    // };
+    // linePay();
+
 
     const linePay = async (e, id) => {
       // e.preventDefault();
