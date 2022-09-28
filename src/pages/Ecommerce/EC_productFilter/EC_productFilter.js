@@ -3,7 +3,8 @@ import React from 'react';
 import SearchBar from '../../../components/SearchBar/SearchBar_search';
 import FilterActive from '../../../components/EC/EC_ProductFilter/FilterActive';
 import FilterList from '../../../components/EC/EC_ProductFilter/FilterList';
-import FilterRWDList from '../../../components/EC/EC_ProductFilter/FilterRWDList';
+import FilterRWDCondition from '../../../components/EC/EC_ProductFilter/FilterRWD_condition';
+import FilterRWDSort from '../../../components/EC/EC_ProductFilter/FilterRWD_sort';
 import FilterResult from '../../../components/EC/EC_ProductFilter/FilterResult';
 import FilterPages from './../../../components/EC/EC_ProductFilter/FilterPages/FilterPages';
 
@@ -86,7 +87,7 @@ function EcProductFilter() {
           {/*篩選結果 */}
           <div className="ecProductFilter_result flex-2">
             <div className="ecProductFilter_list_rwd">
-              <FilterRWDList
+              <FilterRWDCondition
                 setProductData={setProductData}
                 setTag={setTag}
                 maxPrice={maxPrice}
@@ -95,6 +96,14 @@ function EcProductFilter() {
                 setMinPrice={setMinPrice}
                 typeId={currentType}
                 setPage={setPage}
+                placement={'bottom'}
+                name={'bottom'}
+              />
+              <FilterRWDSort
+                setPage={setPage}
+                setOrder={setOrder}
+                placement={'bottom'}
+                name={'bottom'}
               />
             </div>
             <FilterResult

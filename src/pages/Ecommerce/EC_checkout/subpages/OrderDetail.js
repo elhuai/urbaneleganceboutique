@@ -25,17 +25,30 @@ function OrderDetail(props) {
     const fetchProductData = async () => {
       
       setOrder({
-        amount: Number(cartProductData.quantity * cartProductData.price * (1 - selected / 100)).toFixed(0),
+        amount: Number(
+          cartProductData.quantity *
+            cartProductData.price *
+            (1 - selected / 100)
+        ).toFixed(0),
         currency: 'TWD',
         packages: [
           {
             id: packageIdGenerater(cartProductData.user_id),
-            amount: Number(cartProductData.quantity * cartProductData.price * (1 - selected / 100)).toFixed(0),
+            amount: Number(
+              cartProductData.quantity *
+                cartProductData.price *
+                (1 - selected / 100)
+            ).toFixed(0),
             products: [
               {
                 name: cartProductData.name,
                 quantity: cartProductData.quantity,
-                price: Number((cartProductData.quantity * cartProductData.price * (1 - selected / 100))/cartProductData.quantity).toFixed(0),
+                price: Number(
+                  (cartProductData.quantity *
+                    cartProductData.price *
+                    (1 - selected / 100)) /
+                    cartProductData.quantity
+                ).toFixed(0),
                 originalPrice: cartProductData.price,
               },
             ],
@@ -136,7 +149,12 @@ function OrderDetail(props) {
             <div className="calculateSection1">
               <div className="subTitle">總計(付款金額)</div>
               <div className="subInput">
-                NT${Number(cartProductData.quantity * cartProductData.price * (1 - selected / 100)).toFixed(0)}
+                NT$
+                {Number(
+                  cartProductData.quantity *
+                    cartProductData.price *
+                    (1 - selected / 100)
+                ).toFixed(0)}
               </div>
             </div>
             {/* <form action="/line/createOrder/<%= orderId %>" method="post"> */}

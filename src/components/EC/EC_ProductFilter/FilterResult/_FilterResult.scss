@@ -183,3 +183,11 @@ $royal-blue: #22C3FF;
     }
   }
 }
+
+@media (max-width: 768px) {
+  .ecProductFilter {
+    .product-filter-left {
+      display: none;
+    }
+  }
+}

@@ -29,7 +29,7 @@ import EcCommodityHomepage from './pages/Ecommerce/EC_HomePage/EC_4Commodity_Hom
 import EcProductDetail from './pages/Ecommerce/ProductDetail';
 import EcProductFilter from './pages/Ecommerce/EC_productFilter';
 import ECOrderSteps from './pages/Ecommerce/EC_checkout';
-import ECLinePay from './pages/Ecommerce/EC_LinePay'
+import ECLinePay from './pages/Ecommerce/EC_LinePay';
 import 'swiper/scss';
 import 'swiper/css/bundle';
 import './styles/style.scss';

@@ -64,7 +64,7 @@ const FilterResult = (props) => {
               setPage(1);
             }}
           >
-            價格：低到高
+            價格：高到低
           </button>
         </span>
         <span>
@@ -78,7 +78,7 @@ const FilterResult = (props) => {
               setPage(1);
             }}
           >
-            價格：高到低
+            價格：低到高
           </button>
         </span>
         <span>
@@ -127,7 +127,9 @@ const FilterResult = (props) => {
               </span>
             );
           }
-          console.log(label);
+          {
+            /* console.log(label); */
+          }
           return label;
         };
         return (

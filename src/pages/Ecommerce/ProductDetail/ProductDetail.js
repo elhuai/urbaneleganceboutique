@@ -14,6 +14,9 @@ import { useUserInfo } from '../../../hooks/useUserInfo';
 import ItemImage from '../../../components/EC/EC_productDetail/Image';
 // 兌換方式照片
 import Exchange from '../../../images/EC_detail/exchange.svg';
+import ExchangeRWD01 from '../../../images/EC_detail/exchange_RWD_1.png';
+import ExchangeRWD02 from '../../../images/EC_detail/exchange_RWD_2.png';
+import ExchangeRWD03 from '../../../images/EC_detail/exchange_RWD_3.png';
 
 // 街景
 // import Streeview from '../../../components/EC/EC_productDetail/StreetView';
@@ -58,7 +61,7 @@ const ProductDetail = () => {
     };
     fetchProductData();
   }, []);
-  // console.log('title', title);
+  console.log('productData', productData);
 
   // = 加入購物車
   const { user, setUser } = useUserInfo();
@@ -179,7 +182,7 @@ const ProductDetail = () => {
                     className="addButton"
                     onClick={(e) => {
                       // console.log(e.target.value);
-                      addCart(e, productId);
+                      addCart(e, productData.id);
                       // handleSuccess('已成功加入購物車');
                     }}
                   >
@@ -219,26 +222,29 @@ const ProductDetail = () => {
                   />
                   <img src="" alt="" />
                 </div>
-                <div className="description">
-                  <h4 id="toKnow">購買須知</h4>
+                <div id="toKnow" className="description">
+                  <h4>購買須知</h4>
                   <p>
                     • 因應疫情及政府規範，現場兌換商品請符合防疫等相關規定。
                     <br />
-                    • 購買餐廳票券請提前電話預約並告知使用兌換券
+                    • 購買景點票券使用時間將以景點公告為主，不另行告知。
                     <br />
                     •
-                    入住登記者須年滿18歲。未滿18歲之未成年旅客，須由家長陪同入住。
+                    購買餐廳票券請提前電話預約並告知使用兌換券，餐點有限避免向隅。
                     <br />
-                    • 每間客房最多容納 1 名 0-12
-                    歲的孩童，使用現有床鋪無法加床。
+                    •
+                    購買商品票券商家將保留依照庫存變更、修改商品之權利，無法配合規定者請勿預訂。
                     <br />
                   </p>
                 </div>
-                <div id="howToUse" className="description">
-                  <h4>如何使用</h4>
-                  <img src={Exchange} alt="" />
-
-                  <div></div>
+                <div className="description">
+                  <h4 id="howToUse">如何使用</h4>
+                  <img className="exchangeImg" src={Exchange} alt="" />
+                  <div className="exchangeRWD--box">
+                    <img className="exchangeRWD" src={ExchangeRWD01} alt="" />
+                    <img className="exchangeRWD" src={ExchangeRWD02} alt="" />
+                    <img className="exchangeRWD" src={ExchangeRWD03} alt="" />
+                  </div>
                 </div>
                 {/* <Streeview /> */}
                 <Score perScore={perScore} productId={productId} />
