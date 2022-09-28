@@ -21,6 +21,9 @@ export default function TripOutline({ post }) {
                         >
                           <p>{data.locate_name}</p>
                         </a>
+                        <div className="outline_intro">
+                          <p>{data.locate_intro}</p>
+                        </div>
                       </div>
                     </>
                   );

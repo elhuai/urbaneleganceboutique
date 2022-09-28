@@ -17,6 +17,7 @@ import PhotoReviewSwiper from '../../components/WYSIWYG/PhotoView';
 import { useParams, useLocation } from 'react-router-dom';
 import { handleSuccess } from '../../utils/handler/card/handleStatusCard';
 import { BE_URL } from '../../utils/config';
+import moment from 'moment';
 import { handleLoginCard } from '../../utils/handler/card/handleInputCard';
 
 // 驗證登入
@@ -56,6 +57,7 @@ function PostTripEdit() {
   const location = useLocation();
   const urlSearchParams = new URLSearchParams(location.search);
   const postID = urlSearchParams.get('postID');
+  const updateTime = moment(new Date()).format('YYYY-MM-DD hh:mm:ss');
 
   //預計打回後端資料庫的物件 (文字編輯新增)
   // 打包整筆資料可編輯更新
@@ -64,6 +66,7 @@ function PostTripEdit() {
     title: tripPostTitle,
     coordinate: tripPostLocMark,
     tags: tripPostTags,
+    updateTime: updateTime,
   };
 
   //拆景點明細更新（需特別處理）
@@ -139,6 +142,7 @@ function PostTripEdit() {
 
   //編輯後回傳資料庫post
   //文字儲存
+
   const handleSubmit = async (e) => {
     e.preventDefault();
     let responseData = await axios.post(
@@ -338,6 +342,7 @@ function PostTripEdit() {
                                       <input
                                         type="text"
                                         className="input_bar mx-2 mb-1 small"
+                                        placeholder="請輸入行程簡介"
                                         defaultValue={data.locate_intro}
                                         onChange={(e) => {
                                           setTripPostIntro((time) => {

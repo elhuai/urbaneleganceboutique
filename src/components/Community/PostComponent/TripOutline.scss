@@ -33,21 +33,26 @@ body {
   padding: 10px;
   background-color: #fffef4;
   border: 1.5px solid lightgray;
-  font-size: 1rem;
+  font-size: 1.2rem;
   position: sticky;
   top: 100px;
   width: 25%;
   margin-left: 2rem;
 
   .outline_title {
-    margin-bottom: 5px;
+    // margin-bottom: 5px;
     font-weight: 500;
-    line-height: 2rem;
+    line-height: 1.5rem;
     width: 95%;
     display: -webkit-box;
     -webkit-box-orient: vertical;
     -webkit-line-clamp: 1;
     overflow: hidden;
+  }
+  .outline_intro {
+    color: gray;
+    font-weight: 500;
+    font-size: 1rem;
   }
 
   .post_date_count {

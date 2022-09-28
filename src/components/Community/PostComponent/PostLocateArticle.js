@@ -55,17 +55,21 @@ export default function PostLocateArticle({ post }) {
                         id={`day${data.days}locate${i}`}
                       >
                         <div className="d-flex row align-items-start">
-                          <div className="post_location_mark d-flex align-items-center col-7">
-                            <p>
-                              <TiLocation className="mb-1 me-1 h5"></TiLocation>
-                              <strong className="ms-1 h5">
-                                {data.locate_name}
-                              </strong>
-                            </p>
-                            <p className="ms-1 post_location_duration small">
-                              {data.locate_intro}
-                            </p>
-                            <p>{data.locate_context}</p>{' '}
+                          <div className="post_location_mark d-flex flex-column justify-content-start align-items-start col-7 mt-1">
+                            <div className="d-flex">
+                              <p>
+                                <TiLocation className="mb-1 me-1 h5"></TiLocation>
+                                <strong className="ms-1 h5">
+                                  {data.locate_name}
+                                </strong>
+                              </p>
+                              <p className="ms-2 post_location_duration middle">
+                                {data.locate_intro}
+                              </p>
+                            </div>
+                            <div className="">
+                              <p>{data.locate_context}</p>
+                            </div>
                           </div>
 
                           <div className="photoBar col-5">
