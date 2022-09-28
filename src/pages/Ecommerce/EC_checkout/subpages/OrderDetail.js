@@ -129,7 +129,7 @@ function OrderDetail(props) {
               </div>
             </div>
             <div className="subSection2">
-              <span>NT${cartProductData.price * cartProductData.quantity}</span>
+              <span className='middleTotal'>NT${cartProductData.price * cartProductData.quantity}</span>
               <div className="calculateSection">
                 <div className="subTitle">優惠券：{couponName}</div>
                 <div className="subInput">{selected}%OFF</div>
