@@ -87,7 +87,7 @@ function OrderDetail(props) {
       // e.preventDefault();
       try {
         console.log('---------deleteCartId---------', cartProductData.product_id);
-        let result = await axios.post(`${API_URL}/deletecart/cart:${cartProductData.product_id}`);
+        let result = await axios.post(`${API_URL}/deletecart/cart${cartProductData.product_id}`);
       } catch (error) {
         console.log('error', error);
       }
