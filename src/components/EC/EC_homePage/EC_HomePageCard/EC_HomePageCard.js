@@ -8,7 +8,7 @@ import './_EC_HomePageCard.scss';
 const ECHomePageCard = (props) => {
   const { ecTypeCard, ecTypeCardTitle } = props;
   return (
-    <div className="ec_card_pc d-flex">
+    <div className="ec_card_pc d-flex my-5">
       {/* 分類標題區 */}
       <div className="ec_card_pc_main_left">
         <h4 className="ec_card_pc_main_title m-3 d-flex justify-content-right position-absolute">

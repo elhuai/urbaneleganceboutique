@@ -19,10 +19,12 @@ import Travelmap from './pages/Travel_map';
 import LineLogin from './pages/LineLogin';
 import ExamplePage from './pages/ExamplePage/ExamplePage';
 
+// import PersonalHomePage from './components/AdminCenter/AdminCenter';
 import Post from './pages/PostManagement/Post';
 import PostTrip from './pages/PostManagement/PostTrip';
 import PostEdit from './pages/PostManagement/PostEdit';
 import PostTripEdit from './pages/PostManagement/PostTripEdit';
+import AdminCenterPage from './components/adminPage/AdminCenter/AdminCenterPage';
 import EcEnjoyHomepage from './pages/Ecommerce/EC_HomePage/EC_2Enjoy_Homepage';
 import EcRestaurantHomepage from './pages/Ecommerce/EC_HomePage/EC_3Restaurant_Homepage';
 import EcCommodityHomepage from './pages/Ecommerce/EC_HomePage/EC_4Commodity_Homepage';
@@ -38,47 +40,49 @@ function App() {
   return (
     <div className="app">
       <UserInfoProvider>
-        <SocketProvider>
-          <Header />
-          <Routes>
-            <Route path="/" element={<Homepage />} />
-            <Route path="example" element={<ExamplePage />} />
-            <Route path="/travel" element={<Travel />} />
-            <Route path="/Travel_map" element={<Travelmap />} />
-            <Route path="/communityList" element={<CommunityList />} />
-            <Route path="/communityHomePage" element={<CommunityHomePage />} />
-            <Route path="admin" element={<AdminCenter />}>
-              <Route index element={<CommunityManagement />} />
-              <Route path="profile" element={<AdminProfilePage />} />
-              <Route path="voucher" element={<AdminVocherPage />} />
-              <Route path="community" element={<CommunityManagement />} />
-              <Route path="collection" element={<AdminCollectionPage />} />
-              <Route path="messages" element={<AdminMessageListPage />} />
-            </Route>
-            {/* <Route path="/adminCenter" element={<AdminCenterPage />} /> */}
-            <Route path="/postWYSIWYG" element={<Post />} />
-            <Route path="/postWYSIWYGEdit" element={<PostEdit />} />
-            <Route path="/postTrip" element={<PostTrip />} />
-            <Route path="/postTripEdit" element={<PostTripEdit />} />
-            {/* <Route path="/login/line" element={<LineLogin />} /> */}
-            <Route path="/ec-productfilter" element={<EcProductFilter />} />
-            <Route path="/ec-productdetail" element={<EcProductDetail />} />
-            <Route
-              path="/ec-restauranthomepage"
-              element={<EcRestaurantHomepage />}
-            />
-            <Route
-              path="/ec-commodityhomepage"
-              element={<EcCommodityHomepage />}
-            />
-            <Route path="/ec-enjoyhomepage" element={<EcEnjoyHomepage />} />
-            <Route path="/ec-ordersteps" element={<ECOrderSteps />} />
-            <Route path="/linePay/confirm" element={<ECLinePay />} />
-          </Routes>
-          <Outlet />
-          <Footer />
-          <ScrollToTop />
-        </SocketProvider>
+        <Header />
+        <Routes>
+          <Route path="/" element={<Homepage />} />
+          <Route path="example" element={<ExamplePage />} />
+          <Route path="/travel" element={<Travel />} />
+          <Route path="/Travel_map" element={<Travelmap />} />
+          <Route path="/communityList" element={<CommunityList />} />
+          <Route path="/communityHomePage" element={<CommunityHomePage />} />
+          <Route path="admin" element={<AdminCenterPage />}>
+            {/* <Route index element={<CommunityManagement />} /> */}
+            <Route path="profile" element={<AdminVocherPage />} />
+            <Route path="voucher" element={<AdminVocherPage />} />
+            <Route path="community" element={<CommunityManagement />} />
+            <Route path="collection" element={<AdminCollectionPage />} />
+            {/* <Route path="messages" element={<AdminMessageListPage />} /> */}
+          </Route>
+          {/* <Route path="/adminCenter" element={<AdminCenterPage />} /> */}
+          {/* <Route path="/personalHomePage" element={<PersonalHomePage />} /> */}
+          <Route path="/post" element={<Post />} />
+          <Route path="/postEdit" element={<PostEdit />} />
+          <Route path="/postTrip" element={<PostTrip />} />
+          <Route path="/postTripEdit" element={<PostTripEdit />} />
+          {/* <Route path="/login/line" element={<LineLogin />} /> */}
+
+          {/* EC section-------------------------------- */}
+          <Route path="/ec-productfilter" element={<EcProductFilter />} />
+          <Route path="/ec-productdetail" element={<EcProductDetail />} />
+          <Route
+            path="/ec-restauranthomepage"
+            element={<EcRestaurantHomepage />}
+          />
+          <Route
+            path="/ec-commodityhomepage"
+            element={<EcCommodityHomepage />}
+          />
+          <Route path="/ec-enjoyhomepage" element={<EcEnjoyHomepage />} />
+          <Route path="ec-ordersteps" element={<ECOrderSteps />} />
+          <Route path="/linePay/confirm" element={<ECLinePay />} />
+          {/* EC section-------------------------------- */}
+        </Routes>
+        <Outlet />
+        <Footer />
+        <ScrollToTop />
       </UserInfoProvider>
     </div>
   );

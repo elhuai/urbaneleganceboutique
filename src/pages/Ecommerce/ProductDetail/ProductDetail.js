@@ -9,6 +9,7 @@ import { Link } from 'react-router-dom';
 // 加入購物車跳出視窗
 import { handleSuccess } from '../../../utils/handler/card/handleStatusCard';
 import { useUserInfo } from '../../../hooks/useUserInfo';
+import { handleLoginCard } from '../../../utils/handler/card/handleInputCard';
 
 // 商品照片
 import ItemImage from '../../../components/EC/EC_productDetail/Image';
@@ -81,7 +82,7 @@ const ProductDetail = () => {
         console.log('error', error);
       }
     } else {
-      addCart({ isLogin: true }, setUser);
+      handleLoginCard({ isLogin: true }, setUser);
     }
   };
 

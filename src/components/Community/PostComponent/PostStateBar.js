@@ -1,35 +1,63 @@
 import React from 'react';
 import coverPhoto from '../../../images/test2.jpg';
+import { BE_URL } from '../../../utils/config';
 import { Link } from 'react-router-dom';
 import { BiLike } from 'react-icons/bi';
 import { AiTwotoneLike } from 'react-icons/ai';
 import { MdLocationOn } from 'react-icons/md';
 import './PostStateBar.scss';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
+import axios from 'axios';
+import { API_URL } from '../../../utils/config';
+import { handleSuccess } from '../../../utils/handler/card/handleStatusCard';
 
-export default function PostStateBar({ post }) {
-  // console.log(post);
+export default function PostStateBar({ post, postID }) {
+  console.log('post', post);
+  console.log('此貼文ＩＤ', postID);
+  // 資料按讚數 學儒調整中
+  // const [likes, setLikes] = useState(post[0][0].likes);
   const [likes, setLikes] = useState(post[0].likes);
   const [likesState, setLikeState] = useState(0);
 
-  const LikeHandle = () => {
+  console.log('poststatebar', post);
+
+  // 按讚按鈕 學儒調整中
+  const LikeHandle = async (e) => {
+    e.preventDefault();
+
     if (!likesState) {
       setLikes(likes + 1);
+
+      let likesData = await axios.post(`${API_URL}/community/likes`, {
+        postID,
+        likesState,
+      });
+      console.log('按讚成功', likesData);
+      handleSuccess('讚讚！');
       setLikeState(1);
-      // console.log(likes);
-      // console.log(likesState);
+      // TODO:傳值給資料庫做加減
+      console.log(likes);
+      console.log(likesState);
     } else {
       setLikes(likes - 1);
+
+      let likesData = await axios.post(`${API_URL}/community/likes`, {
+        postID,
+        likesState,
+      });
+      console.log('收回讚', likesData);
+      handleSuccess('讚還來');
       setLikeState(0);
-      // console.log(likes);
-      // console.log(likesState);
+      console.log(likes);
+      console.log(likesState);
     }
   };
+  // 學儒調整中
+  // const time = post[0][0].create_time.split(' ');
+  // const tags = post[0][0].tags.split(/[#,＃]/).filter((item) => item);
   const time = post[0].create_time.split(' ');
-  // console.log('test', data.tags);
   const tags = post[0].tags.split(/[#,＃]/).filter((item) => item);
-  // console.log(tags);
-  // console.log(time[0]);
+
   return (
     <>
       <div className="postStateBar">
@@ -38,12 +66,16 @@ export default function PostStateBar({ post }) {
             className=""
             alt=""
             src={
-              post[0].main_photo.length === 0 ? coverPhoto : post[0].main_photo
+              // post[0][0].main_photo.length === 0 學儒調整中
+              post[0].main_photo.length === 0
+                ? coverPhoto
+                : BE_URL + post[0].main_photo
             }
           ></img>
         </div>
         <div className="post_title d-flex">
-          <p className="">{post[0].title}</p>
+          {/* <p className="">{post[0][0].post_title}</p> 學儒調整中*/}
+          <p className="">{post[0].post_title}</p>
         </div>
         <div className="post_state_bar d-flex justify-content-between">
           <div className="d-flex">
@@ -52,7 +84,7 @@ export default function PostStateBar({ post }) {
             </div>
             <div className="post_auther d-flex pe-4">
               <Link to="/" className="pe-3">
-                {post[0].name}
+                {/* {post[0][0].social_name} 學儒調整中*/}
                 {/* 關聯資料庫 */}
               </Link>
               <Link to="/" className="follow_link">
@@ -62,6 +94,7 @@ export default function PostStateBar({ post }) {
             <div className="post_location pe-4">
               <p>
                 <MdLocationOn className="mb-1"></MdLocationOn>
+                {/* {post[0][0].coordinate} 學儒調整中*/}
                 {post[0].coordinate}
               </p>
             </div>

@@ -3,30 +3,49 @@ import { useState, useEffect } from 'react';
 import './Post.scss';
 import axios from 'axios';
 import { API_URL } from '../../utils/config';
-
 import PostMap from '../../components/Community/PostComponent/PostMap';
 import RecommandProduct from '../../components/Community/PostComponent/RecommandProduct';
-import PhotoReviewSwiperDefault from '../../components/WYSIWYG/PhotoViewDefault';
+// import PhotoReviewSwiperDefault from '../../components/WYSIWYG/PhotoViewDefault';
 import CommentBar from '../../components/Community/PostComponent/CommentBar';
 import PostStateBar from '../../components/Community/PostComponent/PostStateBar';
 import TextSection from '../../components/Community/PostComponent/TextSection';
+import { useUserInfo } from '../../hooks/useUserInfo';
+import { useParams, useLocation } from 'react-router-dom';
 
 function Post() {
+  // 登入狀態驗證
+  const { user, setUser } = useUserInfo();
+  const [userId, setUserId] = useState();
+
+  // 貼文內容
   const [post, setPost] = useState([]);
+
+  // 網址postID 顯示該筆資料
+  const location = useLocation();
+  const urlSearchParams = new URLSearchParams(location.search);
+  const postID = urlSearchParams.get('postID');
+  console.log('postID', postID);
 
   useEffect(() => {
     const fetchPost = async () => {
-      const result = await axios.get(`${API_URL}/community/post`);
-      // 取得後端來的資料
-      console.log(result.data);
-      setPost(result.data);
+      try {
+        const result = await axios.get(
+          `${API_URL}/post/postDetail?postID=${postID}`,
+          {
+            withCredentials: true,
+          }
+        );
+        // 取得後端來的資料
+        console.log('result.data', result.data);
+        setPost(result.data);
+      } catch (err) {
+        console.log('setPost', err);
+      }
       // 存回 useState 狀態
     };
     fetchPost();
   }, []);
-  // console.log('post', post);
-
-  // return .map((data) => {
+  console.log('POST', post);
   return (
     <>
       {post.length === 0 ? (
@@ -38,7 +57,6 @@ function Post() {
               <PostStateBar post={post}></PostStateBar>
               <hr></hr>
               <TextSection post={post}></TextSection>
-              <PhotoReviewSwiperDefault></PhotoReviewSwiperDefault>
               <PostMap></PostMap>
               <RecommandProduct></RecommandProduct>
               <hr></hr>

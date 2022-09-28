@@ -170,8 +170,9 @@ const Payment = (props) => {
                 <section>
                   <div className="noteSection">
                     <p>注意事項</p>
-                    <span>因交通、天氣等不可抗力因素所引起的時間延誤，造成部份行程景點取消時，請您主動聯絡客服，我們將會為您辦理部份退款。</span>
-              
+                    <span>
+                      因交通、天氣等不可抗力因素所引起的時間延誤，造成部份行程景點取消時，請您主動聯絡客服，我們將會為您辦理部份退款。
+                    </span>
                   </div>
                 </section>
               </div>

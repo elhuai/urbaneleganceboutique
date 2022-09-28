@@ -4,7 +4,7 @@ import React from 'react';
 import { useState, useEffect } from 'react';
 import axios from 'axios';
 import { Link } from 'react-router-dom';
-import SearchBar from '../../components/SearchBar/SearchBar_search';
+import SearchBar from '../../components/SearchBar/SearchBar_community';
 import CommunitySwiperLeft from '../../components/Community/CommunitySwiper/CommunitySwiperLeft';
 // import { BiLike } from 'react-icons/bi';
 import { IoHeartOutline } from 'react-icons/io5';
