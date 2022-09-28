@@ -32,11 +32,16 @@ function CommunityManagement() {
   const [showCFBox, setShowCFBox] = useState(0);
   const [ifDelete, setIfDelete] = useState(false);
   const [ifLike, setifLike] = useState(false);
+  // 我的貼文列表
   const [likeList, setLikeList] = useState([]);
   //匯入我的行程
   const [tripImport, setTripImport] = useState([]);
+  //新增貼文
+  const createTime = moment(new Date()).format('YYYY-MM-DD hh:mm:ss');
   // 回傳新增貼文預設欄位
   const [tripID, setTripID] = useState('');
+  //新增貼文預設標題欄位
+  const [tripPostTitleDefault, setTripTitile] = useState('');
 
   // 取行程貼文總表
   useEffect(() => {
@@ -45,14 +50,12 @@ function CommunityManagement() {
         withCredentials: true,
       });
       // 取得後端來的資料
-      console.log('行程貼文列表', result.data);
+      // console.log('行程貼文列表', result.data);
       setMyTripPost(result.data);
-      setIfDelete(false);
       // 存回 useState 狀態
     };
     fetchMyTripPost();
   }, [ifDelete]); //如果[]為空值只執行一次api // 若[]裡面的useState變數狀態改變重新執行api
-
   // 取一般貼文總表
   useEffect(() => {
     const fetchMyPost = async () => {
@@ -60,14 +63,12 @@ function CommunityManagement() {
         withCredentials: true,
       });
       // 取得後端來的資料
-      console.log('一般貼文列表', result.data);
+      // console.log('一般貼文列表', result.data);
       setMyPost(result.data);
-      setIfDelete(false);
       // 存回 useState 狀態
     };
     fetchMyPost();
   }, [ifDelete]); //如果[]為空值只執行一次api // 若[]裡面的useState變數狀態改變重新執行api
-
   // // 取單一user 按讚貼文總表
   useEffect(() => {
     const fetchMyLikePost = async () => {
@@ -79,14 +80,29 @@ function CommunityManagement() {
         }
       );
       // 取得後端來的資料
-      console.log('取單一使用者按讚列表', result.data);
+      // console.log('取單一使用者按讚列表', result.data);
       setLikeList(result.data);
-      console.log('我的按讚列表', likeList);
+      // console.log('我的按讚列表', likeList);
       // 存回 useState 狀態
     };
     fetchMyLikePost();
   }, []);
-
+  //匯入我的行程選單
+  useEffect(() => {
+    const fetchMyTrip = async () => {
+      const result = await axios.get(
+        `${API_URL}/community/tripDetailImport`,
+        {},
+        { withCredentials: true }
+      );
+      // 取得後端來的資料
+      // console.log('fefefefe', result.data);
+      // console.log(result.data);
+      setTripImport(result.data);
+      // 存回 useState 狀態
+    };
+    fetchMyTrip();
+  }, []);
   //視窗狀態改變
   const ConfirmHandle = (e) => {
     setShowCFBox(e);
@@ -109,10 +125,6 @@ function CommunityManagement() {
     setIfDelete(true);
   };
   //匯入行程新增貼文
-  // creatNewTripPost
-  const createTime = moment(new Date()).format('YYYY-MM-DD hh:mm:ss');
-  const [tripPostTitleDefault, setTripTitile] = useState('');
-
   const creatNewTripPost = async (e) => {
     e.preventDefault();
     let creatData = await axios.post(`${API_URL}/community/tripPostNew`, {
@@ -121,40 +133,21 @@ function CommunityManagement() {
       tripPostTitleDefault,
     });
     console.log(creatData, '行程貼文新增成功');
-    handleSuccess('貼文匯入成功', '/admin');
+    handleSuccess('貼文匯入成功', '/admin/community');
   };
   // console.log('匯入行程貼文預設標題', tripPostTitleDefault);
-  //匯入我的行程選單
-  useEffect(() => {
-    const fetchMyTrip = async () => {
-      const result = await axios.get(
-        `${API_URL}/community/tripDetailImport`,
-        {},
-        { withCredentials: true }
-      );
-      // 取得後端來的資料
-      // console.log('fefefefe', result.data);
-      console.log(result.data);
-      setTripImport(result.data);
-      // 存回 useState 狀態
-    };
-    fetchMyTrip();
-  }, []);
+
+  //TODO:偵測按讚
 
   return (
     <>
       <div className="d-flex">
+        <button className="post_new" onClick={() => ConfirmHandle(2)}>
+          <RiEditFill color="#FFC715" className="edit-icon me-2"></RiEditFill>
+          新增貼文
+        </button>
+        {/* //TODO: 無法固定在位置 */}
         <div>
-          <div className="post_new_button mt-5">
-            <button className="post_new" onClick={() => ConfirmHandle(2)}>
-              <RiEditFill
-                color="#FFC715"
-                className="edit-icon me-2"
-              ></RiEditFill>
-              新增貼文
-            </button>
-            {/* //TODO: 無法固定在位置 */}
-          </div>
           <Tabs
             defaultActiveKey="article_list_post"
             id="uncontrolled-tab-example"
@@ -387,7 +380,6 @@ function CommunityManagement() {
             </Tab>
           </Tabs>
         </div>
-
         <div
           className={
             showCFBox === 2
@@ -517,16 +509,27 @@ function CommunityManagement() {
                 onChange={(e) => {
                   // TODO:
                   setTripID(e.target.value);
-                  setTripTitile(e.target.name);
-                  console.log('title', e.target.getAttribute('data-title'));
+                  // setTripTitile(e.target.name);
+                  console.log('name', e.target.getAttribute('data-name'));
                   console.log('value', e.target.value);
+                  console.log('titleeeeeee', tripPostTitleDefault);
                 }}
               >
                 <option>請選擇匯入的行程</option>
                 {tripImport.map((data, index) => {
                   return (
                     <>
-                      <option name={data.title} value={data.id}>
+                      <option
+                        onClick={() => {
+                          setTripTitile(data.title);
+                          console.log(
+                            'titlewwdwdwdeeeeee',
+                            tripPostTitleDefault
+                          );
+                        }}
+                        name={data.title}
+                        value={data.id}
+                      >
                         {data.title}
                       </option>
                       {/* TODO:如何將data.title的值回傳到select onChange */}
@@ -534,11 +537,9 @@ function CommunityManagement() {
                   );
                 })}
               </select>
-              <Link to={`/admin/community`}>
-                <button className="confirm_button" onClick={creatNewTripPost}>
-                  確認
-                </button>
-              </Link>
+              <button className="confirm_button" onClick={creatNewTripPost}>
+                確認
+              </button>
             </div>
           </div>
         </div>

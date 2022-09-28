@@ -62,7 +62,7 @@ export default function PostStateBar({ post, postID }) {
       handleSuccess('讚讚！');
       // TODO:傳值給資料庫做加減
       console.log(likes);
-      console.log('現在按讚狀態', likesState);
+      // console.log('現在按讚狀態', likesState);
     } else {
       setLikes(likes - 1);
       setLikeState(0);
@@ -84,6 +84,20 @@ export default function PostStateBar({ post, postID }) {
   const time = post[0][0].create_time.split(' ');
   const tags = post[0][0].tags.split(/[#,＃]/).filter((item) => item);
 
+  const [postState, setPostState] = useState('');
+  const handleRelease = async (e) => {
+    e.preventDefault();
+    setPostState(e.target.value);
+    // console.log(postState, postID);
+    let res = await axios.post(`${API_URL}/community/release`, {
+      postID,
+      postState,
+    });
+    //TODO: 如何點擊按鈕改變狀態同時打api回去
+    console.log('貼文發布成功', res);
+    handleSuccess('貼文發布成功', `/postTrip?postID=${postID}`);
+  };
+
   return (
     <>
       <div className="postStateBar">
@@ -91,10 +105,11 @@ export default function PostStateBar({ post, postID }) {
           <img
             className=""
             alt=""
+            style={{ objectFit: 'contain' }}
             src={
-              post[0][0].main_photo.length === 0
+              post[0][0].post_main_photo === ''
                 ? coverPhoto
-                : BE_URL + post[0].main_photo
+                : BE_URL + '/' + post[0][0].post_main_photo
             }
           ></img>
         </div>
@@ -132,20 +147,36 @@ export default function PostStateBar({ post, postID }) {
             </div>
           </div>
           <div className="post_like me-2">
-            {likesState === 0 ? (
-              <p>
-                <BiLike className="mb-1 me-2" onClick={LikeHandle}></BiLike>
-                按讚人數：{likes}
-              </p>
-            ) : (
-              <p>
+            {post[0][0].status === 2 ? (
+              <>
                 {' '}
-                <AiTwotoneLike
-                  className="mb-1 me-2"
-                  onClick={LikeHandle}
-                ></AiTwotoneLike>
-                按讚人數：{likes}
-              </p>
+                <div className="d-flex">
+                  {' '}
+                  <p>草稿尚未發布</p>
+                  <button className="btn" value="1" onClick={handleRelease}>
+                    發布
+                  </button>
+                </div>
+              </>
+            ) : (
+              <>
+                {' '}
+                {likesState === 0 ? (
+                  <p>
+                    <BiLike className="mb-1 me-2" onClick={LikeHandle}></BiLike>
+                    按讚人數：{likes}
+                  </p>
+                ) : (
+                  <p>
+                    {' '}
+                    <AiTwotoneLike
+                      className="mb-1 me-2"
+                      onClick={LikeHandle}
+                    ></AiTwotoneLike>
+                    按讚人數：{likes}
+                  </p>
+                )}
+              </>
             )}
           </div>
         </div>
