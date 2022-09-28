@@ -37,7 +37,7 @@ function OrderSteps() {
   const next = () => {
     // 運送表單用檢查
     // TODO:記得改回2!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-    if (step === 4) {
+    if (step === 2) {
       const { name, email, phone } = shipping;
 
       // 有錯誤訊息會跳出警告，不會到"下一步"
@@ -45,9 +45,7 @@ function OrderSteps() {
 
       if (!name) errors.push('姓名沒有填喔！ ');
 
-      if (!email) errors.push('住址沒有填喔！ ');
-
-      if (!phone) errors.push('電話沒有填喔！ ');
+      if (!email) errors.push('信箱沒有填喔！ ');
 
       if (errors.length > 0) {
         alert(errors.join(','));

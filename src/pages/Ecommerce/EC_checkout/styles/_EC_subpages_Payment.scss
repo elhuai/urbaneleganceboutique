@@ -310,4 +310,10 @@
   .receiptContent {
     font-size: 16px;
   }
+
+  .noteSection{
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 20px;
+  }
 }
