@@ -1,9 +1,10 @@
-import React, { Fragment } from 'react';
+import React, { Fragment, useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Autoplay } from 'swiper';
 import './_newsList.scss';
 
+// TODO: 假資料，資料結構是四個陣列各自包裹三個物件，一個陣列對應一個 tab 點擊後呈現的內容
 const fakeData = [
   [
     {
@@ -124,8 +125,8 @@ const fakeData = [
   ],
 ];
 
-function items(index, active) {
-  let result = fakeData[index].map((data, dataIndex) => {
+function items(index, active, data) {
+  let result = data[index].map((data, dataIndex) => {
     return (
       <Link
         to="/"
@@ -157,8 +158,8 @@ function items(index, active) {
   return result;
 }
 
-function mobileItems(index, active) {
-  let result = fakeData[index].map((data, dataIndex) => {
+function mobileItems(index, active, data) {
+  let result = data[index].map((data, dataIndex) => {
     return (
       <SwiperSlide key={'newsCard' + data.id} className="h-100">
         <Link to="/" className="news_list_card d-flex flex-column">
@@ -194,26 +195,35 @@ function mobileItems(index, active) {
 }
 
 export default function NewsList({ active }) {
-  return fakeData.map((v, index) => {
-    return (
-      <Fragment key={'list' + index}>
-        <div className="desktop">{items(index, active - 1)}</div>
-        <div className="mobile">
-          <Swiper
-            loop={false}
-            slidesPerView={1}
-            spaceBetween={12}
-            className="newsListSwiper"
-            // modules={[Autoplay]}
-            autoplay={{
-              delay: 1500,
-              disableOnInteraction: false,
-            }}
-          >
-            {mobileItems(index, active - 1)}
-          </Swiper>
-        </div>
-      </Fragment>
-    );
-  });
+  const [data, setData] = useState(fakeData);
+
+  useEffect(() => {
+    // TODO: 拿資料、setData
+  }, []);
+
+  // TODO: 實際渲染元件，不用更動 (應該啦)，只要把 fakeData 換掉就好
+  return data.length > 0
+    ? data.map((v, index) => {
+        return (
+          <Fragment key={'list' + index}>
+            <div className="desktop">{items(index, active - 1, data)}</div>
+            <div className="mobile">
+              <Swiper
+                loop={false}
+                slidesPerView={1}
+                spaceBetween={12}
+                className="newsListSwiper"
+                // modules={[Autoplay]}
+                autoplay={{
+                  delay: 1500,
+                  disableOnInteraction: false,
+                }}
+              >
+                {mobileItems(index, active - 1, data)}
+              </Swiper>
+            </div>
+          </Fragment>
+        );
+      })
+    : '';
 }

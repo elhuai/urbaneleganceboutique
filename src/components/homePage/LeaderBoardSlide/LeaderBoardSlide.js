@@ -1,78 +1,90 @@
 import React, { useEffect, useState } from 'react';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Pagination, Autoplay } from 'swiper';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import './_leaderBoardSlide.scss';
 
 const fakeData = [
   {
+    id: 999,
     rank: 1,
     category: '住宿',
     title: '黃刀鎮秋季極光五天四夜 \u000A 卡梅倫瀑布＆狗狗拉車',
     img: 'https://picsum.photos/id/20/400/600',
   },
   {
+    id: 999,
     rank: 2,
     category: '住宿',
     title: '黃刀鎮秋季極光五天四夜 \u000A 卡梅倫瀑布＆狗狗拉車',
     img: 'https://picsum.photos/id/22/400/600',
   },
   {
+    id: 999,
     rank: 3,
     category: '住宿',
     title: '黃刀鎮秋季極光五天四夜 \u000A 卡梅倫瀑布＆狗狗拉車',
     img: 'https://picsum.photos/id/23/400/600',
   },
   {
-    rank: 4,
+    id: 999,
+    rank: 1,
     category: '餐廳',
     title: '黃刀鎮秋季極光五天四夜 \u000A 卡梅倫瀑布＆狗狗拉車',
     img: 'https://picsum.photos/id/24/400/600',
   },
   {
-    rank: 5,
+    id: 999,
+    rank: 2,
     category: '餐廳',
     title: '黃刀鎮秋季極光五天四夜 \u000A 卡梅倫瀑布＆狗狗拉車',
     img: 'https://picsum.photos/id/25/400/600',
   },
   {
-    rank: 6,
+    id: 999,
+    rank: 3,
     category: '餐廳',
     title: '黃刀鎮秋季極光五天四夜 \u000A 卡梅倫瀑布＆狗狗拉車',
     img: 'https://picsum.photos/id/26/400/600',
   },
   {
-    rank: 7,
+    id: 999,
+    rank: 1,
     category: '商品',
     title: '黃刀鎮秋季極光五天四夜 \u000A 卡梅倫瀑布＆狗狗拉車',
     img: 'https://picsum.photos/id/27/400/600',
   },
   {
-    rank: 8,
+    id: 999,
+    rank: 2,
     category: '商品',
     title: '黃刀鎮秋季極光五天四夜 \u000A 卡梅倫瀑布＆狗狗拉車',
     img: 'https://picsum.photos/id/28/400/600',
   },
   {
-    rank: 9,
+    id: 999,
+    rank: 3,
     category: '商品',
     title: '黃刀鎮秋季極光五天四夜 \u000A 卡梅倫瀑布＆狗狗拉車',
     img: 'https://picsum.photos/id/29/400/600',
   },
   {
-    rank: 10,
+    id: 999,
+    rank: 1,
     category: '玩樂',
     title: '黃刀鎮秋季極光五天四夜 \u000A 卡梅倫瀑布＆狗狗拉車',
     img: 'https://picsum.photos/id/30/400/600',
   },
   {
-    rank: 11,
+    id: 999,
+    rank: 2,
     category: '玩樂',
     title: '黃刀鎮秋季極光五天四夜 \u000A 卡梅倫瀑布＆狗狗拉車',
     img: 'https://picsum.photos/id/31/400/600',
   },
   {
-    rank: 12,
+    id: 999,
+    rank: 3,
     category: '玩樂',
     title: '黃刀鎮秋季極光五天四夜 \u000A 卡梅倫瀑布＆狗狗拉車',
     img: 'https://picsum.photos/id/32/400/600',
@@ -80,8 +92,10 @@ const fakeData = [
 ];
 
 export default function LeaderBoardSlide() {
+  const navigate = useNavigate();
   const [screen, setScreen] = useState(0);
-  const json = JSON.parse(JSON.stringify(fakeData));
+  const [data, setData] = useState(fakeData);
+
   const handleSlideClass = (e) => {
     if (screen === 1) {
       const slideAll = document.querySelectorAll(
@@ -161,13 +175,14 @@ export default function LeaderBoardSlide() {
   }
 
   useEffect(() => {
+    // TODO: 打API，setData，資料格式在上面
     logWidth();
     window.addEventListener('resize', logWidth);
     return () => {
       window.removeEventListener('resize', logWidth);
     };
   }, []);
-  if (screen === 1) {
+  if (screen === 1 && data.length > 0) {
     return (
       <>
         <Swiper
@@ -187,7 +202,7 @@ export default function LeaderBoardSlide() {
           modules={[Pagination, Autoplay]}
           className={`leaderBoardSwiper ${screen === 1 ? 'active1' : ''}`}
         >
-          {json.map((data, index) => {
+          {data.map((data, index) => {
             return (
               <SwiperSlide key={'slide' + index}>
                 {({ isActive }) => {
@@ -211,7 +226,10 @@ export default function LeaderBoardSlide() {
                             <div className="title text-center fw-bold text-white mb-4">
                               {data.title}
                             </div>
-                            <Link to="/" className="button fw-bold">
+                            <Link
+                              to={`/ec-productdetail?id=${data.id}`}
+                              className="button fw-bold"
+                            >
                               出遊 GoGo
                             </Link>
                           </div>
@@ -227,7 +245,7 @@ export default function LeaderBoardSlide() {
       </>
     );
   }
-  if (screen === 2) {
+  if (screen === 2 && data.length > 0) {
     return (
       <>
         <Swiper
@@ -245,7 +263,7 @@ export default function LeaderBoardSlide() {
           modules={[Pagination, Autoplay]}
           className={`leaderBoardSwiper ${screen === 2 ? 'active2' : ''}`}
         >
-          {json.map((data, index) => {
+          {data.map((data, index) => {
             return (
               <SwiperSlide key={'slide' + index}>
                 {({ isActive }) => {
@@ -269,7 +287,10 @@ export default function LeaderBoardSlide() {
                             <div className="title text-center fw-bold text-white mb-4">
                               {data.title}
                             </div>
-                            <Link to="/" className="button fw-bold">
+                            <Link
+                              to={`/ec-productdetail?id=${data.id}`}
+                              className="button fw-bold"
+                            >
                               出遊 GoGo
                             </Link>
                           </div>
@@ -285,7 +306,7 @@ export default function LeaderBoardSlide() {
       </>
     );
   }
-  if (screen === 3) {
+  if (screen === 3 && data.length > 0) {
     return (
       <>
         <Swiper
@@ -303,7 +324,7 @@ export default function LeaderBoardSlide() {
           modules={[Pagination, Autoplay]}
           className={`leaderBoardSwiper ${screen === 3 ? 'active3' : ''}`}
         >
-          {json.map((data, index) => {
+          {data.map((data, index) => {
             return (
               <SwiperSlide key={'slide' + index}>
                 {({ isActive }) => {
@@ -327,7 +348,10 @@ export default function LeaderBoardSlide() {
                             <div className="title text-center fw-bold text-white mb-4">
                               {data.title}
                             </div>
-                            <Link to="/" className="button fw-bold">
+                            <Link
+                              to={`/ec-productdetail?id=${data.id}`}
+                              className="button fw-bold"
+                            >
                               出遊 GoGo
                             </Link>
                           </div>

@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { useSearchParams } from 'react-router-dom';
+import { useNavigate, useSearchParams } from 'react-router-dom';
 import HeroSearch from '../../components/homePage/HeroSearch';
 import NewsList from '../../components/homePage/NewsList';
 import TourRoute from '../../components/homePage/TourRoute';
@@ -15,6 +15,7 @@ import { useUserInfo } from '../../hooks/useUserInfo';
 import './_homepage.scss';
 
 const Homepage = () => {
+  const navigate = useNavigate();
   const { user, setUser } = useUserInfo();
   const [heroAnimete, setHeroAnimete] = useState(false);
   const [heroActive, setHeroActive] = useState(false);
@@ -62,6 +63,7 @@ const Homepage = () => {
             <div className="h-100 w-100"></div>
           </div>
           <div className="hero_search_wrap">
+            {/* // TODO: 串接搜尋結果，檔案在 /src/components/homePage/HeroSearch */}
             <HeroSearch
               handleHeroAnimete={handleHeroAnimete}
               handleHeroActive={handleHeroActive}
@@ -80,6 +82,7 @@ const Homepage = () => {
               <h2>最新情報</h2>
             </div>
             <div className="news_sidebar_nav">
+              {/* // TODO: 電腦版 tab，要換字 */}
               <ul className="list-unstyled m-0 desktop">
                 <li className={newsActive === 1 ? 'active' : ''}>
                   <button
@@ -118,6 +121,7 @@ const Homepage = () => {
                   </button>
                 </li>
               </ul>
+              {/* // TODO: 手機版 tab，要換字 */}
               <ul className="list-unstyled m-0 mobile">
                 <li
                   className={newsActive === 1 ? 'active' : ''}
@@ -158,6 +162,7 @@ const Homepage = () => {
             <div className={`dog${newsActive} active${newsActive}`}></div>
           </div>
           <div className="news_list">
+            {/* // TODO: 串接最新商品，檔案在 /src/components/homePage/NewsList */}
             <NewsList active={newsActive} />
           </div>
         </div>
@@ -168,6 +173,7 @@ const Homepage = () => {
             <p>跟著小編一起玩</p>
             <h2>小道消息報你知</h2>
           </div>
+          {/* // TODO: 放上連結，串接最新商品，檔案在 /src/components/homePage/TourRoute */}
           <TourRoute />
         </div>
       </div>
@@ -179,6 +185,7 @@ const Homepage = () => {
           </div>
         </div>
         <div className="leaderboard_slide">
+          {/* // TODO: 串接商品排行資料，檔案在 /src/components/homePage/LeaderBoardSlide */}
           <LeaderBoardSlide />
         </div>
       </div>
@@ -194,9 +201,13 @@ const Homepage = () => {
             </span>
             <br />
             <div>
-              <button className="w-100">來去看看</button>
+              {/* // TODO: 我不知道這邊你想怎麼串，頂多就是這顆按鈕多加連結吧 */}
+              <button className="w-100" onClick={() => navigate('/網址')}>
+                來去看看
+              </button>
             </div>
           </div>
+          {/* // TODO: 我不知道這邊你想怎麼串，檔案在 /src/components/homePage/SocialBubble */}
           <SocialBubble />
         </div>
       </div>
@@ -251,9 +262,13 @@ const Homepage = () => {
               </div>
               <div className="travel_content d-flex flex-column">
                 <div className="travel_content_card flex-fill">
+                  {/* // TODO: 串接資料跟連結，檔案在 /src/components/homePage/TravelCard */}
                   <TravelCard />
                 </div>
-                <button className="w-100">開始規劃你的行程</button>
+                {/* // TODO: 連結 */}
+                <button className="w-100" onClick={() => navigate('/網址')}>
+                  開始規劃你的行程
+                </button>
               </div>
             </div>
           </div>

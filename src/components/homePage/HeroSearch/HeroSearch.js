@@ -1,10 +1,24 @@
 import React from 'react';
 import { useEffect, useState } from 'react';
 import { AiOutlineSearch } from 'react-icons/ai';
+import { useNavigate } from 'react-router-dom';
 import './_heroSearch.scss';
 
 export default function HeroSearch({ handleHeroActive, handleHeroAnimete }) {
   const [active, setActive] = useState(0);
+  const [keywords, setKeywords] = useState('initialState');
+  const navigate = useNavigate();
+  // TODO: active state 用戶目前點選的分館 tab , 依序是 0, 1, 2
+  const handleKeywords = (e) => {
+    setKeywords(e.target.value);
+  };
+
+  // TODO: 跳轉
+  const handleSearch = (e) => {
+    e.preventDefault();
+    navigate('/網址路徑');
+  };
+
   useEffect(() => {
     handleHeroAnimete(true);
     handleHeroActive(active);
@@ -58,6 +72,7 @@ export default function HeroSearch({ handleHeroActive, handleHeroAnimete }) {
             className="form-control mb-3"
             type="text"
             placeholder="請輸入關鍵字"
+            onChange={handleKeywords}
           />
         </div>
         <div className="input-group  d-flex d-lg-none">
@@ -66,12 +81,18 @@ export default function HeroSearch({ handleHeroActive, handleHeroAnimete }) {
             className="form-control"
             placeholder="搜尋關鍵字"
           />
-          <button className="btn flex-shrink-0" type="button">
+          <button
+            className="btn flex-shrink-0"
+            type="button"
+            onClick={handleSearch}
+          >
             <AiOutlineSearch />
           </button>
         </div>
         <div className="button-wrap d-none d-lg-block">
-          <button className="py-2 w-100">找到最適合你的票券</button>
+          <button className="py-2 w-100" onClick={handleSearch}>
+            找到最適合你的票券
+          </button>
         </div>
       </form>
     </div>

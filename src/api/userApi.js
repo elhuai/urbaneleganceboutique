@@ -110,4 +110,13 @@ export const getUserProfile = async (setRowData) => {
   }
 };
 
+export const getUserOrder = async (setData) => {
+  try {
+    let { data } = await axios.get(`${API_URL}/user/order`, credentialsConfig);
+    setData(data.data);
+  } catch (error) {
+    console.error(error);
+  }
+};
+
 export const getUsercollection = async () => {};

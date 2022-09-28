@@ -75,7 +75,10 @@ const AdminCenter = () => {
         </div>
         <ul className="admin_sidemenu list-unstyled d-flex flex-column ">
           <li className="">
-            <Link to="/" className="text-decoration-none admin_select d-flex">
+            <Link
+              to="/admin/order"
+              className="text-decoration-none admin_select d-flex"
+            >
               <div className="d-flex align-items-center">
                 <FiFile
                   className="icon_size d-block mt-3 ms-1 "

@@ -11,7 +11,8 @@ import AdminCenter from './components/adminPage/AdminCenter';
 import AdminVocherPage from './pages/AdminVocherPage';
 import AdminCollectionPage from './pages/AdminCollectionPage';
 import AdminMessageListPage from './pages/AdminMessageListPage';
-import AdminProfilePage from './pages/AdminProfilePage/AdminProfilePage';
+import AdminProfilePage from './pages/AdminProfilePage';
+import AdminOrderListPage from './pages/AdminOrderListPage';
 import CommunityList from './pages/CommunityList';
 import CommunityHomePage from './pages/CommunityHomePage';
 import CommunityManagement from './pages/CommunityManagement';
@@ -29,6 +30,8 @@ import EcCommodityHomepage from './pages/Ecommerce/EC_HomePage/EC_4Commodity_Hom
 import EcProductDetail from './pages/Ecommerce/ProductDetail';
 import EcProductFilter from './pages/Ecommerce/EC_productFilter';
 import ECOrderSteps from './pages/Ecommerce/EC_checkout';
+
+import 'antd/dist/antd.css';
 import 'swiper/scss';
 import 'swiper/css/bundle';
 import './styles/style.scss';
@@ -49,6 +52,7 @@ function App() {
             <Route path="admin" element={<AdminCenter />}>
               <Route index element={<CommunityManagement />} />
               <Route path="profile" element={<AdminProfilePage />} />
+              <Route path="order" element={<AdminOrderListPage />} />
               <Route path="voucher" element={<AdminVocherPage />} />
               <Route path="community" element={<CommunityManagement />} />
               <Route path="collection" element={<AdminCollectionPage />} />

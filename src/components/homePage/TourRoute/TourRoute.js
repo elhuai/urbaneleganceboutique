@@ -1,7 +1,10 @@
 import React from 'react';
+import { useNavigate } from 'react-router-dom';
 import './_tourRoute.scss';
 
 export default function TourRoute() {
+  const navigate = useNavigate();
+
   const btnText = [
     '天才狗狗訓練工具',
     '寵物戶外秘境',
@@ -12,6 +15,8 @@ export default function TourRoute() {
     'cp值破表飯店推薦',
     '單身狗相親活動',
   ];
+  // TODO: 照順序放上網址
+  const btnLink = ['/網址', '', '', '', '', '', '', ''];
   return (
     <div className="tour_route position-relative">
       {btnText.map((text, index) => {
@@ -23,7 +28,12 @@ export default function TourRoute() {
             } position-absolute`}
           >
             <div className="h-100 position-relative"></div>
-            <button className="position-relative">{text}</button>
+            <button
+              className="position-relative"
+              onClick={() => navigate(btnLink[index])}
+            >
+              {text}
+            </button>
           </div>
         );
       })}

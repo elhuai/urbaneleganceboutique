@@ -241,3 +241,20 @@ $main-color: #FFC715;
     }
   }
 }
+
+
+@media screen and (max-width: 540px) {
+  .home_main {
+    .leaderBoardSwiper {
+      .swiper-wrapper {
+        // = slide
+        .swiper-slide{
+          // = card
+          .obj-fit {
+            height: 240px;
+          }
+        }
+      }
+    }
+  }
+}
