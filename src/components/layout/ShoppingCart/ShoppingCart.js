@@ -90,7 +90,7 @@ function ShoppingCart({ name, ...props }) {
         console.log('error', error);
       }
     } else {
-      addCart({ isLogin: true }, setUser);
+      handleLoginCard({ isLogin: true }, setUser);
     }
   };
 
@@ -103,7 +103,7 @@ function ShoppingCart({ name, ...props }) {
         console.log('error', error);
       }
     } else {
-      addCart({ isLogin: true }, setUser);
+      handleLoginCard({ isLogin: true }, setUser);
     }
   };
 
