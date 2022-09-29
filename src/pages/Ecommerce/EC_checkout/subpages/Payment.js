@@ -64,48 +64,27 @@ const Payment = (props) => {
                   <div className="subSection">
                     <div className="subTitle ">
                       姓名
-                      <span style={{ color: '#ef7a70', fontWeight: '500' }}>
-                        ＊
-                      </span>
+                      <span style={{ color: '#ef7a70', fontWeight: '500' }}>＊</span>
                     </div>
-                    <input
-                      type="text"
-                      name="name"
-                      onChange={handleFieldChange}
-                    />
+                    <input type="text" name="name" onChange={handleFieldChange} />
                   </div>
                   <div className="subSection">
                     <div className="subTitle">
                       信箱
-                      <span style={{ color: '#ef7a70', fontWeight: '500' }}>
-                        ＊
-                      </span>
+                      <span style={{ color: '#ef7a70', fontWeight: '500' }}>＊</span>
                     </div>
-                    <input
-                      type="text"
-                      name="email"
-                      onChange={handleFieldChange}
-                    />
+                    <input type="text" name="email" onChange={handleFieldChange} />
                   </div>
                   <div className="subSection">
                     <div className="subTitle">聯絡電話</div>
-                    <input
-                      type="text"
-                      name="phone"
-                      onChange={handleFieldChange}
-                    />
+                    <input type="text" name="phone" onChange={handleFieldChange} />
                   </div>
                 </section>
                 <section>
                   <p>付款方式</p>
                   <div className="paymentSection">
                     <div className="paymentSubSection">
-                      <input
-                        type="radio"
-                        value="信用卡"
-                        checked={pay === '信用卡'}
-                        onChange={onChangePay}
-                      />
+                      <input type="radio" value="信用卡" checked={pay === '信用卡'} onChange={onChangePay} />
                       <span className="radioInput">信用卡付款</span>
                     </div>
                     <div className="paymentCCard">
@@ -116,28 +95,24 @@ const Payment = (props) => {
                       </div>
                       <div className="CCardNumber">
                         <div>信用卡卡號</div>
-                        <input type="text" />-
-                        <input type="text" />-
-                        <input type="text" />-
-                        <input type="text" />
+                        <div className="CCardText">
+                          <input type="text" maxLength={4}/>-
+                          <input type="text" maxLength={4}/>-
+                          <input type="text" maxLength={4}/>-
+                          <input type="text" maxLength={4}/>
+                        </div>
                       </div>
                       <div className="CCardGoodThu">
                         <div>有效期限</div>
                         <input type="month" className="mx-1" />
-                        <input type="" className="mx-1" />
                       </div>
-                      <div className="CCardNumber">
+                      <div className="CCardSecretNumber">
                         <div>卡片背面末三碼</div>
-                        <input type="text" />
+                        <input type="text" maxLength={3}/>
                       </div>
                     </div>
                     <div className="paymentSubSection">
-                      <input
-                        type="radio"
-                        value="LinePay"
-                        checked={pay === 'LinePay'}
-                        onChange={onChangePay}
-                      />
+                      <input type="radio" value="LinePay" checked={pay === 'LinePay'} onChange={onChangePay} />
                       <div className="iconLinePay"></div>
                       <span>請備妥手機以完成交易</span>
                     </div>
@@ -193,18 +168,14 @@ const Payment = (props) => {
 
               <div className="totalDiscount">
                 {/* todo:優惠券名字component  */}
-                <p className="title">優惠券-{couponName}</p>
+                <p className="title">優惠券{couponName}</p>
                 <p className="totalDiscountNumber">-NT${selected}</p>
               </div>
               <div className="totalNumber">
                 <p className="title">總計(付款金額)</p>
                 <p>
                   NT$
-                  {Number(
-                    cartProductData.quantity *
-                      cartProductData.price *
-                      (1 - selected / 100)
-                  ).toFixed(0)}
+                  {Number(cartProductData.quantity * cartProductData.price * (1 - selected / 100)).toFixed(0)}
                 </p>
               </div>
             </div>

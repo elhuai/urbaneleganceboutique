@@ -3,19 +3,6 @@
   color: #747474;
   position: relative;
 
-  .topRow {
-    display: flex;
-    justify-content: center;
-    font-size: 24px;
-    margin-bottom: 30px;
-    .step1 {
-      margin-right: 5%;
-    }
-    .step2 {
-      margin-right: 5%;
-    }
-  }
-
   .middleRow {
     border-radius: 15px;
     .mainTitle {
@@ -176,6 +163,85 @@
       text-decoration: underline;
       margin: 5px;
       color: #747474;
+    }
+  }
+}
+@media screen and (max-width: 375px) {
+  .Cart {
+    margin: 120px 20px 100px;
+
+    .middleRow {
+      width: 100%;
+      .bottomColumn {
+        flex-direction: column;
+        padding: 30px 20px;
+
+        .mainColumn {
+          border-right: none;
+          width: 100%;
+        padding: 0;
+
+          .subSection {
+            flex-direction: column;
+            .subTitle {
+            font-size: 16px;
+
+              width: 100%;
+              margin-bottom: 5px;
+            }
+            .subDescription {
+              width: 100%;
+              font-size: 16px;
+              margin-bottom: 5px;
+            }
+            .subValue{
+              font-size: 14px;
+            }
+            .subInput{
+            border: 3px solid #e7e7e9;
+            padding: 10px 10px;
+            font-size: 14px;
+              
+            }
+            .subSelect{
+              font-size: 14px;
+            }
+          }
+        }
+        .totalColumn{
+          width: 100%;
+        margin: 0;
+        padding: 0 10px;
+          .totalCate{
+            .title{
+              font-size: 16px;
+            }
+            .p{
+              font-size: 14px;
+            }
+            .subTotal{
+              p{
+                font-size: 14px;
+              }
+            }
+          }
+          .totalDiscount{
+            .totalDiscountNumber{
+              border: none;
+            }
+          }
+          .totalNumber{
+          font-size: 18px;
+
+          }
+        }
+      }
+      .mainTitle {
+        font-size: 18px;
+        padding: 15px;
+        display: flex;
+        justify-content: center;
+      }
     }
   }
 }

@@ -113,67 +113,67 @@
           }
         }
       }
+    }
+    .totalColumn {
+      margin: 0 1% 0 2%;
+      padding: 2%;
+      width: 40%;
+      border: 5px solid #f0ede0;
+      border-radius: 15px;
+      height: 100%;
 
-      .totalColumn {
-        margin: 0 1% 0 2%;
-        padding: 2%;
-        width: 40%;
-        border: 5px solid #f0ede0;
-        border-radius: 15px;
-        height: 100%;
+      .title {
+        font-weight: 500;
+        font-size: 18px;
+      }
+
+      .totalName {
+        border-bottom: 1px solid #e7e7e9;
+      }
+
+      .totalCate {
+        margin-top: 3%;
+        border-bottom: 1px solid #e7e7e9;
+
+        div {
+          font-size: 16px;
+          width: 140px;
+        }
 
         .title {
           font-weight: 500;
           font-size: 18px;
         }
 
-        .totalName {
-          border-bottom: 1px solid #e7e7e9;
-        }
-
-        .totalCate {
-          margin-top: 3%;
-          border-bottom: 1px solid #e7e7e9;
-
-          p {
-            font-size: 16px;
-          }
-
-          .title {
-            font-weight: 500;
-            font-size: 18px;
-          }
-
-          .subTotal {
-            display: flex;
-            justify-content: space-between;
-          }
-        }
-
-        .totalDiscount {
-          margin-top: 3%;
-          border-bottom: 1px solid #e7e7e9;
+        .subTotal {
           display: flex;
           justify-content: space-between;
-          font-size: 14px;
-
-          .totalDiscountNumber {
-            width: 100px;
-            display: flex;
-            font-size: 16px;
-
-            flex-direction: row-reverse;
-            border-left: 1px solid #e7e7e9;
-          }
         }
+      }
 
-        .totalNumber {
+      .totalDiscount {
+        margin-top: 3%;
+        border-bottom: 1px solid #e7e7e9;
+        display: flex;
+        justify-content: space-between;
+        font-size: 14px;
+
+        .totalDiscountNumber {
+          width: 100px;
           display: flex;
-          justify-content: space-between;
-          font-size: 18px;
-          margin-top: 3%;
-          color: #ef7a70;
+          font-size: 16px;
+
+          flex-direction: row-reverse;
+          border-left: 1px solid #e7e7e9;
         }
+      }
+
+      .totalNumber {
+        display: flex;
+        justify-content: space-between;
+        font-size: 18px;
+        margin-top: 3%;
+        color: #ef7a70;
       }
     }
   }
@@ -238,12 +238,18 @@
       margin-bottom: 20px;
 
       div {
-        width: 20%;
+        width: 130px;
       }
+      .CCardText {
+        padding: 0;
+        margin: 0;
+        border: none;
+        width: calc(100% - 130px);
 
-      input {
-        width: 10%;
-        margin: 0 5px;
+        input {
+          width: 20%;
+          margin: 0 5px;
+        }
       }
     }
 
@@ -252,15 +258,21 @@
       margin-bottom: 20px;
 
       div {
-        width: 20%;
+        width: 130px;
+
       }
     }
 
-    .CCardNumber {
+    .CCardSecretNumber {
       display: flex;
 
       div {
-        width: 20%;
+        width: 130px;
+
+      }
+      input{
+        margin: 0 4px;
+        width: 134px;
       }
     }
   }
@@ -311,9 +323,170 @@
     font-size: 16px;
   }
 
-  .noteSection{
+  .noteSection {
     display: flex;
     flex-direction: column;
     margin-bottom: 20px;
+  }
+}
+@media screen and (max-width: 375px) {
+  .Payment {
+    margin: 120px 20px 100px;
+    .middleRow {
+      width: 100%;
+      .bottomColumn {
+        flex-direction: column;
+        padding: 30px 20px;
+
+        .mainColumn {
+          border-right: none;
+          width: 100%;
+          padding: 0;
+          .infoColumn {
+            width: 100%;
+            section {
+              p {
+                font-size: 16px;
+              }
+              .subSection {
+                flex-direction: column;
+                width: 100%;
+
+                .subTitle {
+                  font-size: 16px;
+
+                  width: 100%;
+                  margin-bottom: 5px;
+                }
+                .subDescription {
+                  width: 100%;
+                  font-size: 16px;
+                  margin-bottom: 5px;
+                }
+                .subValue {
+                  font-size: 14px;
+                }
+                input {
+                  border: 3px solid #e7e7e9;
+                  padding: 10px 10px;
+                  font-size: 14px;
+                }
+                .subSelect {
+                  font-size: 14px;
+                }
+              }
+            }
+          }
+        }
+        .totalColumn {
+          width: 100%;
+          margin: 0;
+          padding: 0 10px;
+          .totalCate {
+            .title {
+              font-size: 16px;
+            }
+            .p {
+              font-size: 14px;
+            }
+            .subTotal {
+              p {
+                font-size: 14px;
+              }
+            }
+          }
+          .totalDiscount {
+            .totalDiscountNumber {
+              border: none;
+            }
+          }
+          .totalNumber {
+            font-size: 18px;
+          }
+        }
+        .totalCate{
+          .subTotal{
+            // margin: 0;
+            width: 100%;
+          }
+        }
+      }
+      .paymentSubSection{
+        span{
+          font-size: 16px;
+        }
+      }
+      .paymentCCard {
+        padding: 15px;
+        height: 100%;
+        .paymentIcon{
+          margin-bottom: 10px;
+        }
+        .CCardNumber {
+          flex-direction: column;
+      margin-bottom: 10px;
+
+          div {
+            width: 100%;
+            margin-bottom: 5px;
+          }
+          input {
+            width: 19%;
+          }
+        }
+        .CCardGoodThu {
+          flex-direction: column;
+          div{
+            margin-bottom: 5px;
+
+          }
+          input{
+            width: 95%;
+          }
+        }
+        .CCardSecretNumber {
+          display: flex;
+          flex-direction: column;
+          div {
+            margin-bottom: 5px;
+
+    
+          }
+          input{
+            width: 19%;
+
+          }
+        }
+      }
+      .mainTitle {
+        font-size: 18px;
+        padding: 15px;
+        display: flex;
+        justify-content: center;
+      }
+    }
+    .receiptSection{
+      .receiptSection{
+        span{
+          font-size: 14px;
+        }
+      }
+    }
+    .totalDiscount{
+      .title{
+        font-size: 16px;
+      }
+    }
+    .subTotal{
+      margin: 0;
+    }
+    .receiptContent {
+      font-size: 14px;
+    }
+    .noteSection{
+      span{
+        font-size: 14px;
+      }
+    }
   }
 }
