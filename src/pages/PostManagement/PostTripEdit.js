@@ -19,12 +19,18 @@ import { handleSuccess } from '../../utils/handler/card/handleStatusCard';
 import { BE_URL } from '../../utils/config';
 import moment from 'moment';
 import { handleLoginCard } from '../../utils/handler/card/handleInputCard';
+// import { handleInfoComfirm } from '../../utils/handler/card/handleStatusCard';
 
 // 驗證登入
 import { useUserInfo } from '../../hooks/useUserInfo';
 
 function PostTripEdit() {
   const { user, setUser } = useUserInfo();
+
+  // window.onbeforeunload = function (e) {
+  //   var e = window.event || e;
+  //   handleInfoComfirm('編輯狀態 確定離開當前頁面嗎？');
+  // };
   //原始資料
   const [postTripEdit, setPostTripEdit] = useState([]);
   // 單一頁面ＩＤ
@@ -42,10 +48,12 @@ function PostTripEdit() {
   const [tripPostLocMark, setTripPostLocMark] = useState('');
   // 行程標籤
   const [tripPostTags, setTripPostTags] = useState('');
+  // 內文偵測
+  const [ifUpdate, setIfUpdate] = useState(false);
   // 景點內文
   const [tripPostLocContext, setTripPostLocContext] = useState([]);
   // 景點停留備註
-  const [tripPostIntro, setTripPostIntro] = useState('');
+  const [tripPostIntro, setTripPostIntro] = useState([]);
   //貼文狀態
   const [postState, setPostState] = useState('');
   //預覽照片 (封面照片)
@@ -140,11 +148,15 @@ function PostTripEdit() {
     fetchPostTripEdit();
   }, []);
 
+  // 偵測改變
+
   //編輯後回傳資料庫post
   //文字儲存
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    console.log('需要回傳的景點明細', locateDetail);
+    console.log('需要回傳的貼文明細', updateObject);
     let responseData = await axios.post(
       `${API_URL}/community/tripPostDetailEdit`,
       { updateObject, locateDetail }
@@ -269,7 +281,10 @@ function PostTripEdit() {
                 />
               </label>
             </div>
-            <label className="mt-2">
+            <label
+              className="mt-2 post_detailBar"
+              style={{ objectFit: 'contain' }}
+            >
               <MdTitle className="mb-1 me-1"></MdTitle>貼文標題
             </label>
             <input
@@ -284,7 +299,7 @@ function PostTripEdit() {
             />
             <div className="d-flex row">
               <div className="col-6">
-                <label className="mt-3">
+                <label className="mt-3 post_detailBar">
                   <TiLocation className="mb-1 me-1"></TiLocation>地點
                 </label>
                 <input
@@ -298,7 +313,7 @@ function PostTripEdit() {
                 ></input>
               </div>
               <div className="col-6">
-                <label className="mt-3">
+                <label className="mt-3 post_detailBar">
                   <AiFillTag className="mb-1 me-1"></AiFillTag>標籤
                   (請輸入＃區分標籤)
                 </label>
@@ -330,7 +345,7 @@ function PostTripEdit() {
                               <li
                                 className="trip_location mt-3"
                                 id={`day${data.days}locate${i}`}
-                                key={data.i}
+                                key={i}
                               >
                                 <div className="trip_location_title d-flex align-items-start row ">
                                   <div className="d-flex my-1 flex-column col-7">
@@ -345,15 +360,16 @@ function PostTripEdit() {
                                         placeholder="請輸入行程簡介"
                                         defaultValue={data.locate_intro}
                                         onChange={(e) => {
-                                          setTripPostIntro((time) => {
-                                            let newTime = JSON.parse(
-                                              JSON.stringify([...time])
+                                          setTripPostIntro((intro) => {
+                                            let newIntro = JSON.parse(
+                                              JSON.stringify([...intro])
                                             );
-                                            newTime[index][i] = e.target.value;
-                                            return newTime;
+                                            setIfUpdate(true);
+                                            newIntro[index][i] = e.target.value;
+                                            return newIntro;
                                           });
                                         }}
-                                        //TODO:樣式太醜
+                                        //TODO:樣式太醜w
                                       ></input>
                                     </div>
                                     <textarea
@@ -368,6 +384,7 @@ function PostTripEdit() {
                                           let newState = JSON.parse(
                                             JSON.stringify([...context])
                                           );
+                                          setIfUpdate(true);
                                           newState[index][i] = e.target.value;
                                           return newState;
                                         });

@@ -31,7 +31,9 @@ function CommunityManagement() {
   // 點擊按鈕狀態改變
   const [showCFBox, setShowCFBox] = useState(0);
   const [ifDelete, setIfDelete] = useState(false);
-  const [ifLike, setifLike] = useState(false);
+  const [ifLike, setifLike] = useState(true);
+
+  const [unLikeID, setunLikeID] = useState('');
   // 我的貼文列表
   const [likeList, setLikeList] = useState([]);
   //匯入我的行程
@@ -50,7 +52,7 @@ function CommunityManagement() {
         withCredentials: true,
       });
       // 取得後端來的資料
-      // console.log('行程貼文列表', result.data);
+      console.log('行程貼文列表', result.data);
       setMyTripPost(result.data);
       // 存回 useState 狀態
     };
@@ -63,7 +65,7 @@ function CommunityManagement() {
         withCredentials: true,
       });
       // 取得後端來的資料
-      // console.log('一般貼文列表', result.data);
+      console.log('一般貼文列表', result.data);
       setMyPost(result.data);
       // 存回 useState 狀態
     };
@@ -82,11 +84,11 @@ function CommunityManagement() {
       // 取得後端來的資料
       // console.log('取單一使用者按讚列表', result.data);
       setLikeList(result.data);
-      // console.log('我的按讚列表', likeList);
+      console.log('我的按讚列表', likeList);
       // 存回 useState 狀態
     };
     fetchMyLikePost();
-  }, []);
+  }, [ifLike]);
   //匯入我的行程選單
   useEffect(() => {
     const fetchMyTrip = async () => {
@@ -137,7 +139,22 @@ function CommunityManagement() {
   };
   // console.log('匯入行程貼文預設標題', tripPostTitleDefault);
 
-  //TODO:偵測按讚
+  //TODO:取消按讚
+  const unLikeHandle = async (e) => {
+    e.preventDefault();
+    console.log('取消按讚', unLikeID);
+    let unlikeData = await axios.post(
+      `${API_URL}/community/unlike`,
+      { unLikeID },
+      {
+        withCredentials: true,
+      }
+    );
+    console.log(unlikeData, '已取消按讚');
+    setifLike(true);
+    handleSuccess('已移除按讚');
+    ConfirmHandle(0);
+  };
 
   return (
     <>
@@ -353,8 +370,13 @@ function CommunityManagement() {
                             </div>
                             <div className="post_edit_button d-flex ps-4 py-2 ">
                               <button
+                                value={data.post_id}
                                 className="btn remove_follow my-1 "
-                                onClick={() => ConfirmHandle(3)}
+                                onClick={(e) => {
+                                  ConfirmHandle(3);
+                                  setunLikeID(e.target.value);
+                                  setifLike(false);
+                                }}
                               >
                                 取消按讚
                               </button>
@@ -468,17 +490,17 @@ function CommunityManagement() {
             }
           >
             <p>
-              是否確認取消追蹤/按讚？
+              確認取消按讚？
               <MdOutlineClose
                 className="close_icon"
-                onClick={() => {
+                onClick={(e) => {
                   ConfirmHandle(0);
                 }}
               ></MdOutlineClose>
             </p>
-            <Link to="/">
-              <button className="confirm_button">確認</button>
-            </Link>
+            <button className="confirm_button" onClick={unLikeHandle}>
+              確認
+            </button>
           </div>
         </div>
         {/* TODO: 跑不出來！！ 事件聆聽功能 */}
@@ -522,10 +544,7 @@ function CommunityManagement() {
                       <option
                         onClick={() => {
                           setTripTitile(data.title);
-                          console.log(
-                            'titlewwdwdwdeeeeee',
-                            tripPostTitleDefault
-                          );
+                          console.log('titlew', tripPostTitleDefault);
                         }}
                         name={data.title}
                         value={data.id}

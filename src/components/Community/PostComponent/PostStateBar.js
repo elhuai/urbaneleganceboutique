@@ -25,15 +25,13 @@ export default function PostStateBar({ post, postID }) {
   const [likesState, setLikeState] = useState(0);
   // //TODO: 如何設計初始值 判斷使用者是否已經按讚過了
   // useEffect(() => {
+  //   console.log('貼文ＩＤ使用者ＩＤ', postID, userID);
   //   const fetchLikeState = async () => {
   //     try {
-  //       const result = await axios.get(`${API_URL}/community/likestatic`, {
-  //         postID,
-  //         userID,
-  //       });
+  //       const result = await axios.get(`${API_URL}/community/likesStatus`);
   //       // 取得後端來的資料
   //       console.log('result,data', result.data);
-  //       result.data.length ? setLikeState(0) : setLikeState(1);
+  //       result.data.length === 0 ? setLikeState(0) : setLikeState(1);
   //     } catch (err) {
   //       console.log('fetchLikeState', err);
   //     }
@@ -45,7 +43,7 @@ export default function PostStateBar({ post, postID }) {
 
   // 按讚按鈕
   const LikeHandle = async (e) => {
-    e.preventDefault();
+    // e.preventDefault();
 
     if (!likesState) {
       setLikes(likes + 1);

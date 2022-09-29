@@ -79,22 +79,23 @@ export default function PhotoReviewSwiper({ list }) {
   };
   return (
     <>
+      <div className="d-flex justify-content-end me-4">
+        <label className="photo_upload d-flex align-items-center justify-content-center mb-2 mt-2">
+          上傳照片
+          <input
+            type="file"
+            accept="images/*"
+            name="photos"
+            hidden
+            className="form-control"
+            onChange={(e) => {
+              setLocFiles({ photos: e.target.files[0], locateID: locateID });
+              setSelectedLocFile(e.target.files[0]);
+            }}
+          ></input>
+        </label>
+      </div>
       {selectedLocFile ? <ShowSwiper /> : <ShowSwiper data={list} />}
-
-      <label className="photo_upload d-flex align-items-center justify-content-center mb-2 mt-3">
-        上傳照片
-        <input
-          type="file"
-          accept="images/*"
-          name="photos"
-          hidden
-          className="form-control"
-          onChange={(e) => {
-            setLocFiles({ photos: e.target.files[0], locateID: locateID });
-            setSelectedLocFile(e.target.files[0]);
-          }}
-        ></input>
-      </label>
     </>
   );
 }

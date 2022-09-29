@@ -56,7 +56,7 @@ export default function PostLocateArticle({ post }) {
                       >
                         <div className="d-flex row align-items-start">
                           <div className="post_location_mark d-flex flex-column justify-content-start align-items-start col-7 mt-1">
-                            <div className="d-flex">
+                            <div className="d-flex locate_title">
                               <p>
                                 <TiLocation className="mb-1 me-1 h5"></TiLocation>
                                 <strong className="ms-1 h5">
@@ -67,8 +67,10 @@ export default function PostLocateArticle({ post }) {
                                 {data.locate_intro}
                               </p>
                             </div>
-                            <div className="">
-                              <p>{data.locate_context}</p>
+                            <div className="locate_context">
+                              <p style={{ color: ' #747474' }}>
+                                {data.locate_context}
+                              </p>
                             </div>
                           </div>
 

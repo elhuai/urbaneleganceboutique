@@ -49,8 +49,11 @@ body {
   .trip_record_section {
     list-style-type: none;
     .post_location_mark {
-      color: $line-color--dark;
+      color: black;
       font-size: 18px;
+      .locate_context {
+        color: #747474;
+      }
     }
   }
 }
