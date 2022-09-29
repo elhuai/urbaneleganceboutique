@@ -13,9 +13,18 @@ export default function TripOutline({ post }) {
                 {data.map((data, i) => {
                   return (
                     <>
-                      <a key={data.id} href={`#day${data.days}locate${i}`}>
-                        <p>{data.locate_name}</p>
-                      </a>
+                      <div className="outline_pack">
+                        <a
+                          className="outline_title"
+                          key={data.id}
+                          href={`#day${data.days}locate${i}`}
+                        >
+                          <p>{data.locate_name}</p>
+                        </a>
+                        <div className="outline_intro">
+                          <p>{data.locate_intro}</p>
+                        </div>
+                      </div>
                     </>
                   );
                 })}

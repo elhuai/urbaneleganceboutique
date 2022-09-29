@@ -10,6 +10,7 @@ import { useState, useEffect } from 'react';
 import axios from 'axios';
 import { API_URL } from '../../../utils/config';
 import { handleSuccess } from '../../../utils/handler/card/handleStatusCard';
+import { useUserInfo } from '../../../hooks/useUserInfo';
 
 export default function PostStateBar({ post, postID }) {
   console.log('post', post);
@@ -17,39 +18,67 @@ export default function PostStateBar({ post, postID }) {
   // 資料按讚數 學儒調整中
   // const [likes, setLikes] = useState(post[0][0].likes);
   const [likes, setLikes] = useState(post[0].likes);
+  // 資料按讚數
+  const { user, setUser } = useUserInfo();
+  // console.log('user', user.data.id);
+  const userID = user.data.id;
+  // const [likes, setLikes] = useState(post[0][0].likes);
+
+  // //判斷是否有按過讚
   const [likesState, setLikeState] = useState(0);
+  //TODO: 如何設計初始值 判斷使用者是否已經按讚過了
+  useEffect(() => {
+    console.log('貼文ＩＤ使用者ＩＤ', postID, userID);
+    const fetchLikeState = async () => {
+      try {
+        const result = await axios.get(`${API_URL}/community/likesStatus`);
+        // 取得後端來的資料
+        console.log('result,data', result.data);
+        result.data.length === 0 ? setLikeState(0) : setLikeState(1);
+      } catch (err) {
+        console.log('fetchLikeState', err);
+      }
+    };
+    fetchLikeState();
+  }, []);
 
   console.log('poststatebar', post);
 
   // 按讚按鈕 學儒調整中
   const LikeHandle = async (e) => {
-    e.preventDefault();
+    // e.preventDefault();
 
     if (!likesState) {
       setLikes(likes + 1);
-
+      setLikeState(1);
+      console.log('現在按讚狀態', likesState);
+      console.log('現在按讚數', likes);
       let likesData = await axios.post(`${API_URL}/community/likes`, {
         postID,
         likesState,
+        likes,
+        userID,
       });
       console.log('按讚成功', likesData);
       handleSuccess('讚讚！');
-      setLikeState(1);
       // TODO:傳值給資料庫做加減
       console.log(likes);
-      console.log(likesState);
+      // console.log('現在按讚狀態', likesState);
     } else {
       setLikes(likes - 1);
-
+      setLikeState(0);
+      console.log('現在按讚狀態', likesState);
+      console.log('現在按讚數', likes);
       let likesData = await axios.post(`${API_URL}/community/likes`, {
         postID,
         likesState,
+        likes,
+        userID,
       });
       console.log('收回讚', likesData);
       handleSuccess('讚還來');
-      setLikeState(0);
       console.log(likes);
-      console.log(likesState);
+      console.log('現在按讚狀態', likesState);
     }
   };
   // 學儒調整中
@@ -58,6 +87,20 @@ export default function PostStateBar({ post, postID }) {
   const time = post[0].create_time.split(' ');
   const tags = post[0].tags.split(/[#,＃]/).filter((item) => item);
 
+  const [postState, setPostState] = useState('');
+  const handleRelease = async (e) => {
+    e.preventDefault();
+    setPostState(e.target.value);
+    // console.log(postState, postID);
+    let res = await axios.post(`${API_URL}/community/release`, {
+      postID,
+      postState,
+    });
+    //TODO: 如何點擊按鈕改變狀態同時打api回去
+    console.log('貼文發布成功', res);
+    handleSuccess('貼文發布成功', `/postTrip?postID=${postID}`);
+  };
+
   return (
     <>
       <div className="postStateBar">
@@ -65,12 +108,16 @@ export default function PostStateBar({ post, postID }) {
           <img
             className=""
             alt=""
+            style={{ objectFit: 'contain' }}
             src={
               post[0].travel_id === 2
                 ? post[0][0].main_photo.length === 0
                 : post[0].post_main_photo.length === 0
                 ? coverPhoto
                 : BE_URL + post[0].post_main_photo
+              // post[0][0].post_main_photo === ''
+              //   ? coverPhoto
+              //   : BE_URL + '/' + post[0][0].post_main_photo
             }
           ></img>
         </div>
@@ -115,20 +162,38 @@ export default function PostStateBar({ post, postID }) {
             </div>
           </div>
           <div className="post_like me-2">
-            {likesState === 0 ? (
-              <p>
-                <BiLike className="mb-1 me-2" onClick={LikeHandle}></BiLike>
-                按讚人數：{likes}
-              </p>
-            ) : (
-              <p>
+            {post[0].travel_id === 2 ? (
+              post[0][0].status === 2
+            ) : post[0].status ? (
+              <>
                 {' '}
-                <AiTwotoneLike
-                  className="mb-1 me-2"
-                  onClick={LikeHandle}
-                ></AiTwotoneLike>
-                按讚人數：{likes}
-              </p>
+                <div className="d-flex">
+                  {' '}
+                  <p>草稿尚未發布</p>
+                  <button className="btn" value="1" onClick={handleRelease}>
+                    發布
+                  </button>
+                </div>
+              </>
+            ) : (
+              <>
+                {' '}
+                {likesState === 0 ? (
+                  <p>
+                    <BiLike className="mb-1 me-2" onClick={LikeHandle}></BiLike>
+                    按讚人數：{likes}
+                  </p>
+                ) : (
+                  <p>
+                    {' '}
+                    <AiTwotoneLike
+                      className="mb-1 me-2"
+                      onClick={LikeHandle}
+                    ></AiTwotoneLike>
+                    按讚人數：{likes}
+                  </p>
+                )}
+              </>
             )}
           </div>
         </div>

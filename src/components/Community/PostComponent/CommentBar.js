@@ -69,7 +69,7 @@ function CommentBar() {
       );
       console.log('response.data', response.data);
       setIfSubmit(true);
-      getSetCommentData({commentText:''});
+      getSetCommentData({ commentText: '' });
     } catch (e) {
       console.error('postCommentEdit', e);
     }
@@ -79,7 +79,7 @@ function CommentBar() {
     // 把預設行為關掉
     e.preventDefault();
     try {
-      getSetCommentData({commentText:''});
+      getSetCommentData({ commentText: '' });
     } catch (e) {
       console.error('postCommentEdit', e);
     }
@@ -90,6 +90,9 @@ function CommentBar() {
       <p className="post__comment_list_title">回應</p> {/* 關聯資料庫 */}
       <div className=" d-flex flex-column align-items-center">
         {commentData.map((data) => {
+          {
+            /* console.log('comment', comment); */
+          }
           return (
             <li
               key={data.id}

@@ -185,7 +185,7 @@ ul.communityManagementTab {
   }
 }
 
-.post_new_button button {
+.post_new {
   width: 120px;
   height: 50px;
   border-radius: 8px;
@@ -195,7 +195,8 @@ ul.communityManagementTab {
   font-size: 20px;
   margin-top: 0px;
   position: absolute;
-  right: 10%;
+  // right: 100%;
+  right: 12%;
   top: 60px;
   // bottom: 5px;
   align-items: center;

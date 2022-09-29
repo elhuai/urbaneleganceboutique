@@ -78,7 +78,7 @@ body {
 .post_map {
   width: 100%;
   p {
-    font-size: 1.25rem;
+    font-size: 1.8rem;
     font-weight: 600;
   }
   .map_photo {
@@ -109,7 +109,7 @@ body {
   &:hover {
     border: none;
     color: white;
-    background-color: darken(#ffc715, 5%);
+    background-color: darken($main-color, 5%);
   }
 }
 .article_section {
