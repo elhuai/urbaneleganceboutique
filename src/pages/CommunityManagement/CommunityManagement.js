@@ -428,7 +428,7 @@ function CommunityManagement() {
                 }}
               ></MdOutlineClose>
             </p>
-            <Link to="/PostWYSIWYGEdit">
+            <Link to="/postEdit">
               <button className="confirm_button">一般貼文</button>
             </Link>
             <button
