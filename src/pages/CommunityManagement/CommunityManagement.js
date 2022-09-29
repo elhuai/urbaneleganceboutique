@@ -102,7 +102,7 @@ function CommunityManagement() {
   };
   //匯入行程新增貼文
   // creatNewTripPost
-  const createTime = moment(new Date()).format('YYYY-MM-DD hh:mm:ss');
+  const createTime = moment(new Date()).format('YYYY-MM-DD HH:mm:ss');
   const [tripPostTitleDefault, setTripTitile] = useState('');
 
   const creatNewTripPost = async (e) => {

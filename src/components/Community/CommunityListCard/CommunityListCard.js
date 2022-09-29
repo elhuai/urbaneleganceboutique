@@ -3,6 +3,7 @@ import { IoHeartOutline } from 'react-icons/io5';
 import { TiLocation } from 'react-icons/ti';
 import { BiLike } from 'react-icons/bi';
 import noPhoto from '../../../images/noPhoto.png';
+import parse from 'html-react-parser';
 
 import './_communityListCard.scss';
 
@@ -17,7 +18,7 @@ export default function CommunityListCard({ post }) {
           >
             <div className="row g-0 ">
               <div className="col-md-4 comList_main_card_img--box">
-                {data.main_photo.length === 0 ? (
+                {data.post_main_photo.length === 0 ? (
                   <img
                     src={noPhoto}
                     alt="..."
@@ -29,7 +30,7 @@ export default function CommunityListCard({ post }) {
                     alt="..."
                     className="comList_main_card_img"
                   />
-                )}
+                )} 
 
                 {/* <img
                   src={data.img}
@@ -41,7 +42,7 @@ export default function CommunityListCard({ post }) {
                 <div className="card-body d-flex flex-column justify-content-between">
                   <div className="comList_main_card_title d-flex justify-content-between">
                     <h5 className="card-title comList_card_title mb-1">
-                      {data.title}
+                      {data.post_title}
                     </h5>
                     <IoHeartOutline />
                   </div>
@@ -50,9 +51,8 @@ export default function CommunityListCard({ post }) {
                       {data.tags}
                     </p>
                   </div>
-                  <p className="card-text comList_main_card_content">
-                    {data.content}
-                  </p>
+                  {/* <p className="card-text comList_main_card_content">{ parse(data.content) }</p> */}
+                  <p className="card-text comList_main_card_content">{data.content}</p>
                   <div className="comList_main_card_bottom_text card-text d-flex justify-content-between">
                     <p className="comList_main_card_locate_text card-text d-flex align-items-center">
                       <TiLocation />

@@ -19,7 +19,8 @@ import Travelmap from './pages/Travel_map';
 import LineLogin from './pages/LineLogin';
 import ExamplePage from './pages/ExamplePage/ExamplePage';
 
-// import PersonalHomePage from './components/AdminCenter/AdminCenter';
+import PersonalHomePage from './components/layout/AdminCenter/PersonalHomePage';
+
 import Post from './pages/PostManagement/Post';
 import PostTrip from './pages/PostManagement/PostTrip';
 import PostEdit from './pages/PostManagement/PostEdit';
@@ -33,6 +34,7 @@ import EcProductFilter from './pages/Ecommerce/EC_productFilter';
 import ECOrderSteps from './pages/Ecommerce/EC_checkout';
 import 'swiper/scss';
 import 'swiper/css/bundle';
+
 import './styles/style.scss';
 
 function App() {

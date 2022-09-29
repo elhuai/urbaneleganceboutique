@@ -28,26 +28,26 @@ body {
 }
 
 .swal2-icon.swal2-success {
-  border-color: rgba(255, 194, 0, .8);
-  color: rgba(255, 194, 0, .8);
+  border-color: rgba(255, 194, 0, 0.8);
+  color: rgba(255, 194, 0, 0.8);
 }
 
-.swal2-icon.swal2-success [class^=swal2-success-line] {
+.swal2-icon.swal2-success [class^='swal2-success-line'] {
   background-color: rgba(255, 194, 0, 1);
 }
 
 .swal2-icon.swal2-success .swal2-success-ring {
-  border: 0.25em solid rgba(255, 194, 0, .4);
+  border: 0.25em solid rgba(255, 194, 0, 0.4);
 }
 
 .swal2-styled.swal2-confirm {
-  background-color: #EF7A70;
+  background-color: #ef7a70;
 }
 
-.swal2-styled.swal2-cancel:focus, .swal2-styled.swal2-confirm:focus {
-  box-shadow: 0 0 0 0px ;
+.swal2-styled.swal2-cancel:focus,
+.swal2-styled.swal2-confirm:focus {
+  box-shadow: 0 0 0 0px;
 }
-
 
 @media screen and (max-width: 768px) {
   .app {

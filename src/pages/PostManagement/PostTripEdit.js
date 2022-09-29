@@ -153,7 +153,7 @@ function PostTripEdit() {
   //TODO:清空
   // const resetForm = () => {
   //   setTripPostLocContext('');
-  //   // setTripPostLocPhoto('');
+  //   // setTripPostLojujucPhoto('');
   //   setTripPostLocTime('');
   //   setTripPostTitle('');
   //   setTripPostLocMark('');

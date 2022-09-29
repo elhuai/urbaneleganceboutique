@@ -1,8 +1,9 @@
-import './_SearchBar_search.scss';
 import main_search_left_dog from '../../images/main_search_left_dog.png';
 import main_search_right_dog from '../../images/main_search_right_dog.png';
 import { AiOutlineSearch } from 'react-icons/ai';
 import { Link } from 'react-router-dom';
+
+import './_SearchBar_search.scss';
 
 function SearchBar(props) {
   const {
@@ -12,7 +13,7 @@ function SearchBar(props) {
     setKeywordSearch,
     setSearch,
   } = props;
-  
+
   const handleSearch = (e) => {
     if (keywordSearch === '') return setSearch('');
     setSearch(keywordSearch);
@@ -25,7 +26,7 @@ function SearchBar(props) {
           <div className="searchBar_search">
             <input
               type="text"
-              className="searchBar_searchTerm"
+              className="searchBar_searchInput"
               placeholder={searchBar_placeholder}
               value={keywordSearch}
               onChange={(e) => {
@@ -33,15 +34,16 @@ function SearchBar(props) {
                 setKeywordSearch(e.target.value);
               }}
             />
-            <button
+            <Link
               type="submit"
               className="searchBar_searchButton"
+              to={`/communitylist`}
               onClick={handleSearch}
             >
               <i className="searchBar_fa searchBar_fa-search">
                 <AiOutlineSearch />
               </i>
-            </button>
+            </Link>
           </div>
           <img
             className="searchBar_main_search_left_dog"
@@ -58,26 +60,5 @@ function SearchBar(props) {
     </>
   );
 }
-
-// const fakeData = [
-//   {
-//     id: 1,
-//     main_photo: '',
-//     coordinate: '',
-//     content: '',
-//     tags: '',
-//     likes: '',
-//     title: '1111',
-//   },
-//   {
-//     id: 4,
-//     main_photo: '',
-//     coordinate: '',
-//     content: '',
-//     tags: '',
-//     likes: '',
-//     title: '4444',
-//   },
-// ];
 
 export default SearchBar;

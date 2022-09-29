@@ -77,14 +77,14 @@ export default function communityHomePageCard(props) {
                   <div className="obj-fit">
                     <img
                       src={
-                        process.env.REACT_APP_BASE_URL + '/' + data.main_photo
+                        process.env.REACT_APP_BASE_URL + '/' + data.post_main_photo
                       }
                       alt="123"
                     />
                   </div>
                   <div className="d-flex flex-fill flex-column p-3">
                     <div className="communitySwiper_card_title flex-fill">
-                      <h5>{data.title}</h5>
+                      <h5>{data.post_title}</h5>
                     </div>
                     <div className="communitySwiper_card_infoArea d-flex justify-content-between align-items-end">
                       <div className="communitySwiper_card_info d-flex align-items-end">

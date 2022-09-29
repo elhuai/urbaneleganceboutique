@@ -1,45 +1,9 @@
 import React from 'react';
 import { Tabs, Tab } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
-import dogIcon from '../../images/travel_dog_paws.svg';
+import { FaPaw } from 'react-icons/fa';
 import { Swiper, SwiperSlide } from 'swiper/react';
-const tripData = [
-  // {
-  //   id: 1,
-  //   name: '蘭嶼五日遊油油油油去去去',
-  //   start_time: 20220823,
-  //   end_time: 20220830,
-  //   img: 'https://picsum.photos/200/300?random1',
-  // },
-  {
-    id: 2,
-    name: '台北五日遊玩玩玩玩玩玩玩玩玩',
-    start_time: 20220820,
-    end_time: 20220825,
-    img: 'https://picsum.photos/200/300?random21',
-  },
-  {
-    id: 3,
-    name: '澎湖五日遊',
-    start_time: 20220819,
-    end_time: 20220820,
-    img: 'https://picsum.photos/200/300?random36',
-  },
-  {
-    id: 4,
-    name: '澎湖五日遊',
-    start_time: 20220819,
-    end_time: 20220820,
-    img: 'https://picsum.photos/200/300?random32',
-  },
-  {
-    id: 5,
-    name: '澎湖五日遊',
-    start_time: 20220819,
-    end_time: 20220820,
-    img: 'https://picsum.photos/200/300?random31',
-  },
-];
+
 const collectTrip = [
   // {
   //   id: 1,
@@ -48,44 +12,10 @@ const collectTrip = [
   //   end_time: 20220830,
   //   img: 'https://picsum.photos/200/300?random10',
   // },
-  // {
-  //   id: 2,
-  //   name: '台中二日遊',
-  //   start_time: 20220820,
-  //   end_time: 20220825,
-  //   img: 'https://picsum.photos/200/300?random87',
-  // },
-  // {
-  //   id: 3,
-  //   name: '基隆一日遊',
-  //   start_time: 20220823,
-  //   end_time: 20220830,
-  //   img: 'https://picsum.photos/200/300?random50',
-  // },
-  // {
-  //   id: 4,
-  //   name: '台北二日遊',
-  //   start_time: 20220820,
-  //   end_time: 20220825,
-  //   img: 'https://picsum.photos/200/300?random73',
-  // },
-  // {
-  //   id: 5,
-  //   name: '花東一日遊',
-  //   start_time: 20220823,
-  //   end_time: 20220830,
-  //   img: 'https://picsum.photos/200/300?random40',
-  // },
-  // {
-  //   id: 2,
-  //   name: '台中二日遊',
-  //   start_time: 20220820,
-  //   end_time: 20220825,
-  //   img: 'https://picsum.photos/200/300?random7',
-  // },
 ];
 
-const Travel_Tab = () => {
+const Travel_Tab = ({ travelUser }) => {
+  console.log('travelUser', travelUser);
   return (
     <>
       <Tabs
@@ -97,7 +27,7 @@ const Travel_Tab = () => {
           eventKey="home"
           title={
             <div>
-              <img className="travel_nav_mytrip me-2" src={dogIcon} alt="" />
+              <FaPaw className="travel_nav_mytrip me-2" />
               我的行程
             </div>
           }
@@ -113,33 +43,37 @@ const Travel_Tab = () => {
               onSlideChange={() => console.log('slide change')}
               onSwiper={(swiper) => console.log()}
             >
-              {tripData.length === 0 ? (
+              {travelUser.length === 0 ? (
                 <SwiperSlide>
                   <div>
                     <h1 className="fw-bold travel_noidea"> 還沒有想法嗎</h1>
                   </div>
                 </SwiperSlide>
               ) : (
-                tripData.map((vaule) => {
+                travelUser.map((data) => {
                   return (
                     <SwiperSlide
-                      key={vaule.id}
+                      key={data.id}
                       className="travel_Tab_Swiper me-md-5 travel_Tab_Link text-dark  mt-3 text-decoration-none"
                     >
-                      <Link to="/" className="">
+                      <Link to={`/Travel_map?travelid=${data.id}`} className="">
                         <div>
                           <img
                             className="travel_Tab_Img "
-                            src={vaule.img}
+                            src={
+                              process.env.REACT_APP_BASE_API_URL +
+                              '/' +
+                              data.main_photo
+                            }
                             alt="123"
                           />
                           <div className="travel_Tab_tittleDiv">
                             <p className="travel_Tab_tittleName px-3">
-                              {vaule.name}
+                              {data.title}
                             </p>
                           </div>
                           <div className="travel_Tab_tittleDate mb-md-4 px-3">
-                            {vaule.start_time}~{vaule.end_time}
+                            {data.start_time}~{data.end_time}
                           </div>
                         </div>
                       </Link>
@@ -168,24 +102,28 @@ const Travel_Tab = () => {
                   </div>
                 </SwiperSlide>
               ) : (
-                collectTrip.map((vaule) => {
+                collectTrip.map((data) => {
                   return (
                     <SwiperSlide
-                      key={vaule.id}
+                      key={data.id}
                       className="travel_Tab_Swiper me-5 travel_Tab_Link text-dark  mt-3 text-decoration-none"
                     >
-                      <Link to="/" className="">
+                      <Link to="/Travel_map" className="">
                         <div>
                           <img
                             className="travel_Tab_Img "
-                            src={vaule.img}
+                            src={
+                              process.env.REACT_APP_BASE_API_URL +
+                              '/' +
+                              data.main_photo
+                            }
                             alt="123"
                           />
                           <p className="travel_Tab_tittleName px-3">
-                            {vaule.name}
+                            {data.title}
                           </p>
                           <div className="travel_Tab_tittleDate mb-md-4  px-3">
-                            {vaule.start_time}~{vaule.end_time}
+                            {data.start_time}~{data.end_time}
                           </div>
                         </div>
                       </Link>

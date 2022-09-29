@@ -1,60 +1,25 @@
 import React from 'react';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Link } from 'react-router-dom';
-const swiperImage = [
-  {
-    id: 144,
-    tittle: '瓦甘達五日遊',
-    start_time: 20220823,
-    end_time: 20220830,
-    img: 'https://i.pravatar.cc/300',
-    userid: '瓦甘納佛欸ㄇ',
-    days: 5,
-    userphoto: 'https://i.pravatar.cc/200?img=2',
-  },
+const moment = require('moment');
 
-  {
-    id: 122,
-    tittle: '外太空五日遊混混混混天天天天天水',
-    start_time: 20220820,
-    end_time: 20220825,
-    img: 'https://picsum.photos/200/300?random21',
-    userid: 'I am Iron man',
-    days: 5,
-    userphoto: 'https://i.pravatar.cc/200?img=4',
-  },
-  {
-    id: 313,
-    tittle: '日本五日遊',
-    start_time: 20220819,
-    end_time: 20220820,
-    img: 'https://picsum.photos/200/300?random30',
-    userid: '摳擬機挖',
-    days: 5,
-    userphoto: 'https://i.pravatar.cc/200?img=1',
-  },
-  {
-    id: 54,
-    tittle: '北極五日遊',
-    start_time: 20220819,
-    end_time: 20220820,
-    img: 'https://picsum.photos/200/300?random32',
-    userid: '旋風特風龍捲風',
-    days: 5,
-    userphoto: 'https://i.pravatar.cc/200?img=5',
-  },
-  {
-    id: 5,
-    tittle: '海底五日遊',
-    start_time: 20220819,
-    end_time: 20220820,
-    img: 'https://picsum.photos/200/300?random36',
-    userid: '阿扣麵',
-    days: 5,
-    userphoto: 'https://i.pravatar.cc/200?img=7',
-  },
-];
-const TravelFooterSwiper = () => {
+const TravelFooterSwiper = ({ travelCommunity }) => {
+  console.log('travelCommunity', travelCommunity);
+
+  const newArr = travelCommunity.map((data) => {
+    const startDate = moment(data.start_time);
+    const endDate = moment(data.end_time);
+    const differentDate = endDate.diff(startDate, 'days');
+    // console.log(startDate + '跟' + endDate + '相差' + differentDate + '天');
+    // console.log('differentDate', differentDate);
+    for (let i = 0; i < travelCommunity.length; i++) {
+      travelCommunity[i].differentDays = differentDate;
+    }
+    return differentDate;
+    //Demo的時候盡量天數一樣 顯示總共幾天小有bug
+  });
+  console.log('newArr', newArr);
+
   return (
     <>
       <Swiper
@@ -66,17 +31,19 @@ const TravelFooterSwiper = () => {
         onSlideChange={() => console.log()}
         onSwiper={(swiper) => console.log()}
       >
-        {swiperImage.map((vaule) => {
+        {travelCommunity.map((data) => {
           return (
             <SwiperSlide
-              key={vaule.id}
+              key={data.id}
               className="travel_Swiper_EveryOnetrip me-5"
             >
               <Link to="/#" className="mt-3">
                 <div className="">
                   <img
                     className="travel_Swiper_EveryOnetrip_Img "
-                    src={vaule.img}
+                    src={
+                      process.env.REACT_APP_BASE_API_URL + '/' + data.main_photo
+                    }
                     alt="123"
                   />
                 </div>
@@ -84,12 +51,13 @@ const TravelFooterSwiper = () => {
               <div className="d-flex  justify-content-between ">
                 <div className="travel_Swiper_EveryOnetrip_tittle_div">
                   <p className="travel_Swiper_EveryOnetrip_tittle user-select-none mt-3">
-                    {vaule.tittle}
+                    {data.title}
                   </p>
                 </div>
                 <div className="">
                   <p className="travel_Swiper_EveryOnetrip_day pe-md-3 user-select-none mt-3">
-                    {vaule.days}天
+                    {/* TODO: Demo的時候盡量天數一樣 顯示總共幾天小有bug */}
+                    {data.differentDays}天
                   </p>
                 </div>
               </div>
@@ -98,13 +66,13 @@ const TravelFooterSwiper = () => {
                 <div>
                   <img
                     className="travel_Swiper_EveryOnetrip_userImage"
-                    src={vaule.userphoto}
+                    src={process.env.REACT_APP_BASE_API_URL + '/' + data.photo}
                     alt="#/"
                   />
                 </div>
                 <div className="d-flex align-items-center">
                   <h4 className="travel_Swiper_EveryOnetrip_username mx-md-3 user-select-none">
-                    {vaule.userid}
+                    {data.social_name}
                   </h4>
                   <div>
                     <h4 className="travel_Swiper_EveryOnetrip_follow  ps-2">
@@ -114,7 +82,7 @@ const TravelFooterSwiper = () => {
                 </div>
               </div>
               <div className="travel_Swiper_EveryOnetrip_date mt-3  user-select-none">
-                {vaule.start_time}
+                {data.start_time}
               </div>
             </SwiperSlide>
           );

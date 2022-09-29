@@ -46,7 +46,7 @@ $font-weight: 1000;
 }
 
 .header_product {
-  letter-spacing: .2rem;
+  letter-spacing: 0.2rem;
   color: #000;
   // padding-right: 20px;
   // padding-left: 20px;
@@ -116,7 +116,6 @@ $font-weight: 1000;
       border-bottom: $fmain_color 2px solid;
       width: 50%;
       transition: 0.5s all;
-
     }
   }
 }
@@ -163,11 +162,10 @@ $font-weight: 1000;
 //   }
 // }
 
-
 .header_rwd_menu_Offcanvas {
   .header_rwd_tittle {
     position: relative;
-    background-color: #FEEFC3;
+    background-color: #feefc3;
     justify-content: center;
 
     button {
@@ -176,7 +174,6 @@ $font-weight: 1000;
       left: 12px;
       padding: 8px;
       margin: 0;
-
       &:active,
       &:focus {
         border: 0;
@@ -230,7 +227,6 @@ $font-weight: 1000;
         right: 0rem;
         height: 40%;
       }
-
       &:hover::before,
       &.active::before {
         width: calc(100% - 40px);
@@ -241,7 +237,7 @@ $font-weight: 1000;
 
 @media screen and (max-width: 1080px) {
   .header_main_body {
-    box-shadow: 0px 0px 8px rgba(0, 0, 0, .05);
+    box-shadow: 0px 0px 8px rgba(0, 0, 0, 0.05);
 
     .header_product,
     .header_main,
@@ -272,7 +268,6 @@ $font-weight: 1000;
       .navbar-brand {
         margin: 0;
         padding: 0;
-
         img {
           height: 64px;
         }
@@ -297,7 +292,6 @@ $font-weight: 1000;
         margin-left: 16px;
         border: 0;
         padding: 0;
-
         &:focus,
         &:active {
           border: 0;
@@ -326,13 +320,11 @@ $font-weight: 1000;
       }
     }
   }
-
 }
 
 @media screen and (max-width: 768px) {
   .header_main_body {
     .header_mobile_menu {
-
       // = mobile icon area
       .header_Icon {
         padding: 0;
@@ -343,7 +335,6 @@ $font-weight: 1000;
           svg {
             width: 22px;
           }
-
           &.header_Icon_cart svg {
             width: 24px;
           }
@@ -354,7 +345,6 @@ $font-weight: 1000;
 
   .header_rwd_menu_Offcanvas {
     width: 100% !important;
-
     .header_rwd_tittle {
       .header_rwd_menu_imgWrap {
         img {

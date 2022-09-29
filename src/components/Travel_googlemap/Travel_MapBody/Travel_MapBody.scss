@@ -1,0 +1,86 @@
+$second_color: #eeb569; // 主色
+.travelmap_body {
+  max-width: 1280px;
+  margin: 0px 10px;
+
+  .travelmap_mainMap {
+    position: relative;
+    margin-left: 50px;
+  }
+
+  .travelmap_container {
+    margin-top: 5px;
+    width: 960px;
+    height: 812px;
+  }
+  .travelmap_InfoWindow_Countain {
+    display: flex;
+
+    width: 150px;
+    // height: 60px;
+
+    .travelmap_InfoWindow_wrap {
+      background-color: $second_color;
+      .travelmap_InfoWindow_photo {
+        background-color: $second_color;
+        border-radius: 50%;
+        width: 55px;
+        height: 55px;
+        margin-bottom: 10px;
+      }
+    }
+    .travelmap_InfoWindow_aside {
+      background-color: $second_color;
+      flex-direction: column;
+      width: 95px;
+      padding-left: 10px;
+
+      .travelmap_InfoWindow_tittle {
+        padding-top: 5px;
+        overflow: hidden;
+        white-space: nowrap;
+        text-overflow: ellipsis;
+        line-height: 13px;
+        font-size: 14px;
+        font-weight: 400;
+        color: #000;
+      }
+
+      .travelmap_InfoWindow_user {
+        line-height: 10px;
+        font-size: 14px;
+        font-weight: 400;
+        color: #fff;
+        // margin-top: 20px;
+      }
+    }
+  }
+
+  .gm-style .gm-style-iw-c {
+    padding-right: 10px !important;
+    padding-bottom: 0px !important;
+    max-width: 500px !important;
+    max-height: 326px !important;
+    min-width: 0px !important;
+    position: absolute;
+    box-sizing: border-box;
+    overflow: hidden;
+    top: 0;
+    left: 0;
+    transform: translate(-50%, -100%);
+    background-color: $second_color;
+    border-radius: 8px;
+    box-shadow: 0 2px 7px 1px rgba(0, 0, 0, 0.3);
+  }
+  .gm-style-iw-d {
+    // height: 30px !important;
+    min-width: 0px !important;
+    overflow: auto !important;
+  }
+  .gm-style .gm-style-iw-tc::after {
+    background-color: $second_color !important;
+  }
+  .title .full-width {
+    background-color: $second_color !important;
+  }
+}

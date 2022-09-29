@@ -1,0 +1,39 @@
+$main_color: #ffc715;
+$sup_color: #eeb569;
+$font-size: 1.2rem;
+$font-weight: 700;
+
+.travel_map_Container {
+  padding-top: 30px;
+  .travel_map_Tab {
+    border-radius: 8px;
+
+    margin: 0 65px;
+    display: flex;
+
+    font-size: 22px;
+    font-weight: 700;
+    .MuiButtonBase-root {
+      color: #000;
+    }
+    .css-8je8zh-MuiTouchRipple-root {
+      color: #000;
+    }
+  }
+  .travelmap_navBaricon {
+    color: red;
+    margin-right: 10px;
+  }
+  .css-1aquho2-MuiTabs-indicator {
+    background-color: $main_color;
+  }
+
+  .TravelTicketNavbarBody {
+    position: relative;
+    top: 193px;
+    left: -10px;
+    width: 930px;
+    height: 160px;
+    border: 1px solid #ccc;
+  }
+}

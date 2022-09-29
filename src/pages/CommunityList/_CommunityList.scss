@@ -1,15 +1,9 @@
 .CommunityList {
-  .searchBar_main_search_left_dog {
-    width: 80px;
-    position: absolute;
-    top: 24px;
-    left: calc(100% - 64%);
-  }
-
-  .searchBar_main_search_right_dog {
-    position: absolute;
-    width: 80px;
-    top: 29px;
-    right: calc(100% - 64%);
+  .CommunityList_main {
+    display: flex;
+    flex-direction: column;
+    max-width: 1280px;
+    width: 100%;
+    margin: 1rem auto;
   }
 }

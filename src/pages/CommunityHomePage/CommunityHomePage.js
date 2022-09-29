@@ -25,7 +25,9 @@ const CommunityHomePage = () => {
 
   const [kolCard, setKolCard] = useState([]);
   const [hotCard, setHotCard] = useState([]);
+  
 
+  // 寵物網紅貼文
   useEffect(() => {
     const fetchPost = async () => {
       const result = await axios.get(`${API_URL}/communityHomePage/kolPost`);
@@ -34,6 +36,7 @@ const CommunityHomePage = () => {
     fetchPost();
   }, []);
 
+  // 熱門貼文
   useEffect(() => {
     const fetchPost = async () => {
       const result = await axios.get(`${API_URL}/communityHomePage/hotPost`);
@@ -48,156 +51,12 @@ const CommunityHomePage = () => {
   return (
     <>
       <div className="CommunityHomePage">
-        <SearchBar
-          searchBar_title="最可愛的萌寵都在這"
-          searchBar_placeholder="阿部柯基頂呱呱"
-        />
-        <div className="post_new_button">
-          <div className="post_new_button mt-5">
-            <button className="post_new" onClick={() => ConfirmHandle(2)}>
-              <RiEditFill
-                color="#FFC715"
-                className="edit-icon me-2"
-              ></RiEditFill>
-              新增貼文
-            </button>
-          </div>
-          <div
-            className={
-              showCFBox === 2
-                ? 'confirmBox_background d-flex justify-content-center d-block'
-                : 'd-none'
-            }
-            // onClick={() => {
-            //   ConfirmHandle(0);
-            // }}
-          >
-            <div
-              className={
-                showCFBox === 2
-                  ? 'create_post_confirm_box d-flex flex-column align-items-center justify-content-center d-block'
-                  : 'd-none'
-              }
-            >
-              <p>
-                請選擇貼文形式
-                <MdOutlineClose
-                  className="close_icon"
-                  onClick={() => {
-                    ConfirmHandle(0);
-                  }}
-                ></MdOutlineClose>
-              </p>
-              <Link to="/PostWYSIWYGEdit">
-                <button className="confirm_button">一般貼文</button>
-              </Link>
-              <button
-                className="confirm_button"
-                onClick={() => {
-                  ConfirmHandle(4);
-                }}
-              >
-                行程貼文<br></br>（需匯入行程）
-              </button>
-            </div>
-          </div>
-          <div
-            className={
-              showCFBox === 1
-                ? 'confirmBox_background d-flex justify-content-center d-block'
-                : 'd-none'
-            }
-            // onClick={(e) => ConfirmHandle(0)}
-          >
-            <div
-              className={
-                showCFBox === 1
-                  ? 'delete_confirm_box d-flex flex-column align-items-center justify-content-center d-block'
-                  : 'd-none'
-              }
-            >
-              <p>
-                是否確認刪除？
-                <MdOutlineClose
-                  className="close_icon"
-                  onClick={() => {
-                    ConfirmHandle(0);
-                  }}
-                ></MdOutlineClose>
-              </p>
-              <Link to="/">
-                <button className="confirm_button">確認</button>
-              </Link>
-            </div>
-          </div>
-          <div
-            className={
-              showCFBox === 3
-                ? 'confirmBox_background d-flex justify-content-center d-block'
-                : 'd-none'
-            }
-            // onClick={(e) => {
-            //   ConfirmHandle(0);
-            // }}
-          >
-            <div
-              className={
-                showCFBox === 3
-                  ? 'delete_follow_box d-flex flex-column align-items-center justify-content-center d-block'
-                  : 'd-none'
-              }
-            >
-              <p>
-                是否確認取消追蹤/按讚？
-                <MdOutlineClose
-                  className="close_icon"
-                  onClick={() => {
-                    ConfirmHandle(0);
-                  }}
-                ></MdOutlineClose>
-              </p>
-              <Link to="/">
-                <button className="confirm_button">確認</button>
-              </Link>
-            </div>
-          </div>
-          <div
-            className={
-              showCFBox === 4
-                ? 'confirmBox_background d-flex justify-content-center d-block'
-                : 'd-none'
-            }
-            // onClick={(e) => {
-            //   ConfirmHandle(0);
-            // }}
-          >
-            <div className="trip-sample ">
-              <div className="d-block d-flex flex-column align-items-center my-2 container">
-                <p className="mb-2">
-                  請下拉選擇{' '}
-                  <MdOutlineClose
-                    className="close_icon"
-                    onClick={() => {
-                      ConfirmHandle(0);
-                    }}
-                  ></MdOutlineClose>
-                </p>
-                <select
-                  className="form-control mb-2"
-                  placeholder="請選擇我的行程"
-                >
-                  <option>花蓮自由行</option>
-                  <option>好想去台南</option>
-                  <option>澎湖好像也很不錯</option>
-                </select>
-                <Link to="/">
-                  <button className="confirm_button">確認</button>
-                </Link>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div className="comHome_container">
+        <div className="CommunityHomePage_main">
+          <SearchBar
+            searchBar_title="是不是在找我呢"
+            searchBar_placeholder="我無處安放的可愛呀"
+          />
+
           <div className="comHome_title flex-shrink-0">
             <h2 className="comHomeKOL_title">最夯寵物網美</h2>
             <CommunitySwiperLeft comHomePageCard={kolCard} />
