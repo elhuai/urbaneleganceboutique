@@ -106,7 +106,9 @@ function ShoppingCart({ name, ...props }) {
   useEffect(() => {
     const fetchProductData = async () => {
       // 抓商品細節資料
-      const result = await axios.get(`${API_URL}/cart/list`);
+      const result = await axios.get(`${API_URL}/cart/list`,
+      {withCredentials: true}
+    );
       // console.log('result', result.data);
       const cartData = result.data;
       setCart(cartData);

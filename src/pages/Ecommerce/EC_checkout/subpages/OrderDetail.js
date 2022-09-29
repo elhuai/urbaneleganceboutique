@@ -76,7 +76,7 @@ function OrderDetail(props) {
       // e.preventDefault();
       try {
         console.log('----------createOrderBuying---------', orderBuying);
-        let result = await axios.post(`${API_URL}/createorder/order`, { orderBuying });
+        let result = await axios.post(`${API_URL}/createorder/order`, { orderBuying }, { withCredentials: true });
       } catch (error) {
         console.log('error', error);
       }
@@ -129,7 +129,7 @@ function OrderDetail(props) {
               </div>
             </div>
             <div className="subSection2">
-              <span className='middleTotal'>NT${cartProductData.price * cartProductData.quantity}</span>
+              <span className="middleTotal">NT${cartProductData.price * cartProductData.quantity}</span>
               <div className="calculateSection">
                 <div className="subTitle">優惠券：{couponName}</div>
                 <div className="subInput">{selected}%OFF</div>
