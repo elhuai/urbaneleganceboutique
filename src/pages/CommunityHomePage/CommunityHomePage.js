@@ -11,6 +11,7 @@ import { IoHeartOutline } from 'react-icons/io5';
 import { RiEditFill } from 'react-icons/ri';
 import { MdOutlineClose } from 'react-icons/md';
 
+
 // import CommunitySwiperRight from '../../components/Community/CommunitySwiper/CommunitySwiperRight';
 
 import { API_URL } from '../../utils/config';
@@ -27,13 +28,14 @@ const CommunityHomePage = () => {
   const [hotCard, setHotCard] = useState([]);
 
   // 寵物網紅貼文
-  useEffect(() => {
-    const fetchPost = async () => {
-      const result = await axios.get(`${API_URL}/communityHomePage/kolPost`);
-      setKolCard(result.data);
-    };
-    fetchPost();
-  }, []);
+  // useEffect(() => {
+  //   const fetchPost = async () => {
+  //     const result = await axios.get(`${API_URL}/communityHomePage/kolPost`);
+  //     setKolCard(result.data);
+  //     console.log(result.data);
+  //   };
+  //   fetchPost();
+  // }, []);
 
   // 熱門貼文
   useEffect(() => {
@@ -52,6 +54,7 @@ const CommunityHomePage = () => {
       <div className="CommunityHomePage">
           <SearchBar searchBar_title="是不是在找我呢" searchBar_placeholder="我無處安放的可愛呀" />
         <div className="CommunityHomePage_main">
+
           <div className='masonry'>
             <div className='item'>
               <img src="https://picsum.photos/360/480?random=1" alt="" />

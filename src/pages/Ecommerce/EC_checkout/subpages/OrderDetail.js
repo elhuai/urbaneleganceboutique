@@ -68,9 +68,6 @@ function OrderDetail(props) {
   };
 
   const handlePay = () => {
-    // const id = order.packages[0].id;
-    // console.log('id', id);
-    // setOrderId(id);
 
     const createOrder = async (e, id) => {
       // e.preventDefault();
@@ -156,11 +153,7 @@ function OrderDetail(props) {
                 {Number(cartProductData.quantity * cartProductData.price * (1 - selected / 100)).toFixed(0)}
               </div>
             </div>
-            {/* <form action="/line/createOrder/<%= orderId %>" method="post"> */}
-            {/* <form action={`${API_URL}/line/createOrder/${orderId}`} method="post"> */}
             <button onClick={handlePay}>來去結帳</button>
-            {/* </form> */}
-            {/* {!!order ? (<div>{order.amount}</div>) : null} */}
           </div>
         ) : null}
       </div>
