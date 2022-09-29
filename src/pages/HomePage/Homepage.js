@@ -63,7 +63,6 @@ const Homepage = () => {
             <div className="h-100 w-100"></div>
           </div>
           <div className="hero_search_wrap">
-            {/* // TODO: 串接搜尋結果，檔案在 /src/components/homePage/HeroSearch */}
             <HeroSearch
               handleHeroAnimete={handleHeroAnimete}
               handleHeroActive={handleHeroActive}
@@ -90,7 +89,7 @@ const Homepage = () => {
                       setNewsActive(1);
                     }}
                   >
-                    旅遊必備商品
+                    頭好壯壯必需品
                   </button>
                 </li>
                 <li className={newsActive === 2 ? 'active' : ''}>

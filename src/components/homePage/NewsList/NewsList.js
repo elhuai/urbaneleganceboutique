@@ -3,8 +3,11 @@ import { Link } from 'react-router-dom';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Autoplay } from 'swiper';
 import './_newsList.scss';
+import axios from 'axios';
+import { API_URL } from '../../../utils/config';
 
 // TODO: 假資料，資料結構是四個陣列各自包裹三個物件，一個陣列對應一個 tab 點擊後呈現的內容
+
 const fakeData = [
   [
     {
@@ -197,10 +200,31 @@ function mobileItems(index, active, data) {
 export default function NewsList({ active }) {
   const [data, setData] = useState(fakeData);
 
-  useEffect(() => {
-    // TODO: 拿資料、setData
-  }, []);
+  // const [One, setOne] = useState([]);
+  // const [two, setTwo] = useState([]);
+  // const [three, setThree] = useState([]);
+  // const [four, setFour] = useState([]);
 
+  // useEffect(() => {
+  //   const fetchProducts = async () => {
+  //     const arrStr = [
+  //       { id: '4', keyword: '戶外活動', setState: setOne },
+  //       { id: '2', keyword: '室內景點', setState: setTwo },
+  //       { id: '3', keyword: '咖啡廳', setState: setThree },
+  //       { id: '4', keyword: '室內景點', setState: setFour },
+  //     ];
+
+  //     for (let index = 0; index < arrStr.length; index++) {
+  //       const result = await axios.get(
+  //         `${API_URL}/product/recommendProduct/news?typeId=${arrStr[index].id}&keyword=${arrStr[index].keyword}`
+  //       );
+  //       const data = result.data;
+  //       arrStr[index].setState(data);
+  //     }
+  //   };
+  //   fetchProducts();
+  //   // console.log(cakeCard);
+  // }, []);
   // TODO: 實際渲染元件，不用更動 (應該啦)，只要把 fakeData 換掉就好
   return data.length > 0
     ? data.map((v, index) => {

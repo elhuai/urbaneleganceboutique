@@ -120,7 +120,7 @@ const ProductDetail = () => {
                 {/* 主要價格區域 */}
                 <div className="costSection ">
                   <p className="mainCost">NT${productData.price}</p>
-                  <p className="ogCost text-decoration-line-through  ">
+                  <p className="ogCost text-decoration-line-through">
                     NT${Number((productData.price * 1.2).toFixed(0))}
                   </p>
                 </div>
@@ -142,7 +142,7 @@ const ProductDetail = () => {
                             <img
                               className="addSubSection_img"
                               src={`http://localhost:3007${data.photo_path}/${data.main_photo}`}
-                              alt="..."
+                              alt=""
                             />
                             <p className="addSubSection_name fw-bolder mb-0 ms-2">
                               {data.name}

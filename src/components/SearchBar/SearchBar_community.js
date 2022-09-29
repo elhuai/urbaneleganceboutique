@@ -5,18 +5,10 @@ import { AiOutlineSearch } from 'react-icons/ai';
 import { Link } from 'react-router-dom';
 
 function SearchBar(props) {
-  const {
-    searchBar_title,
-    searchBar_placeholder,
-    keywordSearch,
-    setKeywordSearch,
-    setSearch,
-  } = props;
-
-  const handleSearch = (e) => {
-    if (keywordSearch === '') return setSearch('');
-    setSearch(keywordSearch);
-  };
+  const { searchBar_title, searchBar_placeholder } = props;
+  const { titleSearch, setTitleSearch, setSearch, typeId } = props;
+  const typeIdParams = typeId ? typeId : 2;
+  const searchWordParams = titleSearch ? titleSearch : '';
   return (
     <>
       <section className="searchBar_section_main_bg mb-4">
@@ -25,23 +17,29 @@ function SearchBar(props) {
           <div className="searchBar_search">
             <input
               type="text"
-              className="searchBar_searchTerm"
+              className="searchBar_searchInput"
               placeholder={searchBar_placeholder}
-              value={keywordSearch}
+              maxLength={15}
+              value={titleSearch}
               onChange={(e) => {
-                // console.log(e.target.value);
-                setKeywordSearch(e.target.value);
+                console.log(e.target.value);
+                let textValue = e.target.value.replace(/[, ]/g, '');
+                setTitleSearch(textValue);
               }}
             />
-            <button
+            <Link
               type="submit"
               className="searchBar_searchButton"
-              onClick={handleSearch}
+              to={`/ec-productfilter?typeId=${typeIdParams}&searchword=${searchWordParams}`}
+              onClick={() => {
+                if (titleSearch === '') return setSearch('');
+                setSearch(titleSearch);
+              }}
             >
               <i className="searchBar_fa searchBar_fa-search">
                 <AiOutlineSearch />
               </i>
-            </button>
+            </Link>
           </div>
           <img
             className="searchBar_main_search_left_dog"

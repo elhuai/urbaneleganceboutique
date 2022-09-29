@@ -6,17 +6,23 @@ import './_heroSearch.scss';
 
 export default function HeroSearch({ handleHeroActive, handleHeroAnimete }) {
   const [active, setActive] = useState(0);
-  const [keywords, setKeywords] = useState('initialState');
+  const [keywords, setKeywords] = useState('');
   const navigate = useNavigate();
+
   // TODO: active state 用戶目前點選的分館 tab , 依序是 0, 1, 2
   const handleKeywords = (e) => {
-    setKeywords(e.target.value);
+    let textValue = e.target.value.replace(/[, ]/g, '');
+    setKeywords(textValue);
   };
+  console.log('active', active);
+  // 館別
+  const typeIdParams = active + 2;
 
   // TODO: 跳轉
   const handleSearch = (e) => {
     e.preventDefault();
-    navigate('/網址路徑');
+    // if(keywords === '') return setKeywords('')
+    navigate(`/ec-productfilter?typeId=${typeIdParams}&searchword=${keywords}`);
   };
 
   useEffect(() => {
@@ -72,6 +78,7 @@ export default function HeroSearch({ handleHeroActive, handleHeroAnimete }) {
             className="form-control mb-3"
             type="text"
             placeholder="請輸入關鍵字"
+            value={keywords}
             onChange={handleKeywords}
           />
         </div>

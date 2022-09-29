@@ -125,7 +125,7 @@ function PostTripEdit() {
           setLocateID(locateIDData);
           setTripPostLocContext(contextData);
           setTripPostLocTime(timeData);
-          setTravelID(result.data[0].travel_id);
+          // setTravelID(result.data[0].travel_id);
           setTripPostTitle(result.data[0].post_title);
           setTripPostCover(result.data[0].main_photo);
           setTripPostLocMark(result.data[0].coordinate);

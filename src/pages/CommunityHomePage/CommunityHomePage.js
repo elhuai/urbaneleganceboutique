@@ -51,7 +51,7 @@ const CommunityHomePage = () => {
         <SearchBar
           searchBar_title="最可愛的萌寵都在這"
           searchBar_placeholder="阿部柯基頂呱呱"
-        />
+        ></SearchBar>
         <div className="post_new_button">
           <div className="post_new_button mt-5">
             <button className="post_new" onClick={() => ConfirmHandle(2)}>
