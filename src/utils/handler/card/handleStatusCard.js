@@ -135,24 +135,3 @@ export const handleInfoComfirm = (title, action, html) => {
       }
     });
 };
-
-// export const handleInfoComfirm = (title, action, html) => {
-//   const card = withReactContent(Swal);
-//   card
-//     .fire({
-//       position: 'center-center',
-//       icon: 'info',
-//       title: title,
-//       html: html ? html : false,
-//       showConfirmButton: true,
-//       showCancelButton: true,
-//       confirmButtonText: '確認',
-//       cancelButtonText: '取消',
-//       timer: false,
-//     })
-//     .then((data) => {
-//       if (data.isConfirmed) {
-//         return action();
-//       }
-//     });
-// };

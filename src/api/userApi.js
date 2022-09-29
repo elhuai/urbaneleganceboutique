@@ -119,4 +119,19 @@ export const getUserOrder = async (setData) => {
   }
 };
 
+export const postScore = async (product_id, scoreData, setData, confirm) => {
+  try {
+    let { data } = await axios.post(
+      `${API_URL}/user/score/${product_id}`,
+      scoreData,
+      credentialsConfig
+    );
+    setData(data.updateData);
+    confirm();
+  } catch (error) {
+    console.error(error);
+    handleFailed('輸入商品評論失敗');
+  }
+};
+
 export const getUsercollection = async () => {};

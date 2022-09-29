@@ -1,11 +1,18 @@
 import React, { useEffect, useState } from 'react';
 import { Rate } from 'antd';
 import { FaPaw } from 'react-icons/fa';
+import { postScore } from '../../../api/userApi';
 import './_scoreCard.scss';
 
 const desciption = ['不滿意', '有待加強', '尚可', '很好', '非常滿意'];
 
-const PasswordEditCard = ({ confirm, cancel }) => {
+const PasswordEditCard = ({
+  confirm,
+  cancel,
+  product_id,
+  order_no,
+  setData,
+}) => {
   const [score, setScore] = useState(0);
   const [comment, setComment] = useState('');
   const [inputError, setInputError] = useState('');
@@ -13,7 +20,8 @@ const PasswordEditCard = ({ confirm, cancel }) => {
     e.preventDefault();
     if (score === 0) return setInputError('請點選商品評分');
     console.log(score, comment);
-    confirm();
+    const data = { score: score, comment: comment, order_no: order_no };
+    postScore(product_id, data, setData, confirm);
   };
 
   const handleInputChange = (e) => {
@@ -38,7 +46,13 @@ const PasswordEditCard = ({ confirm, cancel }) => {
                 value={score}
               />
             </div>
-            {score ? <div className="mt-3">{desciption[score - 1]}</div> : ''}
+            {score ? (
+              <div className="mt-3" style={{ color: '#adadad' }}>
+                {desciption[score - 1]}
+              </div>
+            ) : (
+              ''
+            )}
           </div>
           <div className="mb-3">
             <textarea
