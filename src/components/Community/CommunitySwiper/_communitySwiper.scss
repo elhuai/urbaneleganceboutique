@@ -2,13 +2,13 @@
   margin-bottom: 30px;
 
   .communitySwiper_Left {
-    height: 100%;
+    // height: 100%;
   }
 
   .communitySwiper_card {
     background-color: #fff;
-    width: 390px;
-    height: calc(100% - 30px);
+    width: 310px;
+    height: 320px;
     border: 1px solid rgb(224, 224, 224);
     border-radius: 15px;
     overflow: hidden;
@@ -16,17 +16,13 @@
     .obj-fit {
       img {
         width: 390px;
-        height: 270px;
+        height: 230px;
         object-fit: cover;
       }
     }
     &_title {
       h5 {
         font-size: 18px;
-        line-height: 1.35;
-        overflow: hidden;
-        white-space: nowrap;
-        text-overflow: ellipsis;
       }
     }
     &_author {

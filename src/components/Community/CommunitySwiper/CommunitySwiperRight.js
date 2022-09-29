@@ -81,11 +81,7 @@ export default function communityHomePageCard() {
                       {data.date}
                     </div>
                     <div className="communitySwiper_card_like">
-<<<<<<< HEAD:src/components/CommunityHomePage/CommunitySwiperLeft/CommunitySwiperRight.js
-                      {data.like}
-=======
                       ｜{data.like}
->>>>>>> feature-community:src/components/Community/CommunitySwiper/CommunitySwiperRight.js
                       <BiLike />
                     </div>
                   </div>
