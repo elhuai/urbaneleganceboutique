@@ -32,9 +32,6 @@ const Footer = () => {
           <div className="Footer_allproduct justify-content-end d-flex  ">
             <ul className="my-1 list-unstyled d-flex flex-nowrap nowrap ">
               <Link to="/" className="footer_product">
-                住宿
-              </Link>
-              <Link to="/" className="footer_product">
                 景點&玩樂
               </Link>
               <Link to="/" className="footer_product">

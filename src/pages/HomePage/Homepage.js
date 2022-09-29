@@ -89,7 +89,7 @@ const Homepage = () => {
                       setNewsActive(1);
                     }}
                   >
-                    頭好壯壯必需品
+                    消暑景點最chill
                   </button>
                 </li>
                 <li className={newsActive === 2 ? 'active' : ''}>
@@ -98,7 +98,7 @@ const Homepage = () => {
                       setNewsActive(2);
                     }}
                   >
-                    頭好壯壯買罐罐
+                    吃飽飽夯品推薦
                   </button>
                 </li>
                 <li className={newsActive === 3 ? 'active' : ''}>
@@ -107,7 +107,7 @@ const Homepage = () => {
                       setNewsActive(3);
                     }}
                   >
-                    點了狗狗會換動作
+                    喝茶開槓放風去
                   </button>
                 </li>
                 <li className={newsActive === 4 ? 'active' : ''}>
@@ -116,11 +116,10 @@ const Homepage = () => {
                       setNewsActive(4);
                     }}
                   >
-                    圖片還沒畫嗚嗚
+                    麻麻我要出去玩
                   </button>
                 </li>
               </ul>
-              {/* // TODO: 手機版 tab，要換字 */}
               <ul className="list-unstyled m-0 mobile">
                 <li
                   className={newsActive === 1 ? 'active' : ''}
@@ -128,7 +127,7 @@ const Homepage = () => {
                     setNewsActive(1);
                   }}
                 >
-                  出遊必備
+                  消暑景點
                 </li>
                 <li
                   className={newsActive === 2 ? 'active' : ''}
@@ -136,7 +135,7 @@ const Homepage = () => {
                     setNewsActive(2);
                   }}
                 >
-                  最夯景點
+                  美食夯品
                 </li>
                 <li
                   className={newsActive === 3 ? 'active' : ''}
@@ -144,7 +143,7 @@ const Homepage = () => {
                     setNewsActive(3);
                   }}
                 >
-                  搶手住宿
+                  喝茶開槓
                 </li>
                 <li
                   className={newsActive === 4 ? 'active' : ''}
@@ -152,7 +151,7 @@ const Homepage = () => {
                     setNewsActive(4);
                   }}
                 >
-                  優質餐廳
+                  戶外景點
                 </li>
               </ul>
             </div>
@@ -161,7 +160,6 @@ const Homepage = () => {
             <div className={`dog${newsActive} active${newsActive}`}></div>
           </div>
           <div className="news_list">
-            {/* // TODO: 串接最新商品，檔案在 /src/components/homePage/NewsList */}
             <NewsList active={newsActive} />
           </div>
         </div>
@@ -172,7 +170,6 @@ const Homepage = () => {
             <p>跟著小編一起玩</p>
             <h2>小道消息報你知</h2>
           </div>
-          {/* // TODO: 放上連結，串接最新商品，檔案在 /src/components/homePage/TourRoute */}
           <TourRoute />
         </div>
       </div>
@@ -184,7 +181,6 @@ const Homepage = () => {
           </div>
         </div>
         <div className="leaderboard_slide">
-          {/* // TODO: 串接商品排行資料，檔案在 /src/components/homePage/LeaderBoardSlide */}
           <LeaderBoardSlide />
         </div>
       </div>
@@ -192,21 +188,22 @@ const Homepage = () => {
         <div className="section_container position-relative d-flex">
           <div className="community_title flex-shrink-0">
             <p>社群分享最新消息</p>
-            <h2>最夯寵物網美</h2>
+            <h2>最夯出遊貼文</h2>
             <span>
-              揭曉近一個月的 TOP 50 寵物 KOL
+              狗爸媽的口袋名單大公開
               <br />
-              現在最流行的「寵物網紅」你追蹤了嗎？
+              秋冬必去的「寵物景點」你 Follow 了嗎？
             </span>
             <br />
             <div>
-              {/* // TODO: 我不知道這邊你想怎麼串，頂多就是這顆按鈕多加連結吧 */}
-              <button className="w-100" onClick={() => navigate('/網址')}>
+              <button
+                className="w-100"
+                onClick={() => navigate('/communityHomePage')}
+              >
                 來去看看
               </button>
             </div>
           </div>
-          {/* // TODO: 我不知道這邊你想怎麼串，檔案在 /src/components/homePage/SocialBubble */}
           <SocialBubble />
         </div>
       </div>
@@ -261,11 +258,9 @@ const Homepage = () => {
               </div>
               <div className="travel_content d-flex flex-column">
                 <div className="travel_content_card flex-fill">
-                  {/* // TODO: 串接資料跟連結，檔案在 /src/components/homePage/TravelCard */}
                   <TravelCard />
                 </div>
-                {/* // TODO: 連結 */}
-                <button className="w-100" onClick={() => navigate('/網址')}>
+                <button className="w-100" onClick={() => navigate('/travel')}>
                   開始規劃你的行程
                 </button>
               </div>

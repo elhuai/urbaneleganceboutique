@@ -9,7 +9,6 @@ export default function HeroSearch({ handleHeroActive, handleHeroAnimete }) {
   const [keywords, setKeywords] = useState('');
   const navigate = useNavigate();
 
-  // TODO: active state 用戶目前點選的分館 tab , 依序是 0, 1, 2
   const handleKeywords = (e) => {
     let textValue = e.target.value.replace(/[, ]/g, '');
     setKeywords(textValue);
@@ -18,17 +17,15 @@ export default function HeroSearch({ handleHeroActive, handleHeroAnimete }) {
   // 館別
   const typeIdParams = active + 2;
 
-  // TODO: 跳轉
   const handleSearch = (e) => {
     e.preventDefault();
-    // if(keywords === '') return setKeywords('')
     navigate(`/ec-productfilter?typeId=${typeIdParams}&searchword=${keywords}`);
   };
 
   useEffect(() => {
     handleHeroAnimete(true);
     handleHeroActive(active);
-    console.log(active);
+    // console.log(active);
   }, [active]);
   return (
     <div className="hero_search bg-white overflow-hidden">

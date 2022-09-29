@@ -6,44 +6,43 @@ import { AiTwotoneLike } from 'react-icons/ai';
 
 import './_travelCard.scss';
 
-const fakeData = [
+const Data = [
   {
     title:
       '花東二日遊part2｜激似紐西蘭牧場、太魯閣國家公園、大坡池、伯朗大道～一次玩好玩滿',
-    img: 'https://picsum.photos/id/129/600/300',
+    img: require('../../../images/HP_travelCard/01_east.jpg'),
     author: '姓阿名尼基',
     like: '45',
   },
   {
     title: '新北｜瑞芳 大地寶藏在這裡-探索黃金山城',
-    img: 'https://picsum.photos/id/229/600/300',
+    img: require('../../../images/HP_travelCard/02_Ruifang.jpg'),
     author: 'RainOuO',
-    like: '65685',
+    like: '685',
   },
   {
     title: '苗栗露營兩天一夜行程分享',
-    img: 'https://picsum.photos/id/219/600/300',
+    img: require('../../../images/HP_travelCard/03_Miaoli.jpeg'),
     author: '老鐵給個雙基',
-    like: '684',
+    like: '535',
   },
   {
-    title:
-      '花東二日遊part2｜激似紐西蘭牧場、太魯閣國家公園、大坡池、伯朗大道～一次玩好玩滿',
-    img: 'https://picsum.photos/id/20/600/300',
+    title: '台中美食放鬆兩天一夜',
+    img: require('../../../images/HP_travelCard/04_Taichung.jpg'),
     author: 'RainOuO',
-    like: '3984',
+    like: '984',
   },
   {
-    title: '新北｜瑞芳 大地寶藏在這裡-探索黃金山城',
-    img: 'https://picsum.photos/id/29/600/300',
+    title: '屏東新秘境推薦》不只墾丁好玩！25個「此生必去」景點',
+    img: require('../../../images/HP_travelCard/05_Ping.jpg'),
     author: '老鐵給個雙基',
-    like: '753',
+    like: '1753',
   },
 ];
 
 export default function TravelCard() {
   const [screen, setScreen] = useState(0);
-  const [data, setData] = useState(fakeData);
+  const [data, setData] = useState(Data);
 
   function logWidth() {
     if (document.body && document.body.offsetWidth) {
@@ -83,7 +82,6 @@ export default function TravelCard() {
   }
 
   useEffect(() => {
-    // TODO: 打 API，setData
     logWidth();
     window.addEventListener('resize', logWidth);
     return () => {
@@ -120,7 +118,10 @@ export default function TravelCard() {
       {data.map((data, index) => {
         return (
           <SwiperSlide key={'travel' + index} className="h-100">
-            <Link to="/" className="travel_card d-flex flex-column">
+            <Link
+              to="/communityHomePage"
+              className="travel_card d-flex flex-column"
+            >
               <div className="obj-fit">
                 <img src={data.img} alt="" />
               </div>

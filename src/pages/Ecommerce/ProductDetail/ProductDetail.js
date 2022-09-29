@@ -37,6 +37,7 @@ const ProductDetail = () => {
   const productId = urlSearchParams.get('id');
   // const typeId = urlSearchParams.get('typeid');
   // console.log('urlSearchParams', urlSearchParams);
+  const BASE_URL = process.env.REACT_APP_BASE_API_URL;
 
   useEffect(() => {
     // 抓商品細節資料
@@ -141,7 +142,7 @@ const ProductDetail = () => {
                           <div className="addSubSection d-flex align-items-center mb-0">
                             <img
                               className="addSubSection_img"
-                              src={`http://localhost:3007${data.photo_path}/${data.main_photo}`}
+                              src={`${BASE_URL}${data.photo_path}/${data.main_photo}`}
                               alt=""
                             />
                             <p className="addSubSection_name fw-bolder mb-0 ms-2">

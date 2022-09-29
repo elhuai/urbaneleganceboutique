@@ -93,7 +93,7 @@ function ShoppingCart({ name, ...props }) {
       handleLoginCard({ isLogin: true }, setUser);
     }
   };
-
+  // 如果沒有登入沒辦法按確定下單
   const cartOrder = async (e, id) => {
     e.preventDefault();
     if (user.auth) {
