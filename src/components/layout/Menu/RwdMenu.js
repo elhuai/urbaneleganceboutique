@@ -8,7 +8,6 @@ import { FaUser } from 'react-icons/fa';
 // import { IoCart } from 'react-icons/io5';
 import ShoppingCart from '../ShoppingCart/ShoppingCart';
 
-
 function RwdMenu() {
   const [cart, setCart] = useState([]);
   const [isOpen, setOpen] = useState(false);
@@ -29,7 +28,7 @@ function RwdMenu() {
           ></img>
         </Navbar.Brand>
         <div className="  d-flex header_Icon align-items-center justify-content-end ">
-        <ShoppingCart
+          <ShoppingCart
             placement={'end'}
             name={'end'}
             cart={cart}
