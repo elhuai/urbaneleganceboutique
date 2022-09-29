@@ -1,6 +1,12 @@
-import React from 'react';
+import React, { Fragment, useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
+import { Swiper, SwiperSlide } from 'swiper/react';
+import { Autoplay } from 'swiper';
 import './_newsList.scss';
+import axios from 'axios';
+import { API_URL } from '../../../utils/config';
+
+// TODO: 假資料，資料結構是四個陣列各自包裹三個物件，一個陣列對應一個 tab 點擊後呈現的內容
 
 const fakeData = [
   [
@@ -122,8 +128,8 @@ const fakeData = [
   ],
 ];
 
-function items(index, active) {
-  let result = fakeData[index].map((data, dataIndex) => {
+function items(index, active, data) {
+  let result = data[index].map((data, dataIndex) => {
     return (
       <Link
         to="/"
@@ -136,11 +142,14 @@ function items(index, active) {
         <div className="obj-fit flex-shrink-0 overflow-hidden">
           <img src={data.img} alt="" />
         </div>
-        <div className="flex-fill flex-shrink-1 px-2">
-          <div className="title">{data.title}</div>
-          <div className="d-flex justify-content-between">
-            <div className="score">{`${data.score} (${data.evaluate})`}</div>
-            <div className="price d-flex">
+        <div className="flex-fill flex-shrink-1 d-flex flex-column px-2">
+          <div className="title flex-fill">{data.title}</div>
+          <div className="d-flex justify-content-between px-2">
+            <div className="score">
+              {`${data.score}`}
+              <span> {`(${data.evaluate})`}</span>
+            </div>
+            <div className="price d-flex gap-2 align-items-end">
               <div className="old">TWD {data.oldPrice}</div>
               <div className="current">TWD {data.currentPrice}</div>
             </div>
@@ -152,8 +161,93 @@ function items(index, active) {
   return result;
 }
 
-export default function NewsList({ active }) {
-  return fakeData.map((v, index) => {
-    return <div key={'list' + index}>{items(index, active - 1)}</div>;
+function mobileItems(index, active, data) {
+  let result = data[index].map((data, dataIndex) => {
+    return (
+      <SwiperSlide key={'newsCard' + data.id} className="h-100">
+        <Link to="/" className="news_list_card d-flex flex-column">
+          <div
+            className={`news_list_item ${
+              index === active ? 'd-block' : 'd-none'
+            }`}
+          >
+            <div className="obj-fit">
+              <img src={data.img} alt="" />
+            </div>
+            <div className="d-flex flex-fill flex-column p-3">
+              <div className="news_list_card_title flex-fill">
+                <h5>{data.title}</h5>
+              </div>
+              <div className="news_list_card_info d-flex justify-content-between align-items-end">
+                <div className="news_list_card_score">
+                  {`${data.score}`}
+                  <span> {`(${data.evaluate})`}</span>
+                </div>
+                <div className="news_list_card_price">
+                  <div className="old">TWD {data.oldPrice}</div>
+                  <div className="current">TWD {data.currentPrice}</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </Link>
+      </SwiperSlide>
+    );
   });
+  return result;
+}
+
+export default function NewsList({ active }) {
+  const [data, setData] = useState(fakeData);
+
+  // const [One, setOne] = useState([]);
+  // const [two, setTwo] = useState([]);
+  // const [three, setThree] = useState([]);
+  // const [four, setFour] = useState([]);
+
+  // useEffect(() => {
+  //   const fetchProducts = async () => {
+  //     const arrStr = [
+  //       { id: '4', keyword: '戶外活動', setState: setOne },
+  //       { id: '2', keyword: '室內景點', setState: setTwo },
+  //       { id: '3', keyword: '咖啡廳', setState: setThree },
+  //       { id: '4', keyword: '室內景點', setState: setFour },
+  //     ];
+
+  //     for (let index = 0; index < arrStr.length; index++) {
+  //       const result = await axios.get(
+  //         `${API_URL}/product/recommendProduct/news?typeId=${arrStr[index].id}&keyword=${arrStr[index].keyword}`
+  //       );
+  //       const data = result.data;
+  //       arrStr[index].setState(data);
+  //     }
+  //   };
+  //   fetchProducts();
+  //   // console.log(cakeCard);
+  // }, []);
+  // TODO: 實際渲染元件，不用更動 (應該啦)，只要把 fakeData 換掉就好
+  return data.length > 0
+    ? data.map((v, index) => {
+        return (
+          <Fragment key={'list' + index}>
+            <div className="desktop">{items(index, active - 1, data)}</div>
+            <div className="mobile">
+              <Swiper
+                loop={false}
+                slidesPerView={1}
+                spaceBetween={12}
+                className="newsListSwiper"
+                // modules={[Autoplay]}
+                autoplay={{
+                  delay: 1500,
+                  disableOnInteraction: false,
+                }}
+              >
+                {mobileItems(index, active - 1, data)}
+              </Swiper>
+            </div>
+          </Fragment>
+        );
+      })
+    : '';
 }

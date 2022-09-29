@@ -35,7 +35,6 @@ function EcProductFilter() {
   const location = useLocation();
   const urlSearchParams = new URLSearchParams(location.search);
   const newTypeId = urlSearchParams.get('typeId');
-
   const newSearchWord = urlSearchParams.get('searchword');
   const currentType = newTypeId ? newTypeId : 2;
   const newSearch = newSearchWord ? newSearchWord : '';
@@ -65,6 +64,7 @@ function EcProductFilter() {
           setSearch={setSearch}
           titleSearch={titleSearch}
           setTitleSearch={setTitleSearch}
+          setProductData={setProductData}
         />
         {/*篩選區域 */}
         <div className="ecProductFilter_filter_section d-flex">

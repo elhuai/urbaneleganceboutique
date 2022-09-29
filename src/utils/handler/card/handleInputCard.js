@@ -5,6 +5,7 @@ import LoginCard from '../../../components/cards/LoginCard';
 import SocialNameEditCard from '../../../components/cards/SocialNameEditCard';
 import VoucherExchangeCard from '../../../components/cards/VoucherExchangeCard';
 import PasswordEditCard from '../../../components/cards/PasswordEditCard';
+import ScoreCard from '../../../components/cards/ScoreCard';
 import { handleSuccess, handleFailed } from './handleStatusCard';
 
 export const handleLoginCard = (config, setUser) => {
@@ -87,8 +88,35 @@ export const handlePasswordEditCard = () => {
   function inputCardFire() {
     const inputCard = withReactContent(Swal);
     inputCard.fire({
-      html: <PasswordEditCard confirm={inputCard.clickConfirm} />,
+      html: (
+        <PasswordEditCard
+          confirm={inputCard.clickConfirm}
+          cancel={inputCard.clickCancel}
+        />
+      ),
       showConfirmButton: false,
     });
+  }
+};
+
+export const handleScoreCard = () => {
+  inputCardFire();
+  function inputCardFire() {
+    const inputCard = withReactContent(Swal);
+    inputCard
+      .fire({
+        html: (
+          <ScoreCard
+            confirm={inputCard.clickConfirm}
+            cancel={inputCard.clickCancel}
+          />
+        ),
+        showConfirmButton: false,
+      })
+      .then((result) => {
+        if (result.isConfirmed) {
+          handleSuccess('店家已收到你提供的意見');
+        }
+      });
   }
 };

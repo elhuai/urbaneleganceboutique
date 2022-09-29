@@ -77,7 +77,9 @@ export default function communityHomePageCard(props) {
                   <div className="obj-fit">
                     <img
                       src={
-                        process.env.REACT_APP_BASE_URL + '/' + data.main_photo
+                        process.env.REACT_APP_BASE_API_URL +
+                        '/' +
+                        data.main_photo
                       }
                       alt="123"
                     />

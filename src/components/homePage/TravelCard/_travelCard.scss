@@ -1,11 +1,17 @@
+$main-color: #FFC715;
+$second-color: #FEEFC3;
+$hightLight-color: #EF7A70;
+
+
 .home_main {
   .travelSwiper {
     height: 100%;
+    padding: 6px;
   }
 
   .travel_card {
     background-color: #FFF;
-    width: calc(100% - 12px);
+    width: 100%;
     height: calc(100% - 24px);
     border-radius: 8px;
     overflow: hidden;
@@ -26,10 +32,38 @@
       }
     }
     &_author {
+      position: relative;
+      padding-left: 20px;
       font-size: 12px;
+      &::after {
+        content: '';
+        position: absolute;
+        left: 0;
+        width: 16px;
+        height: 16px;
+        background: url(../../../images/travel_dog_paws.svg) no-repeat center left / 16px;
+      }
     }
     &_like {
       font-size: 16px;
+      color: $hightLight-color;
+      font-weight: bold;
+      svg {
+        margin-top: -4px;
+        margin-left: 6px;
+        transform: scale(1.2);
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 780px) {
+  .home_main {
+    .travel_card {
+      height: 300px;
+      .obj-fit {
+        height: 160px;
+      }
     }
   }
 }

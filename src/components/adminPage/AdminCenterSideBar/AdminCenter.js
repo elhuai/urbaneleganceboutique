@@ -5,25 +5,60 @@ import { IoHeartOutline } from 'react-icons/io5';
 import { RiMessage3Line } from 'react-icons/ri';
 import { BsPeople } from 'react-icons/bs';
 import { Link } from 'react-router-dom';
-import React from 'react';
+import React, { useState } from 'react';
 import { useUserInfo } from '../../../hooks/useUserInfo';
+import { HiOutlineCamera } from 'react-icons/hi';
+import { API_URL } from '../../../utils/config';
+import {
+  handleSuccess,
+  handleFailed,
+} from '../../../utils/handler/card/handleStatusCard';
+import axios from 'axios';
 
 import './adminCenter.scss';
 
 const AdminCenter = () => {
   const BASE_URL = process.env.REACT_APP_BASE_API_URL;
-  const { user } = useUserInfo();
+  const { user, setUser } = useUserInfo();
   const { data } = user;
+
+  const handlePhotoChange = async (e) => {
+    console.log(e.target.files[0]);
+    try {
+      let formData = new FormData();
+      formData.append('photo', e.target.files[0]);
+      let result = await axios.post(`${API_URL}/user/edit/photo`, formData, {
+        withCredentials: true,
+      });
+      setUser((data) => ({ ...data, data: result.data.user }));
+      handleSuccess('個人照片更新成功！');
+      console.log(result);
+    } catch (error) {
+      console.error(error);
+      handleFailed('個人照片更新失敗');
+    }
+  };
   return (
     <div>
       <div className="admin_side">
         <div className="profile_bar d-flex justify-content-center">
           <div className="user_photobox">
-            <img
-              className="admin_user_photo w-100 h-100"
-              src={data.photo[0] === 'h' ? data.photo : BASE_URL + data.photo}
-              alt=""
-            ></img>
+            <div className="position-relative h-100 w-100">
+              <label htmlFor="image"></label>
+              <img
+                className="admin_user_photo w-100 h-100"
+                src={data.photo[0] === 'h' ? data.photo : BASE_URL + data.photo}
+                alt=""
+              />
+              <input
+                type="file"
+                id="image"
+                accept="image/*"
+                multiple="multiple"
+                onChange={handlePhotoChange}
+              />
+              <HiOutlineCamera />
+            </div>
           </div>
           <div className="admin_user_name_bar">
             <div className="admin_user_name ">
@@ -40,7 +75,10 @@ const AdminCenter = () => {
         </div>
         <ul className="admin_sidemenu list-unstyled d-flex flex-column ">
           <li className="">
-            <Link to="/" className="text-decoration-none admin_select d-flex">
+            <Link
+              to="/admin/order"
+              className="text-decoration-none admin_select d-flex"
+            >
               <div className="d-flex align-items-center">
                 <FiFile
                   className="icon_size d-block mt-3 ms-1 "
