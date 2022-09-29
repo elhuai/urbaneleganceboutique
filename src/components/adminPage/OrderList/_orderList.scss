@@ -34,6 +34,25 @@ $info-color: #2DA9D7;
         &_header {
           padding: 12px 30px;
           border-bottom: 1px solid $border-color;
+          p {
+            position: relative;
+            padding-left: 32px;
+            font-size: 18px;
+            font-weight: bold;
+            cursor: default;
+            &::after {
+              content: '';
+              position: absolute;
+              top: 0;
+              left: 0;
+              background: url('../../../images/travel_dog_paws.svg') no-repeat left center / contain;
+              width: 20px;
+              height: 100%;
+            }
+          }
+          div {
+            cursor: default;
+          }
         }
         &_main {
           padding: 24px 30px;
@@ -68,6 +87,13 @@ $info-color: #2DA9D7;
                 white-space: normal;
               }
             }
+            &_payment_type {
+              .line_pay {
+                width: 100%;
+                flex-shrink: 1;
+                background: url('../../../images/admin_linepay.png') no-repeat 8px center / contain;
+              }
+            }
             &_num_wrap {
               justify-content: end;
               .price {
@@ -84,13 +110,33 @@ $info-color: #2DA9D7;
         &_footer {
           padding: 12px 30px;
           border-top: 1px solid $border-color;
-          .total_price {
-            > span {
+          .discount {
+            border: 1px solid $hightLight-color;
+            border-radius: 6px;
+            font-size: 12px;
+            cursor: default;
+            overflow: hidden;
+            div {
+              padding: 2px 6px;
+              background-color: $hightLight-color;
+            }
+            > div:first-child {
+              color: #FFF;
+            }
+            > div:last-child {
+              background-color: #FFF;
               color: $hightLight-color;
-              font-weight: bold;
-              font-size: 14px;
-              span {
-                font-size: 20px;
+            }
+          }
+          .total_price {
+            .price {
+              > span {
+                color: $hightLight-color;
+                font-weight: bold;
+                font-size: 14px;
+                span {
+                  font-size: 20px;
+                }
               }
             }
           }
@@ -131,7 +177,15 @@ $info-color: #2DA9D7;
             flex-direction: column;
             align-items: flex-start !important;
             padding: 12px 18px;
+            .order_no {
+              order: 2;
+            }
+            .discount {
+              order: 1;
+            }
             .total_price {
+              order: 3;
+              flex-direction: column-reverse;
               > span {
                 span {
                   font-size: 18px;
@@ -139,6 +193,7 @@ $info-color: #2DA9D7;
               }
             }
             .button_wrap {
+              order: 4;
               width: 100%;
               button {
                 padding: 8px;

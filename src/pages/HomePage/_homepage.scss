@@ -696,6 +696,7 @@ $hightLight-color: #EF7A70;
           height: 100%;
           border-radius: 8px 0 0 8px;
           flex-shrink: 0;
+          overflow: hidden;
         }
         .time {
           color: $hightLight-color;

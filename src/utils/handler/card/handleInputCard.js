@@ -99,7 +99,7 @@ export const handlePasswordEditCard = () => {
   }
 };
 
-export const handleScoreCard = () => {
+export const handleScoreCard = (product_id, order_no, setData) => {
   inputCardFire();
   function inputCardFire() {
     const inputCard = withReactContent(Swal);
@@ -109,6 +109,9 @@ export const handleScoreCard = () => {
           <ScoreCard
             confirm={inputCard.clickConfirm}
             cancel={inputCard.clickCancel}
+            product_id={product_id}
+            order_no={order_no}
+            setData={setData}
           />
         ),
         showConfirmButton: false,

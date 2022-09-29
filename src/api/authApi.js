@@ -4,6 +4,7 @@ import { API_URL } from '../utils/config';
 import {
   handleSuccess,
   handleFailed,
+  handleWarning,
   handleSucccessComfirm,
 } from '../utils/handler/card/handleStatusCard';
 
@@ -46,8 +47,9 @@ export const callLoginApi = async (loginInfo, setUser, confirm) => {
       credentialsConfig
     );
     setUser((user) => ({ ...user, data: result.data.user, auth: true }));
-    let isInfoCompleted;
+    let isInfoCompleted = true;
     for (const key in result.data.user) {
+      console.log(key, result.data.user[key]);
       if (!result.data.user[key]) {
         isInfoCompleted = false;
         break;
@@ -59,7 +61,7 @@ export const callLoginApi = async (loginInfo, setUser, confirm) => {
       () => {
         window.location = '/admin/profile';
       },
-      '但我們發現您的個人資料尚未齊全，是否前往修改？'
+      '但我們發現您的個人資料或是帳戶驗證尚未齊全，是否前往修改？'
     );
   } catch (error) {
     console.error(error);
@@ -153,5 +155,39 @@ export const callLineLoginApi = async (code, setUser, redirectPath) => {
     }
     window.localStorage.removeItem('last_page');
     console.error(error);
+  }
+};
+
+export const callSendValidationMail = async (data) => {
+  try {
+    const result = await axios.post(
+      `${API_URL}/auth/user/validation`,
+      data,
+      credentialsConfig
+    );
+    console.log(result.data);
+    // setUser((user) => ({
+    //   ...user,
+    //   firstVerify: true,
+    // }));
+  } catch (err) {
+    console.error(err);
+  }
+};
+
+export const callValidationApi = async (data, setUser, navigate) => {
+  try {
+    const result = await axios.post(
+      `${API_URL}/auth/user/validation`,
+      data,
+      credentialsConfig
+    );
+    navigate('/admin/profile');
+    setUser(result.data.user);
+    handleSuccess('信箱驗證成功');
+  } catch (err) {
+    console.error(err);
+    navigate('/admin/profile');
+    handleWarning(err.response.data.message);
   }
 };
