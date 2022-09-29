@@ -81,12 +81,12 @@ export default function PostLocateArticle({ post }) {
                                   <div className="foo locate_photo_single">
                                     <PhotoView
                                       key={index}
-                                      style={{ objectFit: 'contain' }}
+                                      style={{ objectFit: 'cover' }}
                                       src={BE_URL + '/' + data.locate_photo}
                                     >
                                       <img
                                         alt=""
-                                        style={{ objectFit: 'contain' }}
+                                        style={{ objectFit: 'cover' }}
                                         src={BE_URL + '/' + data.locate_photo}
                                       />
                                     </PhotoView>

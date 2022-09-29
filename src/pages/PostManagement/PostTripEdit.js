@@ -83,6 +83,9 @@ function PostTripEdit() {
     locate_context: tripPostLocContext,
     locate_intro: tripPostIntro,
   };
+  useEffect(() => {
+    console.log('=====家豪看這=====', tripPostIntro);
+  }, [tripPostIntro]);
 
   // 單獨取行程明細get
   useEffect(() => {
@@ -124,7 +127,7 @@ function PostTripEdit() {
                 locateIDData[daysFilter.length - 1].push(item.id);
                 contextData[daysFilter.length - 1].push(item.locate_context);
                 photoData[daysFilter.length - 1].push(item.locate_photo);
-                introData[daysFilter.length - 1].push(item.llocate_intro);
+                introData[daysFilter.length - 1].push(item.locate_intro);
               }
             }
             // console.log('dayfileter', daysFilter);
@@ -134,7 +137,11 @@ function PostTripEdit() {
             setTripPostIntro(introData);
             setTravelID(result.data[0].travel_id);
             setTripPostTitle(result.data[0].post_title);
-            setTripPostCover(BE_URL + '/' + result.data[0].post_main_photo);
+            setTripPostCover(
+              result.data[0].post_main_photo
+                ? BE_URL + '/' + result.data[0].post_main_photo
+                : CoverBackground
+            );
             setTripPostLocMark(result.data[0].coordinate);
             setTripPostTags(result.data[0].tags);
           }
@@ -167,14 +174,14 @@ function PostTripEdit() {
     handleSuccess('貼文儲存成功', '/admin/community');
   };
   //TODO:清空
-  // const resetForm = () => {
-  //   setTripPostLocContext('');
-  //   // setTripPostLocPhoto('');
-  //   setTripPostLocTime('');
-  //   setTripPostTitle('');
-  //   setTripPostLocMark('');
-  //   setTripPostTags('');
-  // };
+  const resetForm = () => {
+    setTripPostLocContext('');
+    // setTripPostPhoto([]);
+    setTripPostIntro([]);
+    setTripPostTitle('');
+    setTripPostLocMark('');
+    setTripPostTags('');
+  };
 
   //TODO: 發布改變貼文狀態(發布貼文)
   const handleRelease = async (e) => {
@@ -283,7 +290,7 @@ function PostTripEdit() {
             </div>
             <label
               className="mt-2 post_detailBar"
-              style={{ objectFit: 'contain' }}
+              style={{ objectFit: 'cover' }}
             >
               <MdTitle className="mb-1 me-1"></MdTitle>貼文標題
             </label>
