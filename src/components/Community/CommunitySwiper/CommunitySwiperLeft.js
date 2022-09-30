@@ -28,8 +28,6 @@ import cat8 from '../../../images/Community_HomePage/petKOL/cat8.jpeg';
 import cat9 from '../../../images/Community_HomePage/petKOL/cat9.jpeg';
 import cat10 from '../../../images/Community_HomePage/petKOL/cat10.jpeg';
 
-
-
 export default function communityHomePageCard(props) {
   const { comHomePageCard } = props;
   // console.log('props', props);
@@ -157,7 +155,6 @@ export default function communityHomePageCard(props) {
   ];
   console.log(petKOL[0].img);
 
-
   return (
     <>
       <div className="CommunitySwiperLeft">
@@ -178,28 +175,17 @@ export default function communityHomePageCard(props) {
           {petKOL.map((data, index) => {
             return (
               <SwiperSlide key={'comHomePageCard' + index} className="h-100">
-                <Link to="/" className="communitySwiper_card d-flex flex-column">
+                <Link
+                  to="/"
+                  className="communitySwiper_card d-flex flex-column"
+                >
                   <div className="obj-fit">
-<<<<<<< HEAD
-                    <img
-                      src={
-                        process.env.REACT_APP_BASE_URL + '/' + data.post_main_photo
-                      }
-                      alt="123"
-                    />
-=======
-                    <img src={data.img}
-                     alt="123" />
->>>>>>> develop
+                    <img src={data.img} alt="123" />
                   </div>
                   <div className="d-flex flex-fill p-3">
                     <div className="communitySwiper_card_title flex-fill">
-<<<<<<< HEAD
-                      <h5>{data.post_title}</h5>
-=======
-                    {/* TODO:狗掌icon */}
+                      {/* TODO:狗掌icon */}
                       <h5>{data.name}</h5>
->>>>>>> develop
                     </div>
                     <div className="communitySwiper_card_infoArea d-flex align-items-end">
                       <div className="communitySwiper_card_info d-flex align-items-end">
