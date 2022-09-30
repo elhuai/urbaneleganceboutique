@@ -31,16 +31,8 @@ function SearchBar(props) {
             <Link
               type="submit"
               className="searchBar_searchButton"
-<<<<<<< HEAD
               to={`/communitylist`}
               onClick={handleSearch}
-=======
-              to={`/ec-productfilter?typeId=${typeIdParams}&searchword=${searchWordParams}`}
-              onClick={() => {
-                if (titleSearch === '') return setSearch('');
-                setSearch(titleSearch);
-              }}
->>>>>>> feature-community
             >
               <i className="searchBar_fa searchBar_fa-search">
                 <AiOutlineSearch />
