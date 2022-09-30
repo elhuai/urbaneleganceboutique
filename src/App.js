@@ -31,7 +31,9 @@ import EcProductFilter from './pages/Ecommerce/EC_productFilter';
 import ECOrderSteps from './pages/Ecommerce/EC_checkout';
 import ECLinePay from './pages/Ecommerce/EC_LinePay';
 
+// import '@reach/combobox/styles.css';
 import 'antd/dist/antd.css';
+
 import 'swiper/scss';
 import 'swiper/css/bundle';
 import 'react-photo-view/dist/react-photo-view.css';

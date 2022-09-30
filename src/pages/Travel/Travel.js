@@ -17,7 +17,9 @@ const Travel = () => {
   useEffect(() => {
     const calltitledateApi = async () => {
       try {
-        const result = await axios.get(`${API_URL}/travelCommunity`);
+        const result = await axios.get(`${API_URL}/travelCommunity`, {
+          withCredentials: true,
+        });
         const data = result.data;
         setTravelCommunity(data);
       } catch (err) {
@@ -30,7 +32,9 @@ const Travel = () => {
   useEffect(() => {
     const fetchUsertrip = async () => {
       try {
-        const result = await axios.get(`${API_URL}/travelUserplanning/get`);
+        const result = await axios.get(`${API_URL}/travelUserplanning/get`, {
+          withCredentials: true,
+        });
         const data = result.data;
         setTravelUser(data);
       } catch (err) {
@@ -44,7 +48,7 @@ const Travel = () => {
       <Container className=" travel_container mt-md-3">
         <TravelTab travelUser={travelUser} />
         <TravelForm />
-        <h2 className="travel_goPlay_tittle mb-md-5 mt-5 user-select-none ">
+        <h2 className="travel_goPlay_tittle  mt-5 user-select-none ">
           看看大家都去哪玩 :
         </h2>
         <TravelgoPlaySwiper />

@@ -1,51 +1,51 @@
 import React from 'react';
 import './PostMap.scss';
-//////////////////學儒專用地圖
+/////////孝強專用地圖
 import { GoogleMap, Marker, InfoWindow } from '@react-google-maps/api';
 import { useState, useEffect, useRef } from 'react';
 const centers = [
   {
     id: 1,
     days: '1',
-    name: '礁溪好好玩',
-    position: { lat: 24.8311324, lng: 121.7742168 },
+    name: '台南好特別',
+    position: { lat: 22.9973567, lng: 120.2005071 },
     photo: 'https://picsum.photos/200/300?random2',
     user: 'HowFun',
   },
-  {
-    id: 2,
-    days: '2',
-    name: '羅東超讚',
-    position: { lat: 24.8211324, lng: 121.7642168 },
-    photo: 'https://picsum.photos/200/300?random1',
-    user: 'Joman',
-  },
-  {
-    id: 3,
-    days: '3',
-    name: '花東真漂亮',
-    position: { lat: 24.8111324, lng: 121.7742168 },
-    photo: 'https://picsum.photos/200/300?random21',
-    user: '堂老大',
-  },
-  {
-    id: 4,
-    days: '4',
-    name: '花東五日遊',
-    position: { lat: 24.8011324, lng: 121.6742168 },
-    photo: 'https://picsum.photos/200/300?random5',
-    user: '韓市長',
-  },
-  {
-    id: 5,
-    days: '5',
-    name: '礁溪泡溫泉去',
-    position: { lat: 24.8211324, lng: 121.7942168 },
-    photo: 'https://picsum.photos/200/300?random22',
-    user: '席主席',
-  },
+  // {
+  //   id: 2,
+  //   days: '2',
+  //   name: '羅東超讚',
+  //   position: { lat: 24.8211324, lng: 121.7642168 },
+  //   photo: 'https://picsum.photos/200/300?random1',
+  //   user: 'Joman',
+  // },
+  // {
+  //   id: 3,
+  //   days: '3',
+  //   name: '花東真漂亮',
+  //   position: { lat: 24.8111324, lng: 121.7742168 },
+  //   photo: 'https://picsum.photos/200/300?random21',
+  //   user: '堂老大',
+  // },
+  // {
+  //   id: 4,
+  //   days: '4',
+  //   name: '花東五日遊',
+  //   position: { lat: 24.8011324, lng: 121.6742168 },
+  //   photo: 'https://picsum.photos/200/300?random5',
+  //   user: '韓市長',
+  // },
+  // {
+  //   id: 5,
+  //   days: '5',
+  //   name: '礁溪泡溫泉去',
+  //   position: { lat: 24.8211324, lng: 121.7942168 },
+  //   photo: 'https://picsum.photos/200/300?random22',
+  //   user: '席主席',
+  // },
 ];
-function PostMap() {
+function GoogleMapsCyrilke() {
   const mapRef = useRef(null);
   return (
     <div className="post_map">
@@ -54,7 +54,7 @@ function PostMap() {
       <div className="communitymap_body">
         <GoogleMap
           ref={mapRef}
-          center={{ lat: 24.8451324, lng: 121.7842168 }}
+          center={{ lat: 22.9973567, lng: 120.2005071 }}
           zoom={14}
           mapContainerClassName="communitymap_container"
         >
@@ -92,4 +92,4 @@ function PostMap() {
   );
 }
 
-export default PostMap;
+export default GoogleMapsCyrilke;

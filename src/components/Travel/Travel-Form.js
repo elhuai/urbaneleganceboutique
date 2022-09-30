@@ -16,11 +16,9 @@ const TravelForm = () => {
   //TODO: userid還沒寫進資料庫
   async function handleSubmit(e) {
     e.preventDefault();
-    let response = await axios.post(
-      `${API_URL}/submit/addDate`,
-      loginMember,
-      {}
-    );
+    let response = await axios.post(`${API_URL}/submit/addDate`, loginMember, {
+      withCredentials: true,
+    });
     console.log('form表單', response.data);
     handleSuccess('成功建立此行程!', '/Travel');
   }

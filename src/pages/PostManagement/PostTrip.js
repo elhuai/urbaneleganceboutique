@@ -1,11 +1,15 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
+// import { API_URL } from '../../utils/config';
 import { API_URL } from '../../utils/config';
+
 import './PostTrip.scss';
 
 import PostLocateArticle from '../../components/Community/PostComponent/PostLocateArticle';
 import PostStateBarTripPost from '../../components/Community/PostComponent/PostStateBarTripPost';
 import PostMap from '../../components/Community/PostComponent/PostMap';
+import PostStateBar from '../../components/Community/PostComponent/PostStateBar';
+import CommunityGooglemap from '../../components/Community/PostComponent/CommunityGooglemap';
 import CommentBar from '../../components/Community/PostComponent/CommentBar';
 import RecommandProduct from '../../components/Community/PostComponent/RecommandProduct';
 import TripOutline from '../../components/Community/PostComponent/TripOutline';
@@ -121,7 +125,7 @@ function PostTrip() {
               <PostLocateArticle post={postTrip}></PostLocateArticle>
               <TripOutline post={postTrip}></TripOutline>
             </div>
-            <PostMap></PostMap>
+            <CommunityGooglemap />
             <RecommandProduct></RecommandProduct>
             <hr></hr>
             <CommentBar comment={comment}></CommentBar>

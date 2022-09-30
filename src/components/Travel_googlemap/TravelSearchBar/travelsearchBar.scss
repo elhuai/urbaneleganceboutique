@@ -8,7 +8,7 @@ $font-weight: 700;
   position: absolute !important;
   width: 788.609px !important;
   left: 875px !important;
-  top: 140.516px !important;
+  top: 225.516px !important;
   background-color: white !important;
   cursor: pointer !important;
   list-style: none !important;
@@ -24,11 +24,11 @@ $font-weight: 700;
   bottom: 1px;
   z-index: 1;
   width: 820px;
-  transition: 0.5s ease-in;
-  animation: wrapper-gradient 0.3s linear;
+  transition: 0.1s ease-in;
+  animation: wrapper-gradient 0.1s linear;
   @keyframes wrapper-gradient {
     0% {
-      transform: translateY(-100%);
+      transform: translateY(-20%);
     }
     100% {
       transform: translateY(0);
@@ -41,7 +41,7 @@ $font-weight: 700;
   .travel_input_searchBar_sum {
     position: relative;
     left: 5px;
-    width: 850px;
+    width: 890px;
     border-radius: 8px;
     .travelmap_combobox-input {
       width: 100%;
@@ -108,7 +108,7 @@ $font-weight: 700;
   .travelSearchBar_CardTittle {
     margin-top: 40px;
     font-weight: 700;
-    font-size: 28px;
+    font-size: 1.6rem;
     overflow: hidden;
     white-space: nowrap;
     text-overflow: ellipsis;
