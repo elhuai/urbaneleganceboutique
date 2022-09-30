@@ -1,6 +1,6 @@
 import React from 'react';
 import { useState, useEffect } from 'react';
-import { API_URL } from '../../../utils/config';
+import { API_URL,BE_URL } from '../../../utils/config';
 import axios from 'axios';
 import { useUserInfo } from '../../../hooks/useUserInfo';
 import { useParams, useLocation } from 'react-router-dom';
@@ -90,9 +90,6 @@ function CommentBar() {
       <p className="post__comment_list_title">回應</p> {/* 關聯資料庫 */}
       <div className=" d-flex flex-column align-items-center">
         {commentData.map((data) => {
-          {
-            /* console.log('comment', comment); */
-          }
           return (
             <li
               key={data.id}
@@ -100,7 +97,7 @@ function CommentBar() {
             >
               <div className="d-flex justify-content-center">
                 <div className="user_comment_photo">
-                  <img alt="" src="https://picsum.photos/200/300?random9"></img>
+                  <img alt="" src={ BE_URL + data.photo}></img>
                 </div>
                 <div className="user_comment_detail mx-5">
                   <div className="user_comment_name">{data.social_name}</div>

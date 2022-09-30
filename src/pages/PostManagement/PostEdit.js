@@ -60,7 +60,7 @@ function PostWYSIWYGEdit() {
         );
         // 取得後端來的資料
         console.log('result,data', result.data);
-        // setPostData(result.data);
+        setPostData(result.data);
       } catch (err) {
         console.log('setPost', err);
       }

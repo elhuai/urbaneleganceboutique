@@ -11,8 +11,12 @@ function SearchBar(props) {
     searchBar_placeholder,
     keywordSearch,
     setKeywordSearch,
+    search,
     setSearch,
+    postData,
   } = props;
+  const searchWordParams = keywordSearch ? keywordSearch : '';
+  const getPostData = postData? postData :'';
 
   const handleSearch = (e) => {
     if (keywordSearch === '') return setSearch('');
@@ -28,6 +32,7 @@ function SearchBar(props) {
               type="text"
               className="searchBar_searchInput"
               placeholder={searchBar_placeholder}
+              maxLength={15}
               value={keywordSearch}
               onChange={(e) => {
                 // console.log(e.target.value);
@@ -37,7 +42,7 @@ function SearchBar(props) {
             <Link
               type="submit"
               className="searchBar_searchButton"
-              to={`/communitylist`}
+              to={`/communitylist?searchword=${searchWordParams}`}
               onClick={handleSearch}
             >
               <i className="searchBar_fa searchBar_fa-search">

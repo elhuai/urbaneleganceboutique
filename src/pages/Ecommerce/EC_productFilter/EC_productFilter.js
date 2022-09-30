@@ -22,6 +22,7 @@ function EcProductFilter() {
   const [productData, setProductData] = useState([]);
   const [lastPage, setLastPage] = useState(1);
   const [page, setPage] = useState(1);
+  
 
   // 篩選選項=======
   const [typeId, setTypeId] = useState('');

@@ -69,6 +69,9 @@ const MyCkeditor = (props) => {
               'redo',
             ],
             extraPlugins: [uploadPlugin],
+            image: {
+            toolbar: [ 'toggleImageCaption', 'imageTextAlternative' ]
+        }
           }}
           data={postData[0]?.content ? postData[0]?.content : ''}
           editor={Editor}

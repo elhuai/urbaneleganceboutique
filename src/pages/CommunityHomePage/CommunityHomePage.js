@@ -10,19 +10,18 @@ import CommunitySwiperLeft from '../../components/Community/CommunitySwiper/Comm
 import { IoHeartOutline } from 'react-icons/io5';
 import { RiEditFill } from 'react-icons/ri';
 import { MdOutlineClose } from 'react-icons/md';
+import { useLocation } from 'react-router-dom';
 
 // import CommunitySwiperRight from '../../components/Community/CommunitySwiper/CommunitySwiperRight';
 
 import { API_URL } from '../../utils/config';
 
 const CommunityHomePage = () => {
-  const [showCFBox, setShowCFBox] = useState(0);
+  //  搜尋用
+  const [search, setSearch] = useState('');
+  const [keywordSearch, setKeywordSearch] = useState('');
 
-  const ConfirmHandle = (e) => {
-    setShowCFBox(e);
-    console.log(showCFBox);
-  };
-
+  //  網紅、熱門資料用
   const [kolCard, setKolCard] = useState([]);
   const [hotCard, setHotCard] = useState([]);
   
@@ -55,6 +54,10 @@ const CommunityHomePage = () => {
           <SearchBar
             searchBar_title="是不是在找我呢"
             searchBar_placeholder="我無處安放的可愛呀"
+            search={search}
+            setSearch={setSearch}
+            keywordSearch={keywordSearch}
+            setKeywordSearch={setKeywordSearch}
           />
 
           <div className="comHome_title flex-shrink-0">
