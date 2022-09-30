@@ -8,7 +8,7 @@ import { API_URL } from '../../../../utils/config';
 const Score = (props) => {
   const { perScore, productId } = props;
   const BASE_URL = process.env.REACT_APP_BASE_API_URL;
-  const id = productId ? productId : '519';
+  const id = productId == 543 ? productId : '519';
 
   const [commentData, setCommentData] = useState([]);
   useEffect(() => {

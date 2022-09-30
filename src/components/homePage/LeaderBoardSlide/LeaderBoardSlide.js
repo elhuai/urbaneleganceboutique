@@ -49,11 +49,11 @@ const Data = [
     img: `${BASE_URL}/product/restaurant/4/restaurant_04_01.webp`,
   },
   {
-    id: 2312,
+    id: 2682,
     rank: 1,
     category: '商品',
-    title: '自然奇蹟 酵素環保玉米貓砂 \u000A 10LB',
-    img: `${BASE_URL}/product/pet/1/2/main_photo_03_2.jpeg`,
+    title: 'PureLUXE 循味 天然無穀犬糧-室內老犬.低卡成犬4LB ',
+    img: `${BASE_URL}/product/pet/8/21/main_photo_10_21.jpeg`,
   },
   {
     id: 2321,
