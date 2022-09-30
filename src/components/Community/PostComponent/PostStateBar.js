@@ -22,7 +22,7 @@ export default function PostStateBar({ post, postID }) {
   const { user, setUser } = useUserInfo();
   // console.log('user', user.data.id);
   const userID = user.data.id;
-  // const [likes, setLikes] = useState(post[0][0].likes);
+
 
   // //判斷是否有按過讚
   const [likesState, setLikeState] = useState(0);
@@ -111,10 +111,15 @@ export default function PostStateBar({ post, postID }) {
             style={{ objectFit: 'cover' }}
             src={
               post[0].travel_id === 2
-                ? post[0][0].main_photo.length === 0
-                : post[0].post_main_photo.length === 0
+                ? post[0][0].main_photo === 0
+                : post[0].post_main_photo === 0
                 ? coverPhoto
                 : BE_URL + post[0].post_main_photo
+              // post[0].travel_id === 2
+              //   ? post[0][0].main_photo.length === 0
+              //   : post[0].post_main_photo.length === 0
+              //   ? coverPhoto
+              //   : BE_URL + post[0].post_main_photo
               // post[0][0].post_main_photo === ''
               //   ? coverPhoto
               //   : BE_URL + '/' + post[0][0].post_main_photo
@@ -161,10 +166,9 @@ export default function PostStateBar({ post, postID }) {
               })}
             </div>
           </div>
+          {/* TODO:這裡還在修改 */}
           <div className="post_like me-2">
-            {post[0].travel_id === 2 ? (
-              post[0][0].status === 2
-            ) : post[0].status ? (
+            {post[0].travel_id === 2 ? (post[0][0].status === 2) : post[0].status ? (
               <>
                 {' '}
                 <div className="d-flex">
