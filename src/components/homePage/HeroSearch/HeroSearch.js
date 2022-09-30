@@ -1,29 +1,47 @@
 import React from 'react';
 import { useEffect, useState } from 'react';
+import { AiOutlineSearch } from 'react-icons/ai';
+import { useNavigate } from 'react-router-dom';
 import './_heroSearch.scss';
 
 export default function HeroSearch({ handleHeroActive, handleHeroAnimete }) {
   const [active, setActive] = useState(0);
+  const [keywords, setKeywords] = useState('');
+  const navigate = useNavigate();
+
+  const handleKeywords = (e) => {
+    let textValue = e.target.value.replace(/[, ]/g, '');
+    setKeywords(textValue);
+  };
+  console.log('active', active);
+  // 館別
+  const typeIdParams = active + 2;
+
+  const handleSearch = (e) => {
+    e.preventDefault();
+    navigate(`/ec-productfilter?typeId=${typeIdParams}&searchword=${keywords}`);
+  };
+
   useEffect(() => {
-    if (active === 0) return;
     handleHeroAnimete(true);
     handleHeroActive(active);
+    // console.log(active);
   }, [active]);
   return (
     <div className="hero_search bg-white overflow-hidden">
-      <div className="tab_wrap d-flex">
-        <button
+      <div className="tab_wrap d-flex position-relative">
+        {/* <button
           className="tab tab-1 flex-fill py-2"
           onClick={() => {
             setActive(1);
           }}
         >
           住宿
-        </button>
+        </button> */}
         <button
-          className="tab tab-2 flex-fill py-2"
+          className="tab tab-2 flex-fill py-2 active"
           onClick={() => {
-            setActive(2);
+            setActive(0);
           }}
         >
           景點 & 玩樂
@@ -31,7 +49,7 @@ export default function HeroSearch({ handleHeroActive, handleHeroAnimete }) {
         <button
           className="tab tab-3 flex-fill py-2"
           onClick={() => {
-            setActive(3);
+            setActive(1);
           }}
         >
           餐廳
@@ -39,50 +57,46 @@ export default function HeroSearch({ handleHeroActive, handleHeroAnimete }) {
         <button
           className="tab tab-4 flex-fill py-2"
           onClick={() => {
-            setActive(4);
+            setActive(2);
           }}
         >
           寵物商品
         </button>
+        <div
+          className={`underline_effect`}
+          style={{ transform: `translateX(${active}00%)` }}
+        ></div>
       </div>
 
       <form className="input_wrap">
-        <div>
-          <p className="title mb-2">目的地</p>
+        <div className="d-none d-lg-block">
+          <p className="title mb-2">請輸入想查找的票券</p>
           <input
             className="form-control mb-3"
             type="text"
-            placeholder="請輸入地點"
+            placeholder="請輸入關鍵字"
+            value={keywords}
+            onChange={handleKeywords}
           />
         </div>
-        <div className="d-flex gap-3 mb-2">
-          <div className="w-100">
-            <p className="title mb-2">入住時間</p>
-            <input
-              className="form-control mb-3"
-              type="date"
-              placeholder="預計入住時間"
-            />
-          </div>
-          <div className="w-100">
-            <p className="title mb-2">退房時間</p>
-            <input
-              className="form-control mb-3"
-              type="date"
-              placeholder="預計退房時間"
-            />
-          </div>
-          <div className="w-100">
-            <p className="title mb-2">人數</p>
-            <input
-              className="form-control mb-3"
-              type="number"
-              placeholder="入住人數"
-            />
-          </div>
+        <div className="input-group  d-flex d-lg-none">
+          <input
+            type="text"
+            className="form-control"
+            placeholder="搜尋關鍵字"
+          />
+          <button
+            className="btn flex-shrink-0"
+            type="button"
+            onClick={handleSearch}
+          >
+            <AiOutlineSearch />
+          </button>
         </div>
-        <div className="button-wrap">
-          <button className="py-2 w-100">找到最適合你的票券</button>
+        <div className="button-wrap d-none d-lg-block">
+          <button className="py-2 w-100" onClick={handleSearch}>
+            找到最適合你的票券
+          </button>
         </div>
       </form>
     </div>

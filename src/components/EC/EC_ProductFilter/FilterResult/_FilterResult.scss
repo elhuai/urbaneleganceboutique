@@ -65,9 +65,6 @@ $royal-blue: #22c3ff;
       border-radius: 15px;
     }
 
-    // &::after {
-    //   transform: translate(-3px, -3px);
-    // }
 
     // Card----------------------
 
@@ -175,6 +172,19 @@ $royal-blue: #22c3ff;
         width: 1.25rem;
         height: 1.25rem;
       }
+    }
+
+    .sort-board-rwd {
+      display: none;
+
+    }
+  }
+}
+
+@media (max-width: 768px) {
+  .ecProductFilter {
+    .product-filter-left {
+      display: none;
     }
   }
 }

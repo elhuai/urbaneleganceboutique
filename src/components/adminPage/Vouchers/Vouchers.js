@@ -70,7 +70,7 @@ const ValidVoucher = ({ data }) => {
                   </span>
                 </div>
               </div>
-              <div className="d-flex gap-3 flex-shrink-0">
+              <div className="d-flex gap-3 flex-shrink-0 justify-content-end">
                 <div className="d-flex align-items-end">
                   <button onClick={() => handleDetailBtn(item, true)}>
                     查看
@@ -138,7 +138,7 @@ const InValidVoucher = ({ data }) => {
                   </span>
                 </div>
               </div>
-              <div className="d-flex gap-3 flex-shrink-0">
+              <div className="d-flex gap-3 flex-shrink-0 justify-content-end">
                 <div className="d-flex align-items-end">
                   <button onClick={() => handleDetailBtn(item)}>查看</button>
                 </div>

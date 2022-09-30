@@ -36,7 +36,20 @@ $royal-blue: #22C3FF;
   margin-bottom: 8px;
 }
 
-.ecProductFilter_result{
+.ecProductFilter_result {
   max-width: 960px;
   width: 100%;
+}
+
+.ecProductFilter_list_rwd {
+  display: none;
+}
+
+@media (max-width: 768px) {
+  .ecProductFilter_list_rwd {
+    margin: 0 0 .5rem 0.5rem;
+    display: block;
+    display: flex;
+    justify-content: flex-start;
+  }
 }

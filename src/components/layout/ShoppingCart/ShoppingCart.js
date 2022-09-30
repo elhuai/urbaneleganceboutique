@@ -4,7 +4,6 @@ import axios from 'axios';
 import { API_URL } from '../../../utils/config';
 import { Link } from 'react-router-dom';
 import { IoChevronBack } from 'react-icons/io5';
-// import Button from 'react-bootstrap/Button';
 import Offcanvas from 'react-bootstrap/Offcanvas';
 import { IoCart, IoCaretBack, IoCaretForward } from 'react-icons/io5';
 import { useUserInfo } from '../../../hooks/useUserInfo';
@@ -12,17 +11,17 @@ import { handleSuccess } from '../../../utils/handler/card/handleStatusCard';
 import { TbTicket } from 'react-icons/tb';
 import './_ShoppingCart.scss';
 
-function ShoppingCart({ name, ...props }) {
-  const [show, setShow] = useState(false);
+// 購物車跳出頁面
+import { handleLoginCard } from '../../../utils/handler/card/handleInputCard';
 
+function ShoppingCart({ name, ...props }) {
+
+  const [show, setShow] = useState(false);
+  const { cart, setCart } = props;
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
-
-  // const [number, setNumber] = useState(1);
-  const [cart, setCart] = useState([]);
-  const [quantity, setQuantity] = useState(0);
-
   const { user, setUser } = useUserInfo();
+  
   const addCart = async (e, id) => {
     // e.preventDefault();
     if (user.auth) {
@@ -34,8 +33,8 @@ function ShoppingCart({ name, ...props }) {
             withCredentials: true,
           }
         );
-        console.log('-----addCart-----');
-        console.log(result.data[0]);
+        // console.log('-----addCart-----');
+        // console.log(result.data[0]);
 
         // 如果想用假的數字結果可用：
         // let newCart = [...cart];
@@ -53,7 +52,7 @@ function ShoppingCart({ name, ...props }) {
         console.log('error', error);
       }
     } else {
-      addCart({ isLogin: true }, setUser);
+      handleLoginCard({ isLogin: true }, setUser);
     }
   };
 
@@ -68,8 +67,8 @@ function ShoppingCart({ name, ...props }) {
             withCredentials: true,
           }
         );
-        console.log('----minusCart------');
-        console.log(result.data[0]);
+        // console.log('----minusCart------');
+        // console.log(result.data[0]);
 
         // 如果想用假的數字結果可用：
         // let newCart = [...cart];
@@ -87,19 +86,35 @@ function ShoppingCart({ name, ...props }) {
         console.log('error', error);
       }
     } else {
-      addCart({ isLogin: true }, setUser);
+      handleLoginCard({ isLogin: true }, setUser);
     }
   };
+  // 如果沒有登入沒辦法按確定下單
+  const cartOrder = async (e, id) => {
+    e.preventDefault();
+    if (user.auth) {
+      try {
+        window.location = `/ec-ordersteps?productId=${id}`;
+      } catch (error) {
+        console.log('error', error);
+      }
+    } else {
+      handleLoginCard({ isLogin: true }, setUser);
+    }
+  };
+
   useEffect(() => {
     const fetchProductData = async () => {
       // 抓商品細節資料
-      const result = await axios.get(`${API_URL}/cart/list`);
-      console.log('result', result.data);
+      const result = await axios.get(`${API_URL}/cart/list`,
+      {withCredentials: true}
+    );
+      // console.log('result', result.data);
       const cartData = result.data;
       setCart(cartData);
     };
     fetchProductData();
-  }, []);
+  }, [show]);
   // console.log('cart', cart);
 
   return (
@@ -112,7 +127,7 @@ function ShoppingCart({ name, ...props }) {
           <section>
             <div className="headerRow">
               {' '}
-              <IoChevronBack />
+              <IoChevronBack onClick={handleClose}/>
               購物車-商品一覽
             </div>
             <div className="mainRow">
@@ -156,9 +171,14 @@ function ShoppingCart({ name, ...props }) {
 
                         <p>NT${v.quantity * v.price}</p>
                       </div>
-                      <Link to={`/ec-ordersteps?productId=${v.product_id}`}>
-                        <button>確定下單</button>
-                      </Link>
+                      <button
+                        value={v.product_id}
+                        onClick={(e) => {
+                          cartOrder(e, v.product_id);
+                        }}
+                      >
+                        確定下單
+                      </button>
                     </div>
                   </div>
                 );
@@ -168,8 +188,7 @@ function ShoppingCart({ name, ...props }) {
             </div>
             <div className="footerRow">
               <div className="leftColumn">
-                <TbTicket />
-                共5件商品
+                <TbTicket />共 {cart.length} 件商品
               </div>
             </div>
           </section>

@@ -4,7 +4,7 @@ import { API_URL } from '../../utils/config';
 import './PostTrip.scss';
 
 import PostLocateArticle from '../../components/Community/PostComponent/PostLocateArticle';
-import PostStateBar from '../../components/Community/PostComponent/PostStateBar';
+import PostStateBarTripPost from '../../components/Community/PostComponent/PostStateBarTripPost';
 import PostMap from '../../components/Community/PostComponent/PostMap';
 import CommentBar from '../../components/Community/PostComponent/CommentBar';
 import RecommandProduct from '../../components/Community/PostComponent/RecommandProduct';
@@ -111,7 +111,10 @@ function PostTrip() {
       ) : (
         <div key={postTrip.id} className="d-flex justify-content-center">
           <div className="post_bar d-flex flex-column">
-            <PostStateBar post={postTrip} postID={postID}></PostStateBar>
+            <PostStateBarTripPost
+              post={postTrip}
+              postID={postID}
+            ></PostStateBarTripPost>
 
             <hr></hr>
             <div className="d-flex align-items-start">

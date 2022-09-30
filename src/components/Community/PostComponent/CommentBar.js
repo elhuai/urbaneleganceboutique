@@ -1,6 +1,6 @@
 import React from 'react';
 import { useState, useEffect } from 'react';
-import { API_URL,BE_URL } from '../../../utils/config';
+import { API_URL, BE_URL } from '../../../utils/config';
 import axios from 'axios';
 import { useUserInfo } from '../../../hooks/useUserInfo';
 import { useParams, useLocation } from 'react-router-dom';
@@ -97,7 +97,7 @@ function CommentBar() {
             >
               <div className="d-flex justify-content-center">
                 <div className="user_comment_photo">
-                  <img alt="" src={ BE_URL + data.photo}></img>
+                  <img alt="" src={BE_URL + data.photo}></img>
                 </div>
                 <div className="user_comment_detail mx-5">
                   <div className="user_comment_name">{data.social_name}</div>
@@ -130,7 +130,13 @@ function CommentBar() {
           <button className="btn" onClick={handleClear}>
             清除
           </button>
-          <button className="btn" onClick={handleSubmit}>
+          <button
+            className="btn"
+            onClick={(e) => {
+              handleSubmit(e);
+              setIfSubmit(true);
+            }}
+          >
             送出
           </button>
         </div>

@@ -124,7 +124,7 @@ function CommunityManagement() {
     console.log(deleteData, '資料刪除成功');
     handleSuccess('貼文刪除成功');
     ConfirmHandle(0);
-    setIfDelete(true);
+    setIfDelete(false);
   };
   //匯入行程新增貼文
   const creatNewTripPost = async (e) => {
@@ -462,6 +462,7 @@ function CommunityManagement() {
                 className="close_icon"
                 onClick={(e) => {
                   ConfirmHandle(0);
+                  setIfDelete(true);
                 }}
               ></MdOutlineClose>
             </p>

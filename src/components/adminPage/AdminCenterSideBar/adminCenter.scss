@@ -18,43 +18,93 @@ $list-color-hover: #f0ede0;
 }
 
 .admin_side {
-  margin-top: 40px;
-  width: 300px;
-  min-width: 150px;
-  height: 90%;
-  font-size: 20px;
-  border-right: 2px solid $line-color--light;
-  //會員基本資料
-  .profile_bar {
-    padding: 10px;
-    width: 100%;
-    border-bottom: 2px solid $line-color--light;
-    .user_photobox {
-      width: 80px;
-      height: 80px;
-      border-radius: 50%;
-      background-color: white;
-      overflow: hidden;
-      img {
+	margin-top: 40px;
+	width: 300px;
+	min-width: 150px;
+	height: 90%;
+	font-size: 20px;
+	border-right: 2px solid $line-color--light;
+	//會員基本資料
+	.profile_bar {
+		padding: 10px;
+		width: 100%;
+		border-bottom: 2px solid $line-color--light;
+		.user_photobox {
+      position: relative;
+			width: 80px;
+			height: 80px;
+			border-radius: 50%;
+			background-color: white;
+			overflow: hidden;
+      cursor: pointer;
+			img{
+				width: 100%;
+				height: 100%;
+        object-fit: cover;
+			}
+      label {
+        position: absolute;
         width: 100%;
         height: 100%;
+        cursor: pointer;
+        z-index: 999;
+        border-radius: 50px;
       }
-    }
-    .admin_user_name_bar {
-      margin-left: 20px;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      .admin_user_name {
-        // margin-top: 30px;
-        font-size: 18px;
-        font-weight: 500;
-        width: 180px;
-        display: -webkit-box;
-        -webkit-box-orient: vertical;
-        -webkit-line-clamp: 1;
-        overflow: hidden;
-        line-height: 15px;
+      input {
+        opacity: 0;
+        visibility: hidden;
+        width: 0;
+        height: 0;
+      }
+      svg {
+        position: absolute;
+        width: 30px;
+        height: 30px;
+        top: calc(50% + 12px);
+        left: 50%;
+        transform: translate(-50%, -50%);
+        color: #FFF;
+        opacity: 0;
+        transition: .3s;
+      }
+      &::after {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: #747474;
+        opacity: 0;
+        transition: .3s;
+        z-index: 99;
+      }
+      &:hover {
+        div svg {
+          opacity: 1;
+          top: calc(50%);
+          z-index: 500;
+        }
+        &::after {
+          opacity: 0.5;
+        }
+      }
+		}
+		.admin_user_name_bar {
+			margin-left: 20px;
+			display: flex;
+			flex-direction: column;
+			justify-content: center;
+			.admin_user_name {
+				// margin-top: 30px;
+				font-size: 18px;
+				font-weight: 500;
+				width: 180px;
+				display: -webkit-box;
+				-webkit-box-orient: vertical;
+				-webkit-line-clamp: 1;
+				overflow: hidden;
+				line-height: 15px;
         cursor: default;
         p {
           height: 14px;

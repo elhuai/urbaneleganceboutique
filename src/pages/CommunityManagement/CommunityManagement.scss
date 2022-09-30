@@ -179,9 +179,9 @@ ul.communityManagementTab {
     background-color: $main-color;
   }
   &:hover {
-    border: none;
-    color: white;
-    background-color: darken($main-color, 5%);
+    border: none !important;
+    color: white !important;
+    background-color: darken($main-color, 5%) !important;
   }
 }
 

@@ -96,20 +96,18 @@
         justify-content: space-between;
         color: #bbbbbb;
         font-size: 18px;
-
       }
-
     }
-    .calculateSection1{
+    .calculateSection1 {
       // margin-top: 30px;
-        display: flex;
-        font-weight: 500;
-        padding: 10px 15px;
-        justify-content: space-between;
-        color: #ef7a70;
-        font-size: 24px;
+      display: flex;
+      font-weight: 500;
+      padding: 10px 15px;
+      justify-content: space-between;
+      color: #ef7a70;
+      font-size: 24px;
     }
-    button{
+    button {
       position: absolute;
       color: white;
       font-size: 20px;
@@ -121,5 +119,61 @@
       left: calc(50% - 80px);
       background-color: #2da9d7;
     }
+  }
+}
+@media screen and (max-width: 375px) {
+  .OrderDetail {
+    max-width: 100%;
+    margin: 120px 20px 100px;
+    .mainTitle {
+      padding: 15px;
+      font-size: 18px;
+      justify-content: center;
+    }
+    .bottomColumn {
+      padding: 30px 20px 50px;
+
+      .subSection2 {
+        .middleTotal {
+          padding: 10px 10px;
+        }
+        .calculateSection {
+          padding: 10px 10px;
+
+          .subTitle {
+            font-size: 16px;
+          }
+        }
+        .middleTotal {
+          font-size: 20px;
+        }
+      }
+      .subSection3 {
+        .calculateSection {
+          margin: 0;
+          padding: 10px 10px;
+          .subTitle {
+            font-size: 16px;
+          }
+        }
+      }
+      .calculateSection1 {
+        .subTitle {
+          font-size: 20px;
+        }
+        .subInput {
+          font-size: 22px;
+        }
+      }
+      button{
+      width: 140px;
+      font-size: 18px;
+      height: 50px;
+      left: calc(50% - 70px);
+      bottom: -25px;
+
+    }
+    }
+    
   }
 }

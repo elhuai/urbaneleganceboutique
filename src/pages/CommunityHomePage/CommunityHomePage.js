@@ -24,7 +24,6 @@ const CommunityHomePage = () => {
   //  網紅、熱門資料用
   const [kolCard, setKolCard] = useState([]);
   const [hotCard, setHotCard] = useState([]);
-  
 
   // 寵物網紅貼文
   useEffect(() => {

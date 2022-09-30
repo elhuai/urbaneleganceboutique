@@ -45,6 +45,7 @@ $hightLight-color: #EF7A70;
           transform: translateX(8px);
           animation: info-show .3s ease-out 0s 1 forwards;
         }
+
         &_btn {
           flex-shrink: 0;
           > div {
@@ -60,6 +61,26 @@ $hightLight-color: #EF7A70;
               transform: translateX(calc(100% + 8px));
               animation: btn-show .3s ease-out 0s 1 forwards;
               z-index: 9;
+            }
+            &.valid {
+              background-color: #FFF;
+              padding: 5px 13px;
+              border: 3px solid #bdbdbd;
+              color: #747474;
+              opacity: .4;
+              cursor: default;
+            }
+            &.invalid {
+              box-sizing: border-box;
+              border: 2.5px solid $hightLight-color;
+              color: $hightLight-color;
+              background-color: #FFF;
+              padding: 5px 13px;
+              transition: .3s;
+              &:hover {
+                background-color: $hightLight-color;
+                color: #FFF;
+              }
             }
           }
         }

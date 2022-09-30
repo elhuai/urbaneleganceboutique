@@ -16,7 +16,7 @@ function SearchBar(props) {
     postData,
   } = props;
   const searchWordParams = keywordSearch ? keywordSearch : '';
-  const getPostData = postData? postData :'';
+  const getPostData = postData ? postData : '';
 
   const handleSearch = (e) => {
     if (keywordSearch === '') return setSearch('');
@@ -35,7 +35,7 @@ function SearchBar(props) {
               maxLength={15}
               value={keywordSearch}
               onChange={(e) => {
-                // console.log(e.target.value);
+                console.log(e.target.value);
                 setKeywordSearch(e.target.value);
               }}
             />
