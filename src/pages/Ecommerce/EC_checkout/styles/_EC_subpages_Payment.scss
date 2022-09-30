@@ -1,3 +1,10 @@
+%input {
+  caret-color: #747474;
+  border: 3px solid #e7e7e9;
+  border-radius: 5px;
+  outline-color: #ffc715;
+}
+
 .Payment {
   // max-width: 1280px;
   // width: 100%;
@@ -5,14 +12,20 @@
   color: #747474;
   position: relative;
 
+  input {
+    @extend %input;
+  }
+
   .topRow {
     display: flex;
     justify-content: center;
     font-size: 24px;
     margin-bottom: 30px;
+
     .step1 {
       margin-right: 5%;
     }
+
     .step2 {
       margin-right: 5%;
     }
@@ -20,6 +33,7 @@
 
   .middleRow {
     border-radius: 15px;
+
     .mainTitle {
       font-size: 20px;
       font-weight: 700;
@@ -30,6 +44,7 @@
       background-color: #ffc715;
       border-radius: 15px 15px 0 0;
     }
+
     .bottomColumn {
       display: flex;
       border: 1px solid #e7e7e9;
@@ -47,6 +62,7 @@
           padding-bottom: 10px;
           margin-bottom: 25px;
           border-bottom: 1px solid #e7e7e9;
+
           p {
             font-weight: 500;
             font-size: 20px;
@@ -66,6 +82,7 @@
             padding: 5px;
             margin-bottom: 5px;
           }
+
           .subTitle {
             display: flex;
             width: 100px;
@@ -74,11 +91,13 @@
             align-items: center;
             margin-right: 30px;
           }
+
           .subDescription {
             display: flex;
             width: 100px;
             margin-right: 30px;
           }
+
           .subInput {
             width: 100%;
             border: 3px solid #e7e7e9;
@@ -87,77 +106,90 @@
             border-radius: 8px;
             padding: 5px 15px;
           }
+
           .subValue {
             width: 100%;
             line-height: 1.8em;
           }
         }
       }
+    }
+    .totalColumn {
+      margin: 0 1% 0 2%;
+      padding: 2%;
+      width: 40%;
+      border: 5px solid #f0ede0;
+      border-radius: 15px;
+      height: 100%;
 
-      .totalColumn {
-        margin: 0 1% 0 2%;
-        padding: 2%;
-        width: 40%;
-        border: 5px solid #f0ede0;
-        border-radius: 15px;
-        height: 100%;
+      .title {
+        font-weight: 500;
+        font-size: 18px;
+      }
+
+      .totalName {
+        border-bottom: 1px solid #e7e7e9;
+      }
+
+      .totalCate {
+        margin-top: 3%;
+        border-bottom: 1px solid #e7e7e9;
+
+        div {
+          font-size: 16px;
+          width: 140px;
+        }
+
         .title {
           font-weight: 500;
           font-size: 18px;
         }
-        .totalName {
-          border-bottom: 1px solid #e7e7e9;
-        }
-        .totalCate {
-          margin-top: 3%;
-          border-bottom: 1px solid #e7e7e9;
-          p {
-            font-size: 16px;
-          }
-          .title {
-            font-weight: 500;
-            font-size: 18px;
-          }
-          .subTotal {
-            display: flex;
-            justify-content: space-between;
-          }
-        }
-        .totalDiscount {
-          margin-top: 3%;
-          border-bottom: 1px solid #e7e7e9;
-          display: flex;
-          justify-content: space-between;
-          font-size: 14px;
-          .totalDiscountNumber {
-            width: 100px;
-            display: flex;
-            font-size: 16px;
 
-            flex-direction: row-reverse;
-            border-left: 1px solid #e7e7e9;
-          }
-        }
-        .totalNumber {
+        .subTotal {
           display: flex;
           justify-content: space-between;
-          font-size: 18px;
-          margin-top: 3%;
-          color: #ef7a70;
         }
+      }
+
+      .totalDiscount {
+        margin-top: 3%;
+        border-bottom: 1px solid #e7e7e9;
+        display: flex;
+        justify-content: space-between;
+        font-size: 14px;
+
+        .totalDiscountNumber {
+          width: 100px;
+          display: flex;
+          font-size: 16px;
+
+          flex-direction: row-reverse;
+          border-left: 1px solid #e7e7e9;
+        }
+      }
+
+      .totalNumber {
+        display: flex;
+        justify-content: space-between;
+        font-size: 18px;
+        margin-top: 3%;
+        color: #ef7a70;
       }
     }
   }
+
   .receiptSection {
     display: flex;
     margin: 20px 0;
   }
+
   .radioInput {
     display: flex;
     font-size: 18px;
 
     margin-left: 5px;
   }
+
   .paymentCCard {
     width: 100%;
     height: 220px;
@@ -181,6 +213,7 @@
         height: 40px;
         margin-right: 1px;
       }
+
       .iconMaster {
         background-image: url(../../../../images/master.png);
         background-size: contain;
@@ -189,6 +222,7 @@
         height: 40px;
         margin-right: 1px;
       }
+
       .iconJCB {
         background-image: url(../../../../images/jcb.png);
         background-size: contain;
@@ -198,34 +232,54 @@
         margin-right: 1px;
       }
     }
+
     .CCardNumber {
       display: flex;
       margin-bottom: 20px;
+
       div {
-        width: 20%;
+        width: 130px;
       }
-      input {
-        width: 10%;
-        margin: 0 5px;
+      .CCardText {
+        padding: 0;
+        margin: 0;
+        border: none;
+        width: calc(100% - 130px);
+
+        input {
+          width: 20%;
+          margin: 0 5px;
+        }
       }
     }
+
     .CCardGoodThu {
       display: flex;
       margin-bottom: 20px;
 
       div {
-        width: 20%;
+        width: 130px;
+
       }
     }
-    .CCardNumber {
+
+    .CCardSecretNumber {
       display: flex;
+
       div {
-        width: 20%;
+        width: 130px;
+
+      }
+      input{
+        margin: 0 4px;
+        width: 134px;
       }
     }
   }
+
   .paymentSubSection {
     display: flex;
+
     span {
       font-size: 18px;
     }
@@ -239,6 +293,7 @@
     width: 80px;
     height: 25px;
   }
+
   .bottomRow {
     display: flex;
     flex-direction: column;
@@ -246,6 +301,7 @@
     position: absolute;
     bottom: -61px;
     right: calc(50% - 110px);
+
     button {
       width: 220px;
       color: white;
@@ -254,6 +310,7 @@
       border: none;
       background-color: #2da9d7;
     }
+
     p {
       font-size: 16px;
       text-decoration: underline;
@@ -261,7 +318,175 @@
       color: #747474;
     }
   }
+
   .receiptContent {
     font-size: 16px;
+  }
+
+  .noteSection {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 20px;
+  }
+}
+@media screen and (max-width: 375px) {
+  .Payment {
+    margin: 120px 20px 100px;
+    .middleRow {
+      width: 100%;
+      .bottomColumn {
+        flex-direction: column;
+        padding: 30px 20px;
+
+        .mainColumn {
+          border-right: none;
+          width: 100%;
+          padding: 0;
+          .infoColumn {
+            width: 100%;
+            section {
+              p {
+                font-size: 16px;
+              }
+              .subSection {
+                flex-direction: column;
+                width: 100%;
+
+                .subTitle {
+                  font-size: 16px;
+
+                  width: 100%;
+                  margin-bottom: 5px;
+                }
+                .subDescription {
+                  width: 100%;
+                  font-size: 16px;
+                  margin-bottom: 5px;
+                }
+                .subValue {
+                  font-size: 14px;
+                }
+                input {
+                  border: 3px solid #e7e7e9;
+                  padding: 10px 10px;
+                  font-size: 14px;
+                }
+                .subSelect {
+                  font-size: 14px;
+                }
+              }
+            }
+          }
+        }
+        .totalColumn {
+          width: 100%;
+          margin: 0;
+          padding: 0 10px;
+          .totalCate {
+            .title {
+              font-size: 16px;
+            }
+            .p {
+              font-size: 14px;
+            }
+            .subTotal {
+              p {
+                font-size: 14px;
+              }
+            }
+          }
+          .totalDiscount {
+            .totalDiscountNumber {
+              border: none;
+            }
+          }
+          .totalNumber {
+            font-size: 18px;
+          }
+        }
+        .totalCate{
+          .subTotal{
+            // margin: 0;
+            width: 100%;
+          }
+        }
+      }
+      .paymentSubSection{
+        span{
+          font-size: 16px;
+        }
+      }
+      .paymentCCard {
+        padding: 15px;
+        height: 100%;
+        .paymentIcon{
+          margin-bottom: 10px;
+        }
+        .CCardNumber {
+          flex-direction: column;
+      margin-bottom: 10px;
+
+          div {
+            width: 100%;
+            margin-bottom: 5px;
+          }
+          input {
+            width: 19%;
+          }
+        }
+        .CCardGoodThu {
+          flex-direction: column;
+          div{
+            margin-bottom: 5px;
+
+          }
+          input{
+            width: 95%;
+          }
+        }
+        .CCardSecretNumber {
+          display: flex;
+          flex-direction: column;
+          div {
+            margin-bottom: 5px;
+
+    
+          }
+          input{
+            width: 19%;
+
+          }
+        }
+      }
+      .mainTitle {
+        font-size: 18px;
+        padding: 15px;
+        display: flex;
+        justify-content: center;
+      }
+    }
+    .receiptSection{
+      .receiptSection{
+        span{
+          font-size: 14px;
+        }
+      }
+    }
+    .totalDiscount{
+      .title{
+        font-size: 16px;
+      }
+    }
+    .subTotal{
+      margin: 0;
+    }
+    .receiptContent {
+      font-size: 14px;
+    }
+    .noteSection{
+      span{
+        font-size: 14px;
+      }
+    }
   }
 }

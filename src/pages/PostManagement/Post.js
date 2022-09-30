@@ -59,7 +59,12 @@ function Post() {
               <TextSection post={post}></TextSection>
               <PostMap></PostMap>
               <RecommandProduct></RecommandProduct>
+<<<<<<< HEAD
               <CommentBar ></CommentBar>
+=======
+              <hr></hr>
+              <CommentBar></CommentBar>
+>>>>>>> develop
             </div>
           </div>
         </>

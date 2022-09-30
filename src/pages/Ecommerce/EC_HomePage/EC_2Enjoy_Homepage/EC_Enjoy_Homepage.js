@@ -25,7 +25,6 @@ function EcEnjoyHomepage() {
   // 推薦區域商品
   const [coffeeCard, setCoffeeCard] = useState([]);
   const [cakeCard, setCakeCard] = useState([]);
-  const [healthCard, setHealthCard] = useState([]);
 
   // 搜尋==========
   const [search, setSearch] = useState('');

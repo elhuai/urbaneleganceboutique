@@ -1,0 +1,60 @@
+@import url("https://fonts.googleapis.com/css2?family=Open+Sans&display=swap");
+.post_comment_list .comment_descript_list {
+  border: 1px solid #D5EEEE;
+  border-radius: 8px;
+  width: 100%;
+  height: 180px;
+  padding: 30px;
+  margin-top: 10px;
+}
+.post_comment_list .comment_descript_list .user_comment_photo {
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  overflow: hidden;
+}
+.post_comment_list .comment_descript_list .user_comment_photo img {
+  width: 100%;
+  height: 100%;
+}
+.post_comment_list .comment_descript_list .user_comment_name {
+  font-size: 20px;
+  font-weight: 600;
+}
+.post_comment_list .comment_descript_list .user_comment_text {
+  width: 700px;
+  padding: 5px;
+}
+.post_comment_list .comment_descript_list .user_comment_datetime {
+  color: #747474;
+}
+.post_comment_list .comment_descript_list .user_comment_datetime p {
+  font-size: 14px;
+}
+.post_comment_list .leave_comment {
+  margin-top: 10px;
+}
+.post_comment_list .leave_comment .comment_input {
+  width: 100%;
+}
+.post_comment_list .leave_comment .post_edit_button button {
+  width: 80px;
+  height: 35px;
+  border-radius: 8px;
+  background-color: #FFC715;
+  color: white;
+  font-size: 1rem;
+  margin-left: 4px;
+  text-align: center;
+  border: none;
+}
+.post_comment_list .leave_comment .post_edit_button button:focus {
+  border: none;
+  color: white;
+  background-color: #FFC715;
+}
+.post_comment_list .leave_comment .post_edit_button button:hover {
+  border: none;
+  color: white;
+  background-color: #fbbf00;
+}/*# sourceMappingURL=CommentBar.css.map */

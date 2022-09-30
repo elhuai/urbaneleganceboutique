@@ -6,6 +6,7 @@ import { Link } from 'react-router-dom';
 import './_SearchBar_search.scss';
 
 function SearchBar(props) {
+<<<<<<< HEAD
   const {
     searchBar_title,
     searchBar_placeholder,
@@ -18,6 +19,12 @@ function SearchBar(props) {
     if (keywordSearch === '') return setSearch('');
     setSearch(keywordSearch);
   };
+=======
+  const { searchBar_title, searchBar_placeholder } = props;
+  const { titleSearch, setTitleSearch, setSearch, typeId } = props;
+  const typeIdParams = typeId ? typeId : 2;
+  const searchWordParams = titleSearch ? titleSearch : '';
+>>>>>>> develop
   return (
     <>
       <section className="searchBar_section_main_bg mb-4">
@@ -28,17 +35,27 @@ function SearchBar(props) {
               type="text"
               className="searchBar_searchInput"
               placeholder={searchBar_placeholder}
-              value={keywordSearch}
+              maxLength={15}
+              value={titleSearch}
               onChange={(e) => {
-                // console.log(e.target.value);
-                setKeywordSearch(e.target.value);
+                console.log(e.target.value);
+                let textValue = e.target.value.replace(/[, ]/g, '');
+                setTitleSearch(textValue);
               }}
             />
             <Link
               type="submit"
               className="searchBar_searchButton"
+<<<<<<< HEAD
               to={`/communitylist`}
               onClick={handleSearch}
+=======
+              to={`/ec-productfilter?typeId=${typeIdParams}&searchword=${searchWordParams}`}
+              onClick={() => {
+                if (titleSearch === '') return setSearch('');
+                setSearch(titleSearch);
+              }}
+>>>>>>> develop
             >
               <i className="searchBar_fa searchBar_fa-search">
                 <AiOutlineSearch />

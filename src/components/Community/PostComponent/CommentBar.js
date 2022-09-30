@@ -24,6 +24,7 @@ function CommentBar() {
   // 送出留言狀態
   const [ifSubmit, setIfSubmit] = useState(false);
 
+<<<<<<< HEAD
   // API 取得留言資料表
   useEffect(() => {
     const fetchComment = async () => {
@@ -85,6 +86,8 @@ function CommentBar() {
     }
   }
 
+=======
+>>>>>>> develop
   return (
     <div className="post_comment_list mt-3">
       <p className="post__comment_list_title">回應</p> {/* 關聯資料庫 */}

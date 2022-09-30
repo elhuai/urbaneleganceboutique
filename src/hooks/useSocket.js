@@ -11,7 +11,7 @@ export const SocketProvider = ({ children }) => {
   useEffect(() => {
     if (user.auth && user.firstVerify) {
       console.log('觸發 socket connection');
-      setSocket(webSocket('http://localhost:3007/'));
+      // setSocket(webSocket('http://localhost:3007/'));
     }
   }, [user]);
 

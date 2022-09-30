@@ -9,17 +9,6 @@ import { API_URL } from '../../utils/config';
 // = 'http://localhost:3007/api/1.0'
 
 const AdminCollectionPage = () => {
-  const payload = { id: 1 };
-  const fakeRequest = () => {
-    axios
-      .post(`${API_URL}/fake`, payload)
-      .then((response) => {
-        console.log(response);
-      })
-      .catch((error) => {
-        console.log(error);
-      });
-  };
   return (
     <div className="d-flex flex-fill">
       <div className="flex-fill">

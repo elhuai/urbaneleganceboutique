@@ -11,6 +11,7 @@ import { IoHeartOutline } from 'react-icons/io5';
 import { RiEditFill } from 'react-icons/ri';
 import { MdOutlineClose } from 'react-icons/md';
 
+
 // import CommunitySwiperRight from '../../components/Community/CommunitySwiper/CommunitySwiperRight';
 
 import { API_URL } from '../../utils/config';
@@ -28,6 +29,7 @@ const CommunityHomePage = () => {
   
 
   // 寵物網紅貼文
+<<<<<<< HEAD
   useEffect(() => {
     const fetchPost = async () => {
       const result = await axios.get(`${API_URL}/communityHomePage/kolPost`);
@@ -35,6 +37,16 @@ const CommunityHomePage = () => {
     };
     fetchPost();
   }, []);
+=======
+  // useEffect(() => {
+  //   const fetchPost = async () => {
+  //     const result = await axios.get(`${API_URL}/communityHomePage/kolPost`);
+  //     setKolCard(result.data);
+  //     console.log(result.data);
+  //   };
+  //   fetchPost();
+  // }, []);
+>>>>>>> develop
 
   // 熱門貼文
   useEffect(() => {
@@ -51,11 +63,76 @@ const CommunityHomePage = () => {
   return (
     <>
       <div className="CommunityHomePage">
+<<<<<<< HEAD
         <div className="CommunityHomePage_main">
           <SearchBar
             searchBar_title="是不是在找我呢"
             searchBar_placeholder="我無處安放的可愛呀"
           />
+=======
+          <SearchBar searchBar_title="是不是在找我呢" searchBar_placeholder="我無處安放的可愛呀" />
+        <div className="CommunityHomePage_main">
+
+          <div className='masonry'>
+            <div className='item'>
+              <img src="https://picsum.photos/360/480?random=1" alt="" />
+            </div>
+            <div className='item'>
+              <img src="https://picsum.photos/360/420?random=1" alt="" />
+            </div>
+            <div className='item'>
+              <img src="https://picsum.photos/360/460?random=1" alt="" />
+            </div>
+            <div className='item'>
+              <img src="https://picsum.photos/360/450?random=1" alt="" />
+            </div>
+            <div className='item'>
+              <img src="https://picsum.photos/360/520?random=1" alt="" />
+            </div>
+            <div className='item'>
+              <img src="https://picsum.photos/360/460?random=1" alt="" />
+            </div>
+            <div className='item'>
+              <img src="https://picsum.photos/360/440?random=1" alt="" />
+            </div>
+            <div className='item'>
+              <img src="https://picsum.photos/360/480?random=1" alt="" />
+            </div>
+            <div className='item'>
+              <img src="https://picsum.photos/360/460?random=1" alt="" />
+            </div>
+            <div className='item'>
+              <img src="https://picsum.photos/360/540?random=1" alt="" />
+            </div>
+            <div className='item'>
+              <img src="https://picsum.photos/360/500?random=1" alt="" />
+            </div>
+            <div className='item'>
+              <img src="https://picsum.photos/360/460?random=1" alt="" />
+            </div>
+            <div className='item'>
+              <img src="https://picsum.photos/360/460?random=1" alt="" />
+            </div>
+            <div className='item'>
+              <img src="https://picsum.photos/360/460?random=1" alt="" />
+            </div>
+            <div className='item'>
+              <img src="https://picsum.photos/360/490?random=1" alt="" />
+            </div>
+            <div className='item'>
+              <img src="https://picsum.photos/360/460?random=1" alt="" />
+            </div>
+            <div className='item'>
+              <img src="https://picsum.photos/360/450?random=1" alt="" />
+            </div>
+            <div className='item'>
+              <img src="https://picsum.photos/360/460?random=1" alt="" />
+            </div>
+            <div className='item'>
+              <img src="https://picsum.photos/360/460?random=1" alt="" />
+            </div>
+          </div>
+>>>>>>> develop
 
           <div className="comHome_title flex-shrink-0">
             <h2 className="comHomeKOL_title">最夯寵物網美</h2>
@@ -73,11 +150,7 @@ const CommunityHomePage = () => {
             <div className="row g-5">
               <div className="col-4">
                 <div className="comHome_main_card card">
-                  <img
-                    src="https://picsum.photos/390/270"
-                    className="comHome-card-img"
-                    alt="..."
-                  />
+                  <img src="https://picsum.photos/390/270" className="comHome-card-img" alt="..." />
                   <div className="card-body">
                     <h5 className="card-title">風箏在陰天擱淺</h5>
                     <div className="comHome-card-content d-flex justify-content-between align-items-center">
@@ -93,11 +166,7 @@ const CommunityHomePage = () => {
 
               <div className="col-4">
                 <div className="comHome_main_card card">
-                  <img
-                    src="https://picsum.photos/390/270"
-                    className="comHome-card-img"
-                    alt="..."
-                  />
+                  <img src="https://picsum.photos/390/270" className="comHome-card-img" alt="..." />
                   <div className="card-body">
                     <h5 className="card-title">
                       {/*  因為第一次渲染抓到的初始值是空值，會報錯(undefine)，所以寫判斷式 */}
@@ -116,11 +185,7 @@ const CommunityHomePage = () => {
 
               <div className="col-4">
                 <div className="comHome_newPost_card card">
-                  <img
-                    src="https://picsum.photos/390/270"
-                    className="comHome-card-img"
-                    alt="..."
-                  />
+                  <img src="https://picsum.photos/390/270" className="comHome-card-img" alt="..." />
                   <div className="card-body">
                     <h5 className="card-title">風箏在陰天擱淺</h5>
                     <div className="comHome-card-content d-flex justify-content-between align-items-center">

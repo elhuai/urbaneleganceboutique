@@ -43,13 +43,10 @@ export const editSocialName = async (
   }
 };
 
-export const editProfile = async ({
-  target,
-  data,
-  rowData,
-  setRowData,
-  objKey,
-}) => {
+export const editProfile = async (
+  { target, data, rowData, setRowData, objKey },
+  setUser
+) => {
   console.log(target);
   console.log(data);
   try {
@@ -58,9 +55,13 @@ export const editProfile = async ({
       data,
       credentialsConfig
     );
-    console.log(result);
     if (result.status === 201) {
       rowData[objKey] = result.data.value;
+      setUser((data) => {
+        const newData = JSON.parse(JSON.stringify(data));
+        newData.data[objKey] = result.data.value;
+        return newData;
+      });
       setRowData(rowData);
       handleSuccess('資料更新成功');
       return true;
@@ -103,10 +104,33 @@ export const exchangeUserVoucher = async (itemData, quantity) => {
 export const getUserProfile = async (setRowData) => {
   try {
     let { data } = await axios.get(`${API_URL}/user`, credentialsConfig);
-
     setRowData(data.data);
   } catch (error) {
     console.error(error);
+  }
+};
+
+export const getUserOrder = async (setData) => {
+  try {
+    let { data } = await axios.get(`${API_URL}/user/order`, credentialsConfig);
+    setData(data.data);
+  } catch (error) {
+    console.error(error);
+  }
+};
+
+export const postScore = async (product_id, scoreData, setData, confirm) => {
+  try {
+    let { data } = await axios.post(
+      `${API_URL}/user/score/${product_id}`,
+      scoreData,
+      credentialsConfig
+    );
+    setData(data.updateData);
+    confirm();
+  } catch (error) {
+    console.error(error);
+    handleFailed('輸入商品評論失敗');
   }
 };
 

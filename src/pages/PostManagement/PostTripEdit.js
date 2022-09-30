@@ -147,8 +147,21 @@ function PostTripEdit() {
             setTripPostLocMark(result.data[0].coordinate);
             setTripPostTags(result.data[0].tags);
           }
+<<<<<<< HEAD
         } catch (err) {
           console.log('setPostTripEdit ', err);
+=======
+          // console.log('dayfileter', daysFilter);
+          setPostTripEdit(daysFilter);
+          setLocateID(locateIDData);
+          setTripPostLocContext(contextData);
+          setTripPostLocTime(timeData);
+          // setTravelID(result.data[0].travel_id);
+          setTripPostTitle(result.data[0].post_title);
+          setTripPostCover(result.data[0].main_photo);
+          setTripPostLocMark(result.data[0].coordinate);
+          setTripPostTags(result.data[0].tags);
+>>>>>>> develop
         }
       } else {
         handleLoginCard({ isLogin: true }, setUser);

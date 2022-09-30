@@ -50,8 +50,8 @@ const FilterResult = (props) => {
   return (
     <>
       {/* __排序 */}
-      <div class="board product-result sort-board d-flex flex-row justify-content-end">
-        <p classNameName="product-title me-3">排序 :</p>
+      <div class="sort-board d-flex flex-row justify-content-end">
+        <p classNameName="product-sort-title me-3">排序 :</p>
         <span className="align-items-center">
           <span className="gap">|</span>
           {/* TODO */}
@@ -64,7 +64,7 @@ const FilterResult = (props) => {
               setPage(1);
             }}
           >
-            價格：低到高
+            價格：高到低
           </button>
         </span>
         <span>
@@ -78,7 +78,7 @@ const FilterResult = (props) => {
               setPage(1);
             }}
           >
-            價格：高到低
+            價格：低到高
           </button>
         </span>
         <span>
@@ -127,7 +127,9 @@ const FilterResult = (props) => {
               </span>
             );
           }
-          console.log(label);
+          {
+            /* console.log(label); */
+          }
           return label;
         };
         return (

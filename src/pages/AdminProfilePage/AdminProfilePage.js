@@ -1,13 +1,20 @@
 import React, { useEffect, useState } from 'react';
+import { useSearchParams, useNavigate } from 'react-router-dom';
 import { handlePasswordEditCard } from '../../utils/handler/card/handleInputCard';
-import { handleWarning } from '../../utils/handler/card/handleStatusCard';
+import {
+  handleWarning,
+  handleSuccess,
+} from '../../utils/handler/card/handleStatusCard';
 import { useUserInfo } from '../../hooks/useUserInfo';
 import { getUserProfile, editProfile } from '../../api/userApi';
+import { callSendValidationMail, callValidationApi } from '../../api/authApi';
 
 import './_adminProfilePage.scss';
 
 const AdminProfilePage = () => {
+  const navigate = useNavigate();
   const { user, setUser } = useUserInfo();
+  const [searchParams] = useSearchParams();
   const [rowData, setRowData] = useState({});
   const [editTarget, setEditTarget] = useState(0);
   const [edit, setEdit] = useState({
@@ -47,6 +54,7 @@ const AdminProfilePage = () => {
     switch (num) {
       case 1:
         if (edit.social_name === '') return handleWarning('更新欄位不可為空');
+        if (edit.social_name === rowData.social_name) return;
         apiConfig.target = 'social_name';
         apiConfig.data = { socialName: edit.social_name };
         apiConfig.objKey = 'social_name';
@@ -60,6 +68,7 @@ const AdminProfilePage = () => {
         break;
       case 3:
         if (edit.phone === '') return handleWarning('更新欄位不可為空');
+        if (edit.phone === rowData.phone) return;
         if (edit.phone.length !== 10)
           return handleWarning('請確認電話號碼格式', false, 'e.g. 09xxxxxxxx');
         apiConfig.target = 'phone';
@@ -69,6 +78,8 @@ const AdminProfilePage = () => {
       case 4:
         if (edit.gender === 0 || edit.gender === '')
           return handleWarning('更新欄位不可為空');
+        if (edit.gender === rowData.gender) return;
+
         apiConfig.target = 'gender';
         apiConfig.data = { gender: edit.gender };
         apiConfig.objKey = 'gender';
@@ -77,11 +88,23 @@ const AdminProfilePage = () => {
       default:
         break;
     }
-    if (editProfile(apiConfig)) setEditTarget(0);
+    if (editProfile(apiConfig, setUser)) setEditTarget(0);
+  };
+
+  const handleValidationBtn = () => {
+    callSendValidationMail({ action: 'mail' });
+    handleSuccess('已寄發帳戶驗證信', false, `請至您的信箱收取信件`);
   };
 
   useEffect(() => {
     getUserProfile(setRowData, setEdit);
+    if (searchParams.get('code') && !user.data.account_valid) {
+      const reqeustBody = {
+        action: 'validation',
+        code: searchParams.get('code'),
+      };
+      callValidationApi(reqeustBody, setUser, navigate);
+    }
   }, []);
 
   useEffect(() => {
@@ -101,8 +124,22 @@ const AdminProfilePage = () => {
           <div className="profile_content d-flex flex-column">
             <div className="d-flex profile_list">
               <div className="profile_label">使用者帳號/信箱</div>
-              <div className="d-flex flex-fill align-items-center">
+              <div className="d-flex flex-fill align-items-center justify-content-between">
                 <div className="profile_info">{edit.email}</div>
+                <div className="profile_btn">
+                  <div className="d-flex">
+                    {user.data.account_valid ? (
+                      <button className="valid">已通過驗證</button>
+                    ) : (
+                      <button
+                        className="invalid"
+                        onClick={() => handleValidationBtn()}
+                      >
+                        尚未驗證
+                      </button>
+                    )}
+                  </div>
+                </div>
               </div>
             </div>
             <SocialName
@@ -280,6 +317,7 @@ const PhoneNumber = ({
                 min={10}
                 maxLength={10}
                 placeholder="手機號碼"
+                value={edit}
                 onChange={(e) =>
                   setEdit((data) => ({ ...data, phone: e.target.value }))
                 }

@@ -1,6 +1,12 @@
 export const API_URL = process.env.REACT_APP_BASE_API_URL + '/api/1.0';
+<<<<<<< HEAD
 export const Googlemap_key = process.env.REACT_APP_GOOGLEMAP_KEY;
 export const BACKEND_OPEN_URL = 'https://9cc8-114-25-230-75.jp.ngrok.io';
+=======
+
+export const BACKEND_OPEN_URL = 'https://8d5a-114-25-192-131.jp.ngrok.io';
+
+>>>>>>> develop
 export const LINE_CALLBACK_URL =
   BACKEND_OPEN_URL + '/api/1.0/auth/user/register/line';
 
