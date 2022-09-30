@@ -16,6 +16,7 @@ import TripOutline from '../../components/Community/PostComponent/TripOutline';
 import PhotoReviewSwiper from '../../components/WYSIWYG/PhotoView';
 import { useParams, useLocation } from 'react-router-dom';
 import { handleSuccess } from '../../utils/handler/card/handleStatusCard';
+import GoogleMaps from '../../pages/Travel_map/Travel_map';
 
 // 驗證登入
 // import { useUserInfo } from '../../hooks/useUserInfo';
@@ -422,7 +423,7 @@ function PostTripEdit() {
                 儲存
               </button>
             </div>
-            <PostMap></PostMap>
+            <PostMap>123</PostMap>
           </form>
         </div>
       )}

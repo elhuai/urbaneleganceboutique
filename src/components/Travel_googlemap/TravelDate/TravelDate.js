@@ -7,6 +7,7 @@ import Box from '@mui/material/Box';
 import TravelDrag from '../TravelDrag/TravelDrag';
 import { HiChevronLeft } from 'react-icons/hi';
 import { MdPhotoSizeSelectActual } from 'react-icons/md';
+import { handleSuccess } from '../../../utils/handler/handleStatusCard';
 
 // import CoverBackground from '../../../images/post_edit_background_banner.png';
 
@@ -47,10 +48,18 @@ const travelprops = (index) => {
     'aria-controls': `simple-tabpanel-${index}`,
   };
 };
-const TravelDate = ({ planning, traveltitle, setGetDays, gettravelid }) => {
+const TravelDate = ({
+  planning,
+  traveltitle,
+  setGetDays,
+  gettravelid,
+  setIfDelete,
+  ifDelete,
+}) => {
   ////傳給子層
   const [deviceDetial, setDeviceDetial] = useState({}); //axios post 到後端
   ///
+  const [editPlanning, setEditPlanning] = useState([]);
   const moment = require('moment');
   const [value, setValue] = useState(0);
   const handleChange = (event, newValue) => {
@@ -70,6 +79,31 @@ const TravelDate = ({ planning, traveltitle, setGetDays, gettravelid }) => {
   };
 
   useEffect(() => {
+    // = 處理資料
+    let tmpItemAry = [];
+    planning.sort((a, b) => {
+      return a.days - b.days;
+    });
+    // console.log('traveltitle', traveltitle);
+    // console.log('planning 原始資料', planning);
+    for (const [index, item] of planning.entries()) {
+      let isExist = tmpItemAry.some((element) => element[0].days === item.days);
+      if (isExist) {
+        // console.log('index', index);
+        tmpItemAry[tmpItemAry.length - 1].push(item);
+      } else {
+        // console.log('index', index);
+        tmpItemAry.push([item]);
+      }
+    }
+    // console.log('tmpItemAry 整理過後資料', tmpItemAry);
+    const newShowDate = tmpItemAry.map((item) => item[0].day);
+    // setShowdate(tmpItemAry);
+  }, []);
+
+  useEffect(() => {
+    if (traveltitle.length === 0) return;
+    // = '開始整理日期'
     const startDate = moment(
       traveltitle[0] ? traveltitle[0].start_time : ''
     ).format('yyyy-MM-DD');
@@ -80,15 +114,27 @@ const TravelDate = ({ planning, traveltitle, setGetDays, gettravelid }) => {
       newDateary.push(moment(startDate).add(i, 'days').format('yyyy-MM-DD'));
     }
     setShowdate(newDateary);
-  }, []);
+    // = 整理完畢
+
+    // 設定資料
+    setMember({
+      title: traveltitle[0].title,
+      photo:
+        process.env.REACT_APP_BASE_API_URL + '/' + traveltitle[0].main_photo,
+    });
+  }, [traveltitle]);
+
+  useEffect(() => {
+    setEditPlanning(planning);
+  }, [planning]);
+
   /////////傳到後端post
   const [editdetail, setEditdetail] = useState(0);
   //開關 編輯送出 完成
   const [closeeditdetail, setCloseEditdetail] = useState(0);
   //設定form表單的東西
   const [member, setMember] = useState({
-    title: traveltitle[0] ? traveltitle[0].title : '',
-
+    title: '',
     photo: '',
   });
   function inputhandleChange(e) {
@@ -106,31 +152,27 @@ const TravelDate = ({ planning, traveltitle, setGetDays, gettravelid }) => {
     }
     e.preventDefault();
 
-    try {
-      let formData = new FormData();
-      console.log('ALLllllllmember', member);
-      formData.append('title', member.title);
-      formData.append('photo', member.photo);
-      formData.append('date', showdate.pop());
-      formData.append('travelID', gettravelid);
+    if (editdetail) {
+      try {
+        const copyShowdate = [...showdate];
+        let formData = new FormData();
+        console.log('ALLllllllmember', member);
+        formData.append('title', member.title);
+        formData.append('photo', member.photo);
+        formData.append('date', copyShowdate.pop());
+        formData.append('travelID', gettravelid);
+        console.log('formData', formData);
+        let response = await axios.post(
+          `${API_URL}/post/datelocationId`,
+          formData
+        );
+        handleSuccess('成功更改此行程', `/Travel_map?travelid=${gettravelid}`);
 
-      let response = await axios.post(
-        `${API_URL}/post/datelocationId`,
-        formData
-      );
-
-      console.log('照片標題新增成功', response);
-    } catch (e) {
-      console.log('錯誤', e);
+        console.log('照片標題新增成功', response);
+      } catch (e) {
+        console.log('錯誤', e);
+      }
     }
-
-    // let response = await axios.post(
-    //   `${API_URL}/post/datelocationId`,
-    //   // { showdate, deviceDetial, selectedFile },
-    //   {}
-    // );
-    // console.log(response.data);
-    // setTripdetail(response.data);
   }
 
   //上傳圖片
@@ -195,9 +237,12 @@ const TravelDate = ({ planning, traveltitle, setGetDays, gettravelid }) => {
               </label>
             </div>
 
-            <div className="travleDrag_header_edit d-flex">
+            <div
+              className="travleDrag_header_edit d-flex"
+              onClick={handleSubmit}
+            >
               <div className="travleDrag_header_icon"></div>
-              <div onClick={handleSubmit}>{editdetail ? '完成' : '編輯'} </div>
+              <div>{editdetail ? '完成' : '編輯'} </div>
             </div>
           </div>
 
@@ -219,11 +264,11 @@ const TravelDate = ({ planning, traveltitle, setGetDays, gettravelid }) => {
                       scrollButtons="auto"
                       aria-label="scrollable auto tabs example"
                     >
-                      {showdate.map((value) => {
+                      {showdate.map((value, index) => {
                         return (
                           <Tab
                             label={value}
-                            {...travelprops(1)}
+                            {...travelprops(index)}
                             className="travelDrage_Tab  "
                           />
                         );
@@ -247,10 +292,15 @@ const TravelDate = ({ planning, traveltitle, setGetDays, gettravelid }) => {
                   <TravelDrag
                     planning={planning}
                     indexs={indexs}
+                    dayLength={showdate.length}
                     setDeviceDetial={setDeviceDetial}
                     editdetail={editdetail}
                     setGetDays={setGetDays}
                     gettravelid={gettravelid}
+                    editPlanning={editPlanning}
+                    setEditPlanning={setEditPlanning}
+                    setIfDelete={setIfDelete} //重新render畫面用
+                    ifDelete={ifDelete} // render用
                   />
                 </TabPanel>
               );

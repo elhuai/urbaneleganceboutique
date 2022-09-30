@@ -54,27 +54,12 @@ function Map({
   gettravelid,
   setIfDelete,
   ifDelete,
-  getlocate,
 }) {
-  // const newlat = planning[0].latitude
-  //   ? planning[0].latitude
-  //   : { lat: 23.17566 };
-  // const lng = planning[0].longitude
-  //   ? planning[0].longitude
-  //   : { lng: 120.9738819 };
-  // console.log('{ lat: 23.17566 }', { lat: 23.17566 });
-  // const [center, setcenter] = useState({
-  //   lat: getlocate[0] ? +getlocate[0].latitude : Number({ lat: 23.17566 }),
-  //   lng: getlocate[0] ? +getlocate[0].longitude : Number({ lng: 120.9738819 }),
-  // });
-  // console.log(
-  //   ' { lat: 23.17566 }===',
-  //   typeof JSON.stringify({ lat: 23.17566 })
-  // );
-  // console.log('planning[0].latitude=======', typeof +planning[0].latitude);
-  // const [center, setcenter] = useState({ lat: 24.8451324, lng: 121.7842168 }); // 預設宜蘭
-  const [center, setcenter] = useState({ lat: 23.17565, lng: 120.9738819 }); // 預設全台
-  const [zoom, setzoom] = useState(8);
+  const newlat = planning[1].latitude ? planning[0].latitude : '';
+  const lng = planning[1].longitude ? planning[0].longitude : '';
+
+  const [center, setcenter] = useState({ lat: +newlat, lng: +lng });
+  const [zoom, setzoom] = useState(12);
   const [selected, setSelected] = useState(null);
   const mapRef = useRef(null);
   //新增目前第幾天行程用

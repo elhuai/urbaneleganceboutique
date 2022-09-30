@@ -3,7 +3,7 @@ import { useState, useEffect } from 'react';
 import './Post.scss';
 import axios from 'axios';
 import { API_URL } from '../../utils/config';
-import PostMap from '../../components/Community/PostComponent/PostMap';
+import CyrilkeGooglemap from '../../components/Community/PostComponent/CyrilkeGooglemap';
 import RecommandProduct from '../../components/Community/PostComponent/RecommandProduct';
 // import PhotoReviewSwiperDefault from '../../components/WYSIWYG/PhotoViewDefault';
 import CommentBar from '../../components/Community/PostComponent/CommentBar';
@@ -87,7 +87,7 @@ function Post() {
               <PostStateBar post={post}></PostStateBar>
               <hr></hr>
               <TextSection post={post}></TextSection>
-              <PostMap></PostMap>
+              <CyrilkeGooglemap />
               <RecommandProduct></RecommandProduct>
               <hr></hr>
               <CommentBar comment={comment}></CommentBar>

@@ -3,6 +3,7 @@ import { Tabs, Tab } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 import { FaPaw } from 'react-icons/fa';
 import { Swiper, SwiperSlide } from 'swiper/react';
+import CoverBackground from '../../images/post_edit_background_banner.png';
 
 const collectTrip = [
   // {
@@ -61,11 +62,13 @@ const Travel_Tab = ({ travelUser }) => {
                           <img
                             className="travel_Tab_Img "
                             src={
-                              process.env.REACT_APP_BASE_API_URL +
-                              '/' +
-                              data.main_photo
+                              data.main_photo === ''
+                                ? CoverBackground
+                                : process.env.REACT_APP_BASE_API_URL +
+                                  '/' +
+                                  data.main_photo
                             }
-                            alt="123"
+                            alt="123456"
                           />
                           <div className="travel_Tab_tittleDiv">
                             <p className="travel_Tab_tittleName px-3">
@@ -84,7 +87,7 @@ const Travel_Tab = ({ travelUser }) => {
             </Swiper>
           </div>
         </Tab>
-        <Tab eventKey="與我分享的行程" title="收藏的行程" className="">
+        {/* <Tab eventKey="與我分享的行程" title="收藏的行程" className="">
           <div className="d-flex ">
             <Swiper
               className="travel_Tab_Swiper-wrapper "
@@ -133,7 +136,7 @@ const Travel_Tab = ({ travelUser }) => {
               )}
             </Swiper>
           </div>
-        </Tab>
+        </Tab> */}
       </Tabs>
     </>
   );

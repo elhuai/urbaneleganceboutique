@@ -17,7 +17,9 @@ const Travel = () => {
   useEffect(() => {
     const calltitledateApi = async () => {
       try {
-        const result = await axios.get(`${API_URL}/travelCommunity`);
+        const result = await axios.get(`${API_URL}/travelCommunity`, {
+          withCredentials: true,
+        });
         const data = result.data;
         setTravelCommunity(data);
       } catch (err) {
@@ -30,7 +32,9 @@ const Travel = () => {
   useEffect(() => {
     const fetchUsertrip = async () => {
       try {
-        const result = await axios.get(`${API_URL}/travelUserplanning/get`);
+        const result = await axios.get(`${API_URL}/travelUserplanning/get`, {
+          withCredentials: true,
+        });
         const data = result.data;
         setTravelUser(data);
       } catch (err) {

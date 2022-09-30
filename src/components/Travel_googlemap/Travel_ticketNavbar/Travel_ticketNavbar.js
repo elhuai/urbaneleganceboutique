@@ -39,7 +39,7 @@ const Travel_ticketNavbar = ({ travelTicket }) => {
                 <div className="card-body">
                   <div className=" ">
                     <h5 className="Travel_ticketNavbar_card-title">
-                      {data.name}
+                      {data.intro}
                     </h5>
                   </div>
                   <div className="Travel_ticketNavbar_cardText">
