@@ -128,7 +128,6 @@ const TravelDate = ({
     setEditPlanning(planning);
   }, [planning]);
 
-  /////////傳到後端post
   const [editdetail, setEditdetail] = useState(0);
   //開關 編輯送出 完成
   const [closeeditdetail, setCloseEditdetail] = useState(0);
