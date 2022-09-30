@@ -33,12 +33,12 @@ export default function HeroSearch({ handleHeroActive, handleHeroAnimation }) {
     <div className="hero_search bg-white overflow-hidden">
       <div className="tab_wrap d-flex position-relative">
         <button
-          className="tab tab-2 flex-fill py-2 active"
+          className="tab tab-4 flex-fill py-2"
           onClick={() => {
-            setActive(0);
+            setActive(2);
           }}
         >
-          景點 & 玩樂
+          寵物商品
         </button>
         <button
           className="tab tab-3 flex-fill py-2"
@@ -49,12 +49,12 @@ export default function HeroSearch({ handleHeroActive, handleHeroAnimation }) {
           餐廳
         </button>
         <button
-          className="tab tab-4 flex-fill py-2"
+          className="tab tab-2 flex-fill py-2 active"
           onClick={() => {
-            setActive(2);
+            setActive(0);
           }}
         >
-          寵物商品
+          景點 & 玩樂
         </button>
         <div
           className={`underline_effect`}

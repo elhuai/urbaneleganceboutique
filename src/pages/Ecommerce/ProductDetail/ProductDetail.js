@@ -62,7 +62,7 @@ const ProductDetail = () => {
       setRecommend(recommend.data);
     };
     fetchProductData();
-  }, []);
+  }, [productId]);
   console.log('productData', productData);
 
   // = 加入購物車

@@ -21,7 +21,7 @@ const Data = [
     img: `${BASE_URL}/product/fun/8/travel_08_0.webp`,
   },
   {
-    id: 999,
+    id: 532,
     rank: 3,
     category: '景點',
     title: '花蓮秘境溯溪一日遊',
@@ -42,18 +42,18 @@ const Data = [
     img: `${BASE_URL}/product/restaurant/20/restaurant_20_01.jpg`,
   },
   {
-    id: 999,
+    id: 542,
     rank: 3,
     category: '餐廳',
     title: '川御燒肉專門店 \u000A 優惠套券',
     img: `${BASE_URL}/product/restaurant/4/restaurant_04_01.webp`,
   },
   {
-    id: 2312,
+    id: 2682,
     rank: 1,
     category: '商品',
-    title: '自然奇蹟 酵素環保玉米貓砂 \u000A 10LB',
-    img: `${BASE_URL}/product/pet/1/2/main_photo_03_2.jpeg`,
+    title: 'PureLUXE 循味 天然無穀犬糧-室內老犬.低卡成犬4LB ',
+    img: `${BASE_URL}/product/pet/8/21/main_photo_10_21.jpeg`,
   },
   {
     id: 2321,
@@ -63,7 +63,7 @@ const Data = [
     img: `${BASE_URL}/product/pet/1/11/main_photo_03_11.jpeg`,
   },
   {
-    id: 999,
+    id: 2721,
     rank: 3,
     category: '商品',
     title: 'Menforsan 愛莎蓉 \u000A 犬用抗壓鎮定滴劑2管',

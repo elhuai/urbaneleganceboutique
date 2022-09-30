@@ -103,6 +103,7 @@ function ShoppingCart({ name, ...props }) {
   };
 
   useEffect(() => {
+<<<<<<< HEAD
     if (show) {
       const fetchProductData = async () => {
         // 抓商品細節資料
@@ -115,6 +116,18 @@ function ShoppingCart({ name, ...props }) {
       };
       fetchProductData();
     }
+=======
+    const fetchProductData = async () => {
+      // 抓商品細節資料
+      const result = await axios.get(`${API_URL}/cart/list`, {
+        withCredentials: true,
+      });
+      // console.log('result', result.data);
+      const cartData = result.data;
+      setCart(cartData);
+    };
+    fetchProductData();
+>>>>>>> feature-ecommerce
   }, [show]);
   // console.log('cart', cart);
 
