@@ -23,7 +23,6 @@ export default function PostStateBar({ post, postID }) {
   // console.log('user', user.data.id);
   const userID = user.data.id;
 
-
   // //判斷是否有按過讚
   const [likesState, setLikeState] = useState(0);
   //TODO: 如何設計初始值 判斷使用者是否已經按讚過了
@@ -168,7 +167,9 @@ export default function PostStateBar({ post, postID }) {
           </div>
           {/* TODO:這裡還在修改 */}
           <div className="post_like me-2">
-            {post[0].travel_id === 2 ? (post[0][0].status === 2) : post[0].status ? (
+            {post[0].travel_id === 2 ? (
+              post[0][0].status === 2
+            ) : post[0].status ? (
               <>
                 {' '}
                 <div className="d-flex">

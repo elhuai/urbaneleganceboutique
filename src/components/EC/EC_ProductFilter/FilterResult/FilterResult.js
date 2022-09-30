@@ -1,5 +1,5 @@
 import './_FilterResult.scss';
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { FaHeart } from 'react-icons/fa';
 import { TiLocation } from 'react-icons/ti';
 import { FaPaw } from 'react-icons/fa';
@@ -7,6 +7,7 @@ import { AiFillFire } from 'react-icons/ai';
 import { useUserInfo } from '../../../../hooks/useUserInfo';
 import { handleLoginCard } from '../../../../utils/handler/card/handleInputCard';
 import { API_URL } from '../../../../utils/config';
+import { getUserCollection } from '../../../../api/userApi';
 import axios from 'axios';
 
 // 收藏成功跳出視窗
@@ -17,6 +18,8 @@ const FilterResult = (props) => {
   const { setOrder, productData, setPage, typeId } = props;
   // 收藏設定->登入與否
   const { user, setUser } = useUserInfo();
+  const [collection, setCollection] = useState([]);
+  const [collectionId, setCollectionId] = useState([]);
   const handleCollect = async (e, id) => {
     e.preventDefault();
     if (user.auth) {
@@ -30,10 +33,14 @@ const FilterResult = (props) => {
         );
         if (result.data.message === '已成功移除收藏') {
           // console.log('成功');
+          setCollectionId((idList) => idList.filter((item) => item !== id));
           e.target.style['color'] = '#747474';
           handleSuccess('已成功移除收藏');
         } else if (result.data.message === '已成功收藏') {
           // console.log('不成功');
+          let newIdList = collectionId;
+          newIdList.push(id);
+          setCollectionId(newIdList);
           e.target.style['color'] = '#EF7A70';
           handleSuccess('已成功收藏');
         }
@@ -46,6 +53,20 @@ const FilterResult = (props) => {
     }
   };
   // console.log('productData', productData);
+  useEffect(() => {
+    getUserCollection(setCollection);
+  }, []);
+
+  useEffect(() => {
+    if (collection.length > 0) {
+      const collectionIdList = collection.map((data) => data.product_id);
+      setCollectionId(collectionIdList);
+    }
+  }, [collection]);
+
+  useEffect(() => {
+    console.log(collectionId);
+  }, [collectionId]);
 
   return (
     <>
@@ -155,7 +176,15 @@ const FilterResult = (props) => {
                         <h5 className="fw-bolder">{data.name}</h5>
                         {/* 收藏按鈕 */}
                         <div
-                          className="product_main_card_collect"
+                          className={`product_main_card_collect ${
+                            collectionId.some((element) => {
+                              console.log(element);
+                              console.log(data.id);
+                              return element === data.id;
+                            })
+                              ? 'collection'
+                              : ''
+                          }`}
                           onClick={(e) => handleCollect(e, data.id)}
                         >
                           <FaHeart />

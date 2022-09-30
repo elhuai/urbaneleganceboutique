@@ -1,18 +1,10 @@
 import { PhotoProvider, PhotoView } from 'react-photo-view';
-import 'react-photo-view/dist/react-photo-view.css';
 import { BE_URL } from '../../utils/config';
 import React, { useRef, useState } from 'react';
 // Import Swiper React components
 import axios from 'axios';
 import { API_URL } from '../../utils/config';
 
-// Import Swiper styles
-import 'swiper/css';
-import 'swiper/css/pagination';
-//
-import './swiper.scss';
-
-// import required modules
 import { useEffect } from 'react';
 
 export default function PhotoReviewSwiper({ list }) {

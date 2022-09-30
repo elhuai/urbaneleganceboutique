@@ -8,21 +8,7 @@ $list-color-hover: #feefc3;
 $link-color: #2da9d7;
 $line-color--blue: #d5eeee;
 
-@import '../../../styles/custom_variables';
-@import '../../../../node_modules/bootstrap/scss/bootstrap.scss';
-@import url('https://fonts.googleapis.com/css2?family=Open+Sans&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@100;300;400;500;700&display=swap');
 
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-  -webkit-user-drag: none;
-}
-
-body {
-  font-family: 'Noto Sans TC', 'Open Sans', sans-serif !important;
-}
 
 // 推薦商品區
 .recommand_product_title {

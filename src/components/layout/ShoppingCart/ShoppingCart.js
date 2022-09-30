@@ -1,5 +1,6 @@
 import { normalizeUnits } from 'moment';
 import React, { useState, useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import { API_URL } from '../../../utils/config';
 import { Link } from 'react-router-dom';
@@ -15,6 +16,7 @@ import './_ShoppingCart.scss';
 import { handleLoginCard } from '../../../utils/handler/card/handleInputCard';
 
 function ShoppingCart({ name, ...props }) {
+  const navigate = useNavigate();
   const [show, setShow] = useState(false);
   const { cart, setCart } = props;
   const handleClose = () => setShow(false);
@@ -66,19 +68,6 @@ function ShoppingCart({ name, ...props }) {
             withCredentials: true,
           }
         );
-        // console.log('----minusCart------');
-        // console.log(result.data[0]);
-
-        // 如果想用假的數字結果可用：
-        // let newCart = [...cart];
-        // newCart = newCart.map(item=>{
-        //   if(item.product_id === id){
-        //     item.quantity --;
-        //   }
-        //   return item
-        // });
-        // console.log(newCart);
-
         setCart(result.data[0]);
         // handleSuccess('-1');
       } catch (error) {
@@ -93,7 +82,8 @@ function ShoppingCart({ name, ...props }) {
     e.preventDefault();
     if (user.auth) {
       try {
-        window.location = `/ec-ordersteps?productId=${id}`;
+        navigate(`/ec-ordersteps?productId=${id}`);
+        handleClose();
       } catch (error) {
         console.log('error', error);
       }
@@ -103,20 +93,6 @@ function ShoppingCart({ name, ...props }) {
   };
 
   useEffect(() => {
-<<<<<<< HEAD
-    if (show) {
-      const fetchProductData = async () => {
-        // 抓商品細節資料
-        const result = await axios.get(`${API_URL}/cart/list`, {
-          withCredentials: true,
-        });
-        // console.log('result', result.data);
-        const cartData = result.data;
-        setCart(cartData);
-      };
-      fetchProductData();
-    }
-=======
     const fetchProductData = async () => {
       // 抓商品細節資料
       const result = await axios.get(`${API_URL}/cart/list`, {
@@ -127,9 +103,7 @@ function ShoppingCart({ name, ...props }) {
       setCart(cartData);
     };
     fetchProductData();
->>>>>>> feature-ecommerce
   }, [show]);
-  // console.log('cart', cart);
 
   return (
     <>
@@ -139,9 +113,9 @@ function ShoppingCart({ name, ...props }) {
       <Offcanvas show={show} onHide={handleClose} {...props}>
         <div className="ShoppingCart">
           <section>
-            <div className="headerRow">
+            <div className="headerRow" onClick={handleClose}>
               {' '}
-              <IoChevronBack onClick={handleClose} />
+              <IoChevronBack />
               購物車-商品一覽
             </div>
             <div className="mainRow">

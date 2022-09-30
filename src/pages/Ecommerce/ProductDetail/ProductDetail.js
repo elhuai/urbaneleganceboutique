@@ -65,6 +65,10 @@ const ProductDetail = () => {
   }, [productId]);
   console.log('productData', productData);
 
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
+
   // = 加入購物車
   const { user, setUser } = useUserInfo();
   const addCart = async (e, id) => {

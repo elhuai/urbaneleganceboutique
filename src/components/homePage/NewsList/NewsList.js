@@ -12,7 +12,7 @@ function items(index, active, data) {
   let result = data[index].map((data, dataIndex) => {
     return (
       <Link
-        to="/"
+        to={`ec-productdetail?id=${data.id}`}
         key={'id' + data.id}
         className={`news_list_item  flex-fill w-100 p-2 ${
           index === active ? 'd-flex' : 'd-none'
