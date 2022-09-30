@@ -15,13 +15,12 @@ import './_ShoppingCart.scss';
 import { handleLoginCard } from '../../../utils/handler/card/handleInputCard';
 
 function ShoppingCart({ name, ...props }) {
-
   const [show, setShow] = useState(false);
   const { cart, setCart } = props;
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
   const { user, setUser } = useUserInfo();
-  
+
   const addCart = async (e, id) => {
     // e.preventDefault();
     if (user.auth) {
@@ -104,16 +103,18 @@ function ShoppingCart({ name, ...props }) {
   };
 
   useEffect(() => {
-    const fetchProductData = async () => {
-      // 抓商品細節資料
-      const result = await axios.get(`${API_URL}/cart/list`,
-      {withCredentials: true}
-    );
-      // console.log('result', result.data);
-      const cartData = result.data;
-      setCart(cartData);
-    };
-    fetchProductData();
+    if (show) {
+      const fetchProductData = async () => {
+        // 抓商品細節資料
+        const result = await axios.get(`${API_URL}/cart/list`, {
+          withCredentials: true,
+        });
+        // console.log('result', result.data);
+        const cartData = result.data;
+        setCart(cartData);
+      };
+      fetchProductData();
+    }
   }, [show]);
   // console.log('cart', cart);
 
@@ -127,7 +128,7 @@ function ShoppingCart({ name, ...props }) {
           <section>
             <div className="headerRow">
               {' '}
-              <IoChevronBack onClick={handleClose}/>
+              <IoChevronBack onClick={handleClose} />
               購物車-商品一覽
             </div>
             <div className="mainRow">

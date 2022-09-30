@@ -98,8 +98,6 @@ export default function NewsList({ active }) {
     };
     newsProducts();
   }, []);
-  console.log('data', data);
-
   // TODO: 實際渲染元件，不用更動 (應該啦)，只要把 fakeData 換掉就好
   return data.length > 0
     ? data.map((v, index) => {
