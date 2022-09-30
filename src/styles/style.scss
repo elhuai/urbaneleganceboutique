@@ -24,7 +24,7 @@ body {
 }
 
 .swal2-container {
-  z-index: 99999;
+  z-index: 9999;
 }
 
 .swal2-icon.swal2-success {
@@ -47,6 +47,18 @@ body {
 .swal2-styled.swal2-cancel:focus, .swal2-styled.swal2-confirm:focus {
   box-shadow: 0 0 0 0px ;
 }
+
+.ant-popover {
+  z-index: 99999;
+  opacity: .8;
+}
+
+.ant-popover-inner {
+  border-radius: 8px;
+  color: #d4d4d4;
+}
+
+
 
 
 @media screen and (max-width: 768px) {

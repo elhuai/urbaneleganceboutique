@@ -1,4 +1,5 @@
 import Swal from 'sweetalert2';
+import { useNavigate } from 'react-router-dom';
 import withReactContent from 'sweetalert2-react-content';
 
 export const handleSuccess = (title, redirect, html) => {
@@ -10,7 +11,7 @@ export const handleSuccess = (title, redirect, html) => {
       title: title ? title : false,
       html: html ? html : false,
       showConfirmButton: redirect ? true : false,
-      timer: 1500,
+      timer: 2000,
     })
     .then((data) => {
       if (redirect) {
@@ -28,7 +29,7 @@ export const handleFailed = (title, redirect, html) => {
       title: title,
       html: html ? html : false,
       showConfirmButton: redirect ? true : false,
-      timer: redirect ? false : 1500,
+      timer: redirect ? false : 2000,
     })
     .then((data) => {
       if (redirect) {
@@ -46,7 +47,7 @@ export const handleWarning = (title, redirect, html) => {
       title: title,
       html: html ? html : false,
       showConfirmButton: redirect ? true : false,
-      timer: redirect ? false : 1500,
+      timer: redirect ? false : 2000,
     })
     .then((data) => {
       if (redirect) {
@@ -64,7 +65,7 @@ export const handleInfo = (title, redirect, html) => {
       title: title,
       html: html ? html : false,
       showConfirmButton: redirect ? true : false,
-      timer: redirect ? false : 1500,
+      timer: redirect ? false : 2000,
     })
     .then((data) => {
       if (redirect) {

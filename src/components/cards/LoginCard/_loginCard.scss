@@ -69,6 +69,12 @@
       text-decoration: underline;
       cursor: pointer;
     }
+    &_reset_password{
+      
+      font-size: 14px;
+      font-weight: bold;
+      cursor: pointer;
+    }
     &_line {
       > div {
         display: block;
@@ -109,6 +115,25 @@
         color: #FFF;
         font-weight: bold;
         font-family: Helvetica, sans-serif !important;
+      }
+    }
+    &_error {
+      position: absolute;
+      padding: 8px 12px;
+      background-color: rgba(255, 212, 212, 0.95);
+      top: 0;
+      right: 0;
+      border: 1px solid rgba(255, 170, 170, 0.9);
+      border-radius: 8px;
+      color: red;
+      text-align: left;
+      font-size: 14px;
+      opacity: 0;
+      transition: .3s;
+      transform: translateX(100%);
+      &.active {
+        opacity: 1;
+        transform: translateX(0%);
       }
     }
   }

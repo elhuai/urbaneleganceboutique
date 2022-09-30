@@ -1,19 +1,19 @@
-import React from 'react';
+import React, { useRef } from 'react';
 import { useEffect, useState } from 'react';
 import { AiOutlineSearch } from 'react-icons/ai';
 import { useNavigate } from 'react-router-dom';
 import './_heroSearch.scss';
 
-export default function HeroSearch({ handleHeroActive, handleHeroAnimete }) {
+export default function HeroSearch({ handleHeroActive, handleHeroAnimation }) {
   const [active, setActive] = useState(0);
   const [keywords, setKeywords] = useState('');
   const navigate = useNavigate();
+  let count = useRef(0);
 
   const handleKeywords = (e) => {
     let textValue = e.target.value.replace(/[, ]/g, '');
     setKeywords(textValue);
   };
-  console.log('active', active);
   // 館別
   const typeIdParams = active + 2;
 
@@ -23,21 +23,15 @@ export default function HeroSearch({ handleHeroActive, handleHeroAnimete }) {
   };
 
   useEffect(() => {
-    handleHeroAnimete(true);
-    handleHeroActive(active);
-    // console.log(active);
+    if (count.current > 0) {
+      handleHeroAnimation(true);
+      handleHeroActive(active);
+    }
+    count.current += 1;
   }, [active]);
   return (
     <div className="hero_search bg-white overflow-hidden">
       <div className="tab_wrap d-flex position-relative">
-        {/* <button
-          className="tab tab-1 flex-fill py-2"
-          onClick={() => {
-            setActive(1);
-          }}
-        >
-          住宿
-        </button> */}
         <button
           className="tab tab-2 flex-fill py-2 active"
           onClick={() => {

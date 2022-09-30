@@ -38,6 +38,7 @@ const AdminCenter = () => {
       handleFailed('個人照片更新失敗');
     }
   };
+  console.log(data);
   return (
     <div>
       <div className="admin_side">
