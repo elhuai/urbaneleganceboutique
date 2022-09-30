@@ -108,7 +108,7 @@ export default function PostStateBar({ post, postID }) {
           <img
             className=""
             alt=""
-            style={{ objectFit: 'contain' }}
+            style={{ objectFit: 'cover' }}
             src={
               post[0].travel_id === 2
                 ? post[0][0].main_photo.length === 0
