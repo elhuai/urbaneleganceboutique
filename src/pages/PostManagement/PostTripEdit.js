@@ -84,8 +84,10 @@ function PostTripEdit() {
     locate_intro: tripPostIntro,
   };
   useEffect(() => {
-    console.log('=====家豪看這=====', tripPostIntro);
-  }, [tripPostIntro]);
+    console.log('=====家豪看這===簡介==', tripPostIntro);
+    console.log('=====家豪看這===內文==', tripPostLocContext);
+    console.log('看這ＩＤ＝＝＝＝＝＝', locateID);
+  }, [tripPostIntro, tripPostLocContext]);
 
   // 單獨取行程明細get
   useEffect(() => {
@@ -98,7 +100,7 @@ function PostTripEdit() {
             `${API_URL}/community/tripPostDetail?postID=${postID}`
           );
           // 取得後端來的資料
-          // console.log('result,data', result.data);
+          console.log('result,data', result.data);
           if (result) {
             let daysFilter = [];
             // 分組按照日期分組
@@ -130,7 +132,7 @@ function PostTripEdit() {
                 introData[daysFilter.length - 1].push(item.locate_intro);
               }
             }
-            // console.log('dayfileter', daysFilter);
+            console.log('dayfileter', daysFilter);
             setPostTripEdit(daysFilter);
             setLocateID(locateIDData);
             setTripPostLocContext(contextData);

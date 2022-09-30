@@ -133,7 +133,13 @@ function CommentBar() {
           <button className="btn" onClick={handleClear}>
             清除
           </button>
-          <button className="btn" onClick={handleSubmit}>
+          <button
+            className="btn"
+            onClick={(e) => {
+              handleSubmit(e);
+              setIfSubmit(true);
+            }}
+          >
             送出
           </button>
         </div>

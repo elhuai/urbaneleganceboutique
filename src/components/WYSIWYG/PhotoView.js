@@ -16,7 +16,7 @@ import './swiper.scss';
 import { useEffect } from 'react';
 
 export default function PhotoReviewSwiper({ list }) {
-  console.log('listdata', list);
+  // console.log('listdata', list);
   const [selectedLocFile, setSelectedLocFile] = useState('');
   const [previewLoc, setPreviewLoc] = useState('');
   const [tripLocPhoto, setTripLocPhoto] = useState('');
