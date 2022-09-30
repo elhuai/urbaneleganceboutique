@@ -113,6 +113,7 @@ function EcProductFilter() {
               page={page}
               setPage={setPage}
               error={error}
+              typeId={currentType}
             />
             <FilterPages
               lastPage={lastPage}

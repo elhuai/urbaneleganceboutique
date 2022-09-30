@@ -33,9 +33,7 @@ function items(index, active, data) {
               <span> {`(${(data.per_score * 19).toFixed(0)})`}</span>
             </div>
             <div className="price d-flex gap-2 align-items-end">
-              <div className="old">
-                TWD{`${(data.per_score * 19).toFixed(0)}`}
-              </div>
+              <div className="old">TWD{`${(data.price * 1.9).toFixed(0)}`}</div>
               <div className="current">TWD {`${data.price}`}</div>
             </div>
           </div>

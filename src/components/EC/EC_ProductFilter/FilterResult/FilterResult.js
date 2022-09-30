@@ -14,7 +14,7 @@ import { handleSuccess } from '../../../../utils/handler/card/handleStatusCard';
 import { Link } from 'react-router-dom';
 
 const FilterResult = (props) => {
-  const { setOrder, productData, setPage } = props;
+  const { setOrder, productData, setPage, typeId } = props;
   // 收藏設定->登入與否
   const { user, setUser } = useUserInfo();
   const handleCollect = async (e, id) => {
@@ -127,9 +127,6 @@ const FilterResult = (props) => {
               </span>
             );
           }
-          {
-            /* console.log(label); */
-          }
           return label;
         };
         return (
@@ -164,7 +161,6 @@ const FilterResult = (props) => {
                           <FaHeart />
                         </div>
                       </div>
-                      {/* 標籤 */}
                       <div className="d-flex flex-row">
                         {tag.map((data, index) => {
                           if (index > 0) {

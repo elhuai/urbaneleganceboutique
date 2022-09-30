@@ -28,7 +28,7 @@ function SearchBar(props) {
               }}
             />
             <Link
-              type="submit"
+              type="btn"
               className="searchBar_searchButton"
               to={`/ec-productfilter?typeId=${typeIdParams}&searchword=${searchWordParams}`}
               onClick={() => {
