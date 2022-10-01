@@ -19,7 +19,7 @@ const TravelForm = () => {
     let response = await axios.post(`${API_URL}/submit/addDate`, loginMember, {
       withCredentials: true,
     });
-    console.log('form表單', response.data);
+    // console.log('form表單', response.data);
     handleSuccess('成功建立此行程!', '/Travel');
   }
 

@@ -47,7 +47,7 @@ const Travel_Tab = ({ travelUser }) => {
               {travelUser.length === 0 ? (
                 <SwiperSlide>
                   <div>
-                    <h1 className="fw-bold travel_noidea"> 還沒有想法嗎</h1>
+                    <h1 className="fw-bold travel_noidea"> 還沒有想法嗎？</h1>
                   </div>
                 </SwiperSlide>
               ) : (

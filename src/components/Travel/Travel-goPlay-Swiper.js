@@ -71,7 +71,7 @@ const TravelSecondSwiper = () => {
         loop={true}
         freeMode={true}
         spaceBetween={30}
-        slidesPerView={3}
+        slidesPerView={5}
         modules={[Autoplay]}
         autoplay={{
           delay: 2500,
