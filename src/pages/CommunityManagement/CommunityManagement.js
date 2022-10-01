@@ -530,12 +530,10 @@ function CommunityManagement() {
                 className="form-control mb-2"
                 placeholder="請選擇我的行程"
                 onChange={(e) => {
-                  // TODO:
-                  setTripID(e.target.value);
-                  // setTripTitile(e.target.name);
-                  console.log('name', e.target.getAttribute('data-name'));
-                  console.log('value', e.target.value);
-                  console.log('titleeeeeee', tripPostTitleDefault);
+                  setTripID(tripImport[e.target.value].id);
+                  setTripTitile(tripImport[e.target.value].title);
+                  // console.log('name', tripImport[e.target.value].title);
+                  // console.log('value', tripImport[e.target.value].id);
                 }}
               >
                 <option>請選擇匯入的行程</option>
@@ -547,12 +545,10 @@ function CommunityManagement() {
                           setTripTitile(data.title);
                           console.log('titlew', tripPostTitleDefault);
                         }}
-                        name={data.title}
-                        value={data.id}
+                        value={index}
                       >
                         {data.title}
                       </option>
-                      {/* TODO:如何將data.title的值回傳到select onChange */}
                     </>
                   );
                 })}

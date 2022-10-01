@@ -3,11 +3,11 @@ import { useState, useEffect } from 'react';
 import axios from 'axios';
 import { API_URL } from '../../../utils/config';
 import { TiLocation } from 'react-icons/ti';
-import './PostLocateArticle.scss';
+import './PostLocateArticleForMobile.scss';
 import { BE_URL } from '../../../utils/config';
 import { PhotoProvider, PhotoView } from 'react-photo-view';
 
-export default function PostLocateArticle({ post }) {
+export default function PostLocateArticleForMobile({ post }) {
   const [locFiles, setLocFiles] = useState({ photos: '', locateID: '' });
   // let daycount = post.days
   // console.log('tew',daycount);
@@ -45,25 +45,27 @@ export default function PostLocateArticle({ post }) {
               <>
                 <div className="my-2 post_dayCount">Day {data[0].days}</div>
                 {data.map((data, i) => {
-                  console.log('datajijijfe', data);
-                  console.log('jijiejt', data.locate_photo);
-                  console.log(BE_URL + '/' + data.locate_photo);
+                  {
+                    /* console.log('data', data);
+                  console.log('locate_photo', data.locate_photo);
+                  console.log(BE_URL + '/' + data.locate_photo); */
+                  }
                   return (
                     <>
                       <li
                         className="trip_record_section"
                         id={`day${data.days}locate${i}`}
                       >
-                        <div className="post_content d-flex row align-items-start">
-                          <div className="post_location_mark d-flex flex-column justify-content-between align-items-start col-7 mt-1">
-                            <div className="d-flex locate_title">
+                        <div className="post_content d-flex justify-content-center">
+                          <div className="post_location_mark d-flex flex-column justify-content-start align-items-start mt-1">
+                            <div className="d-flex locate_title flex-col">
                               <p>
-                                <TiLocation className="mb-1 me-1 h5"></TiLocation>
-                                <strong className="ms-1 h5">
+                                <TiLocation className="mb-1 me-1 h4"></TiLocation>
+                                <strong className="ms-1 h4">
                                   {data.locate_name}
                                 </strong>
                               </p>
-                              <p className="ms-2 post_location_duration middle">
+                              <p className="post_location_duration middle">
                                 {data.locate_intro}
                               </p>
                             </div>
@@ -74,12 +76,13 @@ export default function PostLocateArticle({ post }) {
                             </div>
                           </div>
 
-                          <div className="photoBar col-5">
+                          <div className="photoBar">
                             {data.locate_photo ? (
                               <>
                                 <PhotoProvider maskOpacity={0.8}>
                                   <div className="foo locate_photo_single">
                                     <PhotoView
+                                      ew
                                       key={index}
                                       style={{ objectFit: 'cover' }}
                                       src={BE_URL + '/' + data.locate_photo}

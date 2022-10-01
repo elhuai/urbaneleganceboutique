@@ -5,6 +5,7 @@ import React, { useRef, useState } from 'react';
 // Import Swiper React components
 import axios from 'axios';
 import { API_URL } from '../../utils/config';
+import defaultPhoto from '../../images/社群照片假圖300px.png';
 
 // Import Swiper styles
 import 'swiper/css';
