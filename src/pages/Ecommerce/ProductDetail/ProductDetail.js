@@ -11,6 +11,7 @@ import { handleSuccess } from '../../../utils/handler/card/handleStatusCard';
 import { useUserInfo } from '../../../hooks/useUserInfo';
 import { handleLoginCard } from '../../../utils/handler/card/handleInputCard';
 
+import StreetView from '../../../components/EC/EC_productDetail/StreetView_YT';
 // 商品照片
 import ItemImage from '../../../components/EC/EC_productDetail/Image';
 // 兌換方式照片
@@ -86,6 +87,9 @@ const ProductDetail = () => {
       handleLoginCard({ isLogin: true }, setUser);
     }
   };
+
+  // =地圖切換
+  const handleChage = () => {};
 
   return (
     <>
@@ -224,6 +228,36 @@ const ProductDetail = () => {
                   />
                   <img src="" alt="" />
                 </div>
+                {Number(productId) === 518 ? (
+                  <div id="toKnow" className="description">
+                    <div className="detail_map d-flex flex-row mb-2">
+                      <h4>地圖</h4>
+                      {/* TODO:同步更新購物車 */}
+                      <button
+                        className="detail_map_btn ms-3"
+                        onClick={() => {
+                          handleChage();
+                          // console.log(e.target.value);
+                        }}
+                      >
+                        街景
+                      </button>
+                      <button
+                        className="detail_map_btn ms-3"
+                        onClick={() => {
+                          handleChage();
+                          // console.log(e.target.value);
+                        }}
+                      >
+                        環景影片
+                      </button>
+                    </div>
+                    <StreetView />
+                  </div>
+                ) : (
+                  ''
+                )}
+
                 <div id="toKnow" className="description">
                   <h4>購買須知</h4>
                   <p>

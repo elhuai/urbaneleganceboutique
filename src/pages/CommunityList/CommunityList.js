@@ -29,7 +29,7 @@ const CommunityList = () => {
         `${API_URL}/community/searchList?search=${newSearch}`
       );
       // 取得後端來的資料
-      console.log('setPostData',result.data);
+      console.log('setPostData', result.data);
       setPostData(result.data);
       // 存回 useState 狀態
     };
