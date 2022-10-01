@@ -183,7 +183,7 @@ const TravelDrag = ({
                         />
                       ) : (
                         <img
-                          //TODO:要Demo再放照片 每次炫覽都號一次google maps api
+                          //TODO:要Demo再放照片 每次渲染都號一次google maps api
                           // !src={item.google_photo}
 
                           src="https://picsum.photos/1300/1300?random31"
@@ -193,7 +193,7 @@ const TravelDrag = ({
                       )}
                     </div>
                     <div className="col-md-8">
-                      <div className="card-body">
+                      <div className="card-body d-flex align-items-center">
                         <div className="Travel_Drag_cardText d-flex">
                           <img
                             src={mapicon}
@@ -204,7 +204,7 @@ const TravelDrag = ({
                             {item.locate_name}
                           </p>
                         </div>
-                        <div className="d-flex bd-highlight ">
+                        <div className="d-flex bd-highlight justify-content-end ">
                           <div
                             className="Travel_Drag_trashIconn  d-flex "
                             onClick={(e) => {
@@ -219,8 +219,7 @@ const TravelDrag = ({
                               console.log('這是要刪除景點的id', item.id);
                             }}
                           >
-                            <HiOutlineTrash />
-
+                            <HiOutlineTrash className="mx-2 mt-1" />
                             <p className=" Travel_Drag_cardNT ">刪除</p>
                           </div>
                         </div>

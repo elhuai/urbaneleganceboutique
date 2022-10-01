@@ -291,6 +291,7 @@ const TravelDate = ({
               return (
                 <TabPanel value={value} index={indexs}>
                   <TravelDrag
+                    className="boxsizing1"
                     planning={planning}
                     indexs={indexs}
                     dayLength={showdate.length}
