@@ -306,9 +306,9 @@ function PostWYSIWYGEdit() {
             <PhotoReviewSwiperDefault></PhotoReviewSwiperDefault> */}
           </form>
           <div className="post_map">
-            <p>行程地圖</p>
+            <p>行程地圖2</p>
             <div className="map_photo">
-              <img alt="" src={mapPhoto} />
+              {/* <img alt="" src={mapPhoto} /> */}
             </div>
           </div>
           <div className="d-flex justify-content-end my-3  post_edit_button ">

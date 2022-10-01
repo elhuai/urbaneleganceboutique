@@ -5,7 +5,7 @@ import { useNavigate } from 'react-router-dom';
 import './_heroSearch.scss';
 
 export default function HeroSearch({ handleHeroActive, handleHeroAnimation }) {
-  const [active, setActive] = useState(0);
+  const [active, setActive] = useState(2);
   const [keywords, setKeywords] = useState('');
   const navigate = useNavigate();
   let count = useRef(0);
@@ -29,6 +29,18 @@ export default function HeroSearch({ handleHeroActive, handleHeroAnimation }) {
     }
     count.current += 1;
   }, [active]);
+  function animationNum(active) {
+    switch (active) {
+      case 0:
+        return 2;
+      case 1:
+        return 1;
+      case 2:
+        return 0;
+      default:
+        break;
+    }
+  }
   return (
     <div className="hero_search bg-white overflow-hidden">
       <div className="tab_wrap d-flex position-relative">
@@ -58,7 +70,7 @@ export default function HeroSearch({ handleHeroActive, handleHeroAnimation }) {
         </button>
         <div
           className={`underline_effect`}
-          style={{ transform: `translateX(${active}00%)` }}
+          style={{ transform: `translateX(${animationNum(active)}00%)` }}
         ></div>
       </div>
 

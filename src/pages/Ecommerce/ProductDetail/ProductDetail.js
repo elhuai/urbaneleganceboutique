@@ -11,7 +11,9 @@ import { handleSuccess } from '../../../utils/handler/card/handleStatusCard';
 import { useUserInfo } from '../../../hooks/useUserInfo';
 import { handleLoginCard } from '../../../utils/handler/card/handleInputCard';
 
-import StreetView from '../../../components/EC/EC_productDetail/StreetView_YT';
+import StreetViewYT from '../../../components/EC/EC_productDetail/StreetView_YT';
+import StreetViewGE from '../../../components/EC/EC_productDetail/StreetView_GE';
+import StreetViewST from '../../../components/EC/EC_productDetail/StreetView_ST';
 // 商品照片
 import ItemImage from '../../../components/EC/EC_productDetail/Image';
 // 兌換方式照片
@@ -65,6 +67,10 @@ const ProductDetail = () => {
     fetchProductData();
   }, [productId]);
   console.log('productData', productData);
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
 
   // = 加入購物車
   const { user, setUser } = useUserInfo();
@@ -228,7 +234,8 @@ const ProductDetail = () => {
                   />
                   <img src="" alt="" />
                 </div>
-                {Number(productId) === 518 ? (
+                {/* {Number(productId) === 518 ? ( */}
+                {Number(productId) === 558 ? (
                   <div id="toKnow" className="description">
                     <div className="detail_map d-flex flex-row mb-2">
                       <h4>地圖</h4>
@@ -242,6 +249,7 @@ const ProductDetail = () => {
                       >
                         街景
                       </button>
+
                       <button
                         className="detail_map_btn ms-3"
                         onClick={() => {
@@ -252,7 +260,10 @@ const ProductDetail = () => {
                         環景影片
                       </button>
                     </div>
-                    <StreetView />
+                    {/* 雨信雨信雨信雨信雨信雨信雨信雨信============================= */}
+                    <StreetViewGE />
+                    {/* <StreetViewST /> */}
+                    {/* <StreetViewYT /> */}
                   </div>
                 ) : (
                   ''

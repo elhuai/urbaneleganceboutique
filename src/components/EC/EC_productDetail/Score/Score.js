@@ -8,19 +8,25 @@ import { API_URL } from '../../../../utils/config';
 const Score = (props) => {
   const { perScore, productId } = props;
   const BASE_URL = process.env.REACT_APP_BASE_API_URL;
-  const id = productId == 543 ? productId : '519';
-
+  const id = Number(productId);
   const [commentData, setCommentData] = useState([]);
   useEffect(() => {
     const fetchComment = async () => {
+      let final;
       const commentData = await axios.get(
         `${API_URL}/productdetail/comment?id=${id}`
       );
-      setCommentData(commentData.data);
+      final = commentData.data;
+      if (final.length === 0) {
+        const fakeData = await axios.get(
+          `${API_URL}/productdetail/comment?id=${519}`
+        );
+        final = fakeData.data;
+      }
+      setCommentData(final);
     };
     fetchComment();
   }, []);
-  console.log('commentData', commentData);
 
   return (
     <>

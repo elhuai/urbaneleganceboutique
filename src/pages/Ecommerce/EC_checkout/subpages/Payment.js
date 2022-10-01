@@ -195,7 +195,7 @@ const Payment = (props) => {
               <div className="totalDiscount">
                 {/* todo:優惠券名字component  */}
                 <p className="title">優惠券{couponName}</p>
-                <p className="totalDiscountNumber">-NT${selected}</p>
+                <p className="totalDiscountNumber">-{selected}%OFF</p>
               </div>
               <div className="totalNumber">
                 <p className="title">總計(付款金額)</p>

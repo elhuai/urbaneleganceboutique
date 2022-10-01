@@ -135,7 +135,8 @@ function CommunityManagement() {
       tripPostTitleDefault,
     });
     console.log(creatData, '行程貼文新增成功');
-    handleSuccess('貼文匯入成功', '/admin/community');
+    handleSuccess('貼文匯入成功');
+    ConfirmHandle(0);
   };
   // console.log('匯入行程貼文預設標題', tripPostTitleDefault);
 
@@ -531,10 +532,10 @@ function CommunityManagement() {
                 placeholder="請選擇我的行程"
                 onChange={(e) => {
                   // TODO:
-                  setTripID(e.target.value);
-                  // setTripTitile(e.target.name);
-                  console.log('name', e.target.getAttribute('data-name'));
-                  console.log('value', e.target.value);
+                  setTripID(tripImport[e.target.value].id);
+                  setTripTitile(tripImport[e.target.value].title);
+                  console.log('name', tripImport[e.target.value].title);
+                  console.log('value', tripImport[e.target.value].id);
                   console.log('titleeeeeee', tripPostTitleDefault);
                 }}
               >
@@ -547,8 +548,7 @@ function CommunityManagement() {
                           setTripTitile(data.title);
                           console.log('titlew', tripPostTitleDefault);
                         }}
-                        name={data.title}
-                        value={data.id}
+                        value={index}
                       >
                         {data.title}
                       </option>

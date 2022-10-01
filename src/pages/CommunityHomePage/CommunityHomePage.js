@@ -1,11 +1,14 @@
 import './_CommunityHomePage.scss';
-
+import dog3 from '../../images/home_newsList_dog_4.png';
 import React from 'react';
 import { useState, useEffect } from 'react';
 import axios from 'axios';
 import { Link } from 'react-router-dom';
 import SearchBar from '../../components/SearchBar/SearchBar_community';
-import CommunitySwiperLeft from '../../components/Community/CommunitySwiper/CommunitySwiperLeft';
+import CommunityKOLSwiper from '../../components/Community/CommunitySwiper/CommunityKOLSwiper';
+import CommunitySwiperRight from '../../components/Community/CommunitySwiper/CommunityNormalPostSwiper';
+import HomePageMasonry from '../../components/Community/HomePageMasonry/HomePageMasonry';
+import RWDMasonry from '../../components/Community/HomePageMasonry/RWDMasonry';
 // import { BiLike } from 'react-icons/bi';
 import { IoHeartOutline } from 'react-icons/io5';
 import { RiEditFill } from 'react-icons/ri';
@@ -42,99 +45,43 @@ const CommunityHomePage = () => {
     };
     fetchPost();
   }, []);
-  // TODO: 新增文章 按鈕調整，功能要加上
-  // TODO: 最新貼文的card 要改成component 並帶入資料，瀑布流型式
-  // TODO: RWD版面切版，瀑布流顯示
-  // TODO: 社群分享記得換成此頁
+
   return (
     <>
       <div className="CommunityHomePage">
-        <div className="CommunityHomePage_main">
+        <div className="searchBarSection">
           <SearchBar
             searchBar_title="是不是在找我呢"
             searchBar_placeholder="我無處安放的可愛呀"
-            search={search}
-            setSearch={setSearch}
-            keywordSearch={keywordSearch}
-            setKeywordSearch={setKeywordSearch}
           />
-          <div className="comHome_title flex-shrink-0">
-            <h2 className="comHomeKOL_title">最夯寵物網美</h2>
-            <CommunitySwiperLeft comHomePageCard={kolCard} />
+          <p className="mainSlogan1 disappear">Sharing the life,</p>
+          <p className="mainSlogan2 disappear">Follow the paws!</p>
+          <p className="slogan disappear" disappear>
+            也想分享你跟毛孩的大小事嗎？
+          </p>
+          <img className="SloganImg disappear" src={dog3} alt="" />
+          <div className="BGCircle1 disappear"></div>
+          <div className="BGCircle2 disappear"></div>
+          <div className="BGCircle3 disappear"></div>
+          <div className="BGCircle4 disappear"></div>
+          <div className="BGCircle5 disappear"></div>
+          <div className="BGCircle6 disappear"></div>
+          <div className="btnSection disappear">
+            <button>一般貼文</button>
+            <button>行程貼文</button>
           </div>
-          <div className="comHome_title flex-shrink-0">
-            <h2 className="comHomeHot_title">熱門貼文</h2>
-            <CommunitySwiperLeft comHomePageCard={hotCard} />
+        </div>
+        <div className="CommunityHomePage_main">
+          {/* <h2 className="comHomeKOL_title">最夯寵物網美底家</h2>
+          <CommunityKOLSwiper /> */}
+          {/* 
+          <h2 className="comHomeKOL_title">最夯寵物網美</h2>
+          <CommunitySwiperRight comHomePageCard={kolCard} /> */}
+          <div className="masonrySection disappear">
+            <HomePageMasonry />
           </div>
-          <div className="comHome_section_newPost">
-            <div className="comHome_title flex-shrink-0">
-              <h2 className="comHomeNew_title">最新貼文</h2>
-            </div>
-            {/* TODO: 要改成component */}
-            <div className="row g-5">
-              <div className="col-4">
-                <div className="comHome_main_card card">
-                  <img
-                    src="https://picsum.photos/390/270"
-                    className="comHome-card-img"
-                    alt="..."
-                  />
-                  <div className="card-body">
-                    <h5 className="card-title">風箏在陰天擱淺</h5>
-                    <div className="comHome-card-content d-flex justify-content-between align-items-center">
-                      <div className="comHome-card-content-first d-flex justify-content-between align-items-center">
-                        <p>2022年13月32日</p>
-                        <p> 7799 人氣</p>
-                      </div>
-                      <IoHeartOutline />
-                    </div>
-                  </div>
-                </div>
-              </div>
-
-              <div className="col-4">
-                <div className="comHome_main_card card">
-                  <img
-                    src="https://picsum.photos/390/270"
-                    className="comHome-card-img"
-                    alt="..."
-                  />
-                  <div className="card-body">
-                    <h5 className="card-title">
-                      {/*  因為第一次渲染抓到的初始值是空值，會報錯(undefine)，所以寫判斷式 */}
-                      {hotCard[0] ? hotCard[0].title : ''}
-                    </h5>
-                    <div className="comHome-card-content d-flex justify-content-between align-items-center">
-                      <div className="comHome-card-content-first d-flex justify-content-between align-items-center">
-                        <p>2022年13月32日</p>
-                        <p> 7799 人氣</p>
-                      </div>
-                      <IoHeartOutline />
-                    </div>
-                  </div>
-                </div>
-              </div>
-
-              <div className="col-4">
-                <div className="comHome_newPost_card card">
-                  <img
-                    src="https://picsum.photos/390/270"
-                    className="comHome-card-img"
-                    alt="..."
-                  />
-                  <div className="card-body">
-                    <h5 className="card-title">風箏在陰天擱淺</h5>
-                    <div className="comHome-card-content d-flex justify-content-between align-items-center">
-                      <div className="comHome-card-content-first d-flex justify-content-between align-items-center">
-                        <p>2022年13月32日</p>
-                        <p> 7799 人氣</p>
-                      </div>
-                      <IoHeartOutline />
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
+          <div className="masonrySection appear">
+            <RWDMasonry />
           </div>
         </div>
       </div>
