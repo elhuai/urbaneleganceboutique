@@ -23,7 +23,6 @@ export default function PostStateBar({ post, postID }) {
   // console.log('user', user.data.id);
   const userID = user.data.id;
 
-
   // //判斷是否有按過讚
   const [likesState, setLikeState] = useState(0);
   //TODO: 如何設計初始值 判斷使用者是否已經按讚過了
@@ -46,7 +45,7 @@ export default function PostStateBar({ post, postID }) {
 
   // 按讚按鈕 學儒調整中
   const LikeHandle = async (e) => {
-    // e.preventDefault();
+    e.preventDefault();
 
     if (!likesState) {
       setLikes(likes + 1);
@@ -59,11 +58,11 @@ export default function PostStateBar({ post, postID }) {
         likes,
         userID,
       });
-      console.log('按讚成功', likesData);
+      // console.log('按讚成功', likesData);
       handleSuccess('讚讚！');
       // TODO:傳值給資料庫做加減
       console.log(likes);
-      // console.log('現在按讚狀態', likesState);
+      console.log('現在按讚狀態', likesState);
     } else {
       setLikes(likes - 1);
       setLikeState(0);
@@ -168,7 +167,7 @@ export default function PostStateBar({ post, postID }) {
           </div>
           {/* TODO:這裡還在修改 */}
           <div className="post_like me-2">
-            {post[0].travel_id === 2 ? (post[0][0].status === 2) : post[0].status ? (
+            {post[0].travel_id === 2 ? (
               <>
                 {' '}
                 <div className="d-flex">
@@ -184,7 +183,13 @@ export default function PostStateBar({ post, postID }) {
                 {' '}
                 {likesState === 0 ? (
                   <p>
-                    <BiLike className="mb-1 me-2" onClick={LikeHandle}></BiLike>
+                    <BiLike
+                      className="mb-1 me-2"
+                      onClick={(e) => {
+                        LikeHandle(e);
+                        setLikeState(1);
+                      }}
+                    ></BiLike>
                     按讚人數：{likes}
                   </p>
                 ) : (
@@ -192,7 +197,10 @@ export default function PostStateBar({ post, postID }) {
                     {' '}
                     <AiTwotoneLike
                       className="mb-1 me-2"
-                      onClick={LikeHandle}
+                      onClick={(e) => {
+                        LikeHandle(e);
+                        setLikeState(0);
+                      }}
                     ></AiTwotoneLike>
                     按讚人數：{likes}
                   </p>
