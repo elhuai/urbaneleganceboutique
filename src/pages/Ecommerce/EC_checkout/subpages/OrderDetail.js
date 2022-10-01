@@ -25,17 +25,29 @@ function OrderDetail(props) {
   useEffect(() => {
     const fetchProductData = async () => {
       setOrder({
-        amount: Number(cartProductData.quantity * cartProductData.price * (1 - selected / 100)).toFixed(0),
+        amount: Number(
+          cartProductData.quantity *
+            cartProductData.price *
+            (1 - selected / 100)
+        ).toFixed(0),
         currency: 'TWD',
         packages: [
           {
             id: packageIdGenerater(cartProductData.user_id),
-            amount: Number(cartProductData.quantity * cartProductData.price * (1 - selected / 100)).toFixed(0),
+            amount: Number(
+              cartProductData.quantity *
+                cartProductData.price *
+                (1 - selected / 100)
+            ).toFixed(0),
             products: [
               {
                 name: cartProductData.name,
                 quantity: 1,
-                price: Number(cartProductData.quantity * cartProductData.price * (1 - selected / 100)).toFixed(0),
+                price: Number(
+                  cartProductData.quantity *
+                    cartProductData.price *
+                    (1 - selected / 100)
+                ).toFixed(0),
                 originalPrice: cartProductData.price,
               },
             ],
@@ -50,7 +62,11 @@ function OrderDetail(props) {
         product_quantity: cartProductData.quantity,
         product_price: cartProductData.price,
         order_no: packageIdGenerater(cartProductData.user_id),
-        total: Number(cartProductData.quantity * cartProductData.price * (1 - selected / 100)).toFixed(0),
+        total: Number(
+          cartProductData.quantity *
+            cartProductData.price *
+            (1 - selected / 100)
+        ).toFixed(0),
         pay: 'LinePay',
         coupon_number: 8,
         coupon_name: '小確幸92折優惠',
@@ -68,12 +84,15 @@ function OrderDetail(props) {
   };
 
   const handlePay = () => {
-
     const createOrder = async (e, id) => {
       // e.preventDefault();
       try {
         console.log('----------createOrderBuying---------', orderBuying);
-        let result = await axios.post(`${API_URL}/createorder/order`, { orderBuying }, { withCredentials: true });
+        let result = await axios.post(
+          `${API_URL}/createorder/order`,
+          { orderBuying },
+          { withCredentials: true }
+        );
       } catch (error) {
         console.log('error', error);
       }
@@ -83,8 +102,13 @@ function OrderDetail(props) {
     const deleteCart = async (e, id) => {
       // e.preventDefault();
       try {
-        console.log('---------deleteCartId---------', cartProductData.product_id);
-        let result = await axios.post(`${API_URL}/deletecart/cart${cartProductData.product_id}`);
+        console.log(
+          '---------deleteCartId---------',
+          cartProductData.product_id
+        );
+        let result = await axios.post(
+          `${API_URL}/deletecart/cart${cartProductData.product_id}`
+        );
       } catch (error) {
         console.log('error', error);
       }
@@ -126,7 +150,9 @@ function OrderDetail(props) {
               </div>
             </div>
             <div className="subSection2">
-              <span className="middleTotal">NT${cartProductData.price * cartProductData.quantity}</span>
+              <span className="middleTotal">
+                NT${cartProductData.price * cartProductData.quantity}
+              </span>
               <div className="calculateSection">
                 <div className="subTitle">優惠券：{couponName}</div>
                 <div className="subInput">{selected}%OFF</div>
@@ -150,7 +176,11 @@ function OrderDetail(props) {
               <div className="subTitle">總計(付款金額)</div>
               <div className="subInput">
                 NT$
-                {Number(cartProductData.quantity * cartProductData.price * (1 - selected / 100)).toFixed(0)}
+                {Number(
+                  cartProductData.quantity *
+                    cartProductData.price *
+                    (1 - selected / 100)
+                ).toFixed(0)}
               </div>
             </div>
             <button onClick={handlePay}>來去結帳</button>

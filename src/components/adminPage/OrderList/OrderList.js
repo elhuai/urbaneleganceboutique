@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import fakeImg from '../../../images/home_travel_sort2.jpg';
+import { useNavigate } from 'react-router-dom';
 import { handleScoreCard } from '../../../utils/handler/card/handleInputCard';
 import { getUserOrder } from '../../../api/userApi';
 
@@ -9,12 +9,11 @@ const BASE_URL = process.env.REACT_APP_BASE_API_URL;
 
 const OrderList = () => {
   const [data, setData] = useState([]);
+  const navigate = useNavigate();
   useEffect(() => {
     getUserOrder(setData);
   }, []);
-  useEffect(() => {
-    console.log(data);
-  }, [data]);
+
   return data.length > 0
     ? data.map((value) => {
         const imgUrl = `${BASE_URL + value.photo_path}/${value.main_photo}`;
@@ -100,7 +99,14 @@ const OrderList = () => {
                     給予評價
                   </button>
                 )}
-                <button className="primary">再買一次</button>
+                <button
+                  className="primary"
+                  onClick={() =>
+                    navigate(`/ec-productdetail?id=${value.product_id}`)
+                  }
+                >
+                  再買一次
+                </button>
               </div>
             </div>
           </div>

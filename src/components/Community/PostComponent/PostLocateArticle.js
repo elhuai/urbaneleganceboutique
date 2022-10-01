@@ -54,8 +54,8 @@ export default function PostLocateArticle({ post }) {
                         className="trip_record_section"
                         id={`day${data.days}locate${i}`}
                       >
-                        <div className="d-flex row align-items-start">
-                          <div className="post_location_mark d-flex flex-column justify-content-start align-items-start col-7 mt-1">
+                        <div className="post_content d-flex row align-items-start">
+                          <div className="post_location_mark d-flex flex-column justify-content-between align-items-start col-7 mt-1">
                             <div className="d-flex locate_title">
                               <p>
                                 <TiLocation className="mb-1 me-1 h5"></TiLocation>

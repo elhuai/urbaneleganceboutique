@@ -97,7 +97,7 @@ function CommentBar() {
   return (
     <div className="post_comment_list mt-3">
       <p className="post__comment_list_title">回應</p> {/* 關聯資料庫 */}
-      <div className=" d-flex flex-column align-items-center">
+      <div className="post__comment_list_content d-flex flex-column align-items-center">
         {commentData.map((data) => {
           return (
             <li
@@ -113,15 +113,15 @@ function CommentBar() {
                   <div className="user_comment_text">{data.comment}</div>
                 </div>
               </div>
-              <div className="user_comment_datetime align-self-end d-block">
-                <p className="">留言時間： {data.create_time}</p>
-              </div>
+              {/* <div className="user_comment_datetime d-flex align-self-end">
+                <p className="d-block">留言時間： {data.create_time}</p>
+              </div> */}
             </li>
           );
         })}
       </div>
       <div className="leave_comment">
-        <p>我要留言</p>
+        <p className="post__comment_list_title">我要留言</p>
         <form className="d-flex flex-column align-items-center">
           <textarea
             // type="textarea"

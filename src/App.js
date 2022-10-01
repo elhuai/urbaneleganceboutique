@@ -17,16 +17,12 @@ import CommunityList from './pages/CommunityList';
 import CommunityHomePage from './pages/CommunityHomePage';
 import CommunityManagement from './pages/CommunityManagement';
 import Travelmap from './pages/Travel_map';
-import LineLogin from './pages/LineLogin';
 import ExamplePage from './pages/ExamplePage/ExamplePage';
-
-import PersonalHomePage from './components/layout/AdminCenter/PersonalHomePage';
 
 import Post from './pages/PostManagement/Post';
 import PostTrip from './pages/PostManagement/PostTrip';
 import PostEdit from './pages/PostManagement/PostEdit';
 import PostTripEdit from './pages/PostManagement/PostTripEdit';
-import AdminCenterPage from './components/adminPage/AdminCenter/AdminCenterPage';
 import EcEnjoyHomepage from './pages/Ecommerce/EC_HomePage/EC_2Enjoy_Homepage';
 import EcRestaurantHomepage from './pages/Ecommerce/EC_HomePage/EC_3Restaurant_Homepage';
 import EcCommodityHomepage from './pages/Ecommerce/EC_HomePage/EC_4Commodity_Homepage';
@@ -35,10 +31,10 @@ import EcProductFilter from './pages/Ecommerce/EC_productFilter';
 import ECOrderSteps from './pages/Ecommerce/EC_checkout';
 import ECLinePay from './pages/Ecommerce/EC_LinePay';
 
-import 'antd/dist/antd.css';
+import 'antd/dist/antd.min.css';
 import 'swiper/scss';
 import 'swiper/css/bundle';
-
+import 'react-photo-view/dist/react-photo-view.css';
 import './styles/style.scss';
 
 function App() {
@@ -54,8 +50,8 @@ function App() {
             <Route path="/Travel_map" element={<Travelmap />} />
             <Route path="/communityList" element={<CommunityList />} />
             <Route path="/communityHomePage" element={<CommunityHomePage />} />
-            <Route path="admin" element={<AdminCenterPage />}>
-              <Route index element={<CommunityManagement />} />
+            <Route path="admin" element={<AdminCenter />}>
+              <Route index element={<AdminProfilePage />} />
               <Route path="profile" element={<AdminProfilePage />} />
               <Route path="order" element={<AdminOrderListPage />} />
               <Route path="voucher" element={<AdminVocherPage />} />

@@ -23,7 +23,8 @@ function Recommand_product() {
   return (
     <>
       <div className="mt-2 recommand_product_title">
-        <p >推薦行程/商品</p> {/* 關聯資料庫 */}
+        <p className="post__comment_list_title">推薦行程/商品</p>{' '}
+        {/* 關聯資料庫 */}
       </div>
       <div className="d-flex justify-content-between">
         {card.map((data, index) => {
