@@ -1,7 +1,12 @@
 import React from 'react';
 import './PostMap.scss';
 /////////孝強專用地圖
-import { GoogleMap, Marker, InfoWindow } from '@react-google-maps/api';
+import {
+  GoogleMap,
+  Marker,
+  InfoWindow,
+  StreetViewPanorama,
+} from '@react-google-maps/api';
 import { useState, useEffect, useRef } from 'react';
 const centers = [
   {
@@ -45,6 +50,7 @@ const centers = [
   //   user: '席主席',
   // },
 ];
+
 function GoogleMapsCyrilke() {
   const mapRef = useRef(null);
   return (
