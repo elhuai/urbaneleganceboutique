@@ -168,6 +168,8 @@ export default function PostStateBar({ post, postID }) {
           {/* TODO:這裡還在修改 */}
           <div className="post_like me-2">
             {post[0].travel_id === 2 ? (
+              post[0][0].status === 2
+            ) : post[0].status ? (
               <>
                 {' '}
                 <div className="d-flex">

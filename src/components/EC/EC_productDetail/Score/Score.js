@@ -7,17 +7,26 @@ import { API_URL } from '../../../../utils/config';
 
 const Score = (props) => {
   const { perScore, productId } = props;
+  const BASE_URL = process.env.REACT_APP_BASE_API_URL;
+  const id = Number(productId);
   const [commentData, setCommentData] = useState([]);
   useEffect(() => {
     const fetchComment = async () => {
+      let final;
       const commentData = await axios.get(
-        `${API_URL}/productdetail/comment?id=${productId}`
+        `${API_URL}/productdetail/comment?id=${id}`
       );
-      setCommentData(commentData.data);
+      final = commentData.data;
+      if (final.length === 0) {
+        const fakeData = await axios.get(
+          `${API_URL}/productdetail/comment?id=${519}`
+        );
+        final = fakeData.data;
+      }
+      setCommentData(final);
     };
     fetchComment();
   }, []);
-  console.log(commentData);
 
   return (
     <>
@@ -34,9 +43,7 @@ const Score = (props) => {
           return (
             <div className="product_comment d-flex flex-row" key={index}>
               <img
-                // TODO 照片要改
-                src="https://pbs.twimg.com/profile_images/665285874054139904/T7bN6jsf_400x400.jpg"
-                // src={data.photo}
+                src={`${BASE_URL}${data.photo}`}
                 alt=""
                 className="product_comment_img"
               />
@@ -47,7 +54,6 @@ const Score = (props) => {
                 </p>
                 <div className="product_comment_userScore ms-2">
                   <Rate
-                    disabled
                     character={<FaPaw />}
                     defaultValue={data.product_comment_score}
                   />

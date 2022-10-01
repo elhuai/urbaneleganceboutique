@@ -1,8 +1,10 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { API_URL, LINE_LOGIN_URL } from '../../../utils/config';
 import { HiChevronLeft } from 'react-icons/hi';
 import { LINE_CALLBACK_URL } from '../../../utils/config';
+import { Popover } from 'antd';
 import moment from 'moment';
+import { handleForgetPwdCard } from '../../../utils/handler/card/handleInputCard';
 import {
   callRegisterApi,
   callLoginApi,
@@ -23,6 +25,7 @@ const LoginCard = ({ isLogin, confirm, setUser }) => {
     confirmPassword: '123123123',
   });
   const [registerError, setRegisterError] = useState([]);
+  const [errorText, setErrorText] = useState([]);
   const handleLogin = async (e) => {
     e.preventDefault();
     console.log('call login API');
@@ -47,7 +50,13 @@ const LoginCard = ({ isLogin, confirm, setUser }) => {
   const handleRegisterRequest = (e) => {
     e.preventDefault();
     console.log('call register API');
-    callRegisterApi(registInfo, setRegisterError, setUser, confirm);
+    callRegisterApi(
+      registInfo,
+      setRegisterError,
+      setUser,
+      confirm,
+      setErrorText
+    );
   };
 
   const handleLoginChange = (e) => {
@@ -62,6 +71,7 @@ const LoginCard = ({ isLogin, confirm, setUser }) => {
       ...oldInfo,
       [e.target.name]: e.target.value,
     }));
+    setErrorText([]);
     let index = registerError.findIndex((i) => i === e.target.name);
     if (!(index < 0)) {
       setRegisterError((items) => {
@@ -72,6 +82,10 @@ const LoginCard = ({ isLogin, confirm, setUser }) => {
   };
   const isError = (name) =>
     registerError.find((i) => i === name) ? 'error' : '';
+  useEffect(() => {
+    setErrorText([]);
+    setRegisterError([]);
+  }, [isNewUser]);
 
   return isLogin ? (
     <div className="login_card--global d-flex">
@@ -108,7 +122,12 @@ const LoginCard = ({ isLogin, confirm, setUser }) => {
               required
             />
           </div>
-
+          <div
+            className="login_card_reset_password text-end"
+            onClick={() => handleForgetPwdCard()}
+          >
+            忘記密碼
+          </div>
           <div className="flex-fill d-flex flex-column justify-content-end">
             <div className="login_card_line d-flex justify-content-center mb-3">
               <div onClick={handleLineLogin}>
@@ -146,50 +165,57 @@ const LoginCard = ({ isLogin, confirm, setUser }) => {
           onSubmit={handleRegisterRequest}
         >
           <div className="mb-3">
-            <input
-              type="text"
-              name="socialName"
-              className={`form-control ${isError('socialName')}`}
-              placeholder="你的暱稱"
-              value={registInfo.socialName}
-              onChange={handleRegistChange}
-              required
-            />
+            <Popover content={content[0]} trigger="focus" placement="topRight">
+              <input
+                type="text"
+                name="socialName"
+                className={`form-control ${isError('socialName')}`}
+                placeholder="你的暱稱"
+                value={registInfo.socialName}
+                onChange={handleRegistChange}
+                required
+              />
+            </Popover>
           </div>
           <div className="mb-3">
-            <input
-              type="email"
-              name="email"
-              className={`form-control ${isError('email')}`}
-              placeholder="電子郵件"
-              value={registInfo.email}
-              onChange={handleRegistChange}
-              required
-            />
+            <Popover content={content[1]} trigger="focus" placement="topRight">
+              <input
+                type="email"
+                name="email"
+                className={`form-control ${isError('email')}`}
+                placeholder="電子郵件"
+                value={registInfo.email}
+                onChange={handleRegistChange}
+                required
+              />
+            </Popover>
           </div>
           <div className="mb-3">
-            <input
-              type="password"
-              name="password"
-              className={`form-control ${isError('password')}`}
-              placeholder="密碼"
-              value={registInfo.password}
-              onChange={handleRegistChange}
-              required
-            />
+            <Popover content={content[2]} trigger="focus" placement="topRight">
+              <input
+                type="password"
+                name="password"
+                className={`form-control ${isError('password')}`}
+                placeholder="密碼"
+                value={registInfo.password}
+                onChange={handleRegistChange}
+                required
+              />
+            </Popover>
           </div>
           <div className="mb-3">
-            <input
-              type="password"
-              name="confirmPassword"
-              className={`form-control ${isError('confirmPassword')}`}
-              placeholder="確認密碼"
-              value={registInfo.confirmPassword}
-              onChange={handleRegistChange}
-              required
-            />
+            <Popover content={content[3]} trigger="focus" placement="topRight">
+              <input
+                type="password"
+                name="confirmPassword"
+                className={`form-control ${isError('confirmPassword')}`}
+                placeholder="確認密碼"
+                value={registInfo.confirmPassword}
+                onChange={handleRegistChange}
+                required
+              />
+            </Popover>
           </div>
-
           <div className="flex-fill d-flex flex-column justify-content-end">
             <div>
               <button className="mb-3 login_card_button--regist" type="submit">
@@ -204,12 +230,18 @@ const LoginCard = ({ isLogin, confirm, setUser }) => {
             </div>
           </div>
         </form>
+
         <div
           className="login_card_button--back"
           onClick={() => setIsNewUser(false)}
         >
           <HiChevronLeft />
         </div>
+      </div>
+      <div className={`login_card_error ${errorText[0] ? 'active' : ''}`}>
+        {errorText.map((value) => (
+          <div>{value}</div>
+        ))}
       </div>
     </div>
   ) : (
@@ -226,5 +258,31 @@ const LoginCard = ({ isLogin, confirm, setUser }) => {
     </div>
   );
 };
+
+const content = [
+  <div>
+    <p className="m-0">
+      平台社群暱稱
+      <br />
+      命名中不可含有空格
+    </p>
+  </div>,
+  <div>
+    <p className="m-0">
+      請輸入正確的 Email 地址
+      <br />
+      以便後續開通驗證
+    </p>
+  </div>,
+  <div>
+    <p className="m-0">
+      密碼長度至少為 8<br />
+      且只能含有大小寫英文字母與數字
+    </p>
+  </div>,
+  <div>
+    <p className="m-0">請再輸入一次密碼</p>
+  </div>,
+];
 
 export default LoginCard;

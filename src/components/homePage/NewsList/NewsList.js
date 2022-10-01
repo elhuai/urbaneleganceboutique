@@ -12,7 +12,7 @@ function items(index, active, data) {
   let result = data[index].map((data, dataIndex) => {
     return (
       <Link
-        to="/"
+        to={`ec-productdetail?id=${data.id}`}
         key={'id' + data.id}
         className={`news_list_item  flex-fill w-100 p-2 ${
           index === active ? 'd-flex' : 'd-none'
@@ -33,9 +33,7 @@ function items(index, active, data) {
               <span> {`(${(data.per_score * 19).toFixed(0)})`}</span>
             </div>
             <div className="price d-flex gap-2 align-items-end">
-              <div className="old">
-                TWD{`${(data.per_score * 19).toFixed(0)}`}
-              </div>
+              <div className="old">TWD{`${(data.price * 1.9).toFixed(0)}`}</div>
               <div className="current">TWD {`${data.price}`}</div>
             </div>
           </div>
@@ -98,8 +96,6 @@ export default function NewsList({ active }) {
     };
     newsProducts();
   }, []);
-  console.log('data', data);
-
   // TODO: 實際渲染元件，不用更動 (應該啦)，只要把 fakeData 換掉就好
   return data.length > 0
     ? data.map((v, index) => {

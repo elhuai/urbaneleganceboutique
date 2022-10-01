@@ -16,7 +16,8 @@ export const callRegisterApi = async (
   registInfo,
   setRegisterError,
   setUser,
-  confirm
+  confirm,
+  setErrorText
 ) => {
   try {
     let res = await axios.post(
@@ -30,11 +31,14 @@ export const callRegisterApi = async (
   } catch (err) {
     console.error('Register Error', err);
     let errorArr = [];
+    let errorTextArr = [];
     if (err.response.data.error) {
       for (const errItem of err.response.data.error) {
         errorArr.push(errItem.param);
+        errorTextArr.push(errItem.msg);
       }
       setRegisterError(errorArr);
+      setErrorText(errorTextArr);
     }
   }
 };

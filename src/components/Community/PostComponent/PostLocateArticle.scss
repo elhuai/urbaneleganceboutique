@@ -7,12 +7,6 @@ $list-color: #f0ede0;
 $list-color-hover: #feefc3;
 $link-color: #2da9d7;
 $line-color--blue: #d5eeee;
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-  -webkit-user-drag: none;
-}
 
 %button {
   background-color: #ef7a70;

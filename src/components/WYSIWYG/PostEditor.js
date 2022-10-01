@@ -46,7 +46,7 @@ const MyCkeditor = (props) => {
       return uploadAdapter(loader);
     };
   }
-  console.log('postData', postData)
+  console.log('postData', postData);
   return (
     <div>
       <div className="Apps">
@@ -70,8 +70,8 @@ const MyCkeditor = (props) => {
             ],
             extraPlugins: [uploadPlugin],
             image: {
-            toolbar: [ 'toggleImageCaption', 'imageTextAlternative' ]
-        }
+              toolbar: ['toggleImageCaption', 'imageTextAlternative'],
+            },
           }}
           data={postData[0]?.content ? postData[0]?.content : ''}
           editor={Editor}

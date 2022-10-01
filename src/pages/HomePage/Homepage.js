@@ -17,7 +17,7 @@ import './_homepage.scss';
 const Homepage = () => {
   const navigate = useNavigate();
   const { user, setUser } = useUserInfo();
-  const [heroAnimete, setHeroAnimete] = useState(false);
+  const [heroAnimation, setHeroAnimation] = useState(false);
   const [heroActive, setHeroActive] = useState(false);
   const [newsActive, setNewsActive] = useState(1);
   const [searchParam] = useSearchParams();
@@ -25,29 +25,16 @@ const Homepage = () => {
   const handleHeroActive = (num) => {
     setHeroActive(num);
   };
-  const handleHeroAnimete = () => {
-    setHeroAnimete(true);
+  const handleHeroAnimation = () => {
+    setHeroAnimation(true);
   };
 
   useEffect(() => {
-    if (!heroAnimete) return;
+    if (!heroAnimation) return;
     setTimeout(() => {
-      setHeroAnimete(false);
+      setHeroAnimation(false);
     }, 1500);
-  }, [heroAnimete]);
-
-  const widthCalc = (heroActive) => {
-    switch (heroActive) {
-      case 0:
-        return '430px';
-      case 1:
-        return '760px';
-      case 2:
-        return '720px';
-      default:
-        break;
-    }
-  };
+  }, [heroAnimation]);
 
   return searchParam.get('line_login') && user.data.social_name === '' ? (
     <Loading />
@@ -64,12 +51,12 @@ const Homepage = () => {
           </div>
           <div className="hero_search_wrap">
             <HeroSearch
-              handleHeroAnimete={handleHeroAnimete}
+              handleHeroAnimation={handleHeroAnimation}
               handleHeroActive={handleHeroActive}
             />
           </div>
           <div
-            className={`hero_animation ${heroAnimete ? 'active' : ''}`}
+            className={`hero_animation ${heroAnimation ? 'active' : ''}`}
           ></div>
         </div>
       </div>

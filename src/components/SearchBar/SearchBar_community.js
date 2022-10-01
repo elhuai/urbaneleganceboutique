@@ -40,7 +40,7 @@ function SearchBar(props) {
               }}
             />
             <Link
-              type="submit"
+              type="btn"
               className="searchBar_searchButton"
               to={`/communitylist?searchword=${searchWordParams}`}
               onClick={handleSearch}

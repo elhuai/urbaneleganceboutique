@@ -58,7 +58,6 @@ const CommunityHomePage = () => {
             keywordSearch={keywordSearch}
             setKeywordSearch={setKeywordSearch}
           />
-
           <div className="comHome_title flex-shrink-0">
             <h2 className="comHomeKOL_title">最夯寵物網美</h2>
             <CommunitySwiperLeft comHomePageCard={kolCard} />
