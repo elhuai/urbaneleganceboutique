@@ -93,10 +93,10 @@ function CommentBar() {
           return (
             <li
               key={data.id}
-              className="d-flex justify-content-between comment_descript_list align-items-center"
+              className="d-flex justify-content-between comment_descript_list align-items-start"
             >
-              <div className="d-flex justify-content-center align-items-center">
-                <div className="user_comment_photo d-flex user_comment_photo align-items-center">
+              <div className="d-flex justify-content-center">
+                <div className="user_comment_photo">
                   <img alt="" src={BE_URL + data.photo}></img>
                 </div>
                 <div className="user_comment_detail mx-5">
@@ -104,8 +104,8 @@ function CommentBar() {
                   <div className="user_comment_text">{data.comment}</div>
                 </div>
               </div>
-              <div className="user_comment_datetime align-self-end d-block">
-                <p className="">留言時間： {data.create_time}</p>
+              <div className="user_comment_datetime d-flex align-self-end">
+                <p className="d-block">留言時間： {data.create_time}</p>
               </div>
             </li>
           );

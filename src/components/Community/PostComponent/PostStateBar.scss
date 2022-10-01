@@ -25,9 +25,11 @@ body {
 }
 .postStateBar {
   .post_cover_photo {
-    object-fit: cover;
-    width: 100%;
+    object-fit: contain;
+    // width: 100%;
     img {
+      background: #feefc3;
+      display: flex;
       display: flex;
       justify-content: center;
       width: 100%;
@@ -35,7 +37,7 @@ body {
     }
   }
   .post_title p {
-    width: 85%;
+    width: 100%;
     font-size: 3rem;
     color: $button-color-remove;
     font-weight: bold;
@@ -52,6 +54,7 @@ body {
         color: $link-color;
       }
     }
+
     .post_location {
       color: $button-color-remove;
     }

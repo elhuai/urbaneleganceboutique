@@ -20,8 +20,6 @@ export default function CommunityListCard({ postData, search }) {
       </div>
       {postData.map((data, index) => {
         const tag = postData[0].tags.split(/[#,＃]/).filter((item) => item);
-        {/* const noHtmlContent = postData[0].content.replace(/<\/?.+?>/g, '');
-        console.log(noHtml); */}
         return (
           <Link to={`/post?postID=${data.id}`} key={index}>
             <div className=" card border-primary" key={index}>
