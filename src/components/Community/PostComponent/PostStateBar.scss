@@ -26,13 +26,13 @@ body {
 .postStateBar {
   .post_cover_photo {
     object-fit: contain;
-    // width: 100%;
+    width: 100%;
     img {
       background: #feefc3;
       display: flex;
       display: flex;
       justify-content: center;
-      width: 100%;
+      // width: 100%;
       height: 300px;
     }
   }

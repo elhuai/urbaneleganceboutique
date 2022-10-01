@@ -4,9 +4,9 @@
   margin: 0 auto;
   margin-top: 8rem;
 
-  .topRow {
-    display: flex;
-    justify-content: space-evenly;
+  .productDetail_itemImage {
+    flex: 0 0 auto;
+    width: 41.66666667%;
   }
 
   .productDetail_itemImage {
@@ -18,14 +18,24 @@
     color: green;
   }
 
-  .textGreen {
-    color: green;
-    font-size: 0.8rem;
+  .tags {
+    display: inline-block;
+    color: #2da9d7;
+    font-size: 14px;
+    font-weight: bold;
+    padding: 3px 10px;
+    margin-right: 20px;
+    border-radius: 4px;
+    background-color: #d5eeee;
   }
 
-  .underline {
-    text-decoration: underline;
-    font-size: 0.8rem;
+  // 主要價格區域
+  .ogCost {
+    color: #747474;
+    margin-right: 15px;
+    font-size: 1rem;
+    font-weight: 1000;
+    margin: 0.4rem;
   }
 
   //  右側描述
