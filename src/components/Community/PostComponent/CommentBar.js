@@ -2,9 +2,10 @@ import React from 'react';
 import { useState, useEffect } from 'react';
 import { API_URL, BE_URL } from '../../../utils/config';
 import axios from 'axios';
-import { useUserInfo } from '../../../hooks/useUserInfo';
 import { useParams, useLocation } from 'react-router-dom';
 import moment from 'moment/moment';
+import { useUserInfo } from '../../../hooks/useUserInfo';
+import { handleLoginCard } from '../../../utils/handler/handleInputCard';
 
 import './CommentBar.scss';
 
@@ -23,6 +24,9 @@ function CommentBar() {
 
   // 送出留言狀態
   const [ifSubmit, setIfSubmit] = useState(false);
+
+  // 登入驗證
+  const { user, setUser } = useUserInfo();
 
   // API 取得留言資料表
   useEffect(() => {
@@ -59,21 +63,26 @@ function CommentBar() {
     console.log('getCommentData', getCommentData);
     // 把預設行為關掉
     e.preventDefault();
-    try {
-      let create_time = moment().format('YYYY-MM-DD HH:mm:ss');
-      let commentText = getCommentData.commentText;
-      let response = await axios.post(
-        `${API_URL}/post/postCommentEdit`,
-        { create_time, commentText, postID },
-        { withCredentials: true }
-      );
-      console.log('response.data', response.data);
-      setIfSubmit(true);
-      getSetCommentData({ commentText: '' });
-    } catch (e) {
-      console.error('postCommentEdit', e);
+    if (user.auth) {
+      try {
+        let create_time = moment().format('YYYY-MM-DD HH:mm:ss');
+        let commentText = getCommentData.commentText;
+        let response = await axios.post(
+          `${API_URL}/post/postCommentEdit`,
+          { create_time, commentText, postID },
+          { withCredentials: true }
+        );
+        console.log('response.data', response.data);
+        setIfSubmit(true);
+        getSetCommentData({ commentText: '' });
+      } catch (e) {
+        console.error('postCommentEdit', e);
+      }
+    } else {
+      handleLoginCard({ isLogin: true }, setUser);
     }
   }
+
   // === 清除 ===
   async function handleClear(e) {
     // 把預設行為關掉

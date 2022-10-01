@@ -151,6 +151,7 @@ $royal-blue: #22c3ff;
     }
 
     .comList_main_card_text {
+      height: 72px;
       color: $graycolor;
       font-weight: 600;
       text-overflow: ellipsis;
@@ -178,6 +179,48 @@ $royal-blue: #22c3ff;
       svg {
         width: 1.25rem;
         height: 1.25rem;
+      }
+    }
+  }
+  @media (max-width: 768px) {
+    .card {
+      max-width: 345px;
+      margin: 0 auto;
+      margin-bottom: 1rem;
+      height: 375px;
+
+      .comList_main_card_title {
+        h5 {
+          overflow: hidden;
+          text-overflow: ellipsis;
+          white-space: nowrap;
+        }
+      }
+
+      .sort-board {
+        display: none;
+      }
+
+      .comList_main_card_img--box {
+        height: 170px;
+      }
+
+      .comList_main_card_locate_text {
+        display: none;
+      }
+
+      .comList_main_card_tag {
+        display: none;
+      }
+
+      .card_content {
+        height: 77px;
+      }
+
+      .card-body {
+        .card_content {
+          height: 115px;
+        }
       }
     }
   }
