@@ -3,8 +3,8 @@
   background: linear-gradient(168deg, #ffffff 0%, #f7f7f7 29%, #fff7dc 40%, #fff0c0 40%, #fff 29%, #fff 0%);
 
   .CommunityHomePage_main {
-    display: flex;
-    flex-direction: column;
+    // display: flex;
+    // flex-direction: column;
     max-width: 100vw;
   }
   .searchBarSection {
@@ -24,25 +24,25 @@
     // }
     .BGCircle1 {
       position: absolute;
-      width: 340px;
-      height: 340px;
-      background-color: #33c3f7;
+      width: 360px;
+      height: 360px;
+      background-color: #feefc3;
       opacity: 0.8;
       border-radius: 50%;
       top: 13rem;
-      left: 67rem;
+      left: 70rem;
       z-index: 1;
     }
-    .BGCircle2 {
-      position: absolute;
-      width: 280px;
-      height: 280px;
-      background-color: #b0eaff;
-      opacity: 0.5;
-      border-radius: 50%;
-      top: 13rem;
-      left: 64rem;
-    }
+    // .BGCircle2 {
+    //   position: absolute;
+    //   width: 280px;
+    //   height: 280px;
+    //   background-color: #b0eaff;
+    //   opacity: 0.5;
+    //   border-radius: 50%;
+    //   top: 13rem;
+    //   left: 64rem;
+    // }
     .BGCircle3 {
       position: absolute;
       width: 40px;
@@ -87,21 +87,21 @@
     .mainSlogan1 {
       position: absolute;
       top: 15rem;
-      left: 24rem;
+      left: 30rem;
       font-size: 60px;
       width: 460px;
     }
     .mainSlogan2 {
       position: absolute;
       top: 20rem;
-      left: 29rem;
+      left: 35rem;
       font-size: 60px;
       width: 500px;
     }
     .slogan {
       position: absolute;
-      top: 26rem;
-      left: 27rem;
+      top: 27rem;
+      left: 33rem;
       font-size: 22px;
     }
     .SloganImg {
@@ -110,13 +110,14 @@
       left: 72rem;
       width: 400px;
       height: auto;
+      transform: scaleX(-1);
       z-index: 2;
     }
 
     .btnSection {
       position: absolute;
-      top: 25.8rem;
-      left: 48rem;
+      top: 26.8rem;
+      left: 53rem;
       button {
         border: none;
         border-radius: 15px;
@@ -193,20 +194,27 @@
       }
     }
   }
+  .appear {
+    display: none;
+  }
 }
+
 @media screen and (max-width: 375px) {
-  .searchBarSection {
+  .CommunityHomePage {
+    .searchBarSection{
+    height: 170px;
+
+    }
+    .masonrySection{
+    padding: 0;
+      
+    }
     .disappear {
       display: none;
     }
-  }
-  .masonrySection {
-    // margin: 0 0 0 0;
-    // height: 500px;
-    // background: linear-gradient(168deg, #f7f7f7 0%, #f7f7f7 29%, #caeac7 29%, #caeac7 57%, #fff 57%, #fff 100%);
-  }
-  .CommunityHomePage_main {
-    // width: 100%;
 
+    .appear {
+      display: block;
+    }
   }
 }

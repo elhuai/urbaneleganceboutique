@@ -28,39 +28,40 @@ export default function HomePageMasonry(props) {
 
   return (
     <>
-      <div className="masonry">
-        {allPost.map((v, i) => {
-          return (
-            <div key={v.id} className="item">
-              <div>
-                <img src={`${BASE_URL}/post/${v.main_photo}`} alt="" />
-              </div>
-              <section className="">
-                <div className="allPostTitle">
-                  <div className="allPostMainTitle">{v.post_title}</div>
+      <div className='WebMasonry'>
+        <div className="masonry">
+          {allPost.map((v, i) => {
+            return (
+              <div key={v.id} className="item">
+                <div>
+                  <img src={`${BASE_URL}/post/${v.main_photo}`} alt="" />
                 </div>
-                <p className="d-flex align-items-center allPostLocation">
-                  <TiLocation />
-                  {v.coordinate}
-                </p>
-                <div className="bottomSection">
-                  <div className="userInfo">
-                    <div className="userPhoto">
-                      <img src={`${BASE_URL}${v.photo}`} alt="" />
+                <section className="">
+                  <div className="allPostTitle">
+                    <div className="allPostMainTitle">{v.post_title}</div>
+                  </div>
+                  <p className="d-flex align-items-center allPostLocation">
+                    <TiLocation />
+                    {v.coordinate}
+                  </p>
+                  <div className="bottomSection">
+                    <div className="userInfo">
+                      <div className="userPhoto">
+                        <img src={`${BASE_URL}${v.photo}`} alt="" />
+                      </div>
+                      <p className="userName">{v.social_name}</p>
                     </div>
-                    <p className="userName">{v.social_name}</p>
+                    <div>
+                      <BiLike />
+                      {v.likes}
+                    </div>
                   </div>
-                  <div>
-                    <BiLike />
-                    {v.likes}
-                  </div>
-                </div>
-              </section>
-            </div>
-          );
-        })}
+                </section>
+              </div>
+            );
+          })}
 
-        {/* <div className="item">
+          {/* <div className="item">
           <img src="https://picsum.photos/360/420?random=1" alt="" />
         </div>
         <div className="item">
@@ -114,6 +115,7 @@ export default function HomePageMasonry(props) {
         <div className="item">
           <img src="https://picsum.photos/360/460?random=1" alt="" />
         </div> */}
+        </div>
       </div>
     </>
   );

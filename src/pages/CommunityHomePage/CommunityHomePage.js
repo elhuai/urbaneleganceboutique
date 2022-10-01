@@ -8,6 +8,7 @@ import SearchBar from '../../components/SearchBar/SearchBar_community';
 import CommunityKOLSwiper from '../../components/Community/CommunitySwiper/CommunityKOLSwiper';
 import CommunitySwiperRight from '../../components/Community/CommunitySwiper/CommunityNormalPostSwiper';
 import HomePageMasonry from '../../components/Community/HomePageMasonry/HomePageMasonry';
+import RWDMasonry from '../../components/Community/HomePageMasonry/RWDMasonry';
 // import { BiLike } from 'react-icons/bi';
 import { IoHeartOutline } from 'react-icons/io5';
 import { RiEditFill } from 'react-icons/ri';
@@ -73,8 +74,11 @@ const CommunityHomePage = () => {
           {/* 
           <h2 className="comHomeKOL_title">最夯寵物網美</h2>
           <CommunitySwiperRight comHomePageCard={kolCard} /> */}
-          <div className="masonrySection">
+          <div className="masonrySection disappear">
             <HomePageMasonry />
+          </div>
+          <div className="masonrySection appear">
+            <RWDMasonry />
           </div>
         </div>
       </div>
