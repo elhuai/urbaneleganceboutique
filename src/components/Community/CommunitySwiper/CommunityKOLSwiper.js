@@ -169,7 +169,7 @@ export default function CommunityKOLSwiper(props) {
           autoplay={{
             delay: 2500,
             disableOnInteraction: true,
-          reverseDirection: true,
+            reverseDirection: true,
           }}
           onSlideChange={(e) => {}}
           onSwiper={(swiper) => {}}

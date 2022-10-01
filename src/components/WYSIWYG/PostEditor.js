@@ -12,8 +12,7 @@ import './PostEditor.scss';
 const MyCkeditor = (props) => {
   const UPLOAD_ENDPOINT = 'uploadImages';
   const IMG_URL = 'http://localhost:3007';
-
-  const { setGetData } = props;
+  const { postData, setGetData, handleContentChange } = props;
 
   const uploadAdapter = (loader) => {
     return {
@@ -47,7 +46,7 @@ const MyCkeditor = (props) => {
       return uploadAdapter(loader);
     };
   }
-
+  console.log('postData', postData);
   return (
     <div>
       <div className="Apps">
@@ -57,6 +56,7 @@ const MyCkeditor = (props) => {
             toolbar: [
               'heading',
               '|',
+              'FontColor',
               'bold',
               'italic',
               'underline',
@@ -69,17 +69,22 @@ const MyCkeditor = (props) => {
               'redo',
             ],
             extraPlugins: [uploadPlugin],
+            image: {
+              toolbar: ['toggleImageCaption', 'imageTextAlternative'],
+            },
           }}
+          data={postData[0]?.content ? postData[0]?.content : ''}
           editor={Editor}
           onReady={(editor) => {
             // You can store the "editor" and use when it is needed.,
             // console.log('Editor is ready to use!', editor);
           }}
-          onChange={(event, editor) => {
-            const data = editor.getData();
-            setGetData(data);
-            // console.log({ data });
-          }}
+          onChange={handleContentChange}
+          // onChange={(event, editor) => {
+          //   const data = editor.getData();
+          //   setGetData(data);
+          //   // console.log({ data });
+          // }}
           onBlur={(event, editor) => {
             // console.log('Blur.', editor);
           }}

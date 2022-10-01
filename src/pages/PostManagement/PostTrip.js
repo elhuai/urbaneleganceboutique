@@ -1,11 +1,15 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
+// import { API_URL } from '../../utils/config';
 import { API_URL } from '../../utils/config';
+
 import './PostTrip.scss';
 
 import PostLocateArticle from '../../components/Community/PostComponent/PostLocateArticle';
-import PostStateBar from '../../components/Community/PostComponent/PostStateBar';
+import PostStateBarTripPost from '../../components/Community/PostComponent/PostStateBarTripPost';
 import PostMap from '../../components/Community/PostComponent/PostMap';
+import PostStateBar from '../../components/Community/PostComponent/PostStateBar';
+import CommunityGooglemap from '../../components/Community/PostComponent/CommunityGooglemap';
 import CommentBar from '../../components/Community/PostComponent/CommentBar';
 import RecommandProduct from '../../components/Community/PostComponent/RecommandProduct';
 import TripOutline from '../../components/Community/PostComponent/TripOutline';
@@ -111,33 +115,20 @@ function PostTrip() {
       ) : (
         <div key={postTrip.id} className="d-flex justify-content-center">
           <div className="post_bar d-flex flex-column">
-            <PostStateBar post={postTrip} postID={postID}></PostStateBar>
+            <PostStateBarTripPost
+              post={postTrip}
+              postID={postID}
+            ></PostStateBarTripPost>
 
             <hr></hr>
             <div className="d-flex align-items-start">
               <PostLocateArticle post={postTrip}></PostLocateArticle>
               <TripOutline post={postTrip}></TripOutline>
             </div>
-            <PostMap></PostMap>
+            <CommunityGooglemap />
             <RecommandProduct></RecommandProduct>
             <hr></hr>
             <CommentBar comment={comment}></CommentBar>
-            <div className="leave_comment">
-              <p>我要留言</p>
-              <form className="d-flex flex-column align-items-center">
-                <textarea
-                  type="textarea"
-                  className="form-control comment_input"
-                  placeholder="有什麼想說的呢？"
-                  rows="4"
-                  maxLength="100"
-                />
-              </form>
-              <div className="d-flex justify-content-end my-3  post_edit_button ">
-                <button className="btn">清除</button>
-                <button className="btn">送出</button>
-              </div>
-            </div>
           </div>
         </div>
       )}

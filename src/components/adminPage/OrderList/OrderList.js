@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import fakeImg from '../../../images/home_travel_sort2.jpg';
+import { useNavigate } from 'react-router-dom';
 import { handleScoreCard } from '../../../utils/handler/card/handleInputCard';
 import { getUserOrder } from '../../../api/userApi';
 
@@ -9,12 +9,11 @@ const BASE_URL = process.env.REACT_APP_BASE_API_URL;
 
 const OrderList = () => {
   const [data, setData] = useState([]);
+  const navigate = useNavigate();
   useEffect(() => {
     getUserOrder(setData);
   }, []);
-  useEffect(() => {
-    console.log(data);
-  }, [data]);
+
   return data.length > 0
     ? data.map((value) => {
         const imgUrl = `${BASE_URL + value.photo_path}/${value.main_photo}`;
@@ -28,7 +27,9 @@ const OrderList = () => {
                 ) : (
                   <button
                     className="info score_btn"
-                    onClick={() => handleScoreCard(value.product_id)}
+                    onClick={() =>
+                      handleScoreCard(value.product_id, value.order_no, setData)
+                    }
                   >
                     給予評價
                   </button>
@@ -44,7 +45,14 @@ const OrderList = () => {
                   <div className="detail_title flex-fill">
                     <h4>{value.product_name}</h4>
                   </div>
-                  <div>支付方式：{value.pay}</div>
+                  <div className="detail_payment_type d-flex">
+                    <span className="flex-shrink-0">支付方式：</span>
+                    {value.pay === 'LinePay' ? (
+                      <div className="line_pay"></div>
+                    ) : (
+                      <div>信用卡</div>
+                    )}
+                  </div>
                   <div className="detail_num_wrap d-flex justify-content-between align-items-end">
                     <div className="quantity">
                       數量：{value.product_quantity} 張
@@ -57,12 +65,26 @@ const OrderList = () => {
               </div>
             </div>
             <div className="order_info_footer d-flex align-items-center gap-3">
-              <p className="flex-fill">訂單編號：{value.order_no}</p>
-              <div className="total_price">
-                總金額：
-                <span>
-                  TWD <span>{value.total}</span>
-                </span>
+              <p className="order_no flex-fill ">訂單編號：{value.order_no}</p>
+              {value.coupon_number ? (
+                <div className="discount d-flex">
+                  <div className="d-flex align-items-center">
+                    {100 - value.coupon_number} 折
+                  </div>
+                  <div className="d-flex align-items-center">
+                    {value.coupon_name}
+                  </div>
+                </div>
+              ) : (
+                ''
+              )}
+              <div className="total_price d-flex">
+                <div className="price">
+                  總金額：
+                  <span>
+                    TWD <span>{value.total}</span>
+                  </span>
+                </div>
               </div>
               <div className="button_wrap d-flex gap-2">
                 {value.comment_status ? (
@@ -70,12 +92,21 @@ const OrderList = () => {
                 ) : (
                   <button
                     className="info score_btn"
-                    onClick={() => handleScoreCard(value.product_id)}
+                    onClick={() =>
+                      handleScoreCard(value.product_id, value.order_no, setData)
+                    }
                   >
                     給予評價
                   </button>
                 )}
-                <button className="primary">再買一次</button>
+                <button
+                  className="primary"
+                  onClick={() =>
+                    navigate(`/ec-productdetail?id=${value.product_id}`)
+                  }
+                >
+                  再買一次
+                </button>
               </div>
             </div>
           </div>

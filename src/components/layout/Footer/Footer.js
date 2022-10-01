@@ -16,37 +16,46 @@ const Footer = () => {
         </div>
         <div className="footer_aside">
           <div className=" footer_Icon justify-content-end d-flex align-items-center">
-            <Link to="/" className="footer_Icon_fb  py-2 ">
+            <Link
+              to="https://www.facebook.com/"
+              className="footer_Icon_fb  py-2 "
+            >
               <FiFacebook />
             </Link>
-            <Link to="/" className="footer_Icon_ig  py-2 ">
+            <Link
+              to="https://www.instagram.com/"
+              className="footer_Icon_ig  py-2 "
+            >
               <AiOutlineInstagram />
             </Link>
-            <Link to="/" className="footer_Icon_yt  py-2 ">
+            <Link
+              to="https://www.youtube.com/"
+              className="footer_Icon_yt  py-2 "
+            >
               <RiYoutubeLine />
             </Link>
-            <Link to="/" className="footer_Icon_mail  py-2 me-0">
+            <Link
+              to="https://mail.google.com/mail/u/0/#inbox"
+              className="footer_Icon_mail  py-2 me-0"
+            >
               <MdOutlineEmail />
             </Link>
           </div>
           <div className="Footer_allproduct justify-content-end d-flex  ">
             <ul className="my-1 list-unstyled d-flex flex-nowrap nowrap ">
-              <Link to="/" className="footer_product">
-                住宿
-              </Link>
-              <Link to="/" className="footer_product">
-                景點&玩樂
-              </Link>
-              <Link to="/" className="footer_product">
-                餐廳
-              </Link>
-              <Link to="/" className="footer_product">
+              <Link to="/ec-commodityhomepage" className="footer_product">
                 寵物商品
               </Link>
-              <Link to="/" className="footer_product">
+              <Link to="/ec-restauranthomepage" className="footer_product">
+                餐廳
+              </Link>
+              <Link to="/ec-enjoyhomepage" className="footer_product">
+                景點&玩樂
+              </Link>
+              <Link to="/travel" className="footer_product">
                 我的行程
               </Link>
-              <Link to="/" className="footer_product">
+              <Link to="/communityHomePage" className="footer_product">
                 社群分享
               </Link>
             </ul>

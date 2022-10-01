@@ -13,7 +13,6 @@ function Recommand_product() {
   useEffect(() => {
     const fetchCard = async (index) => {
       const result = await axios.get(`${API_URL}/post/recommendbar`);
-      // console.log(result.data);
       setCard(result.data);
     };
     fetchCard();
@@ -22,7 +21,7 @@ function Recommand_product() {
 
   return (
     <>
-      <div className="my-2 recommand_product_title">
+      <div className="mt-2 recommand_product_title">
         <p>推薦行程/商品</p> {/* 關聯資料庫 */}
       </div>
       <div className="d-flex justify-content-between">

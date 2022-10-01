@@ -1,53 +1,56 @@
-import React from 'react';
+import React, { useRef } from 'react';
 import { useEffect, useState } from 'react';
 import { AiOutlineSearch } from 'react-icons/ai';
 import { useNavigate } from 'react-router-dom';
 import './_heroSearch.scss';
 
-export default function HeroSearch({ handleHeroActive, handleHeroAnimete }) {
-  const [active, setActive] = useState(0);
+export default function HeroSearch({ handleHeroActive, handleHeroAnimation }) {
+  const [active, setActive] = useState(2);
   const [keywords, setKeywords] = useState('');
   const navigate = useNavigate();
+  let count = useRef(0);
 
-  // TODO: active state 用戶目前點選的分館 tab , 依序是 0, 1, 2
   const handleKeywords = (e) => {
     let textValue = e.target.value.replace(/[, ]/g, '');
     setKeywords(textValue);
   };
-  console.log('active', active);
   // 館別
   const typeIdParams = active + 2;
 
-  // TODO: 跳轉
   const handleSearch = (e) => {
     e.preventDefault();
-    // if(keywords === '') return setKeywords('')
     navigate(`/ec-productfilter?typeId=${typeIdParams}&searchword=${keywords}`);
   };
 
   useEffect(() => {
-    handleHeroAnimete(true);
-    handleHeroActive(active);
-    console.log(active);
+    if (count.current > 0) {
+      handleHeroAnimation(true);
+      handleHeroActive(active);
+    }
+    count.current += 1;
   }, [active]);
+  function animationNum(active) {
+    switch (active) {
+      case 0:
+        return 2;
+      case 1:
+        return 1;
+      case 2:
+        return 0;
+      default:
+        break;
+    }
+  }
   return (
     <div className="hero_search bg-white overflow-hidden">
       <div className="tab_wrap d-flex position-relative">
-        {/* <button
-          className="tab tab-1 flex-fill py-2"
-          onClick={() => {
-            setActive(1);
-          }}
-        >
-          住宿
-        </button> */}
         <button
-          className="tab tab-2 flex-fill py-2 active"
+          className="tab tab-4 flex-fill py-2"
           onClick={() => {
-            setActive(0);
+            setActive(2);
           }}
         >
-          景點 & 玩樂
+          寵物商品
         </button>
         <button
           className="tab tab-3 flex-fill py-2"
@@ -58,16 +61,16 @@ export default function HeroSearch({ handleHeroActive, handleHeroAnimete }) {
           餐廳
         </button>
         <button
-          className="tab tab-4 flex-fill py-2"
+          className="tab tab-2 flex-fill py-2 active"
           onClick={() => {
-            setActive(2);
+            setActive(0);
           }}
         >
-          寵物商品
+          景點 & 玩樂
         </button>
         <div
           className={`underline_effect`}
-          style={{ transform: `translateX(${active}00%)` }}
+          style={{ transform: `translateX(${animationNum(active)}00%)` }}
         ></div>
       </div>
 

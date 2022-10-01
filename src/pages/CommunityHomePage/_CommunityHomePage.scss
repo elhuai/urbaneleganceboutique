@@ -1,6 +1,14 @@
 .CommunityHomePage {
   // max-width: 1280px;
-  background: linear-gradient(168deg, #ffffff 0%, #f7f7f7 29%, #fff7dc 40%, #fff0c0 40%, #fff 29%, #fff 0%);
+  background: linear-gradient(
+    168deg,
+    #ffffff 0%,
+    #f7f7f7 29%,
+    #fff7dc 40%,
+    #fff0c0 40%,
+    #fff 29%,
+    #fff 0%
+  );
 
   .CommunityHomePage_main {
     // display: flex;
@@ -12,6 +20,16 @@
     height: 600px;
     position: relative;
 
+    .searchBarSec{
+      
+        display: flex;
+        flex-direction: column;
+        max-width: 1280px;
+        width: 100%;
+        margin: 1rem auto;
+      
+      
+    }
     // &:before {
     //   content: '';
     //   position: absolute;
@@ -201,13 +219,11 @@
 
 @media screen and (max-width: 375px) {
   .CommunityHomePage {
-    .searchBarSection{
-    height: 170px;
-
+    .searchBarSection {
+      height: 170px;
     }
-    .masonrySection{
-    padding: 0;
-      
+    .masonrySection {
+      padding: 0;
     }
     .disappear {
       display: none;

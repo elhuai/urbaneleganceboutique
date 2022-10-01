@@ -16,13 +16,22 @@ import TripOutline from '../../components/Community/PostComponent/TripOutline';
 import PhotoReviewSwiper from '../../components/WYSIWYG/PhotoView';
 import { useParams, useLocation } from 'react-router-dom';
 import { handleSuccess } from '../../utils/handler/card/handleStatusCard';
+import { BE_URL } from '../../utils/config';
+import moment from 'moment';
+import { handleLoginCard } from '../../utils/handler/card/handleInputCard';
+// import { handleInfoComfirm } from '../../utils/handler/card/handleStatusCard';
+import GoogleMaps from '../../pages/Travel_map/Travel_map';
 
 // 驗證登入
-// import { useUserInfo } from '../../hooks/useUserInfo';
-
-// const { user, setUser } = useUserInfo();
+import { useUserInfo } from '../../hooks/useUserInfo';
 
 function PostTripEdit() {
+  const { user, setUser } = useUserInfo();
+
+  // window.onbeforeunload = function (e) {
+  //   var e = window.event || e;
+  //   handleInfoComfirm('編輯狀態 確定離開當前頁面嗎？');
+  // };
   //原始資料
   const [postTripEdit, setPostTripEdit] = useState([]);
   // 單一頁面ＩＤ
@@ -40,112 +49,129 @@ function PostTripEdit() {
   const [tripPostLocMark, setTripPostLocMark] = useState('');
   // 行程標籤
   const [tripPostTags, setTripPostTags] = useState('');
+  // 內文偵測
+  const [ifUpdate, setIfUpdate] = useState(false);
   // 景點內文
   const [tripPostLocContext, setTripPostLocContext] = useState([]);
-  // 景點照片
-  // const [tripPostLocPhoto, setTripPostLocPhoto] = useState([]);
-  // 景點停留時間
-  const [tripPostLocTime, setTripPostLocTime] = useState('');
-
+  // 景點停留備註
+  const [tripPostIntro, setTripPostIntro] = useState([]);
+  //貼文狀態
+  const [postState, setPostState] = useState('');
   //預覽照片 (封面照片)
   const [selectedCoverFile, setSelectedCoverFile] = useState('');
   const [preview, setPreview] = useState('');
-  const [coverFile, setCoverFile] = useState({});
-  const [postState, setPostState] = useState('');
+  const [coverFile, setCoverFile] = useState({ photo: '', postID: '' });
 
   // 貼文ＩＤ從網址字串抓
   const location = useLocation();
   const urlSearchParams = new URLSearchParams(location.search);
   const postID = urlSearchParams.get('postID');
+  const updateTime = moment(new Date()).format('YYYY-MM-DD hh:mm:ss');
 
-  //預計打回後端資料庫的物件 (新增)
+  //預計打回後端資料庫的物件 (文字編輯新增)
   // 打包整筆資料可編輯更新
   const updateObject = {
     travel_id: travelID,
     title: tripPostTitle,
     coordinate: tripPostLocMark,
     tags: tripPostTags,
+    updateTime: updateTime,
   };
 
-  //拆景點明細更新
+  //拆景點明細更新（需特別處理）
   const locateDetail = {
     id: locateID,
     locate_context: tripPostLocContext,
-    locate_duration: tripPostLocTime,
+    locate_intro: tripPostIntro,
   };
-
-  //拆分圖片更新 TODO:
-  const updataPhoto = {
-    main_photo: tripPostCover,
-    // locate_photo: tripPostLocPhoto, //how to retreive the data 改由component 傳
-  };
-
-  // 單獨取行程明細
   useEffect(() => {
-    const fetchPostTripEdit = async () => {
-      try {
-        const result = await axios.get(
-          `${API_URL}/community/tripPostDetail?postID=${postID}`
-        );
-        // 取得後端來的資料
-        console.log('result,data', result.data);
-        if (result) {
-          let daysFilter = [];
-          // 分組按照日期分組
-          let locateIDData = [];
-          let contextData = [];
-          let photoData = [];
-          let timeData = [];
+    console.log('=====家豪看這===簡介==', tripPostIntro);
+    console.log('=====家豪看這===內文==', tripPostLocContext);
+    console.log('看這ＩＤ＝＝＝＝＝＝', locateID);
+  }, [tripPostIntro, tripPostLocContext]);
 
-          for (const [index, item] of result.data.entries()) {
-            if (daysFilter.length === 0) {
-              daysFilter.push([item]);
-              locateIDData.push([item.id]);
-              contextData.push([item.locate_context]);
-              photoData.push([item.locate_photo]);
-              timeData.push([item.locate_duration]);
-            } else if (
-              daysFilter[daysFilter.length - 1][0].days !== item.days
-            ) {
-              daysFilter.push([item]);
-              locateIDData.push([item.id]);
-              contextData.push([item.locate_context]);
-              photoData.push([item.locate_photo]);
-              timeData.push([item.locate_duration]);
-            } else {
-              daysFilter[daysFilter.length - 1].push(item);
-              locateIDData[daysFilter.length - 1].push(item.id);
-              contextData[daysFilter.length - 1].push(item.locate_context);
-              photoData[daysFilter.length - 1].push(item.locate_photo);
-              timeData[daysFilter.length - 1].push(item.locate_duration);
+  // 單獨取行程明細get
+  useEffect(() => {
+    const fetchPostTripEdit = async (req, res) => {
+      // const user_id = req.session.user.id;
+      // console.log('user', user_id);
+      if (user.auth) {
+        try {
+          const result = await axios.get(
+            `${API_URL}/community/tripPostDetail?postID=${postID}`
+          );
+          // 取得後端來的資料
+          console.log('result,data', result.data);
+          if (result) {
+            let daysFilter = [];
+            // 分組按照日期分組
+            let locateIDData = [];
+            let contextData = [];
+            let photoData = [];
+            let introData = [];
+
+            for (const [index, item] of result.data.entries()) {
+              if (daysFilter.length === 0) {
+                daysFilter.push([item]);
+                locateIDData.push([item.id]);
+                contextData.push([item.locate_context]);
+                photoData.push([item.locate_photo]);
+                introData.push([item.locate_intro]);
+              } else if (
+                daysFilter[daysFilter.length - 1][0].days !== item.days
+              ) {
+                daysFilter.push([item]);
+                locateIDData.push([item.id]);
+                contextData.push([item.locate_context]);
+                photoData.push([item.locate_photo]);
+                introData.push([item.locate_intro]);
+              } else {
+                daysFilter[daysFilter.length - 1].push(item);
+                locateIDData[daysFilter.length - 1].push(item.id);
+                contextData[daysFilter.length - 1].push(item.locate_context);
+                photoData[daysFilter.length - 1].push(item.locate_photo);
+                introData[daysFilter.length - 1].push(item.locate_intro);
+              }
             }
+            console.log('dayfileter', daysFilter);
+            setPostTripEdit(daysFilter);
+            setLocateID(locateIDData);
+            setTripPostLocContext(contextData);
+            setTripPostIntro(introData);
+            setTravelID(result.data[0].travel_id);
+            setTripPostTitle(result.data[0].post_title);
+            setTripPostCover(
+              result.data[0].post_main_photo
+                ? BE_URL + '/' + result.data[0].post_main_photo
+                : CoverBackground
+            );
+            setTripPostLocMark(result.data[0].coordinate);
+            setTripPostTags(result.data[0].tags);
           }
-          // console.log('dayfileter', daysFilter);
-          setPostTripEdit(daysFilter);
-          setLocateID(locateIDData);
-          setTripPostLocContext(contextData);
-          setTripPostLocTime(timeData);
-          // setTravelID(result.data[0].travel_id);
-          setTripPostTitle(result.data[0].post_title);
-          setTripPostCover(result.data[0].main_photo);
-          setTripPostLocMark(result.data[0].coordinate);
-          setTripPostTags(result.data[0].tags);
+        } catch (err) {
+          console.log('setPostTripEdit ', err);
         }
-      } catch (err) {
-        console.log('setPostTripEdit ', err);
+      } else {
+        handleLoginCard({ isLogin: true }, setUser);
       }
     };
     fetchPostTripEdit();
   }, []);
 
-  //回傳資料庫 包含coverphoto
+  // 偵測改變
+
+  //編輯後回傳資料庫post
   //文字儲存
+
   const handleSubmit = async (e) => {
     e.preventDefault();
+    console.log('需要回傳的景點明細', locateDetail);
+    console.log('需要回傳的貼文明細', updateObject);
     let responseData = await axios.post(
       `${API_URL}/community/tripPostDetailEdit`,
       { updateObject, locateDetail }
     );
+
     console.log('回傳編輯資料', responseData);
     console.log('發布狀態', postState);
     handleSuccess('貼文儲存成功', '/admin/community');
@@ -153,14 +179,14 @@ function PostTripEdit() {
   //TODO:清空
   // const resetForm = () => {
   //   setTripPostLocContext('');
-  //   // setTripPostLocPhoto('');
+  //   // setTripPostLojujucPhoto('');
   //   setTripPostLocTime('');
   //   setTripPostTitle('');
   //   setTripPostLocMark('');
   //   setTripPostTags('');
   // };
 
-  //TODO: 發布
+  //TODO: 發布改變貼文狀態(發布貼文)
   const handleRelease = async (e) => {
     e.preventDefault();
     setPostState(e.target.value);
@@ -170,87 +196,50 @@ function PostTripEdit() {
       postID,
       postState,
     });
-    //TODO: 如何點擊按鈕改變狀態同時打api回去
     console.log('貼文發布成功', res);
     handleSuccess('貼文發布成功', `/postTrip?postID=${postID}`);
   };
 
-  //預覽封面照片
+  //TODO:轉換成字串存放在對應陣列
+
+  //預覽 上傳封面照片 我要哭了
   useEffect(() => {
     if (!selectedCoverFile) {
       setPreview('');
       return;
     }
-    const objectUrl = URL.createObjectURL(selectedCoverFile);
-    // console.log(objectUrl);
-    setPreview(objectUrl);
-    // console.log('預覽照片url網址', preview);
-
-    return () => URL.revokeObjectURL(objectUrl);
-  }, [selectedCoverFile]);
-
-  // 上傳封面照片
-  // function inputhandleChange(e) {}
-
-  const changeCoverHandler = async (e) => {
-    e.preventDefault();
-    let newCover = { ...coverFile };
-    newCover[e.target.name] = e.target.value;
-    setCoverFile(newCover);
-    console.log('newcover', newCover);
-    console.log('coverfile', coverFile);
-
-    const file = e.target.files[0];
-    console.log('file', file);
-    console.log('預覽照片url網址 / id', preview, postID);
-    try {
+    if (coverFile) {
+      // async function changeCoverHandler(e) {
       let formData = new FormData();
-      console.log('ALLllllllcover', coverFile);
-      formData.append('coverPhoto', coverFile.coverPhoto);
+      // setCoverFile({ ...coverFile, photo: e.name.value });
+      console.log('coverFile!', coverFile);
+      console.log('該貼文ＩＤ', postID);
+      formData.append('postID', coverFile.postID);
+      formData.append('photo', coverFile.photo);
 
-      let response = await axios.post(
-        `${API_URL}/community/tripPostCoverUpload`,
-        { preview, postID, coverFile }
-      );
-      console.log('封面照片新增成功', response);
-      console.log('formData', formData);
-    } catch (err) {
-      console.log('上傳錯誤', err);
+      //TODO:為何觸發事件無法即時設定useState?
+      try {
+        console.log('formData', formData);
+        let response = axios.post(
+          `${API_URL}/community/tripPostCoverUpload`,
+          formData
+        );
+        console.log('封面照片新增成功', response);
+      } catch (e) {
+        console.log('錯誤', e);
+      }
+      // }
     }
 
-    if (file) {
-      setTripPostCover(e.target.value);
-      setSelectedCoverFile(file);
-    } else {
-      setTripPostCover(e.target.value);
-      setSelectedCoverFile(null);
-    }
-  };
-  // console.log('整理好的資料', postTripEdit);
-  // const [selectedPhotoFile, setSelectedPhotoFile] = useState('');
-  // const changePhotoHandler = (e) => {
-  //   const files = e.target.files;
-  //   console.log(files);
-  //   const photoGroup = [];
-  //   for (let i = 0; i < files.length; i++) {
-  //     // console.log(files[i]['name']);
-  //     photoGroup.push(files[i]['name']);
-  //   }
-  //   console.log('Newphotogroup', photoGroup);
-  //   let a = photoGroup.toString();
-  //   console.log(a);
+    const objectUrl = URL.createObjectURL(selectedCoverFile);
+    console.log(objectUrl);
+    setPreview(objectUrl);
 
-  //TODO:轉換成字串存放在對應陣列
+    // 當元件unmounted時清除記憶體
+    return () => URL.revokeObjectURL(objectUrl);
+  }, [coverFile, postID, selectedCoverFile]);
 
-  // if (files) {
-  //   // setTripPostLocPhoto(photoGroup);
-  //   setSelectedPhotoFile(files);
-  // } else {
-  //   // setTripPostLocPhoto(photoGroup);
-  //   setSelectedPhotoFile(null);
-  // }
-
-  // reset the form input value
+  //預覽 上傳單點照片 ＱＱ
 
   return (
     <>
@@ -279,21 +268,33 @@ function PostTripEdit() {
               </div>
             </div>
             <div className="post_cover_photo d-flex flex-column justify-content-end align-items-end">
-              <img src={preview ? preview : CoverBackground} alt=""></img>
+              <img
+                src={preview ? preview : tripPostCover}
+                style={{ objectFit: 'contain' }}
+                alt=""
+              ></img>
               <label className="cover_photo_upload d-flex flex-column justify-content-center align-items-center">
                 <MdPhotoSizeSelectActual className="cover_photo_upload_icon"></MdPhotoSizeSelectActual>
                 <div>封面照片上傳</div>
                 <input
+                  id="coverPhoto"
                   name="coverPhoto"
                   type="file"
                   className="form-control mt-2"
                   accept="image/*"
-                  onChange={changeCoverHandler}
+                  onChange={(e) => {
+                    setCoverFile({ photo: e.target.files[0], postID: postID });
+                    setSelectedCoverFile(e.target.files[0]);
+                    // console.log('按鈕', coverFile);
+                  }}
                   hidden
                 />
               </label>
             </div>
-            <label className="mt-2">
+            <label
+              className="mt-2 post_detailBar"
+              style={{ objectFit: 'cover' }}
+            >
               <MdTitle className="mb-1 me-1"></MdTitle>貼文標題
             </label>
             <input
@@ -308,7 +309,7 @@ function PostTripEdit() {
             />
             <div className="d-flex row">
               <div className="col-6">
-                <label className="mt-3">
+                <label className="mt-3 post_detailBar">
                   <TiLocation className="mb-1 me-1"></TiLocation>地點
                 </label>
                 <input
@@ -322,7 +323,7 @@ function PostTripEdit() {
                 ></input>
               </div>
               <div className="col-6">
-                <label className="mt-3">
+                <label className="mt-3 post_detailBar">
                   <AiFillTag className="mb-1 me-1"></AiFillTag>標籤
                   (請輸入＃區分標籤)
                 </label>
@@ -354,55 +355,61 @@ function PostTripEdit() {
                               <li
                                 className="trip_location mt-3"
                                 id={`day${data.days}locate${i}`}
-                                key={data.i}
+                                key={i}
                               >
-                                <div className="d-flex justify-content-between align-items-center">
-                                  <div className="trip_location_title d-flex align-items-center">
-                                    <div className="d-flex my-1">
-                                      <div className="post_location_name mb-1 mx-1">
+                                <div className="trip_location_title d-flex align-items-start row ">
+                                  <div className="d-flex my-1 flex-column col-7">
+                                    <div className="d-flex">
+                                      <div className="post_location_name mt-2 mx-1">
                                         <TiLocation className="mb-1 me-2"></TiLocation>{' '}
                                         {data.locate_name}
                                       </div>
                                       <input
                                         type="text"
-                                        className="post_location_duration mx-1 mt-1 small"
-                                        defaultValue={data.locate_duration}
+                                        className="input_bar mx-2 mb-1 small"
+                                        placeholder="請輸入行程簡介"
+                                        defaultValue={data.locate_intro}
                                         onChange={(e) => {
-                                          setTripPostLocTime((time) => {
-                                            let newTime = JSON.parse(
-                                              JSON.stringify([...time])
+                                          setTripPostIntro((intro) => {
+                                            let newIntro = JSON.parse(
+                                              JSON.stringify([...intro])
                                             );
-                                            newTime[index][i] = e.target.value;
-                                            return newTime;
+                                            setIfUpdate(true);
+                                            newIntro[index][i] = e.target.value;
+                                            return newIntro;
                                           });
                                         }}
-                                        //TODO:樣式太醜
+                                        //TODO:樣式太醜w
                                       ></input>
                                     </div>
+                                    <textarea
+                                      type="textarea"
+                                      className="form-control"
+                                      rows="14"
+                                      maxLength="200"
+                                      placeholder="為旅途留下回憶"
+                                      defaultValue={data.locate_context}
+                                      onChange={(e) => {
+                                        setTripPostLocContext((context) => {
+                                          let newState = JSON.parse(
+                                            JSON.stringify([...context])
+                                          );
+                                          setIfUpdate(true);
+                                          newState[index][i] = e.target.value;
+                                          return newState;
+                                        });
+                                      }}
+                                    ></textarea>
+                                  </div>
+
+                                  <div className="col-5">
+                                    <PhotoReviewSwiper
+                                      list={data}
+                                    ></PhotoReviewSwiper>
                                   </div>
                                 </div>
-                                <textarea
-                                  type="textarea"
-                                  className="form-control"
-                                  rows="4"
-                                  maxLength="100"
-                                  placeholder="為旅途留下回憶"
-                                  defaultValue={data.locate_context}
-                                  onChange={(e) => {
-                                    setTripPostLocContext((context) => {
-                                      let newState = JSON.parse(
-                                        JSON.stringify([...context])
-                                      );
-                                      newState[index][i] = e.target.value;
-                                      return newState;
-                                    });
-                                  }}
-                                ></textarea>
-
-                                <PhotoReviewSwiper
-                                  list={data}
-                                ></PhotoReviewSwiper>
                               </li>
+                              <hr></hr>
                             </>
                           );
                         })}
@@ -422,7 +429,7 @@ function PostTripEdit() {
                 儲存
               </button>
             </div>
-            <PostMap></PostMap>
+            <PostMap>123</PostMap>
           </form>
         </div>
       )}

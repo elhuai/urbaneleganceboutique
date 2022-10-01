@@ -1,6 +1,6 @@
-$main-color: #FFC715;
-$second-color: #FEEFC3;
-$hightLight-color: #EF7A70;
+$main-color: #ffc715;
+$second-color: #feefc3;
+$hightLight-color: #ef7a70;
 
 .home_main {
   .news_list_item {
@@ -50,11 +50,12 @@ $hightLight-color: #EF7A70;
         left: 0;
         width: 24px;
         height: 24px;
-        background: url(../../../images/travel_dog_paws.svg) no-repeat center left / 20px;
+        background: url(../../../images/travel_dog_paws.svg) no-repeat center
+          left / 20px;
       }
     }
     .old {
-      color: #D1D1D1;
+      color: #d1d1d1;
       text-decoration: line-through;
       font-size: 14px;
     }
@@ -134,14 +135,15 @@ $hightLight-color: #EF7A70;
 @media screen and (max-width: 540px) {
   .home_main {
     .news_list_item {
-      transform: scale(.95);
+      transform: scale(0.95);
       &:hover {
-        transform: translateX(0) scale(.95);
+        transform: translateX(0) scale(0.95);
       }
       > .obj-fit {
         width: 100%;
         height: 50vw;
         border-radius: 8px 8px 0 0;
+        overflow: hidden;
       }
       .title {
         font-size: 16px;
@@ -164,12 +166,12 @@ $hightLight-color: #EF7A70;
         font-size: 18px;
       }
       .news_list_card {
-        background-color: #FFF;
+        background-color: #fff;
         width: calc(100% - 12px);
         height: calc(100% - 24px);
         border-radius: 8px;
         overflow: hidden;
-        box-shadow: 4px 4px 6px rgba(0, 0, 0, .08);
+        box-shadow: 4px 4px 6px rgba(0, 0, 0, 0.08);
         &_title {
           h5 {
             display: -webkit-box;
@@ -177,7 +179,7 @@ $hightLight-color: #EF7A70;
             line-height: 1.35;
             overflow: hidden;
             text-overflow: ellipsis;
-            -webkit-line-clamp: 2; 
+            -webkit-line-clamp: 2;
             -webkit-box-orient: vertical;
             white-space: normal;
           }
@@ -195,7 +197,8 @@ $hightLight-color: #EF7A70;
             left: 0;
             width: 24px;
             height: 24px;
-            background: url(../../../images/travel_dog_paws.svg) no-repeat center left / 20px;
+            background: url(../../../images/travel_dog_paws.svg) no-repeat
+              center left / 20px;
           }
         }
       }

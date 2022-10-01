@@ -11,6 +11,9 @@ import { handleSuccess } from '../../../utils/handler/card/handleStatusCard';
 import { useUserInfo } from '../../../hooks/useUserInfo';
 import { handleLoginCard } from '../../../utils/handler/card/handleInputCard';
 
+import StreetViewYT from '../../../components/EC/EC_productDetail/StreetView_YT';
+import StreetViewGE from '../../../components/EC/EC_productDetail/StreetView_GE';
+import StreetViewST from '../../../components/EC/EC_productDetail/StreetView_ST';
 // 商品照片
 import ItemImage from '../../../components/EC/EC_productDetail/Image';
 // 兌換方式照片
@@ -37,6 +40,7 @@ const ProductDetail = () => {
   const productId = urlSearchParams.get('id');
   // const typeId = urlSearchParams.get('typeid');
   // console.log('urlSearchParams', urlSearchParams);
+  const BASE_URL = process.env.REACT_APP_BASE_API_URL;
 
   useEffect(() => {
     // 抓商品細節資料
@@ -61,8 +65,12 @@ const ProductDetail = () => {
       setRecommend(recommend.data);
     };
     fetchProductData();
-  }, []);
+  }, [productId]);
   console.log('productData', productData);
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
 
   // = 加入購物車
   const { user, setUser } = useUserInfo();
@@ -85,6 +93,9 @@ const ProductDetail = () => {
       handleLoginCard({ isLogin: true }, setUser);
     }
   };
+
+  // =地圖切換
+  const handleChage = () => {};
 
   return (
     <>
@@ -141,7 +152,7 @@ const ProductDetail = () => {
                           <div className="addSubSection d-flex align-items-center mb-0">
                             <img
                               className="addSubSection_img"
-                              src={`http://localhost:3007${data.photo_path}/${data.main_photo}`}
+                              src={`${BASE_URL}${data.photo_path}/${data.main_photo}`}
                               alt=""
                             />
                             <p className="addSubSection_name fw-bolder mb-0 ms-2">
@@ -223,6 +234,41 @@ const ProductDetail = () => {
                   />
                   <img src="" alt="" />
                 </div>
+                {/* {Number(productId) === 518 ? ( */}
+                {Number(productId) === 558 ? (
+                  <div id="toKnow" className="description">
+                    <div className="detail_map d-flex flex-row mb-2">
+                      <h4>地圖</h4>
+                      {/* TODO:同步更新購物車 */}
+                      <button
+                        className="detail_map_btn ms-3"
+                        onClick={() => {
+                          handleChage();
+                          // console.log(e.target.value);
+                        }}
+                      >
+                        街景
+                      </button>
+
+                      <button
+                        className="detail_map_btn ms-3"
+                        onClick={() => {
+                          handleChage();
+                          // console.log(e.target.value);
+                        }}
+                      >
+                        環景影片
+                      </button>
+                    </div>
+                    {/* 雨信雨信雨信雨信雨信雨信雨信雨信============================= */}
+                    <StreetViewGE />
+                    {/* <StreetViewST /> */}
+                    {/* <StreetViewYT /> */}
+                  </div>
+                ) : (
+                  ''
+                )}
+
                 <div id="toKnow" className="description">
                   <h4>購買須知</h4>
                   <p>

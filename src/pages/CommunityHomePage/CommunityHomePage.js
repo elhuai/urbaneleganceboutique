@@ -13,31 +13,29 @@ import RWDMasonry from '../../components/Community/HomePageMasonry/RWDMasonry';
 import { IoHeartOutline } from 'react-icons/io5';
 import { RiEditFill } from 'react-icons/ri';
 import { MdOutlineClose } from 'react-icons/md';
+import { useLocation } from 'react-router-dom';
 
 // import CommunitySwiperRight from '../../components/Community/CommunitySwiper/CommunitySwiperRight';
 
 import { API_URL } from '../../utils/config';
 
 const CommunityHomePage = () => {
-  const [showCFBox, setShowCFBox] = useState(0);
+  //  搜尋用
+  const [search, setSearch] = useState('');
+  const [keywordSearch, setKeywordSearch] = useState('');
 
-  const ConfirmHandle = (e) => {
-    setShowCFBox(e);
-    console.log(showCFBox);
-  };
-
+  //  網紅、熱門資料用
   const [kolCard, setKolCard] = useState([]);
   const [hotCard, setHotCard] = useState([]);
 
   // 寵物網紅貼文
-  // useEffect(() => {
-  //   const fetchPost = async () => {
-  //     const result = await axios.get(`${API_URL}/communityHomePage/kolPost`);
-  //     setKolCard(result.data);
-  //     console.log(result.data);
-  //   };
-  //   fetchPost();
-  // }, []);
+  useEffect(() => {
+    const fetchPost = async () => {
+      const result = await axios.get(`${API_URL}/communityHomePage/kolPost`);
+      setKolCard(result.data);
+    };
+    fetchPost();
+  }, []);
 
   // 熱門貼文
   useEffect(() => {
@@ -52,10 +50,14 @@ const CommunityHomePage = () => {
     <>
       <div className="CommunityHomePage">
         <div className="searchBarSection">
-          <SearchBar searchBar_title="是不是在找我呢" searchBar_placeholder="我無處安放的可愛呀" />
+          <div className='searchBarSec'>
+            <SearchBar searchBar_title="是不是在找我呢" searchBar_placeholder="我無處安放的可愛呀" />
+          </div>
           <p className="mainSlogan1 disappear">Sharing the life,</p>
           <p className="mainSlogan2 disappear">Follow the paws!</p>
-          <p className="slogan disappear" disappear>也想分享你跟毛孩的大小事嗎？</p>
+          <p className="slogan disappear" disappear>
+            也想分享你跟毛孩的大小事嗎？
+          </p>
           <img className="SloganImg disappear" src={dog3} alt="" />
           <div className="BGCircle1 disappear"></div>
           <div className="BGCircle2 disappear"></div>

@@ -6,6 +6,8 @@ import SocialNameEditCard from '../../../components/cards/SocialNameEditCard';
 import VoucherExchangeCard from '../../../components/cards/VoucherExchangeCard';
 import PasswordEditCard from '../../../components/cards/PasswordEditCard';
 import ScoreCard from '../../../components/cards/ScoreCard';
+import ForgetPwdCard from '../../../components/cards/ForgetPwdCard';
+import ResetPwdCard from '../../../components/cards/ResetPwdCard';
 import { handleSuccess, handleFailed } from './handleStatusCard';
 
 export const handleLoginCard = (config, setUser) => {
@@ -99,7 +101,7 @@ export const handlePasswordEditCard = () => {
   }
 };
 
-export const handleScoreCard = () => {
+export const handleScoreCard = (product_id, order_no, setData) => {
   inputCardFire();
   function inputCardFire() {
     const inputCard = withReactContent(Swal);
@@ -109,6 +111,9 @@ export const handleScoreCard = () => {
           <ScoreCard
             confirm={inputCard.clickConfirm}
             cancel={inputCard.clickCancel}
+            product_id={product_id}
+            order_no={order_no}
+            setData={setData}
           />
         ),
         showConfirmButton: false,
@@ -118,5 +123,45 @@ export const handleScoreCard = () => {
           handleSuccess('店家已收到你提供的意見');
         }
       });
+  }
+};
+
+export const handleForgetPwdCard = () => {
+  inputCardFire();
+  function inputCardFire() {
+    const inputCard = withReactContent(Swal);
+    inputCard
+      .fire({
+        html: (
+          <ForgetPwdCard
+            confirm={inputCard.clickConfirm}
+            cancel={inputCard.clickCancel}
+          />
+        ),
+        showConfirmButton: false,
+      })
+      .then((result) => {});
+  }
+};
+
+export const handleResetPwdCard = (code, setUser, navigate) => {
+  inputCardFire();
+  function inputCardFire() {
+    console.log('handle', code);
+    const inputCard = withReactContent(Swal);
+    inputCard
+      .fire({
+        html: (
+          <ResetPwdCard
+            confirm={inputCard.clickConfirm}
+            cancel={inputCard.clickCancel}
+            code={code}
+            setUser={setUser}
+            navigate={navigate}
+          />
+        ),
+        showConfirmButton: false,
+      })
+      .then((result) => {});
   }
 };

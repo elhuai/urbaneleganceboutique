@@ -1,70 +1,84 @@
 import React from 'react';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Link } from 'react-router-dom';
+import travel_HsinchuI from '../../images/travels/travel_HsinchuI.jpg';
+import travel_Tainan from '../../images/travels/travel_Tainan1.webp';
+import travel_TainanA from '../../images/travels/travel_Tainan2.webp';
+
+import travel_Chiayi from '../../images/travels/travel_Chiayi1.jpeg';
+import travle_Yilan from '../../images/travels/travle_Yilan.webp';
+import travle_YilanA from '../../images/travels/travel_Yilan1.webp';
+import travle_Taipei from '../../images/travels/TRAVEL_TAIPEI.webp';
+import { Autoplay } from 'swiper';
 
 const gotoTrip = [
   {
     id: 1,
-    name: '桃園一日遊',
+    name: '桃園近郊三天兩夜度假',
     start_time: 20220823,
     end_time: 20220830,
-    img: 'https://picsum.photos/200/300?random11',
+    img: travel_HsinchuI,
   },
 
   {
     id: 2,
-    name: '花蓮二日遊',
+    name: '台南西區吃不完',
     start_time: 20220820,
     end_time: 20220825,
-    img: 'https://picsum.photos/200/300?random6',
+    img: travel_Tainan,
   },
   {
     id: 3,
-    name: '南投頭七遊',
+    name: '嘉義-阿里山眠月線',
     start_time: 20220820,
     end_time: 20220825,
-    img: 'https://picsum.photos/200/300?random5',
+    img: travel_Chiayi,
   },
   {
     id: 4,
-    name: '雲林三日遊',
+    name: '宜蘭龜山島秘境牛奶湖',
     start_time: 20220820,
     end_time: 20220825,
-    img: 'https://picsum.photos/200/300?random9',
+    img: travle_Yilan,
   },
   {
     id: 5,
-    name: '屏東三日遊',
+    name: '新北賞螢秘境兩日遊',
     start_time: 20220820,
     end_time: 20220825,
-    img: 'https://picsum.photos/200/300?random29',
+    img: travle_Taipei,
   },
   {
     id: 6,
-    name: '北京三日遊',
+    name: '台南-台版亞馬遜河',
     start_time: 20220820,
     end_time: 20220825,
-    img: 'https://picsum.photos/200/300?random49',
+    img: travel_TainanA,
   },
   {
     id: 7,
-    name: '東京三日遊',
+    name: '宜蘭-斑比山丘遊',
     start_time: 20220820,
     end_time: 20220825,
-    img: 'https://picsum.photos/200/300?random90',
+    img: travle_YilanA,
   },
 ];
 const TravelSecondSwiper = () => {
   return (
     <>
       <Swiper
-        className=""
-        spaceBetween={20}
-        height={500}
-        // autoHeight={true}
-        slidesPerView={'auto'}
-        onSlideChange={() => console.log()}
-        onSwiper={(swiper) => console.log()}
+        className="travel_goplay"
+        loop={true}
+        freeMode={true}
+        spaceBetween={30}
+        slidesPerView={3}
+        modules={[Autoplay]}
+        autoplay={{
+          delay: 2500,
+          disableOnInteraction: false,
+        }}
+        onSlideChange={(e) => {}}
+        onSwiper={(swiper) => {}}
       >
         <ul className="travel_goPlay_ul d-flex text-dark">
           {gotoTrip.map((data) => {

@@ -1,13 +1,17 @@
 import axios from 'axios';
 import { BACKEND_OPEN_URL } from '../utils/config';
 import { handleQRcodeCard } from '../utils/handler/card/handleQRcodeCard';
-import { handleFailed } from '../utils/handler/card/handleStatusCard';
+import {
+  handleFailed,
+  handleInfo,
+} from '../utils/handler/card/handleStatusCard';
 import { API_URL } from '../utils/config';
 
 import {
   handleSuccess,
   handleWarning,
 } from '../utils/handler/card/handleStatusCard';
+import { handleResetPwdCard } from '../utils/handler/card/handleInputCard';
 
 const BASE_URL = API_URL + '/user';
 
@@ -113,6 +117,62 @@ export const getUserProfile = async (setRowData) => {
 export const getUserOrder = async (setData) => {
   try {
     let { data } = await axios.get(`${API_URL}/user/order`, credentialsConfig);
+    setData(data.data);
+  } catch (error) {
+    console.error(error);
+  }
+};
+
+export const postScore = async (product_id, scoreData, setData, confirm) => {
+  try {
+    let { data } = await axios.post(
+      `${API_URL}/user/score/${product_id}`,
+      scoreData,
+      credentialsConfig
+    );
+    setData(data.updateData);
+    confirm();
+  } catch (error) {
+    console.error(error);
+    handleFailed('輸入商品評論失敗');
+  }
+};
+
+export const resetPassword = async (data, setUser, navigate) => {
+  try {
+    console.log('api', data);
+    let result = await axios.post(
+      `${API_URL}/user/reset/password`,
+      data,
+      credentialsConfig
+    );
+    if (result.data.action === 'mail')
+      return handleSuccess(
+        '密碼重設信件已寄出',
+        false,
+        `請至 ${data.email} 收取信件`
+      );
+    // if (result.data.action === 'validation') {
+    //   return navigate(`/?valid_code=${result.data.newCode}&validation=true`);
+    // }
+    if (result.data.action === 'reset') {
+      navigate('/');
+      setUser((user) => ({ ...user, data: [], auth: false }));
+      return handleSuccess('密碼重設成功', false, '請使用新密碼登入');
+    }
+  } catch (error) {
+    console.error(error);
+    navigate('/');
+    handleFailed(error.response.data.message);
+  }
+};
+
+export const getUserCollection = async (setData) => {
+  try {
+    let { data } = await axios.get(
+      `${API_URL}/user/collection`,
+      credentialsConfig
+    );
     setData(data.data);
   } catch (error) {
     console.error(error);

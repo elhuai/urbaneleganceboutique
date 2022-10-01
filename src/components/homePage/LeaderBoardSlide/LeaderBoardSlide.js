@@ -4,97 +4,77 @@ import { Pagination, Autoplay } from 'swiper';
 import { Link, useNavigate } from 'react-router-dom';
 import './_leaderBoardSlide.scss';
 
-const fakeData = [
+const BASE_URL = process.env.REACT_APP_BASE_API_URL;
+const Data = [
   {
-    id: 999,
+    id: 531,
     rank: 1,
-    category: '住宿',
-    title: '黃刀鎮秋季極光五天四夜 \u000A 卡梅倫瀑布＆狗狗拉車',
-    img: 'https://picsum.photos/id/20/400/600',
+    category: '景點',
+    title: '【2022合歡山杜鵑花季】 \u000A 南投｜合歡山北峰& 武嶺 1日遊',
+    img: `${BASE_URL}/product/fun/13/travel_13_0.webp`,
   },
   {
-    id: 999,
+    id: 526,
     rank: 2,
-    category: '住宿',
-    title: '黃刀鎮秋季極光五天四夜 \u000A 卡梅倫瀑布＆狗狗拉車',
-    img: 'https://picsum.photos/id/22/400/600',
+    category: '景點',
+    title: '漫波星辰沙灘車 \u000A 天空之鏡｜花蓮必玩沙灘車',
+    img: `${BASE_URL}/product/fun/8/travel_08_0.webp`,
   },
   {
-    id: 999,
+    id: 532,
     rank: 3,
-    category: '住宿',
-    title: '黃刀鎮秋季極光五天四夜 \u000A 卡梅倫瀑布＆狗狗拉車',
-    img: 'https://picsum.photos/id/23/400/600',
+    category: '景點',
+    title: '花蓮秘境溯溪一日遊',
+    img: `${BASE_URL}/product/fun/14/travel_14_0.webp`,
   },
   {
-    id: 999,
+    id: 543,
     rank: 1,
     category: '餐廳',
-    title: '黃刀鎮秋季極光五天四夜 \u000A 卡梅倫瀑布＆狗狗拉車',
-    img: 'https://picsum.photos/id/24/400/600',
+    title: '柚式餐酒館 家庭聚餐超划算 \u000A  優惠券',
+    img: `${BASE_URL}/product/restaurant/5/restaurant_05_01.webp`,
   },
   {
-    id: 999,
+    id: 558,
     rank: 2,
     category: '餐廳',
-    title: '黃刀鎮秋季極光五天四夜 \u000A 卡梅倫瀑布＆狗狗拉車',
-    img: 'https://picsum.photos/id/25/400/600',
+    title: '白圍牆景觀咖啡廳\u000A 下午茶餐券',
+    img: `${BASE_URL}/product/restaurant/20/restaurant_20_01.jpg`,
   },
   {
-    id: 999,
+    id: 542,
     rank: 3,
     category: '餐廳',
-    title: '黃刀鎮秋季極光五天四夜 \u000A 卡梅倫瀑布＆狗狗拉車',
-    img: 'https://picsum.photos/id/26/400/600',
+    title: '川御燒肉專門店 \u000A 優惠套券',
+    img: `${BASE_URL}/product/restaurant/4/restaurant_04_01.webp`,
   },
   {
-    id: 999,
+    id: 2682,
     rank: 1,
     category: '商品',
-    title: '黃刀鎮秋季極光五天四夜 \u000A 卡梅倫瀑布＆狗狗拉車',
-    img: 'https://picsum.photos/id/27/400/600',
+    title: 'PureLUXE 循味 天然無穀犬糧-室內老犬.低卡成犬4LB ',
+    img: `${BASE_URL}/product/pet/8/21/main_photo_10_21.jpeg`,
   },
   {
-    id: 999,
+    id: 2321,
     rank: 2,
     category: '商品',
-    title: '黃刀鎮秋季極光五天四夜 \u000A 卡梅倫瀑布＆狗狗拉車',
-    img: 'https://picsum.photos/id/28/400/600',
+    title: '【特價220元】\u000A 甘淨 超低粉塵凝結貓砂6KG',
+    img: `${BASE_URL}/product/pet/1/11/main_photo_03_11.jpeg`,
   },
   {
-    id: 999,
+    id: 2721,
     rank: 3,
     category: '商品',
-    title: '黃刀鎮秋季極光五天四夜 \u000A 卡梅倫瀑布＆狗狗拉車',
-    img: 'https://picsum.photos/id/29/400/600',
-  },
-  {
-    id: 999,
-    rank: 1,
-    category: '玩樂',
-    title: '黃刀鎮秋季極光五天四夜 \u000A 卡梅倫瀑布＆狗狗拉車',
-    img: 'https://picsum.photos/id/30/400/600',
-  },
-  {
-    id: 999,
-    rank: 2,
-    category: '玩樂',
-    title: '黃刀鎮秋季極光五天四夜 \u000A 卡梅倫瀑布＆狗狗拉車',
-    img: 'https://picsum.photos/id/31/400/600',
-  },
-  {
-    id: 999,
-    rank: 3,
-    category: '玩樂',
-    title: '黃刀鎮秋季極光五天四夜 \u000A 卡梅倫瀑布＆狗狗拉車',
-    img: 'https://picsum.photos/id/32/400/600',
+    title: 'Menforsan 愛莎蓉 \u000A 犬用抗壓鎮定滴劑2管',
+    img: `${BASE_URL}/product/pet/9/0/main_photo_11_0.jpeg`,
   },
 ];
 
 export default function LeaderBoardSlide() {
   const navigate = useNavigate();
   const [screen, setScreen] = useState(0);
-  const [data, setData] = useState(fakeData);
+  const [data, setData] = useState(Data);
 
   const handleSlideClass = (e) => {
     if (screen === 1) {
@@ -230,7 +210,7 @@ export default function LeaderBoardSlide() {
                               to={`/ec-productdetail?id=${data.id}`}
                               className="button fw-bold"
                             >
-                              出遊 GoGo
+                              查看更多
                             </Link>
                           </div>
                         </div>
