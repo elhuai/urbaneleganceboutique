@@ -20,6 +20,7 @@ import { BE_URL } from '../../utils/config';
 import moment from 'moment';
 import { handleLoginCard } from '../../utils/handler/card/handleInputCard';
 // import { handleInfoComfirm } from '../../utils/handler/card/handleStatusCard';
+import GoogleMaps from '../../pages/Travel_map/Travel_map';
 
 // 驗證登入
 import { useUserInfo } from '../../hooks/useUserInfo';
