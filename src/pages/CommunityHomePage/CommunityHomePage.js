@@ -1,18 +1,18 @@
 import './_CommunityHomePage.scss';
-import dog3 from '../../images/home_newsList_dog_4.png';
+import dog3 from '../../images/home_newsList_dog_4_flip.png';
 import React from 'react';
 import { useState, useEffect } from 'react';
 import axios from 'axios';
 import SearchBar from '../../components/SearchBar/SearchBar_community';
 import HomePageMasonry from '../../components/Community/HomePageMasonry/HomePageMasonry';
 import RWDMasonry from '../../components/Community/HomePageMasonry/RWDMasonry';
+import 'animate.css';
 
 // import CommunitySwiperRight from '../../components/Community/CommunitySwiper/CommunitySwiperRight';
 
 import { API_URL } from '../../utils/config';
 
 const CommunityHomePage = () => {
-
   // // 寵物網紅貼文
   // useEffect(() => {
   //   const fetchPost = async () => {
@@ -35,7 +35,7 @@ const CommunityHomePage = () => {
     <>
       <div className="CommunityHomePage">
         <div className="searchBarSection">
-          <div className='searchBarSec'>
+          <div className="searchBarSec">
             <SearchBar searchBar_title="是不是在找我呢" searchBar_placeholder="我無處安放的可愛呀" />
           </div>
           <p className="mainSlogan1 disappear">Sharing the life,</p>
@@ -43,7 +43,7 @@ const CommunityHomePage = () => {
           <p className="slogan disappear" disappear>
             也想分享你跟毛孩的大小事嗎？
           </p>
-          <img className="SloganImg disappear" src={dog3} alt="" />
+          <img className="animate__animated animate__slideInRight SloganImg disappear" src={dog3} alt="" />
           <div className="BGCircle1 disappear"></div>
           <div className="BGCircle2 disappear"></div>
           <div className="BGCircle3 disappear"></div>

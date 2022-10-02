@@ -11,7 +11,7 @@ const MyTravel = ({ travelUser }) => {
     <>
       <div className="MyTravel">
         <div className='Title'>
-          我的行程
+          ｜我的行程
         </div>
         <div className="d-flex ">
           <Swiper
@@ -24,9 +24,12 @@ const MyTravel = ({ travelUser }) => {
           >
             {travelUser.length === 0 ? (
               <SwiperSlide>
-                <div>
-                  <h1 className="fw-bold travel_noidea"> 還沒有想法嗎？</h1>
-                </div>
+                <div className='noTravelSec'>
+                  <h1 className="noTravel">還沒有建立任何行程喔！</h1>
+                  <div className='noTravelBTN'>
+                  <button>從景點票券開始下手</button>
+                  <button>先看看大家的貼文分享</button>
+                </div></div>
               </SwiperSlide>
             ) : (
               travelUser.map((data) => {

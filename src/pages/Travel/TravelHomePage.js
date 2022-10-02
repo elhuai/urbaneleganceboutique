@@ -50,9 +50,9 @@ const TravelHomePage = () => {
           <CreateTravel />
           <div className='mainSection'>
             <MyTravel travelUser={travelUser} />
-            <p className="travelGoPlayTitle">看看大家都去哪玩 :</p>
+            <p className="travelGoPlayTitle">｜看看大家都去哪裡玩 </p>
             <TravelGoPlaySwiper />
-            <p className="TravelEveryOneSwiperTitle">路克路克大家的行程 :</p>
+            <p className="TravelEveryOneSwiperTitle">｜路克路克大家的行程</p>
             <TravelEveryOneSwiper travelCommunity={travelCommunity} />
           </div>
         </div>

@@ -10,7 +10,7 @@ $box-shadow: 2px 4px 8px grey;
 $look_line-height: 53px;
 
 .BG {
-  
+  max-width: 1920px;
   background: linear-gradient(
     190deg,
     #ffffff 0%,
@@ -29,13 +29,13 @@ $look_line-height: 53px;
 
   .travelGoPlayTitle {
     font-size: 32px;
-    color: #ef7a70;
+    color: #747474;
     font-weight: 500;
     margin: 80px 0;
   }
   .TravelEveryOneSwiperTitle {
     font-size: 32px;
-    color: #ef7a70;
+    color: #747474;
     font-weight: 500;
     margin: 50px 0;
   }

@@ -308,10 +308,14 @@ $font-weight: 700;
     }
     .edit_save_btn {
       width: 200px;
-      background-color: #ef7a70;
-      color: white;
+      background-color: #feefc3;
+      color: #000;
       font-weight: 900;
       font-size: 18px;
+      &:hover {
+        background-color: #ef7a70;
+        color: #fff;
+      }
     }
 
     // 不知道是啥的 travelDrag_container
