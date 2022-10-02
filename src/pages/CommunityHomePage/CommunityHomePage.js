@@ -22,7 +22,6 @@ const CommunityHomePage = () => {
   //   fetchPost();
   // }, []);
 
-  // // 熱門貼文
   // useEffect(() => {
   //   const fetchPost = async () => {
   //     const result = await axios.get(`${API_URL}/communityHomePage/hotPost`);
@@ -36,14 +35,21 @@ const CommunityHomePage = () => {
       <div className="CommunityHomePage">
         <div className="searchBarSection">
           <div className="searchBarSec">
-            <SearchBar searchBar_title="是不是在找我呢" searchBar_placeholder="我無處安放的可愛呀" />
+            <SearchBar
+              searchBar_title="是不是在找我呢"
+              searchBar_placeholder="我無處安放的可愛呀"
+            />
           </div>
           <p className="mainSlogan1 disappear">Sharing the life,</p>
           <p className="mainSlogan2 disappear">Follow the paws!</p>
           <p className="slogan disappear" disappear>
             也想分享你跟毛孩的大小事嗎？
           </p>
-          <img className="animate__animated animate__slideInRight SloganImg disappear" src={dog3} alt="" />
+          <img
+            className="animate__animated animate__slideInRight SloganImg disappear"
+            src={dog3}
+            alt=""
+          />
           <div className="BGCircle1 disappear"></div>
           <div className="BGCircle2 disappear"></div>
           <div className="BGCircle3 disappear"></div>
