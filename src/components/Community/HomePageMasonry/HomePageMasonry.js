@@ -28,7 +28,7 @@ export default function HomePageMasonry(props) {
 
   return (
     <>
-      <div className='WebMasonry'>
+      <div className="WebMasonry">
         <div className="masonry">
           {allPost.map((v, i) => {
             return (

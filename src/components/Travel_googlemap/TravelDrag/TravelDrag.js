@@ -10,6 +10,7 @@ import {
 
 import './Traveldrag.scss';
 import { HiOutlineTrash } from 'react-icons/hi';
+import { TiLocation } from 'react-icons/ti';
 const TravelDrag = ({
   planning,
   indexs,
@@ -27,37 +28,27 @@ const TravelDrag = ({
   useEffect(() => {
     setDeviceDetial(items);
   });
-
-  // console.log('editPlanning=========', editPlanning);
-
-  // console.log('拖移頁面', editPlanning);
   const reorder = (list, startIndex, endIndex) => {
-    // console.log('reorder list', list);
     const result = Array.from(list);
     const [removed] = result.splice(startIndex, 1);
     result.splice(endIndex, 0, removed);
-    // console.log('startIndex', startIndex);
-    // console.log('endIndex', result);
     return result;
   };
   const getItemStyle = (isDragging, draggableStyle) => ({
     userSelect: 'none',
-    // border: 'none',
     height: 132,
     width: 650,
     // padding: `10px 0 10px 10px`,
-    margin: `0.5px 0px`,
+    margin: `5px 0px`,
     // background: isDragging ? 'dakren(#E7E7E9,10%)' : '#E7E7E9',
     ...draggableStyle,
   });
   const getListStyle = (isDraggingOver) => ({
-    background: isDraggingOver ? 'white' : 'white',
+    // background: isDraggingOver ? 'white' : 'white',
     // height: 850,
     // width: 725,
     // border: 'none',
   });
-  // console.log('這是最終傳回的sort順序要到資料庫的', editPlanning);
-  // console.log('items回傳回前端的地圖資訊', planning);
   const [getlocateid, setGetlocateid] = useState('');
 
   const [items, setItems] = useState([]);
@@ -168,13 +159,13 @@ const TravelDrag = ({
             return indexs + 1 === item.days ? (
               <div className="travelDrag_container" key={item.daysort}>
                 <div
-                  className="travel_drag_main_card travelDrag_container row card border-primary "
+                  className="travel_drag_main_card row card border-primary "
                   onClick={() => {
                     setGetlocateid(item.id);
                   }}
                 >
                   <div className="row g-1" style={{ height: '120px' }}>
-                    <div className="col-md-3 me-3">
+                    <div className="col-3">
                       {items.length === 0 ? (
                         <img
                           src="https://picsum.photos/300/300?random31"
@@ -193,14 +184,14 @@ const TravelDrag = ({
                       )}
                     </div>
                     <div className="col-md-8">
-                      <div className="card-body d-flex align-items-center">
-                        <div className="Travel_Drag_cardText d-flex">
+                      <div className="card-body">
+                        <div className="Travel_Drag_cardText d-flex me-2">
                           <img
                             src={mapicon}
                             className="travel_Dragmapicon"
                             alt="#123"
                           />
-                          <p className="Travel_DragNavbar_text">
+                          <p className="Travel_DragNavbar_text ms-1">
                             {item.locate_name}
                           </p>
                         </div>
@@ -216,10 +207,9 @@ const TravelDrag = ({
                                 },
                                 '刪除後將無法恢復'
                               );
-                              console.log('這是要刪除景點的id', item.id);
                             }}
                           >
-                            <HiOutlineTrash className="mx-2 mt-1" />
+                            <HiOutlineTrash className="ms-2 me-1" />
                             <p className=" Travel_Drag_cardNT ">刪除</p>
                           </div>
                         </div>

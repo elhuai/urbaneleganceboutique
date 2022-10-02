@@ -84,7 +84,7 @@ const TravelPlaces = () => {
     };
     callPlanningAPI();
   }, [planning]);
-  console.log('getlocate========', getlocate);
+  // console.log('getlocate========', getlocate);
 
   const { isLoaded } = useLoadScript({
     googleMapsApiKey: Googlemap_key,

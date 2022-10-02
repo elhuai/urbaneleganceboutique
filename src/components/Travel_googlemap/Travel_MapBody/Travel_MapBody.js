@@ -112,7 +112,7 @@ function Map({
           setIfDelete={setIfDelete} //重新render畫面用
           ifDelete={ifDelete} //重新render畫面用
         />
-        <div className="travelmap_mainMap">
+        <div className="travelmap_mainMap ms-3">
           <div>
             <TravelmapNavbar
               selected={selected}
