@@ -2,15 +2,15 @@ import React from 'react';
 import { API_URL } from '../../utils/config';
 import axios from 'axios';
 import { useState, useEffect } from 'react';
-import TravelTab from '../../components/Travel/Travel-Tab';
-import TravelgoPlaySwiper from '../../components/Travel/Travel-goPlay-Swiper';
-import TravelEveryOneSwiper from '../../components/Travel/Travel-EveryOne-Swiper';
-import TravelForm from '../../components/Travel/Travel-Form';
+import MyTravel from '../../components/Travel/MyTravel/MyTravel';
+import TravelGoPlaySwiper from '../../components/Travel/TravelGoPlaySwiper/TravelGoPlaySwiper';
+import TravelEveryOneSwiper from '../../components/Travel/TravelEveryOneSwiper/TravelEveryOneSwiper';
+import CreateTravel from '../../components/Travel/CreateTravel/CreateTravel';
 
-import './_Travelhome.scss';
+import './_TravelHomePage.scss';
 import { Container } from 'react-bootstrap';
 
-const Travel = () => {
+const TravelHomePage = () => {
   const [travelCommunity, setTravelCommunity] = useState([]); // 拿日期 標題
   const [travelUser, setTravelUser] = useState([]); // 拿使用者有幾筆行程
 
@@ -45,20 +45,20 @@ const Travel = () => {
   }, []);
   return (
     <>
-      <Container className=" travel_container mt-md-3">
-        <TravelTab travelUser={travelUser} />
-        <TravelForm />
-        <h2 className="travel_goPlay_tittle  mt-5 user-select-none ">
-          看看大家都去哪玩 :
-        </h2>
-        <TravelgoPlaySwiper />
-        <h2 className="travel_Swiper_EveryOnetrip_lookH2  user-select-none">
-          路克路克大家的行程 :
-        </h2>
-        <TravelEveryOneSwiper travelCommunity={travelCommunity} />
-      </Container>
+      <div className="BG">
+        <div className="TravelHomePage">
+          <CreateTravel />
+          <div className='mainSection'>
+            <MyTravel travelUser={travelUser} />
+            <p className="travelGoPlayTitle">｜看看大家都去哪裡玩 </p>
+            <TravelGoPlaySwiper />
+            <p className="TravelEveryOneSwiperTitle">｜路克路克大家的行程</p>
+            <TravelEveryOneSwiper travelCommunity={travelCommunity} />
+          </div>
+        </div>
+      </div>
     </>
   );
 };
 
-export default Travel;
+export default TravelHomePage;

@@ -11,7 +11,6 @@ import {
 import './Traveldrag.scss';
 import { HiOutlineTrash } from 'react-icons/hi';
 import { TiLocation } from 'react-icons/ti';
-
 const TravelDrag = ({
   planning,
   indexs,
@@ -29,37 +28,27 @@ const TravelDrag = ({
   useEffect(() => {
     setDeviceDetial(items);
   });
-
-  // console.log('editPlanning=========', editPlanning);
-
-  // console.log('拖移頁面', editPlanning);
   const reorder = (list, startIndex, endIndex) => {
-    // console.log('reorder list', list);
     const result = Array.from(list);
     const [removed] = result.splice(startIndex, 1);
     result.splice(endIndex, 0, removed);
-    // console.log('startIndex', startIndex);
-    // console.log('endIndex', result);
     return result;
   };
   const getItemStyle = (isDragging, draggableStyle) => ({
     userSelect: 'none',
-    border: 'none',
-    height: 100,
-    width: 640,
-    padding: `10px 0 10px 10px`,
-    margin: `15px auto`,
-    background: isDragging ? 'dakren(#E7E7E9,10%)' : '#E7E7E9',
+    height: 132,
+    width: 650,
+    // padding: `10px 0 10px 10px`,
+    margin: `5px 0px`,
+    // background: isDragging ? 'dakren(#E7E7E9,10%)' : '#E7E7E9',
     ...draggableStyle,
   });
   const getListStyle = (isDraggingOver) => ({
-    background: isDraggingOver ? 'white' : 'white',
+    // background: isDraggingOver ? 'white' : 'white',
     // height: 850,
-    width: 725,
-    border: 'none',
+    // width: 725,
+    // border: 'none',
   });
-  // console.log('這是最終傳回的sort順序要到資料庫的', editPlanning);
-  // console.log('items回傳回前端的地圖資訊', planning);
   const [getlocateid, setGetlocateid] = useState('');
 
   const [items, setItems] = useState([]);
@@ -218,7 +207,6 @@ const TravelDrag = ({
                                 },
                                 '刪除後將無法恢復'
                               );
-                              console.log('這是要刪除景點的id', item.id);
                             }}
                           >
                             <HiOutlineTrash className="ms-2 me-1" />
@@ -243,7 +231,7 @@ const TravelDrag = ({
             <Droppable droppableId="droppable">
               {(provided, snapshot) => (
                 <div
-                  className="travelDrag_container d-flex flex-column"
+                  className="travelDrag_container   d-flex flex-column"
                   {...provided.droppableProps}
                   ref={provided.innerRef}
                   style={getListStyle(snapshot.isDraggingOver)}
@@ -257,7 +245,7 @@ const TravelDrag = ({
                       >
                         {(provided, snapshot) => (
                           <div
-                            className="travelDrag_Options card  "
+                            className="travelDrag_Options card border-primary "
                             ref={provided.innerRef}
                             {...provided.draggableProps}
                             {...provided.dragHandleProps}
@@ -273,7 +261,7 @@ const TravelDrag = ({
                               }}
                             >
                               <div className="">
-                                <div className="col-md-3 me-3">
+                                <div className="col-md-3 me-3 travel_dragcard_photo">
                                   {items.length === 0 ? (
                                     <img
                                       src="https://picsum.photos/300/300?random31"
@@ -284,7 +272,7 @@ const TravelDrag = ({
                                     <img
                                       //要Demo再放照片 每次炫覽都號一次google maps api
                                       // src={item.google_photo}
-                                      src="https://picsum.photos/1300/1300?random31"
+                                      src="https://picsum.photos/300/1300?random31"
                                       className="Travel_Drag_card_exit "
                                       alt="..."
                                     />
@@ -293,7 +281,7 @@ const TravelDrag = ({
                               </div>
                               <img
                                 src={mapicon}
-                                className="travel_Dragmapicon me-3"
+                                className="travel_Dragmapicon ms-3"
                                 alt="#123"
                               />
                               <div className="travel_Dragmaptitle">

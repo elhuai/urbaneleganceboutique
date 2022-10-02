@@ -96,7 +96,6 @@ const TravelDate = ({
         tmpItemAry.push([item]);
       }
     }
-    // console.log('tmpItemAry 整理過後資料', tmpItemAry);
     const newShowDate = tmpItemAry.map((item) => item[0].day);
     // setShowdate(tmpItemAry);
   }, []);
@@ -215,7 +214,6 @@ const TravelDate = ({
               })}
             </div>
             <div className="travleDrag_header_upImage">
-              {/* <img src={preview ? preview : CoverBackground} alt=""></img> */}
               <label className="cover_photo_upload d-flex flex-column justify-content-center align-items-center">
                 {editdetail ? (
                   <MdPhotoSizeSelectActual className="travleDrag_header_upicon"></MdPhotoSizeSelectActual>
@@ -224,7 +222,7 @@ const TravelDate = ({
                 )}
 
                 <div className="travleDrag_photoupdate">
-                  {editdetail ? '封面照片上傳' : ''}
+                  {editdetail ? '封面照上傳' : ''}
                 </div>
                 <input
                   type="file"

@@ -6,6 +6,7 @@ import { TiLocation } from 'react-icons/ti';
 import './PostLocateArticle.scss';
 import { BE_URL } from '../../../utils/config';
 import { PhotoProvider, PhotoView } from 'react-photo-view';
+import defaultPhoto from '../../../images/社群照片假圖300px.png';
 
 export default function PostLocateArticle({ post }) {
   const [locFiles, setLocFiles] = useState({ photos: '', locateID: '' });
@@ -45,17 +46,19 @@ export default function PostLocateArticle({ post }) {
               <>
                 <div className="my-2 post_dayCount">Day {data[0].days}</div>
                 {data.map((data, i) => {
-                  console.log('datajijijfe', data);
+                  {
+                    /* console.log('datajijijfe', data);
                   console.log('jijiejt', data.locate_photo);
-                  console.log(BE_URL + '/' + data.locate_photo);
+                  console.log(BE_URL + '/' + data.locate_photo); */
+                  }
                   return (
                     <>
                       <li
                         className="trip_record_section"
                         id={`day${data.days}locate${i}`}
                       >
-                        <div className="d-flex row align-items-start">
-                          <div className="post_location_mark d-flex flex-column justify-content-start align-items-start col-7 mt-1">
+                        <div className="post_content d-flex row align-items-start">
+                          <div className="post_location_mark d-flex flex-column justify-content-between align-items-start col-7 mt-1">
                             <div className="d-flex locate_title">
                               <p>
                                 <TiLocation className="mb-1 me-1 h5"></TiLocation>
@@ -94,7 +97,7 @@ export default function PostLocateArticle({ post }) {
                                 </PhotoProvider>
                               </>
                             ) : (
-                              ''
+                              <img alt="" src={defaultPhoto}></img>
                             )}
                           </div>
                         </div>

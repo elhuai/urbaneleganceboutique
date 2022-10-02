@@ -20,13 +20,14 @@ function PostWYSIWYGEdit() {
   const location = useLocation();
   const urlSearchParams = new URLSearchParams(location.search);
   const postID = urlSearchParams.get('postID');
+  console.log(postID);
 
   // === 編輯時預覽圖片用 ===
   const [showPhoto, setShowPhoto] = useState('');
 
   // 登入狀態驗證
   const { user, setUser } = useUserInfo();
-  console.log('useUserInfo', user.data.id);
+  // console.log('useUserInfo', user.data.id);
 
   // === 學儒封面照片上傳可直接預覽State ===
   const [selectedFile, setSelectedFile] = useState('');
@@ -61,6 +62,11 @@ function PostWYSIWYGEdit() {
         // 取得後端來的資料
         console.log('result,data', result.data);
         setPostData(result.data);
+        setShowPhoto(
+          result.data[0].post_main_photo
+            ? BE_URL + '/' + result.data[0].post_main_photo
+            : CoverBackground
+        );
       } catch (err) {
         console.log('setPost', err);
       }
@@ -130,6 +136,7 @@ function PostWYSIWYGEdit() {
       let status = 1;
       let post_type = 1;
       let userID = user.data.id;
+      let post_id = postID;
       console.log('userID', userID);
       let create_time = moment().format('YYYY-MM-DD HH:mm:ss');
       console.log(userID);
@@ -144,14 +151,11 @@ function PostWYSIWYGEdit() {
       formData.append('user_id', userID);
       formData.append('status', status);
       formData.append('post_type_id', post_type);
+      formData.append('post_id', post_id);
 
       let response = await axios.post(`${API_URL}/post/postEdit`, formData);
       console.log(response.data);
-      return handleSuccess(
-        '成功',
-        false,
-        '<p style="color: green;">發布成功!</p>'
-      );
+      handleSuccess('貼文發布成功', '/admin/community');
     } catch (e) {
       console.error('postEdit', e);
     }
@@ -162,6 +166,7 @@ function PostWYSIWYGEdit() {
     // 把預設行為關掉
     e.preventDefault();
     try {
+      let post_id = postID;
       let status = 2;
       let post_type = 1;
       let userID = user.data.id;
@@ -179,14 +184,11 @@ function PostWYSIWYGEdit() {
       formData.append('user_id', userID);
       formData.append('status', status);
       formData.append('post_type_id', post_type);
+      formData.append('post_id', post_id);
 
       let response = await axios.post(`${API_URL}/post/postEdit`, formData);
       console.log(response.data);
-      return handleSuccess(
-        '成功',
-        false,
-        '<p style="color: green;">發布成功!</p>'
-      );
+      handleSuccess('貼文儲存成功', '/admin/community');
     } catch (e) {
       console.error('postEdit', e);
     }
@@ -197,95 +199,102 @@ function PostWYSIWYGEdit() {
   console.log('postData', postData);
   return (
     <>
-      <div className="d-flex justify-content-center">
-        <form className="post_edit_bar d-flex flex-column">
-          <div className="d-flex justify-content-between">
-            <div className="mt-2 edit_title d-flex align-items-center">
-              <img alt="" src={dogIcon} className="dog_paw_icon me-2"></img>
-              <p className="mt-3">貼文編輯：一般貼文</p>
+      <div className="cummunity_postEdit">
+        <div className="d-flex justify-content-center">
+          <form className="post_edit_bar d-flex flex-column">
+            <div className="d-flex justify-content-between">
+              <div className="mt-2 edit_title d-flex align-items-center">
+                <img alt="" src={dogIcon} className="dog_paw_icon me-2"></img>
+                <p className="mt-3">貼文編輯：一般貼文</p>
+              </div>
+              <div className="d-flex justify-content-end mt-4 post_edit_button ">
+                <button className="btn" onClick={handleClick}>
+                  清空
+                </button>
+                <button className="btn" onClick={handleDraft}>
+                  儲存草稿
+                </button>
+                <button className="btn" onClick={handleSubmit}>
+                  發布
+                </button>
+              </div>
             </div>
-            <div className="d-flex justify-content-end mt-4 post_edit_button ">
-              <button className="btn" onClick={handleClick}>
-                清空
-              </button>
-              <button className="btn">儲存草稿</button>
-              <button className="btn">發布</button>
-            </div>
-          </div>
-          <div className="post_cover_photo d-flex flex-column justify-content-end align-items-end">
-            <img src={preview ? preview : CoverBackground} alt=""></img>
-            <label className="cover_photo_upload d-flex flex-column justify-content-center align-items-center">
-              <MdPhotoSizeSelectActual className="cover_photo_upload_icon"></MdPhotoSizeSelectActual>
-              <div>封面照片上傳</div>
-              <input
-                className="form-control mt-2"
-                accept="image/*"
-                hidden
-                type="file"
-                id="photo"
-                name="photo"
-                // defaultValue={postData[0] ? postData[0].photo : ''}
-                onChange={handleUpload}
-              />
-            </label>
-          </div>
-          <label className="mt-2">
-            <MdTitle className="mb-1 me-1"></MdTitle>貼文標題
-          </label>
-          <input
-            className="form-control mt-2"
-            placeholder="請輸入貼文標題"
-            maxLength="50"
-            type="text"
-            id="title"
-            name="title"
-            defaultValue={postData[0] ? postData[0].post_title : ''}
-            onChange={handleChange}
-          />
-          <div className="d-flex row">
-            <div className="col-6">
-              <label className="mt-3">
-                <MdLocationOn className="mb-1 me-1"></MdLocationOn>地點
-              </label>
-              <input
-                className="form-control mt-2"
-                placeholder="請輸入城市地區"
-                type="text"
-                id="location"
-                name="location"
-                defaultValue={postData[0] ? postData[0].coordinate : ''}
-                onChange={handleChange}
-              />
-            </div>
-            <div className="col-6">
-              <label className="mt-3">
-                <AiFillTag className="mb-1 me-1"></AiFillTag>標籤
-                (請輸入＃區分標籤)
-              </label>
-              <input
-                className="form-control mt-2"
-                placeHolder="#台北市"
-                type="text"
-                id="tags"
-                name="tags"
-                defaultValue={postData[0] ? postData[0].coordinate : ''}
-                onChange={handleChange}
-              />
-            </div>
-          </div>
 
-          <hr></hr>
-          <form className="my-2">
-            <p>貼文編輯器</p>
-            <PostEditor
-              // getData={getData}
-              postData={postData}
-              setGetData={setGetData}
-              handleContentChange={handleGetDataChange}
+            <div className="post_cover_photo d-flex flex-column justify-content-end align-items-end">
+              <img src={preview ? preview : showPhoto} alt=""></img>
+
+              <label className="cover_photo_upload d-flex flex-column justify-content-center align-items-center">
+                <MdPhotoSizeSelectActual className="cover_photo_upload_icon"></MdPhotoSizeSelectActual>
+                <div>封面照片上傳</div>
+                <input
+                  className="form-control mt-2"
+                  accept="image/*"
+                  hidden
+                  type="file"
+                  id="photo"
+                  name="photo"
+                  // defaultValue={postData[0] ? postData[0].photo : ''}
+                  onChange={handleUpload}
+                />
+              </label>
+            </div>
+            <label className="mt-2">
+              <MdTitle className="mb-1 me-1"></MdTitle>貼文標題
+            </label>
+            <input
+              className="form-control mt-2"
+              placeholder="請輸入貼文標題"
+              maxLength="50"
+              type="text"
+              id="title"
+              name="title"
+              defaultValue={postData[0] ? postData[0].post_title : ''}
+              onChange={handleChange}
             />
-            {/* <h3>{getData}</h3> */}
-            {/* <PostEditor /> */}
-            {/* <label
+            <div className="d-flex row">
+              <div className="col-6">
+                <label className="mt-3">
+                  <MdLocationOn className="mb-1 me-1"></MdLocationOn>地點
+                </label>
+                <input
+                  className="form-control mt-2"
+                  placeholder="請輸入城市地區"
+                  type="text"
+                  id="location"
+                  name="location"
+                  defaultValue={postData[0] ? postData[0].coordinate : ''}
+                  onChange={handleChange}
+                />
+              </div>
+              <div className="col-6">
+                <label className="mt-3">
+                  <AiFillTag className="mb-1 me-1"></AiFillTag>標籤
+                  (請輸入＃區分標籤)
+                </label>
+                <input
+                  className="form-control mt-2"
+                  placeHolder="#台北市"
+                  type="text"
+                  id="tags"
+                  name="tags"
+                  defaultValue={postData[0] ? postData[0].coordinate : ''}
+                  onChange={handleChange}
+                />
+              </div>
+            </div>
+
+            <hr></hr>
+            <form className="my-2">
+              <p>貼文編輯器</p>
+              <PostEditor
+                // getData={getData}
+                postData={postData}
+                setGetData={setGetData}
+                handleContentChange={handleGetDataChange}
+              />
+              {/* <h3>{getData}</h3> */}
+              {/* <PostEditor /> */}
+              {/* <label
               className="photo_upload d-flex align-items-center
               justify-content-center"
             >
@@ -304,25 +313,26 @@ function PostWYSIWYGEdit() {
               <input type="file" accept="image/*" multiple hidden />
             </label>
             <PhotoReviewSwiperDefault></PhotoReviewSwiperDefault> */}
-          </form>
-          <div className="post_map">
-            <p>行程地圖2</p>
-            <div className="map_photo">
-              {/* <img alt="" src={mapPhoto} /> */}
+            </form>
+            {/* <div className="post_map">
+              <p>行程地圖</p>
+              <div className="map_photo">
+                <img alt="" src={mapPhoto} />
+              </div>
+            </div> */}
+            <div className="d-flex justify-content-end my-3  post_edit_button ">
+              <button className="btn" onClick={handleClick}>
+                清空
+              </button>
+              <button className="btn" onClick={handleDraft}>
+                儲存草稿
+              </button>
+              <button className="btn" onClick={handleSubmit}>
+                發布
+              </button>
             </div>
-          </div>
-          <div className="d-flex justify-content-end my-3  post_edit_button ">
-            <button className="btn" onClick={handleClick}>
-              清空
-            </button>
-            <button className="btn" onClick={handleDraft}>
-              儲存草稿
-            </button>
-            <button className="btn" onClick={handleSubmit}>
-              發布
-            </button>
-          </div>
-        </form>
+          </form>
+        </div>
       </div>
     </>
   );

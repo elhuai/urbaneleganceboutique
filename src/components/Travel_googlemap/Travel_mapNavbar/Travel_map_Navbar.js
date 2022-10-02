@@ -74,7 +74,7 @@ const Travel_map_Navbar = ({
             label={
               <div className="travel_map_nav">
                 <TbTicket className="travelmap_navBaricon " />
-                我的票券
+                收藏的票券
               </div>
             }
             {...a11yProps(0)}
@@ -84,7 +84,7 @@ const Travel_map_Navbar = ({
             label={
               <div>
                 <IoHeartOutline className="travelmap_navBaricon " />
-                收藏的票券
+                我的票券
               </div>
             }
             {...a11yProps(1)}

@@ -2,9 +2,10 @@ import React from 'react';
 import { useState, useEffect } from 'react';
 import { API_URL, BE_URL } from '../../../utils/config';
 import axios from 'axios';
-import { useUserInfo } from '../../../hooks/useUserInfo';
 import { useParams, useLocation } from 'react-router-dom';
 import moment from 'moment/moment';
+import { useUserInfo } from '../../../hooks/useUserInfo';
+import { handleLoginCard } from '../../../utils/handler/handleInputCard';
 
 import './CommentBar.scss';
 
@@ -23,6 +24,9 @@ function CommentBar() {
 
   // 送出留言狀態
   const [ifSubmit, setIfSubmit] = useState(false);
+
+  // 登入驗證
+  const { user, setUser } = useUserInfo();
 
   // API 取得留言資料表
   useEffect(() => {
@@ -59,21 +63,26 @@ function CommentBar() {
     console.log('getCommentData', getCommentData);
     // 把預設行為關掉
     e.preventDefault();
-    try {
-      let create_time = moment().format('YYYY-MM-DD HH:mm:ss');
-      let commentText = getCommentData.commentText;
-      let response = await axios.post(
-        `${API_URL}/post/postCommentEdit`,
-        { create_time, commentText, postID },
-        { withCredentials: true }
-      );
-      console.log('response.data', response.data);
-      setIfSubmit(true);
-      getSetCommentData({ commentText: '' });
-    } catch (e) {
-      console.error('postCommentEdit', e);
+    if (user.auth) {
+      try {
+        let create_time = moment().format('YYYY-MM-DD HH:mm:ss');
+        let commentText = getCommentData.commentText;
+        let response = await axios.post(
+          `${API_URL}/post/postCommentEdit`,
+          { create_time, commentText, postID },
+          { withCredentials: true }
+        );
+        console.log('response.data', response.data);
+        setIfSubmit(true);
+        getSetCommentData({ commentText: '' });
+      } catch (e) {
+        console.error('postCommentEdit', e);
+      }
+    } else {
+      handleLoginCard({ isLogin: true }, setUser);
     }
   }
+
   // === 清除 ===
   async function handleClear(e) {
     // 把預設行為關掉
@@ -88,15 +97,15 @@ function CommentBar() {
   return (
     <div className="post_comment_list mt-3">
       <p className="post__comment_list_title">回應</p> {/* 關聯資料庫 */}
-      <div className=" d-flex flex-column align-items-center">
+      <div className="post__comment_list_content d-flex flex-column align-items-center">
         {commentData.map((data) => {
           return (
             <li
               key={data.id}
-              className="d-flex justify-content-between comment_descript_list align-items-start"
+              className="d-flex justify-content-between comment_descript_list align-items-center"
             >
-              <div className="d-flex justify-content-center">
-                <div className="user_comment_photo">
+              <div className="d-flex justify-content-center align-items-center">
+                <div className="user_comment_photo d-flex user_comment_photo align-items-center">
                   <img alt="" src={BE_URL + data.photo}></img>
                 </div>
                 <div className="user_comment_detail mx-5">
@@ -112,7 +121,7 @@ function CommentBar() {
         })}
       </div>
       <div className="leave_comment">
-        <p>我要留言</p>
+        <p className="post__comment_list_title">我要留言</p>
         <form className="d-flex flex-column align-items-center">
           <textarea
             // type="textarea"

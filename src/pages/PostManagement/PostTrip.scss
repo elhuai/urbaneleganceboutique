@@ -8,17 +8,73 @@ $list-color-hover: #feefc3;
 $link-color: #2da9d7;
 $line-color--blue: #d5eeee;
 
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-  -webkit-user-drag: none;
+.postTrip {
+  .post_bar {
+    max-width: 1280px;
+  }
+
+  .postLocateArticleRWD {
+    display: none;
+  }
 }
 
-body {
-  font-family: 'Noto Sans TC', 'Open Sans', sans-serif !important;
-}
-
-.post_bar {
-  max-width: 1280px;
+@media only screen and (max-width: 768px) {
+  .postTrip {
+    .postLocateArticleWeb {
+      display: none;
+    }
+    .postLocateArticleRWD {
+      display: block;
+    }
+  }
+  // 地圖
+  .communitymap_body {
+    .communitymap_container {
+      max-width: 340px;
+      height: 300px;
+      border-radius: 8px;
+    }
+  }
+  // 推薦商品
+  .recommandProduct {
+    display: none;
+  }
+  // 評論
+  .post_comment_list {
+    .post__comment_list_title {
+      font-size: 1.4rem;
+      display: inline-block;
+    }
+    
+    .post__comment_list_content {
+      max-width: 345px;
+    }
+    .comment_descript_list {
+      height: 120px;
+      border-radius: 15px;
+      padding: 10px 10px 10px 15px;
+      .user_comment_photo {
+        width: 75px;
+        height: 75px;
+      }
+      .user_comment_text {
+        width: 220px;
+        font-size: 14px;
+        margin-top: 5px;
+        display: -webkit-box;
+        -webkit-box-orient: vertical;
+        -webkit-line-clamp: 2;
+        overflow: hidden;
+      }
+      .user_comment_datetime {
+        p {
+          display: none;
+        }
+      }
+    }
+    .user_comment_name {
+      font-size: 16px;
+      font-weight: 600;
+    }
+  }
 }

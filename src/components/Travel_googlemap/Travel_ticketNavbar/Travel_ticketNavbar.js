@@ -37,7 +37,7 @@ const Travel_ticketNavbar = ({ travelTicket }) => {
               </div>
               <div className="col mt-3">
                 <div className="card-body">
-                  <div className=" ">
+                  <div className=" Travel_ticketNavbar_card_titleDiv">
                     <h5 className="Travel_ticketNavbar_card-title">
                       {data.intro}
                     </h5>
