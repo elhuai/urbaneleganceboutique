@@ -48,7 +48,7 @@ const TravelHomePage = () => {
       <div className="BG">
         <div className="TravelHomePage">
           <CreateTravel />
-          <div className='mainSection'>
+          <div className="mainSection">
             <MyTravel travelUser={travelUser} />
             <p className="travelGoPlayTitle">｜看看大家都去哪裡玩 </p>
             <TravelGoPlaySwiper />

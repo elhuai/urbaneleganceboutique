@@ -64,6 +64,10 @@ function EcRestaurantHomepage() {
             setTypeId={3}
             typeId={3}
           />
+          <div className="BGCircle1"></div>
+          <div className="BGCircle2"></div>
+          <div className="BGCircle3"></div>
+          <div className="BGCircle4"></div>
           <EcHomePageSlider ecTypeSlider={restaurantSlider} />
         </div>
         <EcHomePageCategory ecTypeCategory={restaurantCategory} />

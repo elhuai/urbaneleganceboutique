@@ -65,6 +65,7 @@ function EcEnjoyHomepage() {
           <div className="BGCircle1"></div>
           <div className="BGCircle2"></div>
           <div className="BGCircle3"></div>
+          <div className="BGCircle4"></div>
           <EcHomePageSlider ecTypeSlider={enjoySlider} />
         </div>
         <EcHomePageCategory ecTypeCategory={enjoyCategory} />
