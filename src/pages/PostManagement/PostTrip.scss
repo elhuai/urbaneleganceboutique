@@ -12,8 +12,13 @@ $line-color--blue: #d5eeee;
   .post_bar {
     max-width: 1280px;
   }
-
   .postLocateArticleRWD {
+    display: none;
+  }
+}
+
+.commentBar {
+  .commentBarRWD {
     display: none;
   }
 }
@@ -27,6 +32,15 @@ $line-color--blue: #d5eeee;
       display: block;
     }
   }
+  .commentBar {
+    .commentBarWeb {
+      display: none;
+    }
+    .commentBarRWD {
+      display: block;
+    }
+  }
+
   // 地圖
   .communitymap_body {
     .communitymap_container {
@@ -45,7 +59,7 @@ $line-color--blue: #d5eeee;
       font-size: 1.4rem;
       display: inline-block;
     }
-    
+
     .post__comment_list_content {
       max-width: 345px;
     }
