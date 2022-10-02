@@ -62,7 +62,7 @@ const Travel_map_Navbar = ({
     setValue(newValue);
   };
   return (
-    <Box sx={{ width: '100%' }} className="travel_map_Container">
+    <Box sx={{ width: '98%' }} className="travel_map_Container">
       <Box sx={{ borderBottom: 1, borderColor: 'divider' }} className="">
         <Tabs
           className="travel_map_Tab "
@@ -72,7 +72,7 @@ const Travel_map_Navbar = ({
         >
           <Tab
             label={
-              <div>
+              <div className="travel_map_nav">
                 <TbTicket className="travelmap_navBaricon " />
                 我的票券
               </div>

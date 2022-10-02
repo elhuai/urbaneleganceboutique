@@ -10,6 +10,8 @@ import {
 
 import './Traveldrag.scss';
 import { HiOutlineTrash } from 'react-icons/hi';
+import { TiLocation } from 'react-icons/ti';
+
 const TravelDrag = ({
   planning,
   indexs,
@@ -168,13 +170,13 @@ const TravelDrag = ({
             return indexs + 1 === item.days ? (
               <div className="travelDrag_container" key={item.daysort}>
                 <div
-                  className="travel_drag_main_card travelDrag_container row card border-primary "
+                  className="travel_drag_main_card row card border-primary "
                   onClick={() => {
                     setGetlocateid(item.id);
                   }}
                 >
                   <div className="row g-1" style={{ height: '120px' }}>
-                    <div className="col-md-3 me-3">
+                    <div className="col-3">
                       {items.length === 0 ? (
                         <img
                           src="https://picsum.photos/300/300?random31"
@@ -193,14 +195,14 @@ const TravelDrag = ({
                       )}
                     </div>
                     <div className="col-md-8">
-                      <div className="card-body d-flex align-items-center">
-                        <div className="Travel_Drag_cardText d-flex">
+                      <div className="card-body">
+                        <div className="Travel_Drag_cardText d-flex me-2">
                           <img
                             src={mapicon}
                             className="travel_Dragmapicon"
                             alt="#123"
                           />
-                          <p className="Travel_DragNavbar_text">
+                          <p className="Travel_DragNavbar_text ms-1">
                             {item.locate_name}
                           </p>
                         </div>
@@ -219,7 +221,7 @@ const TravelDrag = ({
                               console.log('這是要刪除景點的id', item.id);
                             }}
                           >
-                            <HiOutlineTrash className="mx-2 mt-1" />
+                            <HiOutlineTrash className="ms-2 me-1" />
                             <p className=" Travel_Drag_cardNT ">刪除</p>
                           </div>
                         </div>

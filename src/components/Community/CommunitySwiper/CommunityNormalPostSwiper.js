@@ -33,7 +33,7 @@ import cat8 from '../../../images/Community_HomePage/petKOL/cat8.jpeg';
 import cat9 from '../../../images/Community_HomePage/petKOL/cat9.jpeg';
 import cat10 from '../../../images/Community_HomePage/petKOL/cat10.jpeg';
 
-export default function CommunityNormalPostSwiper (props) {
+export default function CommunityNormalPostSwiper(props) {
   const { comHomePageCard } = props;
   // console.log('props', props);
   const petKOL = [
@@ -172,7 +172,6 @@ export default function CommunityNormalPostSwiper (props) {
       setAllNormalPost(result.data);
     };
     fetchNormalPostData();
-
   }, []);
 
   return (
@@ -194,7 +193,6 @@ export default function CommunityNormalPostSwiper (props) {
           onSwiper={(swiper) => {}}
         >
           {allNormalPost.map((v, i) => {
-           
             return (
               <SwiperSlide key={v.id}>
                 <div className="">

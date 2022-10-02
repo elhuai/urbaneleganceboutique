@@ -8,7 +8,7 @@ import TravelDrag from '../TravelDrag/TravelDrag';
 import { HiChevronLeft } from 'react-icons/hi';
 import { MdPhotoSizeSelectActual } from 'react-icons/md';
 import { handleSuccess } from '../../../utils/handler/handleStatusCard';
-
+import { HiOutlinePencilAlt } from 'react-icons/hi';
 // import CoverBackground from '../../../images/post_edit_background_banner.png';
 
 import { NavLink } from 'react-router-dom';
@@ -155,7 +155,7 @@ const TravelDate = ({
       try {
         const copyShowdate = [...showdate];
         let formData = new FormData();
-        console.log('ALLllllllmember', member);
+        // console.log('ALLllllllmember', member);
         formData.append('title', member.title);
         formData.append('photo', member.photo);
         formData.append('date', copyShowdate.pop());
@@ -183,8 +183,8 @@ const TravelDate = ({
       <div className="travleDrag_body">
         <div className="travleDrag_menu">
           <div className="travleDrag_header_top  mt-3 d-flex">
-            <div className="travleDrag_header_top_left  ">
-              <div className="travleDrag_header_back">
+            <div className="travleDrag_header_top_left d-flex flex-row">
+              <div className="travleDrag_header_bactravleDrag_header_editk me-2">
                 <NavLink to="/travel" className="travleDrag_header_backIcon">
                   <HiChevronLeft />
                 </NavLink>
@@ -202,14 +202,14 @@ const TravelDate = ({
                         onChange={inputhandleChange}
                       />
                     ) : (
-                      <h1 className="travleDrag_header_tittle ">
+                      <h4 className="travleDrag_header_tittle ">
                         {data.title}
-                      </h1>
+                      </h4>
                     )}
 
-                    <h3 className="travleDrag_header_date">
+                    <h6 className="travleDrag_header_date">
                       {data.start_time}~{data.end_time}
-                    </h3>
+                    </h6>
                   </div>
                 );
               })}
@@ -242,8 +242,8 @@ const TravelDate = ({
               className="travleDrag_header_edit d-flex"
               onClick={handleSubmit}
             >
-              <div className="travleDrag_header_icon"></div>
-              <div>{editdetail ? '完成' : '編輯'} </div>
+              <HiOutlinePencilAlt className="travleDrag_header_icon" />
+              <div className="ms-1">{editdetail ? '完成' : '編輯'} </div>
             </div>
           </div>
 
@@ -278,7 +278,7 @@ const TravelDate = ({
                         label="+"
                         {...travelprops()}
                         onClick={handleClick}
-                        className="travelDrage_Tab  "
+                        className="travelDrage_Tab"
                       />
                     </Tabs>
                   );

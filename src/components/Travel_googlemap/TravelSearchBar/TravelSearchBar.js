@@ -156,9 +156,6 @@ const PlacesAutocomplete = ({
     <Combobox onSelect={handleSelect} className="travelmap_coboboxBody">
       <div className="travel_input_searchBar_sum  d-flex  ">
         <div className="travel_input_searchBar_sum">
-          <div className="travelmap_input_icondiv ">
-            <img src={mapicon} alt="#/" className="travel_input_mapicon " />
-          </div>
           <ComboboxInput
             value={value}
             onChange={(e) => setValue(e.target.value)}
