@@ -19,11 +19,8 @@ export default function CommunityListCard({ postData, search }) {
         </h5>
       </div>
       {postData.map((data, index) => {
-        const tag = postData[0].tags.split(/[#,＃]/).filter((item) => item);
-        {
-          /* const noHtmlContent = postData[0].content.replace(/<\/?.+?>/g, '');
-        console.log(noHtml); */
-        }
+        let tags = postData[index].tags;
+        const tag = tags.split(/[#,＃]/).filter((item) => item);
         return (
           <Link to={`/post?postID=${data.id}`} key={index}>
             <div className=" card border-primary" key={index}>
@@ -62,10 +59,11 @@ export default function CommunityListCard({ postData, search }) {
                       </div>
                       {/* 內文 */}
                       <p className="comList_main_card_text my-2">
-                        {data.content.replace(/<\/?.+?>/g, '')}
+                        {/* { (data.content.replace(/<\/?.+?>/g, ''))} */}
+                        {data.content}
                       </p>
                       {/* 地點、讚數 */}
-                      <div className="comList_main_card_bottom_text d-flex justify-content-between align-items-center">
+                      <div className="comList_main_card_bottom_text d-flex justify-content-between align-items-center mt-4">
                         <p className="comList_main_card_locate_text align-items-center d-flex fw-bolder">
                           <TiLocation />
                           {data.coordinate}

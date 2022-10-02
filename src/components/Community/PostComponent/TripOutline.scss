@@ -13,6 +13,12 @@ $line-color--blue: #d5eeee;
   margin-top: -100px;
 }
 
+@media (max-width: 768px) {
+  .trip_outline {
+    display: none;
+  }
+}
+
 .trip_outline {
   border-radius: 8px;
   padding: 10px;

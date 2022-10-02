@@ -7,7 +7,6 @@ import { BiLike } from 'react-icons/bi';
 import './_TravelEveryOneSwiper.scss';
 
 const TravelEveryOneSwiper = ({ travelCommunity }) => {
- 
   const [allPost, setAllPost] = useState([]);
   const BASE_URL = process.env.REACT_APP_BASE_API_URL;
 
@@ -40,8 +39,11 @@ const TravelEveryOneSwiper = ({ travelCommunity }) => {
               <>
                 <SwiperSlide key={v.id} className="">
                   <div key={v.id} className="item">
-                    <div className='mainPhotoSection'>
-                      <img src={`${BASE_URL}/post/${v.post_main_photo}`} alt="" />
+                    <div className="mainPhotoSection">
+                      <img
+                        src={`${BASE_URL}/post/${v.post_main_photo}`}
+                        alt=""
+                      />
                     </div>
                     <section className="">
                       <div className="allPostTitle">

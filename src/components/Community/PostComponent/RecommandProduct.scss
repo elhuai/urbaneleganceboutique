@@ -8,19 +8,13 @@ $list-color-hover: #feefc3;
 $link-color: #2da9d7;
 $line-color--blue: #d5eeee;
 
-
-
 // 推薦商品區
-.recommand_product_title {
-  font-size: 1.8rem;
-  font-weight: 600;
-  // margin-top: 5px;
-}
+
 .recommand_product_list {
   margin-top: 5px;
 }
 .rec_product_card {
-  width: 250px;
+  width: 300px;
   height: 360px;
   border: 2px solid $main-color;
   border-radius: 8px;
@@ -32,6 +26,7 @@ $line-color--blue: #d5eeee;
     img {
       width: 100%;
       height: 100%;
+      object-fit: cover;
     }
   }
   .product_title {
@@ -66,4 +61,8 @@ $line-color--blue: #d5eeee;
       font-weight: 800;
     }
   }
+}
+.post__comment_list_title {
+  font-size: 1.8rem;
+  font-weight: 600;
 }

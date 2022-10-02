@@ -1,22 +1,24 @@
 import React from 'react';
-import coverPhoto from '../../../images/test2.jpg';
+import coverPhoto from '../../../images/社群假圖1280.png';
 import { BE_URL } from '../../../utils/config';
 import { Link } from 'react-router-dom';
 import { BiLike } from 'react-icons/bi';
 import { AiTwotoneLike } from 'react-icons/ai';
 import { MdLocationOn } from 'react-icons/md';
-import './PostStateBar.scss';
+import './PostStateBarTripPost.scss';
 import { useState, useEffect } from 'react';
 import axios from 'axios';
 import { API_URL } from '../../../utils/config';
 import { handleSuccess } from '../../../utils/handler/card/handleStatusCard';
 import { useUserInfo } from '../../../hooks/useUserInfo';
 
-export default function PostStateBar({ post, postID }) {
+export default function PostStateBarTripPost({ post, postID }) {
   console.log('post', post);
   console.log('此貼文ＩＤ', postID);
+  console.log(post[0][0].tags);
   // 資料按讚數 學儒調整中
   const [likes, setLikes] = useState(post[0][0].likes);
+  console.log(post[0][0].likes);
   // 資料按讚數
   const { user, setUser } = useUserInfo();
   // console.log('user', user.data.id);
@@ -42,10 +44,9 @@ export default function PostStateBar({ post, postID }) {
 
   console.log('poststatebar', post);
 
-  // 按讚按鈕 學儒調整中
+  // 按讚按鈕
   const LikeHandle = async (e) => {
     e.preventDefault();
-
     if (!likesState) {
       setLikes(likes + 1);
       console.log('現在按讚狀態', likesState);
@@ -79,6 +80,7 @@ export default function PostStateBar({ post, postID }) {
     }
   };
   // 學儒調整中
+  console.log('post', post);
   const time = post[0][0].create_time.split(' ');
   const tags = post[0][0].tags.split(/[#,＃]/).filter((item) => item);
 
@@ -98,12 +100,12 @@ export default function PostStateBar({ post, postID }) {
 
   return (
     <>
-      <div className="postStateBar">
+      <div className="postStateBarTripPost">
         <div className="post_cover_photo">
           <img
-            className=""
+            className="cover_photo"
             alt=""
-            style={{ objectFit: 'contain' }}
+            style={{ objectFit: 'cover' }}
             src={
               post[0][0].post_main_photo === ''
                 ? coverPhoto
@@ -111,34 +113,32 @@ export default function PostStateBar({ post, postID }) {
             }
           ></img>
         </div>
-        <div className="post_title d-flex">
+        <div className="post_title">
           <p className="">{post[0][0].post_title}</p>
         </div>
-        <div className="post_state_bar d-flex justify-content-between">
-          <div className="d-flex">
-            <div className="post_date px-2">
-              <p>{time[0]}</p>
-            </div>
-            <div className="post_auther d-flex px-2">
-              <Link to="/" className="pe-2">
-                {post[0][0].social_name}
-              </Link>
-            </div>
-            <div className="post_location pe-4">
-              <p>
-                <MdLocationOn className="mb-1"></MdLocationOn>
-                {post[0][0].coordinate}
-              </p>
-            </div>
-            <div className="d-flex ">
-              {tags.map((data, index) => {
-                return (
-                  <div key={tags.index} className="post_tags">
-                    <p className="mx-1">{data}</p>
-                  </div>
-                );
-              })}
-            </div>
+        <div className="post_state_bar ">
+          <div className="post_date px-2">
+            <p>{time[0]}</p>
+          </div>
+          <div className="post_auther d-flex px-2">
+            <Link to="/" className="pe-2">
+              {post[0][0].social_name}
+            </Link>
+          </div>
+          <div className="post_location pe-4">
+            <p>
+              <MdLocationOn className="mb-1"></MdLocationOn>
+              {post[0][0].coordinate}
+            </p>
+          </div>
+          <div className="postTages">
+            {tags.map((data, index) => {
+              return (
+                <div key={tags.index} className="post_tags">
+                  <p className="mx-1">{data}</p>
+                </div>
+              );
+            })}
           </div>
           <div className="post_like me-2">
             {post[0][0].status === 2 ? (
