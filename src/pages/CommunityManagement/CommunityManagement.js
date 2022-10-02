@@ -66,7 +66,9 @@ function CommunityManagement() {
     const fetchMyPost = async () => {
       let userID = user.data.id;
       console.log('userID', userID);
-      const result = await axios.get(`${API_URL}/community/postAll`, userID);
+      const result = await axios.get(`${API_URL}/community/postAll`, {
+        userID,
+      });
       // 取得後端來的資料
       console.log('一般貼文列表', result.data);
       setMyPost(result.data);
