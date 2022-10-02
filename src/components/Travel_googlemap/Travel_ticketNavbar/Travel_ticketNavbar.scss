@@ -40,10 +40,20 @@
     border-top-left-radius: 6px;
     border-bottom-left-radius: 6px;
   }
-  .Travel_ticketNavbar_card-title {
-    font-weight: 700;
-    font-size: 1.3rem;
+  .Travel_ticketNavbar_card_titleDiv {
+    text-indent: 24px;
+    // line-height: 1.8;
+    height: 50px;
+    display: -webkit-box; /*值必須為-webkit-box或者-webkit-inline-box*/
+    -webkit-box-orient: vertical; /*值必須為vertical*/
+    -webkit-line-clamp: 2; /*值為數字，表示一共顯示幾行*/
+    overflow: hidden;
+    .Travel_ticketNavbar_card-title {
+      font-weight: 700;
+      font-size: 1.3rem;
+    }
   }
+
   .Travel_ticketNavbar_cardText {
     width: 550px;
     .Travel_ticketNavbar_text {
@@ -68,17 +78,20 @@
     padding: 2px 10px;
     font-weight: 600;
   }
-
-  .Travel_ticketNavbar_storeIconn {
-    // padding-right: 10px;
-    position: relative;
-    bottom: 10px;
-    svg {
-      width: 1.25rem;
-      height: 1.25rem;
-      color: #ef7a70;
+  .Travel_ticketNavbar_storeIconndiv {
+    // height: 50px;
+    .Travel_ticketNavbar_storeIconn {
+      // padding-right: 10px;
+      position: relative;
+      bottom: 10px;
+      svg {
+        width: 1.25rem;
+        height: 1.25rem;
+        color: #ef7a70;
+      }
     }
   }
+
   .Travel_ticketNavbar_cardNT {
     position: relative;
     // top: 10px;

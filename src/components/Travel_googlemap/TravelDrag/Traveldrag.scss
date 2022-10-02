@@ -21,7 +21,6 @@ $font-weight: 700;
   position: relative;
   padding: 3px 2px;
   left: 9px;
-  opacity: 0.8;
   z-index: 1;
   width: 650px;
 
@@ -57,31 +56,31 @@ $font-weight: 700;
     font-weight: 500;
   }
 
-  .Travel_Drag_cardText {
-    width: 100%;
-    height: 3rem;
-    line-height: 3rem;
-    .Travel_DragNavbar_text {
-      font-size: 1.3rem;
-      font-weight: 700;
-      // margin-left: 20px;
-      display: -webkit-box; /*值必須為-webkit-box或者-webkit-inline-box*/
-      -webkit-box-orient: vertical; /*值必須為vertical*/
-      -webkit-line-clamp: 2; /*值為數字，表示一共顯示幾行*/
-      overflow: hidden;
-    }
-    .travel_Dragmapicon {
-      height: 2rem;
-      line-height: 3rem;
-      width: 20px;
-      position: relative;
-      top: 5px;
-    }
-  }
+  // .travel_Dragmaptitle {
+  //   font-size: 1.3rem;
+  //   font-weight: 400;
+  // }
+}
 
-  .travel_Dragmaptitle {
+.Travel_Drag_cardText {
+  width: 100%;
+  height: 3rem;
+  line-height: 3rem;
+  .Travel_DragNavbar_text {
     font-size: 1.3rem;
-    font-weight: 400;
+    font-weight: 700;
+    // margin-left: 20px;
+    display: -webkit-box; /*值必須為-webkit-box或者-webkit-inline-box*/
+    -webkit-box-orient: vertical; /*值必須為vertical*/
+    -webkit-line-clamp: 2; /*值為數字，表示一共顯示幾行*/
+    overflow: hidden;
+  }
+  .travel_Dragmapicon {
+    height: 2rem;
+    line-height: 3rem;
+    width: 20px;
+    position: relative;
+    top: 5px;
   }
 }
 
@@ -229,9 +228,8 @@ $font-weight: 700;
     }
     .travleDrag_header_upImage {
       position: relative;
-
-      top: 65px;
-      left: 140px;
+      top: 40px;
+      left: 130px;
     }
     .travleDrag_header_upicon {
       cursor: pointer;
@@ -258,14 +256,15 @@ $font-weight: 700;
 
     .travleDrag_Main {
       border-radius: 8px;
-      width: 730px;
+      width: 100%;
       border: $supbackcolor 1px solid;
       .travelDrag_Options {
         &:hover {
           transform: translateY(-5px);
-          box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.2);
+          box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.2);
         }
-        transition: 0.8s ease-in;
+        // ? 雨信特效時間記得調短
+        transition: 0.3s ease-in;
         animation: wrapper-gradient 0.3s linear;
         @keyframes wrapper-gradient {
           0% {
@@ -277,30 +276,31 @@ $font-weight: 700;
         }
       }
       .travelDrag_tittle {
-        font-weight: 700;
         font-size: 1.3rem;
         align-items: center;
         display: flex;
-        position: relative;
-        bottom: 10px;
-
-        .Travel_Drag_card_exit {
-          border-radius: 8px;
-          width: 100px;
-          height: 100px;
+        // position: relative;
+        // bottom: 10px;
+        .travel_dragcard_photo {
+          padding-top: 9px;
+          padding-left: 3px;
+          width: 156px;
+          .Travel_Drag_card_exit {
+            width: 100%;
+            height: 123px;
+            margin-top: -6.5px;
+            border-top-left-radius: 6px;
+            border-bottom-left-radius: 6px;
+          }
         }
-        // &::before {
-        //   content: '';
-        //   width: 35px;
-        //   height: 25px;
-        //   background: url('../../../images/TravelDragbluecar.png') no-repeat
-        //     center / contain;
-        //   //TODO: 用SVG圖繪掛掉 只能用PNG
-        //   bottom: -35px;
-        //   left: 85px;
-        //   position: absolute;
-        //   display: inline-block;
-        // }
+
+        .travel_Dragmaptitle {
+          font-weight: 700;
+          display: -webkit-box;
+          -webkit-box-orient: vertical;
+          -webkit-line-clamp: 2;
+          overflow: hidden;
+        }
       }
 
       .travelDrag_container {
@@ -309,6 +309,7 @@ $font-weight: 700;
         background: #eee;
         overflow: auto;
         .edit_save_btn {
+          margin-top: 10px;
           width: 200px;
           background-color: #ef7a70;
           color: white;

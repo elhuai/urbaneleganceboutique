@@ -2,18 +2,19 @@ import React from 'react';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Link } from 'react-router-dom';
 import { Autoplay } from 'swiper';
+import userphoto from '../../images/travels/user-3296.svg';
 
 const moment = require('moment');
 
 const TravelFooterSwiper = ({ travelCommunity }) => {
-  console.log('travelCommunity', travelCommunity);
+  console.log('travelCommunity===============', travelCommunity);
 
   const newArr = travelCommunity.map((data) => {
     const startDate = moment(data.start_time);
     const endDate = moment(data.end_time);
     const differentDate = endDate.diff(startDate, 'days');
     // console.log(startDate + '跟' + endDate + '相差' + differentDate + '天');
-    console.log('differentDate', differentDate);
+    // console.log('differentDate', differentDate);
     for (let i = 0; i < travelCommunity.length; i++) {
       travelCommunity[i].differentDays = differentDate;
     }
@@ -74,11 +75,21 @@ const TravelFooterSwiper = ({ travelCommunity }) => {
 
               <div className="d-flex">
                 <div>
-                  <img
-                    className="travel_Swiper_EveryOnetrip_userImage"
-                    src={process.env.REACT_APP_BASE_API_URL + '/' + data.photo}
-                    alt="#/"
-                  />
+                  {travelCommunity.length === '' ? (
+                    <img
+                      className="travel_Swiper_EveryOnetrip_userImage"
+                      src={userphoto}
+                      alt="#/"
+                    />
+                  ) : (
+                    <img
+                      className="travel_Swiper_EveryOnetrip_userImage"
+                      src={
+                        process.env.REACT_APP_BASE_API_URL + '/' + data.photo
+                      }
+                      alt="#/"
+                    />
+                  )}
                 </div>
                 <div className="d-flex align-items-center travel_titlename">
                   <h4 className="travel_Swiper_EveryOnetrip_username mx-md-3 user-select-none">
