@@ -114,14 +114,14 @@ const Travel_map_Navbar = ({
       </TabPanel>
       <TabPanel value={value} index={2} component={'span'} variant={'body2'}>
         <div className=" ">
-          <TravelSearchBar
+          {/* <TravelSearchBar
             setSelected={setSelected}
             selected={selected}
             getDays={getDays}
             gettravelid={gettravelid}
             setIfDelete={setIfDelete} //重新render畫面用
             ifDelete={ifDelete} //重新render畫面用
-          />
+          /> */}
         </div>
       </TabPanel>
     </Box>

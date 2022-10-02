@@ -1,0 +1,50 @@
+.MyTravel {
+  .Title {
+    font-size: 32px;
+    color: #ef7a70;
+    font-weight: 500;
+    margin: 20px 0;
+  }
+  .MyTravelSwiper {
+    width: 1600px;
+    height: 400px;
+    .MyTravelItem {
+      border-radius: 15px;
+      padding: 20px;
+      cursor: pointer;
+      &:hover {
+        background: #feefc3;
+      }
+      .MyTravelImg {
+        margin-bottom: 20px;
+        img {
+          width: 100%;
+          height: 260px;
+          border-radius: 15px;
+          object-fit: cover;
+        }
+      }
+      .MyTravelTitle {
+        display: flex;
+        align-items: center;
+        margin-bottom: 15px;
+        .FaPaw {
+          margin-right: 5px;
+          color: #ffc715;
+          font-size: 18px;
+        }
+        p {
+          font-size: 20px;
+          font-weight: 500;
+          margin: 0;
+        }
+      }
+      .MyTravelTime {
+        width: 100%;
+        display: flex;
+        justify-content: end;
+        font-size: 14px;
+      }
+    }
+  }
+}
