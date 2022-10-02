@@ -6,7 +6,7 @@
 }
 .CreateTravel {
   background-image: url(../../../images/home_tour_bg.png);
-  height: 600px;
+  height: 500px;
   // width: 100vw;
   position: relative;
   .BGCircle1 {
@@ -16,8 +16,8 @@
     background-color: #feefc3;
     opacity: 0.8;
     border-radius: 50%;
-    top: 29%;
-    left: 25.5%;
+    top: 18%;
+    left: 22.5%;
     z-index: 1;
   }
   // .BGCircle2 {
@@ -37,8 +37,8 @@
     background-color: #ff9634b5;
     opacity: 0.5;
     border-radius: 50%;
-    top: 5rem;
-    left: 98rem;
+    top: 25%;
+    left: 80%;
   }
   .BGCircle4 {
     position: absolute;
@@ -47,8 +47,8 @@
     background-color: #ff8eb0b6;
     opacity: 0.5;
     border-radius: 50%;
-    top: 20rem;
-    left: 110rem;
+    top: 65%;
+    left: 90%;
   }
   .BGCircle5 {
     position: absolute;
@@ -57,8 +57,8 @@
     background-color: #72ceef;
     opacity: 0.6;
     border-radius: 50%;
-    top: 26rem;
-    left: 14rem;
+    top: 65%;
+    left: 10%;
   }
   .BGCircle6 {
     position: absolute;
@@ -67,15 +67,14 @@
     background-color: #6dffb1b9;
     opacity: 0.5;
     border-radius: 50%;
-
-    top: 10rem;
-    left: 30rem;
+    top: 15%;
+    left: 20%;
   }
 
   .mainSlogan1 {
     position: absolute;
-    top: 14rem;
-    left: 59rem;
+    top: 35%;
+    left: 45%;
     font-size: 72px;
     width: 460px;
   }
@@ -88,8 +87,8 @@
   }
   .slogan {
     position: absolute;
-    top: 23rem;
-    left: 61rem;
+    top: 58%;
+    left: 47%;
     font-size: 22px;
     margin: 0;
     display: flex;
@@ -103,8 +102,8 @@
   }
   .SloganImg {
     position: absolute;
-    top: 23%;
-    left: 29%;
+    top: 18%;
+    left: 26%;
     width: 260px;
     height: auto;
     // transform: scaleX(-1);
@@ -112,8 +111,8 @@
   }
   .FormBody {
     position: absolute;
-    top: 70%;
-    left: 46%;
+    top: 68%;
+    left: 47%;
 
     .Title {
       font-size: 32px;
@@ -124,15 +123,18 @@
       .InputGroup {
         margin-right: 20px;
         width: 100%;
-        .InputGroupForm {
-          margin-right: 20px;
-
-          .inputSection {
-          }
-        }
-        button {
-          border: none;
-        }
+      }
+    }
+    .submitButton {
+      // margin-left: 0 ;
+      margin: 0 20px !important;
+      border-radius: 8px !important;
+      border: none;
+      background-color: #ef7a70;
+      color: #fff;
+      &:hover {
+        background-color: #ef7a70;
+        color: #fff;
       }
     }
   }

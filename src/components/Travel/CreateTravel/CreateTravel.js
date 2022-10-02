@@ -5,6 +5,7 @@ import { API_URL } from '../../../utils/config';
 import { handleSuccess } from '../../../utils/handler/handleStatusCard';
 import { FaPaw } from 'react-icons/fa';
 import dog2 from '../../../images/home_newsList_dog_2.png';
+import 'animate.css';
 import './_CreateTravel.scss';
 
 const CreateTravel = () => {
@@ -29,7 +30,7 @@ const CreateTravel = () => {
     <>
       <div className="CreateTravel">
 
-      <img className="SloganImg disappear" src={dog2} alt="" />
+      <img className="SloganImg disappear animate__animated animate__tada" src={dog2} alt="" />
           <div className="BGCircle1 disappear"></div>
           <div className="BGCircle2 disappear"></div>
           <div className="BGCircle3 disappear"></div>
@@ -43,10 +44,9 @@ const CreateTravel = () => {
             {/* <h2 className="Title">新增行程 </h2> */}
             <div className="InputGroup">
               <InputGroup className="InputGroupForm">
-                <div>
+                <div className='travelName'>
                   <Form.Control
                     type="text"
-                    id="title"
                     name="title"
                     value={loginMember.travel}
                     placeholder="請輸入行程名稱"
@@ -59,7 +59,6 @@ const CreateTravel = () => {
                 <div className="">
                   <Form.Control
                     type="date"
-                    id="start_time"
                     name="start_time"
                     value={loginMember.starttime}
                     placeholder=""
@@ -72,7 +71,6 @@ const CreateTravel = () => {
                 <div className="">
                   <Form.Control
                     type="date"
-                    id="end_time"
                     name="end_time"
                     value={loginMember.endtime}
                     placeholder="請輸入景點關鍵字"
@@ -85,7 +83,6 @@ const CreateTravel = () => {
 
                 <Button
                   variant="outline-secondary"
-                  id="button-addon2"
                   type="submit"
                   onClick={handleSubmit}
                   className="submitButton"

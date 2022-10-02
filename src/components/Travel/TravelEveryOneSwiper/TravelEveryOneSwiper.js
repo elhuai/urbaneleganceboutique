@@ -41,7 +41,7 @@ const TravelEveryOneSwiper = ({ travelCommunity }) => {
                 <SwiperSlide key={v.id} className="">
                   <div key={v.id} className="item">
                     <div className='mainPhotoSection'>
-                      <img src={`${BASE_URL}/post/${v.main_photo}`} alt="" />
+                      <img src={`${BASE_URL}/post/${v.post_main_photo}`} alt="" />
                     </div>
                     <section className="">
                       <div className="allPostTitle">

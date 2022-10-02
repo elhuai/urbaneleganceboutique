@@ -12,15 +12,16 @@ $look_line-height: 53px;
 
 .TravelGoPlaySwiper {
   .travel_goplay {
+    // max-width: 1425px;
     .goTripItem {
-      width: 230px;
+      width: 200px;
       height: 160px;
       position: relative;
 
       .goTripImg {
         img {
           border-radius: 15px;
-          width: 230px;
+          width: 200px;
           height: 130px;
           object-fit: cover;
         }
