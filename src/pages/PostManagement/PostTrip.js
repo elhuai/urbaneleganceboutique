@@ -89,20 +89,13 @@ function PostTrip() {
               </div>
               <TripOutline className="d-block" post={postTrip}></TripOutline>
             </div>
-            <CommunityGoogleMaps></CommunityGoogleMaps>
+            <CommunityGoogleMaps post={postTrip}></CommunityGoogleMaps>
             <div className="recommandProduct">
               <RecommandProduct></RecommandProduct>
             </div>
             <hr></hr>
             <div className="commentBar ">
-              <div className="commentBarWeb">
-                {' '}
-                <CommentBar comment={comment}></CommentBar>
-              </div>
-              <div className="commentBarRWD">
-                {' '}
-                <CommentBarRWD comment={comment}></CommentBarRWD>
-              </div>
+              <CommentBar comment={comment}></CommentBar>
             </div>
           </div>
         </div>
