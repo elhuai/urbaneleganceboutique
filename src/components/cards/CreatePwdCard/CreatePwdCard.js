@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
-import { resetPassword } from '../../../api/userApi';
-import './_resetPwdCard.scss';
+import { createPassword } from '../../../api/userApi';
+import './_createPwdCard.scss';
 
-const ResetPwdCard = ({ cancel, code, setUser, navigate }) => {
+const CreatePwdCard = ({ cancel, setUser }) => {
   const [password, setPassword] = useState({
     password: '',
     confirmPassword: '',
@@ -13,30 +13,21 @@ const ResetPwdCard = ({ cancel, code, setUser, navigate }) => {
   };
   const handleSubmit = (e) => {
     e.preventDefault();
-    resetPassword(
-      {
-        action: 'reset',
-        code: code,
-        password: password.password,
-        confirmPassword: password.confirmPassword,
-      },
-      setUser,
-      navigate
-    );
+    createPassword(password, setUser);
   };
   return (
     <div>
-      <div className="reset_pwd_card--global d-flex">
-        <div className={`reset_pwd_card_content reset_pwd_card`}>
-          <h2>忘記密碼</h2>
-          <p>平台將會寄發密碼重設信件至您的信箱</p>
+      <div className="create_pwd_card--global d-flex">
+        <div className={`create_pwd_card_content create_pwd_card`}>
+          <h2>建立平台帳戶密碼</h2>
+          <p>設定完成後將可使用一般登入方式登入平台</p>
           <form onSubmit={handleSubmit}>
             <div className="mb-3">
               <input
                 type="password"
                 name="password"
                 className="form-control"
-                placeholder="請輸入新密碼"
+                placeholder="請輸入要設置的密碼"
                 value={password.password}
                 onChange={handleInputChange}
                 required
@@ -54,11 +45,11 @@ const ResetPwdCard = ({ cancel, code, setUser, navigate }) => {
               ></input>
             </div>
             <div className="d-flex gap-2 justify-content-center">
-              <button className="reset_pwd_card_button" type="submit">
+              <button className="create_pwd_card_button" type="submit">
                 送出
               </button>
               <button
-                className="reset_pwd_card_button cancel"
+                className="create_pwd_card_button cancel"
                 onClick={() => cancel()}
               >
                 取消
@@ -71,4 +62,4 @@ const ResetPwdCard = ({ cancel, code, setUser, navigate }) => {
   );
 };
 
-export default ResetPwdCard;
+export default CreatePwdCard;
