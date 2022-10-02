@@ -292,16 +292,27 @@ $font-weight: 1000;
       }
 
       // = mobile menu btn
+
       .header_rwd_menubtn {
+        .navbar-toggler-icon {
+          svg {
+            color: $fmain_color !important;
+          }
+        }
         margin-left: 16px;
         border: 0;
         padding: 0;
-
+        svg {
+          color: $fmain_color !important;
+        }
         &:focus,
         &:active {
           border: 0;
           box-shadow: none;
         }
+      }
+      svg {
+        color: $fmain_color !important;
       }
     }
   }
@@ -330,7 +341,6 @@ $font-weight: 1000;
 @media screen and (max-width: 768px) {
   .header_main_body {
     .header_mobile_menu {
-
       // = mobile icon area
       .header_Icon {
         padding: 0;
