@@ -195,6 +195,8 @@ function PostTripEdit() {
   //預覽 上傳封面照片 我要哭了
   useEffect(() => {
     if (!selectedCoverFile) {
+      setCoverFile({ photo: CoverBackground, postID: postID });
+      //test
       setPreview('');
       return;
     }
@@ -202,7 +204,7 @@ function PostTripEdit() {
       // async function changeCoverHandler(e) {
       let formData = new FormData();
       // setCoverFile({ ...coverFile, photo: e.name.value });
-      console.log('coverFile!', coverFile);
+      // console.log('coverFile!', coverFile);
       console.log('該貼文ＩＤ', postID);
       formData.append('postID', coverFile.postID);
       formData.append('photo', coverFile.photo);

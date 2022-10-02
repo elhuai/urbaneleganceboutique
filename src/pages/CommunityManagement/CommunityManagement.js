@@ -104,7 +104,7 @@ function CommunityManagement() {
       // 存回 useState 狀態
     };
     fetchMyTrip();
-  }, []);
+  }, [ifDelete]);
   //視窗狀態改變
   const ConfirmHandle = (e) => {
     setShowCFBox(e);
@@ -122,7 +122,7 @@ function CommunityManagement() {
       }
     );
     console.log(deleteData, '資料刪除成功');
-    handleSuccess('貼文刪除成功');
+    handleSuccess('貼文刪除成功', '/admin/community');
     ConfirmHandle(0);
     setIfDelete(false);
   };
@@ -135,7 +135,7 @@ function CommunityManagement() {
       tripPostTitleDefault,
     });
     console.log(creatData, '行程貼文新增成功');
-    handleSuccess('貼文匯入成功');
+    handleSuccess('貼文匯入成功', '/admin/community');
     ConfirmHandle(0);
   };
   // console.log('匯入行程貼文預設標題', tripPostTitleDefault);
@@ -164,7 +164,6 @@ function CommunityManagement() {
           <RiEditFill color="#FFC715" className="edit-icon me-2"></RiEditFill>
           新增貼文
         </button>
-        {/* //TODO: 無法固定在位置 */}
         <div>
           <Tabs
             defaultActiveKey="article_list_post"
