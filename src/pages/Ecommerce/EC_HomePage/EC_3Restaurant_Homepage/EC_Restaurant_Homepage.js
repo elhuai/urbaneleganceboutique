@@ -53,17 +53,19 @@ function EcRestaurantHomepage() {
   return (
     <div className="ecHomePage">
       <div className="EcRestaurantHomepage_main">
-        <SearchBar
-          searchBar_title="哪裡有好吃的餐廳？"
-          searchBar_placeholder="尚好吃的攏底家"
-          search={search}
-          setSearch={setSearch}
-          titleSearch={titleSearch}
-          setTitleSearch={setTitleSearch}
-          setTypeId={3}
-          typeId={3}
-        />
-        <EcHomePageSlider ecTypeSlider={restaurantSlider} />
+        <div className="EcEnjoyHomepage_main_bg md-2">
+          <SearchBar
+            searchBar_title="哪裡有好吃的餐廳？"
+            searchBar_placeholder="尚好吃的攏底家"
+            search={search}
+            setSearch={setSearch}
+            titleSearch={titleSearch}
+            setTitleSearch={setTitleSearch}
+            setTypeId={3}
+            typeId={3}
+          />
+          <EcHomePageSlider ecTypeSlider={restaurantSlider} />
+        </div>
         <EcHomePageCategory ecTypeCategory={restaurantCategory} />
         <EcHomePageCard
           ecTypeCardTitle={cardTitle[0]}

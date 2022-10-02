@@ -15,10 +15,38 @@ $royal-blue: #22c3ff;
   color: $graycolor;
 }
 
-.ecHomePage {
-  display: flex;
-  flex-direction: column;
-  max-width: 1280px;
-  width: 100%;
-  margin: 1rem auto;
+.EcEnjoyHomepage_main_bg {
+  padding-bottom: 10px;
+  background-image: url(../../../images/home_tour_bg.png);
+}
+
+.BGCircle1 {
+  position: absolute;
+  width: 150px;
+  height: 150px;
+  background-color: #ff9634b5;
+  opacity: 0.5;
+  border-radius: 50%;
+  top: 25%;
+  left: 80%;
+}
+.BGCircle2 {
+  position: absolute;
+  width: 150px;
+  height: 150px;
+  background-color: #ff9634b5;
+  opacity: 0.5;
+  border-radius: 50%;
+  top: 25%;
+  left: 80%;
+}
+.BGCircle3 {
+  position: absolute;
+  width: 150px;
+  height: 150px;
+  background-color: #ff9634b5;
+  opacity: 0.5;
+  border-radius: 50%;
+  top: 25%;
+  left: 80%;
 }

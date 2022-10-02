@@ -322,48 +322,24 @@
       }
     }
 
+    .nav-tabs {
+      --bs-nav-tabs-border-width: 0px;
+
+      .nav-link {
+        padding: 10px;
+
+        &:first-child {
+          padding-left: 0px;
+        }
+      }
+    }
+
+    .mapYTRWD {
+      display: none;
+    }
   }
 }
 
-// @media only screen and (min-width: 768px) and (max-width: 1366px) {
-//     .productDetail {
-//         .main {
-//             padding: 0rem 2rem;
-//         }
-
-//         .topRow {
-//             padding: 0 1rem;
-//         }
-
-//         .mainImage img {
-//             width: 90%;
-//             height: 100%;
-//             display: block;
-//             margin-left: auto;
-//             margin-right: auto;
-//         }
-
-//         .productContainer {
-//             padding: 2rem 4rem;
-//         }
-
-//         .cardRow {
-//             width: 90%;
-//             margin: 10px auto;
-//             display: flex;
-//             height: 12vh;
-//             justify-content: space-between;
-//         }
-
-//         .imageColumn {
-//             margin-top: 1rem;
-//         }
-
-//         .bottomRow {
-//             padding: 1rem 3rem;
-//         }
-//     }
-// }
 
 @media only screen and (max-width: 768px) {
   .productDetail {
@@ -476,6 +452,12 @@
         margin-top: 1rem
       }
 
+      img {
+        max-width: 345px;
+        max-height: 250px;
+        object-fit: cover;
+      }
+
       .exchangeImg {
         width: 300px;
       }
@@ -487,6 +469,14 @@
       .exchangeRWD {
         display: block;
       }
+
+      .mapYT {
+        display: none;
+      }
+
+      .mapYTRWD {
+        display: block;
+      }
     }
 
     .product_comment_img {
@@ -495,7 +485,23 @@
       height: 70px;
     }
 
+    .streeView_STMap_body {
+      .streeView_STMap_body_container {
+        width: 345px;
+        height: 250px;
+      }
+    }
 
+    .streeView_GEMap_body {
+      .streeView_GEMap_body_container {
+        width: 345px;
+        height: 250px;
+      }
+    }
+
+    .mapGE {
+      width: 345px;
+      height: 250px;
+    }
   }
-
 }
