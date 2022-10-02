@@ -1,9 +1,9 @@
 import './_HomePageMasonry.scss';
-import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { FaPaw } from 'react-icons/fa';
 import { TiLocation } from 'react-icons/ti';
 import { BiLike } from 'react-icons/bi';
+import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { API_URL } from '../../../utils/config';
 // import { TiLocation } from 'react-icons/ti';
@@ -60,61 +60,6 @@ export default function HomePageMasonry(props) {
               </div>
             );
           })}
-
-          {/* <div className="item">
-          <img src="https://picsum.photos/360/420?random=1" alt="" />
-        </div>
-        <div className="item">
-          <img src="https://picsum.photos/360/460?random=1" alt="" />
-        </div>
-        <div className="item">
-          <img src="https://picsum.photos/360/450?random=1" alt="" />
-        </div>
-        <div className="item">
-          <img src="https://picsum.photos/360/520?random=1" alt="" />
-        </div>
-        <div className="item">
-          <img src="https://picsum.photos/360/460?random=1" alt="" />
-        </div>
-        <div className="item">
-          <img src="https://picsum.photos/360/440?random=1" alt="" />
-        </div>
-        <div className="item">
-          <img src="https://picsum.photos/360/480?random=1" alt="" />
-        </div>
-        <div className="item">
-          <img src="https://picsum.photos/360/460?random=1" alt="" />
-        </div>
-        <div className="item">
-          <img src="https://picsum.photos/360/540?random=1" alt="" />
-        </div>
-        <div className="item">
-          <img src="https://picsum.photos/360/500?random=1" alt="" />
-        </div>
-        <div className="item">
-          <img src="https://picsum.photos/360/460?random=1" alt="" />
-        </div>
-        <div className="item">
-          <img src="https://picsum.photos/360/460?random=1" alt="" />
-        </div>
-        <div className="item">
-          <img src="https://picsum.photos/360/460?random=1" alt="" />
-        </div>
-        <div className="item">
-          <img src="https://picsum.photos/360/490?random=1" alt="" />
-        </div>
-        <div className="item">
-          <img src="https://picsum.photos/360/460?random=1" alt="" />
-        </div>
-        <div className="item">
-          <img src="https://picsum.photos/360/450?random=1" alt="" />
-        </div>
-        <div className="item">
-          <img src="https://picsum.photos/360/460?random=1" alt="" />
-        </div>
-        <div className="item">
-          <img src="https://picsum.photos/360/460?random=1" alt="" />
-        </div> */}
         </div>
       </div>
     </>
