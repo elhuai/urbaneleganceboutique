@@ -1,4 +1,4 @@
-import StreetViewGEMap from '../StreeView_GEMap/StreetView_GEMap';
+import StreetViewGEMap from '../StreetView_ST/StreetView_ST';
 import { useLoadScript } from '@react-google-maps/api';
 import { Googlemap_key } from '../../../../utils/config';
 
