@@ -21,6 +21,7 @@ function PostWYSIWYGEdit() {
   const urlSearchParams = new URLSearchParams(location.search);
   const postID = urlSearchParams.get('postID');
   console.log(postID);
+
   // === 編輯時預覽圖片用 ===
   const [showPhoto, setShowPhoto] = useState('');
 
@@ -61,6 +62,11 @@ function PostWYSIWYGEdit() {
         // 取得後端來的資料
         console.log('result,data', result.data);
         setPostData(result.data);
+        setShowPhoto(
+          result.data[0].post_main_photo
+            ? BE_URL + '/' + result.data[0].post_main_photo
+            : CoverBackground
+        );
       } catch (err) {
         console.log('setPost', err);
       }
@@ -147,11 +153,6 @@ function PostWYSIWYGEdit() {
       formData.append('post_type_id', post_type);
       formData.append('post_id', post_id);
 
-      console.log(
-        '====================formData=====================',
-        formData
-      );
-
       let response = await axios.post(`${API_URL}/post/postEdit`, formData);
       console.log(response.data);
       handleSuccess('貼文發布成功', '/admin/community');
@@ -198,7 +199,7 @@ function PostWYSIWYGEdit() {
   console.log('postData', postData);
   return (
     <>
-      <div className='cummunity_postEdit'>
+      <div className="cummunity_postEdit">
         <div className="d-flex justify-content-center">
           <form className="post_edit_bar d-flex flex-column">
             <div className="d-flex justify-content-between">
@@ -210,12 +211,18 @@ function PostWYSIWYGEdit() {
                 <button className="btn" onClick={handleClick}>
                   清空
                 </button>
-                <button className="btn">儲存草稿</button>
-                <button className="btn">發布</button>
+                <button className="btn" onClick={handleDraft}>
+                  儲存草稿
+                </button>
+                <button className="btn" onClick={handleSubmit}>
+                  發布
+                </button>
               </div>
             </div>
+
             <div className="post_cover_photo d-flex flex-column justify-content-end align-items-end">
-              <img src={preview ? preview : CoverBackground} alt=""></img>
+              <img src={preview ? preview : showPhoto} alt=""></img>
+
               <label className="cover_photo_upload d-flex flex-column justify-content-center align-items-center">
                 <MdPhotoSizeSelectActual className="cover_photo_upload_icon"></MdPhotoSizeSelectActual>
                 <div>封面照片上傳</div>

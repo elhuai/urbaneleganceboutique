@@ -19,7 +19,7 @@ import { handleSuccess } from '../../utils/handler/card/handleStatusCard';
 import { useUserInfo } from '../../hooks/useUserInfo';
 
 function CommunityManagement() {
-  // const { user, setUser } = useUserInfo();
+  const { user, setUser } = useUserInfo();
   // console.log('使用者～！！', user.data.id);
   // let userID = user.data.id;
   // roll 全部貼文資料
@@ -58,12 +58,15 @@ function CommunityManagement() {
     };
     fetchMyTripPost();
   }, [ifDelete]); //如果[]為空值只執行一次api // 若[]裡面的useState變數狀態改變重新執行api
+
   // 取一般貼文總表
   useEffect(() => {
+    // let userID = user.data.id;
+    // console.log(userID);
     const fetchMyPost = async () => {
-      const result = await axios.get(`${API_URL}/community/post`, {
-        withCredentials: true,
-      });
+      let userID = user.data.id;
+      console.log('userID', userID);
+      const result = await axios.get(`${API_URL}/community/postAll`, userID);
       // 取得後端來的資料
       console.log('一般貼文列表', result.data);
       setMyPost(result.data);
@@ -71,6 +74,7 @@ function CommunityManagement() {
     };
     fetchMyPost();
   }, [ifDelete]); //如果[]為空值只執行一次api // 若[]裡面的useState變數狀態改變重新執行api
+
   // // 取單一user 按讚貼文總表
   useEffect(() => {
     const fetchMyLikePost = async () => {
@@ -89,6 +93,7 @@ function CommunityManagement() {
     };
     fetchMyLikePost();
   }, [ifLike]);
+
   //匯入我的行程選單
   useEffect(() => {
     const fetchMyTrip = async () => {
@@ -104,11 +109,13 @@ function CommunityManagement() {
       // 存回 useState 狀態
     };
     fetchMyTrip();
-  }, [ifDelete]);
+  }, []);
+
   //視窗狀態改變
   const ConfirmHandle = (e) => {
     setShowCFBox(e);
   };
+
   //刪除貼文
   const deleteConfirm = async (e) => {
     e.preventDefault();
