@@ -1,0 +1,72 @@
+$line-color--light: #e7e7e9;
+$line-color--dark: #747474;
+$button-color-hover: #feefc3;
+$button-color-remove: c;
+$main-color: #ffc715;
+$list-color: #f0ede0;
+$list-color-hover: #feefc3;
+$link-color: #2da9d7;
+$line-color--blue: #d5eeee;
+
+%button {
+  background-color: #ef7a70;
+  color: white;
+  width: 100px;
+  font-weight: 400;
+  letter-spacing: 0.1rem;
+  height: 34px;
+  margin-top: 0.5rem;
+  font-size: 0.9rem;
+  border-radius: 5px;
+}
+@media only screen and (max-width: 768px) {
+  .postLocateArticleRWD {
+    .article_section {
+      max-width: 350px;
+      width: 100%;
+      margin: 0 auto;
+      .post_dayCount {
+        font-weight: 800;
+        font-size: 1.3rem;
+        color: #2da9d7;
+        display: inline-block;
+        border-bottom: 0.3rem solid #2da9d7;
+      }
+      .trip_record_section {
+        list-style-type: none;
+        .post_content {
+          flex-flow: column;
+        }
+        .post_location_mark {
+          color: black;
+          font-size: 18px;
+          .locate_context {
+            color: #747474;
+          }
+          .locate_title {
+            flex-flow: column;
+            .post_location_duration {
+              font-size: 1.2rem;
+            }
+          }
+        }
+      }
+    }
+    .post_mySwiper {
+      width: 100%;
+      height: 200px;
+    }
+    .locate_photo_single {
+      border: 1px solid #eee;
+      border-radius: 8px;
+      width: 350px;
+      height: 300px;
+      overflow: hidden;
+      img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
+    }
+  }
+}

@@ -1,19 +1,14 @@
 import React from 'react';
 import './PostMap.scss';
 /////////孝強專用地圖
-import {
-  GoogleMap,
-  Marker,
-  InfoWindow,
-  StreetViewPanorama,
-} from '@react-google-maps/api';
+import { GoogleMap, Marker, InfoWindow } from '@react-google-maps/api';
 import { useState, useEffect, useRef } from 'react';
 const centers = [
   {
     id: 1,
     days: '1',
-    name: '台南好特別',
-    position: { lat: 22.9973567, lng: 120.2005071 },
+    name: '福林公園寵物溜放區',
+    position: { lat: 24.980986, lng: 121.3067044 },
     photo: 'https://picsum.photos/200/300?random2',
     user: 'HowFun',
   },
@@ -50,7 +45,6 @@ const centers = [
   //   user: '席主席',
   // },
 ];
-
 function GoogleMapsCyrilke() {
   const mapRef = useRef(null);
   return (
@@ -60,7 +54,7 @@ function GoogleMapsCyrilke() {
       <div className="communitymap_body">
         <GoogleMap
           ref={mapRef}
-          center={{ lat: 22.9973567, lng: 120.2005071 }}
+          center={{ lat: 24.980986, lng: 121.3067044 }}
           zoom={14}
           mapContainerClassName="communitymap_container"
         >
@@ -69,7 +63,7 @@ function GoogleMapsCyrilke() {
               <Marker
                 draggable={true}
                 animation={'Animation :BOUNCE'}
-                label={days}
+                // label={days}
                 labelStyle={{ background: '#fff' }}
                 key={id}
                 position={position}

@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import './PostTripEdit.scss';
-import CoverBackground from '../../images/post_edit_background_banner.png';
+import CoverBackground from '../../images/社群假圖1280.png';
 import { Link } from 'react-router-dom';
 import { TiLocation } from 'react-icons/ti';
 import { AiFillTag, AiOutlineConsoleSql } from 'react-icons/ai';
@@ -9,7 +9,7 @@ import { MdTitle } from 'react-icons/md';
 // import PostSwiper from '../../components/WYSIWYG/Swiper';
 import { MdPhotoSizeSelectActual } from 'react-icons/md';
 import { MdOutlineClose } from 'react-icons/md';
-import PostMap from '../../components/Community/PostComponent/PostMap';
+import PostMap from '../../components/Community/PostComponent/CommunityGoogleMaps';
 import axios from 'axios';
 import { API_URL } from '../../utils/config';
 import TripOutline from '../../components/Community/PostComponent/TripOutline';
@@ -176,15 +176,6 @@ function PostTripEdit() {
     console.log('發布狀態', postState);
     handleSuccess('貼文儲存成功', '/admin/community');
   };
-  //TODO:清空
-  // const resetForm = () => {
-  //   setTripPostLocContext('');
-  //   // setTripPostLojujucPhoto('');
-  //   setTripPostLocTime('');
-  //   setTripPostTitle('');
-  //   setTripPostLocMark('');
-  //   setTripPostTags('');
-  // };
 
   //TODO: 發布改變貼文狀態(發布貼文)
   const handleRelease = async (e) => {
@@ -205,6 +196,8 @@ function PostTripEdit() {
   //預覽 上傳封面照片 我要哭了
   useEffect(() => {
     if (!selectedCoverFile) {
+      setCoverFile({ photo: CoverBackground, postID: postID });
+      //test
       setPreview('');
       return;
     }
@@ -212,7 +205,7 @@ function PostTripEdit() {
       // async function changeCoverHandler(e) {
       let formData = new FormData();
       // setCoverFile({ ...coverFile, photo: e.name.value });
-      console.log('coverFile!', coverFile);
+      // console.log('coverFile!', coverFile);
       console.log('該貼文ＩＤ', postID);
       formData.append('postID', coverFile.postID);
       formData.append('photo', coverFile.photo);
@@ -254,7 +247,6 @@ function PostTripEdit() {
                 <p className="mt-3">貼文編輯：行程貼文</p>
               </div>
               <div className="d-flex justify-content-end mt-4 post_edit_button ">
-                <button className="btn">清空</button>
                 <button className="btn" onClick={handleSubmit}>
                   儲存
                 </button>
@@ -270,7 +262,7 @@ function PostTripEdit() {
             <div className="post_cover_photo d-flex flex-column justify-content-end align-items-end">
               <img
                 src={preview ? preview : tripPostCover}
-                style={{ objectFit: 'contain' }}
+                style={{ objectFit: 'cover' }}
                 alt=""
               ></img>
               <label className="cover_photo_upload d-flex flex-column justify-content-center align-items-center">
@@ -420,16 +412,11 @@ function PostTripEdit() {
               </div>
               <TripOutline post={postTripEdit}></TripOutline>
             </div>
-            <div className="d-flex justify-content-end my-2 me-4 post_edit_button ">
-              <button className="btn" value="清除">
-                {/* TODO:無法更新到input的value */}
-                清空
-              </button>
+            <div className="d-flex justify-content-end my-1 post_edit_button ">
               <button className="btn" onClick={handleSubmit}>
                 儲存
               </button>
             </div>
-            <PostMap>123</PostMap>
           </form>
         </div>
       )}

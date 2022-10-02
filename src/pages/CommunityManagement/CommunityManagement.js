@@ -19,7 +19,7 @@ import { handleSuccess } from '../../utils/handler/card/handleStatusCard';
 import { useUserInfo } from '../../hooks/useUserInfo';
 
 function CommunityManagement() {
-  // const { user, setUser } = useUserInfo();
+  const { user, setUser } = useUserInfo();
   // console.log('使用者～！！', user.data.id);
   // let userID = user.data.id;
   // roll 全部貼文資料
@@ -58,11 +58,16 @@ function CommunityManagement() {
     };
     fetchMyTripPost();
   }, [ifDelete]); //如果[]為空值只執行一次api // 若[]裡面的useState變數狀態改變重新執行api
+
   // 取一般貼文總表
   useEffect(() => {
+    // let userID = user.data.id;
+    // console.log(userID);
     const fetchMyPost = async () => {
-      const result = await axios.get(`${API_URL}/community/post`, {
-        withCredentials: true,
+      let userID = user.data.id;
+      console.log('userID', userID);
+      const result = await axios.get(`${API_URL}/community/postAll`, {
+        userID,
       });
       // 取得後端來的資料
       console.log('一般貼文列表', result.data);
@@ -71,6 +76,7 @@ function CommunityManagement() {
     };
     fetchMyPost();
   }, [ifDelete]); //如果[]為空值只執行一次api // 若[]裡面的useState變數狀態改變重新執行api
+
   // // 取單一user 按讚貼文總表
   useEffect(() => {
     const fetchMyLikePost = async () => {
@@ -89,6 +95,7 @@ function CommunityManagement() {
     };
     fetchMyLikePost();
   }, [ifLike]);
+
   //匯入我的行程選單
   useEffect(() => {
     const fetchMyTrip = async () => {
@@ -105,10 +112,12 @@ function CommunityManagement() {
     };
     fetchMyTrip();
   }, []);
+
   //視窗狀態改變
   const ConfirmHandle = (e) => {
     setShowCFBox(e);
   };
+
   //刪除貼文
   const deleteConfirm = async (e) => {
     e.preventDefault();
@@ -122,7 +131,7 @@ function CommunityManagement() {
       }
     );
     console.log(deleteData, '資料刪除成功');
-    handleSuccess('貼文刪除成功');
+    handleSuccess('貼文刪除成功', '/admin/community');
     ConfirmHandle(0);
     setIfDelete(false);
   };
@@ -135,7 +144,7 @@ function CommunityManagement() {
       tripPostTitleDefault,
     });
     console.log(creatData, '行程貼文新增成功');
-    handleSuccess('貼文匯入成功');
+    handleSuccess('貼文匯入成功', '/admin/community');
     ConfirmHandle(0);
   };
   // console.log('匯入行程貼文預設標題', tripPostTitleDefault);
@@ -164,7 +173,6 @@ function CommunityManagement() {
           <RiEditFill color="#FFC715" className="edit-icon me-2"></RiEditFill>
           新增貼文
         </button>
-        {/* //TODO: 無法固定在位置 */}
         <div>
           <Tabs
             defaultActiveKey="article_list_post"
@@ -531,12 +539,10 @@ function CommunityManagement() {
                 className="form-control mb-2"
                 placeholder="請選擇我的行程"
                 onChange={(e) => {
-                  // TODO:
                   setTripID(tripImport[e.target.value].id);
                   setTripTitile(tripImport[e.target.value].title);
-                  console.log('name', tripImport[e.target.value].title);
-                  console.log('value', tripImport[e.target.value].id);
-                  console.log('titleeeeeee', tripPostTitleDefault);
+                  // console.log('name', tripImport[e.target.value].title);
+                  // console.log('value', tripImport[e.target.value].id);
                 }}
               >
                 <option>請選擇匯入的行程</option>
@@ -552,7 +558,6 @@ function CommunityManagement() {
                       >
                         {data.title}
                       </option>
-                      {/* TODO:如何將data.title的值回傳到select onChange */}
                     </>
                   );
                 })}
