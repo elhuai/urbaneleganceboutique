@@ -11,7 +11,7 @@ export const handleSuccess = (title, redirect, html) => {
       title: title ? title : false,
       html: html ? html : false,
       showConfirmButton: redirect ? true : false,
-      timer: 2000,
+      timer: 1500,
     })
     .then((data) => {
       if (redirect) {

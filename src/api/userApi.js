@@ -152,7 +152,7 @@ export const resetPassword = async (data, setUser, navigate) => {
         false,
         `請至 ${data.email} 收取信件`
       );
-    if (result.data.action === 'reset') {
+    if (result.status === 204) {
       navigate('/');
       setUser((user) => ({ ...user, data: {}, auth: false }));
       return handleSuccess('密碼重設成功', false, '請使用新密碼登入');

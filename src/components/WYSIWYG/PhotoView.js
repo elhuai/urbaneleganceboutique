@@ -29,6 +29,7 @@ export default function PhotoReviewSwiper({ list }) {
     if (!selectedLocFile) {
       setPreviewLoc('');
       setTripLocPhoto(list.locate_photo);
+      // console.log('list.locate_photo', list.locate_photo);
       // console.log('tt', tripLocPhoto);
       return;
     }
@@ -66,7 +67,7 @@ export default function PhotoReviewSwiper({ list }) {
               previewLoc
                 ? previewLoc
                 : tripLocPhoto
-                ? BE_URL + '/' + tripLocPhoto
+                ? BE_URL + '/tripPost/' + tripLocPhoto
                 : defaultPhoto
             }
           >
@@ -75,7 +76,7 @@ export default function PhotoReviewSwiper({ list }) {
                 previewLoc
                   ? previewLoc
                   : tripLocPhoto
-                  ? BE_URL + '/' + tripLocPhoto
+                  ? BE_URL + '/tripPost/' + tripLocPhoto
                   : defaultPhoto
               }
               style={{ objectFit: 'cover' }}

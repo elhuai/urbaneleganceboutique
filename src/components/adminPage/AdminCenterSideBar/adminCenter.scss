@@ -29,7 +29,9 @@ $list-color-hover: #f0ede0;
     padding: 10px;
     width: 100%;
     border-bottom: 2px solid $line-color--light;
+    padding-bottom: 20px;
     .user_photobox {
+      flex-shrink: 0;
       position: relative;
       width: 100px;
       height: 100px;

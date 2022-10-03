@@ -27,7 +27,7 @@ export default function CommunityListCard({ postData, search }) {
               <div className="row g-0">
                 <div className="col-md-4 comList_main_card_img--box">
                   <img
-                    src={BE_URL + data.post_main_photo}
+                    src={BE_URL + '/post/' + data.post_main_photo}
                     className="comList_main_card_img"
                     alt="..."
                   />
@@ -59,8 +59,8 @@ export default function CommunityListCard({ postData, search }) {
                       </div>
                       {/* 內文 */}
                       <p className="comList_main_card_text my-2">
-                        {/* { (data.content.replace(/<\/?.+?>/g, ''))} */}
-                        {data.content}
+                        {data.content.replace(/<\/?.+?>/g, '')}
+                        {/* {data.content} */}
                       </p>
                       {/* 地點、讚數 */}
                       <div className="comList_main_card_bottom_text d-flex justify-content-between align-items-center mt-4">

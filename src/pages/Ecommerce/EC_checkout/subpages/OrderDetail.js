@@ -72,7 +72,7 @@ function OrderDetail(props) {
         coupon_number: 8,
         coupon_name: '小確幸92折優惠',
         order_time: moment().format('YYYY-MM-DD HH:mm:ss'),
-        store_name:cartProductData.store_name,
+        store_name: cartProductData.store_name,
       });
       // console.log('orderBuying', orderBuying);
     };
@@ -89,6 +89,7 @@ function OrderDetail(props) {
     const createOrder = async (e, id) => {
       // e.preventDefault();
       try {
+        console.log('orderBuying');
         console.log('----------createOrderBuying---------', orderBuying);
         let result = await axios.post(
           `${API_URL}/createorder/order`,
