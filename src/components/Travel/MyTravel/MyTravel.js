@@ -8,11 +8,6 @@ import { API_URL } from '../../../utils/config';
 import axios from 'axios';
 import './_MyTravel.scss';
 
-<<<<<<< HEAD
-const MyTravel = ({ travelUser }) => {
-  console.log('travelUser===========================', travelUser);
-
-=======
 const MyTravel = () => {
   // console.log('travelUser', travelUser);
 
@@ -33,7 +28,6 @@ const MyTravel = () => {
     };
     fetchUserTrip();
   }, []);
->>>>>>> bug-fix
   return (
     <>
       <div className="MyTravel">
