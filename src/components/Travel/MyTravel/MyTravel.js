@@ -20,8 +20,8 @@ const MyTravel = () => {
           withCredentials: true,
         });
         const data = result.data;
-        console.log(data);
         setTravelUser(data);
+        console.log("-----------data------------", data);
       } catch (err) {
         console.error('callPlanningAPI Error', err);
       }
