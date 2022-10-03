@@ -147,7 +147,6 @@ function CommunityManagement() {
     handleSuccess('貼文匯入成功', '/admin/community');
     ConfirmHandle(0);
   };
-  // console.log('匯入行程貼文預設標題', tripPostTitleDefault);
 
   //TODO:取消按讚
   const unLikeHandle = async (e) => {

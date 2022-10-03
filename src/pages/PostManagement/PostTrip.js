@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
+// import { API_URL } from '../../utils/config';
 import { API_URL } from '../../utils/config';
+
 import './PostTrip.scss';
 
 import PostLocateArticleWeb from '../../components/Community/PostComponent/PostLocateArticle';

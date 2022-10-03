@@ -5,12 +5,17 @@ import { API_URL } from '../../../utils/config';
 import './_ProductDetail.scss';
 import { useLocation } from 'react-router-dom';
 import { Link } from 'react-router-dom';
+import { Tabs, Tab } from 'react-bootstrap';
 
 // 加入購物車跳出視窗
 import { handleSuccess } from '../../../utils/handler/card/handleStatusCard';
 import { useUserInfo } from '../../../hooks/useUserInfo';
 import { handleLoginCard } from '../../../utils/handler/card/handleInputCard';
 
+import StreetViewYT from '../../../components/EC/EC_productDetail/StreetView_YT';
+import StreetViewYTRWD from '../../../components/EC/EC_productDetail/StreetView_YT_RWD';
+import StreetViewGE from '../../../components/EC/EC_productDetail/StreetView_GE';
+import StreetViewGEST from '../../../components/EC/EC_productDetail/StreetView_GE_ST';
 // 商品照片
 import ItemImage from '../../../components/EC/EC_productDetail/Image';
 // 兌換方式照片
@@ -63,7 +68,7 @@ const ProductDetail = () => {
     };
     fetchProductData();
   }, [productId]);
-  console.log('productData', productData);
+  // console.log('productData', productData);
 
   useEffect(() => {
     window.scrollTo(0, 0);
@@ -90,6 +95,60 @@ const ProductDetail = () => {
       handleLoginCard({ isLogin: true }, setUser);
     }
   };
+
+  // =地圖切換
+  // const [map, setMap] = useState(1);
+  function mapSection(productId) {
+    switch (Number(productId)) {
+      case 518:
+        return (
+          <div id="mapSection" className="description">
+            <div className="detail_map">
+              <h4>地圖</h4>
+              <Tabs
+                defaultActiveKey="mapbtn"
+                id="uncontrolled-tab-example"
+                className="mapbtn"
+                style={{ borderWidth: '0px' }}
+              >
+                <Tab
+                  eventKey="mapbtn"
+                  title={<button className="detail_map_btn">環景影片</button>}
+                >
+                  {' '}
+                  <div className="mapYT">
+                    <StreetViewYT />
+                  </div>
+                  <div className="mapYTRWD">
+                    <StreetViewYTRWD />
+                  </div>
+                </Tab>
+                <Tab
+                  eventKey="mapbtn_ST"
+                  title={<button className="detail_map_btn">街景</button>}
+                >
+                  <StreetViewGEST />
+                </Tab>
+              </Tabs>
+            </div>
+          </div>
+        );
+      case 558:
+        return (
+          <div id="mapSection" className="description">
+            <div className="detail_map d-flex flex-row mb-2">
+              <h4>地圖</h4>
+            </div>
+            <div className="mapGE">
+              <StreetViewGE />
+            </div>
+          </div>
+        );
+      default:
+    }
+  }
+
+  const handleChage = () => {};
 
   return (
     <>
@@ -226,8 +285,10 @@ const ProductDetail = () => {
                       __html: productData.description,
                     }}
                   />
-                  <img src="" alt="" />
                 </div>
+
+                {/* 地圖區 */}
+                {mapSection(productId)}
                 <div id="toKnow" className="description">
                   <h4>購買須知</h4>
                   <p>
@@ -252,7 +313,6 @@ const ProductDetail = () => {
                     <img className="exchangeRWD" src={ExchangeRWD03} alt="" />
                   </div>
                 </div>
-                {/* <Streeview /> */}
                 <Score perScore={perScore} productId={productId} />
               </div>
             </div>
