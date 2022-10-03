@@ -20,7 +20,7 @@ const TravelEveryOneSwiper = ({ travelCommunity }) => {
     fetchAllPostData();
   }, []);
 
-  console.log(allPost);
+  console.log('======================allPost', allPost);
   return (
     <>
       <div className="TravelEveryOneSwiper">
