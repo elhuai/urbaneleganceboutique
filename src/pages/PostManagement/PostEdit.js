@@ -64,7 +64,7 @@ function PostWYSIWYGEdit() {
         setPostData(result.data);
         setShowPhoto(
           result.data[0].post_main_photo
-            ? BE_URL + '/' + result.data[0].post_main_photo
+            ? BE_URL + '/post/' + result.data[0].post_main_photo
             : CoverBackground
         );
       } catch (err) {
@@ -102,7 +102,7 @@ function PostWYSIWYGEdit() {
     setPostData({ ...postData, photo: e.target.files[0] });
 
     const file = e.target.files[0];
-
+    setShowPhoto(URL.createObjectURL(file));
     if (file) {
       // setIsFilePicked(true);
       setSelectedFile(file);
@@ -121,7 +121,7 @@ function PostWYSIWYGEdit() {
       return;
     }
     const objectUrl = URL.createObjectURL(selectedFile);
-    console.log(objectUrl);
+    console.log('objectUrl', objectUrl);
     setPreview(objectUrl);
 
     // 當元件unmounted時清除記憶體
@@ -221,7 +221,7 @@ function PostWYSIWYGEdit() {
             </div>
 
             <div className="post_cover_photo d-flex flex-column justify-content-end align-items-end">
-              <img src={preview ? preview : showPhoto} alt=""></img>
+              <img src={showPhoto ? showPhoto : CoverBackground} alt=""></img>
 
               <label className="cover_photo_upload d-flex flex-column justify-content-center align-items-center">
                 <MdPhotoSizeSelectActual className="cover_photo_upload_icon"></MdPhotoSizeSelectActual>

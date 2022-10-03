@@ -29,7 +29,7 @@ const MyCkeditor = (props) => {
               .then((res) => {
                 console.log(res);
                 resolve({
-                  default: `${IMG_URL}/uploads/${res}`,
+                  default: `${IMG_URL}/post/${res}`,
                 });
               })
               .catch((err) => {

@@ -21,7 +21,7 @@ const MyTravel = () => {
         });
         const data = result.data;
         setTravelUser(data);
-        console.log("-----------data------------", data);
+        console.log('-----------data------------', data);
       } catch (err) {
         console.error('callPlanningAPI Error', err);
       }

@@ -9,8 +9,12 @@ import CreateTravel from '../../components/Travel/CreateTravel/CreateTravel';
 
 import './_TravelHomePage.scss';
 import { Container } from 'react-bootstrap';
+import { useUserInfo } from '../../hooks/useUserInfo';
+import Loading from '../../components/layout/Loading';
+import { handleWarning } from '../../utils/handler/card/handleStatusCard';
 
 const TravelHomePage = () => {
+  const { user } = useUserInfo();
   const [travelCommunity, setTravelCommunity] = useState([]); // 拿日期 標題
 
   useEffect(() => {
@@ -28,14 +32,19 @@ const TravelHomePage = () => {
     calltitledateApi();
   }, []);
 
-  
-  return (
+  if (!user.auth) {
+    handleWarning('您沒有登入權限', '/', '平台將為您跳轉回首頁');
+  }
+
+  return !user.auth ? (
+    <Loading />
+  ) : (
     <>
       <div className="BG">
         <div className="TravelHomePage">
           <CreateTravel />
           <div className="mainSection">
-            <MyTravel/>
+            <MyTravel />
             <p className="travelGoPlayTitle">｜看看大家都去哪裡玩 </p>
             <TravelGoPlaySwiper />
             <p className="TravelEveryOneSwiperTitle">｜路克路克大家的行程</p>
