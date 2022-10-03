@@ -14,10 +14,11 @@ $line-color--blue: #d5eeee;
     width: 100%;
     img {
       background: #feefc3;
+      border-radius: 15px;
       display: flex;
       display: flex;
       justify-content: center;
-      // width: 100%;
+      width: 100%;
       height: 300px;
     }
   }

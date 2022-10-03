@@ -142,7 +142,7 @@ function PostTripEdit() {
             setTripPostTitle(result.data[0].post_title);
             setTripPostCover(
               result.data[0].post_main_photo
-                ? BE_URL + '/' + result.data[0].post_main_photo
+                ? BE_URL + '/post/' + result.data[0].post_main_photo
                 : CoverBackground
             );
             setTripPostLocMark(result.data[0].coordinate);

@@ -29,7 +29,7 @@ const ResetPwdCard = ({ cancel, code, setUser, navigate }) => {
       <div className="reset_pwd_card--global d-flex">
         <div className={`reset_pwd_card_content reset_pwd_card`}>
           <h2>忘記密碼</h2>
-          <p>平台將會寄發密碼重設信件至您的信箱</p>
+          <p>重新設定你的新密嗎</p>
           <form onSubmit={handleSubmit}>
             <div className="mb-3">
               <input

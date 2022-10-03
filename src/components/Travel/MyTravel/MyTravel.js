@@ -1,12 +1,33 @@
 import React from 'react';
+import { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { FaPaw } from 'react-icons/fa';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import CoverBackground from '../../../images/travels/travel_community.png';
+import { API_URL } from '../../../utils/config';
+import axios from 'axios';
 import './_MyTravel.scss';
 
-const MyTravel = ({ travelUser }) => {
-  console.log('travelUser', travelUser);
+const MyTravel = () => {
+  // console.log('travelUser', travelUser);
+
+  const [travelUser, setTravelUser] = useState([]); // 拿使用者有幾筆行程
+
+  useEffect(() => {
+    const fetchUserTrip = async () => {
+      try {
+        const result = await axios.get(`${API_URL}/travelUserplanning/get`, {
+          withCredentials: true,
+        });
+        const data = result.data;
+        setTravelUser(data);
+        console.log('-----------data------------', data);
+      } catch (err) {
+        console.error('callPlanningAPI Error', err);
+      }
+    };
+    fetchUserTrip();
+  }, []);
   return (
     <>
       <div className="MyTravel">

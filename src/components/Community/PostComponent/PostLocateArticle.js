@@ -85,12 +85,20 @@ export default function PostLocateArticle({ post }) {
                                     <PhotoView
                                       key={index}
                                       style={{ objectFit: 'cover' }}
-                                      src={BE_URL + '/' + data.locate_photo}
+                                      src={
+                                        BE_URL +
+                                        '/tripPost/' +
+                                        data.locate_photo
+                                      }
                                     >
                                       <img
                                         alt=""
                                         style={{ objectFit: 'cover' }}
-                                        src={BE_URL + '/' + data.locate_photo}
+                                        src={
+                                          BE_URL +
+                                          '/tripPost/' +
+                                          data.locate_photo
+                                        }
                                       />
                                     </PhotoView>
                                   </div>

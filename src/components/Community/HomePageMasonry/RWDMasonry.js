@@ -1,5 +1,6 @@
 import './_RWDMasonry.scss';
 import React, { useState, useEffect } from 'react';
+import { Link } from 'react-router-dom';
 import { TiLocation } from 'react-icons/ti';
 import { BiLike } from 'react-icons/bi';
 import axios from 'axios';
@@ -29,32 +30,45 @@ export default function HomePageMasonry(props) {
           <div className="masonry">
             {allPost.map((v, i) => {
               return (
-                <div key={v.id} className="item">
-                  <div>
-                    <img src={`${BASE_URL}/post/${v.post_main_photo}`} alt="" />
-                  </div>
-                  <section className="">
-                    <div className="allPostTitle">
-                      <div className="allPostMainTitle">{v.post_title}</div>
-                    </div>
-                    <p className="d-flex align-items-center allPostLocation">
-                      <TiLocation />
-                      {v.coordinate}
-                    </p>
-                    <div className="bottomSection">
-                      <div className="userInfo">
-                        <div className="userPhoto">
-                          <img src={`${BASE_URL}${v.photo}`} alt="" />
+                <>
+                  <Link
+                    to={
+                      v.post_type_id === 1
+                        ? `/post?postID=${v.id}`
+                        : `/postTrip?postID=${v.id}`
+                    }
+                  >
+                    <div key={v.id} className="item">
+                      <div>
+                        <img
+                          src={`${BASE_URL}/post/${v.post_main_photo}`}
+                          alt=""
+                        />
+                      </div>
+                      <section className="">
+                        <div className="allPostTitle">
+                          <div className="allPostMainTitle">{v.post_title}</div>
                         </div>
-                        <p className="userName">{v.social_name}</p>
-                      </div>
-                      <div className="LikeSection">
-                        <BiLike />
-                        {v.likes}
-                      </div>
+                        <p className="d-flex align-items-center allPostLocation">
+                          <TiLocation />
+                          {v.coordinate}
+                        </p>
+                        <div className="bottomSection">
+                          <div className="userInfo">
+                            <div className="userPhoto">
+                              <img src={`${BASE_URL}${v.photo}`} alt="" />
+                            </div>
+                            <p className="userName">{v.social_name}</p>
+                          </div>
+                          <div className="LikeSection">
+                            <BiLike />
+                            {v.likes}
+                          </div>
+                        </div>
+                      </section>
                     </div>
-                  </section>
-                </div>
+                  </Link>
+                </>
               );
             })}
           </div>
