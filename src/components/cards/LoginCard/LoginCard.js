@@ -15,14 +15,14 @@ import './_loginCard.scss';
 const LoginCard = ({ isLogin, confirm, setUser }) => {
   const [isNewUser, setIsNewUser] = useState(false);
   const [loginInfo, setLoginInfo] = useState({
-    email: 'qweqwe123@gmail.com',
-    password: '123123123',
+    email: '',
+    password: '',
   });
   const [registInfo, setRegistInfo] = useState({
-    socialName: '狗王',
-    email: 'qweqwe123@gmail.com',
-    password: '123123123',
-    confirmPassword: '123123123',
+    socialName: '',
+    email: '',
+    password: '',
+    confirmPassword: '',
   });
   const [registerError, setRegisterError] = useState([]);
   const [errorText, setErrorText] = useState([]);
