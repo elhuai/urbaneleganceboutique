@@ -10,6 +10,7 @@ import ForgetPwdCard from '../../../components/cards/ForgetPwdCard';
 import ResetPwdCard from '../../../components/cards/ResetPwdCard';
 import { handleSuccess } from './handleStatusCard';
 import CreatePwdCard from '../../../components/cards/CreatePwdCard';
+import ConversationProduct from '../../../components/cards/ConversationProduct';
 
 export const handleLoginCard = (config, setUser) => {
   loginCardFire();
@@ -179,6 +180,27 @@ export const handleResetPwdCard = (code, setUser, navigate) => {
             code={code}
             setUser={setUser}
             navigate={navigate}
+          />
+        ),
+        showConfirmButton: false,
+      })
+      .then((result) => {});
+  }
+};
+
+export const handleConversationProduct = (data, updateSubmitResult, socket) => {
+  inputCardFire();
+  function inputCardFire() {
+    const inputCard = withReactContent(Swal);
+    inputCard
+      .fire({
+        html: (
+          <ConversationProduct
+            confirm={inputCard.clickConfirm}
+            cancel={inputCard.clickCancel}
+            data={data}
+            updateSubmitResult={updateSubmitResult}
+            socket={socket}
           />
         ),
         showConfirmButton: false,

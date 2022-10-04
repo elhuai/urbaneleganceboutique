@@ -7,16 +7,19 @@ import sticker2 from '../../../images/home_newsList_dog_2.png';
 import sticker3 from '../../../images/home_newsList_dog_3.png';
 import sticker4 from '../../../images/home_newsList_dog_4.png';
 import { FaPaw } from 'react-icons/fa';
+import { BiAddToQueue } from 'react-icons/bi';
 import axios from 'axios';
 import { API_URL } from '../../../utils/config';
 
 import './_conversationRoom.scss';
 import { HiOutlineLightningBolt } from 'react-icons/hi';
 import { useSocket } from '../../../hooks/useSocket';
-
+import { handleConversationProduct } from '../../../utils/handler/card/handleInputCard';
+import { useNavigate } from 'react-router-dom';
 const credentialsConfig = {
   withCredentials: true,
 };
+
 const BASE_URL = process.env.REACT_APP_BASE_API_URL;
 
 const ConversationRoom = ({
@@ -31,6 +34,7 @@ const ConversationRoom = ({
   const textRef = useRef(null);
   const viewRef = useRef(null);
   const { socket } = useSocket();
+  const navigate = useNavigate();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -152,12 +156,6 @@ const ConversationRoom = ({
     setText(e.target.value);
   };
 
-  // function keyPressEvent(e) {
-  //   if (e.key === 'Enter') {
-  //     handleSubmit(e);
-  //   }
-  // }
-
   useEffect(() => {
     setActive(true);
   }, []);
@@ -203,6 +201,10 @@ const ConversationRoom = ({
               return (
                 <StickrType data={value} storeImg={fakeimg} key={value.id} />
               );
+            if (value.type === 4)
+              return (
+                <ProductType data={value} navigate={navigate} key={value.id} />
+              );
           })}
         </div>
       </PhotoProvider>
@@ -216,6 +218,14 @@ const ConversationRoom = ({
           />
         </div>
         <div className="d-flex">
+          <div
+            className="message_type--search"
+            onClick={() =>
+              handleConversationProduct(data, updateSubmitResult, socket)
+            }
+          >
+            <BiAddToQueue />
+          </div>
           <div
             className="message_type--sticker"
             onClick={() => setSticker((status) => !status)}
@@ -321,6 +331,31 @@ const StickrType = ({ data, storeImg }) => {
     <div className="message own mb-3">
       <div className="message_content type_sticker">
         <img src={showSticker()} alt="" />
+      </div>
+    </div>
+  );
+};
+
+const ProductType = ({ data, navigate }) => {
+  const score = data.per_score.toFixed(1);
+  return (
+    <div
+      className="product_item mx-3 mb-3 d-flex"
+      onClick={() => navigate(`/ec-productdetail?id=${data.product_id}`)}
+    >
+      <div className="obj-fit flex-shrink-0">
+        <img src={`${BASE_URL + data.photo_path}/${data.main_photo}`} alt="" />
+      </div>
+      <div className="p_content flex-fill d-flex flex-column p-2">
+        <div className="p_title flex-fill text-start">
+          <h6>{data.product_name}</h6>
+        </div>
+        <div className="p_detail flex-fill d-flex justify-content-between align-items-end">
+          <div className="p_score">{score}</div>
+          <div className="p_price">
+            TWD <span>{data.price}</span>
+          </div>
+        </div>
       </div>
     </div>
   );

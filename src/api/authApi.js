@@ -113,7 +113,6 @@ export const callVerifyApi = async (setUser) => {
       auth: false,
       firstVerify: true,
     }));
-    handleFailed('登入憑證已逾時，請重新登入');
   }
 };
 

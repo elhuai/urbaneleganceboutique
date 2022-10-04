@@ -1,7 +1,9 @@
 import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { handleScoreCard } from '../../../utils/handler/card/handleInputCard';
-import { getUserOrder } from '../../../api/userApi';
+import { getUserOrder, createConversation } from '../../../api/userApi';
+import { IoChatbubbleEllipsesOutline } from 'react-icons/io5';
+import { useSocket } from '../../../hooks/useSocket';
 
 import './_orderList.scss';
 
@@ -10,6 +12,8 @@ const BASE_URL = process.env.REACT_APP_BASE_API_URL;
 const OrderList = () => {
   const [data, setData] = useState([]);
   const navigate = useNavigate();
+  const { setOpenRoom, setNewConversation } = useSocket();
+
   useEffect(() => {
     getUserOrder(setData);
   }, []);
@@ -20,7 +24,24 @@ const OrderList = () => {
         return (
           <div key={value.order_time} className="order_list d-flex">
             <div className="order_info_header d-flex align-items-center">
-              <p className="flex-fill">{value.store_name}</p>
+              <p>{value.store_name}</p>
+              <div className="flex-fill">
+                <div
+                  className="chat_btn"
+                  onClick={() =>
+                    createConversation(
+                      value.store_id,
+                      value.store_name,
+                      value.store_photo,
+                      setOpenRoom,
+                      setNewConversation
+                    )
+                  }
+                >
+                  聊聊
+                  <IoChatbubbleEllipsesOutline />
+                </div>
+              </div>
               <div>
                 {value.comment_status ? (
                   <div>已評價</div>

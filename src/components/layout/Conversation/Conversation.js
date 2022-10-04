@@ -22,7 +22,7 @@ const Conversation = () => {
   const handleShow = () => setShow(true);
   const [openingRooms, setOpeningRooms] = useState([]);
   const [conversationList, setConversationList] = useState([]);
-  const { socket, messageData } = useSocket();
+  const { socket, messageData, openRoom, newConversation } = useSocket();
   const handleOpenRooms = (index) => {
     if (openingRooms.find((item) => item === index) >= 0) return;
     setOpeningRooms((rooms) => [...rooms, index]);
@@ -75,6 +75,24 @@ const Conversation = () => {
       console.log(conversationList);
     }
   }, [messageData]);
+
+  useEffect(() => {
+    if (newConversation) {
+      const index = conversationList.length;
+      setOpeningRooms((rooms) => [...rooms, index]);
+      setConversationList((list) => [...list, newConversation]);
+    }
+  }, [newConversation]);
+
+  useEffect(() => {
+    if (openRoom) {
+      const index = conversationList.findIndex(
+        (data) => data.store_id === openRoom.store_id
+      );
+      setOpeningRooms((rooms) => [...rooms, index]);
+    }
+  }, [openRoom]);
+
   return !user.auth ? (
     ''
   ) : (

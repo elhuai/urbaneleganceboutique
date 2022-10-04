@@ -14,6 +14,8 @@ export const SocketProvider = ({ children }) => {
   const { user, setUser } = useUserInfo();
   const [socket, setSocket] = useState(null);
   const [messageData, setmessageData] = useState(null);
+  const [newConversation, setNewConversation] = useState(null);
+  const [openRoom, setOpenRoom] = useState(null);
 
   useEffect(() => {
     if (user.auth && user.firstVerify && !user.socket) {
@@ -40,7 +42,16 @@ export const SocketProvider = ({ children }) => {
     }
   }, [socket]);
   return (
-    <socketContext.Provider value={{ socket, messageData }}>
+    <socketContext.Provider
+      value={{
+        socket,
+        messageData,
+        openRoom,
+        setOpenRoom,
+        newConversation,
+        setNewConversation,
+      }}
+    >
       {children}
     </socketContext.Provider>
   );

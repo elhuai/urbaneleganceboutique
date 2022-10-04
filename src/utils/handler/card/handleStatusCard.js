@@ -21,6 +21,7 @@ export const handleSuccess = (title, redirect, html) => {
 };
 
 export const handleFailed = (title, redirect, html) => {
+  console.log('觸發失敗');
   const card = withReactContent(Swal);
   card
     .fire({

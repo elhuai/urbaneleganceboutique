@@ -8,7 +8,7 @@ import { Link } from 'react-router-dom';
 import SearchBar from '../../components/SearchBar/SearchBar_community';
 import HomePageMasonry from '../../components/Community/HomePageMasonry/HomePageMasonry';
 import RWDMasonry from '../../components/Community/HomePageMasonry/RWDMasonry';
-import 'animate.css';
+// import 'animate.css';
 import moment from 'moment';
 import { handleSuccess } from '../../utils/handler/card/handleStatusCard';
 

@@ -51,6 +51,31 @@ $info-color: #2DA9D7;
               height: 100%;
             }
           }
+          .chat_btn {
+            display: inline-block;
+            margin-left: 16px;
+            border: 1.5px solid #2DA9D7;
+            border-radius: 8px ;
+            padding: 2px 8px;
+            font-size: 16px;
+            color: $info-color;
+            transition: .3s;
+            cursor: pointer;
+            &:hover {
+              background-color: $info-color;
+              color: #FFF;
+            }
+            &:active {
+              background-color: #228cb3;
+              color: #FFF;
+            }
+            svg {
+              width: 24px;
+              height: 16px;
+              margin-bottom: 5px;
+              margin-right: -5px;
+            }
+          }
           div {
             cursor: default;
           }

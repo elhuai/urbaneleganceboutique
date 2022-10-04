@@ -224,3 +224,34 @@ export const createPassword = async (data, setUser) => {
     handleFailed(error.response.data.message);
   }
 };
+
+export const createConversation = async (
+  storeId,
+  storeName,
+  storePhoto,
+  setOpenRoom,
+  setNewConversation
+) => {
+  try {
+    const { data } = await axios.post(
+      `${API_URL}/user/conversation/${storeId}`,
+      {},
+      credentialsConfig
+    );
+    if (data.data.isNew) {
+      const conversationInfo = {
+        id: data.data.insertId,
+        store_id: storeId,
+        store_name: storeName,
+        store_photo: storePhoto,
+        messages: [],
+      };
+      setNewConversation(conversationInfo);
+    } else {
+      setOpenRoom({ store_id: storeId });
+    }
+  } catch (error) {
+    console.error(error);
+    handleFailed(error.response.data.message);
+  }
+};

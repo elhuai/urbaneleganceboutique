@@ -9,6 +9,9 @@ import React, { useState } from 'react';
 import { useUserInfo } from '../../../hooks/useUserInfo';
 import { HiOutlineCamera } from 'react-icons/hi';
 import { API_URL } from '../../../utils/config';
+import defaultImg from '../../../images/admin_user_default.png';
+import defaultImg3 from '../../../images/admin_user_default2.png';
+import defaultImg2 from '../../../images/admin_default.webp';
 import {
   handleSuccess,
   handleFailed,
@@ -38,6 +41,12 @@ const AdminCenter = () => {
       handleFailed('個人照片更新失敗');
     }
   };
+  let userImg;
+  if (user.data.photo === '' || !user.data.photo || user.data.photo === null) {
+    userImg = defaultImg3;
+  } else {
+    userImg = data.photo[0] === 'h' ? data.photo : BASE_URL + data.photo;
+  }
   return (
     <div>
       <div className="admin_side">
@@ -47,7 +56,7 @@ const AdminCenter = () => {
               <label htmlFor="image"></label>
               <img
                 className="admin_user_photo w-100 h-100"
-                src={data.photo[0] === 'h' ? data.photo : BASE_URL + data.photo}
+                src={userImg}
                 alt=""
               />
               <input

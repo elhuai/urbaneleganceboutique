@@ -5,7 +5,7 @@ import { API_URL } from '../../../utils/config';
 import { handleSuccess } from '../../../utils/handler/handleStatusCard';
 import { FaPaw } from 'react-icons/fa';
 import dog2 from '../../../images/home_newsList_dog_2.png';
-import 'animate.css';
+// import 'animate.css';
 import './_CreateTravel.scss';
 
 const CreateTravel = () => {
