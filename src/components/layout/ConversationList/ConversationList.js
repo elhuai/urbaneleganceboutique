@@ -1,7 +1,9 @@
 import React, { useState } from 'react';
-import fakeimg from '../../../images/home_newsList_dog_2.png';
+import fakeimg from '../../../images/admin_user_default2.png';
 
 import './_conversationList.scss';
+
+const BASE_URL = process.env.REACT_APP_BASE_API_URL;
 
 const ConversationList = ({ list, handleOpenRooms, handleCloseList }) => {
   return list.map((item, index) => {
@@ -15,7 +17,11 @@ const ConversationList = ({ list, handleOpenRooms, handleCloseList }) => {
         }}
       >
         <div className="conversation_list_img obj-fit">
-          <img src={fakeimg} alt="" />
+          {console.log()}
+          <img
+            src={item.store_photo ? BASE_URL + item.store_photo : fakeimg}
+            alt=""
+          />
         </div>
         <div className="conversation_list_name obj-fit">
           <p className="m-0">{item.store_name}</p>

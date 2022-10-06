@@ -53,6 +53,10 @@ function EcProductFilter() {
     fetchProductData();
   }, [minPrice, maxPrice, order, search, page, tag, search, typeId]);
 
+  useEffect(() => {
+    console.log('max', maxPrice);
+  }, [maxPrice]);
+
   return (
     <>
       <div className="ecProductFilter">

@@ -71,7 +71,7 @@ export const handleSocialNameEditCard = (setUser) => {
   }
 };
 
-export const handleVoucherExchangeCard = (itemData) => {
+export const handleVoucherExchangeCard = (itemData, socket) => {
   inputCardFire();
   function inputCardFire() {
     const inputCard = withReactContent(Swal);
@@ -80,6 +80,7 @@ export const handleVoucherExchangeCard = (itemData) => {
         <VoucherExchangeCard
           confirm={inputCard.clickConfirm}
           itemData={itemData}
+          socket={socket}
         />
       ),
       showConfirmButton: false,

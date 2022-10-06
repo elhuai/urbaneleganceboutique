@@ -27,7 +27,7 @@ const FilterList = (props) => {
       const result = await axios.get(
         `${API_URL}/filter/choices?typeId=${typeId}`
       );
-      console.log('fetchTitle', result.data);
+      // console.log('fetchTitle', result.data);
       const newTitleArray = result.data.map((item) => {
         const newTags = item.tags.map((i) => {
           return { ...i, status: 0 };
@@ -35,7 +35,8 @@ const FilterList = (props) => {
         return { ...item, tags: newTags };
       });
       setTitle(newTitleArray);
-      setMaxPrice(10000);
+      console.log('1000');
+      setMaxPrice(1000);
       setMinPrice(0);
     };
     fetchTitle();
@@ -117,8 +118,8 @@ const FilterList = (props) => {
           className="product-price-bar"
           range
           step={1}
-          max={8000}
-          defaultValue={[0, 8000]}
+          max={1000}
+          defaultValue={[0, 1000]}
           // onChange={log}
           onAfterChange={log}
         />

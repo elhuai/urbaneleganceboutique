@@ -1,9 +1,10 @@
 import React, { useEffect, useRef, useState } from 'react';
 import QRcode from 'qrcode';
+import { handleSuccess } from '../../../utils/handler/card/handleStatusCard';
 
 import './_qrcodeCard.scss';
 
-const QRcodeCard = ({ url }) => {
+const QRcodeCard = ({ url, socket }) => {
   const canvasRef = useRef(null);
   const QrcodeComfig = { errorCorrectionLevel: 'Q' };
   useEffect(() => {
@@ -12,6 +13,15 @@ const QRcodeCard = ({ url }) => {
       console.log('success!');
     });
   }, []);
+
+  useEffect(() => {
+    if (socket) {
+      socket.on('exchangeSuccess', (result) =>
+        handleSuccess('成功核銷！', '/admin/voucher')
+      );
+    }
+  }, [socket]);
+
   return (
     <>
       <div className="qrcode_card--global d-flex justify-content-center">

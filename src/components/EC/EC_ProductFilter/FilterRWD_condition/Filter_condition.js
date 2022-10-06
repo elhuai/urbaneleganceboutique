@@ -39,7 +39,7 @@ function FilterRWDList({ name, ...props }) {
         return { ...item, tags: newTags };
       });
       setTitle(newTitleArray);
-      setMaxPrice(10000);
+      setMaxPrice(1000);
       setMinPrice(0);
     };
     fetchTitle();

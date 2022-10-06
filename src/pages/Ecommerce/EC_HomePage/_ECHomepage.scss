@@ -15,7 +15,6 @@ $royal-blue: #22c3ff;
   color: $graycolor;
 }
 
-
 .EcEnjoyHomepage_main_bg {
   padding-bottom: 10px;
   background-image: url(../../../images/home_tour_bg.png);
@@ -63,4 +62,20 @@ $royal-blue: #22c3ff;
   border-radius: 50%;
   top: 70%;
   left: 2%;
+}
+
+@media screen and (max-width: 768px) {
+  .BGCircle1 {
+    display: none;
+  }
+  .BGCircle2 {
+    display: none;
+  }
+  .BGCircle3 {
+    display: none;
+  }
+
+  .BGCircle4 {
+    display: none;
+  }
 }

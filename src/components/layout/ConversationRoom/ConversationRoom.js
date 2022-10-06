@@ -1,7 +1,7 @@
 import React, { useEffect, useRef, useState } from 'react';
 import { PhotoProvider, PhotoView } from 'react-photo-view';
 import { IoRemove, IoImageOutline, IoSend } from 'react-icons/io5';
-import fakeimg from '../../../images/home_newsList_dog_2.png';
+import fakeimg from '../../../images/admin_user_default2.png';
 import sticker1 from '../../../images/home_newsList_dog_1.png';
 import sticker2 from '../../../images/home_newsList_dog_2.png';
 import sticker3 from '../../../images/home_newsList_dog_3.png';
@@ -35,6 +35,7 @@ const ConversationRoom = ({
   const viewRef = useRef(null);
   const { socket } = useSocket();
   const navigate = useNavigate();
+  const BASE_URL = process.env.REACT_APP_BASE_API_URL;
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -170,6 +171,7 @@ const ConversationRoom = ({
     viewRef.current?.scrollTo(0, viewRef.current.scrollHeight);
     console.log(data);
   }, [viewRef, data]);
+  console.log(data);
   return (
     <div className={`conversation_room ${active ? 'active' : ''}`}>
       <div
@@ -178,8 +180,12 @@ const ConversationRoom = ({
           setActive(!active);
         }}
       >
+        {console.log('data', data)}
         <div className="header_img obj-fit">
-          <img src={fakeimg} alt="" />
+          <img
+            src={data.store_photo ? BASE_URL + data.store_photo : fakeimg}
+            alt=""
+          />
         </div>
         <div className="header_name obj-fit">
           <div className="m-0">{data.store_name}</div>
@@ -193,13 +199,33 @@ const ConversationRoom = ({
           {data.messages.map((value) => {
             if (value.type === 1)
               return (
-                <TextType data={value} storeImg={fakeimg} key={value.id} />
+                <TextType
+                  data={value}
+                  storeImg={
+                    data.store_photo ? BASE_URL + data.store_photo : fakeimg
+                  }
+                  key={value.id}
+                />
               );
             if (value.type === 2)
-              return <ImgType data={value} storeImg={fakeimg} key={value.id} />;
+              return (
+                <ImgType
+                  data={value}
+                  storeImg={
+                    data.store_photo ? BASE_URL + data.store_photo : fakeimg
+                  }
+                  key={value.id}
+                />
+              );
             if (value.type === 3)
               return (
-                <StickrType data={value} storeImg={fakeimg} key={value.id} />
+                <StickrType
+                  data={value}
+                  storeImg={
+                    data.store_photo ? BASE_URL + data.store_photo : fakeimg
+                  }
+                  key={value.id}
+                />
               );
             if (value.type === 4)
               return (

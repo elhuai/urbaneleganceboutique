@@ -4,7 +4,7 @@ import { exchangeUserVoucher } from '../../../api/userApi';
 import { editSocialName } from '../../../api/userApi';
 import './_voucherExchangeCard.scss';
 
-const SocialNameEditCard = ({ confirm, itemData }) => {
+const SocialNameEditCard = ({ confirm, itemData, socket }) => {
   const [excahgeQuantity, setExcahgeQuantity] = useState(1);
   const [inputError, setInputError] = useState('');
   const value = useRef(1);
@@ -13,7 +13,7 @@ const SocialNameEditCard = ({ confirm, itemData }) => {
     e.preventDefault();
     if (excahgeQuantity === 0) return setInputError('兌換數量無法小於 1');
     confirm();
-    exchangeUserVoucher(itemData, excahgeQuantity);
+    exchangeUserVoucher(itemData, excahgeQuantity, socket);
   };
 
   const handleInputChange = (e) => {

@@ -4,6 +4,7 @@ import voucherDetail from '../VoucherDetail/VoucherDetail';
 import { handleHtmlCard } from '../../../utils/handler/card/handleHtmlCard';
 import { handleVoucherExchangeCard } from '../../../utils/handler/card/handleInputCard';
 import { getUserVoucher } from '../../../api/userApi';
+import { useSocket } from '../../../hooks/useSocket';
 
 import './_vouchers.scss';
 
@@ -11,23 +12,28 @@ const BASE_URL = process.env.REACT_APP_BASE_API_URL;
 
 const Vouchers = ({ valid }) => {
   const [data, setData] = useState(null);
+  const { socket } = useSocket();
 
   useEffect(() => {
     getUserVoucher(setData);
   }, []);
   if (data === null) return '';
-  return valid ? <ValidVoucher data={data} /> : <InValidVoucher data={data} />;
+  return valid ? (
+    <ValidVoucher data={data} socket={socket} />
+  ) : (
+    <InValidVoucher data={data} />
+  );
 };
 
 const handleDetailBtn = (item, isValid) => {
   handleHtmlCard(voucherDetail, item, isValid);
 };
 
-const showQRcode = (item) => {
-  handleVoucherExchangeCard(item);
+const showQRcode = (item, socket) => {
+  handleVoucherExchangeCard(item, socket);
 };
 
-const ValidVoucher = ({ data }) => {
+const ValidVoucher = ({ data, socket }) => {
   if (!isListNotEmpty(data, { validList: true })) {
     return (
       <div className="voucher_content text-center h4 opacity-25 lh-base">
@@ -85,7 +91,7 @@ const ValidVoucher = ({ data }) => {
                   </button>
                 </div>
                 <div className="d-flex align-items-end">
-                  <button onClick={() => showQRcode(item)}>兌換</button>
+                  <button onClick={() => showQRcode(item, socket)}>兌換</button>
                 </div>
               </div>
             </div>

@@ -9,32 +9,38 @@ import { API_URL } from '../../../utils/config';
 const centers = [
   {
     id: 1,
-    name: '礁溪好好玩',
-    position: { lat: 24.8311324, lng: 121.7742168 },
+    name: '虎頭山環保公園',
+    position: { lat: 25.0120385, lng: 121.3283886 },
     photo: 'https://picsum.photos/200/300?random2',
   },
   {
     id: 2,
-    name: '羅東超讚',
-    position: { lat: 24.8211324, lng: 121.7642168 },
+    name: '白圍牆地中海景觀咖啡餐廳',
+    position: { lat: 24.867738, lng: 121.184262 },
     photo: 'https://picsum.photos/200/300?random1',
   },
   {
     id: 3,
-    name: '花東真漂亮',
-    position: { lat: 24.8111324, lng: 121.7742168 },
+    name: '埔心牧場',
+    position: { lat: 24.9259421, lng: 121.1763718 },
     photo: 'https://picsum.photos/200/300?random21',
   },
   {
     id: 4,
-    name: '花東五日遊',
-    position: { lat: 24.8011324, lng: 121.6742168 },
+    name: '無閒甜點',
+    position: { lat: 25.0014151, lng: 121.2969897 },
     photo: 'https://picsum.photos/200/300?random5',
   },
   {
     id: 5,
-    name: '礁溪泡溫泉去',
-    position: { lat: 24.685587, lng: 121.824053 },
+    name: '千郁農場',
+    position: { lat: 25.0697403, lng: 121.3392925 },
+    photo: 'https://picsum.photos/200/300?random5',
+  },
+  {
+    id: 6,
+    name: '桃園觀光夜市',
+    position: { lat: 25.0026972, lng: 121.3060018 },
     photo: 'https://picsum.photos/200/300?random5',
   },
 ];
@@ -64,7 +70,7 @@ function PostMap({ post }) {
       <div className="communitymap_body">
         <GoogleMap
           ref={mapRef}
-          center={{ lat: 24.8451324, lng: 121.7842168 }}
+          center={{ lat: 25.0120385, lng: 121.3283886 }}
           zoom={14}
           mapContainerClassName="communitymap_container"
         >

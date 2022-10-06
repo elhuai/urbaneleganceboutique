@@ -34,7 +34,7 @@ const FilterResult = (props) => {
         if (result.data.message === '已成功移除收藏') {
           // console.log('成功');
           setCollectionId((idList) => idList.filter((item) => item !== id));
-          e.target.style['color'] = '#747474';
+          e.target.style['color'] = '#aaa';
           handleSuccess('已成功移除收藏');
         } else if (result.data.message === '已成功收藏') {
           // console.log('不成功');
@@ -178,8 +178,6 @@ const FilterResult = (props) => {
                         <div
                           className={`product_main_card_collect ${
                             collectionId.some((element) => {
-                              console.log(element);
-                              console.log(data.id);
                               return element === data.id;
                             })
                               ? 'collection'

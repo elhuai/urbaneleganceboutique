@@ -90,13 +90,13 @@ export const getUserVoucher = async (setData) => {
   }
 };
 
-export const exchangeUserVoucher = async (itemData, quantity) => {
+export const exchangeUserVoucher = async (itemData, quantity, socket) => {
   try {
     const { data } = await axios.get(
       `${BASE_URL}/voucher/exchange/${itemData.product_id}?quantity=${quantity}`,
       credentialsConfig
     );
-    handleQRcodeCard(`${BACKEND_OPEN_URL}${data.data.path}`);
+    handleQRcodeCard(`${BACKEND_OPEN_URL}${data.data.path}`, socket);
   } catch (error) {
     console.error(error);
     if (error.response.status === 400) {
